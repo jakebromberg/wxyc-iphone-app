@@ -1,0 +1,48 @@
+//
+//  UIWalkmanVolumeSlider.m
+//  WXYCapp
+//
+//  Created by Jake on 10/11/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import "WalkmanVolumeSlider.h"
+
+@implementation WalkmanVolumeSlider
+
+- (CGRect)trackRectForBounds:(CGRect)bounds {
+	return CGRectMake(CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetWidth(bounds), 6.0);
+}
+
+//- (CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value
+//{
+//	return CGRectMake(CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetWidth(bounds), CGRectGetHeight(bounds));
+//}
+
+- (id)initWithFrame:(CGRect)frame {
+	return self;
+}
+
+- (void)drawRect:(CGRect)rect {
+	UIImage *stretchLeftTrack =  [[UIImage imageNamed:@"total track image.png"]
+								  stretchableImageWithLeftCapWidth:20.0 topCapHeight:0];
+
+	UIImage *stretchRightTrack = [[UIImage imageNamed:@"total track image.png"]
+								  stretchableImageWithLeftCapWidth:20.0 topCapHeight:0];
+
+	UIImage *thumb = [UIImage imageNamed:@"thumb image.png"];
+
+	[self setMinimumTrackImage:stretchLeftTrack forState:UIControlStateNormal];
+	[self setMaximumTrackImage:stretchRightTrack forState:UIControlStateNormal];
+
+	[self setThumbImage:thumb forState:UIControlStateNormal];
+	[self setThumbImage:thumb forState:UIControlStateHighlighted];
+	[self setThumbImage:thumb forState:UIControlStateDisabled];
+}
+
+- (void)dealloc {
+    [super dealloc];
+}
+
+
+@end

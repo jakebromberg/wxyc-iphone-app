@@ -1,0 +1,23 @@
+//
+//  Created by Jake Bromberg.
+//  Copyright WXYC 2009-10. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import	"PullToRefreshTableViewController.h"
+
+@interface SpecialsTableViewController : PullToRefreshTableViewController {
+	NSMutableArray *allEvents;
+	
+	NSMutableData *responseData;
+	UISegmentedControl *stationNewsSegControl;
+	
+	IBOutlet UITableView *updatesTableView;	
+}
+
+@property (nonatomic, retain) NSMutableArray *allEvents;
+@property (nonatomic, retain) IBOutlet UITableView *updatesTableView;
+
+//- (IBAction)segmentAction:(id)sender;
+
+@end

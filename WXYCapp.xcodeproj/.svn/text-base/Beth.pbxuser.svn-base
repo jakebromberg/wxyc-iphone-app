@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* ORBooksAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1279, 923}}";
+			sepNavSelRange = "{599, 0}";
+			sepNavVisRange = "{0, 607}";
+		};
+	};
+	1D3623250D0F684500981E51 /* ORBooksAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1279, 923}}";
+			sepNavSelRange = "{210, 0}";
+			sepNavVisRange = "{0, 674}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* ORBooks */ = {
+		activeExec = 0;
+		executables = (
+			4E9FA5350FEC3E8F00CD55C1 /* ORBooks */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 4E9FA5350FEC3E8F00CD55C1 /* ORBooks */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* ORBooks */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* ORBooks */,
+		);
+		codeSenseManager = 4E9FA5400FEC3EAE00CD55C1 /* Code sense */;
+		executables = (
+			4E9FA5350FEC3E8F00CD55C1 /* ORBooks */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					1101,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 268177423;
+			PBXWorkspaceStateSaveDate = 268177423;
+		};
+		perUserProjectItems = {
+			4E39EFB20FFC10B400988D9E /* PBXTextBookmark */ = 4E39EFB20FFC10B400988D9E /* PBXTextBookmark */;
+			4E39EFB40FFC10B400988D9E /* PBXTextBookmark */ = 4E39EFB40FFC10B400988D9E /* PBXTextBookmark */;
+			4E39EFBF0FFC12A500988D9E /* PBXTextBookmark */ = 4E39EFBF0FFC12A500988D9E /* PBXTextBookmark */;
+			4E39EFC00FFC12A600988D9E /* PBXTextBookmark */ = 4E39EFC00FFC12A600988D9E /* PBXTextBookmark */;
+			4E9FA5580FEC40FD00CD55C1 /* PBXTextBookmark */ = 4E9FA5580FEC40FD00CD55C1 /* PBXTextBookmark */;
+			4E9FA5590FEC40FD00CD55C1 /* PBXTextBookmark */ = 4E9FA5590FEC40FD00CD55C1 /* PBXTextBookmark */;
+			4E9FA57E0FEC456300CD55C1 /* PBXTextBookmark */ = 4E9FA57E0FEC456300CD55C1 /* PBXTextBookmark */;
+			4E9FA57F0FEC456300CD55C1 /* PBXTextBookmark */ = 4E9FA57F0FEC456300CD55C1 /* PBXTextBookmark */;
+			4E9FA58B0FEC460800CD55C1 /* PBXTextBookmark */ = 4E9FA58B0FEC460800CD55C1 /* PBXTextBookmark */;
+			4E9FA5A30FEC488700CD55C1 /* PBXTextBookmark */ = 4E9FA5A30FEC488700CD55C1 /* PBXTextBookmark */;
+			4E9FA5B80FEC4AAF00CD55C1 /* PBXTextBookmark */ = 4E9FA5B80FEC4AAF00CD55C1 /* PBXTextBookmark */;
+			4ED5133F0FFBDE9400F9A276 /* PBXTextBookmark */ = 4ED5133F0FFBDE9400F9A276 /* PBXTextBookmark */;
+			4ED513480FFBDEDF00F9A276 /* PBXTextBookmark */ = 4ED513480FFBDEDF00F9A276 /* PBXTextBookmark */;
+			4ED513490FFBDEDF00F9A276 /* PBXTextBookmark */ = 4ED513490FFBDEDF00F9A276 /* PBXTextBookmark */;
+			4ED5134A0FFBDEDF00F9A276 /* PBXTextBookmark */ = 4ED5134A0FFBDEDF00F9A276 /* PBXTextBookmark */;
+			4ED5134D0FFBDEDF00F9A276 /* PBXTextBookmark */ = 4ED5134D0FFBDEDF00F9A276 /* PBXTextBookmark */;
+			4EDA18C90FED8BA100FA2126 /* PBXTextBookmark */ = 4EDA18C90FED8BA100FA2126 /* PBXTextBookmark */;
+			4EDA18CB0FED8BA100FA2126 /* PBXTextBookmark */ = 4EDA18CB0FED8BA100FA2126 /* PBXTextBookmark */;
+			4EDA18CC0FED8BA100FA2126 /* PBXTextBookmark */ = 4EDA18CC0FED8BA100FA2126 /* PBXTextBookmark */;
+			4EDA18CD0FED8BA100FA2126 /* PBXTextBookmark */ = 4EDA18CD0FED8BA100FA2126 /* PBXTextBookmark */;
+			4EDA18D40FED8BA100FA2126 /* PBXTextBookmark */ = 4EDA18D40FED8BA100FA2126 /* PBXTextBookmark */;
+			4EDA18D90FED8BA100FA2126 /* PBXTextBookmark */ = 4EDA18D90FED8BA100FA2126 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 4E9FA53F0FEC3EAE00CD55C1 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	4E39EFB20FFC10B400988D9E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5740FEC446E00CD55C1 /* BooksTableViewController.h */;
+		name = "BooksTableViewController.h: 13";
+		rLen = 21;
+		rLoc = 360;
+		rType = 0;
+		vrLen = 654;
+		vrLoc = 0;
+	};
+	4E39EFB40FFC10B400988D9E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5740FEC446E00CD55C1 /* BooksTableViewController.h */;
+		name = "BooksTableViewController.h: 13";
+		rLen = 21;
+		rLoc = 360;
+		rType = 0;
+		vrLen = 654;
+		vrLoc = 0;
+	};
+	4E39EFBF0FFC12A500988D9E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5750FEC446E00CD55C1 /* BooksTableViewController.m */;
+		name = "BooksTableViewController.m: 121";
+		rLen = 0;
+		rLoc = 3894;
+		rType = 0;
+		vrLen = 525;
+		vrLoc = 3531;
+	};
+	4E39EFC00FFC12A600988D9E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5750FEC446E00CD55C1 /* BooksTableViewController.m */;
+		name = "BooksTableViewController.m: 121";
+		rLen = 0;
+		rLoc = 3894;
+		rType = 0;
+		vrLen = 1618;
+		vrLoc = 2844;
+	};
+	4E9FA5350FEC3E8F00CD55C1 /* ORBooks */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = ORBooks;
+		sourceDirectories = (
+		);
+	};
+	4E9FA53F0FEC3EAE00CD55C1 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	4E9FA5400FEC3EAE00CD55C1 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	4E9FA54A0FEC403F00CD55C1 /* AboutViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1279, 923}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 237}";
+		};
+	};
+	4E9FA54B0FEC403F00CD55C1 /* AboutViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1279, 1400}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 816}";
+		};
+	};
+	4E9FA5580FEC40FD00CD55C1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* ORBooksAppDelegate.m */;
+		name = "ORBooksAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 432;
+		vrLoc = 0;
+	};
+	4E9FA5590FEC40FD00CD55C1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* ORBooksAppDelegate.h */;
+		name = "ORBooksAppDelegate.h: 17";
+		rLen = 0;
+		rLoc = 599;
+		rType = 0;
+		vrLen = 451;
+		vrLoc = 0;
+	};
+	4E9FA56F0FEC43FF00CD55C1 /* BooksNavController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1279, 923}}";
+			sepNavSelRange = "{219, 0}";
+			sepNavVisRange = "{0, 241}";
+		};
+	};
+	4E9FA5700FEC43FF00CD55C1 /* BooksNavController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1279, 1425}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 813}";
+		};
+	};
+	4E9FA5740FEC446E00CD55C1 /* BooksTableViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1279, 923}}";
+			sepNavSelRange = "{360, 21}";
+			sepNavVisRange = "{0, 654}";
+		};
+	};
+	4E9FA5750FEC446E00CD55C1 /* BooksTableViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1610.66, 4175}}";
+			sepNavSelRange = "{3894, 0}";
+			sepNavVisRange = "{2844, 1618}";
+		};
+	};
+	4E9FA57E0FEC456300CD55C1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA54A0FEC403F00CD55C1 /* AboutViewController.h */;
+		name = "AboutViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 237;
+		vrLoc = 0;
+	};
+	4E9FA57F0FEC456300CD55C1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA56F0FEC43FF00CD55C1 /* BooksNavController.h */;
+		name = "BooksNavController.h: 12";
+		rLen = 0;
+		rLoc = 219;
+		rType = 0;
+		vrLen = 241;
+		vrLoc = 0;
+	};
+	4E9FA58B0FEC460800CD55C1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5740FEC446E00CD55C1 /* BooksTableViewController.h */;
+		name = "BooksTableViewController.h: 13";
+		rLen = 0;
+		rLoc = 504;
+		rType = 0;
+		vrLen = 335;
+		vrLoc = 0;
+	};
+	4E9FA5A30FEC488700CD55C1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5750FEC446E00CD55C1 /* BooksTableViewController.m */;
+		name = "BooksTableViewController.m: 13";
+		rLen = 0;
+		rLoc = 364;
+		rType = 0;
+		vrLen = 561;
+		vrLoc = 0;
+	};
+	4E9FA5AB0FEC48C300CD55C1 /* BookDetailViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1279, 923}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 247}";
+		};
+	};
+	4E9FA5AC0FEC48C300CD55C1 /* BookDetailViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1279, 1400}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 831}";
+		};
+	};
+	4E9FA5B80FEC4AAF00CD55C1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5AB0FEC48C300CD55C1 /* BookDetailViewController.h */;
+		name = "BookDetailViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 247;
+		vrLoc = 0;
+	};
+	4ED5133F0FFBDE9400F9A276 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5700FEC43FF00CD55C1 /* BooksNavController.m */;
+		name = "BooksNavController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 813;
+		vrLoc = 0;
+	};
+	4ED513480FFBDEDF00F9A276 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA56F0FEC43FF00CD55C1 /* BooksNavController.h */;
+		name = "BooksNavController.h: 12";
+		rLen = 0;
+		rLoc = 219;
+		rType = 0;
+		vrLen = 241;
+		vrLoc = 0;
+	};
+	4ED513490FFBDEDF00F9A276 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA54B0FEC403F00CD55C1 /* AboutViewController.m */;
+		name = "AboutViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 816;
+		vrLoc = 0;
+	};
+	4ED5134A0FFBDEDF00F9A276 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5AC0FEC48C300CD55C1 /* BookDetailViewController.m */;
+		name = "BookDetailViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 831;
+		vrLoc = 0;
+	};
+	4ED5134D0FFBDEDF00F9A276 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA54B0FEC403F00CD55C1 /* AboutViewController.m */;
+		name = "AboutViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 816;
+		vrLoc = 0;
+	};
+	4EDA18C90FED8BA100FA2126 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5AB0FEC48C300CD55C1 /* BookDetailViewController.h */;
+		name = "BookDetailViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 247;
+		vrLoc = 0;
+	};
+	4EDA18CB0FED8BA100FA2126 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* ORBooksAppDelegate.h */;
+		name = "ORBooksAppDelegate.h: 20";
+		rLen = 0;
+		rLoc = 599;
+		rType = 0;
+		vrLen = 607;
+		vrLoc = 0;
+	};
+	4EDA18CC0FED8BA100FA2126 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* ORBooksAppDelegate.m */;
+		name = "ORBooksAppDelegate.m: 10";
+		rLen = 0;
+		rLoc = 210;
+		rType = 0;
+		vrLen = 674;
+		vrLoc = 0;
+	};
+	4EDA18CD0FED8BA100FA2126 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA54A0FEC403F00CD55C1 /* AboutViewController.h */;
+		name = "AboutViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 237;
+		vrLoc = 0;
+	};
+	4EDA18D40FED8BA100FA2126 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5AC0FEC48C300CD55C1 /* BookDetailViewController.m */;
+		name = "BookDetailViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 831;
+		vrLoc = 0;
+	};
+	4EDA18D90FED8BA100FA2126 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4E9FA5700FEC43FF00CD55C1 /* BooksNavController.m */;
+		name = "BooksNavController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 813;
+		vrLoc = 0;
+	};
+}

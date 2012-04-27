@@ -1,0 +1,102 @@
+//
+//  DiscogsReleaseSearch.m
+//  WXYCapp
+//
+//  Created by Jake on 11/3/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import "DiscogsReleaseSearch.h"
+#import "ReleaseSearchParseOperation.h"
+
+@interface DiscogsReleaseSearch ()
+
+@property (nonatomic, retain) NSOperationQueue *parseQueue;     // the queue that manages our NSOperation for parsing earthquake data
+- (void)addDiscogsReleaseSearchResultsToList:(NSArray *)results;
+
+@end
+
+@implementation DiscogsReleaseSearch
+
+@synthesize delegate;
+@synthesize parseQueue;
+
+static const NSString *DISCOGS_RELEASE_SEARCH_URL = @"http://www.discogs.com/search?q=%@&range=is&f=xml&api_key=%@";
+static const NSString *API_KEY = @"f5a6dd181e";
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	[responseData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	[responseData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	ReleaseSearchParseOperation *parseOperation = [[ReleaseSearchParseOperation alloc] initWithData:responseData];
+//	parseQueue = [[NSOperationQueue alloc] init];
+//	[self.parseQueue
+    [self.parseQueue addOperation:parseOperation];
+    [parseOperation release];   // once added to the NSOperationQueue it's retained, we don't need it anymore
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	NSLog(@"%@", error);
+}
+
+- (void) searchWithString:(NSString *)search {
+	NSLog(@"DiscogsReleaseSearch begin");
+	NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:[search stringByAppendingString:@"?f=xml&api_key=%@"], API_KEY]];
+	
+	NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+#pragma mark -
+
+- (void)addDiscogsReleaseSearchResults:(NSNotification *)notif {
+    assert([NSThread isMainThread]);
+    
+//    [self addDiscogsReleaseSearchResultsToList:[[notif userInfo] valueForKey:kReleaseSearchResultsKey]];
+	[delegate handleDiscogsReleaseSearchResults:[[notif userInfo] valueForKey:kReleaseSearchResultsKey]];
+
+	parseQueue = nil;
+//	[parseQueue cancelAllOperations];
+//	[parseQueue dealloc];
+}
+
+- (void)addDiscogsReleaseSearchResultsToList:(NSArray *)results {
+}
+
+#pragma mark -
+- (id)initWithDelegate:(id<DiscogsReleaseSearchDelegate>) del {
+	self.delegate = del;
+	
+	return [self init];
+}
+
+- (id) init {
+	parseQueue = [NSOperationQueue new];
+	
+	responseData = [[NSMutableData data] retain];
+	[responseData initWithLength:0];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(addDiscogsReleaseSearchResults:)
+                                                 name:kAddReleaseSearchResultsNotif
+                                               object:nil];	
+	
+	return self;
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:kAddReleaseSearchResultsNotif];
+	
+	[parseQueue dealloc];
+	parseQueue = nil;
+	[responseData dealloc];
+
+	[super dealloc];
+}
+
+@end

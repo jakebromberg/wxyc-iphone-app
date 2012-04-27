@@ -1,0 +1,62 @@
+//
+//  Created by Jake Bromberg.
+//  Copyright WXYC 2009-10. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <QuartzCore/QuartzCore.h>
+#import "WalkmanVolumeSlider.h"
+#include <AudioToolbox/AudioToolbox.h>
+#include <AVFoundation/AVFoundation.h>
+
+@class AudioStreamer;
+@class CassetteReelViewController;
+@class VerticalLabel;
+
+@interface ListenViewController : UIViewController <AVAudioSessionDelegate> {
+	AudioStreamer *streamer;
+
+	IBOutlet UIView *volumeViewHolder;
+	
+	IBOutlet UISlider *volumeSlider;
+
+	IBOutlet UIImageView *GreenLED;
+	IBOutlet UIImageView *RedLED;
+	
+	IBOutlet UIImageView *upperCassetteReel;
+	IBOutlet UIImageView *lowerCassetteReel;
+
+	IBOutlet UIButton *playButton;
+	IBOutlet UIButton *stopButton;
+	
+	IBOutlet UILabel *nowPlayingLabel;
+
+	MPVolumeView *volumeView;
+	UIView *volumeViewSlider;
+	
+	CassetteReelViewController *upperController;
+	CassetteReelViewController *lowerController;
+	
+	AVAudioSession *session;
+}
+
+@property (nonatomic, readonly, retain) IBOutlet UISlider *volumeSlider;
+
+@property (nonatomic, readonly, retain) MPVolumeView *volumeView;
+@property (nonatomic, readonly, retain) IBOutlet UIImageView *GreenLED;
+@property (nonatomic, readonly, retain) IBOutlet UIImageView *RedLED;
+@property (nonatomic, readonly, retain) IBOutlet UIImageView *upperCassetteReel;
+@property (nonatomic, readonly, retain) IBOutlet UIImageView *lowerCassetteReel;
+@property (nonatomic, readonly, retain) IBOutlet UIButton *playButton;
+@property (nonatomic, readonly, retain) IBOutlet UIButton *stopButton;
+@property (nonatomic, readonly, retain) IBOutlet UILabel *nowPlayingLabel;
+
+- (IBAction)pushPlay:(id)sender;
+- (IBAction)pushStop:(id)sender;
+- (IBAction)volumeSliderDrag:(id)sender;
+
+void MyPropertyListener ( void *inClientData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData );
+void interruptionListener(void *inClientData, UInt32 inInterruptionState);
+
+@end

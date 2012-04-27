@@ -1,0 +1,18 @@
+//
+//  UITableViewPlaycutCell.m
+//  wxycapp
+//
+//  Created by Jake on 2/4/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import "UITableViewPlaycutCell.h"
+
+@implementation UITableViewPlaycutCell
+
+@synthesize artistName;
+@synthesize songTitle;
+@synthesize releaseTitle;
+@synthesize labelName;
+
+@end

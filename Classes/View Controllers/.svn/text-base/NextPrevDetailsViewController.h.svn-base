@@ -1,0 +1,30 @@
+//
+//  Created by Jake Bromberg.
+//  Copyright WXYC 2009-10. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@protocol NextPrevDetailsDelegate
+-(id)NPnext;
+-(id)NPprev;
+-(id)NPcurrent;
+-(BOOL)hasNext;
+-(BOOL)hasPrev;
+@end
+
+@interface NextPrevDetailsViewController : UITableViewController {
+//	NSMutableArray *items;
+	UISegmentedControl *segControl;
+	id<NextPrevDetailsDelegate> delegate;
+	int currentRow;
+	id currentData;
+}
+
+@property (nonatomic, retain) id<NextPrevDetailsDelegate> delegate;
+@property (nonatomic, retain) id currentData;
+//@property (nonatomic, retain) NSMutableArray *items;
+@property (nonatomic, retain) UISegmentedControl *segControl;
+//@property (nonatomic, assign) int currentRow;
+
+@end

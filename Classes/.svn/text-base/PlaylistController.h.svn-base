@@ -1,0 +1,45 @@
+//
+//  LivePlaylistController.h
+//  WXYCapp
+//
+//  Created by Jake on 10/13/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+typedef enum
+{
+	LP_INITIALIZED = 0,
+	LP_WAITING_FOR_DATA,
+	LP_FETCHING,
+	LP_PARSING,
+	LP_DONE
+} LivePlaylistState;
+
+@interface PlaylistController : NSObject {
+	NSURL* URL;
+	
+	NSMutableArray *playlist;
+	NSMutableData *responseData;
+
+	LivePlaylistState state;
+	NSNotificationCenter *notificationCenter;
+}
+
+extern NSString * const LPStatusChangedNotification;
+
+- (LivePlaylistState)getState;
+
+- (void)getJSONFeedWithNumEntries:(int)num;
+- (void)getJSONFeedWithNumEntries:(int)num referenceID:(int)referenceID direction:(NSString*)direction;
+- (void)getJSONFeed;
+- (void)updatePlaylist;
+
+-(PlaylistController*)initWithNSURL:(NSURL*)url;
+
+@property (readonly) LivePlaylistState state;
+@property (nonatomic, retain) NSURL* URL;
+@property (nonatomic, retain) NSMutableArray *playlist;
+
+@end

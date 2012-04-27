@@ -1,0 +1,218 @@
+//
+//  Created by Jake Bromberg.
+//  Copyright WXYC 2009-10. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "SpecialsTableViewController.h"
+#import "NewsTableViewController.h"
+#import "BlogEntryTableViewCell.h";
+#import "JSON.h"
+#import "MREntitiesConverter.h"
+#import "NewsDetailViewController.h"
+
+@implementation SpecialsTableViewController
+@synthesize allEvents;
+@synthesize updatesTableView;
+
+- (NSString *)flattenHTML:(NSString *)html {
+	
+    NSScanner *theScanner;
+    NSString *text = nil;
+	
+    theScanner = [NSScanner scannerWithString:html];
+	
+    while ([theScanner isAtEnd] == NO) {
+		
+        // find start of tag
+        [theScanner scanUpToString:@"<" intoString:NULL] ; 
+		
+        // find end of tag
+        [theScanner scanUpToString:@">" intoString:&text] ;
+		
+        // replace the found tag with a space
+        //(you can filter multi-spaces out later if you wish)
+        html = [html stringByReplacingOccurrencesOfString:
+				[ NSString stringWithFormat:@"%@>", text]
+											   withString:@""];
+    } // while //
+	
+	return html;
+	
+}
+
+
+- (void)getJSONFeedWithNumEntries:(int)num referenceID:(int)referenceID direction:(NSString*)direction  {
+	//date gymnastics to convert epoch timestamp to something readable
+//	double timeSinceEpoch = [[NSString stringWithFormat: @"%@", [playlistEntry objectForKey:@"hour"]] doubleValue] / 1000;
+	NSDate *date = [NSDate date];
+	
+	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+
+	dateFormatter.dateFormat = @"yyyy";
+	NSString* year = [dateFormatter stringFromDate:date];
+	
+	dateFormatter.dateFormat = @"M";
+	NSString* month = [dateFormatter stringFromDate:date];
+
+	dateFormatter.dateFormat = @"d";
+	NSString* day = [dateFormatter stringFromDate:date];
+
+	NSString *URL = @"http://wxyc.org/calendar/index_iphone.php?";
+
+	URL = [URL stringByAppendingString:@"emonth="];
+	URL = [URL stringByAppendingString:[NSString stringWithFormat:@"%d",[month intValue]+1]];
+	URL = [URL stringByAppendingString:@"&eday="];
+	URL = [URL stringByAppendingString:day];
+	URL = [URL stringByAppendingString:@"&eyear="];
+	URL = [URL stringByAppendingString:year];
+	
+	URL = [URL stringByAppendingString:@"&smonth="];
+	URL = [URL stringByAppendingString:month];
+	URL = [URL stringByAppendingString:@"&sday="];
+	URL = [URL stringByAppendingString:day];
+	URL = [URL stringByAppendingString:@"&syear="];
+	URL = [URL stringByAppendingString:year];
+	
+	NSLog(URL);
+	
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:URL]];
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void) reloadTableViewDataSource
+{
+	[allEvents removeAllObjects];
+	[self getJSONFeedWithNumEntries:20 referenceID:1 direction:@"prev"];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	
+	responseData = [[NSMutableData data] retain];
+	[responseData initWithLength:0];
+	allEvents = [[NSMutableArray alloc] init];
+	
+	[refreshHeaderView setLastUpdatedDate:[NSDate date]];
+	[self showReloadAnimationAnimated:YES];
+	[self reloadTableViewDataSource];	
+	
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	
+	[responseData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	[responseData appendData:data];
+	//	NSLog([[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	// Store incoming data into a string
+	NSString *jsonString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+//		NSLog(jsonString);
+	// Create a dictionary from the JSON string
+	NSDictionary *results = [jsonString JSONValue];
+	
+	// Loop through each entry in the dictionary...
+	MREntitiesConverter *converter;// = [[MREntitiesConverter alloc] init];
+	for (NSMutableDictionary *anEvent in results)
+	{
+		converter = [[MREntitiesConverter alloc] init];
+		NSString *desc = [NSString stringWithFormat: @"%@", [anEvent objectForKey:@"desc"]];
+		[converter convertEntiesInString:desc];
+		[anEvent setObject:[self flattenHTML:[converter resultString]] forKey:@"cellContent"];
+		[converter release];
+		
+		converter = [[MREntitiesConverter alloc] init];
+		NSString *subj = [NSString stringWithFormat: @"%@", [anEvent objectForKey:@"subj"]];
+		[converter convertEntiesInString:subj];
+		[anEvent setObject:[self flattenHTML:[converter resultString]] forKey:@"subj"];
+		[converter release];
+		
+		NSString *startdate = [NSString stringWithFormat: @"%@", [anEvent objectForKey:@"startdate"]];
+		NSDate *date = [NSDate dateWithNaturalLanguageString:startdate];
+		NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+		dateFormatter.dateFormat = @"MMM d, yyyy";
+		startdate = [dateFormatter stringFromDate:date];
+		[anEvent setObject:startdate forKey:@"startdate"];
+		
+		NSString *starttime = [NSString stringWithFormat: @"%@", [anEvent objectForKey:@"starttime"]];
+		[anEvent setObject:starttime forKey:@"starttime"];
+
+		[allEvents addObject:anEvent];
+	}
+	
+	// Update the table with data
+	[self.tableView reloadData];
+	[responseData setLength:0];
+	
+	[super dataSourceDidFinishLoadingNewData];
+	
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+    // Release anything that's not essential, such as cached data
+}
+
+// Customize the number of rows in the table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.allEvents count];
+}
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSUInteger row = [indexPath row];
+	if ([allEvents count] == 0) {
+		return [tableView dequeueReusableCellWithIdentifier:@"BlogEntryCell"];	
+	}
+	
+	NSDictionary *aSpecial = [allEvents objectAtIndex:row];
+	
+	BlogEntryTableViewCell *blogCell = (BlogEntryTableViewCell*) [tableView dequeueReusableCellWithIdentifier:@"BlogEntryCell"];
+	
+	if (blogCell==nil) {
+		NSArray* topLevelObjects = //(BlogEntryTableViewCell*)
+		[[NSBundle mainBundle]
+		 loadNibNamed:@"BlogEntryTableViewCell" 
+		 owner:nil options:nil];
+		blogCell = (BlogEntryTableViewCell *)[topLevelObjects objectAtIndex:0];
+	}
+	
+	NSString *title = [NSString stringWithFormat: @"%@", [aSpecial objectForKey:@"subj"]];
+	blogCell.title.text = title;
+	
+	NSString *content = [NSString stringWithFormat: @"%@", [aSpecial objectForKey:@"cellContent"]];
+	blogCell.description.text = content;//[self flattenHTML:[converter resultString]];
+	
+	NSString *date = [NSString stringWithFormat: @"%@", [aSpecial objectForKey:@"startdate"]];
+	blogCell.date.text = date;
+	
+	return blogCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Navigation logic may go here. Create and push another view controller.
+	NSUInteger row = [indexPath row];
+	//	NSDictionary *blogEntry = [blogEntries objectAtIndex:row];
+	
+	NewsDetailViewController *webViewController = [[NewsDetailViewController alloc] initWithNibName:@"WebView" bundle:nil];
+	webViewController.items = allEvents;
+	webViewController.currentRow = row;
+	
+	[[self navigationController] pushViewController:webViewController animated:YES];
+	
+	[webViewController release];
+}
+
+@end

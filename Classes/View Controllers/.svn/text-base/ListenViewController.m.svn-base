@@ -1,0 +1,294 @@
+//
+//  Created by Jake Bromberg.
+//  Copyright WXYC 2009-10. All rights reserved.
+//
+
+#import "ListenViewController.h"
+#import "AudioStreamer.h"
+#import "PlaylistController.h"
+#import "CassetteReelViewController.h"
+#import "WXYCAppDelegate.h"
+
+@implementation ListenViewController
+
+@synthesize volumeSlider;
+
+@synthesize volumeView;
+@synthesize GreenLED;
+@synthesize RedLED;
+@synthesize upperCassetteReel;
+@synthesize lowerCassetteReel;
+@synthesize playButton;
+@synthesize stopButton;
+@synthesize nowPlayingLabel;
+
+void MyPropertyListener ( void *inClientData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData ) {
+	NSLog(@"MyPropertyListener");
+	ListenViewController* hopeThisWorks = (ListenViewController*)inClientData;
+	if ( inID == kAudioSessionProperty_CurrentHardwareOutputVolume ) {
+		Float32 volume = *(Float32 *)inData;
+		[[hopeThisWorks volumeSlider] setValue:volume animated:YES];
+//		self.volumeSlider.value = inData;
+//		[(MyDelegateClass *)inClientData hardwareVolumeChanged:volume];
+	}
+}
+
+- (void)destroyStreamer
+{
+	if (streamer)
+	{
+		[[NSNotificationCenter defaultCenter]
+		 removeObserver:self
+		 name:ASStatusChangedNotification
+		 object:streamer];
+		
+		[streamer stop];
+		[streamer release];
+		streamer = nil;
+	}
+	
+	//do this so we can still update the volume slider after we destroy the streamer
+	NSError *activationError = nil;
+	[session setActive:YES error: &activationError];
+}
+
+- (void)createStreamer
+{
+	if (streamer)
+	{
+		return;
+	}
+	
+	[self destroyStreamer];
+	
+	NSURL *url = [NSURL URLWithString:@"http://152.46.7.128:8000/wxyc.mp3"];
+	streamer = [[AudioStreamer alloc] initWithURL:url];
+	
+	[[NSNotificationCenter defaultCenter]
+	 addObserver:self
+	 selector:@selector(playbackStateChanged:)
+	 name:ASStatusChangedNotification
+	 object:streamer];
+	
+//	if ([volumeViewHolder alpha] == 0.0) {
+//		[volumeViewHolder setHidden:NO];
+//	}
+}
+
+- (void)playbackStateChanged:(NSNotification *)aNotification
+{
+	NSLog([AudioStreamer stringForErrorCode:[streamer errorCode]]);
+	
+	if([streamer errorCode] == AS_NO_ERROR) {
+		if ([streamer isWaiting]) {
+			[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+		} else if ([streamer isPlaying]) {
+			[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+		} else if ([streamer isIdle]) {
+			[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+		}
+	} else {
+		[self pushStop:nil];
+		[streamer stop];
+		[self destroyStreamer];
+		[self createStreamer];
+	}
+}
+
+- (void)livePlaylistControllerStateChanged:(NSNotification *)aNotification
+{
+	WXYCAppDelegate *appDelegate = (WXYCAppDelegate *)[[UIApplication sharedApplication] delegate];
+	PlaylistController *livePlaylistCtrl = [appDelegate livePlaylistCtrlr];
+	
+	LivePlaylistState state = [livePlaylistCtrl getState];
+	
+	if (state == LP_DONE) {
+		if ([[livePlaylistCtrl playlist] count] == 0) {
+			nowPlayingLabel.text = @"unavailable";
+		}
+		
+		//we're getting the most recent playcut (and not talkset or breakpoint) and displaying it on the tape label
+		for(NSDictionary *entry in [livePlaylistCtrl playlist]) {
+			NSString *entryType  = [NSString stringWithFormat: @"%@", [entry objectForKey:@"entryType"]];
+			
+			if ([entryType isEqualToString:@"playcut"]) {
+				NSDictionary *playcut = [entry objectForKey:@"playcut"];
+				
+				NSString *artistName = [NSString stringWithFormat: @"%@", [playcut objectForKey:@"artistName"]];
+				NSString *songTitle = [NSString stringWithFormat: @"%@", [playcut objectForKey:@"songTitle"]];
+				
+				nowPlayingLabel.text = [NSString stringWithFormat: @"%@ — %@", artistName, songTitle];
+				
+				break;
+			}
+		}
+	}
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.5];
+	[UIView commitAnimations];
+}
+
+- (IBAction)pushPlay:(id)sender {
+	if (!streamer) {
+		[self createStreamer];
+	}
+	
+	if ([streamer isIdle]) {
+		[GreenLED setHidden:NO];
+		[RedLED setHidden:NO];
+		
+		[upperController start];
+		[lowerController start];
+		
+		[streamer start];
+	}
+}
+
+- (IBAction)pushStop:(id)sender {
+	if (streamer)
+		if (![streamer isIdle]) {
+			[GreenLED setHidden:YES];
+			[RedLED setHidden:YES];
+			
+			[upperController stop];
+			[lowerController stop];
+			
+			[self destroyStreamer];
+		}
+}
+
+- (IBAction)volumeSliderDrag:(id)sender {
+	[[MPMusicPlayerController iPodMusicPlayer] setVolume:volumeSlider.value];
+}
+
+#pragma mark -
+#pragma mark AVAudioSessionDelegate
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+	if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) {
+		//NSLog(@"UIEventSubtypeRemoteControlTogglePlayPause");
+		if ([streamer isPlaying]) {
+			[self pushStop:nil];
+		} else {
+			[self pushPlay:nil];
+		}
+	}
+	if (event.subtype == UIEventSubtypeRemoteControlPlay) {
+		[self pushPlay:nil];
+	}
+	if (event.subtype == UIEventSubtypeRemoteControlPause) {
+		[self pushStop:nil];
+	}
+	if (event.subtype == UIEventSubtypeRemoteControlStop) {
+		[self pushStop:nil];
+	}
+	if (event.subtype == UIEventSubtypeRemoteControlNextTrack) {
+		
+	}
+	if (event.subtype == UIEventSubtypeRemoteControlPreviousTrack) {
+		
+	}
+}
+
+- (void)beginInterruption {
+	[self pushStop:nil];
+}
+
+- (void)endInterruption {
+	[self pushPlay:nil];
+}
+
+#pragma mark -
+#pragma mark UIViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	
+	session = [AVAudioSession sharedInstance];
+	NSError *activationError = nil;
+	[session setActive:YES error: &activationError];
+	
+	AudioSessionAddPropertyListener( kAudioSessionProperty_CurrentHardwareOutputVolume, MyPropertyListener , self );
+
+	Float32 systemVolume;
+	UInt32 propertySize = sizeof(systemVolume);
+	AudioSessionGetProperty(kAudioSessionProperty_CurrentHardwareOutputVolume, 
+							&propertySize, 
+							&systemVolume);
+	
+	volumeSlider.value = (Float32) systemVolume;
+	
+	UIImage *stretchLeftTrack =  [[UIImage imageNamed:@"total track image.png"]
+								  stretchableImageWithLeftCapWidth:10.0 topCapHeight:0];
+	
+	UIImage *stretchRightTrack = [[UIImage imageNamed:@"right track image.png"]
+								  stretchableImageWithLeftCapWidth:10.0 topCapHeight:0];
+	
+	UIImage *thumb = [UIImage imageNamed:@"thumb image.png"];
+	
+	[volumeSlider setMinimumTrackImage:stretchLeftTrack forState:UIControlStateNormal];
+	[volumeSlider setMaximumTrackImage:stretchRightTrack forState:UIControlStateNormal];
+	
+	[volumeSlider setThumbImage:thumb forState:UIControlStateNormal];
+	[volumeSlider setThumbImage:thumb forState:UIControlStateHighlighted];
+	[volumeSlider setThumbImage:thumb forState:UIControlStateDisabled];
+	
+	NSLog(@"kAudioSessionProperty_CurrentHardwareOutputVolume %f", systemVolume);
+	
+	
+	lowerController = [[CassetteReelViewController alloc] initWithImageView:lowerCassetteReel];
+	upperController = [[CassetteReelViewController alloc] initWithImageView:upperCassetteReel];
+
+	//rotate or the label will look less than convincing
+	nowPlayingLabel.transform = CGAffineTransformMakeRotation(-M_PI / 2);
+	
+	[[NSNotificationCenter defaultCenter]
+	 addObserver:self
+	 selector:@selector(livePlaylistControllerStateChanged:)
+	 name:LPStatusChangedNotification
+	 object:nil];
+}
+
+- (void)handleApplicationDidBecomeActive {
+	if (![streamer isPlaying]) {
+		[self pushStop:nil];
+	}	
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleApplicationDidBecomeActive)
+                                                 name:@"applicationDidBecomeActive"
+                                               object:nil];		
+}
+
+- (BOOL)canBecomeFirstResponder {
+	return YES;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+    // Release anything that's not essential, such as cached data
+}
+
+- (void)dealloc {
+	[self destroyStreamer];
+	
+	[[NSNotificationCenter defaultCenter]
+	 removeObserver:self
+	 name:LPStatusChangedNotification
+	 object:nil];	
+	
+	
+    [super dealloc];
+}
+
+@end
