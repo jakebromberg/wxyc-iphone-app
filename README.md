@@ -3,7 +3,7 @@ wxyc-iphone-app
 
 This is the official iPhone app for [WXYC](http://wxyc.org/), the student-run radio station at UNC-Chapel Hill. WXYC is a non-commercial, free format radio station. It plays an ecclectic mix of music, combining seemingly disparate forms to highlight interesting similarities. It's a global village. It's a small world. 
 
-The app allows you to tune in to our audio stream from anywhere — effectively boosting our broadcast radius to the entire planet. Also you can view our live playlist and station updates.
+The app allows you to tune in to our audio stream from anywhere — effectively boosting our broadcast radius to the entire planet. With it, you can also view our live playlist and station updates.
 
 Currently this app is undergoing deep restructuring. I originally wrote the app as an undergrad while working on a computer science major at UNC-CH. Since then I've greatly deepened my understanding of software design principles. I have several primary goals:
 
