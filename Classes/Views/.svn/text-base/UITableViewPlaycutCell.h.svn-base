@@ -1,0 +1,24 @@
+//
+//  UITableViewPlaycutCell.h
+//  wxycapp
+//
+//  Created by Jake on 2/4/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+
+@interface UITableViewPlaycutCell : UITableViewCell {
+	IBOutlet UILabel *artistName;
+	IBOutlet UILabel *songTitle;
+	IBOutlet UILabel *releaseTitle;
+	IBOutlet UILabel *labelName;
+}
+
+@property (nonatomic, retain) IBOutlet UILabel *artistName;
+@property (nonatomic, retain) IBOutlet UILabel *songTitle;
+@property (nonatomic, retain) IBOutlet UILabel *releaseTitle;
+@property (nonatomic, retain) IBOutlet UILabel *labelName;
+
+@end

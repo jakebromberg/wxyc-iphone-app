@@ -1,0 +1,17 @@
+//
+//  BreakpointTableViewCell.h
+//  WXYCapp
+//
+//  Created by Jake on 3/1/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+
+@interface BreakpointTableViewCell : UITableViewCell { }
+
+- (void) addText:(NSString *) text;
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
+@end

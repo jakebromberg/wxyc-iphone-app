@@ -1,0 +1,80 @@
+//
+//  CassetteReelViewController.m
+//  WXYCapp
+//
+//  Created by Jake on 10/13/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import "CassetteReelViewController.h"
+
+
+@interface CassetteReelViewController ()
+	CABasicAnimation *spinReelAnimation;
+@end
+
+
+@implementation CassetteReelViewController
+
+@synthesize cassetteReelImageView;
+
+-(void)pauseLayer:(CALayer*)layer {
+    CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    layer.speed = 0.0;
+    layer.timeOffset = pausedTime;
+}
+
+-(void)resumeLayer:(CALayer*)layer {
+    CFTimeInterval pausedTime = [layer timeOffset];
+    layer.speed = 1.0;
+    layer.timeOffset = 0.0;
+    layer.beginTime = 0.0;
+    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+    layer.beginTime = timeSincePause;
+}
+
+
+- (void)initAnim {
+	spinReelAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+	spinReelAnimation.duration = 2;
+	spinReelAnimation.repeatCount = 1e100f;
+	spinReelAnimation.autoreverses = NO;
+	spinReelAnimation.fromValue = [NSNumber numberWithFloat: M_PI / 3];
+	spinReelAnimation.toValue = [NSNumber numberWithFloat: 0];
+	spinReelAnimation.removedOnCompletion = NO;
+}
+
+- (void)startAnimation {
+	if (spinReelAnimation == nil) {
+		[self initAnim];
+	}
+	
+	if ([cassetteReelImageView.layer animationForKey:@"spinReel"] == nil) {
+		[cassetteReelImageView.layer addAnimation:spinReelAnimation forKey:@"spinReel"];
+	} else {
+		[self resumeLayer:cassetteReelImageView.layer];
+	}
+}
+
+- (void)stopAnimation {
+	if ([cassetteReelImageView.layer animationForKey:@"spinReel"] != nil)
+		[self pauseLayer:cassetteReelImageView.layer];
+}
+
+- (CassetteReelViewController*)initWithImageView:(UIImageView*)imageView {
+	self = [super init];
+	
+	[self setCassetteReelImageView:imageView];
+	
+	return self;
+}
+
+- (void)dealloc {
+    [super dealloc];
+}
+
+//-(void)viewDidLoad {
+//
+//}
+
+@end

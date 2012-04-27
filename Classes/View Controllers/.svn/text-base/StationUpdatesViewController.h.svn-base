@@ -1,0 +1,17 @@
+//
+//  Created by Jake Bromberg.
+//  Copyright WXYC 2009-10. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "NewsTableViewController.h"
+#import "SpecialsTableViewController.h"
+
+@interface StationUpdatesViewController : UIViewController {
+	NewsTableViewController *newsTable;
+	SpecialsTableViewController *specialsTable;
+}
+
+- (IBAction)segmentAction:(id)sender;
+
+@end

@@ -1,0 +1,86 @@
+//
+//  Created by Jake Bromberg.
+//  Copyright WXYC 2009-10. All rights reserved.
+//
+
+#import "AboutViewController.h"
+#import "WebViewController.h"
+
+@implementation AboutViewController
+
+//- (UIImage*) maskImage:(UIImage *)image withMask:(UIImage *)maskImage {
+//	
+//	CGImageRef maskRef = maskImage.CGImage; 
+//	
+//	CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
+//										CGImageGetHeight(maskRef),
+//										CGImageGetBitsPerComponent(maskRef),
+//										CGImageGetBitsPerPixel(maskRef),
+//										CGImageGetBytesPerRow(maskRef),
+//										CGImageGetDataProvider(maskRef), NULL, false);
+//	
+//	CGImageRef masked = CGImageCreateWithMask([image CGImage], mask);
+//	return [UIImage imageWithCGImage:masked];
+//	
+//}
+//
+//- (void)didReceiveMemoryWarning {
+//	// Releases the view if it doesn't have a superview.
+//    [super didReceiveMemoryWarning];
+//	
+//	// Release any cached data, images, etc that aren't in use.
+//}
+//
+//- (void)viewWillAppear:(BOOL)animated {
+//	UIImage *image = [UIImage imageNamed:@"wxyc-logo-inverse.png"];
+//	UIImage *mask = [UIImage imageNamed:@"wxyc-trans.png"];
+//	UIImage *titleImage = [self maskImage:image withMask:mask];
+//	self.navigationItem.titleView = [[UIImageView alloc] initWithImage:mask
+//									 ];
+////	self.navigationItem.titleView.backgroundColor = [UIColor clearColor];
+////	UINavigationBar *navBar = self.navigationController.navigationBar;
+////	UIImage *image = [UIImage imageNamed:@"wxyc-logo-inverse.gif"];
+////	[navBar setBackgroundImage:image];
+//}
+
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"]]];
+	[self.view setDelegate:self];
+	[self.view loadRequest:requestObj];
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+	NSLog(@"expected:%d, got:%d", UIWebViewNavigationTypeLinkClicked, navigationType);
+	if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+		AboutViewController *webViewController = [[AboutViewController alloc] init];
+		
+		[[self navigationController] pushViewController:webViewController animated:YES];
+		[webViewController.view setScalesPageToFit:NO];
+		[webViewController.view loadRequest:request];
+		
+		return NO;
+	}
+	
+	return YES;
+}
+
+- (void)dealloc {
+    [super dealloc];
+}
+
+@end

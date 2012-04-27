@@ -1,0 +1,73 @@
+//
+//  Created by Jake Bromberg.
+//  Copyright WXYC 2009-10. All rights reserved.
+//
+
+#import "StationUpdatesViewController.h"
+
+
+@implementation StationUpdatesViewController
+
+- (void)switchViewController:(int)index {
+	switch (index) {
+		case 0:{
+//			[self.view removeFromSuperview];
+			[self.view addSubview:newsTable.view];
+//			[self.view setDelegate:newsTable];
+			self = newsTable;
+			break;
+		}
+			
+		case 1: {
+//			[self.view removeFromSuperview];
+			[self.view addSubview:specialsTable.view];
+			self = specialsTable;
+//			[self.view setNeedsDisplay:YES];
+//			self = newViewController;
+//			[self reloadTableViewDataSource];
+			break;
+		}
+		case 2: // Down clicked
+			NSLog(@"HIHI");
+			break;
+			
+		default:
+			break;
+	}	
+}
+
+- (IBAction)segmentAction:(id)sender
+{
+	NSLog(@"HI");
+	// The segmented control was selected, handle it here 
+	
+	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+	[self switchViewController:segmentedControl.selectedSegmentIndex];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSLog(@"tableView");
+//    // Navigation logic may go here. Create and push another view controller.
+//	NSUInteger row = [indexPath row];
+//	//	NSDictionary *blogEntry = [blogEntries objectAtIndex:row];
+//	
+//	StationUpdatesDetailViewController *webViewController = [[StationUpdatesDetailViewController alloc] initWithNibName:@"WebView" bundle:nil];
+//	webViewController.items = allEvents;
+//	webViewController.currentRow = row;
+//	
+//	[[self navigationController] pushViewController:webViewController animated:YES];
+//	
+//	[webViewController release];
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	newsTable = [[NewsTableViewController alloc] initWithNibName:@"StationUpdatesTableView" bundle:nil];
+	specialsTable = [[SpecialsTableViewController alloc] initWithNibName:@"StationUpdatesTableView" bundle:nil];
+	
+	[self switchViewController:0];
+}
+
+
+@end

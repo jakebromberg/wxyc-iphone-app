@@ -1,0 +1,18 @@
+//
+//  Singleton.h
+//  WXYCapp
+//
+//  Created by Jake on 10/27/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+//#import <Cocoa/Cocoa.h>
+
+
+@interface Singleton : NSObject {
+
+}
+
++ (Singleton*)sharedInstance;
+
+@end

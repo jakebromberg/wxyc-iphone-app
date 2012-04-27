@@ -1,0 +1,317 @@
+//
+//  PlaylistEntryDetailsViewController.m
+//  WXYCapp
+//
+//  Created by Jake on 11/2/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import "PlaycutViewController.h"
+#import "PlaycutNavBarTitleView.h"
+#import "Playcut.h"
+#import "UIImage+ProportionalFill.h"
+#import "GoogleImageSearch.h"
+#import "WXYCDataStack.h"
+#import "WebViewController.h"
+#import "Reachability.h"
+
+@interface PlaycutViewController ()
+- (UIImage *)reflectedImage:(UIImageView *)fromImage withHeight:(NSUInteger)height;
+@end
+
+@implementation PlaycutViewController
+
+@synthesize delegate;
+@synthesize albumArt;
+@synthesize retrievingImageIndicator;
+@synthesize reflectionView;
+
+@synthesize favoriteButton;
+@synthesize previousButton;
+@synthesize nextButton;
+@synthesize searchButton;
+
+static const CGFloat kDefaultReflectionFraction = 0.15;
+static const CGFloat kDefaultReflectionOpacity = 0.40;
+
+#pragma mark -
+#pragma mark Segmented Control business
+
+-(void)redrawButtonState {
+	[self.previousButton setEnabled:[delegate hasPrev]];
+	[self.nextButton setEnabled:[delegate hasNext]];
+}
+
+#pragma mark - Image Reflection
+
+CGImageRef CreateGradientImage(int pixelsWide, int pixelsHigh)
+{
+	CGImageRef theCGImage = NULL;
+	
+	// gradient is always black-white and the mask must be in the gray colorspace
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+	
+	// create the bitmap context
+	CGContextRef gradientBitmapContext = CGBitmapContextCreate(NULL, pixelsWide, pixelsHigh,
+															   8, 0, colorSpace, kCGImageAlphaNone);
+	
+	// define the start and end grayscale values (with the alpha, even though
+	// our bitmap context doesn't support alpha the gradient requires it)
+	CGFloat colors[] = {0.0, 1.0, 1.0, 1.0};
+	
+	// create the CGGradient and then release the gray color space
+	CGGradientRef grayScaleGradient = CGGradientCreateWithColorComponents(colorSpace, colors, NULL, 2);
+	CGColorSpaceRelease(colorSpace);
+	
+	// create the start and end points for the gradient vector (straight down)
+	CGPoint gradientStartPoint = CGPointZero;
+	CGPoint gradientEndPoint = CGPointMake(0, pixelsHigh);
+	
+	// draw the gradient into the gray bitmap context
+	CGContextDrawLinearGradient(gradientBitmapContext, grayScaleGradient, gradientStartPoint,
+								gradientEndPoint, kCGGradientDrawsAfterEndLocation);
+	CGGradientRelease(grayScaleGradient);
+	
+	// convert the context into a CGImageRef and release the context
+	theCGImage = CGBitmapContextCreateImage(gradientBitmapContext);
+	CGContextRelease(gradientBitmapContext);
+	
+	// return the imageref containing the gradient
+    return theCGImage;
+}
+
+CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
+{
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+	
+	// create the bitmap context
+	CGContextRef bitmapContext = CGBitmapContextCreate (NULL, pixelsWide, pixelsHigh, 8,
+														0, colorSpace,
+														// this will give us an optimal BGRA format for the device:
+														(kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst));
+	CGColorSpaceRelease(colorSpace);
+	
+    return bitmapContext;
+}
+
+- (UIImage *)reflectedImage:(UIImageView *)fromImage withHeight:(NSUInteger)height
+{
+    if(height == 0)
+		return nil;
+    
+	// create a bitmap graphics context the size of the image
+	CGContextRef mainViewContentContext = MyCreateBitmapContext(fromImage.bounds.size.width, height);
+	
+	// create a 2 bit CGImage containing a gradient that will be used for masking the 
+	// main view content to create the 'fade' of the reflection.  The CGImageCreateWithMask
+	// function will stretch the bitmap image as required, so we can create a 1 pixel wide gradient
+	CGImageRef gradientMaskImage = CreateGradientImage(1, height);
+	
+	// create an image by masking the bitmap of the mainView content with the gradient view
+	// then release the  pre-masked content bitmap and the gradient bitmap
+	CGContextClipToMask(mainViewContentContext, CGRectMake(0.0, 0.0, fromImage.bounds.size.width, height), gradientMaskImage);
+	CGImageRelease(gradientMaskImage);
+	
+	// In order to grab the part of the image that we want to render, we move the context origin to the
+	// height of the image that we want to capture, then we flip the context so that the image draws upside down.
+	CGContextTranslateCTM(mainViewContentContext, 0.0, height);
+	CGContextScaleCTM(mainViewContentContext, 1.0, -1.0);
+	
+	// draw the image into the bitmap context
+	CGContextDrawImage(mainViewContentContext, fromImage.bounds, fromImage.image.CGImage);
+	
+	// create CGImageRef of the main view bitmap content, and then release that bitmap context
+	CGImageRef reflectionImage = CGBitmapContextCreateImage(mainViewContentContext);
+	CGContextRelease(mainViewContentContext);
+	
+	// convert the finished reflection image to a UIImage 
+	UIImage *theImage = [UIImage imageWithCGImage:reflectionImage];
+	
+	// image is retained by the property setting above, so we can release the original
+	CGImageRelease(reflectionImage);
+	
+	return theImage;
+}
+
+#pragma mark -
+#pragma mark GoogleImageSearch delegate business
+
+-(void) handleGoogleImageSearchResults:(NSArray *)results {
+	NSArray *innerResults = (NSArray*) [[((NSDictionary*) results) objectForKey:@"responseData"] objectForKey:@"results"];
+	if ([innerResults count] > 0) {
+		NSDictionary *firstResult = [innerResults objectAtIndex:0];
+		NSLog(@"%@", [firstResult objectForKey:@"url"]);
+		
+		NSURL *url = [NSURL URLWithString:[firstResult objectForKey:@"url"]];
+		
+		UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
+		image = [image imNSageCroppedToFitSize:albumArt.frame.size];
+		albumArt.image = image;
+
+		currentData = [delegate NPcurrent];
+		if (image != nil) {
+			[[delegate NPcurrent] setPrimaryImage:UIImagePNGRepresentation(image)];
+		}
+		
+		NSError *error = nil;
+		if (![currentData.managedObjectContext save:&error]) {
+			NSLog(@"Google image save error: %@, %@",error, [error userInfo]);
+		}
+		
+		[retrievingImageIndicator stopAnimating];
+	}
+}
+
+#pragma mark -
+
+- (void)backgroundAlbumCoverSearch:(Playcut*)playcut {
+	NSAutoreleasePool *pool;
+	
+	assert( ! [NSThread isMainThread] );
+	
+	pool = [[NSAutoreleasePool alloc] init];
+	assert(pool != nil);
+
+	NSArray *searchTerms = [NSArray arrayWithObjects:[playcut Artist], [playcut Album], nil];
+	NSString *searchTermsString = [searchTerms componentsJoinedByString:@"+"];
+	searchTermsString = [searchTermsString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+	
+	GoogleImageSearch *gis = [[GoogleImageSearch alloc] initWithDelegate:self];
+	NSArray *results = [gis synchronizedSearchWithString:searchTermsString];
+	
+	NSLog(@"playcut %@", playcut);
+	NSLog(@"playcut %@", [delegate NPcurrent]);
+
+	NSArray *innerResults = (NSArray*) [[((NSDictionary*) results) objectForKey:@"responseData"] objectForKey:@"results"];
+	if ([innerResults count] > 0) {
+		NSDictionary *firstResult = [innerResults objectAtIndex:0];
+		//NSLog(@"%@", [firstResult objectForKey:@"url"]);
+		
+		NSURL *url = [NSURL URLWithString:[firstResult objectForKey:@"url"]];
+		
+		UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
+		image = [image imageCroppedToFitSize:albumArt.frame.size];
+		if (image != nil) {
+			[playcut setPrimaryImage:UIImagePNGRepresentation(image)];
+		}
+		
+		[retrievingImageIndicator stopAnimating];
+		if (playcut == [delegate NPcurrent]) {
+			albumArt.image = image;
+			
+			NSUInteger reflectionHeight = albumArt.bounds.size.height * kDefaultReflectionFraction;
+			reflectionView.image = [self reflectedImage:albumArt withHeight:reflectionHeight];
+			reflectionView.alpha = kDefaultReflectionOpacity;
+		}
+		
+		NSError *error = nil;
+		if (![playcut.managedObjectContext save:&error]) {
+			NSLog(@"Google image save error: %@, %@",error, [error userInfo]);
+		}
+	}
+	
+	[pool drain];
+}
+
+- (void)refreshViews {
+	[retrievingImageIndicator stopAnimating];
+	
+	titleDeets.artistLabel.text = [currentData Artist];
+	titleDeets.albumLabel.text = [currentData Album];
+	titleDeets.trackLabel.text = [currentData Song];
+	
+	NSUInteger reflectionHeight = albumArt.bounds.size.height * kDefaultReflectionFraction;	
+	if (currentData.PrimaryImage) {
+		UIImage *image = [UIImage imageWithData:[currentData PrimaryImage]]; 
+		image = [image imageCroppedToFitSize:albumArt.frame.size];
+		albumArt.image = image;
+		reflectionView.image = [self reflectedImage:albumArt withHeight:reflectionHeight];
+		reflectionView.alpha = kDefaultReflectionOpacity;
+	} else {
+		UIImage *defaultImage = [UIImage imageNamed:@"album_cover_placeholder.PNG"];
+		defaultImage = [defaultImage imageCroppedToFitSize:albumArt.frame.size];
+		albumArt.image = defaultImage;
+		reflectionView.image = [self reflectedImage:albumArt withHeight:reflectionHeight];
+		reflectionView.alpha = kDefaultReflectionOpacity;
+		
+//		Reachability *reachability = [[Reachability alloc] init];
+//		if (![reachability currentReachabilityStatus]) {
+			[retrievingImageIndicator startAnimating];
+			[self performSelectorInBackground:@selector(backgroundAlbumCoverSearch:) withObject:currentData];
+//		}
+	}
+	
+	[favoriteButton setImage:[UIImage imageNamed:
+							  ([currentData.Favorite boolValue] 
+								 ? @"favorites-toolbar-icon-filled.png"
+								 : @"favorites-toolbar-icon-unfilled.png")
+								 ]];
+
+	[self redrawButtonState];
+}
+
+- (IBAction)previousButtonPush:(id)sender {
+	currentData = [delegate NPprev];
+	[self refreshViews];
+}
+
+- (IBAction)nextButtonPush:(id)sender {
+	currentData = [delegate NPnext];
+	[self refreshViews];
+}
+
+- (IBAction)searchButtonPush:(id)sender {
+	currentData = [delegate NPcurrent];
+	NSString *query = [NSString stringWithFormat: @"%@", currentData.Artist];
+	query = [query stringByAppendingString:@" &"];
+	query = [query stringByAppendingString:[NSString stringWithFormat: @"%@", [currentData Song]]];
+	query = [query stringByReplacingOccurrencesOfString:@"&" withString:@""];
+	query = [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	query = [@"http://www.google.com/search?q=" stringByAppendingString:query];
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:query]];
+	
+	NSLog(@"query %@", query);
+	
+	WebViewController *webViewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:nil];
+	webViewController.hidesBottomBarWhenPushed = YES;
+	[[self navigationController] pushViewController:webViewController animated:YES];
+	[webViewController.webView loadRequest:request];
+}
+
+- (IBAction)favoriteButtonPush:(id)sender {
+	currentData = [delegate NPcurrent];
+	
+	NSLog(@"currentData.Favorite %@", currentData.Favorite);
+
+	[currentData setFavorite:[[NSNumber alloc] initWithBool:![currentData.Favorite boolValue]]];
+	
+	[self refreshViews];
+}
+
+#pragma mark -
+#pragma mark UIViewController overrides
+
+- (void)viewDidLoad {
+	currentData = [delegate NPcurrent];
+	
+	NSArray* topLevelObjects = //(PlaycutDetailsNavigationBarTitleView*)
+		[[NSBundle mainBundle] loadNibNamed:@"PlaycutNavBarTitleView" owner:nil options:nil];
+	titleDeets = (PlaycutNavBarTitleView *)[topLevelObjects objectAtIndex:0];
+	self.navigationItem.titleView = titleDeets;
+	
+	[self refreshViews];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	NSError *error = nil;
+	currentData = [delegate NPcurrent];
+	if (![currentData.managedObjectContext save:&error]) {
+		NSLog(@"%@",error);
+	}
+}	
+
+- (void)dealloc {
+	[super dealloc];
+}
+
+@end

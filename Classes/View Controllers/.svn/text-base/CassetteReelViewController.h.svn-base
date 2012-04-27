@@ -1,0 +1,24 @@
+//
+//  CassetteReelViewController.h
+//  WXYCapp
+//
+//  Created by Jake on 10/13/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+
+
+@interface CassetteReelViewController : UIViewController {
+
+}
+
+- (CassetteReelViewController*)initWithImageView:(UIImageView*)imageView;
+
+- (void)startAnimation;
+- (void)stopAnimation;
+
+@property (nonatomic, retain) UIImageView *cassetteReelImageView;
+
+@end

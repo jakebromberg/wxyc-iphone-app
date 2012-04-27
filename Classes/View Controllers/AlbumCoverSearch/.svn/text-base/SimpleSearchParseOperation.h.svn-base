@@ -1,0 +1,27 @@
+extern NSString *kAddSimpleSearchResultsNotif;
+//extern NSString *kResultResultsKey;
+
+extern NSString *kSimpleSearchErrorNotif;
+extern NSString *kSimpleSearchMsgErrorKey;
+
+@class DiscogsSimpleSearchResult;
+
+@interface SimpleSearchParseOperation : NSOperation {
+    NSData *resultsData;
+
+@private
+    NSDateFormatter *dateFormatter;
+    
+    // these variables are used during parsing
+    DiscogsSimpleSearchResult *currentSearchResultObject;
+    NSMutableArray *currentParseBatch;
+    NSMutableString *currentParsedCharacterData;
+    
+    BOOL accumulatingParsedCharacterData;
+    BOOL didAbortParsing;
+    NSUInteger parsedReleasesCounter;
+}
+
+@property (copy, readonly) NSData *resultsData;
+
+@end

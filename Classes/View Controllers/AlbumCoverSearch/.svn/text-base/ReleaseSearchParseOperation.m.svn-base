@@ -1,0 +1,205 @@
+#import "ReleaseSearchParseOperation.h"
+#import "DiscogsReleaseSearchResult.h"
+
+// NSNotification name for sending Release data back to the app delegate
+NSString *kAddReleaseSearchResultsNotif = @"AddReleaseSearchResultsNotif";
+
+// NSNotification userInfo key for obtaining the Release data
+NSString *kReleaseSearchResultsKey = @"ReleaseSearchResultsKey";
+
+// NSNotification name for reporting errors
+NSString *kReleaseSearchErrorNotif = @"ReleaseSearchErrorNotif";
+
+// NSNotification userInfo key for obtaining the error message
+NSString *kReleaseSearchMsgErrorKey = @"ReleaseSearchMsgErrorKey";
+
+
+@interface ReleaseSearchParseOperation () <NSXMLParserDelegate>
+	@property (nonatomic, retain) DiscogsReleaseSearchResult *currentReleaseObject;
+	@property (nonatomic, retain) NSMutableArray *currentParseBatch;
+	@property (nonatomic, retain) NSMutableString *currentParsedCharacterData;
+@end
+
+@implementation ReleaseSearchParseOperation
+
+@synthesize resultsData, currentReleaseObject, currentParsedCharacterData, currentParseBatch;
+
+- (id)initWithData:(NSData *)parseData
+{
+    if (self = [super init]) {    
+        resultsData = [parseData copy];
+    }
+    return self;
+}
+
+- (void)addReleasesToList:(NSArray *)Releases {
+    assert([NSThread isMainThread]);
+
+	[[NSNotificationCenter defaultCenter] postNotificationName:kAddReleaseSearchResultsNotif
+                                                        object:self
+                                                      userInfo:[NSDictionary dictionaryWithObject:Releases
+                                                                                           forKey:kReleaseSearchResultsKey]]; 
+}
+
+// the main function for this NSOperation, to start the parsing
+- (void)main {
+    self.currentParseBatch = [NSMutableArray array];
+    self.currentParsedCharacterData = [NSMutableString string];
+    accumulatingParsedCharacterData = YES;
+    // It's also possible to have NSXMLParser download the data, by passing it a URL, but this is
+    // not desirable because it gives less control over the network, particularly in responding to
+    // connection errors.
+    //
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:self.resultsData];
+    [parser setDelegate:self];
+    [parser parse];
+    
+    // depending on the total number of Discogs parsed, the last batch might not have been a
+    // "full" batch, and thus not been part of the regular batch transfer. So, we check the count of
+    // the array and, if necessary, send it to the main thread.
+    //
+    if ([self.currentParseBatch count] > 0) {
+        [self performSelectorOnMainThread:@selector(addReleasesToList:)
+                               withObject:self.currentParseBatch
+                            waitUntilDone:NO];
+    }
+    
+    self.currentParseBatch = nil;
+    self.currentReleaseObject = nil;
+    self.currentParsedCharacterData = nil;
+    
+    [parser release];
+}
+
+- (void)dealloc {
+    [resultsData release];
+    
+    [currentReleaseObject release];
+    [currentParsedCharacterData release];
+    [currentParseBatch release];
+    [dateFormatter release];
+    
+    [super dealloc];
+}
+
+
+#pragma mark -
+#pragma mark Parser constants
+
+// Limit the number of parsed Discogs to 50
+// (a given day may have more than 50 Discogs around the world, so we only take the first 50)
+//
+static const const NSUInteger kMaximumNumberOfDiscogsToParse = 3;
+
+// When an Release object has been fully constructed, it must be passed to the main thread and
+// the table view in RootViewController must be reloaded to display it. It is not efficient to do
+// this for every Release object - the overhead in communicating between the threads and reloading
+// the table exceed the benefit to the user. Instead, we pass the objects in batches, sized by the
+// constant below. In your application, the optimal batch size will vary 
+// depending on the amount of data in the object and other factors, as appropriate.
+//
+static NSUInteger const kSizeOfReleaseBatch = 1;
+
+// Reduce potential parsing errors by using string constants declared in a single place.
+static NSString * const kReleaseElementName = @"release";
+static NSString * const kImageElementName = @"image";
+static NSString * const kImagesElementName = @"images";
+
+#pragma mark -
+#pragma mark NSXMLParser delegate methods
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
+  namespaceURI:(NSString *)namespaceURI
+ qualifiedName:(NSString *)qName
+	attributes:(NSDictionary *)attributeDict {
+    // If the number of parsed Discogs is greater than
+    // kMaximumNumberOfDiscogsToParse, abort the parse.
+    //
+    if (parsedReleasesCounter >= kMaximumNumberOfDiscogsToParse) {
+        // Use the flag didAbortParsing to distinguish between this deliberate stop
+        // and other parser errors.
+        //
+        didAbortParsing = YES;
+        [parser abortParsing];
+    }
+	
+    if ([elementName isEqualToString:kReleaseElementName]) {
+		accumulatingParsedCharacterData = YES;
+
+        DiscogsReleaseSearchResult *rel = [[DiscogsReleaseSearchResult alloc] init];
+        self.currentReleaseObject = rel;
+        [DiscogsReleaseSearchResult release];
+    } else if ((self.currentReleaseObject != nil) && [elementName isEqualToString:kImageElementName]) {
+        [currentParsedCharacterData setString:@""];
+
+		self.currentReleaseObject.primaryImageURI = [attributeDict valueForKey:@"uri"];
+		
+		NSLog(@"ReleaseSearchParseOperation uri %@", self.currentReleaseObject.primaryImageURI);
+    }
+	
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
+  namespaceURI:(NSString *)namespaceURI
+ qualifiedName:(NSString *)qName {
+	
+	if (self.currentReleaseObject != nil)
+		if ([elementName isEqualToString:kReleaseElementName]) {
+			[self.currentParseBatch addObject:self.currentReleaseObject];
+			parsedReleasesCounter++;
+			if ([self.currentParseBatch count] >= kMaximumNumberOfDiscogsToParse) {
+				[self performSelectorOnMainThread:@selector(addReleasesToList:)
+									   withObject:self.currentParseBatch
+									waitUntilDone:NO];
+				self.currentParseBatch = [NSMutableArray array];
+			}
+		} 
+		//else if ([elementName isEqualToString:kURIElementName]) {
+//			self.currentReleaseObject.uri = [self.currentParsedCharacterData copy];
+//		} else if ([elementName isEqualToString:kTitleElementName]) {
+//			self.currentReleaseObject.title = [self.currentParsedCharacterData copy];
+//		} else if ([elementName isEqualToString:kSummaryElementName]) {
+//			self.currentReleaseObject.summary = [self.currentParsedCharacterData copy];
+//		}
+	
+    // Stop accumulating parsed character data. We won't start again until specific elements begin.
+    accumulatingParsedCharacterData = NO;
+}
+
+// This method is called by the parser when it find parsed character data ("PCDATA") in an element.
+// The parser is not guaranteed to deliver all of the parsed character data for an element in a single
+// invocation, so it is necessary to accumulate character data until the end of the element is reached.
+//
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    if (accumulatingParsedCharacterData) {
+        // If the current element is one whose content we care about, append 'string'
+        // to the property that holds the content of the current element.
+        //
+        [self.currentParsedCharacterData appendString:string];
+    }
+}
+
+// an error occurred while parsing the Release data,
+// post the error as an NSNotification to our app delegate.
+// 
+- (void)handleDiscogsError:(NSError *)parseError {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kReleaseSearchErrorNotif
+														object:self
+													  userInfo:[NSDictionary dictionaryWithObject:parseError
+																						   forKey:kReleaseSearchMsgErrorKey]];
+}
+
+// an error occurred while parsing the Release data,
+// pass the error to the main thread for handling.
+// (note: don't report an error if we aborted the parse due to a max limit of Discogs)
+//
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
+    if ([parseError code] != NSXMLParserDelegateAbortedParseError && !didAbortParsing)
+    {
+        [self performSelectorOnMainThread:@selector(handleDiscogsError:)
+                               withObject:parseError
+                            waitUntilDone:NO];
+    }
+}
+
+@end

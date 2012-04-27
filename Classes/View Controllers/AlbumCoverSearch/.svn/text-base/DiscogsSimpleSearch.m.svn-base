@@ -1,0 +1,106 @@
+//
+//  DiscogsSimpleSearch.m
+//  WXYCapp
+//
+//  Created by Jake on 11/2/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import "DiscogsSimpleSearch.h"
+#import "SimpleSearchParseOperation.h"
+//#import "DiscogsReleaseSearch.h"
+
+static const NSString *DISCOGS_URL = @"http://www.discogs.com/search?q=%@&range=is&f=xml&api_key=%@";
+static const NSString *API_KEY = @"f5a6dd181e";
+
+
+@interface DiscogsSimpleSearch ()
+
+@property (nonatomic, retain) NSOperationQueue *parseQueue;     // the queue that manages our NSOperation for parsing earthquake data
+- (void)addDiscogsSearchResultsToList:(NSArray *)results;
+
+@end
+
+@implementation DiscogsSimpleSearch
+
+@synthesize delegate;
+@synthesize parseQueue;
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	[responseData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	[responseData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	SimpleSearchParseOperation *parseOperation = [[SimpleSearchParseOperation alloc] initWithData:responseData];
+    [self.parseQueue addOperation:parseOperation];
+    [parseOperation release];   // once added to the NSOperationQueue it's retained, we don't need it anymore
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	NSLog(@"%@", error);
+}
+
+#pragma mark -
+
+- (void) searchWithString:(NSString *)search {
+	NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:DISCOGS_URL, search, API_KEY]];
+	NSLog(@"DiscogsSimpleSearch URL: %@", URL);
+	NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+#pragma mark -
+
+- (void)addDiscogsSearchResults:(NSNotification *)notif {
+    assert([NSThread isMainThread]);
+    
+    [self addDiscogsSearchResultsToList:[[notif userInfo] valueForKey:kSimpleSearchResultsKey]];
+	[delegate handleDiscogsSimpleSearchResults:[[notif userInfo] valueForKey:kSimpleSearchResultsKey]];
+}
+
+- (void)addDiscogsSearchResultsToList:(NSArray *)results {
+//	for(DiscogsSearchResult *dsr in results)
+//		NSLog([dsr uri]);
+	
+//	DiscogsReleaseSearch *dsr = [[[DiscogsReleaseSearch alloc] init] autorelease];
+//	[dsr searchWithString:[(DiscogsSearchResult*)[results objectAtIndex:0] uri]];
+	
+}
+
+#pragma mark -
+- (id)initWithDelegate:(id<DiscogsSimpleSearchDelegate>) del {
+	self.delegate = del;
+	
+	return [self init];
+}
+
+- (id)init {
+	parseQueue = [[NSOperationQueue alloc] init];
+	
+	responseData = [[NSMutableData data] retain];
+	[responseData initWithLength:0];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(addDiscogsSearchResults:)
+                                                 name:kAddSimpleSearchResultsNotif
+                                               object:nil];	
+//	[[NSNotificationCenter defaultCenter] addObserver:delegate
+//                                             selector:@selector(handleDiscogsSimpleSearchResults:)
+//                                                 name:kAddSimpleSearchResultsNotif
+//                                               object:nil];	
+	
+	return self;
+}
+
+- (void)dealloc {
+	[super dealloc];
+	
+	[parseQueue dealloc];
+	[responseData dealloc];
+}
+
+@end

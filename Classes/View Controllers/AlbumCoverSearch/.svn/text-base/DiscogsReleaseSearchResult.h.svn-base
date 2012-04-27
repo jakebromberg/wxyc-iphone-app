@@ -1,0 +1,18 @@
+//
+//  DiscogsRelease.h
+//  WXYCapp
+//
+//  Created by Jake on 11/3/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+
+@interface DiscogsReleaseSearchResult : NSObject {
+	NSString *primaryImageURI;
+}
+
+@property (nonatomic, retain) NSString *primaryImageURI;
+
+@end

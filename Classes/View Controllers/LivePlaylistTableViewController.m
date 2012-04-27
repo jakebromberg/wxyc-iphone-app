@@ -1,0 +1,260 @@
+//
+//  Created by Jake Bromberg.
+//  Copyright WXYC 2009-10. All rights reserved.
+//
+
+#import "LivePlaylistTableViewController.h"
+#import "WXYCAppDelegate.h"
+#import "JSON.h"
+#import	"BreakpointCell.h"
+#import "LoadPreviousEntriesCell.h"
+#import "PlaylistController.h"
+#import "PlaycutViewController.h"
+#import "WXYCDataStack.h"
+#import "PlaycutDetailsViewController.h"
+#import "PlaycutCell.h"
+
+@interface LivePlaylistTableViewController () {
+	NSManagedObjectContext *managedObjectContext;
+	NSNotificationCenter *dnc;	
+	NSFetchRequest *request;
+	NSUInteger maxEntriesToDisplay;
+	LoadPreviousEntriesCell *footerCell;
+
+}
+
+@end
+
+@implementation LivePlaylistTableViewController
+
+@synthesize maxEntriesToDisplay;
+static const int kNumEntriesToFetch = 20;
+//static int entriesMultiplier = 1;
+
+PlaylistController* livePlaylistCtrl;
+
+//BOOL (^test)(id obj, NSUInteger idx, BOOL *stop) = ^ (id obj, NSUInteger idx, BOOL *stop) {
+//	NSString *entryType = [[[livePlaylistCtrl.playlist objectAtIndex:idx] class] description];
+//	return ([entryType isEqualToString:@"Playcut"]);
+//};
+
+- (void)controllerContextDidSave:(NSNotification *)aNotification {
+	[managedObjectContext mergeChangesFromContextDidSaveNotification:aNotification];
+	
+	NSError *error = nil;
+	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+	if (mutableFetchResults == nil) {
+		// Handle the error.
+	}
+	
+	[self reloadTableViewDataSource];
+}
+
+#pragma mark RefreshHeaderView
+
+- (void) reloadTableViewDataSource {
+	[livePlaylistCtrl updatePlaylist];
+}
+
+- (void)livePlaylistControllerStateChanged:(NSNotification *)aNotification
+{	
+	if (livePlaylistCtrl.state == LP_DONE) {
+		[refreshHeaderView setLastUpdatedDate:[NSDate date]];
+		[super dataSourceDidFinishLoadingNewData];
+	}
+}
+
+#pragma mark -
+#pragma mark UITableViewController
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	if ([livePlaylistCtrl.playlist count] == 0) {
+		return 0;
+	}
+	
+	if ([self maxEntriesToDisplay] >= [livePlaylistCtrl.playlist count])
+		maxEntriesToDisplay = [livePlaylistCtrl.playlist count];
+
+	return [self maxEntriesToDisplay]+1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSUInteger row = [indexPath row];
+
+	UITableViewCell* cell;
+	
+	if (row == [self maxEntriesToDisplay]) {
+		cell = [[[LoadPreviousEntriesCell alloc] init] autorelease];
+	} else {
+		NSManagedObject *playlistEntry = [livePlaylistCtrl.playlist objectAtIndex:row];
+		NSString *entryType = [NSString stringWithFormat:@"%@Cell", [[playlistEntry class] description]];
+
+		cell = (LivePlaylistTableViewCell*) [tableView dequeueReusableCellWithIdentifier:entryType];
+		
+		if (cell != nil) {
+			[(LivePlaylistTableViewCell*)cell setEntity:playlistEntry];
+		} else {
+			Class class = NSClassFromString(entryType);
+			
+			if (class != nil) {
+				cell = [[[class alloc] initWithEntity:playlistEntry] autorelease];
+			} else {
+				cell = [[[LivePlaylistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"unknown"] autorelease];
+			}
+		}
+		
+		[(LivePlaylistTableViewCell*)cell setDelegate:self];
+	}
+	
+	return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	//boundary case
+	if ([indexPath row] > ([self maxEntriesToDisplay])) {
+		return 0;	
+	}
+	
+	return [[[self tableView:tableView cellForRowAtIndexPath:indexPath] class] height];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	selectedRow = [indexPath row];
+	
+	if (self.reloading) //we'll crash if we do anything while the table's (re)loading
+	{
+		UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+		[cell setSelected:NO animated:YES];
+		return;
+	}
+	
+	LivePlaylistTableViewCell* cell = (LivePlaylistTableViewCell*) [self.tableView cellForRowAtIndexPath:indexPath];
+	if([cell class] == [PlaycutCell class]) {
+		PlaycutDetailsViewController *detailsViewController = [[[PlaycutDetailsViewController alloc] init] autorelease];
+		[detailsViewController setEntity:[(PlaycutCell*)cell entity]];
+//		[self.tableView inser
+	}
+	
+//	if ([indexPath row] == [self maxEntriesToDisplay]) { //"Previously, on WXYC..."
+//		LoadPreviousEntriesCell *buttonCell = (LoadPreviousEntriesCell*) [tableView cellForRowAtIndexPath:indexPath];
+//		
+//		if ([buttonCell.activity isAnimating]) {
+//			buttonCell.selectionStyle = UITableViewCellSelectionStyleNone;
+//
+//			return;
+//		}
+//		
+//		maxEntriesToDisplay = ++entriesMultiplier*kNumEntriesToFetch;
+//		
+//		return;
+//	}
+	
+	//By process of elimination, we've selected a playcut cell
+//	PlaycutViewController *detail = [[[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil] autorelease];
+//	[detail setDelegate:self];
+//	detail.hidesBottomBarWhenPushed = YES;
+//	[[self navigationController] pushViewController:detail animated:YES];
+	
+//	indicesOfPlaycuts = [[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test] mutableCopy];
+}
+
+#pragma mark -
+#pragma mark UIViewController
+- (void)viewDidLoad {
+	[super viewDidLoad];
+
+	maxEntriesToDisplay = kNumEntriesToFetch;
+	
+	managedObjectContext = [[WXYCDataStack sharedInstance] managedObjectContext];
+	
+	WXYCAppDelegate *appDelegate = (WXYCAppDelegate *)[[UIApplication sharedApplication] delegate];
+	livePlaylistCtrl = [appDelegate livePlaylistCtrlr];
+
+	if ((livePlaylistCtrl == nil) || [self reloading]) {
+		livePlaylistCtrl = [[[PlaylistController alloc] init] autorelease];
+		[self showReloadAnimationAnimated:YES];
+		[self reloadTableViewDataSource];
+	} else {
+		[self reloadTableViewDataSource];
+	}
+	
+	[[NSNotificationCenter defaultCenter]
+	 addObserver:self
+	 selector:@selector(livePlaylistControllerStateChanged:)
+	 name:LPStatusChangedNotification
+	 object:nil];	
+	
+	[refreshHeaderView setLastUpdatedDate:[NSDate date]];
+}
+
+- (void)viewDidUnload {
+	[dnc removeObserver:self name:NSManagedObjectContextDidSaveNotification object:managedObjectContext];
+}
+
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+	// Release anything that's not essential, such as cached data
+}
+
+- (void)dealloc {
+	[super dealloc];
+}
+
+#pragma mark -
+#pragma mark NextPrevDetailsDelegate business
+//TODO: figure out why indicesOfPlaycuts defaults to nil at odd times
+//in the meantime we're using [livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test]
+//to reference indices.
+//-(id)NPnext {
+//	selectedRow = [[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test] indexGreaterThanIndex:selectedRow];
+//
+//	[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
+//								animated:NO 
+//						  scrollPosition:UITableViewScrollPositionMiddle ];
+//
+//	return [self NPcurrent];
+//}
+
+//-(id)NPprev {
+//	selectedRow = [[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test] indexLessThanIndex:selectedRow];
+//
+//	[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
+//								animated:NO scrollPosition:UITableViewScrollPositionMiddle ];
+//
+//	return [self NPcurrent];	
+//}
+//
+//-(id)NPcurrent {
+//	Playcut* playcut = [livePlaylistCtrl.playlist objectAtIndex:selectedRow];
+//	
+//	NSPredicate *predicate = [NSPredicate
+//							  predicateWithFormat:@"(Artist == %@) AND (Song == %@)",
+//							  [playcut valueForKey:@"artist"], [playcut valueForKey:@"song"]];
+//
+//	request = [[[NSFetchRequest alloc] init] autorelease];
+//	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Playcut" inManagedObjectContext:managedObjectContext];
+// 	[request setEntity:entity];
+//	[request setPredicate:predicate];
+//	
+//	NSArray *fetchResults = nil;
+//	NSError *error = nil;
+//	if ((fetchResults = [managedObjectContext executeFetchRequest:request error:&error])) {
+//		if ([fetchResults count]) {
+//			return [fetchResults objectAtIndex:0];
+//		} 
+//	} else {
+//		NSLog(@"Error %@", error);
+//	}
+//	
+//	return [NSDictionaryToPlaylistEntryMapper convertDict:[livePlaylistCtrl.playlist objectAtIndex:selectedRow]];
+//}
+//
+//-(BOOL)hasNext {
+//	return ([[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test] indexGreaterThanIndex:selectedRow] != NSNotFound);
+//}
+//
+//-(BOOL)hasPrev {
+//	return ([[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test] indexLessThanIndex:selectedRow] != NSNotFound);
+//}	
+
+@end

@@ -1,0 +1,81 @@
+//
+//  Created by Jake Bromberg.
+//  Copyright WXYC 2009-10. All rights reserved.
+//
+
+#import "NextPrevDetailsViewController.h"
+
+@implementation NextPrevDetailsViewController
+//@synthesize items;
+//@synthesize currentRow;
+@synthesize segControl;
+@synthesize delegate;
+@synthesize currentData;
+
+enum {
+	UP,
+	DOWN
+};
+
+-(void)redrawButtonState {
+	[self.segControl setEnabled:[delegate hasPrev] forSegmentAtIndex:UP];
+	[self.segControl setEnabled:[delegate hasNext] forSegmentAtIndex:DOWN];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	
+	[self setCurrentData:[delegate NPcurrent]];
+	
+	// "Segmented" control to the right
+	UISegmentedControl *segmentedControl = 
+		[[[UISegmentedControl alloc] initWithItems:
+			[NSArray arrayWithObjects:
+			 [UIImage imageNamed:@"up.png"],
+			 [UIImage imageNamed:@"down.png"],
+			 nil]] autorelease];
+	[segmentedControl setContentOffset:CGSizeMake(0, 1.0) forSegmentAtIndex:0];
+	
+	[segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
+	segmentedControl.frame = CGRectMake(0, 0, 90, 30.0);
+	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+	segmentedControl.momentary = YES;
+	
+	UIBarButtonItem *segmentBarItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
+	[segmentedControl release];
+    
+	self.navigationItem.rightBarButtonItem = segmentBarItem;
+	self.segControl = segmentedControl;
+	[self redrawButtonState];
+	
+	[segmentBarItem release];
+}
+
+
+// The segmented control was selected, handle it here 
+- (IBAction)segmentAction:(id)sender
+{
+	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+	switch (segmentedControl.selectedSegmentIndex) {
+		case UP:
+			if ([delegate hasPrev]) {
+				self.currentData = [delegate NPprev];
+			}
+			break;
+			
+		case DOWN: // Down clicked
+			if ([delegate hasNext]) {
+				self.currentData = [delegate NPnext];
+			}
+			break;
+			
+		default:
+			break;
+	}
+	
+	[self.tableView reloadData];
+	[self redrawButtonState];
+}
+
+
+@end

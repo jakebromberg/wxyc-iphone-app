@@ -1,0 +1,19 @@
+//
+//  Release.m
+//  WXYCapp
+//
+//  Created by Jake on 11/2/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import "DiscogsSimpleSearchResult.h"
+
+
+@implementation DiscogsSimpleSearchResult
+
+@synthesize result;
+@synthesize title;
+@synthesize uri;
+@synthesize summary;
+
+@end

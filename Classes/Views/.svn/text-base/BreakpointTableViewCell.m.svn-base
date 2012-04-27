@@ -1,0 +1,49 @@
+//
+//  BreakpointTableViewCell.m
+//  WXYCapp
+//
+//  Created by Jake on 3/1/10.
+//  Copyright 2010 WXYC. All rights reserved.
+//
+
+#import "BreakpointTableViewCell.h"
+
+@implementation BreakpointTableViewCell
+
+
+- (void) addBackground
+{
+	UIView *background = [[UIView alloc]
+						  initWithFrame:self.frame];
+	background.backgroundColor = [UIColor lightGrayColor];
+	self.backgroundView = background;
+	[background release];
+}
+
+- (void) addText:(NSString *) text
+{
+	UILabel *label = [[UILabel alloc]
+					  initWithFrame:CGRectMake( 10, 2.5f, 300, 16 )];
+	label.text = text;
+	label.backgroundColor = [UIColor clearColor];
+	label.opaque = NO;
+	label.textAlignment = UITextAlignmentLeft;
+	label.textColor = [UIColor whiteColor];
+	label.font = [UIFont boldSystemFontOfSize:15];
+	label.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.55];
+    label.shadowOffset = CGSizeMake(0, -.66f);
+	[self addSubview:label];
+	
+	[label release];
+}
+
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
+	[super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+
+	[self addBackground];
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+
+	return self;
+}
+
+@end
