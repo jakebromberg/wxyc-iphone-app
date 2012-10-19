@@ -107,8 +107,6 @@
 		23DBC355113F804900C19BD0 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC354113F804900C19BD0 /* MainWindow.xib */; };
 		23DBC357113F804E00C19BD0 /* LoadPreviousEntriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC356113F804E00C19BD0 /* LoadPreviousEntriesCell.xib */; };
 		23E750ED129AFEE5005A9468 /* testJSON.txt in Resources */ = {isa = PBXBuildFile; fileRef = 23E750EC129AFEE5005A9468 /* testJSON.txt */; };
-		23EE394A1527D21C0006CDA5 /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39481527D21C0006CDA5 /* FTAnimation+UIView.m */; };
-		23EE394B1527D21C0006CDA5 /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39491527D21C0006CDA5 /* FTAnimationManager.m */; };
 		23EE39A21527EF320006CDA5 /* AudioStreamController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE391F1527D0CF0006CDA5 /* AudioStreamController.h */; };
 		23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39201527D0CF0006CDA5 /* AudioStreamController.m */; };
 		23EE39A41527EF320006CDA5 /* PlaylistController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39211527D0EF0006CDA5 /* PlaylistController.h */; };
@@ -144,11 +142,6 @@
 		23EE39C21527F0790006CDA5 /* ShareItemTextInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39401527D1B60006CDA5 /* ShareItemTextInputAccessoryView.m */; };
 		23EE39C31527F0790006CDA5 /* IndefinitelySpinningImageViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */; };
 		23EE39C41527F0790006CDA5 /* IndefinitelySpinningImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */; };
-		23EE39C51527F0790006CDA5 /* FTAnimation.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39431527D20C0006CDA5 /* FTAnimation.h */; };
-		23EE39C61527F0790006CDA5 /* FTAnimation+UIView.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39441527D20C0006CDA5 /* FTAnimation+UIView.h */; };
-		23EE39C71527F0790006CDA5 /* FTAnimationManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39451527D20C0006CDA5 /* FTAnimationManager.h */; };
-		23EE39C81527F0790006CDA5 /* FTUtils.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39461527D20C0006CDA5 /* FTUtils.h */; };
-		23EE39C91527F0790006CDA5 /* FTUtils+NSObject.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39471527D20C0006CDA5 /* FTUtils+NSObject.h */; };
 		23EE39CA1527F0790006CDA5 /* UIImage+ProportionalFill.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE394C1527EA730006CDA5 /* UIImage+ProportionalFill.h */; };
 		23EE39CB1527F0790006CDA5 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE394D1527EA730006CDA5 /* UIImage+ProportionalFill.m */; };
 		23EE39CC1527F0790006CDA5 /* UIImage+Tint.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE394E1527EA730006CDA5 /* UIImage+Tint.h */; };
@@ -234,6 +227,10 @@
 		277757691631BD4800349E12 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277757681631BD4800349E12 /* MessageUI.framework */; };
 		2777576A1631BD7C00349E12 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23EF279C14F5DC4100EA7ACB /* libRestKit.a */; };
 		2777576C1631BD8700349E12 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2777576B1631BD8700349E12 /* libxml2.dylib */; };
+		277757771631C3EF00349E12 /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757731631C3EF00349E12 /* FTAnimation+UIView.m */; };
+		277757781631C3EF00349E12 /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757741631C3EF00349E12 /* FTAnimationManager.m */; };
+		277757791631C3EF00349E12 /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757751631C3EF00349E12 /* FTUtils+NSObject.m */; };
+		2777577A1631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757761631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m */; };
 		4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -428,13 +425,6 @@
 		23EE39401527D1B60006CDA5 /* ShareItemTextInputAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareItemTextInputAccessoryView.m; sourceTree = "<group>"; };
 		23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndefinitelySpinningImageViewController.h; sourceTree = "<group>"; };
 		23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndefinitelySpinningImageViewController.m; sourceTree = "<group>"; };
-		23EE39431527D20C0006CDA5 /* FTAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAnimation.h; sourceTree = "<group>"; };
-		23EE39441527D20C0006CDA5 /* FTAnimation+UIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FTAnimation+UIView.h"; sourceTree = "<group>"; };
-		23EE39451527D20C0006CDA5 /* FTAnimationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAnimationManager.h; sourceTree = "<group>"; };
-		23EE39461527D20C0006CDA5 /* FTUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTUtils.h; sourceTree = "<group>"; };
-		23EE39471527D20C0006CDA5 /* FTUtils+NSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FTUtils+NSObject.h"; sourceTree = "<group>"; };
-		23EE39481527D21C0006CDA5 /* FTAnimation+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FTAnimation+UIView.m"; sourceTree = "<group>"; };
-		23EE39491527D21C0006CDA5 /* FTAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAnimationManager.m; sourceTree = "<group>"; };
 		23EE394C1527EA730006CDA5 /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
 		23EE394D1527EA730006CDA5 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		23EE394E1527EA730006CDA5 /* UIImage+Tint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
@@ -511,6 +501,16 @@
 		2777575A1631BBE900349E12 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		277757681631BD4800349E12 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		2777576B1631BD8700349E12 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		2777576D1631C3E500349E12 /* FTAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FTAnimation.h; path = Headers/FTUtils/FTAnimation.h; sourceTree = "<group>"; };
+		2777576E1631C3E500349E12 /* FTAnimation+UIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FTAnimation+UIView.h"; path = "Headers/FTUtils/FTAnimation+UIView.h"; sourceTree = "<group>"; };
+		2777576F1631C3E500349E12 /* FTAnimationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FTAnimationManager.h; path = Headers/FTUtils/FTAnimationManager.h; sourceTree = "<group>"; };
+		277757701631C3E500349E12 /* FTUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FTUtils.h; path = Headers/FTUtils/FTUtils.h; sourceTree = "<group>"; };
+		277757711631C3E500349E12 /* FTUtils+NSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FTUtils+NSObject.h"; path = "Headers/FTUtils/FTUtils+NSObject.h"; sourceTree = "<group>"; };
+		277757721631C3E500349E12 /* FTUtils+UIGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FTUtils+UIGestureRecognizer.h"; path = "Headers/FTUtils/FTUtils+UIGestureRecognizer.h"; sourceTree = "<group>"; };
+		277757731631C3EF00349E12 /* FTAnimation+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FTAnimation+UIView.m"; path = "Classes/FTAnimation+UIView.m"; sourceTree = "<group>"; };
+		277757741631C3EF00349E12 /* FTAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTAnimationManager.m; path = Classes/FTAnimationManager.m; sourceTree = "<group>"; };
+		277757751631C3EF00349E12 /* FTUtils+NSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FTUtils+NSObject.m"; path = "Classes/FTUtils+NSObject.m"; sourceTree = "<group>"; };
+		277757761631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FTUtils+UIGestureRecognizer.m"; path = "Classes/FTUtils+UIGestureRecognizer.m"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePlaylistTableViewController.h; sourceTree = "<group>"; };
 		4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePlaylistTableViewController.m; sourceTree = "<group>"; };
@@ -792,32 +792,19 @@
 			name = CasssetteReelViewController;
 			sourceTree = "<group>";
 		};
-		23924A0B1289B3BF00EFC0FA /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-				23EE39481527D21C0006CDA5 /* FTAnimation+UIView.m */,
-				23EE39491527D21C0006CDA5 /* FTAnimationManager.m */,
-			);
-			name = Animation;
-			sourceTree = "<group>";
-		};
-		23924A101289B3D000EFC0FA /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				23EE39431527D20C0006CDA5 /* FTAnimation.h */,
-				23EE39441527D20C0006CDA5 /* FTAnimation+UIView.h */,
-				23EE39451527D20C0006CDA5 /* FTAnimationManager.h */,
-				23EE39461527D20C0006CDA5 /* FTUtils.h */,
-				23EE39471527D20C0006CDA5 /* FTUtils+NSObject.h */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
 		23924A171289B3D400EFC0FA /* FTUtils */ = {
 			isa = PBXGroup;
 			children = (
-				23924A0B1289B3BF00EFC0FA /* Animation */,
-				23924A101289B3D000EFC0FA /* Headers */,
+				277757731631C3EF00349E12 /* FTAnimation+UIView.m */,
+				277757741631C3EF00349E12 /* FTAnimationManager.m */,
+				277757751631C3EF00349E12 /* FTUtils+NSObject.m */,
+				277757761631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m */,
+				2777576D1631C3E500349E12 /* FTAnimation.h */,
+				2777576E1631C3E500349E12 /* FTAnimation+UIView.h */,
+				2777576F1631C3E500349E12 /* FTAnimationManager.h */,
+				277757701631C3E500349E12 /* FTUtils.h */,
+				277757711631C3E500349E12 /* FTUtils+NSObject.h */,
+				277757721631C3E500349E12 /* FTUtils+UIGestureRecognizer.h */,
 			);
 			name = FTUtils;
 			path = Libraries/FTUtils;
@@ -1314,13 +1301,6 @@
 				23EE39C21527F0790006CDA5 /* ShareItemTextInputAccessoryView.m in Sources */,
 				23EE39C31527F0790006CDA5 /* IndefinitelySpinningImageViewController.h in Sources */,
 				23EE39C41527F0790006CDA5 /* IndefinitelySpinningImageViewController.m in Sources */,
-				23EE394A1527D21C0006CDA5 /* FTAnimation+UIView.m in Sources */,
-				23EE394B1527D21C0006CDA5 /* FTAnimationManager.m in Sources */,
-				23EE39C51527F0790006CDA5 /* FTAnimation.h in Sources */,
-				23EE39C61527F0790006CDA5 /* FTAnimation+UIView.h in Sources */,
-				23EE39C71527F0790006CDA5 /* FTAnimationManager.h in Sources */,
-				23EE39C81527F0790006CDA5 /* FTUtils.h in Sources */,
-				23EE39C91527F0790006CDA5 /* FTUtils+NSObject.h in Sources */,
 				23EE39CA1527F0790006CDA5 /* UIImage+ProportionalFill.h in Sources */,
 				23EE39CB1527F0790006CDA5 /* UIImage+ProportionalFill.m in Sources */,
 				23EE39CC1527F0790006CDA5 /* UIImage+Tint.h in Sources */,
@@ -1402,6 +1382,10 @@
 				277757641631BBE900349E12 /* SBJsonTokeniser.m in Sources */,
 				277757651631BBE900349E12 /* SBJsonUTF8Stream.m in Sources */,
 				277757661631BBE900349E12 /* SBJsonWriter.m in Sources */,
+				277757771631C3EF00349E12 /* FTAnimation+UIView.m in Sources */,
+				277757781631C3EF00349E12 /* FTAnimationManager.m in Sources */,
+				277757791631C3EF00349E12 /* FTUtils+NSObject.m in Sources */,
+				2777577A1631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
