@@ -147,8 +147,8 @@
 	streamController = [[[AudioStreamController alloc] initWithURL:url] retain];
 		
 	//initialize the cassete reel view controllers
-	lowerController = [[[[CassetteReelViewController alloc] initWithImageView:lowerCassetteReel] retain] autorelease];
-	upperController = [[[[CassetteReelViewController alloc] initWithImageView:upperCassetteReel] retain] autorelease];
+	lowerController = [[CassetteReelViewController alloc] initWithImageView:lowerCassetteReel];
+	upperController = [[CassetteReelViewController alloc] initWithImageView:upperCassetteReel];
 
 	//rotate or the label will look less than convincing
 	nowPlayingLabel.transform = CGAffineTransformMakeRotation(-M_PI / 2);
