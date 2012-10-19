@@ -38,7 +38,7 @@
 		lastUpdatedLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 		lastUpdatedLabel.backgroundColor = self.backgroundColor;
 		lastUpdatedLabel.opaque = YES;
-		lastUpdatedLabel.textAlignment = NSLeftTextAlignment;
+		lastUpdatedLabel.textAlignment = UITextAlignmentCenter;
 		[self addSubview:lastUpdatedLabel];
 		[lastUpdatedLabel release];
 		
