@@ -16,7 +16,7 @@
 	IBOutlet UITableView *updatesTableView;
 }
 
-@property (nonatomic, retain) NSMutableArray *blogEntries;
-@property (nonatomic, retain) IBOutlet UITableView *updatesTableView;
+@property (nonatomic, strong) NSMutableArray *blogEntries;
+@property (nonatomic, strong) IBOutlet UITableView *updatesTableView;
 
 @end

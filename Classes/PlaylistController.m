@@ -66,14 +66,10 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 -(PlaylistController*)initWithBaseURL:(NSString*)url {
 //	self = [super init];
-	playlistMapping = [[[PlaylistMapping alloc] init] retain];
+	playlistMapping = [[PlaylistMapping alloc] init];
 
 	return self;
 }
 
-- (void)dealloc {
-    [super dealloc];
-	[playlistMapping dealloc];
-}
 
 @end

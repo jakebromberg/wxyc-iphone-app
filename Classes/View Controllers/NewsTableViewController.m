@@ -6,6 +6,7 @@
 #import "NewsTableViewController.h"
 #import "BlogEntryTableViewCell.h"
 #import "NewsDetailViewController.h"
+#import "SBJson.h"
 
 @implementation NewsTableViewController
 
@@ -142,7 +143,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	responseData = [[NSMutableData data] retain];
+	responseData = [NSMutableData data];
 	[responseData initWithLength:0];
 	blogEntries = [[NSMutableArray alloc] init];
 	
@@ -154,9 +155,6 @@
 	self.tableView.rowHeight = 80.0f;
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

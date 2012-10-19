@@ -65,11 +65,4 @@
 	return self;
 }
 
-#pragma mark overrides
-
-- (void)dealloc {
-	[imageView dealloc];
-    [super dealloc];
-}
-
 @end

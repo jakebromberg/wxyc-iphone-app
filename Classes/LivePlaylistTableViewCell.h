@@ -21,7 +21,7 @@
 
 +(float) height;
 
-@property (nonatomic, retain) NSManagedObject* entity;
-@property (nonatomic, retain) UITableViewController* delegate;
+@property (nonatomic, strong) NSManagedObject* entity;
+@property (nonatomic, strong) UITableViewController* delegate;
 
 @end

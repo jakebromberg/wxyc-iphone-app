@@ -24,7 +24,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 	NSLog(@"expected:%d, got:%d", UIWebViewNavigationTypeLinkClicked, navigationType);
 	if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-		WebViewController *webViewController = [[[WebViewController alloc] initWithNibName:@"WebView" bundle:nil] autorelease];
+		WebViewController *webViewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:nil];
 		webViewController.hidesBottomBarWhenPushed = YES;
 		[[self navigationController] pushViewController:webViewController animated:YES];
 		[webViewController.webView setScalesPageToFit:YES];
@@ -42,7 +42,7 @@
 	NSString *author =  blogEntry[@"author"];
 	NSString *content = blogEntry[@"content"];
 	
-	NSString *page = [[[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"article" ofType:@"html"]] autorelease];
+	NSString *page = [[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"article" ofType:@"html"]];
 	page = [page stringByReplacingOccurrencesOfString:@"##title##" withString:title];
 	page = [page stringByReplacingOccurrencesOfString:@"##date##" withString:date];
 	page = [page stringByReplacingOccurrencesOfString:@"##author##" withString:
@@ -106,19 +106,10 @@
 	segmentedControl.momentary = YES;
 	
 	UIBarButtonItem *segmentBarItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
-	[segmentedControl release];
     
 	self.navigationItem.rightBarButtonItem = segmentBarItem;
 	self.segControl = segmentedControl;
 	[self redrawButtonState];
-	
-	[segmentBarItem release];
-	
 }
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 
 @end

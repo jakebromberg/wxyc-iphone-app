@@ -17,12 +17,11 @@
 	CGContextRef c = UIGraphicsGetCurrentContext();
 
 	//draw background gradient
-	UIView *gradientView = [[[UIView alloc] initWithFrame:
+	UIView *gradientView = [[UIView alloc] initWithFrame:
 					 CGRectMake(rect.origin.x, 
 								rect.origin.y, 
 								rect.size.width, 
-								rect.size.height)] 
-					autorelease];
+								rect.size.height)];
 	CAGradientLayer *gradient = [CAGradientLayer layer];
 	gradient.frame = gradientView.bounds;
 	gradient.colors = @[(id)[UIColor colorWithRed:165.0/255.0 green:173.0/255.0 blue:184.0/255.0 alpha:1.0].CGColor,

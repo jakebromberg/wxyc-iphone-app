@@ -23,6 +23,6 @@
 }
 
 //@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) NSMutableArray *favoritesArray; //necessary or else we assign favoritesArray a CFArray type
+@property (nonatomic, strong) NSMutableArray *favoritesArray; //necessary or else we assign favoritesArray a CFArray type
 
 @end

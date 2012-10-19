@@ -25,12 +25,6 @@
 	
 }
 
-- (void)dealloc 
-{
-	[refreshHeaderView release];
-    [super dealloc];
-}
-
 #pragma mark State Changes
 
 - (void) showReloadAnimationAnimated:(BOOL)animated
@@ -94,7 +88,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Set up the cell...

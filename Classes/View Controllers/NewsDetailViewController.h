@@ -15,11 +15,11 @@
 	UITableView *delegate;
 }
 
-@property (nonatomic, retain) NSMutableArray *items;
-@property (nonatomic, retain) UISegmentedControl *segControl;
+@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) UISegmentedControl *segControl;
 @property (nonatomic, assign) int currentRow;
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) UITableView *delegate;
+@property (nonatomic, strong) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) UITableView *delegate;
 //-(void) showItem:(int)index;
 
 @end

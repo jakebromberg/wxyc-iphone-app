@@ -31,6 +31,6 @@ extern NSString * const LPStatusChangedNotification;
 -(PlaylistController*)initWithBaseURL:(NSURL*)url;
 
 @property (readonly) PlaylistControllerState state;
-@property (readonly, nonatomic, retain) NSArray *playlist;
+@property (readonly, nonatomic, strong) NSArray *playlist;
 
 @end

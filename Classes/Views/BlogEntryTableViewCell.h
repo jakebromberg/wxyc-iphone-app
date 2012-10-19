@@ -15,8 +15,8 @@
 	IBOutlet UILabel *date;
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *title;
-@property (nonatomic, retain) IBOutlet UILabel *description;
-@property (nonatomic, retain) IBOutlet UILabel *date;
+@property (nonatomic, strong) IBOutlet UILabel *title;
+@property (nonatomic, strong) IBOutlet UILabel *description;
+@property (nonatomic, strong) IBOutlet UILabel *date;
 
 @end

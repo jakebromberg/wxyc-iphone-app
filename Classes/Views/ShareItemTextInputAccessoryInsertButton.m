@@ -24,12 +24,11 @@
 
 - (void)drawRect:(CGRect)rect {
 	//draw background gradient
-	UIView *gradientView = [[[UIView alloc] initWithFrame:
+	UIView *gradientView = [[UIView alloc] initWithFrame:
 							 CGRectMake(rect.origin.x, 
 										rect.origin.y, 
 										rect.size.width, 
-										rect.size.height)] 
-							autorelease];
+										rect.size.height)];
 	CAGradientLayer *gradient = [CAGradientLayer layer];
 	gradient.frame = gradientView.bounds;
 	gradient.colors = @[(id)[UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0].CGColor,

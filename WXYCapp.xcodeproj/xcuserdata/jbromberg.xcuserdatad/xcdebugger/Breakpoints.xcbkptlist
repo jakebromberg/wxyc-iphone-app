@@ -52,7 +52,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1300"
          endingLineNumber = "1300"
-         landmarkName = "-handleReadFromStream:eventType:"
+         landmarkName = "-initWithURL:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

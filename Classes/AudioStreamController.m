@@ -64,7 +64,6 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 		 object:streamer];
 		
 		[streamer stop];
-		[streamer release];
 		streamer = nil;
 	}
 	
@@ -200,7 +199,6 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 
 - (void)dealloc {
 	[self destroyStreamer];
-    [super dealloc];
 }
 
 @end

@@ -41,7 +41,6 @@ enum ShareViewBarButtonItems {
 					 cancelButtonTitle: @"OK"
 					 otherButtonTitles: nil];
     [alert show];
-    [alert release];
 	
 	[self.myTextView becomeFirstResponder];
 	
@@ -200,7 +199,6 @@ enum ShareViewBarButtonItems {
 										action:@selector(tweet:)];
 	self.navigationItem.rightBarButtonItem = tweetButton;
 	tweetButton.enabled = NO;
-	[tweetButton release];
 	
 	UIBarButtonItem *cancelButton = 
 	[[UIBarButtonItem alloc] initWithTitle:@"Cancel" 
@@ -208,7 +206,6 @@ enum ShareViewBarButtonItems {
 									target:self 
 									action:@selector(cancel)];
 	self.navigationItem.leftBarButtonItem = cancelButton;
-	[cancelButton release];
 }
 
 - (void) insertString: (NSString *) insertingString intoTextView: (UITextView *) textView  

@@ -22,7 +22,7 @@
 	NSOperationQueue *parseQueue;	
 }
 
-@property (nonatomic, retain) id<GoogleImageSearchDelegate> delegate;
+@property (nonatomic, strong) id<GoogleImageSearchDelegate> delegate;
 
 - (id)initWithDelegate:(id<GoogleImageSearchDelegate>) del;
 - (void)searchWithString:(NSString*)search;

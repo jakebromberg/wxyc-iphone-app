@@ -14,8 +14,8 @@
 	UILabel *trackLabel;
 	UILabel *albumLabel;
 }
-@property (nonatomic, retain) IBOutlet UILabel *artistLabel;
-@property (nonatomic, retain) IBOutlet UILabel *trackLabel;
-@property (nonatomic, retain) IBOutlet UILabel *albumLabel;
+@property (nonatomic, strong) IBOutlet UILabel *artistLabel;
+@property (nonatomic, strong) IBOutlet UILabel *trackLabel;
+@property (nonatomic, strong) IBOutlet UILabel *albumLabel;
 
 @end
