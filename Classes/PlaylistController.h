@@ -19,9 +19,6 @@ typedef enum {
 } PlaylistControllerState;
 
 @interface PlaylistController : NSObject <RKObjectLoaderDelegate> {
-//	NSUInteger *numNewEntries;
-//	PlaylistMapping* playlistMapping;
-
 	PlaylistControllerState state;
 	NSNotificationCenter *notificationCenter;
 }
@@ -35,6 +32,5 @@ extern NSString * const LPStatusChangedNotification;
 
 @property (readonly) PlaylistControllerState state;
 @property (readonly, nonatomic, retain) NSArray *playlist;
-//@property NSUInteger *numNewEntries;
 
 @end

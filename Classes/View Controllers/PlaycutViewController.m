@@ -22,8 +22,9 @@
 #import "FacebookSharePlaycutViewController.h"
 
 @interface PlaycutViewController (){
-GoogleImageSearch *gis;
+	GoogleImageSearch *gis;
 }
+
 - (UIImage *)reflectedImage:(UIImageView *)fromImage withHeight:(NSUInteger)height;
 @end
 
@@ -153,12 +154,12 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 #pragma mark GoogleImageSearch delegate business
 
 -(void) handleGoogleImageSearchResults:(NSArray *)results {
-	NSArray *innerResults = (NSArray*) [[((NSDictionary*) results) objectForKey:@"responseData"] objectForKey:@"results"];
+	NSArray *innerResults = (NSArray*) ((NSDictionary*) results)[@"responseData"][@"results"];
 	if ([innerResults count] > 0) {
-		NSDictionary *firstResult = [innerResults objectAtIndex:0];
-		NSLog(@"%@", [firstResult objectForKey:@"url"]);
+		NSDictionary *firstResult = innerResults[0];
+		NSLog(@"%@", firstResult[@"url"]);
 		
-		NSURL *url = [NSURL URLWithString:[firstResult objectForKey:@"url"]];
+		NSURL *url = [NSURL URLWithString:firstResult[@"url"]];
 		
 		UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]]; 
 		image = [image imageCroppedToFitSize:albumArt.frame.size];
@@ -186,18 +187,18 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	pool = [[NSAutoreleasePool alloc] init];
 	assert(pool != nil);
 
-	NSArray *searchTerms = [NSArray arrayWithObjects:[playcut valueForKey:@"artist"], [playcut valueForKey:@"album"], nil];
+	NSArray *searchTerms = @[[playcut valueForKey:@"artist"], [playcut valueForKey:@"album"]];
 	NSString *searchTermsString = [searchTerms componentsJoinedByString:@"+"];
 	searchTermsString = [searchTermsString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 	
 	//gis = [[GoogleImageSearch alloc] initWithDelegate:self];
 	NSArray *results = [gis synchronizedSearchWithString:searchTermsString];
 	
-	NSArray *innerResults = (NSArray*) [[((NSDictionary*) results) objectForKey:@"responseData"] objectForKey:@"results"];
+	NSArray *innerResults = (NSArray*) ((NSDictionary*) results)[@"responseData"][@"results"];
 	if ([innerResults count] > 0) {
-		NSDictionary *firstResult = [innerResults objectAtIndex:0];
+		NSDictionary *firstResult = innerResults[0];
 		
-		NSURL *urlOfImage = [NSURL URLWithString:[firstResult objectForKey:@"url"]];
+		NSURL *urlOfImage = [NSURL URLWithString:firstResult[@"url"]];
 		
 		UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:urlOfImage]]; 
 		image = [image imageCroppedToFitSize:albumArt.frame.size];
@@ -206,18 +207,6 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 		}
 		
 		[retrievingImageIndicator stopAnimating];
-//		if (playcut == [delegate NPcurrent]) {
-//			albumArt.image = image;
-//			
-//			NSUInteger reflectionHeight = albumArt.bounds.size.height * kDefaultReflectionFraction;
-//			reflectionView.image = [self reflectedImage:albumArt withHeight:reflectionHeight];
-//			reflectionView.alpha = kDefaultReflectionOpacity;
-//		}
-//		
-//		NSError *error = nil;
-//		if (![playcut.managedObjectContext save:&error]) {
-//			NSLog(@"Google image save error: %@, %@",error, [error userInfo]);
-//		}
 	}
 	
 	[pool drain];
@@ -393,7 +382,7 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	
 	NSArray* topLevelObjects = //(PlaycutDetailsNavigationBarTitleView*)
 		[[NSBundle mainBundle] loadNibNamed:@"PlaycutNavBarTitleView" owner:nil options:nil];
-	titleDeets = (PlaycutNavBarTitleView *)[topLevelObjects objectAtIndex:0];
+	titleDeets = (PlaycutNavBarTitleView *)topLevelObjects[0];
 	self.navigationItem.titleView = titleDeets;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self

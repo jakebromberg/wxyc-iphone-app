@@ -138,11 +138,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-#if TARGET_IPHONE_SIMULATOR
-	NSURL *url = [NSURL URLWithString:@"http://localhost/~jake/Masks.mp3"];
-#else
+//#if TARGET_IPHONE_SIMULATOR
+//	NSURL *url = [NSURL URLWithString:@"http://localhost/~jake/Masks.mp3"];
+//#else
 	NSURL *url = [NSURL URLWithString:@"http://152.46.7.128:8000/wxyc.mp3"];
-#endif
+//#endif
 	
 	streamController = [[[AudioStreamController alloc] initWithURL:url] retain];
 		

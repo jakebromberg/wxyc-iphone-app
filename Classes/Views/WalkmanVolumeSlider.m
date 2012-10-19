@@ -14,11 +14,6 @@
 	return CGRectMake(CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetWidth(bounds), 6.0);
 }
 
-//- (CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value
-//{
-//	return CGRectMake(CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetWidth(bounds), CGRectGetHeight(bounds));
-//}
-
 - (id)initWithFrame:(CGRect)frame {
 	[super initWithFrame:frame];
 	[self drawRect:frame];

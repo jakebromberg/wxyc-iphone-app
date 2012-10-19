@@ -16,6 +16,7 @@
 
 @end
 
+
 @interface LivePlaylistTableViewCell : UITableViewCell <LivePlaylistViewControllerCallback>
 
 +(float) height;

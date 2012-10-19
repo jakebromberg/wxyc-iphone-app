@@ -32,10 +32,8 @@
 							autorelease];
 	CAGradientLayer *gradient = [CAGradientLayer layer];
 	gradient.frame = gradientView.bounds;
-	gradient.colors = [NSArray arrayWithObjects:
-					   (id)[UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0].CGColor,
-					   (id)[UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1.0].CGColor,
-					   nil];
+	gradient.colors = @[(id)[UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0].CGColor,
+					   (id)[UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1.0].CGColor];
 	gradient.cornerRadius = 2.0;
 	[self.layer insertSublayer:gradient atIndex:0];
 	

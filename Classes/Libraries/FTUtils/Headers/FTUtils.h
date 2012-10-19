@@ -183,7 +183,7 @@ do { \
 */
 static inline NSString *FTPathForFileInDocumentsDirectory(NSString *filename) {
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  NSString *documentsDirectory = [paths objectAtIndex:0];
+  NSString *documentsDirectory = paths[0];
   NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
   return path;
 }

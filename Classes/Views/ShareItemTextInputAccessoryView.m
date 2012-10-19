@@ -25,10 +25,8 @@
 					autorelease];
 	CAGradientLayer *gradient = [CAGradientLayer layer];
 	gradient.frame = gradientView.bounds;
-	gradient.colors = [NSArray arrayWithObjects:
-					   (id)[UIColor colorWithRed:165.0/255.0 green:173.0/255.0 blue:184.0/255.0 alpha:1.0].CGColor,
-					   (id)[UIColor colorWithRed:141.0/255.0 green:149.0/255.0 blue:160.0/255.0 alpha:1.0].CGColor, 
-					   nil];
+	gradient.colors = @[(id)[UIColor colorWithRed:165.0/255.0 green:173.0/255.0 blue:184.0/255.0 alpha:1.0].CGColor,
+					   (id)[UIColor colorWithRed:141.0/255.0 green:149.0/255.0 blue:160.0/255.0 alpha:1.0].CGColor];
 	[gradient renderInContext:c];
 
 	//draw top border

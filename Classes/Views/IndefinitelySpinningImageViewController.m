@@ -7,6 +7,7 @@
 //
 
 #import "IndefinitelySpinningImageViewController.h"
+#import "IndefinitelySpinningAnimation.h"
 
 @implementation IndefinitelySpinningImageViewController
 
@@ -43,30 +44,16 @@
     layer.speed = 1.0;
     layer.timeOffset = 0.0;
     layer.beginTime = 0.0;
+	
     CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
     layer.beginTime = timeSincePause;
 }
 
 #pragma mark initialization stuff
 
-- (CABasicAnimation*)initAnim {
-	CABasicAnimation *spinAnimation;
-
-	spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-	spinAnimation.duration = 2;
-	spinAnimation.repeatCount = 1e100f;
-	spinAnimation.autoreverses = NO;
-	spinAnimation.fromValue = [NSNumber numberWithFloat: M_PI / 3];
-	spinAnimation.toValue = [NSNumber numberWithFloat: 0];
-	spinAnimation.removedOnCompletion = NO;
-	
-	[spinAnimation retain];
-	
-	return spinAnimation;
-}
 
 - (void)initImageViewAnimation {
-	[self.imageView.layer addAnimation:[self initAnim] forKey:@"spinAnimation"];
+	[self.imageView.layer addAnimation:[IndefinitelySpinningAnimation getAnimation] forKey:@"spinAnimation"];
 	[self pauseLayer:self.imageView.layer];
 }
 

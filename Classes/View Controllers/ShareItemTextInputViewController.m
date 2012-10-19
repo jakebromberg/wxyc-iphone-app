@@ -114,7 +114,7 @@
     NSDictionary *userInfo = [notification userInfo];
     
     // Get the origin of the keyboard when it's displayed.
-    NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSValue* aValue = userInfo[UIKeyboardFrameEndUserInfoKey];
 	
     // Get the top of the keyboard as the y coordinate of its origin in self's view's coordinate system. The bottom of the text view's frame should align with the top of the keyboard's final position.
     CGRect keyboardRect = [aValue CGRectValue];
@@ -125,7 +125,7 @@
     newTextViewFrame.size.height = keyboardTop - self.view.bounds.origin.y;
     
     // Get the duration of the animation.
-    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSValue *animationDurationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
     NSTimeInterval animationDuration;
     [animationDurationValue getValue:&animationDuration];
     
@@ -151,7 +151,7 @@
      Restore the size of the text view (fill self's view).
      Animate the resize so that it's in sync with the disappearance of the keyboard.
      */
-    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSValue *animationDurationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
     NSTimeInterval animationDuration;
     [animationDurationValue getValue:&animationDuration];
     

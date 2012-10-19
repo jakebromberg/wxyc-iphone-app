@@ -84,7 +84,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
     stopSelector = NSSelectorFromString(stopSelectorString);
   }
   CAAnimationGroup *group = [[FTAnimationManager sharedManager] 
-                             animationGroupFor:[NSArray arrayWithObject:animation] 
+                             animationGroupFor:@[animation] 
                              withView:targetView duration:animation.duration + delayTime 
                              delegate:delegate startSelector:startSelector stopSelector:stopSelector 
                              name:name type:type];
@@ -108,7 +108,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
     stopSelector = NSSelectorFromString(stopSelectorString);
   }
   CAAnimationGroup *group = [[FTAnimationManager sharedManager] 
-                             animationGroupFor:[NSArray arrayWithObject:animation] 
+                             animationGroupFor:@[animation] 
                              withView:targetView duration:animation.duration + delayTime 
                              delegate:delegate startSelector:startSelector stopSelector:stopSelector 
                              name:name type:type];
@@ -129,7 +129,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
       [prev setValue:anim forKey:kFTAnimationNextAnimationKey];
     }
     [anim setValue:prev forKey:kFTAnimationPrevAnimationKey];
-    [anim setValue:[NSNumber numberWithBool:YES] forKey:kFTAnimationIsChainedKey];
+    [anim setValue:@YES forKey:kFTAnimationIsChainedKey];
     prev = anim;
   }
   if(run) {
@@ -178,7 +178,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
   CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
   animation.fromValue = [NSValue valueWithCGPoint:FTAnimationOffscreenCenterPoint(view.frame, view.center, direction)];
   animation.toValue = [NSValue valueWithCGPoint:view.center];
-  return [self animationGroupFor:[NSArray arrayWithObject:animation] withView:view duration:duration 
+  return [self animationGroupFor:@[animation] withView:view duration:duration 
                         delegate:delegate startSelector:startSelector stopSelector:stopSelector 
                             name:kFTAnimationSlideIn type:kFTAnimationTypeIn];
 }
@@ -189,7 +189,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
   CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
   animation.fromValue = [NSValue valueWithCGPoint:view.center];
   animation.toValue = [NSValue valueWithCGPoint:FTAnimationOffscreenCenterPoint(view.frame, view.center, direction)];
-  return [self animationGroupFor:[NSArray arrayWithObject:animation] withView:view duration:duration 
+  return [self animationGroupFor:@[animation] withView:view duration:duration 
                         delegate:delegate startSelector:startSelector stopSelector:stopSelector 
                             name:kFTAnimationSlideOut type:kFTAnimationTypeOut];
 }
@@ -203,7 +203,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
 	animation.fromValue = [NSValue valueWithCGPoint:FTAnimationOutOfViewCenterPoint(enclosingView.bounds, view.frame, view.center, direction)];
 	animation.toValue = [NSValue valueWithCGPoint:view.center];
-	return [self animationGroupFor:[NSArray arrayWithObject:animation] withView:view duration:duration 
+	return [self animationGroupFor:@[animation] withView:view duration:duration 
 						  delegate:delegate startSelector:startSelector stopSelector:stopSelector 
 							  name:kFTAnimationSlideIn type:kFTAnimationTypeIn];
 }
@@ -214,7 +214,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
 	animation.fromValue = [NSValue valueWithCGPoint:view.center];
 	animation.toValue = [NSValue valueWithCGPoint:FTAnimationOutOfViewCenterPoint(view.superview.bounds, view.frame, view.center, direction)];
-	return [self animationGroupFor:[NSArray arrayWithObject:animation] withView:view duration:duration 
+	return [self animationGroupFor:@[animation] withView:view duration:duration 
 						  delegate:delegate startSelector:startSelector stopSelector:stopSelector 
 							  name:kFTAnimationSlideOut type:kFTAnimationTypeOut];
 }
@@ -261,9 +261,9 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
     CAAnimation *fade = [self fadeAnimationFor:view duration:duration * .5f delegate:nil startSelector:nil stopSelector:nil fadeOut:YES];
     fade.beginTime = duration * .5f;
     fade.fillMode = kCAFillModeForwards;
-    animations = [NSArray arrayWithObjects:animation, fade, nil];
+    animations = @[animation, fade];
   } else {
-    animations = [NSArray arrayWithObject:animation];
+    animations = @[animation];
   }
   return [self animationGroupFor:animations withView:view duration:duration 
                         delegate:delegate startSelector:startSelector stopSelector:stopSelector 
@@ -289,9 +289,9 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
     CAAnimation *fade = [self fadeAnimationFor:view duration:duration * .5f delegate:nil startSelector:nil stopSelector:nil fadeOut:NO];
     fade.fillMode = kCAFillModeForwards;
     
-    animations = [NSArray arrayWithObjects:animation, fade, nil];
+    animations = @[animation, fade];
   } else {
-    animations = [NSArray arrayWithObject:animation];
+    animations = @[animation];
   }
   return [self animationGroupFor:animations withView:view duration:duration 
                         delegate:delegate startSelector:startSelector stopSelector:stopSelector 
@@ -320,9 +320,9 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 		CAAnimation *fade = [self fadeAnimationFor:view duration:duration * .5f delegate:nil startSelector:nil stopSelector:nil fadeOut:YES];
 		fade.beginTime = duration * .5f;
 		fade.fillMode = kCAFillModeForwards;
-		animations = [NSArray arrayWithObjects:animation, fade, nil];
+		animations = @[animation, fade];
 	} else {
-		animations = [NSArray arrayWithObject:animation];
+		animations = @[animation];
 	}
 	return [self animationGroupFor:animations withView:view duration:duration 
 						  delegate:delegate startSelector:startSelector stopSelector:stopSelector 
@@ -349,9 +349,9 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 		CAAnimation *fade = [self fadeAnimationFor:view duration:duration * .5f delegate:nil startSelector:nil stopSelector:nil fadeOut:NO];
 		fade.fillMode = kCAFillModeForwards;
 		
-		animations = [NSArray arrayWithObjects:animation, fade, nil];
+		animations = @[animation, fade];
 	} else {
-		animations = [NSArray arrayWithObject:animation];
+		animations = @[animation];
 	}
 	return [self animationGroupFor:animations withView:view duration:duration 
 						  delegate:delegate startSelector:startSelector stopSelector:stopSelector 
@@ -368,17 +368,17 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
   
   NSString *name, *type;
   if(fadeOut) {
-    animation.fromValue = [NSNumber numberWithFloat:1.f];
-    animation.toValue = [NSNumber numberWithFloat:0.f];
+    animation.fromValue = @1.f;
+    animation.toValue = @0.f;
     name = kFTAnimationFadeOut;
     type = kFTAnimationTypeOut;
   } else {
-    animation.fromValue = [NSNumber numberWithFloat:0.f];
-    animation.toValue = [NSNumber numberWithFloat:1.f];
+    animation.fromValue = @0.f;
+    animation.toValue = @1.f;
     name = kFTAnimationFadeIn;
     type = kFTAnimationTypeIn;
   }
-  CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObject:animation] withView:view duration:duration 
+  CAAnimationGroup *group = [self animationGroupFor:@[animation] withView:view duration:duration 
                                            delegate:delegate startSelector:startSelector stopSelector:stopSelector 
                                                name:name type:type];
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
@@ -404,7 +404,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
     name = kFTAnimationFadeBackgroundIn;
     type = kFTAnimationTypeIn;
   }
-  CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObject:animation] withView:view duration:duration 
+  CAAnimationGroup *group = [self animationGroupFor:@[animation] withView:view duration:duration 
                                            delegate:delegate startSelector:startSelector stopSelector:stopSelector
                                                name:name type:type];
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
@@ -418,20 +418,19 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
                      startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
   CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
   scale.duration = duration;
-  scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:.5f],
-                  [NSNumber numberWithFloat:1.2f],
-                  [NSNumber numberWithFloat:.85f],
-                  [NSNumber numberWithFloat:1.f],
-                  nil];
+  scale.values = @[@.5f,
+                  @1.2f,
+                  @.85f,
+                  @1.f];
   
   CABasicAnimation *fadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
   fadeIn.duration = duration * .4f;
-  fadeIn.fromValue = [NSNumber numberWithFloat:0.f];
-  fadeIn.toValue = [NSNumber numberWithFloat:1.f];
+  fadeIn.fromValue = @0.f;
+  fadeIn.toValue = @1.f;
   fadeIn.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
   fadeIn.fillMode = kCAFillModeForwards;
   
-  CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:scale, fadeIn, nil] withView:view duration:duration 
+  CAAnimationGroup *group = [self animationGroupFor:@[scale, fadeIn] withView:view duration:duration 
                                            delegate:delegate startSelector:startSelector stopSelector:stopSelector 
                                                name:kFTAnimationPopIn type:kFTAnimationTypeIn];
   group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -443,20 +442,19 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
   CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
   scale.duration = duration;
   scale.removedOnCompletion = NO;
-  scale.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.f],
-                  [NSNumber numberWithFloat:1.2f],
-                  [NSNumber numberWithFloat:.75f],
-                  nil];
+  scale.values = @[@1.f,
+                  @1.2f,
+                  @.75f];
   
   CABasicAnimation *fadeOut = [CABasicAnimation animationWithKeyPath:@"opacity"];
   fadeOut.duration = duration * .4f;
-  fadeOut.fromValue = [NSNumber numberWithFloat:1.f];
-  fadeOut.toValue = [NSNumber numberWithFloat:0.f];
+  fadeOut.fromValue = @1.f;
+  fadeOut.toValue = @0.f;
   fadeOut.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
   fadeOut.beginTime = duration * .6f;
   fadeOut.fillMode = kCAFillModeBoth;
   
-  return [self animationGroupFor:[NSArray arrayWithObjects:scale, fadeOut, nil] withView:view duration:duration 
+  return [self animationGroupFor:@[scale, fadeOut] withView:view duration:duration 
                         delegate:delegate startSelector:startSelector stopSelector:stopSelector 
                             name:kFTAnimationPopOut type:kFTAnimationTypeOut];
 }
@@ -468,16 +466,16 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
                       startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
   
   CABasicAnimation *fall = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-  fall.fromValue = [NSNumber numberWithFloat:2.f];
-  fall.toValue = [NSNumber numberWithFloat:1.f];
+  fall.fromValue = @2.f;
+  fall.toValue = @1.f;
   fall.duration = duration;
   
   CABasicAnimation *fade = [CABasicAnimation animationWithKeyPath:@"opacity"];
-  fade.fromValue = [NSNumber numberWithFloat:0.f];
-  fade.toValue = [NSNumber numberWithFloat:1.f];
+  fade.fromValue = @0.f;
+  fade.toValue = @1.f;
   fade.duration = duration;
   
-  CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:fall, fade, nil] withView:view duration:duration 
+  CAAnimationGroup *group = [self animationGroupFor:@[fall, fade] withView:view duration:duration 
                                            delegate:delegate startSelector:startSelector stopSelector:stopSelector 
                                                name:kFTAnimationFallIn type:kFTAnimationTypeIn];
   return group;
@@ -487,16 +485,16 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
                        startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
   
   CABasicAnimation *fall = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-  fall.fromValue = [NSNumber numberWithFloat:1.f];
-  fall.toValue = [NSNumber numberWithFloat:.15f];
+  fall.fromValue = @1.f;
+  fall.toValue = @.15f;
   fall.duration = duration;
   
   CABasicAnimation *fade = [CABasicAnimation animationWithKeyPath:@"opacity"];
-  fade.fromValue = [NSNumber numberWithFloat:1.f];
-  fade.toValue = [NSNumber numberWithFloat:0.f];
+  fade.fromValue = @1.f;
+  fade.toValue = @0.f;
   fade.duration = duration;
   
-  CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:fall, fade, nil] withView:view duration:duration 
+  CAAnimationGroup *group = [self animationGroupFor:@[fall, fade] withView:view duration:duration 
                                            delegate:delegate startSelector:startSelector stopSelector:stopSelector 
                                                name:kFTAnimationFallOut type:kFTAnimationTypeOut];
   return group;
@@ -507,14 +505,14 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
                       startSelector:(SEL)startSelector stopSelector:(SEL)stopSelector {
   
   CABasicAnimation *fly = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-  fly.toValue = [NSNumber numberWithFloat:2.f];
+  fly.toValue = @2.f;
   fly.duration = duration;
   
   CABasicAnimation *fade = [CABasicAnimation animationWithKeyPath:@"opacity"];
-  fade.toValue = [NSNumber numberWithFloat:0.f];
+  fade.toValue = @0.f;
   fade.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
   
-  CAAnimationGroup *group = [self animationGroupFor:[NSArray arrayWithObjects:fly, fade, nil] withView:view duration:duration 
+  CAAnimationGroup *group = [self animationGroupFor:@[fly, fade] withView:view duration:duration 
                                            delegate:delegate startSelector:startSelector stopSelector:stopSelector 
                                                name:kFTAnimationFlyOut type:kFTAnimationTypeOut];
   return group;
@@ -526,7 +524,7 @@ NSString *const kFTAnimationWasInteractionEnabledKey = @"kFTAnimationWasInteract
 
 - (void)animationDidStart:(CAAnimation *)theAnimation {
   UIView *targetView = [theAnimation valueForKey:kFTAnimationTargetViewKey];
-  [theAnimation setValue:[NSNumber numberWithBool:targetView.userInteractionEnabled] forKey:kFTAnimationWasInteractionEnabledKey];
+  [theAnimation setValue:@(targetView.userInteractionEnabled) forKey:kFTAnimationWasInteractionEnabledKey];
   [targetView setUserInteractionEnabled:NO];
   
   if([[theAnimation valueForKey:kFTAnimationType] isEqualToString:kFTAnimationTypeIn]) {

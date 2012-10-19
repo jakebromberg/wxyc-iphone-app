@@ -22,7 +22,7 @@
 	 loadNibNamed:@"LoadPreviousEntriesCell" 
 	 owner:nil options:nil];
 	
-	self = (LoadPreviousEntriesCell *)[topLevelObjects objectAtIndex:0];
+	self = (LoadPreviousEntriesCell *)topLevelObjects[0];
 	
 	self.description.text = @"Previously, on WXYC…";
 	self.description.textColor = [UIColor blueColor];
