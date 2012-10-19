@@ -71,36 +71,6 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	return self;
 }
 
-//-(void)initializeMappings {
-//	RKManagedObjectStore* objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"WXYC.sqlite"];
-//	objectManager.objectStore = objectStore;
-//	
-//	RKManagedObjectMapping* playcutMapping = [RKManagedObjectMapping mappingForClass:[Playcut class]];
-//	[objectManager.mappingProvider setMapping:playcutMapping forKeyPath:@"playcuts"];
-//	[playcutMapping mapKeyPath:@"id" toAttribute:@"playlistEntryID"];
-//	[playcutMapping mapKeyPath:@"chronOrderID" toAttribute:@"chronOrderID"];
-//	[playcutMapping mapKeyPath:@"hour" toAttribute:@"hour"];
-//	[playcutMapping mapKeyPath:@"artistName" toAttribute:@"artist"];
-//	[playcutMapping mapKeyPath:@"labelName" toAttribute:@"label"];
-//	[playcutMapping mapKeyPath:@"releaseTitle" toAttribute:@"album"];
-//	[playcutMapping mapKeyPath:@"request" toAttribute:@"request"];
-//	[playcutMapping mapKeyPath:@"rotation" toAttribute:@"rotation"];
-//	[playcutMapping mapKeyPath:@"songTitle" toAttribute:@"song"];
-//	
-//	
-//	RKManagedObjectMapping* breakpointMapping = [RKManagedObjectMapping mappingForClass:[Breakpoint class]];
-//	[objectManager.mappingProvider setMapping:breakpointMapping forKeyPath:@"breakpoints"];
-//	[breakpointMapping mapKeyPath:@"id" toAttribute:@"playlistEntryID"];
-//	[breakpointMapping mapKeyPath:@"chronOrderID" toAttribute:@"chronOrderID"];
-//	[breakpointMapping mapKeyPath:@"hour" toAttribute:@"hour"];
-//	
-//	RKManagedObjectMapping* talksetMapping = [RKManagedObjectMapping mappingForClass:[Talkset class]];
-//	[objectManager.mappingProvider setMapping:talksetMapping forKeyPath:@"talksets"];
-//	[talksetMapping mapKeyPath:@"id" toAttribute:@"playlistEntryID"];
-//	[talksetMapping mapKeyPath:@"chronOrderID" toAttribute:@"chronOrderID"];
-//	[talksetMapping mapKeyPath:@"hour" toAttribute:@"hour"];
-//}
-
 - (void)dealloc {
     [super dealloc];
 	[playlistMapping dealloc];

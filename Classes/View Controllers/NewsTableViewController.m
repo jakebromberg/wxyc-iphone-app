@@ -5,7 +5,6 @@
 
 #import "NewsTableViewController.h"
 #import "BlogEntryTableViewCell.h"
-#import "JSON.h"
 #import "NewsDetailViewController.h"
 
 @implementation NewsTableViewController
@@ -57,25 +56,7 @@
 	NSString *jsonString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	[responseData setLength:0];
 	
-	//NSLog(@"json news %@", jsonString);
-//	
-//	// Create a dictionary from the JSON string
-//	NSDictionary *results = [jsonString JSONValue];
-//	
-//	NSLog(@"results %@", results);
-//	
 	blogEntries = [[jsonString JSONValue] mutableCopy];
-	
-	//NSLog(@"blogEntries %@", blogEntries);
-	
-	// Loop through each entry in the dictionary
-//	for (NSMutableDictionary *entry in results)
-//	{
-//		NSString *content = (NSString*) [entry objectForKey:@"content"];
-////		content = [content stringByReplacingOccurrencesOfString:@"(via facebook)" withString:@""];
-//		[entry setObject:content forKey:@"teaser"];
-//		[blogEntries addObject:entry];
-//	}
 	
 	// Update the table with data
 	[self.tableView reloadData];
@@ -110,13 +91,13 @@
 			[[NSBundle mainBundle]
 			 loadNibNamed:@"BlogEntryTableViewCell" 
 			 owner:nil options:nil];
-			blogCell = (BlogEntryTableViewCell *)[topLevelObjects objectAtIndex:0];
+			blogCell = (BlogEntryTableViewCell *)topLevelObjects[0];
 		}
 		
 		return blogCell;
 	}
 	
-	NSDictionary *blogEntry = [blogEntries objectAtIndex:row];
+	NSDictionary *blogEntry = blogEntries[row];
 	//NSLog(@"blogEntry %@", blogEntry);
 	BlogEntryTableViewCell *blogCell = (BlogEntryTableViewCell*) [tableView dequeueReusableCellWithIdentifier:@"BlogEntryCell"];
 	
@@ -125,12 +106,12 @@
 			[[NSBundle mainBundle]
 			 loadNibNamed:@"BlogEntryTableViewCell" 
 			 owner:nil options:nil];
-		blogCell = (BlogEntryTableViewCell *)[topLevelObjects objectAtIndex:0];
+		blogCell = (BlogEntryTableViewCell *)topLevelObjects[0];
 	}
 		
-	blogCell.title.text = [blogEntry objectForKey:@"title"];
-	blogCell.description.text = [self flattenHTML:[blogEntry objectForKey:@"content"]];
-	blogCell.date.text = [blogEntry objectForKey:@"date"];
+	blogCell.title.text = blogEntry[@"title"];
+	blogCell.description.text = [self flattenHTML:blogEntry[@"content"]];
+	blogCell.date.text = blogEntry[@"date"];
 	
 	return blogCell;
 }

@@ -35,12 +35,12 @@
 }
 
 -(void) showItem:(int)index {
-	NSDictionary *blogEntry = [items objectAtIndex:index];
+	NSDictionary *blogEntry = items[index];
 	
-	NSString *title = [blogEntry objectForKey:@"title"];
-	NSString *date = [blogEntry objectForKey:@"date"];
-	NSString *author =  [blogEntry objectForKey:@"author"];
-	NSString *content = [blogEntry objectForKey:@"content"];
+	NSString *title = blogEntry[@"title"];
+	NSString *date = blogEntry[@"date"];
+	NSString *author =  blogEntry[@"author"];
+	NSString *content = blogEntry[@"content"];
 	
 	NSString *page = [[[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"article" ofType:@"html"]] autorelease];
 	page = [page stringByReplacingOccurrencesOfString:@"##title##" withString:title];
@@ -96,10 +96,8 @@
 	// "Segmented" control to the right
 	UISegmentedControl *segmentedControl = 
 	[[UISegmentedControl alloc] initWithItems:
-	 [NSArray arrayWithObjects:
-	  [UIImage imageNamed:@"up.png"],
-	  [UIImage imageNamed:@"down.png"],
-	  nil]];
+	 @[[UIImage imageNamed:@"up.png"],
+	  [UIImage imageNamed:@"down.png"]]];
 	[segmentedControl setContentOffset:CGSizeMake(0, 1.0) forSegmentAtIndex:0];
 	
 	[segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];

@@ -5,7 +5,7 @@
 
 #import "LivePlaylistTableViewController.h"
 #import "WXYCAppDelegate.h"
-#import "JSON.h"
+#import "SBJSON.h"
 #import	"BreakpointCell.h"
 #import "LoadPreviousEntriesCell.h"
 #import "PlaylistController.h"
@@ -86,7 +86,7 @@ PlaylistController* livePlaylistCtrl;
 	if (row == [self maxEntriesToDisplay]) {
 		cell = [[[LoadPreviousEntriesCell alloc] init] autorelease];
 	} else {
-		NSManagedObject *playlistEntry = [livePlaylistCtrl.playlist objectAtIndex:row];
+		NSManagedObject *playlistEntry = (livePlaylistCtrl.playlist)[row];
 		NSString *entryType = [NSString stringWithFormat:@"%@Cell", [[playlistEntry class] description]];
 
 		cell = (LivePlaylistTableViewCell*) [tableView dequeueReusableCellWithIdentifier:entryType];

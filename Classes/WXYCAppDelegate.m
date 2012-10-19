@@ -174,7 +174,7 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
 - (NSString *)applicationDocumentsDirectory {
 	
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    NSString *basePath = ([paths count] > 0) ? paths[0] : nil;
     return basePath;
 }
 
@@ -268,7 +268,7 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
 	
 	//Clean out old data from previous launch
     if (managedObjectContext != nil) {
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(Favorite == %@) || (Favorite == %@)", nil, [NSNumber numberWithBool:NO]];	
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(Favorite == %@) || (Favorite == %@)", nil, @NO];	
 		
 		NSFetchRequest *request = [[NSFetchRequest alloc] init];
 		NSEntityDescription *entity = [NSEntityDescription entityForName:@"Playcut" inManagedObjectContext:managedObjectContext];
@@ -311,7 +311,7 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
 	
 	NSURL* url = [NSURL URLWithString:@"http://localhost/~jake/"];
 	livePlaylistCtrlr = [[PlaylistController alloc] initWithBaseURL:url];
-	[livePlaylistCtrlr fetchPlaylist];
+//	[livePlaylistCtrlr fetchPlaylist];
 	
 //	NSTimer *updatePlaylist;
 //	updatePlaylist = [NSTimer scheduledTimerWithTimeInterval: 30

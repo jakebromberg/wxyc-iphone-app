@@ -47,7 +47,7 @@
 	
 	request = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Playcut" inManagedObjectContext:managedObjectContext];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(Favorite == %@)", [NSNumber numberWithBool:YES]];	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(Favorite == %@)", @YES];	
 	[request setEntity:entity];
 	[request setPredicate:predicate];
 	
@@ -106,7 +106,7 @@
     }
     
 	// Get the favorite corresponding to the current index path and configure the table view cell.
-	Playcut *favorite = (Playcut *)[favoritesArray objectAtIndex:indexPath.row];
+	Playcut *favorite = (Playcut *)favoritesArray[indexPath.row];
 	
 	cell.textLabel.text = [favorite artist];// [dateFormatter stringFromDate:[event creationDate]];
 	
@@ -132,7 +132,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[managedObjectContext deleteObject:[favoritesArray objectAtIndex:[indexPath row]]];
+		[managedObjectContext deleteObject:favoritesArray[[indexPath row]]];
 		[favoritesArray removeObjectAtIndex:[indexPath row]];
 
 //		Playcut *playcut = (Playcut*) [managedObjectContext objectWithID:[[favoritesArray objectAtIndex:[indexPath row]] objectID]];//[favoritesArray objectAtIndex:[indexPath row]];
@@ -177,14 +177,14 @@
 		[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
 									animated:NO scrollPosition:UITableViewScrollPositionMiddle ];
 		
-		return [favoritesArray objectAtIndex:selectedRow];
+		return favoritesArray[selectedRow];
 	}
 	
 	return nil;
 }
 
 -(id)NPcurrent {
-	return [favoritesArray objectAtIndex:selectedRow];
+	return favoritesArray[selectedRow];
 }
 
 -(id)NPprev {
@@ -194,7 +194,7 @@
 		[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
 									animated:NO scrollPosition:UITableViewScrollPositionMiddle ];
 		
-		return [favoritesArray objectAtIndex:selectedRow];
+		return favoritesArray[selectedRow];
 	}
 	
 	return nil;

@@ -166,7 +166,7 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 
 - (void) initAudioSession {
 	session = [AVAudioSession sharedInstance];
-	[session setDelegate:self];
+	session.delegate = self;
 	NSError *activationError = nil;
 	[session setActive:YES error: &activationError];
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RestKit/RestKit.h>
 
 @protocol GoogleImageSearchDelegate
 
@@ -14,7 +15,7 @@
 
 @end
 
-@interface GoogleImageSearch : NSObject {
+@interface GoogleImageSearch : NSObject<RKObjectLoaderDelegate> {
 	id<GoogleImageSearchDelegate> delegate;
 	NSMutableData *responseData;
 @private
