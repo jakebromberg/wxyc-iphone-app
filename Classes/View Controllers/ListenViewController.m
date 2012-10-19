@@ -19,7 +19,7 @@
 	CassetteReelViewController *lowerController;
 }
 
-@property (nonatomic, retain) AudioStreamController* streamController;
+@property (nonatomic, strong) AudioStreamController* streamController;
 
 @end
 
@@ -144,7 +144,7 @@
 	NSURL *url = [NSURL URLWithString:@"http://152.46.7.128:8000/wxyc.mp3"];
 //#endif
 	
-	streamController = [[[AudioStreamController alloc] initWithURL:url] retain];
+	streamController = [[AudioStreamController alloc] initWithURL:url];
 		
 	//initialize the cassete reel view controllers
 	lowerController = [[CassetteReelViewController alloc] initWithImageView:lowerCassetteReel];
@@ -175,17 +175,7 @@
 }
 
 - (void)dealloc {
-	[[NSNotificationCenter defaultCenter]
-	 removeObserver:self
-	 name:LPStatusChangedNotification
-	 object:nil];
-	
-	[[NSNotificationCenter defaultCenter]
-	 removeObserver:self
-	 name:ASStatusChangedNotification
-	 object:nil];
-	
-    [super dealloc];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

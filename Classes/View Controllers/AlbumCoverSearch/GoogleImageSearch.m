@@ -7,7 +7,7 @@
 //
 
 #import "GoogleImageSearch.h"
-//#import "NSString+SBJSON.h"
+#import "SBJSON.h"
 
 @implementation GoogleImageSearch
 
@@ -38,7 +38,6 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 	
 	[delegate handleGoogleImageSearchResults:results];
 	
-	[jsonString release];
 	[responseData setLength:0];
 }
 
@@ -52,7 +51,7 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 	NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:IMAGE_SEARCH_URL, API_KEY, search, nil]];
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-	[[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];	
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (NSArray*)synchronizedSearchWithString:(NSString*)search {
@@ -69,7 +68,7 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 	NSError *error = nil;
 	NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
 	
-	NSString *jsonString = [[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding] autorelease];
+	NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 	
 	// Create a dictionary from the JSON string
 	NSMutableArray *results = [jsonString JSONValue];
@@ -81,15 +80,10 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 
 - (id)initWithDelegate:(id<GoogleImageSearchDelegate>) del {
 	self.delegate = del;
-	responseData = [[NSMutableData data] retain];
+	responseData = [NSMutableData data];
 	
 	return [self init];
 }
 
-- (void)dealloc {
-	[responseData dealloc];
-	[parseQueue dealloc];
-	[super dealloc];
-}
 
 @end

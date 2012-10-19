@@ -76,7 +76,6 @@
 													otherButtonTitles:@"Copy Link", @"Open In Safari", nil];
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[actionSheet showInView:self.webView]; // show from our table view (pops up in the middle of the table)
-	[actionSheet release];
 }
 
 #pragma mark -

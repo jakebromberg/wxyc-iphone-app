@@ -12,28 +12,28 @@
 
 @interface ShareItemTextInputViewController : UIViewController<UITextViewDelegate, MBProgressHUDDelegate> {
 	UITextView *myTextView;
-	UIView *accessoryView;
+	UIView *__weak accessoryView;
 
-	NSString *artistString;
-	NSString *titleString;
-	NSString *albumString;
+	NSString *__weak artistString;
+	NSString *__weak titleString;
+	NSString *__weak albumString;
 	
 	MBProgressHUD *HUD;
 }
 
-@property (nonatomic, retain) IBOutlet UITextView *myTextView;
-@property (nonatomic, assign) IBOutlet UIView *accessoryView;
+@property (nonatomic, strong) IBOutlet UITextView *myTextView;
+@property (nonatomic, weak) IBOutlet UIView *accessoryView;
 
-@property (nonatomic, assign) IBOutlet UIButton *artistButton;
-@property (nonatomic, assign) IBOutlet UIButton *titleButton;
-@property (nonatomic, assign) IBOutlet UIButton *albumButton;
-@property (nonatomic, assign) IBOutlet UIButton *wxycButton;
-@property (nonatomic, assign) IBOutlet UILabel *charCountLabel; //TODO: move this to the twitter share class
+@property (nonatomic, weak) IBOutlet UIButton *artistButton;
+@property (nonatomic, weak) IBOutlet UIButton *titleButton;
+@property (nonatomic, weak) IBOutlet UIButton *albumButton;
+@property (nonatomic, weak) IBOutlet UIButton *wxycButton;
+@property (nonatomic, weak) IBOutlet UILabel *charCountLabel; //TODO: move this to the twitter share class
 
-@property (nonatomic, assign) NSString *artistString;
-@property (nonatomic, assign) NSString *titleString;
-@property (nonatomic, assign) NSString *albumString;
+@property (nonatomic, weak) NSString *artistString;
+@property (nonatomic, weak) NSString *titleString;
+@property (nonatomic, weak) NSString *albumString;
 
-@property(nonatomic, assign) UIViewController *delegate;
+@property(nonatomic, weak) UIViewController *delegate;
 
 @end

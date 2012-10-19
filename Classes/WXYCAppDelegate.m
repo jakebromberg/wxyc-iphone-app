@@ -144,7 +144,7 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
         return managedObjectModel;
     }
 	
-    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
+    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];    
     
 	return managedObjectModel;
 }
@@ -205,7 +205,7 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	if (connection == connection1) {
-		NSString *dataString = [[[NSString alloc] initWithData:responseData encoding: NSUTF8StringEncoding] autorelease];
+		NSString *dataString = [[NSString alloc] initWithData:responseData encoding: NSUTF8StringEncoding];
 		NSLog(@"%@", dataString);
 		NSString *path = [[NSBundle mainBundle] pathForResource: @"jQueryInject" ofType: @"txt"];
 
@@ -329,12 +329,5 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
 	NSLog(@"I AM TERMINATING");
 	
 }
-
-- (void)dealloc {
-	[rootController release];
-    [window release];
-    [super dealloc];
-}
-
 
 @end

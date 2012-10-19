@@ -10,12 +10,12 @@
 	IBOutlet UIWebView *webView;
 }
 
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) IBOutlet UIWebView *webView;
 
-@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *backButton;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *forwardButton;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *reloadButton;
+@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *backButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *forwardButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *reloadButton;
 
 - (IBAction) reloadButtonPush:(id)sender;
 - (IBAction) backButtonPush:(id)sender;

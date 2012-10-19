@@ -20,7 +20,7 @@
 }
 
 //@property (nonatomic, retain) FbGraph *fbGraph;
-@property (nonatomic, retain) NSString *feedPostId;
+@property (nonatomic, strong) NSString *feedPostId;
 
 //- (void) testStreamPublish;
 

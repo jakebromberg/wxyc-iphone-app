@@ -11,13 +11,11 @@
 @class Playlist;
 
 @interface PlaylistEntry :  NSManagedObject  
-{
-}
 
-@property (nonatomic, retain) NSNumber * playlistEntryID;
-@property (nonatomic, retain) NSNumber * chronOrderID;
-@property (nonatomic, retain) NSNumber * hour;
-@property (nonatomic, retain) Playlist * belongsToPlaylist;
+@property (nonatomic, strong) NSNumber * playlistEntryID;
+@property (nonatomic, strong) NSNumber * chronOrderID;
+@property (nonatomic, strong) NSNumber * hour;
+@property (nonatomic, strong) Playlist * belongsToPlaylist;
 
 @end
 

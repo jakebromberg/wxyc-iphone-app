@@ -18,7 +18,7 @@
 	double timeSinceEpoch = [[NSString stringWithFormat: @"%@", [breakpoint valueForKey:@"hour"]] doubleValue] / 1000;
 	NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeSinceEpoch];
 	
-	NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"h:00 a";
 	
 	NSString* dateString = [dateFormatter stringFromDate:date];

@@ -11,12 +11,12 @@
 
 @interface PlaycutDetailsViewController : UIViewController
 
-@property (nonatomic, retain) Playcut *entity;
+@property (nonatomic, strong) Playcut *entity;
 
-@property (nonatomic, retain) IBOutlet UILabel *artist;
-@property (nonatomic, retain) IBOutlet UILabel *song;
-@property (nonatomic, retain) IBOutlet UILabel *album;
-@property (nonatomic, retain) IBOutlet UILabel *label;
+@property (nonatomic, strong) IBOutlet UILabel *artist;
+@property (nonatomic, strong) IBOutlet UILabel *song;
+@property (nonatomic, strong) IBOutlet UILabel *album;
+@property (nonatomic, strong) IBOutlet UILabel *label;
 
 
 @end

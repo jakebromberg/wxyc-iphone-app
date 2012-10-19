@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PlaylistMapping : NSObject {
-	
-}
+@interface PlaylistMapping : NSObject
 
-@property (nonatomic, retain) RKObjectManager* objectManager;
+@property (nonatomic, strong) RKObjectManager* objectManager;
 
 @end

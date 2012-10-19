@@ -154,8 +154,6 @@
 		23EE39E01527F0790006CDA5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE391E1527D0B10006CDA5 /* MBProgressHUD.m */; };
 		23EE39E11527F0790006CDA5 /* AudioStreamer.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39611527EAC50006CDA5 /* AudioStreamer.h */; };
 		23EE39E21527F0790006CDA5 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39621527EAC50006CDA5 /* AudioStreamer.m */; };
-		23EE39E31527F0790006CDA5 /* KeychainItemWrapper.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39A01527ECE10006CDA5 /* KeychainItemWrapper.h */; };
-		23EE39E41527F0790006CDA5 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39A11527ECE10006CDA5 /* KeychainItemWrapper.m */; };
 		23EE39E51527F0790006CDA5 /* Playlist.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39631527EB070006CDA5 /* Playlist.h */; };
 		23EE39E61527F0790006CDA5 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39641527EB070006CDA5 /* Playlist.m */; };
 		23EE39E71527F0790006CDA5 /* PlaylistEntry.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39651527EB070006CDA5 /* PlaylistEntry.h */; };
@@ -464,8 +462,6 @@
 		23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXYCAppDelegate.m; sourceTree = "<group>"; };
 		23EE399A1527EC660006CDA5 /* WXYCDataStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYCDataStack.h; sourceTree = "<group>"; };
 		23EE399B1527EC660006CDA5 /* WXYCDataStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXYCDataStack.m; sourceTree = "<group>"; };
-		23EE39A01527ECE10006CDA5 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
-		23EE39A11527ECE10006CDA5 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		23EE3A201527F3D00006CDA5 /* Talkset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Talkset.h; sourceTree = "<group>"; };
 		23EE3A211527F3D00006CDA5 /* Talkset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Talkset.m; sourceTree = "<group>"; };
 		23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -861,8 +857,6 @@
 				23EE391E1527D0B10006CDA5 /* MBProgressHUD.m */,
 				23EE39611527EAC50006CDA5 /* AudioStreamer.h */,
 				23EE39621527EAC50006CDA5 /* AudioStreamer.m */,
-				23EE39A01527ECE10006CDA5 /* KeychainItemWrapper.h */,
-				23EE39A11527ECE10006CDA5 /* KeychainItemWrapper.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1313,8 +1307,6 @@
 				23EE39E01527F0790006CDA5 /* MBProgressHUD.m in Sources */,
 				23EE39E11527F0790006CDA5 /* AudioStreamer.h in Sources */,
 				23EE39E21527F0790006CDA5 /* AudioStreamer.m in Sources */,
-				23EE39E31527F0790006CDA5 /* KeychainItemWrapper.h in Sources */,
-				23EE39E41527F0790006CDA5 /* KeychainItemWrapper.m in Sources */,
 				23EE39E51527F0790006CDA5 /* Playlist.h in Sources */,
 				23EE39E61527F0790006CDA5 /* Playlist.m in Sources */,
 				23EE39E71527F0790006CDA5 /* PlaylistEntry.h in Sources */,
@@ -1415,6 +1407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1447,6 +1440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1494,6 +1488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

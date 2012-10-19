@@ -46,7 +46,7 @@ static WXYCDataStack *sharedInstance = nil;
         return managedObjectModel;
     }
 	
-    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
+    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];    
     
 	return managedObjectModel;
 }
@@ -97,18 +97,6 @@ static WXYCDataStack *sharedInstance = nil;
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    return self;
-}
-
-- (id)retain {
-    return self;
-}
-
-- (unsigned)retainCount {
-    return UINT_MAX;  // denotes an object that cannot be released
-}
-
-- (id)autorelease {
     return self;
 }
 

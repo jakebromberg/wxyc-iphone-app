@@ -28,7 +28,8 @@
 }
 
 - (CassetteReelViewController*)initWithImageView:(UIImageView*)imageView {
-	[super initWithImageView:imageView];
+	if (!(self = [super initWithImageView:imageView]))
+		return nil;
 
 	[[NSNotificationCenter defaultCenter]
 	 addObserver:self

@@ -14,13 +14,13 @@
 
 @interface ListenViewController : UIViewController
 
-@property (nonatomic, readonly, retain) IBOutlet UIImageView *GreenLED;
-@property (nonatomic, readonly, retain) IBOutlet UIImageView *RedLED;
-@property (nonatomic, readonly, retain) IBOutlet IndefinitelySpinningImageViewController *upperCassetteReel;
-@property (nonatomic, readonly, retain) IBOutlet IndefinitelySpinningImageViewController *lowerCassetteReel;
-@property (nonatomic, readonly, retain) IBOutlet UIButton *playButton;
-@property (nonatomic, readonly, retain) IBOutlet UIButton *stopButton;
-@property (nonatomic, readonly, retain) IBOutlet UILabel *nowPlayingLabel;
+@property (nonatomic, readonly, strong) IBOutlet UIImageView *GreenLED;
+@property (nonatomic, readonly, strong) IBOutlet UIImageView *RedLED;
+@property (nonatomic, readonly, strong) IBOutlet IndefinitelySpinningImageViewController *upperCassetteReel;
+@property (nonatomic, readonly, strong) IBOutlet IndefinitelySpinningImageViewController *lowerCassetteReel;
+@property (nonatomic, readonly, strong) IBOutlet UIButton *playButton;
+@property (nonatomic, readonly, strong) IBOutlet UIButton *stopButton;
+@property (nonatomic, readonly, strong) IBOutlet UILabel *nowPlayingLabel;
 
 - (IBAction)pushPlay:(id)sender;
 - (IBAction)pushStop:(id)sender;

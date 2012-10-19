@@ -21,6 +21,6 @@
 -(id)initWithURL:(NSURL*)aURL;
 -(BOOL)isPlaying;
 
-@property (nonatomic, retain) NSURL* URL;
+@property (nonatomic, strong) NSURL* URL;
 
 @end

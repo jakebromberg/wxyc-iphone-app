@@ -68,7 +68,6 @@
 	
 	// Set self's events array to the mutable array, then clean up.
 	[self setFavoritesArray:mutableFetchResults];
-	[mutableFetchResults release];
 //	[request release];
 }
 
@@ -102,7 +101,7 @@
 	
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
 	// Get the favorite corresponding to the current index path and configure the table view cell.
@@ -161,7 +160,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	selectedRow = [indexPath row];
 	
-	PlaycutViewController *detail = [[[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil] autorelease];
+	PlaycutViewController *detail = [[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil];
 //	[detail setDelegate:self];	
 	detail.hidesBottomBarWhenPushed = YES;
 	[[self navigationController] pushViewController:detail animated:YES];

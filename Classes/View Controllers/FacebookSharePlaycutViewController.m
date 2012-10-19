@@ -38,7 +38,6 @@ static NSString* kAppId = @"127717163956895";
 									action:@selector(update:)];
 	self.navigationItem.rightBarButtonItem = postButton;
 	postButton.enabled = NO;
-	[postButton release];
 	
 	UIBarButtonItem *cancelButton = 
 	[[UIBarButtonItem alloc] initWithTitle:@"Cancel" 
@@ -46,7 +45,6 @@ static NSString* kAppId = @"127717163956895";
 									target:self 
 									action:@selector(cancel)];
 	self.navigationItem.leftBarButtonItem = cancelButton;
-	[cancelButton release];
 	
 	[self.wxycButton setTitle:@"YO" forState:UIControlStateNormal];
 //	self.wxycButton.titleLabel.text = @"WXYC";

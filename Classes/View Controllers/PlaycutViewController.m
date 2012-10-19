@@ -180,36 +180,29 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 }
 
 - (void)backgroundAlbumCoverSearch:(Playcut*)playcut {
-	NSAutoreleasePool *pool;
-	
-	assert( ! [NSThread isMainThread] );
-	
-	pool = [[NSAutoreleasePool alloc] init];
-	assert(pool != nil);
-
-	NSArray *searchTerms = @[[playcut valueForKey:@"artist"], [playcut valueForKey:@"album"]];
-	NSString *searchTermsString = [searchTerms componentsJoinedByString:@"+"];
-	searchTermsString = [searchTermsString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-	
-	//gis = [[GoogleImageSearch alloc] initWithDelegate:self];
-	NSArray *results = [gis synchronizedSearchWithString:searchTermsString];
-	
-	NSArray *innerResults = (NSArray*) ((NSDictionary*) results)[@"responseData"][@"results"];
-	if ([innerResults count] > 0) {
-		NSDictionary *firstResult = innerResults[0];
+	@autoreleasepool {
+		NSArray *searchTerms = @[[playcut valueForKey:@"artist"], [playcut valueForKey:@"album"]];
+		NSString *searchTermsString = [searchTerms componentsJoinedByString:@"+"];
+		searchTermsString = [searchTermsString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 		
-		NSURL *urlOfImage = [NSURL URLWithString:firstResult[@"url"]];
+		//gis = [[GoogleImageSearch alloc] initWithDelegate:self];
+		NSArray *results = [gis synchronizedSearchWithString:searchTermsString];
 		
-		UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:urlOfImage]]; 
-		image = [image imageCroppedToFitSize:albumArt.frame.size];
-		if (image != nil) {
-			[playcut setPrimaryImage:UIImagePNGRepresentation(image)];
+		NSArray *innerResults = (NSArray*) ((NSDictionary*) results)[@"responseData"][@"results"];
+		if ([innerResults count] > 0) {
+			NSDictionary *firstResult = innerResults[0];
+			
+			NSURL *urlOfImage = [NSURL URLWithString:firstResult[@"url"]];
+			
+			UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:urlOfImage]]; 
+			image = [image imageCroppedToFitSize:albumArt.frame.size];
+			if (image != nil) {
+				[playcut setPrimaryImage:UIImagePNGRepresentation(image)];
+			}
+			
+			[retrievingImageIndicator stopAnimating];
 		}
-		
-		[retrievingImageIndicator stopAnimating];
 	}
-	
-	[pool drain];
 }
 
 #pragma mark -
@@ -280,7 +273,6 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 				[picker setMessageBody:emailBody isHTML:NO];
 				
 				[self presentModalViewController:picker animated:YES];
-				[picker release];				
 			} else {
 				[self launchMailAppOnDevice];
 			}
@@ -302,9 +294,6 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 		[navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 		[controller setDelegate:self];
 		[[self navigationController] presentModalViewController:navigationController animated:YES];
-		
-		[controller release];
-		[navigationController release];
 	}
 	
 	if (buttonIndex == kUIAction_Facebook) {
@@ -318,8 +307,6 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 		[controller setDelegate:self];
 		[[self navigationController] presentModalViewController:navigationController animated:YES];
 		
-		[controller release];
-		[navigationController release];		
 	}
 }
 
@@ -360,7 +347,6 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	actionSheet.destructiveButtonIndex = 3;	// make the second button red (destructive)
 	[actionSheet showInView:self.view]; // show from our table view (pops up in the middle of the table)
-	[actionSheet release];	
 }
 
 - (IBAction)favoriteButtonPush:(id)sender {
@@ -368,7 +354,7 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	
 	NSLog(@"currentData.Favorite %@", currentData.favorite);
 
-	[currentData setFavorite:[[[NSNumber alloc] initWithBool:![currentData.favorite boolValue]] autorelease]];
+	[currentData setFavorite:[[NSNumber alloc] initWithBool:![currentData.favorite boolValue]]];
 	
 	[self refreshViews];
 }
@@ -404,11 +390,7 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 - (void)viewDidUnload {
 	[[NSNotificationCenter defaultCenter] removeObserver:self
 											  forKeyPath:LPStatusChangedNotification];
-	[gis release];
 }
 
-- (void)dealloc {
-	[super dealloc];
-}
 
 @end

@@ -84,7 +84,7 @@ PlaylistController* livePlaylistCtrl;
 	UITableViewCell* cell;
 	
 	if (row == [self maxEntriesToDisplay]) {
-		cell = [[[LoadPreviousEntriesCell alloc] init] autorelease];
+		cell = [[LoadPreviousEntriesCell alloc] init];
 	} else {
 		NSManagedObject *playlistEntry = (livePlaylistCtrl.playlist)[row];
 		NSString *entryType = [NSString stringWithFormat:@"%@Cell", [[playlistEntry class] description]];
@@ -97,9 +97,9 @@ PlaylistController* livePlaylistCtrl;
 			Class class = NSClassFromString(entryType);
 			
 			if (class != nil) {
-				cell = [[[class alloc] initWithEntity:playlistEntry] autorelease];
+				cell = [[class alloc] initWithEntity:playlistEntry];
 			} else {
-				cell = [[[LivePlaylistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"unknown"] autorelease];
+				cell = [[LivePlaylistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"unknown"];
 			}
 		}
 		
@@ -130,7 +130,7 @@ PlaylistController* livePlaylistCtrl;
 	
 	LivePlaylistTableViewCell* cell = (LivePlaylistTableViewCell*) [self.tableView cellForRowAtIndexPath:indexPath];
 	if([cell class] == [PlaycutCell class]) {
-		PlaycutDetailsViewController *detailsViewController = [[[PlaycutDetailsViewController alloc] init] autorelease];
+		PlaycutDetailsViewController *detailsViewController = [[PlaycutDetailsViewController alloc] init];
 		[detailsViewController setEntity:[(PlaycutCell*)cell entity]];
 //		[self.tableView inser
 	}
@@ -171,7 +171,7 @@ PlaylistController* livePlaylistCtrl;
 	livePlaylistCtrl = [appDelegate livePlaylistCtrlr];
 
 	if ((livePlaylistCtrl == nil) || [self reloading]) {
-		livePlaylistCtrl = [[[PlaylistController alloc] init] autorelease];
+		livePlaylistCtrl = [[PlaylistController alloc] init];
 		[self showReloadAnimationAnimated:YES];
 		[self reloadTableViewDataSource];
 	} else {
@@ -196,9 +196,6 @@ PlaylistController* livePlaylistCtrl;
 	// Release anything that's not essential, such as cached data
 }
 
-- (void)dealloc {
-	[super dealloc];
-}
 
 #pragma mark -
 #pragma mark NextPrevDetailsDelegate business

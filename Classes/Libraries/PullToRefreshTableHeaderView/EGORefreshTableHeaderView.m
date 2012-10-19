@@ -40,7 +40,6 @@
 		lastUpdatedLabel.opaque = YES;
 		lastUpdatedLabel.textAlignment = UITextAlignmentCenter;
 		[self addSubview:lastUpdatedLabel];
-		[lastUpdatedLabel release];
 		
 		statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f,
 																frame.size.height - 48.0f, 320.0f, 20.0f)];
@@ -53,7 +52,6 @@
 		statusLabel.textAlignment = UITextAlignmentCenter;
 		[self setStatus:kPullToReloadStatus];
 		[self addSubview:statusLabel];
-		[statusLabel release];
 		
 		arrowImage = [[UIImageView alloc] initWithFrame:
 					  CGRectMake(25.0f, frame.size.height 
@@ -63,7 +61,6 @@
 		[arrowImage layer].transform =
 			CATransform3DMakeRotation(M_PI, 0.0f, 0.0f, 1.0f);
 		[self addSubview:arrowImage];
-		[arrowImage release];
 		
 		activityView = [[UIActivityIndicatorView alloc] 
 						initWithActivityIndicatorStyle:
@@ -72,7 +69,6 @@
 										- 38.0f, 20.0f, 20.0f);
 		activityView.hidesWhenStopped = YES;
 		[self addSubview:activityView];
-		[activityView release];
 		
 		isFlipped = NO;
     }
@@ -107,19 +103,14 @@
 {
 	if (newDate)
 	{
-		if (lastUpdatedDate != newDate)
-		{
-			[lastUpdatedDate release];
-		}
 		
-		lastUpdatedDate = [newDate retain];
+		lastUpdatedDate = newDate;
 		
 		NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
 		[formatter setDateStyle:NSDateFormatterShortStyle];
 		[formatter setTimeStyle:NSDateFormatterShortStyle];
 		lastUpdatedLabel.text = [NSString stringWithFormat:
 								 @"Last Updated: %@", [formatter stringFromDate:lastUpdatedDate]];
-		[formatter release];
 	}
 	else
 	{
@@ -166,7 +157,6 @@
 	statusLabel = nil;
 	arrowImage = nil;
 	lastUpdatedLabel = nil;
-    [super dealloc];
 }
 
 @end

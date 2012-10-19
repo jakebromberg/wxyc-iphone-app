@@ -22,14 +22,15 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	if (selected) {
-		PlaycutViewController *detail = [[[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil] autorelease];
+		PlaycutViewController *detail = [[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil];
 		detail.hidesBottomBarWhenPushed = YES;
 		[[self.delegate navigationController] pushViewController:detail animated:YES];
 	}
 }
 
 - (id)initWithEntity:(NSManagedObject *)entity {
-	[super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:[[self class] description]];
+	if (!(self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:[[self class] description]]))
+		return nil;
 	[self setEntity:entity];
 
 	return self;

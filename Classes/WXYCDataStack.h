@@ -16,7 +16,7 @@
 	NSURL *storeURL;
 }
 
-@property (nonatomic, retain) NSURL *storeURL;
+@property (nonatomic, strong) NSURL *storeURL;
 
 - (NSManagedObjectContext *) managedObjectContext;
 - (NSManagedObjectModel *) managedObjectModel;

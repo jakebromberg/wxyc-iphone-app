@@ -21,8 +21,6 @@
 	spinAnimation.toValue = @0.0f;
 	spinAnimation.removedOnCompletion = NO;
 	
-	[spinAnimation retain];
-	
 	return spinAnimation;
 }
 

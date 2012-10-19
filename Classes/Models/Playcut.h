@@ -16,15 +16,15 @@
 {
 }
 
-@property (nonatomic, retain) NSNumber * request;
-@property (nonatomic, retain) NSString * artist;
-@property (nonatomic, retain) NSNumber * favorite;
-@property (nonatomic, retain) NSString * album;
-@property (nonatomic, retain) UIImage  * primaryImage;
-@property (nonatomic, retain) NSString * song;
-@property (nonatomic, retain) NSNumber * rotation;
-@property (nonatomic, retain) NSString * label;
-@property (nonatomic, retain) NSManagedObject * image;
+@property (nonatomic, strong) NSNumber * request;
+@property (nonatomic, strong) NSString * artist;
+@property (nonatomic, strong) NSNumber * favorite;
+@property (nonatomic, strong) NSString * album;
+@property (nonatomic, strong) UIImage  * primaryImage;
+@property (nonatomic, strong) NSString * song;
+@property (nonatomic, strong) NSNumber * rotation;
+@property (nonatomic, strong) NSString * label;
+@property (nonatomic, strong) NSManagedObject * image;
 
 @end
 

@@ -30,14 +30,14 @@
 
 - (void) refreshViews;
 
-@property (nonatomic, retain) IBOutlet UIImageView *albumArt;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *retrievingImageIndicator;
-@property (nonatomic, retain) IBOutlet UIImageView *reflectionView;
+@property (nonatomic, strong) IBOutlet UIImageView *albumArt;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *retrievingImageIndicator;
+@property (nonatomic, strong) IBOutlet UIImageView *reflectionView;
 
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *favoriteButton;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *previousButton;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *nextButton;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *searchButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *favoriteButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *previousButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *nextButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *searchButton;
 
 - (IBAction)favoriteButtonPush:(id)sender;
 - (IBAction)previousButtonPush:(id)sender;

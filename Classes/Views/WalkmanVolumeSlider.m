@@ -15,8 +15,11 @@
 }
 
 - (id)initWithFrame:(CGRect)frame {
-	[super initWithFrame:frame];
+	if (!(self = [super initWithFrame:frame]))
+		return nil;
+	
 	[self drawRect:frame];
+	
 	return self;
 }
 
@@ -31,9 +34,6 @@
 
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

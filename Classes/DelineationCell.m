@@ -21,7 +21,6 @@
 						  initWithFrame:asdf];
 	background.backgroundColor = [UIColor lightGrayColor];
 	self.backgroundView = background;
-	[background release];
 }
 
 - (void) addText:(NSString *) text
@@ -37,8 +36,6 @@
 	label.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.55];
     label.shadowOffset = CGSizeMake(0, -.66f);
 	[self addSubview:label];
-	
-	[label release];
 }
 
 + (float)height {
@@ -46,7 +43,8 @@
 }
 
 - (id)initWithEntity:(NSManagedObject *)entity {
-	[super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] description]];
+	if (!(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] description]]))
+		return nil;
 
 	[self setSelectionStyle:UITableViewCellSelectionStyleNone];
 	[self setEntity:entity];

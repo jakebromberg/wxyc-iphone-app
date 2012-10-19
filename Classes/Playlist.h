@@ -11,10 +11,8 @@
 @class PlaylistEntry;
 
 @interface Playlist :  NSManagedObject  
-{
-}
 
-@property (nonatomic, retain) NSSet* containsEntries;
+@property (nonatomic, strong) NSSet* containsEntries;
 
 @end
 

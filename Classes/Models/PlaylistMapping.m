@@ -69,7 +69,7 @@ const NSString* baseURL = @"http://localhost/~jake/";
 
 -(id)init {
 	self = [super init];
-	[[self objectManager] retain];
+	[self objectManager];
 	[self initializeMappings];
 
 	return self;
