@@ -1,0 +1,6 @@
+[submodule "RestKit"]
+	path = RestKit
+	url = https://github.com/RestKit/RestKit.git
+[submodule "Classes/Libraries/SBJSON"]
+	path = Classes/Libraries/SBJSON
+	url = https://jake.bromberg%40gmail.com@github.com/stig/json-framework.git

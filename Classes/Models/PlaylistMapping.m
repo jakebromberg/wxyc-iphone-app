@@ -26,7 +26,7 @@
 const NSString* baseURL = @"http://localhost/~jake/";
 
 -(void)initializeObjectManager {
-	objectManager = [RKObjectManager objectManagerWithBaseURL:[baseURL description]];
+	objectManager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:baseURL]];
 	objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"WXYC2.sqlite"];
 }
 
