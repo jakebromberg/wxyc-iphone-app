@@ -7,3 +7,9 @@
 [submodule "Classes/Libraries/FTUtils"]
 	path = Classes/Libraries/FTUtils
 	url = https://jake.bromberg%40gmail.com@github.com/neror/ftutils.git
+[submodule "Classes/Libraries/AudioStreamer"]
+	path = Classes/Libraries/AudioStreamer
+	url = https://github.com/mattgallagher/AudioStreamer.git
+[submodule "Classes/Libraries/MBProgressHUD"]
+	path = Classes/Libraries/MBProgressHUD
+	url = https://github.com/jdg/MBProgressHUD.git
