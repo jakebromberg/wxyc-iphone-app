@@ -60,6 +60,9 @@
 		23601A7E105F089800E6A6FB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23601927105F05C600E6A6FB /* AudioToolbox.framework */; };
 		23601A80105F089D00E6A6FB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236019EB105F060B00E6A6FB /* CFNetwork.framework */; };
 		23601B9B105F116000E6A6FB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23601B9A105F116000E6A6FB /* MediaPlayer.framework */; };
+		23638029163334B700AAC2CF /* FTUtils.h in Sources */ = {isa = PBXBuildFile; fileRef = 277757701631C3E500349E12 /* FTUtils.h */; };
+		2363802A163334B700AAC2CF /* FTUtils+NSObject.h in Sources */ = {isa = PBXBuildFile; fileRef = 277757711631C3E500349E12 /* FTUtils+NSObject.h */; };
+		2363802B163334B700AAC2CF /* FTUtils+UIGestureRecognizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 277757721631C3E500349E12 /* FTUtils+UIGestureRecognizer.h */; };
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
 		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
@@ -207,6 +210,7 @@
 		23EE3A231527F4090006CDA5 /* Talkset.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE3A211527F3D00006CDA5 /* Talkset.m */; };
 		23F407BC112389FC00A4A3D3 /* ListenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F407BB112389FC00A4A3D3 /* ListenView.xib */; };
 		23F407D611238B1300A4A3D3 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F407D511238B1300A4A3D3 /* AboutView.xib */; };
+		23F7A8101646E34E008E97FD /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23EF279C14F5DC4100EA7ACB /* libRestKit.a */; };
 		2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */; };
 		277757401631BB3500349E12 /* IndefinitelySpinningAnimation.h in Sources */ = {isa = PBXBuildFile; fileRef = 2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */; };
 		2777575B1631BBE900349E12 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757431631BBE900349E12 /* NSObject+SBJson.m */; };
@@ -223,7 +227,6 @@
 		277757661631BBE900349E12 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2777575A1631BBE900349E12 /* SBJsonWriter.m */; };
 		277757671631BD3000349E12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		277757691631BD4800349E12 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277757681631BD4800349E12 /* MessageUI.framework */; };
-		2777576A1631BD7C00349E12 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23EF279C14F5DC4100EA7ACB /* libRestKit.a */; };
 		2777576C1631BD8700349E12 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2777576B1631BD8700349E12 /* libxml2.dylib */; };
 		277757771631C3EF00349E12 /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757731631C3EF00349E12 /* FTAnimation+UIView.m */; };
 		277757781631C3EF00349E12 /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757741631C3EF00349E12 /* FTAnimationManager.m */; };
@@ -233,6 +236,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		23638027163226F000AAC2CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 259C301615128079003066A2;
+			remoteInfo = RestKitResources;
+		};
 		23EF279B14F5DC4100EA7ACB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */;
@@ -267,13 +277,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 25160D1514564E810060A5C5;
 			remoteInfo = RestKit;
-		};
-		277757381631B6E400349E12 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 259C301615128079003066A2;
-			remoteInfo = RestKitResources;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -518,15 +521,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234B4AEB12938EF1001B3EB2 /* Security.framework in Frameworks */,
+				23F7A8101646E34E008E97FD /* libRestKit.a in Frameworks */,
 				2777576C1631BD8700349E12 /* libxml2.dylib in Frameworks */,
-				2777576A1631BD7C00349E12 /* libRestKit.a in Frameworks */,
 				277757691631BD4800349E12 /* MessageUI.framework in Frameworks */,
 				277757671631BD3000349E12 /* Foundation.framework in Frameworks */,
 				23601A80105F089D00E6A6FB /* CFNetwork.framework in Frameworks */,
 				23B32D49126E386B008414F4 /* CoreData.framework in Frameworks */,
 				23C2AB1B128A6F8100D61A4A /* MobileCoreServices.framework in Frameworks */,
 				23651057111211D300C192CB /* QuartzCore.framework in Frameworks */,
-				234B4AEB12938EF1001B3EB2 /* Security.framework in Frameworks */,
 				23C2A9EA128A59D100D61A4A /* SystemConfiguration.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				23601A7E105F089800E6A6FB /* AudioToolbox.framework in Frameworks */,
@@ -962,7 +965,7 @@
 				23EF279E14F5DC4100EA7ACB /* RestKitTests.octest */,
 				23EF27A014F5DC4100EA7ACB /* RestKit.framework */,
 				23EF27A214F5DC4100EA7ACB /* RestKitFrameworkTests.octest */,
-				277757391631B6E400349E12 /* RestKitResources.bundle */,
+				23638028163226F000AAC2CF /* RestKitResources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1119,6 +1122,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		23638028163226F000AAC2CF /* RestKitResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitResources.bundle;
+			remoteRef = 23638027163226F000AAC2CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		23EF279C14F5DC4100EA7ACB /* libRestKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1145,13 +1155,6 @@
 			fileType = wrapper.cfbundle;
 			path = RestKitFrameworkTests.octest;
 			remoteRef = 23EF27A114F5DC4100EA7ACB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		277757391631B6E400349E12 /* RestKitResources.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitResources.bundle;
-			remoteRef = 277757381631B6E400349E12 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1251,6 +1254,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23638029163334B700AAC2CF /* FTUtils.h in Sources */,
+				2363802A163334B700AAC2CF /* FTUtils+NSObject.h in Sources */,
+				2363802B163334B700AAC2CF /* FTUtils+UIGestureRecognizer.h in Sources */,
 				277757401631BB3500349E12 /* IndefinitelySpinningAnimation.h in Sources */,
 				23EE3A221527F4090006CDA5 /* Talkset.h in Sources */,
 				23EE3A231527F4090006CDA5 /* Talkset.m in Sources */,
@@ -1420,8 +1426,7 @@
 				GCC_PREFIX_HEADER = WXYC_Radio_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2/**",
-					"$(SOURCE_ROOT)/RestKit/Build/**",
-					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
 				);
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
