@@ -42,6 +42,8 @@ enum AlertTableSections {
 @synthesize retrievingImageIndicator;
 @synthesize reflectionView;
 
+@synthesize playcut = _playcut;
+
 @synthesize favoriteButton;
 @synthesize previousButton;
 @synthesize nextButton;
@@ -49,6 +51,16 @@ enum AlertTableSections {
 
 static const CGFloat kDefaultReflectionFraction = 0.15;
 static const CGFloat kDefaultReflectionOpacity = 0.40;
+
+- (id) initWithPlaycut:(Playcut*)playcut
+{
+	if (self = [super initWithNibName:@"DetailsView" bundle:nil])
+	{
+		self.playcut = playcut;
+	}
+	
+	return self;
+}
 
 #pragma mark -
 #pragma mark Segmented Control business
@@ -153,39 +165,12 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 #pragma mark -
 #pragma mark GoogleImageSearch delegate business
 
--(void) handleGoogleImageSearchResults:(NSArray *)results {
-	NSArray *innerResults = (NSArray*) ((NSDictionary*) results)[@"responseData"][@"results"];
-	if ([innerResults count] > 0) {
-		NSDictionary *firstResult = innerResults[0];
-		NSLog(@"%@", firstResult[@"url"]);
-		
-		NSURL *url = [NSURL URLWithString:firstResult[@"url"]];
-		
-		UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]]; 
-		image = [image imageCroppedToFitSize:albumArt.frame.size];
-		albumArt.image = image;
-
-//		currentData = [delegate NPcurrent];
-//		if (image != nil) {
-//			[[delegate NPcurrent] setPrimaryImage:UIImagePNGRepresentation(image)];
-//		}
-		
-		NSError *error = nil;
-		if (![currentData.managedObjectContext save:&error]) {
-			NSLog(@"Google image save error: %@, %@",error, [error userInfo]);
-		}
-		
-		[retrievingImageIndicator stopAnimating];
-	}
-}
-
 - (void)backgroundAlbumCoverSearch:(Playcut*)playcut {
 	@autoreleasepool {
-		NSArray *searchTerms = @[[playcut valueForKey:@"artist"], [playcut valueForKey:@"album"]];
+		NSArray *searchTerms = @[[self.playcut valueForKey:@"artist"], [self.playcut valueForKey:@"album"]];
 		NSString *searchTermsString = [searchTerms componentsJoinedByString:@"+"];
 		searchTermsString = [searchTermsString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 		
-		//gis = [[GoogleImageSearch alloc] initWithDelegate:self];
 		NSArray *results = [gis synchronizedSearchWithString:searchTermsString];
 		
 		NSArray *innerResults = (NSArray*) ((NSDictionary*) results)[@"responseData"][@"results"];
@@ -194,13 +179,8 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 			
 			NSURL *urlOfImage = [NSURL URLWithString:firstResult[@"url"]];
 			
-			UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:urlOfImage]]; 
-			image = [image imageCroppedToFitSize:albumArt.frame.size];
-			if (image != nil) {
-				[playcut setPrimaryImage:UIImagePNGRepresentation(image)];
-			}
-			
-			[retrievingImageIndicator stopAnimating];
+			albumArt.imageURL = urlOfImage;
+			[self.playcut setPrimaryImage:UIImagePNGRepresentation(albumArt.image)];
 		}
 	}
 }

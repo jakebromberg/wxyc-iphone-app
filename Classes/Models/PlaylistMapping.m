@@ -23,7 +23,7 @@
 
 @synthesize objectManager;
 
-const NSString* baseURL = @"http://localhost/~jake/";
+const NSString* baseURL = @"http://localhost/";
 
 -(void)initializeObjectManager {
 	objectManager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:baseURL]];

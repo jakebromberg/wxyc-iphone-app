@@ -13,12 +13,12 @@
 #import "PlaycutNavBarTitleView.h"
 #import "GoogleImageSearch.h"
 #import "Playcut.h"
+#import "LazyImageLoaderView.h"
 
 @interface PlaycutViewController : UIViewController <GoogleImageSearchDelegate, 
 													 UIActionSheetDelegate, 
 													 MFMailComposeViewControllerDelegate>
 {
-	UIImageView *albumArt;
 	UIImageView *reflectionView;
 	UIActivityIndicatorView *retrievingImageIndicator;
 	
@@ -28,9 +28,12 @@
 	Playcut *currentData;
 }
 
+- (id) initWithPlaycut:(Playcut*)playcut;
 - (void) refreshViews;
 
-@property (nonatomic, strong) IBOutlet UIImageView *albumArt;
+@property (nonatomic, strong) Playcut *playcut;
+
+@property (nonatomic, strong) IBOutlet LazyImageLoaderView *albumArt;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *retrievingImageIndicator;
 @property (nonatomic, strong) IBOutlet UIImageView *reflectionView;
 

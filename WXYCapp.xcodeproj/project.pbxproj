@@ -210,6 +210,8 @@
 		23EE3A231527F4090006CDA5 /* Talkset.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE3A211527F3D00006CDA5 /* Talkset.m */; };
 		23F407BC112389FC00A4A3D3 /* ListenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F407BB112389FC00A4A3D3 /* ListenView.xib */; };
 		23F407D611238B1300A4A3D3 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F407D511238B1300A4A3D3 /* AboutView.xib */; };
+		23F66FF5164ED5680026FFD0 /* LazyImageLoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F66FF4164ED5680026FFD0 /* LazyImageLoaderView.m */; };
+		23F66FF7164ED57E0026FFD0 /* LazyImageLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F66FF6164ED57E0026FFD0 /* LazyImageLoaderView.xib */; };
 		23F7A8101646E34E008E97FD /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23EF279C14F5DC4100EA7ACB /* libRestKit.a */; };
 		2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */; };
 		277757401631BB3500349E12 /* IndefinitelySpinningAnimation.h in Sources */ = {isa = PBXBuildFile; fileRef = 2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */; };
@@ -471,6 +473,9 @@
 		23F1127912A8782A00DD6C1D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = iphoneos4.0/System/Library/Frameworks/MessageUI.framework; sourceTree = "<group>"; };
 		23F407BB112389FC00A4A3D3 /* ListenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListenView.xib; sourceTree = "<group>"; };
 		23F407D511238B1300A4A3D3 /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
+		23F66FF3164ED5680026FFD0 /* LazyImageLoaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LazyImageLoaderView.h; path = "View Controllers/LazyImageLoaderView.h"; sourceTree = "<group>"; };
+		23F66FF4164ED5680026FFD0 /* LazyImageLoaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LazyImageLoaderView.m; path = "View Controllers/LazyImageLoaderView.m"; sourceTree = "<group>"; };
+		23F66FF6164ED57E0026FFD0 /* LazyImageLoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LazyImageLoaderView.xib; sourceTree = "<group>"; };
 		2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndefinitelySpinningAnimation.h; path = Classes/IndefinitelySpinningAnimation.h; sourceTree = SOURCE_ROOT; };
 		2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndefinitelySpinningAnimation.m; path = Classes/IndefinitelySpinningAnimation.m; sourceTree = SOURCE_ROOT; };
 		277757421631BBE900349E12 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
@@ -511,8 +516,8 @@
 		277757751631C3EF00349E12 /* FTUtils+NSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FTUtils+NSObject.m"; path = "Classes/FTUtils+NSObject.m"; sourceTree = "<group>"; };
 		277757761631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FTUtils+UIGestureRecognizer.m"; path = "Classes/FTUtils+UIGestureRecognizer.m"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePlaylistTableViewController.h; sourceTree = "<group>"; };
-		4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePlaylistTableViewController.m; sourceTree = "<group>"; };
+		4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LivePlaylistTableViewController.h; path = "View Controllers/LivePlaylistTableViewController.h"; sourceTree = "<group>"; };
+		4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LivePlaylistTableViewController.m; path = "View Controllers/LivePlaylistTableViewController.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -567,15 +572,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		23077E2A112B1D4F005D595C /* LivePlaylistTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */,
-				4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */,
-			);
-			name = LivePlaylistTableViewController;
-			sourceTree = "<group>";
-		};
 		230EB27712762B460065308D /* toolbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,6 +624,8 @@
 		230EDC331506875D001C173F /* Live Playlist Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */,
+				4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */,
 				23EE39251527D1210006CDA5 /* LivePlaylistTableViewCell.h */,
 				23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */,
 				23EE39271527D12A0006CDA5 /* LoadPreviousEntriesCell.h */,
@@ -645,6 +643,9 @@
 				234BDC2C150D455F00859C86 /* PlaycutDetailsViewController.h */,
 				234BDC2D150D455F00859C86 /* PlaycutDetailsViewController.m */,
 				234BDC2A150D393A00859C86 /* PlaycutDetails.xib */,
+				23F66FF3164ED5680026FFD0 /* LazyImageLoaderView.h */,
+				23F66FF4164ED5680026FFD0 /* LazyImageLoaderView.m */,
+				23F66FF6164ED57E0026FFD0 /* LazyImageLoaderView.xib */,
 			);
 			name = "Live Playlist Table View Cells";
 			path = ..;
@@ -873,7 +874,6 @@
 				238CC1C512664111006EC552 /* CasssetteReelViewController */,
 				23BF132F113B465B00A72DE7 /* AboutViewController */,
 				23BF132D113B463000A72DE7 /* ListenViewController */,
-				23077E2A112B1D4F005D595C /* LivePlaylistTableViewController */,
 				23539C111280A08B004F9A11 /* PlaycutViewController */,
 				23BF132C113B460C00A72DE7 /* News */,
 				23BF148D113C06EE00A72DE7 /* WebView Controller */,
@@ -1244,6 +1244,7 @@
 				234B4A77129384B7001B3EB2 /* ShareItemAccessoryView.xib in Resources */,
 				23E750ED129AFEE5005A9468 /* testJSON.txt in Resources */,
 				234BDC2B150D393A00859C86 /* PlaycutDetails.xib in Resources */,
+				23F66FF7164ED57E0026FFD0 /* LazyImageLoaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1384,6 +1385,7 @@
 				277757781631C3EF00349E12 /* FTAnimationManager.m in Sources */,
 				277757791631C3EF00349E12 /* FTUtils+NSObject.m in Sources */,
 				2777577A1631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m in Sources */,
+				23F66FF5164ED5680026FFD0 /* LazyImageLoaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
