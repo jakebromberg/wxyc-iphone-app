@@ -22,7 +22,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	if (selected) {
-		PlaycutViewController *detail = [[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil];
+		PlaycutViewController *detail = [[PlaycutViewController alloc] initWithPlaycut:(Playcut*)self.entity];
 		detail.hidesBottomBarWhenPushed = YES;
 		[[self.delegate navigationController] pushViewController:detail animated:YES];
 	}

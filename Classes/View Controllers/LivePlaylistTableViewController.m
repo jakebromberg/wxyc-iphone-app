@@ -33,11 +33,6 @@ static const int kNumEntriesToFetch = 20;
 
 PlaylistController* livePlaylistCtrl;
 
-//BOOL (^test)(id obj, NSUInteger idx, BOOL *stop) = ^ (id obj, NSUInteger idx, BOOL *stop) {
-//	NSString *entryType = [[[livePlaylistCtrl.playlist objectAtIndex:idx] class] description];
-//	return ([entryType isEqualToString:@"Playcut"]);
-//};
-
 - (void)controllerContextDidSave:(NSNotification *)aNotification {
 	[managedObjectContext mergeChangesFromContextDidSaveNotification:aNotification];
 	
@@ -130,9 +125,9 @@ PlaylistController* livePlaylistCtrl;
 	
 	LivePlaylistTableViewCell* cell = (LivePlaylistTableViewCell*) [self.tableView cellForRowAtIndexPath:indexPath];
 	if([cell class] == [PlaycutCell class]) {
-		PlaycutDetailsViewController *detailsViewController = [[PlaycutDetailsViewController alloc] init];
-		[detailsViewController setEntity:[(PlaycutCell*)cell entity]];
-//		[self.tableView inser
+//		PlaycutDetailsViewController *detailsViewController = [[PlaycutDetailsViewController alloc] init];
+//		[detailsViewController setEntity:[(PlaycutCell*)cell entity]];
+		PlaycutViewController *playcutView = [[PlaycutViewController alloc] init];
 	}
 	
 //	if ([indexPath row] == [self maxEntriesToDisplay]) { //"Previously, on WXYC..."

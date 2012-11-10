@@ -309,9 +309,9 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
 		/* handle the error condition */ 
 	}
 	
-	NSURL* url = [NSURL URLWithString:@"http://localhost/~jake/"];
+	NSURL* url = [NSURL URLWithString:@"http://localhost/"];
 	livePlaylistCtrlr = [[PlaylistController alloc] initWithBaseURL:url];
-//	[livePlaylistCtrlr fetchPlaylist];
+	[livePlaylistCtrlr fetchPlaylist];
 	
 //	NSTimer *updatePlaylist;
 //	updatePlaylist = [NSTimer scheduledTimerWithTimeInterval: 30
