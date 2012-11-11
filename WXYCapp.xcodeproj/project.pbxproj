@@ -166,12 +166,6 @@
 		23EE39E91527F0790006CDA5 /* Breakpoint.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39671527EB100006CDA5 /* Breakpoint.h */; };
 		23EE39EA1527F0790006CDA5 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39681527EB100006CDA5 /* Breakpoint.m */; };
 		23EE39EB1527F0790006CDA5 /* Playcut.h in Sources */ = {isa = PBXBuildFile; fileRef = 2325E0E91288A70800B064BB /* Playcut.h */; };
-		23EE39F01527F0790006CDA5 /* ShareItemTextInputViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE396D1527EB4B0006CDA5 /* ShareItemTextInputViewController.h */; };
-		23EE39F11527F0790006CDA5 /* ShareItemTextInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE396E1527EB4B0006CDA5 /* ShareItemTextInputViewController.m */; };
-		23EE39F21527F0790006CDA5 /* TweetPlaycutViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE396F1527EB7B0006CDA5 /* TweetPlaycutViewController.h */; };
-		23EE39F31527F0790006CDA5 /* TweetPlaycutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39701527EB7B0006CDA5 /* TweetPlaycutViewController.m */; };
-		23EE39F41527F0790006CDA5 /* FacebookSharePlaycutViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39711527EB860006CDA5 /* FacebookSharePlaycutViewController.h */; };
-		23EE39F51527F0790006CDA5 /* FacebookSharePlaycutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39721527EB860006CDA5 /* FacebookSharePlaycutViewController.m */; };
 		23EE39F61527F0790006CDA5 /* NextPrevDetailsDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39731527EB9D0006CDA5 /* NextPrevDetailsDelegate.h */; };
 		23EE39F91527F0790006CDA5 /* FavoritesTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39761527EBB90006CDA5 /* FavoritesTableViewController.h */; };
 		23EE39FA1527F07A0006CDA5 /* CassetteReelViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39781527EBC40006CDA5 /* CassetteReelViewController.h */; };
@@ -448,12 +442,6 @@
 		23EE39661527EB070006CDA5 /* PlaylistEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaylistEntry.m; sourceTree = "<group>"; };
 		23EE39671527EB100006CDA5 /* Breakpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Breakpoint.h; sourceTree = "<group>"; };
 		23EE39681527EB100006CDA5 /* Breakpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Breakpoint.m; sourceTree = "<group>"; };
-		23EE396D1527EB4B0006CDA5 /* ShareItemTextInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareItemTextInputViewController.h; sourceTree = "<group>"; };
-		23EE396E1527EB4B0006CDA5 /* ShareItemTextInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareItemTextInputViewController.m; sourceTree = "<group>"; };
-		23EE396F1527EB7B0006CDA5 /* TweetPlaycutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetPlaycutViewController.h; sourceTree = "<group>"; };
-		23EE39701527EB7B0006CDA5 /* TweetPlaycutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetPlaycutViewController.m; sourceTree = "<group>"; };
-		23EE39711527EB860006CDA5 /* FacebookSharePlaycutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookSharePlaycutViewController.h; sourceTree = "<group>"; };
-		23EE39721527EB860006CDA5 /* FacebookSharePlaycutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookSharePlaycutViewController.m; sourceTree = "<group>"; };
 		23EE39731527EB9D0006CDA5 /* NextPrevDetailsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NextPrevDetailsDelegate.h; sourceTree = "<group>"; };
 		23EE39761527EBB90006CDA5 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
 		23EE39781527EBC40006CDA5 /* CassetteReelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CassetteReelViewController.h; sourceTree = "<group>"; };
@@ -745,19 +733,6 @@
 			path = html;
 			sourceTree = "<group>";
 		};
-		234B4A6D1293833A001B3EB2 /* ShareItemTextInputViewController */ = {
-			isa = PBXGroup;
-			children = (
-				23EE396D1527EB4B0006CDA5 /* ShareItemTextInputViewController.h */,
-				23EE396E1527EB4B0006CDA5 /* ShareItemTextInputViewController.m */,
-				23EE396F1527EB7B0006CDA5 /* TweetPlaycutViewController.h */,
-				23EE39701527EB7B0006CDA5 /* TweetPlaycutViewController.m */,
-				23EE39711527EB860006CDA5 /* FacebookSharePlaycutViewController.h */,
-				23EE39721527EB860006CDA5 /* FacebookSharePlaycutViewController.m */,
-			);
-			name = ShareItemTextInputViewController;
-			sourceTree = "<group>";
-		};
 		23539C111280A08B004F9A11 /* PlaycutViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,7 +849,6 @@
 		23BF128C113B10EE00A72DE7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				234B4A6D1293833A001B3EB2 /* ShareItemTextInputViewController */,
 				23EE39731527EB9D0006CDA5 /* NextPrevDetailsDelegate.h */,
 				23B32DF5126E70BF008414F4 /* FavoritesTableViewController */,
 				238CC1C512664111006EC552 /* CasssetteReelViewController */,
@@ -1012,10 +986,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				23B613F5164EF06C004547C2 /* Social.framework */,
-				2777576B1631BD8700349E12 /* libxml2.dylib */,
-				277757681631BD4800349E12 /* MessageUI.framework */,
-				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1052,6 +1022,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
+				2777576B1631BD8700349E12 /* libxml2.dylib */,
+				23B613F5164EF06C004547C2 /* Social.framework */,
+				277757681631BD4800349E12 /* MessageUI.framework */,
 				23B613F8164EFA8D004547C2 /* Social.framework */,
 				23F1127912A8782A00DD6C1D /* MessageUI.framework */,
 				23601B9A105F116000E6A6FB /* MediaPlayer.framework */,
@@ -1330,12 +1304,6 @@
 				23EE39EA1527F0790006CDA5 /* Breakpoint.m in Sources */,
 				23EE39EB1527F0790006CDA5 /* Playcut.h in Sources */,
 				2325E0EF1288A70800B064BB /* Playcut.m in Sources */,
-				23EE39F01527F0790006CDA5 /* ShareItemTextInputViewController.h in Sources */,
-				23EE39F11527F0790006CDA5 /* ShareItemTextInputViewController.m in Sources */,
-				23EE39F21527F0790006CDA5 /* TweetPlaycutViewController.h in Sources */,
-				23EE39F31527F0790006CDA5 /* TweetPlaycutViewController.m in Sources */,
-				23EE39F41527F0790006CDA5 /* FacebookSharePlaycutViewController.h in Sources */,
-				23EE39F51527F0790006CDA5 /* FacebookSharePlaycutViewController.m in Sources */,
 				23EE39F61527F0790006CDA5 /* NextPrevDetailsDelegate.h in Sources */,
 				23EE39F91527F0790006CDA5 /* FavoritesTableViewController.h in Sources */,
 				23B32DF8126E70D7008414F4 /* FavoritesTableViewController.m in Sources */,
