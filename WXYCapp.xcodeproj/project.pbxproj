@@ -51,6 +51,8 @@
 		234D189711407D1500812919 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 234D189411407D1500812919 /* about.html */; };
 		234D189811407D1500812919 /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = 234D189511407D1500812919 /* article.html */; };
 		234D189911407D1500812919 /* iphoneapp.css in Resources */ = {isa = PBXBuildFile; fileRef = 234D189611407D1500812919 /* iphoneapp.css */; };
+		234DA3481650709C0056F43C /* AudioStreamer.h in Sources */ = {isa = PBXBuildFile; fileRef = 234DA34316506CD90056F43C /* AudioStreamer.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		234DA3491650709C0056F43C /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DA34416506CD90056F43C /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		23539B93128097D0004F9A11 /* emailLetter.png in Resources */ = {isa = PBXBuildFile; fileRef = 23539B92128097D0004F9A11 /* emailLetter.png */; };
 		23539B9A12809A4D004F9A11 /* album_cover_placeholder.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 23539B9912809A4D004F9A11 /* album_cover_placeholder.PNG */; };
 		23539D281280B27E004F9A11 /* PlaycutNavBarTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23539D271280B27E004F9A11 /* PlaycutNavBarTitleView.xib */; };
@@ -62,7 +64,7 @@
 		23601B9B105F116000E6A6FB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23601B9A105F116000E6A6FB /* MediaPlayer.framework */; };
 		23638029163334B700AAC2CF /* FTUtils.h in Sources */ = {isa = PBXBuildFile; fileRef = 277757701631C3E500349E12 /* FTUtils.h */; };
 		2363802A163334B700AAC2CF /* FTUtils+NSObject.h in Sources */ = {isa = PBXBuildFile; fileRef = 277757711631C3E500349E12 /* FTUtils+NSObject.h */; };
-		2363802B163334B700AAC2CF /* FTUtils+UIGestureRecognizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 277757721631C3E500349E12 /* FTUtils+UIGestureRecognizer.h */; };
+		2363802B163334B700AAC2CF /* FTUtils+UIGestureRecognizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 277757721631C3E500349E12 /* FTUtils+UIGestureRecognizer.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
 		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
@@ -225,7 +227,7 @@
 		277757771631C3EF00349E12 /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757731631C3EF00349E12 /* FTAnimation+UIView.m */; };
 		277757781631C3EF00349E12 /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757741631C3EF00349E12 /* FTAnimationManager.m */; };
 		277757791631C3EF00349E12 /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757751631C3EF00349E12 /* FTUtils+NSObject.m */; };
-		2777577A1631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757761631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m */; };
+		2777577A1631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757761631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -978,6 +980,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1014,7 +1017,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
 				2777576B1631BD8700349E12 /* libxml2.dylib */,
 				23B613F5164EF06C004547C2 /* Social.framework */,
 				277757681631BD4800349E12 /* MessageUI.framework */,
@@ -1229,6 +1231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234DA3481650709C0056F43C /* AudioStreamer.h in Sources */,
+				234DA3491650709C0056F43C /* AudioStreamer.m in Sources */,
 				23638029163334B700AAC2CF /* FTUtils.h in Sources */,
 				2363802A163334B700AAC2CF /* FTUtils+NSObject.h in Sources */,
 				2363802B163334B700AAC2CF /* FTUtils+UIGestureRecognizer.h in Sources */,
