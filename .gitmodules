@@ -9,7 +9,4 @@
 	url = https://github.com/neror/ftutils.git
 [submodule "Classes/Libraries/AudioStreamer"]
 	path = Classes/Libraries/AudioStreamer
-	url = git@github.com:jakebromberg/wxyc-iphone-app.git
-[submodule "Classes/Libraries/MBProgressHUD"]
-	path = Classes/Libraries/MBProgressHUD
-	url = git@github.com:jakebromberg/wxyc-iphone-app.git
+	url = git://github.com/mattgallagher/AudioStreamer.git
