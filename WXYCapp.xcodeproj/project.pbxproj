@@ -155,8 +155,6 @@
 		23EE39CF1527F0790006CDA5 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39511527EA7F0006CDA5 /* EGORefreshTableHeaderView.m */; };
 		23EE39D01527F0790006CDA5 /* PullToRefreshTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39521527EA860006CDA5 /* PullToRefreshTableViewController.h */; };
 		23EE39D11527F0790006CDA5 /* PullToRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39531527EA860006CDA5 /* PullToRefreshTableViewController.m */; };
-		23EE39DF1527F0790006CDA5 /* MBProgressHUD.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE391D1527D0B10006CDA5 /* MBProgressHUD.h */; };
-		23EE39E01527F0790006CDA5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE391E1527D0B10006CDA5 /* MBProgressHUD.m */; };
 		23EE39E11527F0790006CDA5 /* AudioStreamer.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39611527EAC50006CDA5 /* AudioStreamer.h */; };
 		23EE39E21527F0790006CDA5 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39621527EAC50006CDA5 /* AudioStreamer.m */; };
 		23EE39E51527F0790006CDA5 /* Playlist.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39631527EB070006CDA5 /* Playlist.h */; };
@@ -390,8 +388,6 @@
 		23DBC356113F804E00C19BD0 /* LoadPreviousEntriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadPreviousEntriesCell.xib; sourceTree = "<group>"; };
 		23E750EC129AFEE5005A9468 /* testJSON.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testJSON.txt; sourceTree = "<group>"; };
 		23E77B1E1118DCB3007D373D /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		23EE391D1527D0B10006CDA5 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		23EE391E1527D0B10006CDA5 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		23EE391F1527D0CF0006CDA5 /* AudioStreamController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamController.h; sourceTree = "<group>"; };
 		23EE39201527D0CF0006CDA5 /* AudioStreamController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamController.m; sourceTree = "<group>"; };
 		23EE39211527D0EF0006CDA5 /* PlaylistController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaylistController.h; sourceTree = "<group>"; };
@@ -838,8 +834,6 @@
 				2353A7D712820BAC004F9A11 /* MGImageUtilities */,
 				23BF1235113AE46900A72DE7 /* PullToRefreshTableHeaderView */,
 				277757411631BBE900349E12 /* SBJSON */,
-				23EE391D1527D0B10006CDA5 /* MBProgressHUD.h */,
-				23EE391E1527D0B10006CDA5 /* MBProgressHUD.m */,
 				23EE39611527EAC50006CDA5 /* AudioStreamer.h */,
 				23EE39621527EAC50006CDA5 /* AudioStreamer.m */,
 			);
@@ -1292,8 +1286,6 @@
 				23EE39CF1527F0790006CDA5 /* EGORefreshTableHeaderView.m in Sources */,
 				23EE39D01527F0790006CDA5 /* PullToRefreshTableViewController.h in Sources */,
 				23EE39D11527F0790006CDA5 /* PullToRefreshTableViewController.m in Sources */,
-				23EE39DF1527F0790006CDA5 /* MBProgressHUD.h in Sources */,
-				23EE39E01527F0790006CDA5 /* MBProgressHUD.m in Sources */,
 				23EE39E11527F0790006CDA5 /* AudioStreamer.h in Sources */,
 				23EE39E21527F0790006CDA5 /* AudioStreamer.m in Sources */,
 				23EE39E51527F0790006CDA5 /* Playlist.h in Sources */,
