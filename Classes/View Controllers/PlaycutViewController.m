@@ -8,6 +8,7 @@
 
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import <Social/Social.h>
 
 #import "PlaycutViewController.h"
 #import "PlaycutNavBarTitleView.h"
@@ -263,32 +264,37 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	}
 	
 	if (buttonIndex == kUIAction_Twitter) {
-		TweetPlaycutViewController *controller = [[TweetPlaycutViewController alloc] initWithNibName:@"ShareItemTextInputView" bundle:nil];
-		//TODO: this is a bunch of bullshit. I should be able to pass the controller
-		//a Playcut* object but something in my object keeps defaulting to nil
-		controller.artistString = titleDeets.artistLabel.text;
-		controller.titleString = titleDeets.trackLabel.text;
-		controller.albumString = titleDeets.albumLabel.text;
-		UINavigationController *navigationController = [[UINavigationController alloc]
-														initWithRootViewController:controller];
-		[navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-		[controller setDelegate:self];
-		[[self navigationController] presentModalViewController:navigationController animated:YES];
+		[self displayComposeScreenWithServiceType:SLServiceTypeTwitter];
 	}
 	
 	if (buttonIndex == kUIAction_Facebook) {
-		FacebookSharePlaycutViewController *controller = [[FacebookSharePlaycutViewController alloc] initWithNibName:@"ShareItemTextInputView" bundle:nil];
-		controller.artistString = titleDeets.artistLabel.text;
-		controller.titleString = titleDeets.trackLabel.text;
-		controller.albumString = titleDeets.albumLabel.text;
-		UINavigationController *navigationController = [[UINavigationController alloc]
-														initWithRootViewController:controller];
-		[navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-		[controller setDelegate:self];
-		[[self navigationController] presentModalViewController:navigationController animated:YES];
-		
+		[self displayComposeScreenWithServiceType:SLServiceTypeFacebook];
 	}
 }
+
+- (void) displayComposeScreenWithServiceType: (NSString*) serviceType
+{
+    SLComposeViewController *composer = [SLComposeViewController
+										 composeViewControllerForServiceType:serviceType];
+	[composer addImage:albumArt.image];
+	[composer addURL:[NSURL URLWithString:@"http://wxyc.org"]];
+	[composer setInitialText:[NSString stringWithFormat:@"Listening to %@ by %@ on WXYC", [_playcut valueForKey:@"song"], [_playcut valueForKey:@"artist"]]];
+
+    [composer setCompletionHandler:^(SLComposeViewControllerResult result) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            // This code is never called for Facebook, only for Twitter.
+            // If the dismissViewControllerAnimated:completion: call above
+            // is left out, the Twitter composer takes two taps on Cancel
+            // to dismiss and upon successfull posting the composer slides
+            // out, but the buttons in this controller’s view are no longer
+            // active.
+            NSLog(@"Social composer “%@” done with status #%i.", serviceType, result);
+        }];
+    }];
+	
+    [self presentViewController:composer animated:YES completion:NULL];
+}
+
 
 - (IBAction)previousButtonPush:(id)sender {
 //	currentData = [delegate NPprev];
