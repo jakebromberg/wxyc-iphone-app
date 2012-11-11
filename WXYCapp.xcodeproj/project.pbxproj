@@ -93,6 +93,8 @@
 		23B32DFA126E7134008414F4 /* FavoritesTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B32DF9126E7134008414F4 /* FavoritesTableView.xib */; };
 		23B32EE3126E85FA008414F4 /* Playlist.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 23B32EE2126E85FA008414F4 /* Playlist.xcdatamodel */; };
 		23B61377114D6FEA007A4BC5 /* jsonTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B61376114D6FEA007A4BC5 /* jsonTest.json */; };
+		23B613F7164EFA64004547C2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B613F5164EF06C004547C2 /* Social.framework */; };
+		23B613F9164EFA8D004547C2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B613F8164EFA8D004547C2 /* Social.framework */; };
 		23B911F3128248F300B706BF /* facebook-f.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B911F2128248F300B706BF /* facebook-f.png */; };
 		23B911F51282495600B706BF /* facebook-f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B911F41282495600B706BF /* facebook-f@2x.png */; };
 		23B9120312824B0800B706BF /* emailLetter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B9120212824B0800B706BF /* emailLetter@2x.png */; };
@@ -374,6 +376,8 @@
 		23B32DF9126E7134008414F4 /* FavoritesTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesTableView.xib; sourceTree = "<group>"; };
 		23B32EE2126E85FA008414F4 /* Playlist.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Playlist.xcdatamodel; sourceTree = "<group>"; };
 		23B61376114D6FEA007A4BC5 /* jsonTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jsonTest.json; sourceTree = "<group>"; };
+		23B613F5164EF06C004547C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		23B613F8164EFA8D004547C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		23B911F2128248F300B706BF /* facebook-f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-f.png"; sourceTree = "<group>"; };
 		23B911F41282495600B706BF /* facebook-f@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-f@2x.png"; sourceTree = "<group>"; };
 		23B9120212824B0800B706BF /* emailLetter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emailLetter@2x.png"; sourceTree = "<group>"; };
@@ -526,6 +530,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B613F7164EFA64004547C2 /* Social.framework in Frameworks */,
 				234B4AEB12938EF1001B3EB2 /* Security.framework in Frameworks */,
 				23F7A8101646E34E008E97FD /* libRestKit.a in Frameworks */,
 				2777576C1631BD8700349E12 /* libxml2.dylib in Frameworks */,
@@ -542,6 +547,7 @@
 				23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */,
 				23B32B59126D667B008414F4 /* AVFoundation.framework in Frameworks */,
 				230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */,
+				23B613F9164EFA8D004547C2 /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,6 +1012,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				23B613F5164EF06C004547C2 /* Social.framework */,
 				2777576B1631BD8700349E12 /* libxml2.dylib */,
 				277757681631BD4800349E12 /* MessageUI.framework */,
 				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
@@ -1045,6 +1052,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				23B613F8164EFA8D004547C2 /* Social.framework */,
 				23F1127912A8782A00DD6C1D /* MessageUI.framework */,
 				23601B9A105F116000E6A6FB /* MediaPlayer.framework */,
 				23601927105F05C600E6A6FB /* AudioToolbox.framework */,

@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/View Controllers/PlaycutViewController.m"
-         timestampString = "374267239.446559"
+         timestampString = "374366004.427194"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "194"
-         endingLineNumber = "194"
+         startingLineNumber = "169"
+         endingLineNumber = "169"
          landmarkName = "-backgroundAlbumCoverSearch:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/View Controllers/PlaycutViewController.m"
-         timestampString = "374267910.557176"
+         timestampString = "374366004.427194"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
          landmarkName = "-backgroundAlbumCoverSearch:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,12 +112,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/View Controllers/PlaycutViewController.m"
-         timestampString = "374269089.141764"
+         timestampString = "374366004.427194"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "238"
-         endingLineNumber = "238"
+         startingLineNumber = "201"
+         endingLineNumber = "201"
          landmarkName = "-refreshViews"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/View Controllers/PlaycutViewController.m"
+         timestampString = "374366433.037257"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "303"
+         endingLineNumber = "303"
+         landmarkName = "-displayComposeScreenWithServiceType:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/View Controllers/PlaycutViewController.m"
+         timestampString = "374366433.037257"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "306"
+         endingLineNumber = "306"
+         landmarkName = "-displayComposeScreenWithServiceType:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
