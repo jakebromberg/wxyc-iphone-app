@@ -18,9 +18,9 @@
 #import "WXYCDataStack.h"
 #import "WebViewController.h"
 //#import "Reachability.h"
-#import "TweetPlaycutViewController.h"
+//#import "TweetPlaycutViewController.h"
 #import "PlaylistController.h"
-#import "FacebookSharePlaycutViewController.h"
+//#import "FacebookSharePlaycutViewController.h"
 
 @interface PlaycutViewController (){
 	GoogleImageSearch *gis;
