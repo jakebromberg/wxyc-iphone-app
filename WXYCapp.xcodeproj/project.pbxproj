@@ -51,7 +51,6 @@
 		234D189711407D1500812919 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 234D189411407D1500812919 /* about.html */; };
 		234D189811407D1500812919 /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = 234D189511407D1500812919 /* article.html */; };
 		234D189911407D1500812919 /* iphoneapp.css in Resources */ = {isa = PBXBuildFile; fileRef = 234D189611407D1500812919 /* iphoneapp.css */; };
-		234DA3481650709C0056F43C /* AudioStreamer.h in Sources */ = {isa = PBXBuildFile; fileRef = 234DA34316506CD90056F43C /* AudioStreamer.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		234DA3491650709C0056F43C /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DA34416506CD90056F43C /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		23539B93128097D0004F9A11 /* emailLetter.png in Resources */ = {isa = PBXBuildFile; fileRef = 23539B92128097D0004F9A11 /* emailLetter.png */; };
 		23539B9A12809A4D004F9A11 /* album_cover_placeholder.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 23539B9912809A4D004F9A11 /* album_cover_placeholder.PNG */; };
@@ -62,9 +61,6 @@
 		23601A7E105F089800E6A6FB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23601927105F05C600E6A6FB /* AudioToolbox.framework */; };
 		23601A80105F089D00E6A6FB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236019EB105F060B00E6A6FB /* CFNetwork.framework */; };
 		23601B9B105F116000E6A6FB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23601B9A105F116000E6A6FB /* MediaPlayer.framework */; };
-		23638029163334B700AAC2CF /* FTUtils.h in Sources */ = {isa = PBXBuildFile; fileRef = 277757701631C3E500349E12 /* FTUtils.h */; };
-		2363802A163334B700AAC2CF /* FTUtils+NSObject.h in Sources */ = {isa = PBXBuildFile; fileRef = 277757711631C3E500349E12 /* FTUtils+NSObject.h */; };
-		2363802B163334B700AAC2CF /* FTUtils+UIGestureRecognizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 277757721631C3E500349E12 /* FTUtils+UIGestureRecognizer.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
 		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
@@ -114,93 +110,36 @@
 		23DBC355113F804900C19BD0 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC354113F804900C19BD0 /* MainWindow.xib */; };
 		23DBC357113F804E00C19BD0 /* LoadPreviousEntriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC356113F804E00C19BD0 /* LoadPreviousEntriesCell.xib */; };
 		23E750ED129AFEE5005A9468 /* testJSON.txt in Resources */ = {isa = PBXBuildFile; fileRef = 23E750EC129AFEE5005A9468 /* testJSON.txt */; };
-		23EE39A21527EF320006CDA5 /* AudioStreamController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE391F1527D0CF0006CDA5 /* AudioStreamController.h */; };
 		23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39201527D0CF0006CDA5 /* AudioStreamController.m */; };
-		23EE39A41527EF320006CDA5 /* PlaylistController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39211527D0EF0006CDA5 /* PlaylistController.h */; };
 		23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39221527D0EF0006CDA5 /* PlaylistController.m */; };
-		23EE39A61527F0790006CDA5 /* BlogEntryTableViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39231527D10A0006CDA5 /* BlogEntryTableViewCell.h */; };
 		23EE39A71527F0790006CDA5 /* BlogEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39241527D10A0006CDA5 /* BlogEntryTableViewCell.m */; };
-		23EE39A81527F0790006CDA5 /* LivePlaylistTableViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39251527D1210006CDA5 /* LivePlaylistTableViewCell.h */; };
 		23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */; };
-		23EE39AA1527F0790006CDA5 /* LoadPreviousEntriesCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39271527D12A0006CDA5 /* LoadPreviousEntriesCell.h */; };
 		23EE39AB1527F0790006CDA5 /* LoadPreviousEntriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39281527D12A0006CDA5 /* LoadPreviousEntriesCell.m */; };
-		23EE39AC1527F0790006CDA5 /* BreakpointCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39291527D1340006CDA5 /* BreakpointCell.h */; };
 		23EE39AD1527F0790006CDA5 /* BreakpointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392A1527D1340006CDA5 /* BreakpointCell.m */; };
-		23EE39AE1527F0790006CDA5 /* DelineationCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392B1527D1400006CDA5 /* DelineationCell.h */; };
 		23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392C1527D1400006CDA5 /* DelineationCell.m */; };
-		23EE39B01527F0790006CDA5 /* PlaycutCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392D1527D1490006CDA5 /* PlaycutCell.h */; };
 		23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392E1527D1490006CDA5 /* PlaycutCell.m */; };
-		23EE39B21527F0790006CDA5 /* TalksetCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39331527D16C0006CDA5 /* TalksetCell.h */; };
 		23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39341527D16C0006CDA5 /* TalksetCell.m */; };
-		23EE39B41527F0790006CDA5 /* PlaycutDetailsViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39311527D1640006CDA5 /* PlaycutDetailsViewController.h */; };
-		23EE39B51527F0790006CDA5 /* PlaycutDetailsViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 234BDC2C150D455F00859C86 /* PlaycutDetailsViewController.h */; };
-		23EE39B61527F0790006CDA5 /* PlaycutDetails.xib in Sources */ = {isa = PBXBuildFile; fileRef = 234BDC2A150D393A00859C86 /* PlaycutDetails.xib */; };
-		23EE39B71527F0790006CDA5 /* WalkmanVolumeSlider.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39351527D17F0006CDA5 /* WalkmanVolumeSlider.h */; };
 		23EE39B81527F0790006CDA5 /* WalkmanVolumeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39361527D17F0006CDA5 /* WalkmanVolumeSlider.m */; };
-		23EE39B91527F0790006CDA5 /* VerticalLabel.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39371527D18A0006CDA5 /* VerticalLabel.h */; };
 		23EE39BA1527F0790006CDA5 /* VerticalLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39381527D18A0006CDA5 /* VerticalLabel.m */; };
-		23EE39BB1527F0790006CDA5 /* TransparentBackgroundUIToolbar.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39391527D1930006CDA5 /* TransparentBackgroundUIToolbar.h */; };
 		23EE39BC1527F0790006CDA5 /* TransparentBackgroundUIToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE393A1527D1930006CDA5 /* TransparentBackgroundUIToolbar.m */; };
-		23EE39BD1527F0790006CDA5 /* PlaycutNavBarTitleView.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE393B1527D1A00006CDA5 /* PlaycutNavBarTitleView.h */; };
 		23EE39BE1527F0790006CDA5 /* PlaycutNavBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE393C1527D1A00006CDA5 /* PlaycutNavBarTitleView.m */; };
-		23EE39BF1527F0790006CDA5 /* ShareItemTextInputAccessoryInsertButton.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE393D1527D1B60006CDA5 /* ShareItemTextInputAccessoryInsertButton.h */; };
 		23EE39C01527F0790006CDA5 /* ShareItemTextInputAccessoryInsertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE393E1527D1B60006CDA5 /* ShareItemTextInputAccessoryInsertButton.m */; };
-		23EE39C11527F0790006CDA5 /* ShareItemTextInputAccessoryView.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE393F1527D1B60006CDA5 /* ShareItemTextInputAccessoryView.h */; };
 		23EE39C21527F0790006CDA5 /* ShareItemTextInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39401527D1B60006CDA5 /* ShareItemTextInputAccessoryView.m */; };
-		23EE39C31527F0790006CDA5 /* IndefinitelySpinningImageViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */; };
 		23EE39C41527F0790006CDA5 /* IndefinitelySpinningImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */; };
-		23EE39CA1527F0790006CDA5 /* UIImage+ProportionalFill.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE394C1527EA730006CDA5 /* UIImage+ProportionalFill.h */; };
 		23EE39CB1527F0790006CDA5 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE394D1527EA730006CDA5 /* UIImage+ProportionalFill.m */; };
-		23EE39CC1527F0790006CDA5 /* UIImage+Tint.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE394E1527EA730006CDA5 /* UIImage+Tint.h */; };
 		23EE39CD1527F0790006CDA5 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE394F1527EA730006CDA5 /* UIImage+Tint.m */; };
-		23EE39CE1527F0790006CDA5 /* EGORefreshTableHeaderView.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39501527EA7F0006CDA5 /* EGORefreshTableHeaderView.h */; };
 		23EE39CF1527F0790006CDA5 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39511527EA7F0006CDA5 /* EGORefreshTableHeaderView.m */; };
-		23EE39D01527F0790006CDA5 /* PullToRefreshTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39521527EA860006CDA5 /* PullToRefreshTableViewController.h */; };
 		23EE39D11527F0790006CDA5 /* PullToRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39531527EA860006CDA5 /* PullToRefreshTableViewController.m */; };
-		23EE39E51527F0790006CDA5 /* Playlist.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39631527EB070006CDA5 /* Playlist.h */; };
 		23EE39E61527F0790006CDA5 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39641527EB070006CDA5 /* Playlist.m */; };
-		23EE39E71527F0790006CDA5 /* PlaylistEntry.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39651527EB070006CDA5 /* PlaylistEntry.h */; };
 		23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39661527EB070006CDA5 /* PlaylistEntry.m */; };
-		23EE39E91527F0790006CDA5 /* Breakpoint.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39671527EB100006CDA5 /* Breakpoint.h */; };
 		23EE39EA1527F0790006CDA5 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39681527EB100006CDA5 /* Breakpoint.m */; };
-		23EE39EB1527F0790006CDA5 /* Playcut.h in Sources */ = {isa = PBXBuildFile; fileRef = 2325E0E91288A70800B064BB /* Playcut.h */; };
-		23EE39F61527F0790006CDA5 /* NextPrevDetailsDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39731527EB9D0006CDA5 /* NextPrevDetailsDelegate.h */; };
-		23EE39F91527F0790006CDA5 /* FavoritesTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39761527EBB90006CDA5 /* FavoritesTableViewController.h */; };
-		23EE39FA1527F07A0006CDA5 /* CassetteReelViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39781527EBC40006CDA5 /* CassetteReelViewController.h */; };
-		23EE39FB1527F07A0006CDA5 /* AboutViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE397A1527EBCF0006CDA5 /* AboutViewController.h */; };
 		23EE39FC1527F07A0006CDA5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE397B1527EBCF0006CDA5 /* AboutViewController.m */; };
-		23EE39FD1527F07A0006CDA5 /* ListenViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE397C1527EBDA0006CDA5 /* ListenViewController.h */; };
 		23EE39FE1527F07A0006CDA5 /* ListenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE397D1527EBDA0006CDA5 /* ListenViewController.m */; };
-		23EE39FF1527F07A0006CDA5 /* LEDViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 2324AF48150C400F0080ACF2 /* LEDViewController.h */; };
-		23EE3A001527F07A0006CDA5 /* LivePlaylistTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */; };
-		23EE3A011527F07A0006CDA5 /* GoogleImageSearch.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE398E1527EC380006CDA5 /* GoogleImageSearch.h */; };
 		23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE398F1527EC380006CDA5 /* GoogleImageSearch.m */; };
-		23EE3A031527F07A0006CDA5 /* PlaycutViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39901527EC440006CDA5 /* PlaycutViewController.h */; };
 		23EE3A041527F07A0006CDA5 /* PlaycutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39911527EC440006CDA5 /* PlaycutViewController.m */; };
-		23EE3A051527F07A0006CDA5 /* NewsTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 231FF28E112B7E0300339C9C /* NewsTableViewController.h */; };
-		23EE3A061527F07A0006CDA5 /* NewsDetailViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 235D725C113EE6EF00370285 /* NewsDetailViewController.h */; };
-		23EE3A071527F07A0006CDA5 /* WebViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39961527EC5B0006CDA5 /* WebViewController.h */; };
 		23EE3A081527F07A0006CDA5 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39971527EC5B0006CDA5 /* WebViewController.m */; };
-		23EE3A091527F07A0006CDA5 /* WXYCAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */; };
 		23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */; };
-		23EE3A0B1527F07A0006CDA5 /* WXYCDataStack.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE399A1527EC660006CDA5 /* WXYCDataStack.h */; };
 		23EE3A0C1527F07A0006CDA5 /* WXYCDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE399B1527EC660006CDA5 /* WXYCDataStack.m */; };
-		23EE3A111527F07A0006CDA5 /* Foundation.framework in Sources */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		23EE3A121527F07A0006CDA5 /* CoreGraphics.framework in Sources */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
-		23EE3A131527F07A0006CDA5 /* QuartzCore.framework in Sources */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
-		23EE3A141527F07A0006CDA5 /* AVFoundation.framework in Sources */ = {isa = PBXBuildFile; fileRef = 23B32B58126D667B008414F4 /* AVFoundation.framework */; };
-		23EE3A151527F07A0006CDA5 /* CoreData.framework in Sources */ = {isa = PBXBuildFile; fileRef = 23B32D48126E386B008414F4 /* CoreData.framework */; };
-		23EE3A161527F07A0006CDA5 /* CoreAudio.framework in Sources */ = {isa = PBXBuildFile; fileRef = 230EB0FC127600210065308D /* CoreAudio.framework */; };
-		23EE3A171527F07A0006CDA5 /* MobileCoreServices.framework in Sources */ = {isa = PBXBuildFile; fileRef = 23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */; };
-		23EE3A181527F07A0006CDA5 /* Security.framework in Sources */ = {isa = PBXBuildFile; fileRef = 234B4AEA12938EF1001B3EB2 /* Security.framework */; };
-		23EE3A191527F07A0006CDA5 /* SystemConfiguration.framework in Sources */ = {isa = PBXBuildFile; fileRef = 23C2A9E9128A59D100D61A4A /* SystemConfiguration.framework */; };
-		23EE3A1A1527F07A0006CDA5 /* libxml2.dylib in Sources */ = {isa = PBXBuildFile; fileRef = 234B4FAA1293AEC3001B3EB2 /* libxml2.dylib */; };
-		23EE3A1B1527F0820006CDA5 /* MessageUI.framework in Sources */ = {isa = PBXBuildFile; fileRef = 23F1127912A8782A00DD6C1D /* MessageUI.framework */; };
-		23EE3A1C1527F0820006CDA5 /* MediaPlayer.framework in Sources */ = {isa = PBXBuildFile; fileRef = 23601B9A105F116000E6A6FB /* MediaPlayer.framework */; };
-		23EE3A1D1527F0820006CDA5 /* AudioToolbox.framework in Sources */ = {isa = PBXBuildFile; fileRef = 23601927105F05C600E6A6FB /* AudioToolbox.framework */; };
-		23EE3A1E1527F0820006CDA5 /* CFNetwork.framework in Sources */ = {isa = PBXBuildFile; fileRef = 236019EB105F060B00E6A6FB /* CFNetwork.framework */; };
-		23EE3A1F1527F0820006CDA5 /* UIKit.framework in Sources */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		23EE3A221527F4090006CDA5 /* Talkset.h in Sources */ = {isa = PBXBuildFile; fileRef = 23EE3A201527F3D00006CDA5 /* Talkset.h */; };
 		23EE3A231527F4090006CDA5 /* Talkset.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE3A211527F3D00006CDA5 /* Talkset.m */; };
 		23F407BC112389FC00A4A3D3 /* ListenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F407BB112389FC00A4A3D3 /* ListenView.xib */; };
 		23F407D611238B1300A4A3D3 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F407D511238B1300A4A3D3 /* AboutView.xib */; };
@@ -208,7 +147,6 @@
 		23F66FF7164ED57E0026FFD0 /* LazyImageLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F66FF6164ED57E0026FFD0 /* LazyImageLoaderView.xib */; };
 		23F7A8101646E34E008E97FD /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23EF279C14F5DC4100EA7ACB /* libRestKit.a */; };
 		2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */; };
-		277757401631BB3500349E12 /* IndefinitelySpinningAnimation.h in Sources */ = {isa = PBXBuildFile; fileRef = 2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */; };
 		2777575B1631BBE900349E12 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757431631BBE900349E12 /* NSObject+SBJson.m */; };
 		2777575C1631BBE900349E12 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757461631BBE900349E12 /* SBJsonParser.m */; };
 		2777575D1631BBE900349E12 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757481631BBE900349E12 /* SBJsonStreamParser.m */; };
@@ -1231,109 +1169,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				234DA3481650709C0056F43C /* AudioStreamer.h in Sources */,
 				234DA3491650709C0056F43C /* AudioStreamer.m in Sources */,
-				23638029163334B700AAC2CF /* FTUtils.h in Sources */,
-				2363802A163334B700AAC2CF /* FTUtils+NSObject.h in Sources */,
-				2363802B163334B700AAC2CF /* FTUtils+UIGestureRecognizer.h in Sources */,
-				277757401631BB3500349E12 /* IndefinitelySpinningAnimation.h in Sources */,
-				23EE3A221527F4090006CDA5 /* Talkset.h in Sources */,
 				23EE3A231527F4090006CDA5 /* Talkset.m in Sources */,
-				23EE3A1B1527F0820006CDA5 /* MessageUI.framework in Sources */,
-				23EE3A1C1527F0820006CDA5 /* MediaPlayer.framework in Sources */,
-				23EE3A1D1527F0820006CDA5 /* AudioToolbox.framework in Sources */,
-				23EE3A1E1527F0820006CDA5 /* CFNetwork.framework in Sources */,
-				23EE3A1F1527F0820006CDA5 /* UIKit.framework in Sources */,
-				23EE39A21527EF320006CDA5 /* AudioStreamController.h in Sources */,
 				23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */,
-				23EE39A41527EF320006CDA5 /* PlaylistController.h in Sources */,
 				23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */,
-				23EE39A61527F0790006CDA5 /* BlogEntryTableViewCell.h in Sources */,
 				23EE39A71527F0790006CDA5 /* BlogEntryTableViewCell.m in Sources */,
-				23EE39A81527F0790006CDA5 /* LivePlaylistTableViewCell.h in Sources */,
 				23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */,
-				23EE39AA1527F0790006CDA5 /* LoadPreviousEntriesCell.h in Sources */,
 				23EE39AB1527F0790006CDA5 /* LoadPreviousEntriesCell.m in Sources */,
-				23EE39AC1527F0790006CDA5 /* BreakpointCell.h in Sources */,
 				23EE39AD1527F0790006CDA5 /* BreakpointCell.m in Sources */,
-				23EE39AE1527F0790006CDA5 /* DelineationCell.h in Sources */,
 				23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */,
-				23EE39B01527F0790006CDA5 /* PlaycutCell.h in Sources */,
 				23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */,
-				23EE39B21527F0790006CDA5 /* TalksetCell.h in Sources */,
 				23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */,
-				23EE39B41527F0790006CDA5 /* PlaycutDetailsViewController.h in Sources */,
-				23EE39B51527F0790006CDA5 /* PlaycutDetailsViewController.h in Sources */,
 				234BDC2F150D456000859C86 /* PlaycutDetailsViewController.m in Sources */,
-				23EE39B61527F0790006CDA5 /* PlaycutDetails.xib in Sources */,
-				23EE39B71527F0790006CDA5 /* WalkmanVolumeSlider.h in Sources */,
 				23EE39B81527F0790006CDA5 /* WalkmanVolumeSlider.m in Sources */,
-				23EE39B91527F0790006CDA5 /* VerticalLabel.h in Sources */,
 				23EE39BA1527F0790006CDA5 /* VerticalLabel.m in Sources */,
-				23EE39BB1527F0790006CDA5 /* TransparentBackgroundUIToolbar.h in Sources */,
 				23EE39BC1527F0790006CDA5 /* TransparentBackgroundUIToolbar.m in Sources */,
-				23EE39BD1527F0790006CDA5 /* PlaycutNavBarTitleView.h in Sources */,
 				23EE39BE1527F0790006CDA5 /* PlaycutNavBarTitleView.m in Sources */,
-				23EE39BF1527F0790006CDA5 /* ShareItemTextInputAccessoryInsertButton.h in Sources */,
 				23EE39C01527F0790006CDA5 /* ShareItemTextInputAccessoryInsertButton.m in Sources */,
-				23EE39C11527F0790006CDA5 /* ShareItemTextInputAccessoryView.h in Sources */,
 				23EE39C21527F0790006CDA5 /* ShareItemTextInputAccessoryView.m in Sources */,
-				23EE39C31527F0790006CDA5 /* IndefinitelySpinningImageViewController.h in Sources */,
 				23EE39C41527F0790006CDA5 /* IndefinitelySpinningImageViewController.m in Sources */,
-				23EE39CA1527F0790006CDA5 /* UIImage+ProportionalFill.h in Sources */,
 				23EE39CB1527F0790006CDA5 /* UIImage+ProportionalFill.m in Sources */,
-				23EE39CC1527F0790006CDA5 /* UIImage+Tint.h in Sources */,
 				23EE39CD1527F0790006CDA5 /* UIImage+Tint.m in Sources */,
-				23EE39CE1527F0790006CDA5 /* EGORefreshTableHeaderView.h in Sources */,
 				23EE39CF1527F0790006CDA5 /* EGORefreshTableHeaderView.m in Sources */,
-				23EE39D01527F0790006CDA5 /* PullToRefreshTableViewController.h in Sources */,
 				23EE39D11527F0790006CDA5 /* PullToRefreshTableViewController.m in Sources */,
-				23EE39E51527F0790006CDA5 /* Playlist.h in Sources */,
 				23EE39E61527F0790006CDA5 /* Playlist.m in Sources */,
-				23EE39E71527F0790006CDA5 /* PlaylistEntry.h in Sources */,
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,
-				23EE39E91527F0790006CDA5 /* Breakpoint.h in Sources */,
 				23EE39EA1527F0790006CDA5 /* Breakpoint.m in Sources */,
-				23EE39EB1527F0790006CDA5 /* Playcut.h in Sources */,
 				2325E0EF1288A70800B064BB /* Playcut.m in Sources */,
-				23EE39F61527F0790006CDA5 /* NextPrevDetailsDelegate.h in Sources */,
-				23EE39F91527F0790006CDA5 /* FavoritesTableViewController.h in Sources */,
 				23B32DF8126E70D7008414F4 /* FavoritesTableViewController.m in Sources */,
-				23EE39FA1527F07A0006CDA5 /* CassetteReelViewController.h in Sources */,
 				238CC1C81266413D006EC552 /* CassetteReelViewController.m in Sources */,
-				23EE39FB1527F07A0006CDA5 /* AboutViewController.h in Sources */,
 				23EE39FC1527F07A0006CDA5 /* AboutViewController.m in Sources */,
-				23EE39FD1527F07A0006CDA5 /* ListenViewController.h in Sources */,
 				23EE39FE1527F07A0006CDA5 /* ListenViewController.m in Sources */,
-				23EE39FF1527F07A0006CDA5 /* LEDViewController.h in Sources */,
 				2324AF4A150C400F0080ACF2 /* LEDViewController.m in Sources */,
-				23EE3A001527F07A0006CDA5 /* LivePlaylistTableViewController.h in Sources */,
 				4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */,
-				23EE3A011527F07A0006CDA5 /* GoogleImageSearch.h in Sources */,
 				23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */,
-				23EE3A031527F07A0006CDA5 /* PlaycutViewController.h in Sources */,
 				23EE3A041527F07A0006CDA5 /* PlaycutViewController.m in Sources */,
-				23EE3A051527F07A0006CDA5 /* NewsTableViewController.h in Sources */,
 				231FF290112B7E0300339C9C /* NewsTableViewController.m in Sources */,
-				23EE3A061527F07A0006CDA5 /* NewsDetailViewController.h in Sources */,
 				235D725E113EE6EF00370285 /* NewsDetailViewController.m in Sources */,
-				23EE3A071527F07A0006CDA5 /* WebViewController.h in Sources */,
 				23EE3A081527F07A0006CDA5 /* WebViewController.m in Sources */,
-				23EE3A091527F07A0006CDA5 /* WXYCAppDelegate.h in Sources */,
 				23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */,
-				23EE3A0B1527F07A0006CDA5 /* WXYCDataStack.h in Sources */,
 				23EE3A0C1527F07A0006CDA5 /* WXYCDataStack.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				23EE3A111527F07A0006CDA5 /* Foundation.framework in Sources */,
-				23EE3A121527F07A0006CDA5 /* CoreGraphics.framework in Sources */,
-				23EE3A131527F07A0006CDA5 /* QuartzCore.framework in Sources */,
-				23EE3A141527F07A0006CDA5 /* AVFoundation.framework in Sources */,
-				23EE3A151527F07A0006CDA5 /* CoreData.framework in Sources */,
-				23EE3A161527F07A0006CDA5 /* CoreAudio.framework in Sources */,
-				23EE3A171527F07A0006CDA5 /* MobileCoreServices.framework in Sources */,
-				23EE3A181527F07A0006CDA5 /* Security.framework in Sources */,
-				23EE3A191527F07A0006CDA5 /* SystemConfiguration.framework in Sources */,
-				23EE3A1A1527F07A0006CDA5 /* libxml2.dylib in Sources */,
 				23B32EE3126E85FA008414F4 /* Playlist.xcdatamodel in Sources */,
 				234A74D5153B6D3100C30053 /* PlaylistMapping.m in Sources */,
 				2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */,
