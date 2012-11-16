@@ -13,7 +13,6 @@
 
 
 @interface FavoritesTableViewController : UITableViewController <NextPrevDetailsDelegate> {
-//	IBOutlet UITableView *favoritesTableView;	
 	NSManagedObjectContext *managedObjectContext;
 	NSMutableArray *favoritesArray;
 	NSNotificationCenter *dnc;
@@ -22,6 +21,7 @@
 	int selectedRow;
 }
 
+@property (nonatomic, strong) IBOutlet UITableView *favoritesTableView;
 //@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSMutableArray *favoritesArray; //necessary or else we assign favoritesArray a CFArray type
 
