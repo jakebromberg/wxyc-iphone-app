@@ -253,7 +253,7 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 									   titleDeets.albumLabel.text];
 				[picker setMessageBody:emailBody isHTML:NO];
 				
-				[self presentModalViewController:picker animated:YES];
+				[self presentViewController:picker animated:YES completion:nil];
 			} else {
 				[self launchMailAppOnDevice];
 			}

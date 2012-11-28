@@ -41,8 +41,9 @@
 	NSString *date = blogEntry[@"date"];
 	NSString *author =  blogEntry[@"author"];
 	NSString *content = blogEntry[@"content"];
-	
-	NSString *page = [[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"article" ofType:@"html"]];
+
+	NSError *error = nil;
+	NSString *page = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"article" ofType:@"html"] encoding:NSStringEncodingConversionAllowLossy error:&error];
 	page = [page stringByReplacingOccurrencesOfString:@"##title##" withString:title];
 	page = [page stringByReplacingOccurrencesOfString:@"##date##" withString:date];
 	page = [page stringByReplacingOccurrencesOfString:@"##author##" withString:
