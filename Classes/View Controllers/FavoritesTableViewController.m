@@ -10,7 +10,6 @@
 #import "FavoritesTableViewController.h"
 #import "WXYCDataStack.h"
 #import "Playcut.h"
-//#import "PlaycutDetailsViewController.h"
 #import "PlaycutViewController.h"
 
 @implementation FavoritesTableViewController
@@ -27,15 +26,16 @@
 		// Handle the error.
 	}
 
-	[self setFavoritesArray:mutableFetchResults];
+	self.favoritesArray = mutableFetchResults;
 	
 	[self.tableView reloadData];
 }
 
-#pragma mark -
-#pragma mark View lifecycle
 
-- (void)viewDidLoad {
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 	
 	self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -47,16 +47,14 @@
 	
 	request = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Playcut" inManagedObjectContext:managedObjectContext];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(Favorite == %@)", @YES];	
-	[request setEntity:entity];
-	[request setPredicate:predicate];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(Favorite == %@)", @YES];
+	request.entity = entity;
+	request.predicate = predicate;
 	
 	// Order the events by creation date, most recent first.
 //	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Artist" ascending:NO];
 //	NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
 //	[request setSortDescriptors:sortDescriptors];
-//	[sortDescriptor release];
-//	[sortDescriptors release];
 	
 	// Execute the fetch. Create a mutable copy of the result.
 	NSError *error = nil;
@@ -67,14 +65,12 @@
 	}
 	
 	// Set self's events array to the mutable array, then clean up.
-	[self setFavoritesArray:mutableFetchResults];
-//	[request release];
+	self.favoritesArray = mutableFetchResults;
 }
 
 
 - (void)viewDidUnload {
 	self.favoritesArray = nil;
-//	[request release];
 	[dnc removeObserver:self name:NSManagedObjectContextDidSaveNotification object:managedObjectContext];
 }
 
@@ -134,20 +130,6 @@
 		[managedObjectContext deleteObject:favoritesArray[[indexPath row]]];
 		[favoritesArray removeObjectAtIndex:[indexPath row]];
 
-//		Playcut *playcut = (Playcut*) [managedObjectContext objectWithID:[[favoritesArray objectAtIndex:[indexPath row]] objectID]];//[favoritesArray objectAtIndex:[indexPath row]];
-//		
-//		NSLog(@"[playcut Favorite]: %@", [playcut valueForKey:@"Favorite"]);
-//		[playcut setValue:[[NSNumber alloc] initWithBool:NO] forKey:@"Favorite"];
-//		NSLog(@"[playcut Favorite]: %@", [playcut valueForKey:@"Favorite"]);
-//
-////		Playcut *playcut = (Playcut*) [favoritesArray objectAtIndex:[indexPath row]];
-////
-////		NSLog(@"[playcut Favorite]: %i", [playcut Favorite]);
-////		[playcut setFavorite:NO];
-////		NSLog(@"[playcut Favorite]: %i", [playcut Favorite]);
-//
-////		[managedObjectContext refreshObject:playcut mergeChanges:YES];
-
 		NSError *error;
 		if (![managedObjectContext save:&error]) {
 			// Update to handle the error appropriately.
@@ -161,7 +143,6 @@
 	selectedRow = [indexPath row];
 	
 	PlaycutViewController *detail = [[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil];
-//	[detail setDelegate:self];	
 	detail.hidesBottomBarWhenPushed = YES;
 	[[self navigationController] pushViewController:detail animated:YES];
 }

@@ -19,13 +19,6 @@
 	NSPersistentStoreCoordinator *persistentStoreCoordinator;
     NSManagedObjectModel *managedObjectModel;
     NSManagedObjectContext *managedObjectContext;
-	
-//	SA_OAuthTwitterEngine *twitterEngine;
-	NSMutableData *responseData;
-//	OAToken *token;
-	
-	UIWebView *twitterPINResponse;
-	NSURLConnection *connection1;
 }
 
 @property (nonatomic, strong) PlaylistController *livePlaylistCtrlr;

@@ -11,8 +11,6 @@
 
 @implementation IndefinitelySpinningImageViewController
 
-@synthesize imageView;
-
 #pragma mark Public Methods
 
 - (void)animate:(BOOL)state {
@@ -23,11 +21,11 @@
 }
 
 - (void)startAnimation {
-	[self resumeLayer:imageView.layer];
+	[self resumeLayer:self.imageView.layer];
 }
 
 - (void)stopAnimation {
-	[self pauseLayer:imageView.layer];
+	[self pauseLayer:self.imageView.layer];
 }
 
 
@@ -57,9 +55,9 @@
 	[self pauseLayer:self.imageView.layer];
 }
 
-- (id)initWithImageView:(UIImageView*)anImageView {
+- (id)initWithImageView:(UIImageView*)imageView {
 	self = [super init];
-	[self setImageView:anImageView];
+	self.imageView = imageView;
 	[self initImageViewAnimation];
 
 	return self;
