@@ -76,27 +76,11 @@
 #pragma mark -
 #pragma mark Application's documents directory
 
-- (NSString *)applicationDocumentsDirectory {
-	
+- (NSString *)applicationDocumentsDirectory
+{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? paths[0] : nil;
     return basePath;
-}
-
-#pragma mark -
-#pragma mark Application lifecycle
-
-- (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
-	return YES;
-}
-
--(void) applicationWillResignActive:(UIApplication *)application {
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"applicationWillResignActive" object:nil];
-}
-
-
--(void) applicationDidBecomeActive:(UIApplication *)application {
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"applicationDidBecomeActive" object:nil];
 }
 
 #pragma mark -
