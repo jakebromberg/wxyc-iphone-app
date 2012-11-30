@@ -29,9 +29,12 @@
 }
 
 - (id)initWithEntity:(NSManagedObject *)entity {
-	if (!(self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:[[self class] description]]))
-		return nil;
-	[self setEntity:entity];
+	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:[[self class] description]];
+	
+	if (self)
+	{
+		self.entity = entity;
+	}
 
 	return self;
 }

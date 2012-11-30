@@ -181,7 +181,7 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 			NSURL *urlOfImage = [NSURL URLWithString:firstResult[@"url"]];
 			
 			albumArt.imageURL = urlOfImage;
-			[self.playcut setPrimaryImage:UIImagePNGRepresentation(albumArt.image)];
+			self.playcut.primaryImage = UIImagePNGRepresentation(albumArt.image);
 		}
 	}
 }
@@ -214,11 +214,11 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 		[self performSelectorInBackground:@selector(backgroundAlbumCoverSearch:) withObject:currentData];
 	}
 	
-	[favoriteButton setImage:[UIImage imageNamed:
-							  ([[currentData valueForKey:@"favorite"] boolValue] 
+	favoriteButton.image = [UIImage imageNamed:
+							  ([[currentData valueForKey:@"favorite"] boolValue]
 								 ? @"favorites-toolbar-icon-filled.png"
 								 : @"favorites-toolbar-icon-unfilled.png")
-								 ]];
+								 ];
 
 	[self redrawButtonState];
 }
@@ -244,7 +244,7 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 				MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
 				picker.mailComposeDelegate = self;
 				
-				[picker setSubject:@"Playing on WXYC"];
+				picker.subject = @"Playing on WXYC";
 				
 				// Fill out the email body text
 				NSString *emailBody = [NSString stringWithFormat:@"\"%@\" by %@ from album %@",
@@ -278,7 +278,9 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 										 composeViewControllerForServiceType:serviceType];
 	[composer addImage:albumArt.image];
 	[composer addURL:[NSURL URLWithString:@"http://wxyc.org"]];
-	[composer setInitialText:[NSString stringWithFormat:@"Listening to %@ by %@ on WXYC", [_playcut valueForKey:@"song"], [_playcut valueForKey:@"artist"]]];
+	composer.initialText = [NSString stringWithFormat:@"Listening to %@ by %@ on WXYC",
+								[_playcut valueForKey:@"song"],
+								[_playcut valueForKey:@"artist"]];
 
     [composer setCompletionHandler:^(SLComposeViewControllerResult result) {
         [self dismissViewControllerAnimated:YES completion:^{
@@ -340,7 +342,7 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	
 	NSLog(@"currentData.Favorite %@", currentData.favorite);
 
-	[currentData setFavorite:[[NSNumber alloc] initWithBool:![currentData.favorite boolValue]]];
+	currentData.favorite = @(!currentData.favorite);
 	
 	[self refreshViews];
 }

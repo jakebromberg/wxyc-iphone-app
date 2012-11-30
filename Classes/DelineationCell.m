@@ -46,8 +46,8 @@
 	if (!(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] description]]))
 		return nil;
 
-	[self setSelectionStyle:UITableViewCellSelectionStyleNone];
-	[self setEntity:entity];
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+	self.entity = entity;
 	[self addBackground];
 
 	return self;

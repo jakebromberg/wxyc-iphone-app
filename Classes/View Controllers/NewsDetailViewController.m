@@ -17,8 +17,8 @@
 @synthesize delegate;
 
 -(void)redrawButtonState {
-	[self.segControl setEnabled:self.currentRow>0 forSegmentAtIndex:0];
-	[self.segControl setEnabled:self.currentRow<[self.items count]-1 forSegmentAtIndex:1];
+	[self.segControl setEnabled:(self.currentRow > 0) forSegmentAtIndex:0];
+	[self.segControl setEnabled:(self.currentRow < [self.items count]-1) forSegmentAtIndex:1];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -27,7 +27,7 @@
 		WebViewController *webViewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:nil];
 		webViewController.hidesBottomBarWhenPushed = YES;
 		[[self navigationController] pushViewController:webViewController animated:YES];
-		[webViewController.webView setScalesPageToFit:YES];
+		webViewController.webView.scalesPageToFit = YES;
 		[webViewController.webView loadRequest:request];
 	}
 	
