@@ -283,15 +283,7 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 								[_playcut valueForKey:@"artist"]];
 
     [composer setCompletionHandler:^(SLComposeViewControllerResult result) {
-        [self dismissViewControllerAnimated:YES completion:^{
-            // This code is never called for Facebook, only for Twitter.
-            // If the dismissViewControllerAnimated:completion: call above
-            // is left out, the Twitter composer takes two taps on Cancel
-            // to dismiss and upon successfull posting the composer slides
-            // out, but the buttons in this controller’s view are no longer
-            // active.
-            NSLog(@"Social composer “%@” done with status #%i.", serviceType, result);
-        }];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
 	
     [self presentViewController:composer animated:YES completion:NULL];

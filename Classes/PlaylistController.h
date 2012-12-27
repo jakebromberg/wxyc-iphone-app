@@ -18,10 +18,7 @@ typedef enum {
 	LP_DONE
 } PlaylistControllerState;
 
-@interface PlaylistController : NSObject <RKObjectLoaderDelegate> {
-	PlaylistControllerState state;
-	NSNotificationCenter *notificationCenter;
-}
+@interface PlaylistController : NSObject <RKObjectLoaderDelegate>
 
 extern NSString * const LPStatusChangedNotification;
 

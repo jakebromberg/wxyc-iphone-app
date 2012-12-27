@@ -12,7 +12,8 @@
 #include <AudioToolbox/AudioToolbox.h>
 #import "AudioStreamer.h"
 
-@interface AudioStreamController() {
+@interface AudioStreamController()
+{
 	AudioStreamer *streamer;
 }
 
@@ -34,10 +35,8 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 - (void) start
 {
 	NSError* error = nil;
-	[[AVAudioSession sharedInstance] setActive:YES error:&error];
-	[[AVAudioSession sharedInstance]
-	 setCategory:AVAudioSessionCategoryPlayback
-	 error: nil];
+	[AVAudioSession.sharedInstance setActive:YES error:&error];
+	[AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback error:nil];
 
 	[self createStreamer];
 	[streamer start];
@@ -51,7 +50,7 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 
 -(BOOL)isPlaying
 {
-	return [streamer isPlaying];
+	return streamer.isPlaying;
 }
 
 

@@ -25,14 +25,9 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 @implementation PlaylistController
 
-@synthesize playlist;
-@synthesize state;
-//@synthesize numNewEntries;
-
-
 - (void)setState:(PlaylistControllerState)aStatus {
-	if (state != aStatus) {
-		state = aStatus;
+	if (self.state != aStatus) {
+		_state = aStatus;
 		[[NSNotificationCenter defaultCenter] postNotificationName:LPStatusChangedNotification object:self];
 	}
 }
@@ -50,7 +45,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 #pragma mark RestKit business
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
-	playlist = [[objects sortedArrayUsingComparator:^(id a, id b) {
+	_playlist = [[objects sortedArrayUsingComparator:^(id a, id b) {
 		return [[a valueForKey:@"chronOrderID"] compare:[b valueForKey:@"chronOrderID"]];
 	}] copy];
 	
