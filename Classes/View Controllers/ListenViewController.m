@@ -68,8 +68,8 @@
 	[upperController animate:isPlaying];
 	[lowerController animate:isPlaying];
 
-	[self.GreenLED setHidden:isPlaying];
-	[self.RedLED setHidden:isPlaying];
+	self.GreenLED.hidden = isPlaying;
+	self.RedLED.hidden = isPlaying;
 }
 
 - (void)playbackStateChanged:(NSNotification *)aNotification {
@@ -114,10 +114,6 @@
 
 - (BOOL)canBecomeFirstResponder {
 	return YES;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 }
 
 - (void)dealloc {
