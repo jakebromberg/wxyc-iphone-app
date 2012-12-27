@@ -30,7 +30,7 @@ static WXYCDataStack *sharedInstance = nil;
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
         managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [managedObjectContext setPersistentStoreCoordinator:coordinator];
+		managedObjectContext.persistentStoreCoordinator = coordinator;
     }
 	
     return managedObjectContext;

@@ -45,7 +45,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	[responseData setLength:0];
+	responseData.length = 0;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
@@ -55,7 +55,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	// Store incoming data into a string and clear data
 	NSString *jsonString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	[responseData setLength:0];
+	responseData.length = 0;
 	
 	blogEntries = [[jsonString JSONValue] mutableCopy];
 	
@@ -68,11 +68,6 @@
 - (void)reloadTableViewDataSource {
 	[blogEntries removeAllObjects];
 	[self getJSONFeedWithNumEntries:20 referenceID:1 direction:@"prev"];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
 }
 
 // Customize the number of rows in the table view.
@@ -135,7 +130,7 @@
 	NewsDetailViewController *webViewController = [[NewsDetailViewController alloc] initWithNibName:@"SimpleWebView" bundle:nil];
 	webViewController.items = blogEntries;
 	webViewController.currentRow = row;
-	[webViewController setDelegate:self.tableView];
+	webViewController.delegate = self.tableView;
 	
 	[[self navigationController] pushViewController:webViewController animated:YES];
 }
@@ -144,10 +139,9 @@
     [super viewDidLoad];
 	
 	responseData = [NSMutableData data];
-	[responseData initWithLength:0];
 	blogEntries = [[NSMutableArray alloc] init];
 	
-	[refreshHeaderView setLastUpdatedDate:[NSDate date]];
+	refreshHeaderView.lastUpdatedDate = [NSDate date];
 	[self showReloadAnimationAnimated:YES];
 	[self reloadTableViewDataSource];	
 	

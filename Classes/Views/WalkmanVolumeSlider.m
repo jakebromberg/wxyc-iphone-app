@@ -32,6 +32,15 @@
 
 	UIImage *thumb = [UIImage imageNamed:@"thumb image.png"];
 
+	[self setVolumeThumbImage:thumb forState:UIControlStateNormal];
+	[self setMinimumVolumeSliderImage:stretchLeftTrack forState:UIControlStateNormal];
+	[self setMaximumVolumeSliderImage:stretchRightTrack forState:UIControlStateNormal];
+//	[self setMinimumTrackImage:stretchLeftTrack forState:UIControlStateNormal];
+//	[self setMaximumTrackImage:stretchRightTrack forState:UIControlStateNormal];
+//	
+//	[self setThumbImage:thumb forState:UIControlStateNormal];
+//	[self setThumbImage:thumb forState:UIControlStateHighlighted];
+//	[self setThumbImage:thumb forState:UIControlStateDisabled];
 }
 
 

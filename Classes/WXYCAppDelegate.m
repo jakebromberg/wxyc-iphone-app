@@ -9,7 +9,6 @@
 #import "PlaylistController.h"
 #import "WXYCDataStack.h"
 #import "Playcut.h"
-//#import "SA_OAuthTwitterEngine.h"
 
 @implementation WXYCAppDelegate
 
@@ -19,105 +18,10 @@
 
 @synthesize fetchedResultsController, managedObjectContext, managedObjectModel, persistentStoreCoordinator;
 
-NSString *myConsumerKey = @"EH1KBn2sM4EFv2KEUUAQ";
-NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
-
-#pragma mark -
-#pragma mark MGTwitterEngineDelegate methods
-
-
-- (void)requestSucceeded:(NSString *)connectionIdentifier
-{
-    NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
-}
-
-
-- (void)requestFailed:(NSString *)connectionIdentifier withError:(NSError *)error
-{
-    NSLog(@"Request failed for connectionIdentifier = %@, error = %@ (%@)", 
-          connectionIdentifier, 
-          [error localizedDescription], 
-          [error userInfo]);
-}
-
-
-- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier
-{
-    NSLog(@"Got statuses for %@:\r%@", connectionIdentifier, statuses);
-}
-
-
-- (void)directMessagesReceived:(NSArray *)messages forRequest:(NSString *)connectionIdentifier
-{
-    NSLog(@"Got direct messages for %@:\r%@", connectionIdentifier, messages);
-}
-
-
-- (void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)connectionIdentifier
-{
-    NSLog(@"Got user info for %@:\r%@", connectionIdentifier, userInfo);
-}
-
-
-- (void)miscInfoReceived:(NSArray *)miscInfo forRequest:(NSString *)connectionIdentifier
-{
-	NSLog(@"Got misc info for %@:\r%@", connectionIdentifier, miscInfo);
-}
-
-
-- (void)searchResultsReceived:(NSArray *)searchResults forRequest:(NSString *)connectionIdentifier
-{
-	NSLog(@"Got search results for %@:\r%@", connectionIdentifier, searchResults);
-}
-
-
-- (void)socialGraphInfoReceived:(NSArray *)socialGraphInfo forRequest:(NSString *)connectionIdentifier
-{
-	NSLog(@"Got social graph results for %@:\r%@", connectionIdentifier, socialGraphInfo);
-}
-
-- (void)userListsReceived:(NSArray *)userInfo forRequest:(NSString *)connectionIdentifier
-{
-    NSLog(@"Got user lists for %@:\r%@", connectionIdentifier, userInfo);
-}
-
-//- (void)imageReceived:(NSImage *)image forRequest:(NSString *)connectionIdentifier
-//{
-//    NSLog(@"Got an image for %@: %@", connectionIdentifier, image);
-//    
-//    // Save image to the Desktop.
-//    NSString *path = [[NSString stringWithFormat:@"~/Desktop/%@.tiff", connectionIdentifier] stringByExpandingTildeInPath];
-//    [[image TIFFRepresentation] writeToFile:path atomically:NO];
-//}
-//
-//- (void)connectionFinished:(NSString *)connectionIdentifier
-//{
-//    NSLog(@"Connection finished %@", connectionIdentifier);
-//	
-//	if ([twitterEngine numberOfConnections] == 0)
-//	{
-//		[NSApp terminate:self];
-//	}
-//}
-
-//- (void)accessTokenReceived:(OAToken *)aToken forRequest:(NSString *)connectionIdentifier
-//{
-//	NSLog(@"Access token received! %@",aToken);
-//	
-//	token = [aToken retain];
-//	//	[self runTests];
-//}
-
-- (void)receivedObject:(NSDictionary *)dictionary forRequest:(NSString *)connectionIdentifier
-{
-    NSLog(@"Got an object for %@: %@", connectionIdentifier, dictionary);
-}
-
 #pragma mark -
 #pragma mark Fetched results controller
 
 - (void)handleTimer {
-	//NSLog(@"Updating");
 	[livePlaylistCtrlr updatePlaylist];
 }
 
@@ -133,8 +37,9 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
         managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [managedObjectContext setPersistentStoreCoordinator:coordinator];
+		managedObjectContext.persistentStoreCoordinator = coordinator;
     }
+	
     return managedObjectContext;
 }
 
@@ -150,8 +55,8 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
 }
 
 
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-	
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
     if (persistentStoreCoordinator != nil) {
         return persistentStoreCoordinator;
     }
@@ -171,88 +76,16 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
 #pragma mark -
 #pragma mark Application's documents directory
 
-- (NSString *)applicationDocumentsDirectory {
-	
+- (NSString *)applicationDocumentsDirectory
+{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? paths[0] : nil;
     return basePath;
 }
 
 #pragma mark -
-#pragma mark Application lifecycle
-
-- (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
-	return YES;
-}
-
--(void) applicationWillResignActive:(UIApplication *)application {
-	NSLog(@"Alseep");
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"applicationWillResignActive" object:nil];
-}
-
-
--(void) applicationDidBecomeActive:(UIApplication *)application {
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"applicationDidBecomeActive" object:nil];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	[responseData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	[responseData appendData:data];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	if (connection == connection1) {
-		NSString *dataString = [[NSString alloc] initWithData:responseData encoding: NSUTF8StringEncoding];
-		NSLog(@"%@", dataString);
-		NSString *path = [[NSBundle mainBundle] pathForResource: @"jQueryInject" ofType: @"txt"];
-
-		NSError *error = nil;
-		NSString *dataSource = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-
-		if (dataSource == nil) {
-			NSLog(@"An error occured while processing the jQueryInject file");
-		}
-
-		if (!dataString) 
-			return;
-		
-//		if (twitterEngine.pin.length && [dataString rangeOfString: @"oauth_verifier"].location == NSNotFound) 
-//			dataString = [dataString stringByAppendingFormat: @"&oauth_verifier=%@", twitterEngine.pin];
-		
-//		NSString *username = [twitterEngine extractUsernameFromHTTPBody:dataString];
-//		NSLog(username);
-//		
-//		if (username.length > 0) {
-//			[[twitterEngine class] setUsername:username password:nil];
-//			//		if ([_delegate respondsToSelector: @selector(storeCachedTwitterOAuthData:forUsername:)]) 
-//			//			[(id) _delegate storeCachedTwitterOAuthData: dataString forUsername: username];
-//		}
-//		
-//		//	[_accessToken release];
-//		token = [[OAToken alloc] initWithHTTPResponseBody:dataString];
-		
-		[responseData setLength:0];
-	}
-}
-
-#pragma mark -
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-//	responseData = [[NSMutableData data] retain];
-//	twitterEngine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];
-////	[twitterEngine setUsesSecureConnection:YES];
-//	[twitterEngine setUsername:@"jakebromberg" password:@"Wintermute86"];
-//	[twitterEngine setConsumerKey:myConsumerKey];
-//	[twitterEngine setConsumerSecret:mySecret];
-//	[twitterEngine requestRequestToken];
-//	NSURLRequest *authorizeURLRequest = [twitterEngine authorizeURLRequest];
-//	connection1 = [[NSURLConnection alloc] initWithRequest:authorizeURLRequest delegate:self];
-//	[twitterEngine sendUpdate:@"testing123"];
-//	NSLog(@"OAuthSetup %i", [twitterEngine OAuthSetup]);
-
 	[window addSubview:rootController.view];
 	[window makeKeyAndVisible];
 	
@@ -324,10 +157,5 @@ NSString *mySecret = @"3mcWBnKTl8sQlNgPSIgO42KzPYeiD1sG14pZ1WixU";
 //- (void)applicationDidBecomeActive:(UIApplication *)application {
 //	[[NSNotificationCenter defaultCenter] postNotificationName:@"applicationDidBecomeActive"];
 //}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-	NSLog(@"I AM TERMINATING");
-	
-}
 
 @end

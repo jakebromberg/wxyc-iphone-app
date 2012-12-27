@@ -30,7 +30,7 @@
 	label.text = text;
 	label.backgroundColor = [UIColor clearColor];
 	label.opaque = NO;
-	label.textAlignment = UITextAlignmentLeft;
+	label.textAlignment = NSTextAlignmentLeft;
 	label.textColor = [UIColor whiteColor];
 	label.font = [UIFont boldSystemFontOfSize:15];
 	label.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.55];
@@ -46,8 +46,8 @@
 	if (!(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] description]]))
 		return nil;
 
-	[self setSelectionStyle:UITableViewCellSelectionStyleNone];
-	[self setEntity:entity];
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+	self.entity = entity;
 	[self addBackground];
 
 	return self;

@@ -20,7 +20,7 @@ static const NSString *LARGE_IMG_SIZE = @"large";
 static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6wxYzrId3_vCc7hSxiVhd0OeM4oTlndTkE3v2ankvuA";
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	[responseData setLength:0];
+	responseData.length = 0;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
@@ -34,11 +34,9 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 	// Create a dictionary from the JSON string
 	NSMutableArray *results = [jsonString JSONValue];
 	
-	//NSLog(@"results %@", results);
-	
 	[delegate handleGoogleImageSearchResults:results];
 	
-	[responseData setLength:0];
+	responseData.length = 0;
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {

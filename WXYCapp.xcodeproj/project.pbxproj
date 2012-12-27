@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -93,7 +93,6 @@
 		23B32EE3126E85FA008414F4 /* Playlist.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 23B32EE2126E85FA008414F4 /* Playlist.xcdatamodel */; };
 		23B61377114D6FEA007A4BC5 /* jsonTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B61376114D6FEA007A4BC5 /* jsonTest.json */; };
 		23B613F7164EFA64004547C2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B613F5164EF06C004547C2 /* Social.framework */; };
-		23B613F9164EFA8D004547C2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B613F8164EFA8D004547C2 /* Social.framework */; };
 		23B911F3128248F300B706BF /* facebook-f.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B911F2128248F300B706BF /* facebook-f.png */; };
 		23B911F51282495600B706BF /* facebook-f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B911F41282495600B706BF /* facebook-f@2x.png */; };
 		23B9120312824B0800B706BF /* emailLetter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B9120212824B0800B706BF /* emailLetter@2x.png */; };
@@ -167,6 +166,7 @@
 		277757781631C3EF00349E12 /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757741631C3EF00349E12 /* FTAnimationManager.m */; };
 		277757791631C3EF00349E12 /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757751631C3EF00349E12 /* FTUtils+NSObject.m */; };
 		2777577A1631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757761631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27F23F2D166948B2000CC560 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F23F2C166948B1000CC560 /* Default-568h@2x.png */; };
 		4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -444,6 +444,7 @@
 		277757741631C3EF00349E12 /* FTAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTAnimationManager.m; path = Classes/FTAnimationManager.m; sourceTree = "<group>"; };
 		277757751631C3EF00349E12 /* FTUtils+NSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FTUtils+NSObject.m"; path = "Classes/FTUtils+NSObject.m"; sourceTree = "<group>"; };
 		277757761631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FTUtils+UIGestureRecognizer.m"; path = "Classes/FTUtils+UIGestureRecognizer.m"; sourceTree = "<group>"; };
+		27F23F2C166948B1000CC560 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LivePlaylistTableViewController.h; path = "View Controllers/LivePlaylistTableViewController.h"; sourceTree = "<group>"; };
 		4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LivePlaylistTableViewController.m; path = "View Controllers/LivePlaylistTableViewController.m"; sourceTree = "<group>"; };
@@ -472,7 +473,6 @@
 				23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */,
 				23B32B59126D667B008414F4 /* AVFoundation.framework in Frameworks */,
 				230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */,
-				23B613F9164EFA8D004547C2 /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,6 +923,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				27F23F2C166948B1000CC560 /* Default-568h@2x.png */,
 				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -1011,10 +1012,11 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = NO;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = WXYC;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WXYCapp" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -1164,6 +1166,7 @@
 				23E750ED129AFEE5005A9468 /* testJSON.txt in Resources */,
 				234BDC2B150D393A00859C86 /* PlaycutDetails.xib in Resources */,
 				23F66FF7164ED57E0026FFD0 /* LazyImageLoaderView.xib in Resources */,
+				27F23F2D166948B2000CC560 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1266,7 +1269,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1288,8 +1292,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = WXYC;
-				PROVISIONING_PROFILE = "793A63E2-B933-48CC-84DE-D799545EEF3B";
-				SDKROOT = iphoneos5.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1298,7 +1302,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1317,8 +1321,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = WXYC;
-				PROVISIONING_PROFILE = "793A63E2-B933-48CC-84DE-D799545EEF3B";
-				SDKROOT = iphoneos5.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -1326,7 +1329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: WXYC";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WXYC";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1334,10 +1337,9 @@
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
-				PROVISIONING_PROFILE = "3E494D36-BA6E-4F7B-80E4-B5B96F013EB9";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E494D36-BA6E-4F7B-80E4-B5B96F013EB9";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos;
 			};
 			name = Distribution;
 		};
@@ -1346,6 +1348,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1369,7 +1372,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = WXYC;
-				SDKROOT = iphoneos5.0;
+				SDKROOT = iphoneos;
 			};
 			name = Distribution;
 		};
@@ -1377,7 +1380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1385,9 +1388,9 @@
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
-				SDKROOT = iphoneos4.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1395,13 +1398,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

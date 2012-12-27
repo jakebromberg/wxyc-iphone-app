@@ -41,7 +41,7 @@
 
 	if (selected) {
 		[self.activity startAnimating];
-		[self.activity setHidesWhenStopped:NO];
+		self.activity.hidesWhenStopped = NO;
 		
 //		NSInteger referenceID = [[[livePlaylistCtrl.playlist objectAtIndex:[self maxEntriesToDisplay]-1] objectForKey:@"chronOrderID"] intValue];
 //		[livePlaylistCtrl getJSONFeedWithNumEntries:(kNumEntriesToFetch) //+2 because the feed returns two less for some reason
