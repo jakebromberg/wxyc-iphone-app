@@ -38,7 +38,7 @@
 		lastUpdatedLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 		lastUpdatedLabel.backgroundColor = self.backgroundColor;
 		lastUpdatedLabel.opaque = YES;
-		lastUpdatedLabel.textAlignment = UITextAlignmentCenter;
+		lastUpdatedLabel.textAlignment = NSTextAlignmentCenter;
 		[self addSubview:lastUpdatedLabel];
 		
 		statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f,
@@ -49,7 +49,7 @@
 		statusLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 		statusLabel.backgroundColor = self.backgroundColor;
 		statusLabel.opaque = YES;
-		statusLabel.textAlignment = UITextAlignmentCenter;
+		statusLabel.textAlignment = NSTextAlignmentCenter;
 		[self setStatus:kPullToReloadStatus];
 		[self addSubview:statusLabel];
 		

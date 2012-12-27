@@ -6,24 +6,27 @@
 #import "WebViewController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
+@interface WebViewController ()
+
+@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *backButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *forwardButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *reloadButton;
+
+@end
+
 @implementation WebViewController
 
-@synthesize webView;
-@synthesize toolbar;
-@synthesize backButton;
-@synthesize forwardButton;
-@synthesize reloadButton;
-
-- (void)refreshButtons {
-	[backButton setEnabled:[self.webView canGoBack]];
-	[forwardButton setEnabled:[self.webView canGoForward]];
+- (void)refreshButtons
+{
+	self.backButton.enabled = self.webView.canGoBack;
+	self.forwardButton.enabled = self.webView.canGoForward;
 	
-	if ([self.webView isLoading]) {
-		reloadButton.image = [UIImage imageNamed:@"delete.png"];
+	if (self.webView.loading) {
+		self.reloadButton.image = [UIImage imageNamed:@"delete.png"];
 	} else {
-		reloadButton.image = [UIImage imageNamed:@"reload.png"];
+		self.reloadButton.image = [UIImage imageNamed:@"reload.png"];
 	}
-
 }
 
 - (void)viewDidLoad {
@@ -51,7 +54,7 @@
 }
 
 - (IBAction) reloadButtonPush:(id)sender {
-	if ([self.webView isLoading]) {
+	if (self.webView.loading) {
 		[self.webView stopLoading];
 	} else {
 		[self.webView reload];

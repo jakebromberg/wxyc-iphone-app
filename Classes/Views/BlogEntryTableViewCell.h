@@ -9,11 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface BlogEntryTableViewCell : UITableViewCell {
-	IBOutlet UILabel *title;
-	IBOutlet UILabel *description;
-	IBOutlet UILabel *date;
-}
+@interface BlogEntryTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *title;
 @property (nonatomic, strong) IBOutlet UILabel *description;

@@ -54,7 +54,7 @@ PlaylistController* livePlaylistCtrl;
 - (void)livePlaylistControllerStateChanged:(NSNotification *)aNotification
 {	
 	if (livePlaylistCtrl.state == LP_DONE) {
-		[refreshHeaderView setLastUpdatedDate:[NSDate date]];
+		refreshHeaderView.lastUpdatedDate = [NSDate date];
 		[super dataSourceDidFinishLoadingNewData];
 	}
 }
@@ -86,8 +86,8 @@ PlaylistController* livePlaylistCtrl;
 
 		cell = (LivePlaylistTableViewCell*) [tableView dequeueReusableCellWithIdentifier:entryType];
 		
-		if (cell != nil) {
-			[(LivePlaylistTableViewCell*)cell setEntity:playlistEntry];
+		if (cell) {
+			((LivePlaylistTableViewCell*)cell).entity = playlistEntry;
 		} else {
 			Class class = NSClassFromString(entryType);
 			
@@ -98,7 +98,7 @@ PlaylistController* livePlaylistCtrl;
 			}
 		}
 		
-		[(LivePlaylistTableViewCell*)cell setDelegate:self];
+		((LivePlaylistTableViewCell*)cell).delegate = self;
 	}
 	
 	return cell;
@@ -185,12 +185,6 @@ PlaylistController* livePlaylistCtrl;
 - (void)viewDidUnload {
 	[dnc removeObserver:self name:NSManagedObjectContextDidSaveNotification object:managedObjectContext];
 }
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-	// Release anything that's not essential, such as cached data
-}
-
 
 #pragma mark -
 #pragma mark NextPrevDetailsDelegate business

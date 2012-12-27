@@ -10,8 +10,9 @@
 #import "Breakpoint.h"
 @implementation BreakpointCell
 
-- (void) setEntity:(NSManagedObject *)entity {
-	[super setEntity:entity];
+- (void) setEntity:(NSManagedObject *)entity
+{
+	super.entity = entity;
 	
 	Breakpoint* breakpoint = (Breakpoint*)entity;
 	
@@ -24,11 +25,5 @@
 	NSString* dateString = [dateFormatter stringFromDate:date];
 	[self addText:dateString];
 }
-
-//-(id) initWithEntity:(NSManagedObject *)entity {
-//	[super initWithEntity:entity];
-//	
-//	return self;
-//}
 
 @end

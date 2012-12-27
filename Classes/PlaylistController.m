@@ -54,7 +54,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 		return [[a valueForKey:@"chronOrderID"] compare:[b valueForKey:@"chronOrderID"]];
 	}] copy];
 	
-	[self setState:LP_DONE];
+	self.state = LP_DONE;
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
