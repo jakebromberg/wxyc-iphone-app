@@ -31,7 +31,8 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 
 #pragma mark Public Methods
 
--(void)start{
+- (void) start
+{
 	NSError* error = nil;
 	[[AVAudioSession sharedInstance] setActive:YES error:&error];
 	[[AVAudioSession sharedInstance]
@@ -42,19 +43,21 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 	[streamer start];
 }
 
--(void)stop{
+- (void) stop
+{
 	[streamer stop];
 	[self destroyStreamer];
 }
 
--(BOOL)isPlaying{
+-(BOOL)isPlaying
+{
 	return [streamer isPlaying];
 }
 
 
 #pragma mark Private Methods
 
-- (void)destroyStreamer
+- (void) destroyStreamer
 {
 	if (streamer)
 	{
@@ -104,9 +107,7 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 		}
 	}
 
-	BOOL newNetworkActivityIndicatorVisibleState =
-		([streamer isWaiting]) &&
-		!([streamer isPlaying] || [streamer isIdle]);
+	BOOL newNetworkActivityIndicatorVisibleState = ([streamer isWaiting]) && !([streamer isPlaying] || [streamer isIdle]);
 	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = newNetworkActivityIndicatorVisibleState;
 }
@@ -197,7 +198,8 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 	return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
 	[self destroyStreamer];
 }
 

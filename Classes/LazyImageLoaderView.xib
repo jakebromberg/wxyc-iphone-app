@@ -43,7 +43,7 @@
 						<string key="NSFrameSize">{320, 568}</string>
 						<reference key="NSSuperview" ref="372630940"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="439437088"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -51,7 +51,7 @@
 					<object class="IBUIActivityIndicatorView" id="439437088">
 						<reference key="NSNextResponder" ref="372630940"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{141, 266}, {37, 37}}</string>
+						<string key="NSFrame">{{142, 265}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="372630940"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -137,28 +137,12 @@
 						<int key="objectID">30</int>
 						<reference key="object" ref="372630940"/>
 						<array class="NSMutableArray" key="children">
-							<object class="IBNSLayoutConstraint" id="724409818">
-								<reference key="firstItem" ref="372630940"/>
+							<object class="IBNSLayoutConstraint" id="2056596">
+								<reference key="firstItem" ref="439437088"/>
 								<int key="firstAttribute">9</int>
 								<int key="relation">0</int>
-								<reference key="secondItem" ref="439437088"/>
-								<int key="secondAttribute">9</int>
-								<float key="multiplier">1</float>
-								<object class="IBLayoutConstant" key="constant">
-									<double key="value">0.0</double>
-								</object>
-								<float key="priority">1000</float>
-								<reference key="containingView" ref="372630940"/>
-								<int key="scoringType">9</int>
-								<float key="scoringTypeFloat">40</float>
-								<int key="contentType">2</int>
-							</object>
-							<object class="IBNSLayoutConstraint" id="839961176">
-								<reference key="firstItem" ref="439437088"/>
-								<int key="firstAttribute">10</int>
-								<int key="relation">0</int>
 								<reference key="secondItem" ref="1929105"/>
-								<int key="secondAttribute">10</int>
+								<int key="secondAttribute">9</int>
 								<float key="multiplier">1</float>
 								<object class="IBLayoutConstant" key="constant">
 									<double key="value">0.0</double>
@@ -168,6 +152,22 @@
 								<int key="scoringType">6</int>
 								<float key="scoringTypeFloat">24</float>
 								<int key="contentType">2</int>
+							</object>
+							<object class="IBNSLayoutConstraint" id="581248426">
+								<reference key="firstItem" ref="439437088"/>
+								<int key="firstAttribute">3</int>
+								<int key="relation">0</int>
+								<reference key="secondItem" ref="372630940"/>
+								<int key="secondAttribute">3</int>
+								<float key="multiplier">1</float>
+								<object class="IBLayoutConstant" key="constant">
+									<double key="value">265</double>
+								</object>
+								<float key="priority">1000</float>
+								<reference key="containingView" ref="372630940"/>
+								<int key="scoringType">3</int>
+								<float key="scoringTypeFloat">9</float>
+								<int key="contentType">3</int>
 							</object>
 							<object class="IBNSLayoutConstraint" id="680377933">
 								<reference key="firstItem" ref="1929105"/>
@@ -270,13 +270,13 @@
 						<reference key="parent" ref="372630940"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">42</int>
-						<reference key="object" ref="839961176"/>
+						<int key="objectID">61</int>
+						<reference key="object" ref="581248426"/>
 						<reference key="parent" ref="372630940"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">47</int>
-						<reference key="object" ref="724409818"/>
+						<int key="objectID">63</int>
+						<reference key="object" ref="2056596"/>
 						<reference key="parent" ref="372630940"/>
 					</object>
 				</array>
@@ -296,41 +296,38 @@
 					<reference ref="221076716"/>
 					<reference ref="366056625"/>
 					<reference ref="680377933"/>
-					<reference ref="839961176"/>
-					<reference ref="724409818"/>
+					<reference ref="581248426"/>
+					<reference ref="2056596"/>
 				</array>
 				<string key="37.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="38.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="39.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="40.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="47.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="61.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="63.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">49</int>
+			<int key="maxID">64</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">LazyImageLoaderView</string>
 					<string key="superclassName">UIImageView</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="activityIndicatorView">UIActivityIndicatorView</string>
-						<string key="imageView">UIImageView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="activityIndicatorView">
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">activityIndicatorView</string>
+						<string key="NS.object.0">UIActivityIndicatorView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">activityIndicatorView</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
 							<string key="name">activityIndicatorView</string>
 							<string key="candidateClassName">UIActivityIndicatorView</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="imageView">
-							<string key="name">imageView</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-					</dictionary>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/LazyImageLoaderView.h</string>

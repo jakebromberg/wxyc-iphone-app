@@ -10,6 +10,7 @@
 #import "Playcut.h"
 #import "AudioStreamController.h"
 #import "WXYCAppDelegate.h"
+#import "UIView+Additions.h"
 
 @class CassetteReelViewController;
 
@@ -25,15 +26,6 @@
 
 
 @implementation ListenViewController
-
-@synthesize GreenLED;
-@synthesize RedLED;
-@synthesize upperCassetteReel;
-@synthesize lowerCassetteReel;
-@synthesize playButton;
-@synthesize stopButton;
-@synthesize nowPlayingLabel;
-@synthesize streamController;
 
 - (void) hideTabBar {
 	WXYCAppDelegate* delegate = (WXYCAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -90,7 +82,7 @@
 
 	for(id playlistEntry in livePlaylistCtrl.playlist) {
 		if ([playlistEntry isKindOfClass:[Playcut class]]) {
-			nowPlayingLabel.text = [NSString stringWithFormat: @"%@ — %@", 
+			self.nowPlayingLabel.text = [NSString stringWithFormat: @"%@ — %@",
 									[playlistEntry valueForKey:@"artist"], 
 									[playlistEntry valueForKey:@"song"]];
 
@@ -98,23 +90,23 @@
 		}
 	}
 	
-	nowPlayingLabel.text = @"unavailable";
+	self.nowPlayingLabel.text = @"unavailable";
 }
 
 - (IBAction)pushPlay:(id)sender {
-	if ([streamController isPlaying])
+	if ([self.streamController isPlaying])
 		return;
 
 	[[AVAudioSession sharedInstance]
 	 setCategory:AVAudioSessionCategoryPlayback
 	 error: nil];
 	
-	[streamController start];
+	[self.streamController start];
 	[self setViewToPlayingState:YES];
 }
 
 - (IBAction)pushStop:(id)sender {
-	[streamController stop];
+	[self.streamController stop];
 	[self setViewToPlayingState:NO];
 }
 
@@ -123,12 +115,12 @@
 	[upperController animate:isPlaying];
 	[lowerController animate:isPlaying];
 
-	[GreenLED setHidden:isPlaying];
-	[RedLED setHidden:isPlaying];
+	[self.GreenLED setHidden:isPlaying];
+	[self.RedLED setHidden:isPlaying];
 }
 
 - (void)playbackStateChanged:(NSNotification *)aNotification {
-	[self setViewToPlayingState:[streamController isPlaying]];
+	[self setViewToPlayingState:[self.streamController isPlaying]];
 }
 
 
@@ -137,21 +129,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+	NSURL *const url =
+	#if TARGET_IPHONE_SIMULATOR
+		[NSURL URLWithString:@"http://localhost/Masks.mp3"];
+	#else
+		[NSURL URLWithString:@"http://152.46.7.128:8000/wxyc.mp3"];
+	#endif
 	
-#if TARGET_IPHONE_SIMULATOR
-	NSURL *url = [NSURL URLWithString:@"http://localhost/Masks.mp3"];
-#else
-	NSURL *url = [NSURL URLWithString:@"http://152.46.7.128:8000/wxyc.mp3"];
-#endif
-	
-	streamController = [[AudioStreamController alloc] initWithURL:url];
+	self.streamController = [[AudioStreamController alloc] initWithURL:url];
 		
 	//initialize the cassete reel view controllers
-	lowerController = [[CassetteReelViewController alloc] initWithImageView:lowerCassetteReel];
-	upperController = [[CassetteReelViewController alloc] initWithImageView:upperCassetteReel];
+	lowerController = [[CassetteReelViewController alloc] initWithImageView:self.lowerCassetteReel];
+	upperController = [[CassetteReelViewController alloc] initWithImageView:self.upperCassetteReel];
 
 	//rotate or the label will look less than convincing
-	nowPlayingLabel.transform = CGAffineTransformMakeRotation(-M_PI / 2);
+	self.nowPlayingLabel.transform = CGAffineTransformMakeRotation(-M_PI / 2);
 	
 	[[NSNotificationCenter defaultCenter]
 	 addObserver:self

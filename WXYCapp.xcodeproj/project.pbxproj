@@ -58,6 +58,7 @@
 		2353AB1412823AC6004F9A11 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2353AB1212823AC6004F9A11 /* DetailsView.xib */; };
 		2353AB3B12823DC3004F9A11 /* PlaylistEntryDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2353AB3A12823DC3004F9A11 /* PlaylistEntryDetailsView.xib */; };
 		235D725E113EE6EF00370285 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235D725D113EE6EF00370285 /* NewsDetailViewController.m */; };
+		235E41F8168CB4CB0088E19F /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E41F7168CB4CB0088E19F /* UIView+Additions.m */; };
 		23601A7E105F089800E6A6FB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23601927105F05C600E6A6FB /* AudioToolbox.framework */; };
 		23601A80105F089D00E6A6FB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236019EB105F060B00E6A6FB /* CFNetwork.framework */; };
 		23601B9B105F116000E6A6FB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23601B9A105F116000E6A6FB /* MediaPlayer.framework */; };
@@ -274,6 +275,8 @@
 		2353AB3A12823DC3004F9A11 /* PlaylistEntryDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistEntryDetailsView.xib; sourceTree = "<group>"; };
 		235D725C113EE6EF00370285 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
 		235D725D113EE6EF00370285 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
+		235E41F6168CB4CB0088E19F /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		235E41F7168CB4CB0088E19F /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		23601927105F05C600E6A6FB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		236019EB105F060B00E6A6FB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		23601B9A105F116000E6A6FB /* MediaPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -488,6 +491,8 @@
 				23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */,
 				23EE399A1527EC660006CDA5 /* WXYCDataStack.h */,
 				23EE399B1527EC660006CDA5 /* WXYCDataStack.m */,
+				235E41F6168CB4CB0088E19F /* UIView+Additions.h */,
+				235E41F7168CB4CB0088E19F /* UIView+Additions.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1230,6 +1235,7 @@
 				277757791631C3EF00349E12 /* FTUtils+NSObject.m in Sources */,
 				2777577A1631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m in Sources */,
 				23F66FF5164ED5680026FFD0 /* LazyImageLoaderView.m in Sources */,
+				235E41F8168CB4CB0088E19F /* UIView+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
