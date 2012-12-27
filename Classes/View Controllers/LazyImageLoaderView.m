@@ -14,10 +14,8 @@
 
 @end
 
-@implementation LazyImageLoaderView
 
-@synthesize activityIndicatorView = _activityIndicatorView;
-@synthesize imageURL = _imageURL;
+@implementation LazyImageLoaderView
 
 - (id) init
 {
@@ -26,7 +24,7 @@
 
 - (id) initWithFrame:(CGRect)frame
 {
-	self = [[[NSBundle mainBundle] loadNibNamed:@"LazyImageLoaderView" owner:self options:nil] lastObject];
+	self = [NSBundle.mainBundle loadNibNamed:@"LazyImageLoaderView" owner:self options:nil].lastObject;
 	
 	if (self)
 	{
@@ -38,7 +36,7 @@
 
 - (void) setImageURL:(NSURL *)imageURL
 {
-//	_imageURL = imageURL;
+	_imageURL = imageURL;
 	[self fetchImage];
 }
 
