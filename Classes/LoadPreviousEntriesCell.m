@@ -11,18 +11,11 @@
 
 @implementation LoadPreviousEntriesCell
 
-@synthesize description;
-@synthesize activity;
-
-- (id)init {
+- (id)init
+{
 	self = [super init];
 	
-	NSArray* topLevelObjects = 
-	[[NSBundle mainBundle]
-	 loadNibNamed:@"LoadPreviousEntriesCell" 
-	 owner:nil options:nil];
-	
-	self = (LoadPreviousEntriesCell *)topLevelObjects[0];
+	self = (LoadPreviousEntriesCell *)[NSBundle.mainBundle loadNibNamed:@"LoadPreviousEntriesCell" owner:nil options:nil][0];
 	
 	self.description.text = @"Previously, on WXYC…";
 	self.description.textColor = [UIColor blueColor];
@@ -43,11 +36,6 @@
 		[self.activity startAnimating];
 		self.activity.hidesWhenStopped = NO;
 		
-//		NSInteger referenceID = [[[livePlaylistCtrl.playlist objectAtIndex:[self maxEntriesToDisplay]-1] objectForKey:@"chronOrderID"] intValue];
-//		[livePlaylistCtrl getJSONFeedWithNumEntries:(kNumEntriesToFetch) //+2 because the feed returns two less for some reason
-//										referenceID:referenceID 
-//										  direction:@"prev"];
-
 		NSTimer *timer;
 		timer = [NSTimer scheduledTimerWithTimeInterval: 0.25
 												 target: self

@@ -32,6 +32,7 @@
 - (void) refreshViews;
 
 @property (nonatomic, strong) Playcut *playcut;
+//@property (nonatomic, strong) id<NP
 
 @property (nonatomic, strong) IBOutlet LazyImageLoaderView *albumArt;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *retrievingImageIndicator;
