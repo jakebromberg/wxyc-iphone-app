@@ -10,14 +10,19 @@
 
 @interface LazyImageLoaderView ()
 
-@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
 @implementation LazyImageLoaderView
 
-@synthesize activityIndicatorView;
+@synthesize activityIndicatorView = _activityIndicatorView;
 @synthesize imageURL = _imageURL;
+
+- (id) init
+{
+	return self = [super init];
+}
 
 - (id) initWithFrame:(CGRect)frame
 {
@@ -33,19 +38,20 @@
 
 - (void) setImageURL:(NSURL *)imageURL
 {
-	_imageURL = imageURL;
+//	_imageURL = imageURL;
 	[self fetchImage];
-	
 }
 
 - (void) fetchImage
 {
+	NSLog(@"%@", self.activityIndicatorView);
+	
 	@autoreleasepool {
-		[self.activityIndicatorView startAnimating];
+		[_activityIndicatorView startAnimating];
 
 		self.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.imageURL]];
 		
-		[self.activityIndicatorView stopAnimating];
+		[_activityIndicatorView stopAnimating];
 	}
 }
 

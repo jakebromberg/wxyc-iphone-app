@@ -28,7 +28,6 @@ const NSString* baseURL = @"http://localhost/";
 -(void)initializeObjectManager {
 	objectManager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:baseURL]];
 	objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"WXYC2.sqlite"];
-//	objectManager.objectStore = objectStore;
 }
 
 -(void)initializePlaycutMapping {
