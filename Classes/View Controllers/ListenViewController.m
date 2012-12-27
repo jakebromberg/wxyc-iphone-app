@@ -68,8 +68,8 @@
 	[upperController animate:isPlaying];
 	[lowerController animate:isPlaying];
 
-	self.GreenLED.hidden = isPlaying;
-	self.RedLED.hidden = isPlaying;
+	self.GreenLED.hidden = !isPlaying;
+	self.RedLED.hidden = !isPlaying;
 }
 
 - (void)playbackStateChanged:(NSNotification *)aNotification {
@@ -110,10 +110,6 @@
 	 selector:@selector(playbackStateChanged:)
 	 name:ASStatusChangedNotification
 	 object:nil];
-}
-
-- (BOOL)canBecomeFirstResponder {
-	return YES;
 }
 
 - (void)dealloc {
