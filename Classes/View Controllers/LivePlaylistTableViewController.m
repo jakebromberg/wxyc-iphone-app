@@ -5,13 +5,10 @@
 
 #import "LivePlaylistTableViewController.h"
 #import "WXYCAppDelegate.h"
-#import "SBJSON.h"
-#import	"BreakpointCell.h"
 #import "LoadPreviousEntriesCell.h"
 #import "PlaylistController.h"
 #import "PlaycutViewController.h"
 #import "WXYCDataStack.h"
-#import "PlaycutDetailsViewController.h"
 #import "PlaycutCell.h"
 #import "NextPrevDetailsDelegate.h"
 
@@ -21,7 +18,6 @@
 	NSFetchRequest *request;
 	NSUInteger maxEntriesToDisplay;
 	LoadPreviousEntriesCell *footerCell;
-
 }
 
 @end
@@ -34,7 +30,8 @@ static const int kNumEntriesToFetch = 20;
 
 PlaylistController* livePlaylistCtrl;
 
-- (void)controllerContextDidSave:(NSNotification *)aNotification {
+- (void)controllerContextDidSave:(NSNotification *)aNotification
+{
 	[managedObjectContext mergeChangesFromContextDidSaveNotification:aNotification];
 	
 	NSError *error = nil;
@@ -54,7 +51,8 @@ PlaylistController* livePlaylistCtrl;
 
 - (void)livePlaylistControllerStateChanged:(NSNotification *)aNotification
 {	
-	if (livePlaylistCtrl.state == LP_DONE) {
+	if (livePlaylistCtrl.state == LP_DONE)
+	{
 		refreshHeaderView.lastUpdatedDate = [NSDate date];
 		[super dataSourceDidFinishLoadingNewData];
 	}
@@ -68,8 +66,8 @@ PlaylistController* livePlaylistCtrl;
 		return 0;
 	}
 	
-	if ([self maxEntriesToDisplay] >= [livePlaylistCtrl.playlist count])
-		maxEntriesToDisplay = [livePlaylistCtrl.playlist count];
+	if ([self maxEntriesToDisplay] >= livePlaylistCtrl.playlist.count)
+		maxEntriesToDisplay = livePlaylistCtrl.playlist.count;
 
 	return [self maxEntriesToDisplay]+1;
 }
@@ -79,11 +77,12 @@ PlaylistController* livePlaylistCtrl;
 
 	UITableViewCell* cell;
 	
-	if (row == [self maxEntriesToDisplay]) {
+	if (row == [self maxEntriesToDisplay])
+	{
 		cell = [[LoadPreviousEntriesCell alloc] init];
 	} else {
 		NSManagedObject *playlistEntry = (livePlaylistCtrl.playlist)[row];
-		NSString *entryType = [NSString stringWithFormat:@"%@Cell", [[playlistEntry class] description]];
+		NSString *entryType = [NSString stringWithFormat:@"%@Cell", playlistEntry.class.description];
 
 		cell = (LivePlaylistTableViewCell*) [tableView dequeueReusableCellWithIdentifier:entryType];
 		
@@ -105,16 +104,19 @@ PlaylistController* livePlaylistCtrl;
 	return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	//boundary case
-	if ([indexPath row] > ([self maxEntriesToDisplay])) {
+	if (indexPath.row > ([self maxEntriesToDisplay]))
+	{
 		return 0;	
 	}
 	
 	return [[[self tableView:tableView cellForRowAtIndexPath:indexPath] class] height];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	selectedRow = [indexPath row];
 	
 	if (self.reloading) //we'll crash if we do anything while the table's (re)loading
@@ -156,12 +158,13 @@ PlaylistController* livePlaylistCtrl;
 
 #pragma mark -
 #pragma mark UIViewController
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
 	[super viewDidLoad];
 
 	maxEntriesToDisplay = kNumEntriesToFetch;
 	
-	managedObjectContext = [[WXYCDataStack sharedInstance] managedObjectContext];
+	managedObjectContext = WXYCDataStack.sharedInstance.managedObjectContext;
 	
 	WXYCAppDelegate *appDelegate = (WXYCAppDelegate *)[UIApplication sharedApplication].delegate;
 	livePlaylistCtrl = [appDelegate livePlaylistCtrlr];
