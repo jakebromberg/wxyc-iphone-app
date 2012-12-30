@@ -14,13 +14,14 @@
 #import "GoogleImageSearch.h"
 #import "Playcut.h"
 #import "LazyImageLoaderView.h"
+#import "NextPrevDetailsDelegate.h"
 
 @interface PlaycutViewController : UIViewController <GoogleImageSearchDelegate, 
 													 UIActionSheetDelegate, 
 													 MFMailComposeViewControllerDelegate>
 {
 	UIImageView *reflectionView;
-	UIActivityIndicatorView *retrievingImageIndicator;
+//	UIActivityIndicatorView *retrievingImageIndicator;
 	
 	PlaycutNavBarTitleView *titleDeets;
 	
@@ -32,7 +33,7 @@
 - (void) refreshViews;
 
 @property (nonatomic, strong) Playcut *playcut;
-//@property (nonatomic, strong) id<NP
+@property (nonatomic, strong) id<NextPrevDetailsDelegate> delegate;
 
 @property (nonatomic, strong) IBOutlet LazyImageLoaderView *albumArt;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *retrievingImageIndicator;

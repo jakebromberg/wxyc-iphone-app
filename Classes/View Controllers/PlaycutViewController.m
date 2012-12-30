@@ -18,9 +18,8 @@
 #import "WXYCDataStack.h"
 #import "WebViewController.h"
 //#import "Reachability.h"
-//#import "TweetPlaycutViewController.h"
 #import "PlaylistController.h"
-//#import "FacebookSharePlaycutViewController.h"
+#import "DTActionSheet.h"
 
 @interface PlaycutViewController (){
 	GoogleImageSearch *gis;
@@ -30,25 +29,6 @@
 @end
 
 @implementation PlaycutViewController
-
-enum AlertTableSections {
-	kUIAction_Email = 0,
-	kUIAction_Twitter,
-	kUIAction_Facebook,
-	kUIAlert_LastFM,
-};
-
-//@synthesize delegate;
-@synthesize albumArt;
-@synthesize retrievingImageIndicator;
-@synthesize reflectionView;
-
-@synthesize playcut = _playcut;
-
-@synthesize favoriteButton;
-@synthesize previousButton;
-@synthesize nextButton;
-@synthesize searchButton;
 
 static const CGFloat kDefaultReflectionFraction = 0.15;
 static const CGFloat kDefaultReflectionOpacity = 0.40;
@@ -180,8 +160,8 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 			
 			NSURL *urlOfImage = [NSURL URLWithString:firstResult[@"url"]];
 			
-			albumArt.imageURL = urlOfImage;
-			self.playcut.primaryImage = UIImagePNGRepresentation(albumArt.image);
+			_albumArt.imageURL = urlOfImage;
+			self.playcut.primaryImage = UIImagePNGRepresentation(_albumArt.image);
 		}
 	}
 }
@@ -189,32 +169,32 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 #pragma mark -
 
 - (void)refreshViews {
-	[retrievingImageIndicator stopAnimating];
+	[_retrievingImageIndicator stopAnimating];
 	
 	titleDeets.artistLabel.text = [currentData valueForKey:@"artist"];
 	titleDeets.albumLabel.text = [currentData valueForKey:@"album"];
 	titleDeets.trackLabel.text = [currentData valueForKey:@"song"];
 	
-	NSUInteger reflectionHeight = albumArt.bounds.size.height * kDefaultReflectionFraction;
+	NSUInteger reflectionHeight = _albumArt.bounds.size.height * kDefaultReflectionFraction;
 	
 	if ([currentData valueForKey:@"primaryImage"]) {
 		UIImage *image = [UIImage imageWithData:[currentData valueForKey:@"primaryImage"]]; 
-		image = [image imageCroppedToFitSize:albumArt.frame.size];
-		albumArt.image = image;
-		reflectionView.image = [self reflectedImage:albumArt withHeight:reflectionHeight];
+		image = [image imageCroppedToFitSize:_albumArt.frame.size];
+		_albumArt.image = image;
+		reflectionView.image = [self reflectedImage:_albumArt withHeight:reflectionHeight];
 		reflectionView.alpha = kDefaultReflectionOpacity;
 	} else {
 		UIImage *defaultImage = [UIImage imageNamed:@"album_cover_placeholder.PNG"];
-		defaultImage = [defaultImage imageCroppedToFitSize:albumArt.frame.size];
-		albumArt.image = defaultImage;
-		reflectionView.image = [self reflectedImage:albumArt withHeight:reflectionHeight];
+		defaultImage = [defaultImage imageCroppedToFitSize:_albumArt.frame.size];
+		_albumArt.image = defaultImage;
+		reflectionView.image = [self reflectedImage:_albumArt withHeight:reflectionHeight];
 		reflectionView.alpha = kDefaultReflectionOpacity;
 		
-		[retrievingImageIndicator startAnimating];
+		[_retrievingImageIndicator startAnimating];
 		[self performSelectorInBackground:@selector(backgroundAlbumCoverSearch:) withObject:currentData];
 	}
 	
-	favoriteButton.image = [UIImage imageNamed:
+	_favoriteButton.image = [UIImage imageNamed:
 							  ([[currentData valueForKey:@"favorite"] boolValue]
 								 ? @"favorites-toolbar-icon-filled.png"
 								 : @"favorites-toolbar-icon-unfilled.png")
@@ -234,49 +214,11 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (buttonIndex == kUIAction_Email) {
-		Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
-		if (mailClass != nil) {
-			// We must always check whether the current device is configured for sending emails
-			if ([mailClass canSendMail])
-			{
-				MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-				picker.mailComposeDelegate = self;
-				
-				picker.subject = @"Playing on WXYC";
-				
-				// Fill out the email body text
-				NSString *emailBody = [NSString stringWithFormat:@"\"%@\" by %@ from album %@",
-									   titleDeets.trackLabel.text,
-									   titleDeets.artistLabel.text,
-									   titleDeets.albumLabel.text];
-				[picker setMessageBody:emailBody isHTML:NO];
-				
-				[self presentViewController:picker animated:YES completion:nil];
-			} else {
-				[self launchMailAppOnDevice];
-			}
-		} else {
-			[self launchMailAppOnDevice];
-		}
-		
-	}
-	
-	if (buttonIndex == kUIAction_Twitter) {
-		[self displayComposeScreenWithServiceType:SLServiceTypeTwitter];
-	}
-	
-	if (buttonIndex == kUIAction_Facebook) {
-		[self displayComposeScreenWithServiceType:SLServiceTypeFacebook];
-	}
-}
-
 - (void) displayComposeScreenWithServiceType: (NSString*) serviceType
 {
     SLComposeViewController *composer = [SLComposeViewController
 										 composeViewControllerForServiceType:serviceType];
-	[composer addImage:albumArt.image];
+	[composer addImage:_albumArt.image];
 	[composer addURL:[NSURL URLWithString:@"http://wxyc.org"]];
 	composer.initialText = [NSString stringWithFormat:@"Listening to %@ by %@ on WXYC",
 								[_playcut valueForKey:@"song"],
@@ -296,7 +238,6 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 }
 
 - (IBAction)nextButtonPush:(id)sender {
-//	NSLog(@"nextButtonPush delegate %@", delegate);
 //	[delegate NPnext];
 //	currentData = [delegate NPnext];
 	[self refreshViews];
@@ -320,16 +261,52 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	[webViewController.webView loadRequest:request];
 }
 
-- (IBAction)actionButtonPush:(id)sender {
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Do what now?"
-															 delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
-													otherButtonTitles:@"Email", @"Twitter", @"Facebook", nil];
-	actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	actionSheet.destructiveButtonIndex = 3;	// make the second button red (destructive)
-	[actionSheet showInView:self.view]; // show from our table view (pops up in the middle of the table)
+- (IBAction)actionButtonPush:(id)sender
+{
+	DTActionSheet *sheet = [[DTActionSheet alloc] initWithTitle:@"Do what now?"];
+
+	[sheet addButtonWithTitle:@"Email" block:^{
+		Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+		if (mailClass) {
+			// We must always check whether the current device is configured for sending emails
+			if ([mailClass canSendMail])
+			{
+				MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+				picker.mailComposeDelegate = self;
+				
+				picker.subject = @"Playing on WXYC";
+				
+				// Fill out the email body text
+				NSString *emailBody = [NSString stringWithFormat:@"\"%@\" by %@ from album %@",
+									   titleDeets.trackLabel.text,
+									   titleDeets.artistLabel.text,
+									   titleDeets.albumLabel.text];
+				[picker setMessageBody:emailBody isHTML:NO];
+				
+				[self presentViewController:picker animated:YES completion:nil];
+			} else {
+				[self launchMailAppOnDevice];
+			}
+		} else {
+			[self launchMailAppOnDevice];
+		}
+	}];
+	
+	[sheet addButtonWithTitle:@"Twitter" block:^{
+		[self displayComposeScreenWithServiceType:SLServiceTypeTwitter];
+	}];
+	
+	[sheet addButtonWithTitle:@"Facebook" block:^{
+		[self displayComposeScreenWithServiceType:SLServiceTypeFacebook];
+	}];
+	
+	[sheet addCancelButtonWithTitle:@"Cancel"];
+	
+	[sheet showInView:self.view];
 }
 
-- (IBAction)favoriteButtonPush:(id)sender {
+- (IBAction)favoriteButtonPush:(id)sender
+{
 //	currentData = [delegate NPcurrent];
 	
 	NSLog(@"currentData.Favorite %@", currentData.favorite);
@@ -342,7 +319,8 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 #pragma mark -
 #pragma mark UIViewController overrides
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
 //	currentData = [delegate NPcurrent];
 	gis = [[GoogleImageSearch alloc] initWithDelegate:self];
 	
@@ -359,7 +337,8 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	[self refreshViews];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
 	NSError *error = nil;
 //	currentData = [delegate NPcurrent];
 	if (![currentData.managedObjectContext save:&error]) {
@@ -367,9 +346,9 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	}
 }
 
-- (void)viewDidUnload {
-	[[NSNotificationCenter defaultCenter] removeObserver:self
-											  forKeyPath:LPStatusChangedNotification];
+- (void)viewDidUnload
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
