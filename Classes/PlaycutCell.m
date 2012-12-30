@@ -12,7 +12,8 @@
 
 @implementation PlaycutCell
 
-- (void) setEntity:(NSManagedObject *)entity {
+- (void) setEntity:(NSManagedObject *)entity
+{
 	[super setEntity:entity];
 	
 	Playcut* playcut = (Playcut*)entity;
@@ -20,16 +21,19 @@
 	self.detailTextLabel.text = [playcut valueForKey:@"song"];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-	if (selected) {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+	if (selected)
+	{
 		PlaycutViewController *detail = [[PlaycutViewController alloc] initWithPlaycut:(Playcut*)self.entity];
 		detail.hidesBottomBarWhenPushed = YES;
 		[[self.delegate navigationController] pushViewController:detail animated:YES];
 	}
 }
 
-- (id)initWithEntity:(NSManagedObject *)entity {
-	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:[[self class] description]];
+- (id)initWithEntity:(NSManagedObject *)entity
+{
+	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.class.description];
 	
 	if (self)
 	{
