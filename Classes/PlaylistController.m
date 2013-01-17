@@ -64,8 +64,12 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 #pragma mark constructors
 
--(PlaylistController*)initWithBaseURL:(NSString*)url {
-	playlistMapping = [[PlaylistMapping alloc] init];
+- (id)initWithBaseURL:(NSString*)url
+{
+	self = [super init];
+	
+	if (self)
+		playlistMapping = [[PlaylistMapping alloc] init];
 
 	return self;
 }
