@@ -15,4 +15,10 @@
 	return 44.0f;
 }
 
+- (id)initWithEntity:(NSManagedObject *)entity
+{
+	[self doesNotRecognizeSelector:_cmd];
+	return nil;
+}
+
 @end
