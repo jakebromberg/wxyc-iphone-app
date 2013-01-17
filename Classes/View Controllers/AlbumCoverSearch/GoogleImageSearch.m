@@ -49,7 +49,7 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 	NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:IMAGE_SEARCH_URL, API_KEY, search, nil]];
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	[NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 - (NSArray*)synchronizedSearchWithString:(NSString*)search {
