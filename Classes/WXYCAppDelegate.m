@@ -12,17 +12,11 @@
 
 @implementation WXYCAppDelegate
 
-@synthesize window;
-@synthesize rootController;
-@synthesize livePlaylistCtrlr;
+#pragma mark - Fetched results controller
 
-@synthesize fetchedResultsController, managedObjectContext, managedObjectModel, persistentStoreCoordinator;
-
-#pragma mark -
-#pragma mark Fetched results controller
-
-- (void)handleTimer {
-	[livePlaylistCtrlr updatePlaylist];
+- (void)handleTimer
+{
+	[self.livePlaylistCtrlr updatePlaylist];
 }
 
 #pragma mark -
@@ -30,46 +24,47 @@
 
 - (NSManagedObjectContext *) managedObjectContext {
 	
-    if (managedObjectContext != nil) {
-        return managedObjectContext;
+    if (_managedObjectContext)
+        return _managedObjectContext;
+	
+    NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
+    if (coordinator)
+	{
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+		_managedObjectContext.persistentStoreCoordinator = coordinator;
     }
 	
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        managedObjectContext = [[NSManagedObjectContext alloc] init];
-		managedObjectContext.persistentStoreCoordinator = coordinator;
-    }
-	
-    return managedObjectContext;
+    return _managedObjectContext;
 }
 
 
-- (NSManagedObjectModel *)managedObjectModel {
-    if (managedObjectModel != nil) {
-        return managedObjectModel;
+- (NSManagedObjectModel *)managedObjectModel
+{
+    if (_managedObjectModel != nil) {
+        return _managedObjectModel;
     }
 	
-    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];    
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
     
-	return managedObjectModel;
+	return _managedObjectModel;
 }
-
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (persistentStoreCoordinator != nil) {
-        return persistentStoreCoordinator;
+    if (_persistentStoreCoordinator)
+	{
+        return _persistentStoreCoordinator;
     }
 	
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"WXYC.sqlite"]];
 	
 	NSError *error;
-    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
-    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
         // Handle the error.
     }    
 	
-    return persistentStoreCoordinator;
+    return _persistentStoreCoordinator;
 }
 
 
@@ -86,8 +81,8 @@
 #pragma mark -
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-	[window addSubview:rootController.view];
-	[window makeKeyAndVisible];
+	[_window addSubview:_rootController.view];
+	[_window makeKeyAndVisible];
 	
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 
@@ -100,11 +95,12 @@
 	}	
 	
 	//Clean out old data from previous launch
-    if (managedObjectContext != nil) {
+    if (_managedObjectContext)
+	{
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(Favorite == %@) || (Favorite == %@)", nil, @NO];	
 		
 		NSFetchRequest *request = [[NSFetchRequest alloc] init];
-		NSEntityDescription *entity = [NSEntityDescription entityForName:@"Playcut" inManagedObjectContext:managedObjectContext];
+		NSEntityDescription *entity = [NSEntityDescription entityForName:@"Playcut" inManagedObjectContext:_managedObjectContext];
 		[request setEntity:entity];
 		[request setPredicate:predicate];
 		
@@ -112,10 +108,10 @@
 		
 		NSArray *fetchResults = nil;
 		NSError *error = nil;
-		if ((fetchResults = [managedObjectContext executeFetchRequest:request error:&error])) {
+		if ((fetchResults = [_managedObjectContext executeFetchRequest:request error:&error])) {
 			NSLog(@"fetchResults: %@", fetchResults);
 			for(Playcut *cut in fetchResults) {
-				[managedObjectContext deleteObject:cut];
+				[_managedObjectContext deleteObject:cut];
 			}
 		} else {
 			NSLog(@"Error %@", error);
@@ -123,7 +119,7 @@
 		
 		
 		
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+        if ([_managedObjectContext hasChanges] && ![_managedObjectContext save:&error]) {
 			// Handle the error.
         } 
     }
@@ -143,8 +139,8 @@
 	}
 	
 	NSURL* url = [NSURL URLWithString:@"http://localhost/"];
-	livePlaylistCtrlr = [[PlaylistController alloc] initWithBaseURL:url];
-	[livePlaylistCtrlr fetchPlaylist];
+	_livePlaylistCtrlr = [[PlaylistController alloc] initWithBaseURL:url];
+	[_livePlaylistCtrlr fetchPlaylist];
 	
 //	NSTimer *updatePlaylist;
 //	updatePlaylist = [NSTimer scheduledTimerWithTimeInterval: 30

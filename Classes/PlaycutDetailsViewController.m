@@ -14,33 +14,10 @@
 
 @implementation PlaycutDetailsViewController
 
-@synthesize entity;
-@synthesize artist;
-@synthesize song;
-@synthesize album;
-@synthesize label;
-
-- (id)init {
+- (id)init
+{
     self = [super initWithNibName:@"PlaycutDetails" bundle:nil];
 	return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

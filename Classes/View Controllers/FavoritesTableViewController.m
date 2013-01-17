@@ -14,9 +14,8 @@
 
 @implementation FavoritesTableViewController
 
-@synthesize favoritesArray;
-
-- (void)controllerContextDidSave:(NSNotification *)aNotification {
+- (void)controllerContextDidSave:(NSNotification *)aNotification
+{
 	[managedObjectContext mergeChangesFromContextDidSaveNotification:aNotification];
 	NSLog(@"NSPredicate %@", [request predicate]);
 
@@ -82,17 +81,20 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
 	NSError *error = nil;
 	NSArray *fetchResults = [managedObjectContext executeFetchRequest:request error:&error];
-	if (fetchResults == nil) {
+	if (fetchResults == nil)
+	{
 		// Handle the error.
 	}
 
-	return [fetchResults count];
+	return fetchResults.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Cell";
 	
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -101,11 +103,10 @@
     }
     
 	// Get the favorite corresponding to the current index path and configure the table view cell.
-	Playcut *favorite = (Playcut *)favoritesArray[indexPath.row];
+	Playcut *favorite = (Playcut *)_favoritesArray[indexPath.row];
 	
-	cell.textLabel.text = [favorite artist];// [dateFormatter stringFromDate:[event creationDate]];
-	
-    cell.detailTextLabel.text = [favorite song];
+	cell.textLabel.text = favorite.artist;// [dateFormatter stringFromDate:[event creationDate]];
+    cell.detailTextLabel.text = favorite.song;
     
 	return cell;
 }
@@ -127,8 +128,8 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[managedObjectContext deleteObject:favoritesArray[[indexPath row]]];
-		[favoritesArray removeObjectAtIndex:[indexPath row]];
+		[managedObjectContext deleteObject:_favoritesArray[indexPath.row]];
+		[_favoritesArray removeObjectAtIndex:[indexPath row]];
 
 		NSError *error;
 		if (![managedObjectContext save:&error]) {
@@ -139,52 +140,59 @@
     }   
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	selectedRow = [indexPath row];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	selectedRow = indexPath.row;
 	
 	PlaycutViewController *detail = [[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil];
 	detail.hidesBottomBarWhenPushed = YES;
 	[[self navigationController] pushViewController:detail animated:YES];
 }
 
-#pragma mark -
-#pragma mark NextPrevDetailsDelegate business
+#pragma mark - NextPrevDetailsDelegate business
+#pragma mark
 
--(id)NPnext {
-	if ([self hasNext]) {
+-(id)NPnext
+{
+	if ([self hasNext])
+	{
 		selectedRow++;
 		
 		[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
 									animated:NO scrollPosition:UITableViewScrollPositionMiddle ];
 		
-		return favoritesArray[selectedRow];
+		return _favoritesArray[selectedRow];
 	}
 	
 	return nil;
 }
 
--(id)NPcurrent {
-	return favoritesArray[selectedRow];
+-(id)NPcurrent
+{
+	return _favoritesArray[selectedRow];
 }
 
 -(id)NPprev {
-	if ([self hasPrev]) {
+	if ([self hasPrev])
+	{
 		selectedRow--;
 		
 		[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
 									animated:NO scrollPosition:UITableViewScrollPositionMiddle ];
 		
-		return favoritesArray[selectedRow];
+		return _favoritesArray[selectedRow];
 	}
 	
 	return nil;
 }
 
--(BOOL)hasNext {
-	return (selectedRow+1 < [favoritesArray count]);
+-(BOOL)hasNext
+{
+	return (selectedRow+1 < _favoritesArray.count);
 }
 
--(BOOL)hasPrev {
+-(BOOL)hasPrev
+{
 	return (selectedRow-1 >= 0);
 }
 

@@ -9,8 +9,5 @@
 #import "PlaycutNavBarTitleView.h"
 
 @implementation PlaycutNavBarTitleView
-@synthesize artistLabel;
-@synthesize trackLabel;
-@synthesize albumLabel;
 
 @end

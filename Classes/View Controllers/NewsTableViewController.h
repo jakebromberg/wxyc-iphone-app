@@ -8,12 +8,8 @@
 
 
 @interface NewsTableViewController : PullToRefreshTableViewController {
-	NSMutableArray *blogEntries;
-
 	NSMutableData *responseData;
 	UISegmentedControl *stationNewsSegControl;
-
-	IBOutlet UITableView *updatesTableView;
 }
 
 @property (nonatomic, strong) NSMutableArray *blogEntries;

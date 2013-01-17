@@ -16,7 +16,6 @@
 @end
 
 @interface GoogleImageSearch : NSObject<RKObjectLoaderDelegate> {
-	id<GoogleImageSearchDelegate> delegate;
 	NSMutableData *responseData;
 @private
 	NSOperationQueue *parseQueue;	

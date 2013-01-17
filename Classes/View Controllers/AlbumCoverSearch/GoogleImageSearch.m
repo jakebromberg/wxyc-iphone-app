@@ -11,8 +11,6 @@
 
 @implementation GoogleImageSearch
 
-@synthesize delegate;
-
 //static NSString *IMAGE_SEARCH_URL = @"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=large&key=%@&q=album+%@";
 static NSString *IMAGE_SEARCH_URL = @"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=%@&key=%@&q=album+%@";
 static const NSString *MED_IMG_SIZE = @"medium";
@@ -34,12 +32,13 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 	// Create a dictionary from the JSON string
 	NSMutableArray *results = [jsonString JSONValue];
 	
-	[delegate handleGoogleImageSearchResults:results];
+	[_delegate handleGoogleImageSearchResults:results];
 	
 	responseData.length = 0;
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
 	NSLog(@"%@", error);
 }
 
@@ -52,14 +51,13 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 	[NSURLConnection connectionWithRequest:request delegate:self];
 }
 
-- (NSArray*)synchronizedSearchWithString:(NSString*)search {
+- (NSArray*)synchronizedSearchWithString:(NSString*)search
+{
 	NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:IMAGE_SEARCH_URL,
 									   LARGE_IMG_SIZE, 
 									   API_KEY, 
-									   [search stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], 
+									   [search stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
 									   nil]];
-	
-	//NSLog(@"GIS URL: %@", URL);
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:URL];
 	NSURLResponse *response = nil;
@@ -76,12 +74,12 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 
 #pragma mark -
 
-- (id)initWithDelegate:(id<GoogleImageSearchDelegate>) del {
+- (id)initWithDelegate:(id<GoogleImageSearchDelegate>) del
+{
 	self.delegate = del;
 	responseData = [NSMutableData data];
 	
 	return [self init];
 }
-
 
 @end

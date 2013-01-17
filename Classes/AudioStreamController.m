@@ -26,12 +26,10 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 
 @implementation AudioStreamController
 
-@synthesize URL;
+#pragma mark - Public Methods
 
-
-#pragma mark Public Methods
-
--(void)start{
+- (void)start
+{
 	NSError* error = nil;
 	[[AVAudioSession sharedInstance] setActive:YES error:&error];
 	[[AVAudioSession sharedInstance]
@@ -42,12 +40,14 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 	[streamer start];
 }
 
--(void)stop{
+- (void)stop
+{
 	[streamer stop];
 	[self destroyStreamer];
 }
 
--(BOOL)isPlaying{
+- (BOOL)isPlaying
+{
 	return [streamer isPlaying];
 }
 
@@ -71,7 +71,7 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 	
 	//do this so we can still update the volume slider after we destroy the streamer
 	NSError *activationError = nil;
-	[session setActive:YES error: &activationError];
+	[session setActive:YES error:&activationError];
 }
 
 - (void)createStreamer
@@ -104,9 +104,7 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 		}
 	}
 
-	BOOL newNetworkActivityIndicatorVisibleState =
-		([streamer isWaiting]) &&
-		!([streamer isPlaying] || [streamer isIdle]);
+	BOOL newNetworkActivityIndicatorVisibleState = ([streamer isWaiting]) && !([streamer isPlaying] || [streamer isIdle]);
 	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = newNetworkActivityIndicatorVisibleState;
 }
@@ -190,14 +188,18 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 
 #pragma mark 
 
-- (id)initWithURL:(NSURL*)aURL {
+- (id)initWithURL:(NSURL*)aURL
+{
 	self = [super init];
-	[self setURL:aURL];
+	
+	if (self)
+		[self setURL:aURL];
 	
 	return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
 	[self destroyStreamer];
 }
 

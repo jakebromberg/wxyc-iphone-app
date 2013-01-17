@@ -10,11 +10,8 @@
 
 @implementation NewsTableViewController
 
-@synthesize blogEntries;
-@synthesize updatesTableView;
-
-- (NSString *)flattenHTML:(NSString *)html {
-	
+- (NSString *)flattenHTML:(NSString *)html
+{
     NSScanner *theScanner;
     NSString *text = nil;
 	
@@ -41,14 +38,16 @@
 
 - (void)getJSONFeedWithNumEntries:(int)num referenceID:(int)referenceID direction:(NSString*)direction  {
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://wxyc.org/simplepie/iphoneappnewsfeed.php"]];
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	[NSURLConnection connectionWithRequest:request delegate:self];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
 	responseData.length = 0;
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
 	[responseData appendData:data];
 }
 
@@ -57,7 +56,7 @@
 	NSString *jsonString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	responseData.length = 0;
 	
-	blogEntries = [[jsonString JSONValue] mutableCopy];
+	_blogEntries = [[jsonString JSONValue] mutableCopy];
 	
 	// Update the table with data
 	[self.tableView reloadData];
@@ -66,7 +65,7 @@
 }
 
 - (void)reloadTableViewDataSource {
-	[blogEntries removeAllObjects];
+	[_blogEntries removeAllObjects];
 	[self getJSONFeedWithNumEntries:20 referenceID:1 direction:@"prev"];
 }
 
@@ -79,7 +78,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	//NSLog(@"blog entries %@", blogEntries);
 	NSUInteger row = [indexPath row];
-	if ([blogEntries count] == 0) { //i forget why we go through all this instead of just returning nil
+	if ([_blogEntries count] == 0) { //i forget why we go through all this instead of just returning nil
 		BlogEntryTableViewCell *blogCell = (BlogEntryTableViewCell*) [tableView dequeueReusableCellWithIdentifier:@"BlogEntryCell"];
 		
 		if (blogCell==nil) {
@@ -93,7 +92,7 @@
 		return blogCell;
 	}
 	
-	NSDictionary *blogEntry = blogEntries[row];
+	NSDictionary *blogEntry = _blogEntries[row];
 	//NSLog(@"blogEntry %@", blogEntry);
 	BlogEntryTableViewCell *blogCell = (BlogEntryTableViewCell*) [tableView dequeueReusableCellWithIdentifier:@"BlogEntryCell"];
 	
@@ -128,7 +127,7 @@
 	NSUInteger row = [indexPath row];
 
 	NewsDetailViewController *webViewController = [[NewsDetailViewController alloc] initWithNibName:@"SimpleWebView" bundle:nil];
-	webViewController.items = blogEntries;
+	webViewController.items = _blogEntries;
 	webViewController.currentRow = row;
 	webViewController.delegate = self.tableView;
 	
@@ -139,7 +138,7 @@
     [super viewDidLoad];
 	
 	responseData = [NSMutableData data];
-	blogEntries = [[NSMutableArray alloc] init];
+	_blogEntries = [[NSMutableArray alloc] init];
 	
 	refreshHeaderView.lastUpdatedDate = [NSDate date];
 	[self showReloadAnimationAnimated:YES];

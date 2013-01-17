@@ -9,11 +9,8 @@
 #import <Foundation/Foundation.h>
 
 
-@interface PlaycutNavBarTitleView : UIView {
-	UILabel *artistLabel;
-	UILabel *trackLabel;
-	UILabel *albumLabel;
-}
+@interface PlaycutNavBarTitleView : UIView
+
 @property (nonatomic, strong) IBOutlet UILabel *artistLabel;
 @property (nonatomic, strong) IBOutlet UILabel *trackLabel;
 @property (nonatomic, strong) IBOutlet UILabel *albumLabel;

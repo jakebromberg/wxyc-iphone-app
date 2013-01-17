@@ -17,10 +17,7 @@
 #import "GoogleImageSearch.h"
 #import "WXYCDataStack.h"
 #import "WebViewController.h"
-//#import "Reachability.h"
-//#import "TweetPlaycutViewController.h"
 #import "PlaylistController.h"
-//#import "FacebookSharePlaycutViewController.h"
 
 @interface PlaycutViewController (){
 	GoogleImageSearch *gis;
@@ -38,18 +35,6 @@ enum AlertTableSections {
 	kUIAlert_LastFM,
 };
 
-//@synthesize delegate;
-@synthesize albumArt;
-@synthesize retrievingImageIndicator;
-@synthesize reflectionView;
-
-@synthesize playcut = _playcut;
-
-@synthesize favoriteButton;
-@synthesize previousButton;
-@synthesize nextButton;
-@synthesize searchButton;
-
 static const CGFloat kDefaultReflectionFraction = 0.15;
 static const CGFloat kDefaultReflectionOpacity = 0.40;
 
@@ -63,10 +48,10 @@ static const CGFloat kDefaultReflectionOpacity = 0.40;
 	return self;
 }
 
-#pragma mark -
-#pragma mark Segmented Control business
+#pragma mark - Segmented Control business
 
--(void)redrawButtonState {
+-(void)redrawButtonState
+{
 //	[self.previousButton setEnabled:[delegate hasPrev]];
 //	[self.nextButton setEnabled:[delegate hasNext]];
 }
@@ -163,58 +148,62 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	return theImage;
 }
 
-#pragma mark -
-#pragma mark GoogleImageSearch delegate business
+#pragma mark - GoogleImageSearch delegate business
 
-- (void)backgroundAlbumCoverSearch:(Playcut*)playcut {
-	@autoreleasepool {
+- (void)backgroundAlbumCoverSearch:(Playcut*)playcut
+{
+	@autoreleasepool
+	{
 		NSArray *searchTerms = @[[self.playcut valueForKey:@"artist"], [self.playcut valueForKey:@"album"]];
 		NSString *searchTermsString = [searchTerms componentsJoinedByString:@"+"];
 		searchTermsString = [searchTermsString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 		
 		NSArray *results = [gis synchronizedSearchWithString:searchTermsString];
-		
 		NSArray *innerResults = (NSArray*) ((NSDictionary*) results)[@"responseData"][@"results"];
-		if ([innerResults count] > 0) {
+		
+		if (innerResults.count > 0)
+		{
 			NSDictionary *firstResult = innerResults[0];
 			
 			NSURL *urlOfImage = [NSURL URLWithString:firstResult[@"url"]];
 			
-			albumArt.imageURL = urlOfImage;
-			self.playcut.primaryImage = UIImagePNGRepresentation(albumArt.image);
+			_albumArt.imageURL = urlOfImage;
+			
+			self.playcut.primaryImage = [UIImage imageWithData:UIImagePNGRepresentation(_albumArt.image)];
 		}
 	}
 }
 
 #pragma mark -
 
-- (void)refreshViews {
-	[retrievingImageIndicator stopAnimating];
+- (void)refreshViews
+{
+	[_retrievingImageIndicator stopAnimating];
 	
 	titleDeets.artistLabel.text = [currentData valueForKey:@"artist"];
 	titleDeets.albumLabel.text = [currentData valueForKey:@"album"];
 	titleDeets.trackLabel.text = [currentData valueForKey:@"song"];
 	
-	NSUInteger reflectionHeight = albumArt.bounds.size.height * kDefaultReflectionFraction;
+	NSUInteger reflectionHeight = _albumArt.bounds.size.height * kDefaultReflectionFraction;
 	
 	if ([currentData valueForKey:@"primaryImage"]) {
 		UIImage *image = [UIImage imageWithData:[currentData valueForKey:@"primaryImage"]]; 
-		image = [image imageCroppedToFitSize:albumArt.frame.size];
-		albumArt.image = image;
-		reflectionView.image = [self reflectedImage:albumArt withHeight:reflectionHeight];
-		reflectionView.alpha = kDefaultReflectionOpacity;
+		image = [image imageCroppedToFitSize:_albumArt.frame.size];
+		_albumArt.image = image;
+		_reflectionView.image = [self reflectedImage:_albumArt withHeight:reflectionHeight];
+		_reflectionView.alpha = kDefaultReflectionOpacity;
 	} else {
 		UIImage *defaultImage = [UIImage imageNamed:@"album_cover_placeholder.PNG"];
-		defaultImage = [defaultImage imageCroppedToFitSize:albumArt.frame.size];
-		albumArt.image = defaultImage;
-		reflectionView.image = [self reflectedImage:albumArt withHeight:reflectionHeight];
-		reflectionView.alpha = kDefaultReflectionOpacity;
+		defaultImage = [defaultImage imageCroppedToFitSize:_albumArt.frame.size];
+		_albumArt.image = defaultImage;
+		_reflectionView.image = [self reflectedImage:_albumArt withHeight:reflectionHeight];
+		_reflectionView.alpha = kDefaultReflectionOpacity;
 		
-		[retrievingImageIndicator startAnimating];
+		[_retrievingImageIndicator startAnimating];
 		[self performSelectorInBackground:@selector(backgroundAlbumCoverSearch:) withObject:currentData];
 	}
 	
-	favoriteButton.image = [UIImage imageNamed:
+	_favoriteButton.image = [UIImage imageNamed:
 							  ([[currentData valueForKey:@"favorite"] boolValue]
 								 ? @"favorites-toolbar-icon-filled.png"
 								 : @"favorites-toolbar-icon-unfilled.png")
@@ -234,10 +223,14 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (buttonIndex == kUIAction_Email) {
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == kUIAction_Email)
+	{
 		Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
-		if (mailClass != nil) {
+		
+		if (mailClass != nil)
+		{
 			// We must always check whether the current device is configured for sending emails
 			if ([mailClass canSendMail])
 			{
@@ -263,11 +256,13 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 		
 	}
 	
-	if (buttonIndex == kUIAction_Twitter) {
+	if (buttonIndex == kUIAction_Twitter)
+	{
 		[self displayComposeScreenWithServiceType:SLServiceTypeTwitter];
 	}
 	
-	if (buttonIndex == kUIAction_Facebook) {
+	if (buttonIndex == kUIAction_Facebook)
+	{
 		[self displayComposeScreenWithServiceType:SLServiceTypeFacebook];
 	}
 }
@@ -276,7 +271,7 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 {
     SLComposeViewController *composer = [SLComposeViewController
 										 composeViewControllerForServiceType:serviceType];
-	[composer addImage:albumArt.image];
+	[composer addImage:_albumArt.image];
 	[composer addURL:[NSURL URLWithString:@"http://wxyc.org"]];
 	composer.initialText = [NSString stringWithFormat:@"Listening to %@ by %@ on WXYC",
 								[_playcut valueForKey:@"song"],
@@ -304,7 +299,6 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 }
 
 - (IBAction)nextButtonPush:(id)sender {
-//	NSLog(@"nextButtonPush delegate %@", delegate);
 //	[delegate NPnext];
 //	currentData = [delegate NPnext];
 	[self refreshViews];
@@ -376,8 +370,7 @@ CGContextRef MyCreateBitmapContext(int pixelsWide, int pixelsHigh)
 }
 
 - (void)viewDidUnload {
-	[[NSNotificationCenter defaultCenter] removeObserver:self
-											  forKeyPath:LPStatusChangedNotification];
+	[[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:LPStatusChangedNotification];
 }
 
 

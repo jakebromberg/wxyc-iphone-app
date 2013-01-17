@@ -10,10 +10,8 @@
 
 @implementation LivePlaylistTableViewCell
 
-@synthesize entity;
-@synthesize delegate;
-
-+ (float)height {
++ (float)height
+{
 	return 44.0f;
 }
 
