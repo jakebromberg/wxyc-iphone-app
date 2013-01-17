@@ -21,18 +21,17 @@
 
 @implementation PlaylistMapping
 
-@synthesize objectManager;
+NSString* baseURL = @"http://localhost/";
 
-const NSString* baseURL = @"http://localhost/";
-
--(void)initializeObjectManager {
-	objectManager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:baseURL]];
-	objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"WXYC2.sqlite"];
+- (void)initializeObjectManager
+{
+	_objectManager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:baseURL]];
+	_objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"WXYC2.sqlite"];
 //	objectManager.objectStore = objectStore;
 }
 
 -(void)initializePlaycutMapping {
-	RKManagedObjectMapping* playcutMapping = [RKManagedObjectMapping mappingForClass:[Playcut class] inManagedObjectStore:objectManager.objectStore];
+	RKManagedObjectMapping* playcutMapping = [RKManagedObjectMapping mappingForClass:[Playcut class] inManagedObjectStore:_objectManager.objectStore];
 	
 	[playcutMapping mapKeyPath:@"id" toAttribute:@"playlistEntryID"];
 	[playcutMapping mapKeyPath:@"chronOrderID" toAttribute:@"chronOrderID"];
@@ -44,30 +43,33 @@ const NSString* baseURL = @"http://localhost/";
 	[playcutMapping mapKeyPath:@"rotation" toAttribute:@"rotation"];
 	[playcutMapping mapKeyPath:@"songTitle" toAttribute:@"song"];
 	
-	[objectManager.mappingProvider setMapping:playcutMapping forKeyPath:@"playcuts"];
+	[_objectManager.mappingProvider setMapping:playcutMapping forKeyPath:@"playcuts"];
 }
 
--(void)initializeBreakpointMapping {
-	RKManagedObjectMapping* breakpointMapping = [RKManagedObjectMapping mappingForClass:[Breakpoint class] inManagedObjectStore:objectManager.objectStore];
+-(void)initializeBreakpointMapping
+{
+	RKManagedObjectMapping* breakpointMapping = [RKManagedObjectMapping mappingForClass:[Breakpoint class] inManagedObjectStore:_objectManager.objectStore];
 
 	[breakpointMapping mapKeyPath:@"id" toAttribute:@"playlistEntryID"];
 	[breakpointMapping mapKeyPath:@"chronOrderID" toAttribute:@"chronOrderID"];
 	[breakpointMapping mapKeyPath:@"hour" toAttribute:@"hour"];
 	
-	[objectManager.mappingProvider setMapping:breakpointMapping forKeyPath:@"breakpoints"];
+	[_objectManager.mappingProvider setMapping:breakpointMapping forKeyPath:@"breakpoints"];
 }
 
--(void)initializeTalksetMapping {
-	RKManagedObjectMapping* talksetMapping = [RKManagedObjectMapping mappingForClass:[Talkset class] inManagedObjectStore:objectManager.objectStore];
+-(void)initializeTalksetMapping
+{
+	RKManagedObjectMapping* talksetMapping = [RKManagedObjectMapping mappingForClass:[Talkset class] inManagedObjectStore:_objectManager.objectStore];
 
 	[talksetMapping mapKeyPath:@"id" toAttribute:@"playlistEntryID"];
 	[talksetMapping mapKeyPath:@"chronOrderID" toAttribute:@"chronOrderID"];
 	[talksetMapping mapKeyPath:@"hour" toAttribute:@"hour"];
 	
-	[objectManager.mappingProvider setMapping:talksetMapping forKeyPath:@"talksets"];
+	[_objectManager.mappingProvider setMapping:talksetMapping forKeyPath:@"talksets"];
 }
 
--(id)init {
+-(id)init
+{
 	if (self = [super init])
 	{
 		[self initializeObjectManager];

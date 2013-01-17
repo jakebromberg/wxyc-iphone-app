@@ -13,8 +13,8 @@
 
 @class CassetteReelViewController;
 
-@interface ListenViewController() {
-//	AudioStreamController* streamController;
+@interface ListenViewController()
+{
 	CassetteReelViewController *upperController;
 	CassetteReelViewController *lowerController;
 }
@@ -26,25 +26,18 @@
 
 @implementation ListenViewController
 
-@synthesize GreenLED;
-@synthesize RedLED;
-@synthesize upperCassetteReel;
-@synthesize lowerCassetteReel;
-@synthesize playButton;
-@synthesize stopButton;
-@synthesize nowPlayingLabel;
-@synthesize streamController;
-
-
-- (void)livePlaylistControllerStateChanged:(NSNotification *)aNotification {
+- (void)livePlaylistControllerStateChanged:(NSNotification *)aNotification
+{
 	PlaylistController *livePlaylistCtrl = [aNotification object];
 	
 	if ([livePlaylistCtrl state] != LP_DONE) 
 		return;
 
-	for(id playlistEntry in livePlaylistCtrl.playlist) {
-		if ([playlistEntry isKindOfClass:[Playcut class]]) {
-			nowPlayingLabel.text = [NSString stringWithFormat: @"%@ — %@", 
+	for (id playlistEntry in livePlaylistCtrl.playlist)
+	{
+		if ([playlistEntry isKindOfClass:[Playcut class]])
+		{
+			_nowPlayingLabel.text = [NSString stringWithFormat: @"%@ — %@",
 									[playlistEntry valueForKey:@"artist"], 
 									[playlistEntry valueForKey:@"song"]];
 
@@ -52,42 +45,45 @@
 		}
 	}
 	
-	nowPlayingLabel.text = @"unavailable";
+	_nowPlayingLabel.text = @"unavailable";
 }
 
-- (IBAction)pushPlay:(id)sender {
-	if ([streamController isPlaying])
+- (IBAction)pushPlay:(id)sender
+{
+	if ([_streamController isPlaying])
 		return;
 
 	[[AVAudioSession sharedInstance]
 	 setCategory:AVAudioSessionCategoryPlayback
 	 error: nil];
 	
-	[streamController start];
+	[_streamController start];
 	[self setViewToPlayingState:YES];
 }
 
-- (IBAction)pushStop:(id)sender {
-	[streamController stop];
+- (IBAction)pushStop:(id)sender
+{
+	[_streamController stop];
 	[self setViewToPlayingState:NO];
 }
 
 //TODO: All of the views in this code block should have controllers that respond to changing states themselves
--(void)setViewToPlayingState:(BOOL)isPlaying {
+-(void)setViewToPlayingState:(BOOL)isPlaying
+{
 	[upperController animate:isPlaying];
 	[lowerController animate:isPlaying];
 
-	GreenLED.hidden = isPlaying;
-	RedLED.hidden = isPlaying;
+	_GreenLED.hidden = isPlaying;
+	_RedLED.hidden = isPlaying;
 }
 
-- (void)playbackStateChanged:(NSNotification *)aNotification {
-	[self setViewToPlayingState:[streamController isPlaying]];
+- (void)playbackStateChanged:(NSNotification *)aNotification
+{
+	[self setViewToPlayingState:[_streamController isPlaying]];
 }
 
 
-#pragma mark -
-#pragma mark UIViewController
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -98,14 +94,14 @@
 	NSURL *url = [NSURL URLWithString:@"http://152.46.7.128:8000/wxyc.mp3"];
 #endif
 	
-	streamController = [[AudioStreamController alloc] initWithURL:url];
+	_streamController = [[AudioStreamController alloc] initWithURL:url];
 		
 	//initialize the cassete reel view controllers
-	lowerController = [[CassetteReelViewController alloc] initWithImageView:lowerCassetteReel];
-	upperController = [[CassetteReelViewController alloc] initWithImageView:upperCassetteReel];
+	lowerController = [[CassetteReelViewController alloc] initWithImageView:_lowerCassetteReel];
+	upperController = [[CassetteReelViewController alloc] initWithImageView:_upperCassetteReel];
 
 	//rotate or the label will look less than convincing
-	nowPlayingLabel.transform = CGAffineTransformMakeRotation(-M_PI / 2);
+	_nowPlayingLabel.transform = CGAffineTransformMakeRotation(-M_PI / 2);
 	
 	[[NSNotificationCenter defaultCenter]
 	 addObserver:self

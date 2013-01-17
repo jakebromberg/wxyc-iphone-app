@@ -12,8 +12,6 @@
 	NSPersistentStoreCoordinator *persistentStoreCoordinator;
     NSManagedObjectModel *managedObjectModel;
     NSManagedObjectContext *managedObjectContext;
-	
-	NSURL *storeURL;
 }
 
 @property (nonatomic, strong) NSURL *storeURL;

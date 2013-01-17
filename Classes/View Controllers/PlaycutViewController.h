@@ -19,9 +19,6 @@
 													 UIActionSheetDelegate, 
 													 MFMailComposeViewControllerDelegate>
 {
-	UIImageView *reflectionView;
-	UIActivityIndicatorView *retrievingImageIndicator;
-	
 	PlaycutNavBarTitleView *titleDeets;
 	
 	NSManagedObjectContext *managedObjectContext;

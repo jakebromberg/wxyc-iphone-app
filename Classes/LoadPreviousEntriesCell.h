@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LivePlaylistTableViewCell.h"
 
-@interface LoadPreviousEntriesCell : LivePlaylistTableViewCell {
-	IBOutlet UILabel *description;
-	IBOutlet UIActivityIndicatorView *activity;
-}
+@interface LoadPreviousEntriesCell : LivePlaylistTableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *description;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activity;

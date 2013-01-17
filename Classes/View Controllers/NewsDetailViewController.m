@@ -10,20 +10,18 @@
 
 @implementation NewsDetailViewController
 
-@synthesize items;
-@synthesize currentRow;
-@synthesize segControl;
-@synthesize webView;
-@synthesize delegate;
-
--(void)redrawButtonState {
+-(void)redrawButtonState
+{
 	[self.segControl setEnabled:(self.currentRow > 0) forSegmentAtIndex:0];
 	[self.segControl setEnabled:(self.currentRow < [self.items count]-1) forSegmentAtIndex:1];
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
 	NSLog(@"expected:%d, got:%d", UIWebViewNavigationTypeLinkClicked, navigationType);
-	if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+
+	if (navigationType == UIWebViewNavigationTypeLinkClicked)
+	{
 		WebViewController *webViewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:nil];
 		webViewController.hidesBottomBarWhenPushed = YES;
 		[[self navigationController] pushViewController:webViewController animated:YES];
@@ -35,7 +33,7 @@
 }
 
 -(void) showItem:(int)index {
-	NSDictionary *blogEntry = items[index];
+	NSDictionary *blogEntry = _items[index];
 	
 	NSString *title = blogEntry[@"title"];
 	NSString *date = blogEntry[@"date"];
@@ -50,11 +48,11 @@
 			([author isEqualToString:@"none"] ? @"WXYC" : author)];
 	page = [page stringByReplacingOccurrencesOfString:@"##content##" withString:content];
 
-	[webView loadHTMLString:page baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+	[_webView loadHTMLString:page baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
 
 	//sets highlighted cell in parent table view to one corresponding to the current item shown
-	if (![[delegate indexPathsForVisibleRows] containsObject:[NSIndexPath indexPathForRow:index inSection:0]])
-		[delegate selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] 
+	if (![[_delegate indexPathsForVisibleRows] containsObject:[NSIndexPath indexPathForRow:index inSection:0]])
+		[_delegate selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]
 							  animated:NO 
 						scrollPosition:UITableViewScrollPositionMiddle ];
 	
@@ -69,14 +67,15 @@
 		case UP:
 			if (self.currentRow>0) {
 				self.currentRow = self.currentRow-1;
-				[self showItem:currentRow];
+				[self showItem:_currentRow];
 			}
 			break;
 			
 		case DOWN: // Down clicked
-			if (self.currentRow < [items count]-1) {
+			if (self.currentRow < _items.count-1)
+			{
 				self.currentRow = self.currentRow+1;
-				[self showItem:currentRow];
+				[self showItem:_currentRow];
 			}
 			break;
 			
@@ -88,7 +87,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	[self showItem:currentRow];
+	[self showItem:_currentRow];
 }
 
 - (void)viewDidLoad {

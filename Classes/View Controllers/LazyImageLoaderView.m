@@ -16,9 +16,6 @@
 
 @implementation LazyImageLoaderView
 
-@synthesize activityIndicatorView;
-@synthesize imageURL = _imageURL;
-
 - (id) initWithFrame:(CGRect)frame
 {
 	self = [[[NSBundle mainBundle] loadNibNamed:@"LazyImageLoaderView" owner:self options:nil] lastObject];
@@ -40,7 +37,8 @@
 
 - (void) fetchImage
 {
-	@autoreleasepool {
+	@autoreleasepool
+	{
 		[self.activityIndicatorView startAnimating];
 
 		self.image = [UIImage imageWithData: [NSData dataWithContentsOfURL:self.imageURL]];

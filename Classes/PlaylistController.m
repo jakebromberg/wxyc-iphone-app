@@ -12,10 +12,8 @@
 #import "Talkset.h"
 #import "Breakpoint.h"
 #import "PlaylistMapping.h"
-//@class PlaylistMapping;
 
 NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
-//RKObjectManager* objectManager;
 
 @interface PlaylistController() {
 	PlaylistMapping* playlistMapping;
@@ -25,21 +23,19 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 @implementation PlaylistController
 
-@synthesize playlist;
-@synthesize state;
-//@synthesize numNewEntries;
-
-
-- (void)setState:(PlaylistControllerState)aStatus {
-	if (state != aStatus) {
-		state = aStatus;
+- (void)setState:(PlaylistControllerState)aStatus
+{
+	if (_state != aStatus)
+	{
+		_state = aStatus;
 		[[NSNotificationCenter defaultCenter] postNotificationName:LPStatusChangedNotification object:self];
 	}
 }
 
 #pragma mark JSON Business
 
-- (void)fetchPlaylist {
+- (void)fetchPlaylist
+{
 	[playlistMapping.objectManager loadObjectsAtResourcePath:@"/new%20schema.json" delegate:self];
 }
 
@@ -49,8 +45,9 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 #pragma mark RestKit business
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
-	playlist = [[objects sortedArrayUsingComparator:^(id a, id b) {
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+	_playlist = [[objects sortedArrayUsingComparator:^(id a, id b) {
 		return [[a valueForKey:@"chronOrderID"] compare:[b valueForKey:@"chronOrderID"]];
 	}] copy];
 	

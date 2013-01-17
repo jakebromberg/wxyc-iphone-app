@@ -12,18 +12,16 @@
 
 static WXYCDataStack *sharedInstance = nil;
 
-@synthesize storeURL;
-
-#pragma mark -
-#pragma mark Core Data stack
+#pragma mark - Core Data stack
 
 /**
  Returns the managed object context for the application.
  If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
  */
-- (NSManagedObjectContext *) managedObjectContext {
-	
-    if (managedObjectContext != nil) {
+- (NSManagedObjectContext *) managedObjectContext
+{
+    if (managedObjectContext != nil)
+	{
         return managedObjectContext;
     }
 	
@@ -64,7 +62,7 @@ static WXYCDataStack *sharedInstance = nil;
 	
 	NSError *error;
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
-    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:_storeURL options:nil error:&error]) {
 		NSLog(@"Error: %@, %@", error, [error userInfo]);
     }    
 

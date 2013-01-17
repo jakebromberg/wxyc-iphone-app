@@ -18,16 +18,13 @@
 	NSManagedObjectContext *managedObjectContext;
 	NSNotificationCenter *dnc;	
 	NSFetchRequest *request;
-	NSUInteger maxEntriesToDisplay;
 	LoadPreviousEntriesCell *footerCell;
-
 }
 
 @end
 
 @implementation LivePlaylistTableViewController
 
-@synthesize maxEntriesToDisplay;
 static const int kNumEntriesToFetch = 20;
 //static int entriesMultiplier = 1;
 
@@ -59,26 +56,28 @@ PlaylistController* livePlaylistCtrl;
 	}
 }
 
-#pragma mark -
-#pragma mark UITableViewController
+#pragma mark - UITableViewController
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
 	if ([livePlaylistCtrl.playlist count] == 0) {
 		return 0;
 	}
 	
-	if ([self maxEntriesToDisplay] >= [livePlaylistCtrl.playlist count])
-		maxEntriesToDisplay = [livePlaylistCtrl.playlist count];
+	if ([self maxEntriesToDisplay] >= livePlaylistCtrl.playlist.count)
+		_maxEntriesToDisplay = livePlaylistCtrl.playlist.count;
 
 	return [self maxEntriesToDisplay]+1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	NSUInteger row = [indexPath row];
 
 	UITableViewCell* cell;
 	
-	if (row == [self maxEntriesToDisplay]) {
+	if (row == [self maxEntriesToDisplay])
+	{
 		cell = [[LoadPreviousEntriesCell alloc] init];
 	} else {
 		NSManagedObject *playlistEntry = (livePlaylistCtrl.playlist)[row];
@@ -153,12 +152,13 @@ PlaylistController* livePlaylistCtrl;
 //	indicesOfPlaycuts = [[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test] mutableCopy];
 }
 
-#pragma mark -
-#pragma mark UIViewController
-- (void)viewDidLoad {
+#pragma mark - UIViewController
+
+- (void)viewDidLoad
+{
 	[super viewDidLoad];
 
-	maxEntriesToDisplay = kNumEntriesToFetch;
+	_maxEntriesToDisplay = kNumEntriesToFetch;
 	
 	managedObjectContext = [[WXYCDataStack sharedInstance] managedObjectContext];
 	
@@ -182,7 +182,8 @@ PlaylistController* livePlaylistCtrl;
 	[refreshHeaderView setLastUpdatedDate:[NSDate date]];
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
 	[dnc removeObserver:self name:NSManagedObjectContextDidSaveNotification object:managedObjectContext];
 }
 
