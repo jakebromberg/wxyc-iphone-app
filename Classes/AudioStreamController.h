@@ -19,8 +19,8 @@
 -(void)start;
 -(void)stop;
 -(id)initWithURL:(NSURL*)aURL;
--(BOOL)isPlaying;
 
+@property (nonatomic, readonly) BOOL isPlaying;
 @property (nonatomic, strong) NSURL* URL;
 
 @end

@@ -36,7 +36,8 @@
 	
 }
 
-- (void)getJSONFeedWithNumEntries:(int)num referenceID:(int)referenceID direction:(NSString*)direction  {
+- (void)getJSONFeedWithNumEntries:(int)num referenceID:(int)referenceID direction:(NSString*)direction
+{
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://wxyc.org/simplepie/iphoneappnewsfeed.php"]];
 	[NSURLConnection connectionWithRequest:request delegate:self];
 }
@@ -71,7 +72,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.blogEntries count];
+    return self.blogEntries.count;
 }
 
 // Customize the appearance of table view cells.

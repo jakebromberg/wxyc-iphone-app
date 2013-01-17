@@ -10,6 +10,7 @@
 #import "Playcut.h"
 #import "AudioStreamController.h"
 #import "WXYCAppDelegate.h"
+#import "UIView+Additions.h"
 
 @class CassetteReelViewController;
 
@@ -87,14 +88,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-#if TARGET_IPHONE_SIMULATOR
-	NSURL *url = [NSURL URLWithString:@"http://localhost/Masks.mp3"];
-#else
-	NSURL *url = [NSURL URLWithString:@"http://152.46.7.128:8000/wxyc.mp3"];
-#endif
-	
-	_streamController = [[AudioStreamController alloc] initWithURL:url];
+
+	NSURL *const url =
+	#if TARGET_IPHONE_SIMULATOR
+		[NSURL URLWithString:@"http://localhost/Masks.mp3"];
+	#else
+		[NSURL URLWithString:@"http://152.46.7.128:8000/wxyc.mp3"];
+	#endif
+
+	self.streamController = [[AudioStreamController alloc] initWithURL:url];
 		
 	//initialize the cassete reel view controllers
 	lowerController = [[CassetteReelViewController alloc] initWithImageView:_lowerCassetteReel];
@@ -114,10 +116,6 @@
 	 selector:@selector(playbackStateChanged:)
 	 name:ASStatusChangedNotification
 	 object:nil];
-}
-
-- (BOOL)canBecomeFirstResponder {
-	return YES;
 }
 
 - (void)dealloc {
