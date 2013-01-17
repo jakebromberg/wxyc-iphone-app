@@ -8,20 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-//#import "NextPrevDetailsDelegate.h"
 
 @protocol LivePlaylistViewControllerCallback
 
-	@property (nonatomic, retain) UITableViewController* delegate;
+@property (nonatomic, retain) UITableViewController *delegate;
 
 @end
 
 
 @interface LivePlaylistTableViewCell : UITableViewCell <LivePlaylistViewControllerCallback>
 
-+(float) height;
++ (float)height;
+- (id)initWithEntity:(NSManagedObject*)entity;
 
-@property (nonatomic, strong) NSManagedObject* entity;
-@property (nonatomic, strong) UITableViewController* delegate;
+@property (nonatomic, strong) NSManagedObject *entity;
+@property (nonatomic, strong) UITableViewController *delegate;
 
 @end

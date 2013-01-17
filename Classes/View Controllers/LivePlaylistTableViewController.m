@@ -5,6 +5,7 @@
 
 #import "LivePlaylistTableViewController.h"
 #import "WXYCAppDelegate.h"
+#import "LivePlaylistTableViewCell.h"
 #import "LoadPreviousEntriesCell.h"
 #import "PlaylistController.h"
 #import "PlaycutViewController.h"
@@ -65,7 +66,7 @@ PlaylistController* livePlaylistCtrl;
 	}
 	
 	if ([self maxEntriesToDisplay] >= livePlaylistCtrl.playlist.count)
-		maxEntriesToDisplay = livePlaylistCtrl.playlist.count;
+		_maxEntriesToDisplay = livePlaylistCtrl.playlist.count;
 
 	return [self maxEntriesToDisplay]+1;
 }
