@@ -5,14 +5,12 @@
 
 #import "LivePlaylistTableViewController.h"
 #import "WXYCAppDelegate.h"
-#import "SBJSON.h"
-#import	"BreakpointCell.h"
 #import "LoadPreviousEntriesCell.h"
 #import "PlaylistController.h"
 #import "PlaycutViewController.h"
 #import "WXYCDataStack.h"
-#import "PlaycutDetailsViewController.h"
 #import "PlaycutCell.h"
+#import "NextPrevDetailsDelegate.h"
 
 @interface LivePlaylistTableViewController () {
 	NSManagedObjectContext *managedObjectContext;
@@ -30,7 +28,8 @@ static const int kNumEntriesToFetch = 20;
 
 PlaylistController* livePlaylistCtrl;
 
-- (void)controllerContextDidSave:(NSNotification *)aNotification {
+- (void)controllerContextDidSave:(NSNotification *)aNotification
+{
 	[managedObjectContext mergeChangesFromContextDidSaveNotification:aNotification];
 	
 	NSError *error = nil;
@@ -50,7 +49,8 @@ PlaylistController* livePlaylistCtrl;
 
 - (void)livePlaylistControllerStateChanged:(NSNotification *)aNotification
 {	
-	if (livePlaylistCtrl.state == LP_DONE) {
+	if (livePlaylistCtrl.state == LP_DONE)
+	{
 		refreshHeaderView.lastUpdatedDate = [NSDate date];
 		[super dataSourceDidFinishLoadingNewData];
 	}
@@ -65,7 +65,7 @@ PlaylistController* livePlaylistCtrl;
 	}
 	
 	if ([self maxEntriesToDisplay] >= livePlaylistCtrl.playlist.count)
-		_maxEntriesToDisplay = livePlaylistCtrl.playlist.count;
+		maxEntriesToDisplay = livePlaylistCtrl.playlist.count;
 
 	return [self maxEntriesToDisplay]+1;
 }
@@ -81,7 +81,7 @@ PlaylistController* livePlaylistCtrl;
 		cell = [[LoadPreviousEntriesCell alloc] init];
 	} else {
 		NSManagedObject *playlistEntry = (livePlaylistCtrl.playlist)[row];
-		NSString *entryType = [NSString stringWithFormat:@"%@Cell", [[playlistEntry class] description]];
+		NSString *entryType = [NSString stringWithFormat:@"%@Cell", playlistEntry.class.description];
 
 		cell = (LivePlaylistTableViewCell*) [tableView dequeueReusableCellWithIdentifier:entryType];
 		
@@ -103,16 +103,19 @@ PlaylistController* livePlaylistCtrl;
 	return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	//boundary case
-	if ([indexPath row] > ([self maxEntriesToDisplay])) {
+	if (indexPath.row > ([self maxEntriesToDisplay]))
+	{
 		return 0;	
 	}
 	
 	return [[[self tableView:tableView cellForRowAtIndexPath:indexPath] class] height];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	selectedRow = [indexPath row];
 	
 	if (self.reloading) //we'll crash if we do anything while the table's (re)loading
@@ -160,9 +163,9 @@ PlaylistController* livePlaylistCtrl;
 
 	_maxEntriesToDisplay = kNumEntriesToFetch;
 	
-	managedObjectContext = [[WXYCDataStack sharedInstance] managedObjectContext];
+	managedObjectContext = WXYCDataStack.sharedInstance.managedObjectContext;
 	
-	WXYCAppDelegate *appDelegate = (WXYCAppDelegate *)[[UIApplication sharedApplication] delegate];
+	WXYCAppDelegate *appDelegate = (WXYCAppDelegate *)[UIApplication sharedApplication].delegate;
 	livePlaylistCtrl = [appDelegate livePlaylistCtrlr];
 
 	if ((livePlaylistCtrl == nil) || [self reloading]) {
@@ -192,56 +195,69 @@ PlaylistController* livePlaylistCtrl;
 //TODO: figure out why indicesOfPlaycuts defaults to nil at odd times
 //in the meantime we're using [livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test]
 //to reference indices.
-//-(id)NPnext {
-//	selectedRow = [[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test] indexGreaterThanIndex:selectedRow];
-//
-//	[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
-//								animated:NO 
-//						  scrollPosition:UITableViewScrollPositionMiddle ];
-//
-//	return [self NPcurrent];
-//}
+- (BOOL (^)(id obj, NSUInteger idx, BOOL *stop)) test
+{
+	id asdf = ^(id obj, NSUInteger idx, BOOL *stop)
+	{
+		return ([obj class] == [Playcut class]);
+	};
+	
+	return asdf;
+}
 
-//-(id)NPprev {
-//	selectedRow = [[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test] indexLessThanIndex:selectedRow];
-//
-//	[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
-//								animated:NO scrollPosition:UITableViewScrollPositionMiddle ];
-//
-//	return [self NPcurrent];	
-//}
-//
-//-(id)NPcurrent {
-//	Playcut* playcut = [livePlaylistCtrl.playlist objectAtIndex:selectedRow];
-//	
-//	NSPredicate *predicate = [NSPredicate
-//							  predicateWithFormat:@"(Artist == %@) AND (Song == %@)",
-//							  [playcut valueForKey:@"artist"], [playcut valueForKey:@"song"]];
-//
-//	request = [[[NSFetchRequest alloc] init] autorelease];
-//	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Playcut" inManagedObjectContext:managedObjectContext];
-// 	[request setEntity:entity];
-//	[request setPredicate:predicate];
-//	
-//	NSArray *fetchResults = nil;
-//	NSError *error = nil;
-//	if ((fetchResults = [managedObjectContext executeFetchRequest:request error:&error])) {
-//		if ([fetchResults count]) {
-//			return [fetchResults objectAtIndex:0];
-//		} 
-//	} else {
-//		NSLog(@"Error %@", error);
-//	}
-//	
-//	return [NSDictionaryToPlaylistEntryMapper convertDict:[livePlaylistCtrl.playlist objectAtIndex:selectedRow]];
-//}
-//
-//-(BOOL)hasNext {
-//	return ([[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test] indexGreaterThanIndex:selectedRow] != NSNotFound);
-//}
-//
-//-(BOOL)hasPrev {
-//	return ([[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:test] indexLessThanIndex:selectedRow] != NSNotFound);
-//}	
+-(id)NPnext
+{
+	selectedRow = [[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:self.test] indexGreaterThanIndex:selectedRow];
+
+	[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
+								animated:NO 
+						  scrollPosition:UITableViewScrollPositionMiddle ];
+
+	return [self NPcurrent];
+}
+
+-(id)NPprev
+{
+	selectedRow = [[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:self.test] indexLessThanIndex:selectedRow];
+
+	[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
+								animated:NO scrollPosition:UITableViewScrollPositionMiddle ];
+
+	return [self NPcurrent];	
+}
+
+-(id)NPcurrent
+{
+	Playcut* playcut = [livePlaylistCtrl.playlist objectAtIndex:selectedRow];
+	
+	NSPredicate *predicate = [NSPredicate
+							  predicateWithFormat:@"(Artist == %@) AND (Song == %@)",
+							  [playcut valueForKey:@"artist"], [playcut valueForKey:@"song"]];
+
+	request = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Playcut" inManagedObjectContext:managedObjectContext];
+ 	[request setEntity:entity];
+	[request setPredicate:predicate];
+	
+	NSArray *fetchResults = nil;
+	NSError *error = nil;
+	if ((fetchResults = [managedObjectContext executeFetchRequest:request error:&error])) {
+		if ([fetchResults count]) {
+			return [fetchResults objectAtIndex:0];
+		} 
+	} else {
+		NSLog(@"Error %@", error);
+	}
+	
+	return [livePlaylistCtrl.playlist objectAtIndex:selectedRow];
+}
+
+-(BOOL)hasNext {
+	return ([[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:self.test] indexGreaterThanIndex:selectedRow] != NSNotFound);
+}
+
+-(BOOL)hasPrev {
+	return ([[livePlaylistCtrl.playlist indexesOfObjectsPassingTest:self.test] indexLessThanIndex:selectedRow] != NSNotFound);
+}
 
 @end
