@@ -15,10 +15,6 @@
 @class CassetteReelViewController;
 
 @interface ListenViewController()
-{
-	CassetteReelViewController *upperController;
-	CassetteReelViewController *lowerController;
-}
 
 @property (nonatomic, strong) AudioStreamController* streamController;
 
@@ -27,36 +23,12 @@
 
 @implementation ListenViewController
 
-- (void)livePlaylistControllerStateChanged:(NSNotification *)aNotification
-{
-	PlaylistController *livePlaylistCtrl = [aNotification object];
-	
-	if ([livePlaylistCtrl state] != LP_DONE) 
-		return;
-
-	for (id playlistEntry in livePlaylistCtrl.playlist)
-	{
-		if ([playlistEntry isKindOfClass:[Playcut class]])
-		{
-			_nowPlayingLabel.text = [NSString stringWithFormat: @"%@ — %@",
-									[playlistEntry valueForKey:@"artist"], 
-									[playlistEntry valueForKey:@"song"]];
-
-			return;
-		}
-	}
-	
-	_nowPlayingLabel.text = @"unavailable";
-}
-
 - (IBAction)pushPlay:(id)sender
 {
 	if ([_streamController isPlaying])
 		return;
 
-	[[AVAudioSession sharedInstance]
-	 setCategory:AVAudioSessionCategoryPlayback
-	 error: nil];
+	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 	
 	[_streamController start];
 	[self setViewToPlayingState:YES];
@@ -69,11 +41,8 @@
 }
 
 //TODO: All of the views in this code block should have controllers that respond to changing states themselves
--(void)setViewToPlayingState:(BOOL)isPlaying
+- (void)setViewToPlayingState:(BOOL)isPlaying
 {
-	[upperController animate:isPlaying];
-	[lowerController animate:isPlaying];
-
 	_GreenLED.hidden = isPlaying;
 	_RedLED.hidden = isPlaying;
 }
@@ -83,10 +52,10 @@
 	[self setViewToPlayingState:[_streamController isPlaying]];
 }
 
-
 #pragma mark - UIViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
 	NSURL *const url =
@@ -97,19 +66,6 @@
 	#endif
 
 	self.streamController = [[AudioStreamController alloc] initWithURL:url];
-		
-	//initialize the cassete reel view controllers
-	lowerController = [[CassetteReelViewController alloc] initWithImageView:_lowerCassetteReel];
-	upperController = [[CassetteReelViewController alloc] initWithImageView:_upperCassetteReel];
-
-	//rotate or the label will look less than convincing
-	_nowPlayingLabel.transform = CGAffineTransformMakeRotation(-M_PI / 2);
-	
-	[[NSNotificationCenter defaultCenter]
-	 addObserver:self
-	 selector:@selector(livePlaylistControllerStateChanged:)
-	 name:LPStatusChangedNotification
-	 object:nil];
 	
 	[[NSNotificationCenter defaultCenter]
 	 addObserver:self
@@ -118,7 +74,8 @@
 	 object:nil];
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

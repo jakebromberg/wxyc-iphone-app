@@ -13,31 +13,28 @@
 
 - (void)playbackStateChanged:(NSNotification *)aNotification 
 {
-//	if ([[aNotification object] class] != [AudioStreamer class])
-//		return;
-//	
-//	AudioStreamer* stream = (AudioStreamer*) [aNotification object];
-//	AudioStreamerState state = stream.state;
-//	
-//	if(state == AS_PLAYING) {
-//		[self startAnimation];
-//	} else {
-//		[self stopAnimation];
-//	}
-		
+	if ([[aNotification object] class] != [AudioStreamer class])
+		return;
+	
+	AudioStreamer* stream = (AudioStreamer*) [aNotification object];
+	AudioStreamerState state = stream.state;
+	
+	if(state == AS_PLAYING) {
+		[self startAnimation];
+	} else {
+		[self stopAnimation];
+	}
 }
 
-- (CassetteReelViewController*)initWithImageView:(UIImageView*)imageView {
-	if (!(self = [super initWithImageView:imageView]))
-		return nil;
+-(void)setImageView:(UIImageView *)imageView
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackStateChanged:) name:ASStatusChangedNotification object:nil];
+	[super setImageView:imageView];
+}
 
-	[[NSNotificationCenter defaultCenter]
-	 addObserver:self
-	 selector:@selector(playbackStateChanged:)
-	 name:ASStatusChangedNotification
-	 object:nil];
-	
-	return self;
+- (void)dealloc
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
