@@ -31,20 +31,18 @@
 	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 	
 	[_streamController start];
-	[self setViewToPlayingState:YES];
 }
 
 - (IBAction)pushStop:(id)sender
 {
 	[_streamController stop];
-	[self setViewToPlayingState:NO];
 }
 
 //TODO: All of the views in this code block should have controllers that respond to changing states themselves
 - (void)setViewToPlayingState:(BOOL)isPlaying
 {
-	_GreenLED.hidden = isPlaying;
-	_RedLED.hidden = isPlaying;
+	_GreenLED.hidden = !isPlaying;
+	_RedLED.hidden = !isPlaying;
 }
 
 - (void)playbackStateChanged:(NSNotification *)aNotification
@@ -67,11 +65,7 @@
 
 	self.streamController = [[AudioStreamController alloc] initWithURL:url];
 	
-	[[NSNotificationCenter defaultCenter]
-	 addObserver:self
-	 selector:@selector(playbackStateChanged:)
-	 name:ASStatusChangedNotification
-	 object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackStateChanged:) name:ASStatusChangedNotification object:nil];
 }
 
 - (void)dealloc
