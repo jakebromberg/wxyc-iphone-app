@@ -6,28 +6,43 @@
 //  Copyright 2010 WXYC. All rights reserved.
 //
 
-#import "VerticalLabel.h"
+#import "NowPlayingLabel.h"
 #import <math.h>
+#import "PlaylistController.h"
+#import "Playcut.h"
 
-@implementation VerticalLabel
+@implementation NowPlayingLabel
 
-
-- (id)initWithFrame:(CGRect)frame {
-    if ((self = [super initWithFrame:frame])) {
-        // Initialization code
-		[super setUserInteractionEnabled:YES];
-		[self setUserInteractionEnabled:YES];
-
-		//rotate or the label will look less than convincing
-		super.transform = CGAffineTransformMakeRotation(M_PI);
-    }
+- (void)awakeFromNib
+{
+	self.transform = CGAffineTransformMakeRotation(-M_PI/2);
 	
-    return self;
+	[[NSNotificationCenter defaultCenter] addObserverForName:LPStatusChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification)
+	{
+		PlaylistController *livePlaylistCtrl = [aNotification object];
+		
+		if ([livePlaylistCtrl state] != LP_DONE)
+			return;
+		
+		for (id playlistEntry in livePlaylistCtrl.playlist)
+		{
+			if ([playlistEntry isKindOfClass:[Playcut class]])
+			{
+				self.text = [NSString stringWithFormat: @"%@ — %@",
+										 [playlistEntry valueForKey:@"artist"],
+										 [playlistEntry valueForKey:@"song"]];
+				
+				return;
+			}
+		}
+		
+		self.text = @"unavailable";
+	}];
 }
 
-- (void)viewDidLoad {
-	self.transform = CGAffineTransformMakeRotation(M_PI);
-	super.transform = CGAffineTransformMakeRotation(M_PI);
+- (void)dealloc
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

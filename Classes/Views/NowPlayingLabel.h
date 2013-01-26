@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface VerticalLabel : UILabel {
+@interface NowPlayingLabel : UILabel {
 
 }
 
