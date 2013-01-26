@@ -28,8 +28,6 @@
 	if ([_streamController isPlaying])
 		return;
 
-	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-	
 	[_streamController start];
 }
 
