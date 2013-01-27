@@ -63,7 +63,6 @@
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
 		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
-		2379EAEC168CF99800FD4C3E /* DTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2379EAEB168CF99800FD4C3E /* DTActionSheet.m */; };
 		237E914F12930E5400A07456 /* casey-burns-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914D12930E5400A07456 /* casey-burns-app-icon.png */; };
 		237E915012930E5400A07456 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */; };
 		238965FF1062AF9B002ED494 /* LivePlaylistTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238965FB1062AF9B002ED494 /* LivePlaylistTableView.xib */; };
@@ -276,8 +275,6 @@
 		23651056111211D300C192CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		237578921266CBB500E6177B /* cassette button push.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cassette button push.aif"; path = "sounds/cassette button push.aif"; sourceTree = "<group>"; };
 		2379EAE9168CDB2900FD4C3E /* NextPreviousItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NextPreviousItemProtocol.h; sourceTree = "<group>"; };
-		2379EAEA168CF99800FD4C3E /* DTActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTActionSheet.h; path = Libraries/DTActionSheet.h; sourceTree = "<group>"; };
-		2379EAEB168CF99800FD4C3E /* DTActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTActionSheet.m; path = Libraries/DTActionSheet.m; sourceTree = "<group>"; };
 		237E914D12930E5400A07456 /* casey-burns-app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon.png"; sourceTree = "<group>"; };
 		237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
 		238965FB1062AF9B002ED494 /* LivePlaylistTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LivePlaylistTableView.xib; sourceTree = "<group>"; };
@@ -772,8 +769,6 @@
 				2353A7D712820BAC004F9A11 /* MGImageUtilities */,
 				23BF1235113AE46900A72DE7 /* PullToRefreshTableHeaderView */,
 				277757411631BBE900349E12 /* SBJSON */,
-				2379EAEA168CF99800FD4C3E /* DTActionSheet.h */,
-				2379EAEB168CF99800FD4C3E /* DTActionSheet.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1226,7 +1221,6 @@
 				2777577A1631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m in Sources */,
 				23F66FF5164ED5680026FFD0 /* LazyImageLoaderView.m in Sources */,
 				235E4210168CC2830088E19F /* UIView+Additions.m in Sources */,
-				2379EAEC168CF99800FD4C3E /* DTActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
