@@ -73,15 +73,13 @@ PlaylistController* livePlaylistCtrl;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSUInteger row = [indexPath row];
-
 	UITableViewCell* cell;
 	
-	if (row == [self maxEntriesToDisplay])
+	if (indexPath.row == [self maxEntriesToDisplay])
 	{
 		cell = [[LoadPreviousEntriesCell alloc] init];
 	} else {
-		NSManagedObject *playlistEntry = (livePlaylistCtrl.playlist)[row];
+		NSManagedObject *playlistEntry = (livePlaylistCtrl.playlist)[indexPath.row];
 		NSString *entryType = [NSString stringWithFormat:@"%@Cell", playlistEntry.class.description];
 
 		cell = (LivePlaylistTableViewCell*) [tableView dequeueReusableCellWithIdentifier:entryType];
@@ -112,7 +110,7 @@ PlaylistController* livePlaylistCtrl;
 		return 0;	
 	}
 	
-	return [[[self tableView:tableView cellForRowAtIndexPath:indexPath] class] height];
+	return [[self tableView:tableView cellForRowAtIndexPath:indexPath].class height];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
