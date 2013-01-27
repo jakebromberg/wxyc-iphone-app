@@ -155,10 +155,6 @@
 		277757671631BD3000349E12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		277757691631BD4800349E12 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277757681631BD4800349E12 /* MessageUI.framework */; };
 		2777576C1631BD8700349E12 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2777576B1631BD8700349E12 /* libxml2.dylib */; };
-		277757771631C3EF00349E12 /* FTAnimation+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757731631C3EF00349E12 /* FTAnimation+UIView.m */; };
-		277757781631C3EF00349E12 /* FTAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757741631C3EF00349E12 /* FTAnimationManager.m */; };
-		277757791631C3EF00349E12 /* FTUtils+NSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757751631C3EF00349E12 /* FTUtils+NSObject.m */; };
-		2777577A1631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 277757761631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		27F23F2D166948B2000CC560 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F23F2C166948B1000CC560 /* Default-568h@2x.png */; };
 		4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -1215,10 +1211,6 @@
 				277757641631BBE900349E12 /* SBJsonTokeniser.m in Sources */,
 				277757651631BBE900349E12 /* SBJsonUTF8Stream.m in Sources */,
 				277757661631BBE900349E12 /* SBJsonWriter.m in Sources */,
-				277757771631C3EF00349E12 /* FTAnimation+UIView.m in Sources */,
-				277757781631C3EF00349E12 /* FTAnimationManager.m in Sources */,
-				277757791631C3EF00349E12 /* FTUtils+NSObject.m in Sources */,
-				2777577A1631C3EF00349E12 /* FTUtils+UIGestureRecognizer.m in Sources */,
 				23F66FF5164ED5680026FFD0 /* LazyImageLoaderView.m in Sources */,
 				235E4210168CC2830088E19F /* UIView+Additions.m in Sources */,
 			);
