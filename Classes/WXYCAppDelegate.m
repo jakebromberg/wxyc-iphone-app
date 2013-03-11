@@ -19,10 +19,10 @@
 	[self.livePlaylistCtrlr updatePlaylist];
 }
 
-#pragma mark -
-#pragma mark Core Data stack
+#pragma mark - Core Data stack
 
-- (NSManagedObjectContext *) managedObjectContext {
+- (NSManagedObjectContext *) managedObjectContext
+{
 	
     if (_managedObjectContext)
         return _managedObjectContext;
@@ -36,7 +36,6 @@
 	
     return _managedObjectContext;
 }
-
 
 - (NSManagedObjectModel *)managedObjectModel
 {
@@ -52,9 +51,7 @@
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
     if (_persistentStoreCoordinator)
-	{
         return _persistentStoreCoordinator;
-    }
 	
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"WXYC.sqlite"]];
 	
@@ -80,7 +77,17 @@
 
 #pragma mark -
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+	NSURL* url = [NSURL URLWithString:@"http://localhost/"];
+	_livePlaylistCtrlr = [[PlaylistController alloc] initWithBaseURL:url];
+	[_livePlaylistCtrlr fetchPlaylist];
+
+	return YES;
+}
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application
+{
 	[_window addSubview:_rootController.view];
 	[_window makeKeyAndVisible];
 	
@@ -124,8 +131,6 @@
         } 
     }
 
-	
-
 	AVAudioSession *audioSession = [AVAudioSession sharedInstance];
 	
 	NSError *setCategoryError = nil;
@@ -138,9 +143,9 @@
 		/* handle the error condition */ 
 	}
 	
-	NSURL* url = [NSURL URLWithString:@"http://localhost/"];
-	_livePlaylistCtrlr = [[PlaylistController alloc] initWithBaseURL:url];
-	[_livePlaylistCtrlr fetchPlaylist];
+//	NSURL* url = [NSURL URLWithString:@"http://localhost/"];
+//	_livePlaylistCtrlr = [[PlaylistController alloc] initWithBaseURL:url];
+//	[_livePlaylistCtrlr fetchPlaylist];
 	
 //	NSTimer *updatePlaylist;
 //	updatePlaylist = [NSTimer scheduledTimerWithTimeInterval: 30

@@ -8,18 +8,13 @@
 
 #import <CoreData/CoreData.h>
 
-@interface WXYCDataStack : NSObject {
-	NSPersistentStoreCoordinator *persistentStoreCoordinator;
-    NSManagedObjectModel *managedObjectModel;
-    NSManagedObjectContext *managedObjectContext;
-}
+@interface WXYCDataStack : NSObject
 
 @property (nonatomic, strong) NSURL *storeURL;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-- (NSManagedObjectContext *) managedObjectContext;
-- (NSManagedObjectModel *) managedObjectModel;
-- (NSPersistentStoreCoordinator *) persistentStoreCoordinator;
-
-+ (WXYCDataStack*)sharedInstance;
++ (WXYCDataStack *)sharedInstance;
 
 @end

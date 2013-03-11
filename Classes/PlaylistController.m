@@ -39,7 +39,8 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	[playlistMapping.objectManager loadObjectsAtResourcePath:@"/new%20schema.json" delegate:self];
 }
 
-- (void)updatePlaylist {
+- (void)updatePlaylist
+{
 	[self fetchPlaylist];
 }
 

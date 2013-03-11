@@ -20,22 +20,20 @@
 
 - (IBAction)pushPlay:(id)sender
 {
-	if ([_streamController isPlaying])
-		return;
-
-	[_streamController start];
+	if (![self.streamController isPlaying])
+		[self.streamController start];
 }
 
 - (IBAction)pushStop:(id)sender
 {
-	[_streamController stop];
+	[self.streamController stop];
 }
 
 //TODO: All of the views in this code block should have controllers that respond to changing states themselves
 - (void)setViewToPlayingState:(BOOL)isPlaying
 {
-	_GreenLED.hidden = !isPlaying;
-	_RedLED.hidden = !isPlaying;
+	self.GreenLED.hidden = !isPlaying;
+	self.RedLED.hidden = !isPlaying;
 }
 
 - (void)playbackStateChanged:(NSNotification *)aNotification
@@ -49,12 +47,7 @@
 {
     [super viewDidLoad];
 
-	NSURL *const url =
-	#if TARGET_IPHONE_SIMULATOR
-		[NSURL URLWithString:@"http://localhost/Masks.mp3"];
-	#else
-		[NSURL URLWithString:@"http://152.46.7.128:8000/wxyc.mp3"];
-	#endif
+	NSURL *const url = [NSURL URLWithString:@"http://152.46.7.128:8000/wxyc.mp3"];
 
 	self.streamController = [[AudioStreamController alloc] initWithURL:url];
 	
