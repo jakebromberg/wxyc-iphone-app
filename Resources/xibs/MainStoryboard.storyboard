@@ -209,20 +209,11 @@
                                     <outlet property="titleLabel" destination="gTn-AH-4wK" id="Yxe-ax-tmM"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TalksetCell" id="w6h-0f-BbF" customClass="TalksetCell">
-                                <rect key="frame" x="0.0" y="496" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BreakpointCell" rowHeight="40" id="IWA-o5-kTT" userLabel="Breakpoint Cell - PlaycutCell" customClass="BreakpointCell">
-                                <rect key="frame" x="0.0" y="540" width="320" height="40"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BreakpointCell" rowHeight="60" id="IWA-o5-kTT" userLabel="Breakpoint Cell - PlaycutCell" customClass="BreakpointCell">
+                                <rect key="frame" x="0.0" y="496" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZw-dQ-378" userLabel="Shadow View">
@@ -232,7 +223,8 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="clock-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="KLU-nV-ibT">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="mUA-yN-ATp"/>
+                                                        <constraint firstAttribute="width" constant="27" id="GNA-7o-wLb"/>
+                                                        <constraint firstAttribute="height" constant="27" id="XnO-ti-y8M"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcM-js-Upq">
@@ -246,26 +238,40 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="KLU-nV-ibT" firstAttribute="top" secondItem="LaG-hG-JcT" secondAttribute="top" type="default" id="6vW-gl-Gmk"/>
-                                                <constraint firstItem="mcM-js-Upq" firstAttribute="leading" secondItem="KLU-nV-ibT" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Uzh-CK-lLo"/>
-                                                <constraint firstItem="KLU-nV-ibT" firstAttribute="bottom" secondItem="LaG-hG-JcT" secondAttribute="bottom" type="default" id="aAI-xd-PXj"/>
-                                                <constraint firstItem="KLU-nV-ibT" firstAttribute="leading" secondItem="LaG-hG-JcT" secondAttribute="leading" type="default" id="aN9-21-Twb"/>
-                                                <constraint firstItem="mcM-js-Upq" firstAttribute="top" secondItem="LaG-hG-JcT" secondAttribute="top" constant="9" id="vab-F0-Ph4"/>
+                                                <constraint firstItem="mcM-js-Upq" firstAttribute="leading" secondItem="LaG-hG-JcT" secondAttribute="leading" constant="40" id="0TN-pC-6PI"/>
+                                                <constraint firstItem="KLU-nV-ibT" firstAttribute="leading" secondItem="LaG-hG-JcT" secondAttribute="leading" constant="7" id="YcP-tR-mgN"/>
+                                                <constraint firstItem="KLU-nV-ibT" firstAttribute="centerY" secondItem="LaG-hG-JcT" secondAttribute="centerY" type="default" id="jOj-re-6HD"/>
+                                                <constraint firstItem="mcM-js-Upq" firstAttribute="top" secondItem="LaG-hG-JcT" secondAttribute="top" constant="9" id="mcc-Tg-9vA"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="top" secondItem="IWA-o5-kTT" secondAttribute="top" type="default" id="7Qu-DY-whK"/>
+                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="centerX" secondItem="IWA-o5-kTT" secondAttribute="centerX" type="default" id="5xF-Zy-hQd"/>
+                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="top" secondItem="VZw-dQ-378" secondAttribute="top" type="default" id="7lh-He-gvk"/>
                                     <constraint firstItem="VZw-dQ-378" firstAttribute="trailing" secondItem="LaG-hG-JcT" secondAttribute="trailing" type="default" id="Aoj-yI-VeK"/>
                                     <constraint firstItem="VZw-dQ-378" firstAttribute="leading" secondItem="LaG-hG-JcT" secondAttribute="leading" type="default" id="BdF-x5-nAl"/>
                                     <constraint firstItem="LaG-hG-JcT" firstAttribute="leading" secondItem="IWA-o5-kTT" secondAttribute="leading" constant="10" id="IeU-qY-ZjN"/>
-                                    <constraint firstItem="VZw-dQ-378" firstAttribute="bottom" secondItem="IWA-o5-kTT" secondAttribute="bottom" type="default" id="f1j-cc-hK9"/>
-                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="centerX" secondItem="IWA-o5-kTT" secondAttribute="centerX" type="default" id="ffC-h4-Ror"/>
-                                    <constraint firstItem="VZw-dQ-378" firstAttribute="top" secondItem="IWA-o5-kTT" secondAttribute="top" type="default" id="klE-aE-fRN"/>
-                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="bottom" secondItem="IWA-o5-kTT" secondAttribute="bottom" type="default" id="rc3-K3-ae5"/>
+                                    <constraint firstItem="VZw-dQ-378" firstAttribute="centerY" secondItem="IWA-o5-kTT" secondAttribute="centerY" type="default" id="VVN-nG-tbq"/>
+                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="bottom" secondItem="VZw-dQ-378" secondAttribute="bottom" type="default" id="Zyk-ZW-wvb"/>
+                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="top" secondItem="IWA-o5-kTT" secondAttribute="top" constant="10" id="rKj-bl-lII"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="containerView" destination="LaG-hG-JcT" id="XB3-Cw-PlS"/>
+                                    <outlet property="shadowView" destination="VZw-dQ-378" id="frm-sB-jFx"/>
+                                    <outlet property="timeLabel" destination="mcM-js-Upq" id="Kdg-8W-JcJ"/>
+                                    <outlet property="timeView" destination="KLU-nV-ibT" id="pO8-3y-PhI"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TalksetCell" id="w6h-0f-BbF" customClass="TalksetCell">
+                                <rect key="frame" x="0.0" y="556" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -411,6 +417,10 @@
     <classes>
         <class className="BreakpointCell" superclassName="DelineationCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BreakpointCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeView" candidateClass="UIImageView"/>
+            </relationships>
         </class>
         <class className="DelineationCell" superclassName="LivePlaylistTableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DelineationCell.h"/>
