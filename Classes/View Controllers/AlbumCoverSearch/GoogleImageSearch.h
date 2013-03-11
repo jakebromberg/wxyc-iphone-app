@@ -15,18 +15,10 @@
 
 @end
 
-@interface GoogleImageSearch : NSObject<RKObjectLoaderDelegate> {
-	NSMutableData *responseData;
-@private
-	NSOperationQueue *parseQueue;	
-}
+@interface GoogleImageSearch : NSObject
 
 @property (nonatomic, strong) id<GoogleImageSearchDelegate> delegate;
 
 + (void)searchWithKeywords:(NSArray *)keywords success:(void(^)(NSString *))success failure:(void(^)(NSString *))failure finally:(void(^)(NSString *))finally;
-
-- (id)initWithDelegate:(id<GoogleImageSearchDelegate>) del;
-- (void)searchWithString:(NSString*)search;
-- (NSArray*)synchronizedSearchWithString:(NSString*)search;
 
 @end
