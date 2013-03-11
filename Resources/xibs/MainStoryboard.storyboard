@@ -20,11 +20,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbA-Gl-FPJ">
-                                            <color key="backgroundColor" red="0.57720000000000005" green="0.68573333329999997" blue="0.73999999999999999" alpha="1" colorSpace="deviceRGB"/>
-                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLb-mh-2ex">
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbA-Gl-FPJ">
+                                                    <color key="backgroundColor" red="0.63480000000000003" green="0.82968666666666668" blue="0.92000000000000004" alpha="1" colorSpace="deviceRGB"/>
+                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="wxyc-header-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="833-lF-6yj">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="BGg-Vm-sJZ"/>
@@ -34,7 +34,11 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.65490196078431373" green="0.7803921568627451" blue="0.84313725490196079" alpha="1" colorSpace="deviceRGB"/>
                                             <constraints>
-                                                <constraint firstItem="833-lF-6yj" firstAttribute="centerX" secondItem="kLb-mh-2ex" secondAttribute="centerX" type="default" id="iZq-ZC-e9N"/>
+                                                <constraint firstItem="SbA-Gl-FPJ" firstAttribute="leading" secondItem="kLb-mh-2ex" secondAttribute="leading" type="default" id="180-pI-MYy"/>
+                                                <constraint firstItem="SbA-Gl-FPJ" firstAttribute="trailing" secondItem="kLb-mh-2ex" secondAttribute="trailing" type="default" id="BIa-vV-aER"/>
+                                                <constraint firstItem="SbA-Gl-FPJ" firstAttribute="centerX" secondItem="833-lF-6yj" secondAttribute="centerX" type="default" id="Prx-WA-QCJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="SbA-Gl-FPJ" secondAttribute="bottom" constant="38" id="aKA-f8-EY8"/>
+                                                <constraint firstItem="SbA-Gl-FPJ" firstAttribute="top" secondItem="kLb-mh-2ex" secondAttribute="top" type="default" id="lBf-Qn-h4t"/>
                                                 <constraint firstItem="833-lF-6yj" firstAttribute="centerY" secondItem="kLb-mh-2ex" secondAttribute="centerY" type="default" id="yyd-mB-bCm"/>
                                             </constraints>
                                         </view>
@@ -49,14 +53,10 @@
                                     <constraint firstItem="kLb-mh-2ex" firstAttribute="leading" secondItem="4Z1-lx-BvZ" secondAttribute="leading" type="default" id="0hj-sW-hwC"/>
                                     <constraint firstItem="KYH-d8-Zse" firstAttribute="leading" secondItem="4Z1-lx-BvZ" secondAttribute="leading" type="default" id="ALi-3L-O6m"/>
                                     <constraint firstItem="kLb-mh-2ex" firstAttribute="top" secondItem="4Z1-lx-BvZ" secondAttribute="top" type="default" id="AhB-vf-6uS"/>
-                                    <constraint firstItem="SbA-Gl-FPJ" firstAttribute="top" secondItem="4Z1-lx-BvZ" secondAttribute="top" type="default" id="Dwx-8B-V7Y"/>
                                     <constraint firstItem="KYH-d8-Zse" firstAttribute="bottom" secondItem="4Z1-lx-BvZ" secondAttribute="bottom" type="default" id="GtS-V9-uP9"/>
                                     <constraint firstItem="kLb-mh-2ex" firstAttribute="trailing" secondItem="4Z1-lx-BvZ" secondAttribute="trailing" type="default" id="SdM-bG-NyR"/>
                                     <constraint firstItem="KYH-d8-Zse" firstAttribute="trailing" secondItem="4Z1-lx-BvZ" secondAttribute="trailing" type="default" id="UwQ-jS-JDt"/>
-                                    <constraint firstItem="SbA-Gl-FPJ" firstAttribute="trailing" secondItem="4Z1-lx-BvZ" secondAttribute="trailing" type="default" id="YWF-u3-HaS"/>
                                     <constraint firstItem="KYH-d8-Zse" firstAttribute="top" secondItem="4Z1-lx-BvZ" secondAttribute="top" constant="38" id="ZQB-5a-d4A"/>
-                                    <constraint firstItem="SbA-Gl-FPJ" firstAttribute="leading" secondItem="4Z1-lx-BvZ" secondAttribute="leading" type="default" id="ee4-3a-eI5"/>
-                                    <constraint firstAttribute="bottom" secondItem="SbA-Gl-FPJ" secondAttribute="bottom" constant="35" id="k3s-SF-AdE"/>
                                     <constraint firstItem="kLb-mh-2ex" firstAttribute="bottom" secondItem="4Z1-lx-BvZ" secondAttribute="bottom" type="default" id="xNm-UN-h00"/>
                                 </constraints>
                             </tableViewCell>
