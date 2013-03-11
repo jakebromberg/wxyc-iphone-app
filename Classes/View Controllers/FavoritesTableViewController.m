@@ -10,7 +10,7 @@
 #import "FavoritesTableViewController.h"
 #import "WXYCDataStack.h"
 #import "Playcut.h"
-#import "PlaycutViewController.h"
+//#import "PlaycutViewController.h"
 
 @implementation FavoritesTableViewController
 
@@ -142,11 +142,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	selectedRow = indexPath.row;
-	
-	PlaycutViewController *detail = [[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil];
-	detail.hidesBottomBarWhenPushed = YES;
-	[[self navigationController] pushViewController:detail animated:YES];
+//	selectedRow = indexPath.row;
+//	
+//	PlaycutViewController *detail = [[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil];
+//	detail.hidesBottomBarWhenPushed = YES;
+//	[[self navigationController] pushViewController:detail animated:YES];
 }
 
 #pragma mark - NextPrevDetailsDelegate business

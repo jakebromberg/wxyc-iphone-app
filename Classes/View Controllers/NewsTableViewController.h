@@ -7,7 +7,8 @@
 #import "PullToRefreshTableViewController.h"
 
 
-@interface NewsTableViewController : PullToRefreshTableViewController {
+@interface NewsTableViewController : UITableViewController
+{
 	NSMutableData *responseData;
 	UISegmentedControl *stationNewsSegControl;
 }

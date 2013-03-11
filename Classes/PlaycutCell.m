@@ -8,7 +8,6 @@
 
 #import "PlaycutCell.h"
 #import "Playcut.h"
-#import "PlaycutViewController.h"
 #import "NSArray+Additions.h"
 #import "GoogleImageSearch.h"
 #import <QuartzCore/QuartzCore.h>
@@ -16,8 +15,6 @@
 
 @interface PlaycutCell ()
 
-//@property  (nonatomic, weak) IBOutlet UIView *containerView;
-//@property  (nonatomic, weak) IBOutlet UIView *shadowView;
 @property  (nonatomic, weak) IBOutlet UILabel *artistLabel;
 @property  (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property  (nonatomic, weak) IBOutlet UIImageView *albumArt;
@@ -25,21 +22,6 @@
 @end
 
 @implementation PlaycutCell
-
-//- (void)awakeFromNib
-//{
-//	self.containerView.layer.borderColor = [UIColor colorWithWhite:.70f alpha:1.f].CGColor;
-//	self.containerView.layer.borderWidth = 1.f;
-//	self.containerView.layer.cornerRadius = 5.f;
-//
-//	self.shadowView.layer.shadowColor = [UIColor colorWithWhite:.75f alpha:1.f].CGColor;
-//	self.shadowView.layer.shadowOffset = CGSizeMake(0.f, 1.f);
-//	self.shadowView.layer.shadowRadius = 1.5f;
-//	self.shadowView.layer.shadowOpacity = 1;
-//	self.shadowView.layer.cornerRadius = 5.f;
-//	self.shadowView.layer.shouldRasterize = YES;
-//	self.shadowView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-//}
 
 + (float)height
 {
@@ -71,16 +53,6 @@
 		};
 		
 		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] success:successHandler failure:nil finally:nil];
-	}
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-	if (selected)
-	{
-		PlaycutViewController *detail = [[PlaycutViewController alloc] initWithPlaycut:(Playcut*)self.entity];
-		detail.hidesBottomBarWhenPushed = YES;
-		[[self.delegate navigationController] pushViewController:detail animated:YES];
 	}
 }
 

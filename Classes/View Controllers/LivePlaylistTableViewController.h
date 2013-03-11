@@ -7,9 +7,6 @@
 
 @interface LivePlaylistTableViewController : UITableViewController<UITableViewDataSource, UITabBarControllerDelegate>
 {
-//	IBOutlet UITableView *playlistTableView;
-//	IBOutlet UILabel *loadingLabel;
-	
 	NSIndexSet *indicesOfPlaycuts;
 	int selectedRow;
 }
