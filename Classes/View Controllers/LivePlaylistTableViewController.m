@@ -70,7 +70,7 @@ PlaylistController* livePlaylistCtrl;
 
 - (NSString *)classNameForCellAtIndexPath:(NSIndexPath*)indexPath
 {
-	NSManagedObject *playlistEntry = (livePlaylistCtrl.playlist)[indexPath.row];
+	NSManagedObject *playlistEntry = (livePlaylistCtrl.playlist)[indexPath.row - 2];
 	return [playlistEntry.class.description append:@"Cell"];
 }
 
