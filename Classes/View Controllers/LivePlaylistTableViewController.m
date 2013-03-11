@@ -80,7 +80,7 @@ PlaylistController* livePlaylistCtrl;
 		return [PlayerCell height];
 	
 	if (indexPath.row == 0)
-		return 49;
+		return 40;
 	
 	//boundary case
 	if (indexPath.row > ([self maxEntriesToDisplay]))
