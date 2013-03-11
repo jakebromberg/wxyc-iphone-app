@@ -869,7 +869,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				235DE13616ED3B38005640E9 /* ImageIO.framework */,
 				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -907,25 +906,26 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2777576B1631BD8700349E12 /* libxml2.dylib */,
-				23B613F5164EF06C004547C2 /* Social.framework */,
-				277757681631BD4800349E12 /* MessageUI.framework */,
-				23B613F8164EFA8D004547C2 /* Social.framework */,
-				23F1127912A8782A00DD6C1D /* MessageUI.framework */,
-				23601B9A105F116000E6A6FB /* MediaPlayer.framework */,
 				23601927105F05C600E6A6FB /* AudioToolbox.framework */,
-				236019EB105F060B00E6A6FB /* CFNetwork.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				23651003111211C700C192CB /* CoreGraphics.framework */,
-				23651056111211D300C192CB /* QuartzCore.framework */,
 				23B32B58126D667B008414F4 /* AVFoundation.framework */,
-				23B32D48126E386B008414F4 /* CoreData.framework */,
+				236019EB105F060B00E6A6FB /* CFNetwork.framework */,
 				230EB0FC127600210065308D /* CoreAudio.framework */,
-				23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */,
-				234B4AEA12938EF1001B3EB2 /* Security.framework */,
-				23C2A9E9128A59D100D61A4A /* SystemConfiguration.framework */,
+				23B32D48126E386B008414F4 /* CoreData.framework */,
+				23651003111211C700C192CB /* CoreGraphics.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				235DE13616ED3B38005640E9 /* ImageIO.framework */,
+				2777576B1631BD8700349E12 /* libxml2.dylib */,
 				234B4FAA1293AEC3001B3EB2 /* libxml2.dylib */,
+				23601B9A105F116000E6A6FB /* MediaPlayer.framework */,
+				277757681631BD4800349E12 /* MessageUI.framework */,
+				23F1127912A8782A00DD6C1D /* MessageUI.framework */,
+				23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */,
+				23651056111211D300C192CB /* QuartzCore.framework */,
+				234B4AEA12938EF1001B3EB2 /* Security.framework */,
+				23B613F5164EF06C004547C2 /* Social.framework */,
+				23B613F8164EFA8D004547C2 /* Social.framework */,
+				23C2A9E9128A59D100D61A4A /* SystemConfiguration.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
