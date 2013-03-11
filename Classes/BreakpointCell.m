@@ -10,6 +10,11 @@
 #import "Breakpoint.h"
 @implementation BreakpointCell
 
++ (float)height
+{
+	return 40.0f;
+}
+
 - (void) setEntity:(NSManagedObject *)entity
 {
 	super.entity = entity;

@@ -209,7 +209,7 @@
                                     <outlet property="titleLabel" destination="gTn-AH-4wK" id="Yxe-ax-tmM"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="BreakpointCell" id="DHj-lY-8dj" customClass="BreakpointCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TalksetCell" id="w6h-0f-BbF" customClass="TalksetCell">
                                 <rect key="frame" x="0.0" y="496" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -218,14 +218,54 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TalksetCell" id="w6h-0f-BbF" customClass="TalksetCell">
-                                <rect key="frame" x="0.0" y="540" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BreakpointCell" rowHeight="40" id="IWA-o5-kTT" userLabel="Breakpoint Cell - PlaycutCell" customClass="BreakpointCell">
+                                <rect key="frame" x="0.0" y="540" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZw-dQ-378" userLabel="Shadow View">
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaG-hG-JcT">
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="clock-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="KLU-nV-ibT">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="mUA-yN-ATp"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcM-js-Upq">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="207" id="lz7-Or-den"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="KLU-nV-ibT" firstAttribute="top" secondItem="LaG-hG-JcT" secondAttribute="top" type="default" id="6vW-gl-Gmk"/>
+                                                <constraint firstItem="mcM-js-Upq" firstAttribute="leading" secondItem="KLU-nV-ibT" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Uzh-CK-lLo"/>
+                                                <constraint firstItem="KLU-nV-ibT" firstAttribute="bottom" secondItem="LaG-hG-JcT" secondAttribute="bottom" type="default" id="aAI-xd-PXj"/>
+                                                <constraint firstItem="KLU-nV-ibT" firstAttribute="leading" secondItem="LaG-hG-JcT" secondAttribute="leading" type="default" id="aN9-21-Twb"/>
+                                                <constraint firstItem="mcM-js-Upq" firstAttribute="top" secondItem="LaG-hG-JcT" secondAttribute="top" constant="9" id="vab-F0-Ph4"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="top" secondItem="IWA-o5-kTT" secondAttribute="top" type="default" id="7Qu-DY-whK"/>
+                                    <constraint firstItem="VZw-dQ-378" firstAttribute="trailing" secondItem="LaG-hG-JcT" secondAttribute="trailing" type="default" id="Aoj-yI-VeK"/>
+                                    <constraint firstItem="VZw-dQ-378" firstAttribute="leading" secondItem="LaG-hG-JcT" secondAttribute="leading" type="default" id="BdF-x5-nAl"/>
+                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="leading" secondItem="IWA-o5-kTT" secondAttribute="leading" constant="10" id="IeU-qY-ZjN"/>
+                                    <constraint firstItem="VZw-dQ-378" firstAttribute="bottom" secondItem="IWA-o5-kTT" secondAttribute="bottom" type="default" id="f1j-cc-hK9"/>
+                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="centerX" secondItem="IWA-o5-kTT" secondAttribute="centerX" type="default" id="ffC-h4-Ror"/>
+                                    <constraint firstItem="VZw-dQ-378" firstAttribute="top" secondItem="IWA-o5-kTT" secondAttribute="top" type="default" id="klE-aE-fRN"/>
+                                    <constraint firstItem="LaG-hG-JcT" firstAttribute="bottom" secondItem="IWA-o5-kTT" secondAttribute="bottom" type="default" id="rc3-K3-ae5"/>
+                                </constraints>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -233,13 +273,8 @@
                             <outlet property="delegate" destination="w6z-1c-RlV" id="cEk-DP-zB7"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Playlist" image="playlist_icon@2x.png" id="gAK-6L-4ZJ"/>
+                    <tabBarItem key="tabBarItem" title="Playlist" image="playlist_icon.png" id="gAK-6L-4ZJ"/>
                 </tableViewController>
-                <view contentMode="scaleToFill" id="ZlZ-8A-M4F">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.57720000000000005" green="0.68573333329999997" blue="0.73999999999999999" alpha="1" colorSpace="deviceRGB"/>
-                </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1G-Nu-6Pk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="373" y="407"/>
@@ -346,7 +381,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="0er-G7-ubv" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" alpha="0.0" contentMode="scaleToFill" id="xoR-ES-jf1">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="xoR-ES-jf1">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -366,10 +401,11 @@
         <image name="Station-Updates-icon@2x.png" width="48" height="48"/>
         <image name="casey-burns-app-icon.png" width="57" height="57"/>
         <image name="cassette reel@2x.png" width="98" height="98"/>
+        <image name="clock-1.png" width="123" height="123"/>
         <image name="favorites-tabbar-icon.png" width="25" height="21"/>
         <image name="play-button.png" width="123" height="123"/>
         <image name="player-elements.png" width="477" height="123"/>
-        <image name="playlist_icon@2x.png" width="48" height="48"/>
+        <image name="playlist_icon.png" width="24" height="24"/>
         <image name="wxyc-header-logo.png" width="200" height="200"/>
     </resources>
     <classes>

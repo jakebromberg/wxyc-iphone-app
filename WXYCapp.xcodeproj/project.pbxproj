@@ -68,6 +68,16 @@
 		23924CA81289F04C00EFC0FA /* favorites-toolbar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924CA21289F04C00EFC0FA /* favorites-toolbar-icon.png */; };
 		23A23CF316ED699700C9AF7C /* stop-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CF216ED699700C9AF7C /* stop-button.png */; };
 		23A23CF916ED747100C9AF7C /* wxyc-header-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CF816ED746F00C9AF7C /* wxyc-header-logo.png */; };
+		23A23D0416ED801700C9AF7C /* clock-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CFA16ED800C00C9AF7C /* clock-1.png */; };
+		23A23D0516ED801700C9AF7C /* clock-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CFB16ED800D00C9AF7C /* clock-2.png */; };
+		23A23D0616ED801700C9AF7C /* clock-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CFC16ED800D00C9AF7C /* clock-3.png */; };
+		23A23D0716ED801700C9AF7C /* clock-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CFD16ED800E00C9AF7C /* clock-4.png */; };
+		23A23D0816ED801700C9AF7C /* clock-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CFE16ED800F00C9AF7C /* clock-5.png */; };
+		23A23D0916ED801700C9AF7C /* clock-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CFF16ED801000C9AF7C /* clock-6.png */; };
+		23A23D0A16ED801700C9AF7C /* clock-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23D0016ED801200C9AF7C /* clock-7.png */; };
+		23A23D0B16ED801700C9AF7C /* clock-9.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23D0116ED801200C9AF7C /* clock-9.png */; };
+		23A23D0C16ED801700C9AF7C /* clock-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23D0216ED801300C9AF7C /* clock-11.png */; };
+		23A23D0D16ED801700C9AF7C /* clock-12.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23D0316ED801400C9AF7C /* clock-12.png */; };
 		23B32A6612690875008414F4 /* radio_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A6512690875008414F4 /* radio_icon@2x.png */; };
 		23B32A6B1269089D008414F4 /* Station-Updates-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A6A1269089D008414F4 /* Station-Updates-icon@2x.png */; };
 		23B32A7312690ECC008414F4 /* playlist_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A7212690ECC008414F4 /* playlist_icon@2x.png */; };
@@ -267,6 +277,16 @@
 		239DD7351061B7510035B7BF /* WXYC_Radio_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXYC_Radio_Prefix.pch; path = Other/WXYC_Radio_Prefix.pch; sourceTree = "<group>"; };
 		23A23CF216ED699700C9AF7C /* stop-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-button.png"; sourceTree = "<group>"; };
 		23A23CF816ED746F00C9AF7C /* wxyc-header-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wxyc-header-logo.png"; sourceTree = "<group>"; };
+		23A23CFA16ED800C00C9AF7C /* clock-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-1.png"; sourceTree = "<group>"; };
+		23A23CFB16ED800D00C9AF7C /* clock-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-2.png"; sourceTree = "<group>"; };
+		23A23CFC16ED800D00C9AF7C /* clock-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-3.png"; sourceTree = "<group>"; };
+		23A23CFD16ED800E00C9AF7C /* clock-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-4.png"; sourceTree = "<group>"; };
+		23A23CFE16ED800F00C9AF7C /* clock-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-5.png"; sourceTree = "<group>"; };
+		23A23CFF16ED801000C9AF7C /* clock-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-6.png"; sourceTree = "<group>"; };
+		23A23D0016ED801200C9AF7C /* clock-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-7.png"; sourceTree = "<group>"; };
+		23A23D0116ED801200C9AF7C /* clock-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-9.png"; sourceTree = "<group>"; };
+		23A23D0216ED801300C9AF7C /* clock-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-11.png"; sourceTree = "<group>"; };
+		23A23D0316ED801400C9AF7C /* clock-12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-12.png"; sourceTree = "<group>"; };
 		23B32A6512690875008414F4 /* radio_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_icon@2x.png"; sourceTree = "<group>"; };
 		23B32A6A1269089D008414F4 /* Station-Updates-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Station-Updates-icon@2x.png"; sourceTree = "<group>"; };
 		23B32A7212690ECC008414F4 /* playlist_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist_icon@2x.png"; sourceTree = "<group>"; };
@@ -527,6 +547,16 @@
 		2328C6891060107500063811 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				23A23CFA16ED800C00C9AF7C /* clock-1.png */,
+				23A23CFB16ED800D00C9AF7C /* clock-2.png */,
+				23A23CFC16ED800D00C9AF7C /* clock-3.png */,
+				23A23CFD16ED800E00C9AF7C /* clock-4.png */,
+				23A23CFE16ED800F00C9AF7C /* clock-5.png */,
+				23A23CFF16ED801000C9AF7C /* clock-6.png */,
+				23A23D0016ED801200C9AF7C /* clock-7.png */,
+				23A23D0116ED801200C9AF7C /* clock-9.png */,
+				23A23D0216ED801300C9AF7C /* clock-11.png */,
+				23A23D0316ED801400C9AF7C /* clock-12.png */,
 				237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */,
 				230EB27812762B5A0065308D /* walkman */,
 				230EB27712762B460065308D /* toolbar */,
@@ -1062,6 +1092,16 @@
 				235DE15016ED4F26005640E9 /* play-button.png in Resources */,
 				23A23CF316ED699700C9AF7C /* stop-button.png in Resources */,
 				23A23CF916ED747100C9AF7C /* wxyc-header-logo.png in Resources */,
+				23A23D0416ED801700C9AF7C /* clock-1.png in Resources */,
+				23A23D0516ED801700C9AF7C /* clock-2.png in Resources */,
+				23A23D0616ED801700C9AF7C /* clock-3.png in Resources */,
+				23A23D0716ED801700C9AF7C /* clock-4.png in Resources */,
+				23A23D0816ED801700C9AF7C /* clock-5.png in Resources */,
+				23A23D0916ED801700C9AF7C /* clock-6.png in Resources */,
+				23A23D0A16ED801700C9AF7C /* clock-7.png in Resources */,
+				23A23D0B16ED801700C9AF7C /* clock-9.png in Resources */,
+				23A23D0C16ED801700C9AF7C /* clock-11.png in Resources */,
+				23A23D0D16ED801700C9AF7C /* clock-12.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
