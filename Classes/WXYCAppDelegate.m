@@ -79,7 +79,7 @@
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	NSURL* url = [NSURL URLWithString:@"http://localhost/"];
+	NSURL* url = [NSURL URLWithString:@"http://www.wxyc.info/"];
 	_livePlaylistCtrlr = [[PlaylistController alloc] initWithBaseURL:url];
 	[_livePlaylistCtrlr fetchPlaylist];
 

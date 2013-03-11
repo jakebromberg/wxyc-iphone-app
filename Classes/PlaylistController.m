@@ -36,7 +36,8 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 - (void)fetchPlaylist
 {
-	[playlistMapping.objectManager loadObjectsAtResourcePath:@"/new%20schema.json" delegate:self];
+	playlistMapping.objectManager.serializationMIMEType = RKMIMETypeTextXML;
+	[playlistMapping.objectManager loadObjectsAtResourcePath:@"/playlists/recentEntries?v=2" delegate:self];
 }
 
 - (void)updatePlaylist
