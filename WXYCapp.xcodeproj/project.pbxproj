@@ -107,8 +107,6 @@
 		23EE39C41527F0790006CDA5 /* IndefinitelySpinningImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */; };
 		23EE39CB1527F0790006CDA5 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE394D1527EA730006CDA5 /* UIImage+ProportionalFill.m */; };
 		23EE39CD1527F0790006CDA5 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE394F1527EA730006CDA5 /* UIImage+Tint.m */; };
-		23EE39CF1527F0790006CDA5 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39511527EA7F0006CDA5 /* EGORefreshTableHeaderView.m */; };
-		23EE39D11527F0790006CDA5 /* PullToRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39531527EA860006CDA5 /* PullToRefreshTableViewController.m */; };
 		23EE39E61527F0790006CDA5 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39641527EB070006CDA5 /* Playlist.m */; };
 		23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39661527EB070006CDA5 /* PlaylistEntry.m */; };
 		23EE39EA1527F0790006CDA5 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39681527EB100006CDA5 /* Breakpoint.m */; };
@@ -325,10 +323,6 @@
 		23EE394D1527EA730006CDA5 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		23EE394E1527EA730006CDA5 /* UIImage+Tint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
 		23EE394F1527EA730006CDA5 /* UIImage+Tint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
-		23EE39501527EA7F0006CDA5 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		23EE39511527EA7F0006CDA5 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
-		23EE39521527EA860006CDA5 /* PullToRefreshTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PullToRefreshTableViewController.h; sourceTree = "<group>"; };
-		23EE39531527EA860006CDA5 /* PullToRefreshTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshTableViewController.m; sourceTree = "<group>"; };
 		23EE39631527EB070006CDA5 /* Playlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		23EE39641527EB070006CDA5 /* Playlist.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		23EE39651527EB070006CDA5 /* PlaylistEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaylistEntry.h; sourceTree = "<group>"; };
@@ -710,18 +704,6 @@
 			name = FavoritesTableViewController;
 			sourceTree = "<group>";
 		};
-		23BF1235113AE46900A72DE7 /* PullToRefreshTableHeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				23EE39501527EA7F0006CDA5 /* EGORefreshTableHeaderView.h */,
-				23EE39511527EA7F0006CDA5 /* EGORefreshTableHeaderView.m */,
-				23EE39521527EA860006CDA5 /* PullToRefreshTableViewController.h */,
-				23EE39531527EA860006CDA5 /* PullToRefreshTableViewController.m */,
-			);
-			name = PullToRefreshTableHeaderView;
-			path = Libraries/PullToRefreshTableHeaderView;
-			sourceTree = "<group>";
-		};
 		23BF128B113B0E2100A72DE7 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,7 +712,6 @@
 				234DA34416506CD90056F43C /* AudioStreamer.m */,
 				23924A171289B3D400EFC0FA /* FTUtils */,
 				2353A7D712820BAC004F9A11 /* MGImageUtilities */,
-				23BF1235113AE46900A72DE7 /* PullToRefreshTableHeaderView */,
 				277757411631BBE900349E12 /* SBJSON */,
 			);
 			name = Libraries;
@@ -1108,8 +1089,6 @@
 				23EE39C41527F0790006CDA5 /* IndefinitelySpinningImageViewController.m in Sources */,
 				23EE39CB1527F0790006CDA5 /* UIImage+ProportionalFill.m in Sources */,
 				23EE39CD1527F0790006CDA5 /* UIImage+Tint.m in Sources */,
-				23EE39CF1527F0790006CDA5 /* EGORefreshTableHeaderView.m in Sources */,
-				23EE39D11527F0790006CDA5 /* PullToRefreshTableViewController.m in Sources */,
 				23EE39E61527F0790006CDA5 /* Playlist.m in Sources */,
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,
 				23EE39EA1527F0790006CDA5 /* Breakpoint.m in Sources */,

@@ -4,8 +4,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PullToRefreshTableViewController.h"
-
 
 @interface NewsTableViewController : UITableViewController
 {
