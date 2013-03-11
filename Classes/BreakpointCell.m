@@ -8,11 +8,19 @@
 
 #import "BreakpointCell.h"
 #import "Breakpoint.h"
+
+@interface BreakpointCell ()
+
+@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *timeView;
+
+@end
+
 @implementation BreakpointCell
 
 + (float)height
 {
-	return 40.0f;
+	return 60.0f;
 }
 
 - (void) setEntity:(NSManagedObject *)entity
@@ -28,7 +36,10 @@
 	dateFormatter.dateFormat = @"h:00 a";
 	
 	NSString* dateString = [dateFormatter stringFromDate:date];
-	[self addText:dateString];
+	self.timeLabel.text = dateString;
+	
+	NSString *hour = [dateString substringToIndex:1];
+	self.timeView.image = [UIImage imageNamed:[NSString stringWithFormat:@"clock-%@", hour]];
 }
 
 @end
