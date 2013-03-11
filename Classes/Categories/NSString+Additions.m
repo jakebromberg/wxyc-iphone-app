@@ -15,15 +15,13 @@
 	return [self stringByAppendingString:string];
 }
 
-//- (NSString *)formattedWith:(NSArray *)strings
-//{
-//	id arrayObjects[strings.count];
-//	
-//	for (int i=0; i<strings.count; i++) {
-//		arrayObjects[i] = strings[i];
-//	}
-//
-//	return [[NSString alloc] initWithFormat:self arguments:(va_list)arrayObjects];
-//}
+- (NSString*)formattedWith:(NSArray*)arguments
+{
+	NSRange range = NSMakeRange(0, arguments.count);
+	NSMutableData* data = [NSMutableData dataWithLength:sizeof(id) * arguments.count];
+	[arguments getObjects:(__unsafe_unretained id *)data.mutableBytes range:range];
+	
+	return [[NSString alloc] initWithFormat:self arguments:data.mutableBytes];
+}
 
 @end

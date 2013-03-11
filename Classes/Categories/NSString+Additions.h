@@ -11,5 +11,6 @@
 @interface NSString (Additions)
 
 - (instancetype)append:(NSString *)string;
+- (NSString*)formattedWith:(NSArray*)arguments;
 
 @end
