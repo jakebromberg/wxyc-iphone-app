@@ -10,7 +10,7 @@
 
 @class PlaylistController;
 
-@interface WXYCAppDelegate : NSObject <UIApplicationDelegate,NSFetchedResultsControllerDelegate>
+@interface WXYCAppDelegate : NSObject <UIApplicationDelegate, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) PlaylistController *livePlaylistCtrlr;
 @property (nonatomic, strong) IBOutlet UIWindow *window;

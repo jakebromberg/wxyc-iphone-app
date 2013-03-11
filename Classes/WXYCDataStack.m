@@ -7,6 +7,7 @@
 //
 
 #import "WXYCDataStack.h"
+#import "WXYCAppDelegate.h"
 
 @implementation WXYCDataStack
 
@@ -18,20 +19,21 @@ static WXYCDataStack *sharedInstance = nil;
  Returns the managed object context for the application.
  If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
  */
+
 - (NSManagedObjectContext *) managedObjectContext
 {
-    if (managedObjectContext != nil)
+    if (_managedObjectContext != nil)
+        return _managedObjectContext;
+	
+    NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
+    
+	if (coordinator)
 	{
-        return managedObjectContext;
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+		_managedObjectContext.persistentStoreCoordinator = coordinator;
     }
 	
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        managedObjectContext = [[NSManagedObjectContext alloc] init];
-		managedObjectContext.persistentStoreCoordinator = coordinator;
-    }
-	
-    return managedObjectContext;
+    return _managedObjectContext;
 }
 
 
@@ -39,14 +41,14 @@ static WXYCDataStack *sharedInstance = nil;
  Returns the managed object model for the application.
  If the model doesn't already exist, it is created by merging all of the models found in the application bundle.
  */
-- (NSManagedObjectModel *)managedObjectModel {
-    if (managedObjectModel != nil) {
-        return managedObjectModel;
-    }
+- (NSManagedObjectModel *)managedObjectModel
+{
+    if (_managedObjectModel)
+        return _managedObjectModel;
 	
-    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];    
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
     
-	return managedObjectModel;
+	return _managedObjectModel;
 }
 
 
@@ -54,24 +56,28 @@ static WXYCDataStack *sharedInstance = nil;
  Returns the persistent store coordinator for the application.
  If the coordinator doesn't already exist, it is created and the application's store added to it.
  */
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-	
-    if (persistentStoreCoordinator != nil) {
-        return persistentStoreCoordinator;
-    }
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+    if (_persistentStoreCoordinator)
+        return _persistentStoreCoordinator;
 	
 	NSError *error;
-    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
-    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:_storeURL options:nil error:&error]) {
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:self.storeURL options:nil error:&error]) {
 		NSLog(@"Error: %@, %@", error, [error userInfo]);
     }    
 
-	NSLog(@"storeURL %@",[[persistentStoreCoordinator persistentStores][0] URL]);
+	NSLog(@"storeURL %@",[_persistentStoreCoordinator.persistentStores[0] URL]);
 	
-    return persistentStoreCoordinator;
+    return _persistentStoreCoordinator;
 }
-#pragma mark -
-#pragma mark Singleton methods
+
+- (NSURL *)storeURL
+{
+	return [NSURL fileURLWithPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"WXYC.sqlite"]];
+}
+
+#pragma mark - Singleton methods
 
 + (WXYCDataStack*)sharedInstance
 {
@@ -80,7 +86,15 @@ static WXYCDataStack *sharedInstance = nil;
         if (sharedInstance == nil)
 			sharedInstance = [[WXYCDataStack alloc] init];
     }
+	
     return sharedInstance;
+}
+
+- (NSString *)applicationDocumentsDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? paths[0] : nil;
+    return basePath;
 }
 
 + (id)allocWithZone:(NSZone *)zone {

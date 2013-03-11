@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) id<GoogleImageSearchDelegate> delegate;
 
++ (void)searchWithKeywords:(NSArray *)keywords success:(void(^)(NSString *))success failure:(void(^)(NSString *))failure finally:(void(^)(NSString *))finally;
+
 - (id)initWithDelegate:(id<GoogleImageSearchDelegate>) del;
 - (void)searchWithString:(NSString*)search;
 - (NSArray*)synchronizedSearchWithString:(NSString*)search;
