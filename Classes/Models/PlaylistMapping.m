@@ -7,6 +7,7 @@
 //
 
 #import <RestKit/RestKit.h>
+#import "RKJSONParserJSONKit.h"
 #import "PlaylistMapping.h"
 #import "Playcut.h"
 #import "Talkset.h"
@@ -21,7 +22,7 @@
 
 @implementation PlaylistMapping
 
-NSString* baseURL = @"http://localhost/";
+NSString* baseURL = @"http://wxyc.info/";
 
 - (void)initializeObjectManager
 {
@@ -29,7 +30,7 @@ NSString* baseURL = @"http://localhost/";
 	_objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"WXYC2.sqlite"];
 }
 
--(void)initializePlaycutMapping {
+- (void)initializePlaycutMapping {
 	RKManagedObjectMapping* playcutMapping = [RKManagedObjectMapping mappingForClass:[Playcut class] inManagedObjectStore:_objectManager.objectStore];
 	
 	[playcutMapping mapKeyPath:@"id" toAttribute:@"playlistEntryID"];
@@ -45,7 +46,7 @@ NSString* baseURL = @"http://localhost/";
 	[_objectManager.mappingProvider setMapping:playcutMapping forKeyPath:@"playcuts"];
 }
 
--(void)initializeBreakpointMapping
+- (void)initializeBreakpointMapping
 {
 	RKManagedObjectMapping* breakpointMapping = [RKManagedObjectMapping mappingForClass:[Breakpoint class] inManagedObjectStore:_objectManager.objectStore];
 
@@ -56,7 +57,7 @@ NSString* baseURL = @"http://localhost/";
 	[_objectManager.mappingProvider setMapping:breakpointMapping forKeyPath:@"breakpoints"];
 }
 
--(void)initializeTalksetMapping
+- (void)initializeTalksetMapping
 {
 	RKManagedObjectMapping* talksetMapping = [RKManagedObjectMapping mappingForClass:[Talkset class] inManagedObjectStore:_objectManager.objectStore];
 
@@ -67,10 +68,12 @@ NSString* baseURL = @"http://localhost/";
 	[_objectManager.mappingProvider setMapping:talksetMapping forKeyPath:@"talksets"];
 }
 
--(id)init
+- (id)init
 {
 	if (self = [super init])
 	{
+		[[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/html"];
+		[[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/plain"];
 		[self initializeObjectManager];
 		[self initializePlaycutMapping];
 		[self initializeBreakpointMapping];
