@@ -62,7 +62,7 @@
 	// Update the table with data
 	[self.tableView reloadData];
 	
-	[super dataSourceDidFinishLoadingNewData];
+//	[super dataSourceDidFinishLoadingNewData];
 }
 
 - (void)reloadTableViewDataSource {
@@ -117,12 +117,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (self.reloading) //we'll crash if we don't return while the table's reloading
-	{
-		UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-		[cell setSelected:NO animated:YES];
-		return;
-	}
+//	if (self.reloading) //we'll crash if we don't return while the table's reloading
+//	{
+//		UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+//		[cell setSelected:NO animated:YES];
+//		return;
+//	}
 	
     // Navigation logic may go here. Create and push another view controller.
 	NSUInteger row = [indexPath row];
@@ -141,9 +141,9 @@
 	responseData = [NSMutableData data];
 	_blogEntries = [[NSMutableArray alloc] init];
 	
-	refreshHeaderView.lastUpdatedDate = [NSDate date];
-	[self showReloadAnimationAnimated:YES];
-	[self reloadTableViewDataSource];	
+//	refreshHeaderView.lastUpdatedDate = [NSDate date];
+//	[self showReloadAnimationAnimated:YES];
+	[self reloadTableViewDataSource];
 	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	self.tableView.rowHeight = 80.0f;

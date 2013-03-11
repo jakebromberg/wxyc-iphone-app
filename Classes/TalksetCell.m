@@ -10,7 +10,8 @@
 
 @implementation TalksetCell
 
-- (id)initWithEntity:(NSManagedObject *)entity {
+- (id)initWithEntity:(NSManagedObject *)entity
+{
 	self = [super initWithEntity:entity];
 	[self addText:@"TALKSET"];
 	

@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DelineationCell.h"
 
-@interface BreakpointCell : DelineationCell { 
-
-}
-
+@interface BreakpointCell : DelineationCell
 
 @end
