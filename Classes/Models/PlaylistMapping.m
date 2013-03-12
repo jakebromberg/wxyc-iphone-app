@@ -7,7 +7,7 @@
 //
 
 #import <RestKit/RestKit.h>
-#import "RKJSONParserJSONKit.h"
+#import "WXYCDataStack.h"
 #import "PlaylistMapping.h"
 #import "Playcut.h"
 #import "Talkset.h"
@@ -18,6 +18,10 @@
 	NSArray *playlistClasses;
 }
 
+@property (readonly) RKResponseDescriptor *playcutMapping;
+@property (readonly) RKResponseDescriptor *talksetMapping;
+@property (readonly) RKResponseDescriptor *breakpointMapping;
+
 @end
 
 @implementation PlaylistMapping
@@ -26,58 +30,71 @@ NSString* baseURL = @"http://wxyc.info/";
 
 - (void)initializeObjectManager
 {
-	_objectManager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:baseURL]];
-	_objectManager.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"WXYC2.sqlite"];
+	[RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/plain"];
+	_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:baseURL]];
+	
+	[RKManagedObjectStore setDefaultStore:[[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:[WXYCDataStack sharedInstance].persistentStoreCoordinator]];
+	_objectManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+	[_objectManager.managedObjectStore createManagedObjectContexts];
 }
 
-- (void)initializePlaycutMapping {
-	RKManagedObjectMapping* playcutMapping = [RKManagedObjectMapping mappingForClass:[Playcut class] inManagedObjectStore:_objectManager.objectStore];
-	
-	[playcutMapping mapKeyPath:@"id" toAttribute:@"playlistEntryID"];
-	[playcutMapping mapKeyPath:@"chronOrderID" toAttribute:@"chronOrderID"];
-	[playcutMapping mapKeyPath:@"hour" toAttribute:@"hour"];
-	[playcutMapping mapKeyPath:@"artistName" toAttribute:@"artist"];
-	[playcutMapping mapKeyPath:@"labelName" toAttribute:@"label"];
-	[playcutMapping mapKeyPath:@"releaseTitle" toAttribute:@"album"];
-	[playcutMapping mapKeyPath:@"request" toAttribute:@"request"];
-	[playcutMapping mapKeyPath:@"rotation" toAttribute:@"rotation"];
-	[playcutMapping mapKeyPath:@"songTitle" toAttribute:@"song"];
-	
-	[_objectManager.mappingProvider setMapping:playcutMapping forKeyPath:@"playcuts"];
-}
-
-- (void)initializeBreakpointMapping
+- (RKResponseDescriptor *)playcutMapping
 {
-	RKManagedObjectMapping* breakpointMapping = [RKManagedObjectMapping mappingForClass:[Breakpoint class] inManagedObjectStore:_objectManager.objectStore];
-
-	[breakpointMapping mapKeyPath:@"id" toAttribute:@"playlistEntryID"];
-	[breakpointMapping mapKeyPath:@"chronOrderID" toAttribute:@"chronOrderID"];
-	[breakpointMapping mapKeyPath:@"hour" toAttribute:@"hour"];
+	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Playcut" inManagedObjectStore:_objectManager.managedObjectStore];
+	mapping.identificationAttributes = @[@"playlistEntryID"] ;
 	
-	[_objectManager.mappingProvider setMapping:breakpointMapping forKeyPath:@"breakpoints"];
+	[mapping addAttributeMappingsFromDictionary:@{
+		 @"id": @"playlistEntryID",
+		 @"chronOrderID": @"chronOrderID",
+		 @"hour": @"hour",
+		 @"artistName": @"artist",
+		 @"labelName": @"label",
+		 @"releaseTitle": @"album",
+		 @"request": @"request",
+		 @"rotation": @"rotation",
+		 @"songTitle": @"song"
+	 }];
+	
+	return [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:@"playcuts" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 }
 
-- (void)initializeTalksetMapping
+- (RKResponseDescriptor *)breakpointMapping
 {
-	RKManagedObjectMapping* talksetMapping = [RKManagedObjectMapping mappingForClass:[Talkset class] inManagedObjectStore:_objectManager.objectStore];
-
-	[talksetMapping mapKeyPath:@"id" toAttribute:@"playlistEntryID"];
-	[talksetMapping mapKeyPath:@"chronOrderID" toAttribute:@"chronOrderID"];
-	[talksetMapping mapKeyPath:@"hour" toAttribute:@"hour"];
+	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Playcut" inManagedObjectStore:_objectManager.managedObjectStore];
+	mapping.identificationAttributes = @[@"playlistEntryID"] ;
 	
-	[_objectManager.mappingProvider setMapping:talksetMapping forKeyPath:@"talksets"];
+	[mapping addAttributeMappingsFromDictionary:@{
+		 @"id": @"playlistEntryID",
+		 @"chronOrderID": @"chronOrderID",
+		 @"hour": @"hour"
+	 }];
+	
+	return [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:@"breakpoints" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+}
+
+- (RKResponseDescriptor *)talksetMapping
+{
+	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Playcut" inManagedObjectStore:_objectManager.managedObjectStore];
+	mapping.identificationAttributes = @[@"playlistEntryID"] ;
+	
+	[mapping addAttributeMappingsFromDictionary:@{
+		 @"id": @"playlistEntryID",
+		 @"chronOrderID": @"chronOrderID",
+		 @"hour": @"hour"
+	 }];
+	
+	return [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:@"talksets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 }
 
 - (id)init
 {
 	if (self = [super init])
 	{
-		[[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/html"];
-		[[RKParserRegistry sharedRegistry] setParserClass:[RKJSONParserJSONKit class] forMIMEType:@"text/plain"];
 		[self initializeObjectManager];
-		[self initializePlaycutMapping];
-		[self initializeBreakpointMapping];
-		[self initializeTalksetMapping];
+
+		[[RKObjectManager sharedManager] addResponseDescriptor:self.playcutMapping];
+		[[RKObjectManager sharedManager] addResponseDescriptor:self.talksetMapping];
+		[[RKObjectManager sharedManager] addResponseDescriptor:self.breakpointMapping];
 	}
 
 	return self;
