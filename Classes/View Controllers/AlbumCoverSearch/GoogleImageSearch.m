@@ -40,7 +40,7 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 			
 			return;
 		}
-			
+		
 		// Create a dictionary from the JSON string
 		NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
 		
@@ -48,6 +48,9 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 		{
 			if (_failure)
 				_failure(error.description);
+			
+			if (_finally)
+				finally(@"");
 			
 			return;
 		}
@@ -57,7 +60,8 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 		if (innerResults.count) {
 			_success([innerResults[0][@"url"] stringByReplacingURLEncoding]);
 		} else {
-			_failure(error.description);
+			if (_failure)
+				_failure(error.description);
 		}
 		
 		if (_finally)
