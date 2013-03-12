@@ -58,7 +58,7 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 		NSArray *innerResults = results[@"responseData"][@"results"];
 		
 		if (innerResults.count) {
-			_success([innerResults[0][@"url"] stringByReplacingURLEncoding]);
+			_success([innerResults[0][@"url"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
 		} else {
 			if (_failure)
 				_failure(error.description);

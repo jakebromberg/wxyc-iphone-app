@@ -6,6 +6,7 @@
 //  Copyright 2010 WXYC. All rights reserved.
 //
 
+#import <RestKit/RestKit.h>
 #import <CoreData/CoreData.h>
 #import "PlaylistController.h"
 #import "Playcut.h"
@@ -36,30 +37,20 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 - (void)fetchPlaylist
 {
-	playlistMapping.objectManager.serializationMIMEType = RKMIMETypeTextXML;
-	[playlistMapping.objectManager loadObjectsAtResourcePath:@"/playlists/recentEntries?v=2" delegate:self];
+	[RKObjectManager.sharedManager getObjectsAtPath:@"/playlists/recentEntries?v=2" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
+	 {
+		 _playlist = [[mappingResult array] sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+			 return [[a valueForKey:@"chronOrderID"] compare:[b valueForKey:@"chronOrderID"]];
+		 }];
+		 
+		 self.state = LP_DONE;
+		 NSLog(@"It Worked: %@", [mappingResult array]);
+		 // Or if you're only expecting a single object:
+		 NSLog(@"It Worked: %@", [mappingResult firstObject]);
+	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+		 NSLog(@"It Failed: %@", error);
+	 }];
 }
-
-- (void)updatePlaylist
-{
-	[self fetchPlaylist];
-}
-
-#pragma mark RestKit business
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-	_playlist = [[objects sortedArrayUsingComparator:^(id a, id b) {
-		return [[a valueForKey:@"chronOrderID"] compare:[b valueForKey:@"chronOrderID"]];
-	}] copy];
-	
-	self.state = LP_DONE;
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
-	NSLog(@"Encountered an error: %@", error);
-}
-
 
 #pragma mark constructors
 
