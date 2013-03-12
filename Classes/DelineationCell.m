@@ -11,18 +11,6 @@
 
 @implementation DelineationCell
 
-- (void) addBackground
-{
-	CGRect asdf = self.frame;
-	asdf.size.height = 22.0f;
-	self.frame = asdf;
-	self.bounds = asdf;
-	UIView *background = [[UIView alloc]
-						  initWithFrame:asdf];
-	background.backgroundColor = [UIColor lightGrayColor];
-	self.backgroundView = background;
-}
-
 - (void) addText:(NSString *) text
 {
 	UILabel *label = [[UILabel alloc]
@@ -42,13 +30,13 @@
 	return 21.0f;
 }
 
-- (id)initWithEntity:(NSManagedObject *)entity {
+- (id)initWithEntity:(NSManagedObject *)entity
+{
 	if (!(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] description]]))
 		return nil;
 
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	self.entity = entity;
-	[self addBackground];
 
 	return self;
 }
