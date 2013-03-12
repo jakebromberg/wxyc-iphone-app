@@ -10,12 +10,9 @@
 
 @implementation TalksetCell
 
-- (id)initWithEntity:(NSManagedObject *)entity
++ (float)height
 {
-	self = [super initWithEntity:entity];
-	[self addText:@"TALKSET"];
-	
-	return self;
+	return 50.0f;
 }
 
 @end

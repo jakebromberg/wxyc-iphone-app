@@ -78,6 +78,7 @@
 		23A23D0B16ED801700C9AF7C /* clock-9.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23D0116ED801200C9AF7C /* clock-9.png */; };
 		23A23D0C16ED801700C9AF7C /* clock-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23D0216ED801300C9AF7C /* clock-11.png */; };
 		23A23D0D16ED801700C9AF7C /* clock-12.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23D0316ED801400C9AF7C /* clock-12.png */; };
+		23B09AC316EEA05B003C2173 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B09AC216EEA05B003C2173 /* chat.png */; };
 		23B32A6612690875008414F4 /* radio_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A6512690875008414F4 /* radio_icon@2x.png */; };
 		23B32A6B1269089D008414F4 /* Station-Updates-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A6A1269089D008414F4 /* Station-Updates-icon@2x.png */; };
 		23B32A7312690ECC008414F4 /* playlist_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A7212690ECC008414F4 /* playlist_icon@2x.png */; };
@@ -287,6 +288,7 @@
 		23A23D0116ED801200C9AF7C /* clock-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-9.png"; sourceTree = "<group>"; };
 		23A23D0216ED801300C9AF7C /* clock-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-11.png"; sourceTree = "<group>"; };
 		23A23D0316ED801400C9AF7C /* clock-12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-12.png"; sourceTree = "<group>"; };
+		23B09AC216EEA05B003C2173 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
 		23B32A6512690875008414F4 /* radio_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_icon@2x.png"; sourceTree = "<group>"; };
 		23B32A6A1269089D008414F4 /* Station-Updates-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Station-Updates-icon@2x.png"; sourceTree = "<group>"; };
 		23B32A7212690ECC008414F4 /* playlist_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist_icon@2x.png"; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 		2328C6891060107500063811 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				23B09AC216EEA05B003C2173 /* chat.png */,
 				23A23CFA16ED800C00C9AF7C /* clock-1.png */,
 				23A23CFB16ED800D00C9AF7C /* clock-2.png */,
 				23A23CFC16ED800D00C9AF7C /* clock-3.png */,
@@ -1102,6 +1105,7 @@
 				23A23D0B16ED801700C9AF7C /* clock-9.png in Resources */,
 				23A23D0C16ED801700C9AF7C /* clock-11.png in Resources */,
 				23A23D0D16ED801700C9AF7C /* clock-12.png in Resources */,
+				23B09AC316EEA05B003C2173 /* chat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
