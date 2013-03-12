@@ -10,6 +10,7 @@
 #import "WXYCDataStack.h"
 #import "PlaycutCell.h"
 #import "PlayerCell.h"
+#import "TalksetCell.h"
 #import "NSString+Additions.h"
 
 @implementation LivePlaylistTableViewController
@@ -23,47 +24,54 @@ PlaylistController* livePlaylistCtrl;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (livePlaylistCtrl.playlist.count == 0)
-		return 0;
+		return 2;
 	
 	if ([self maxEntriesToDisplay] >= livePlaylistCtrl.playlist.count)
 		_maxEntriesToDisplay = livePlaylistCtrl.playlist.count;
 
-	return [self maxEntriesToDisplay]+1;
+	return [self maxEntriesToDisplay]+2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//	[tableView registerClass:[TalksetCell class] forCellReuseIdentifier:@"TalksetCell"];
+	
 	if (indexPath.row == 1)
 		return [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
 
 	if (indexPath.row == 0)
 		return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
 
-	UITableViewCell* cell;
+	NSManagedObject *playlistEntry = livePlaylistCtrl.playlist[indexPath.row - 2];
+	NSString *entryType = [playlistEntry.class.description append:@"Cell"];
+	LivePlaylistTableViewCell *cell;
 	
-	if (indexPath.row == [self maxEntriesToDisplay])
-	{
-		cell = [[LoadPreviousEntriesCell alloc] init];
-	} else {
-		NSManagedObject *playlistEntry = livePlaylistCtrl.playlist[indexPath.row - 2];
-		id entryType = [playlistEntry.class.description append:@"Cell"];
-
-		cell = (LivePlaylistTableViewCell*) [tableView dequeueReusableCellWithIdentifier:entryType forIndexPath:indexPath];
-		
-		if (cell) {
-			((LivePlaylistTableViewCell*)cell).entity = playlistEntry;
-		} else {
-			Class class = NSClassFromString(entryType);
-			
-			if (class != nil) {
-				cell = [[class alloc] initWithEntity:playlistEntry];
-			} else {
-				cell = [[LivePlaylistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"unknown"];
-			}
-		}
-		
-		((LivePlaylistTableViewCell*)cell).delegate = self;
+	@try {
+		cell = [tableView dequeueReusableCellWithIdentifier:entryType forIndexPath:indexPath];
 	}
+	@catch (NSException *exception) {
+		Class class = NSClassFromString(entryType);
+		
+		if (class != nil) {
+			cell = [[class alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:entryType];
+		} else {
+			cell = [[LivePlaylistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"unknown"];
+		}
+	}
+	
+//	if (cell) {
+		cell.entity = playlistEntry;
+//	} else {
+//		Class class = NSClassFromString(entryType);
+//		
+//		if (class != nil) {
+//			cell = [[class alloc] initWithEntity:playlistEntry];
+//		} else {
+//			cell = [[LivePlaylistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"unknown"];
+//		}
+//	}
+	
+	cell.delegate = self;
 	
 	return cell;
 }
