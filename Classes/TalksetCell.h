@@ -10,4 +10,6 @@
 
 @interface TalksetCell : DelineationCell
 
+@property (nonatomic, weak) IBOutlet UILabel *someLabel;
+
 @end
