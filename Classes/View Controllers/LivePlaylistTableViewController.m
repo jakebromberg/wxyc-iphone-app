@@ -34,8 +34,6 @@ PlaylistController* livePlaylistCtrl;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//	[tableView registerClass:[TalksetCell class] forCellReuseIdentifier:@"TalksetCell"];
-	
 	if (indexPath.row == 1)
 		return [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
 
@@ -52,25 +50,14 @@ PlaylistController* livePlaylistCtrl;
 	@catch (NSException *exception) {
 		Class class = NSClassFromString(entryType);
 		
-		if (class != nil) {
+		if (class) {
 			cell = [[class alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:entryType];
 		} else {
 			cell = [[LivePlaylistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"unknown"];
 		}
 	}
 	
-//	if (cell) {
-		cell.entity = playlistEntry;
-//	} else {
-//		Class class = NSClassFromString(entryType);
-//		
-//		if (class != nil) {
-//			cell = [[class alloc] initWithEntity:playlistEntry];
-//		} else {
-//			cell = [[LivePlaylistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"unknown"];
-//		}
-//	}
-	
+	cell.entity = playlistEntry;
 	cell.delegate = self;
 	
 	return cell;
