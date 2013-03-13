@@ -40,7 +40,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	[RKObjectManager.sharedManager getObjectsAtPath:@"/playlists/recentEntries?v=2" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
 	 {
 		 _playlist = [[mappingResult array] sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-			 return [[a valueForKey:@"chronOrderID"] compare:[b valueForKey:@"chronOrderID"]];
+			 return [[b valueForKey:@"chronOrderID"] compare:[a valueForKey:@"chronOrderID"]];
 		 }];
 		 
 		 self.state = LP_DONE;
