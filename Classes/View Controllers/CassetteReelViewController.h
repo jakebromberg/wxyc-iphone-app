@@ -10,8 +10,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "IndefinitelySpinningImageViewController.h"
 
-@interface CassetteReelViewController : IndefinitelySpinningImageViewController {
+@interface CassetteReelViewController : UIImageView
 
-}
+- (void)startAnimation;
+- (void)stopAnimation;
 
 @end

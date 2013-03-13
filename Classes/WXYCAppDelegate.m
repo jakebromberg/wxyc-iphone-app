@@ -116,7 +116,6 @@
 		NSArray *fetchResults = nil;
 		NSError *error = nil;
 		if ((fetchResults = [_managedObjectContext executeFetchRequest:request error:&error])) {
-			NSLog(@"fetchResults: %@", fetchResults);
 			for(Playcut *cut in fetchResults) {
 				[_managedObjectContext deleteObject:cut];
 			}

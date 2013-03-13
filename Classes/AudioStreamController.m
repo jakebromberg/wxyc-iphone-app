@@ -49,7 +49,7 @@ static AudioStreamController *wxyc;
 
 - (BOOL)isPlaying
 {
-	return self.player.rate != 0;
+	return self.player.rate > 0;
 }
 
 - (AVPlayer *)player

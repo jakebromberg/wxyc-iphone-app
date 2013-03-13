@@ -17,6 +17,6 @@
 - (void)startAnimation;
 - (void)stopAnimation;
 
-@property (nonatomic, strong) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end

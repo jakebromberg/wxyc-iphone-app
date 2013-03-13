@@ -8,22 +8,77 @@
 
 #import "CassetteReelViewController.h"
 #import "AudioStreamController.h"
+#import "IndefinitelySpinningAnimation.h"
+#import <QuartzCore/QuartzCore.h>
+
+@interface CassetteReelViewController ()
+
+@property (nonatomic, strong) IndefinitelySpinningAnimation *animation;
+
+@end
 
 @implementation CassetteReelViewController
 
-- (void)setImageView:(UIImageView *)imageView
+- (IndefinitelySpinningAnimation *)animation
 {
-	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+	if (!_animation)
+		_animation = [IndefinitelySpinningAnimation getAnimation];
 	
-	[super setImageView:imageView];
+	return _animation;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if ([AudioStreamController wxyc].isPlaying)
-		[self.imageView startAnimating];
+		[self startAnimation];
 	else
-		[self.imageView stopAnimating];
+		[self stopAnimation];
+}
+
+- (void)startAnimation
+{
+	if (![self.layer animationForKey:@"spinAnimation"])
+		[self.layer addAnimation:[IndefinitelySpinningAnimation getAnimation] forKey:@"spinAnimation"];
+	
+	CFTimeInterval pausedTime = [self.layer timeOffset];
+    self.layer.speed = 1.0;
+    self.layer.timeOffset = 0.0;
+    self.layer.beginTime = 0.0;
+    CFTimeInterval timeSincePause = [self.layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+    self.layer.beginTime = timeSincePause;
+}
+
+- (void)stopAnimation
+{
+    CFTimeInterval pausedTime = [self.layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    self.layer.speed = 0.0;
+    self.layer.timeOffset = pausedTime;
+}
+
+- (void)initImageViewAnimation
+{
+	if (![self.layer animationForKey:@"spinAnimation"])
+	{
+		[self.layer addAnimation:self.animation forKey:@"spinAnimation"];
+		[self stopAnimation];
+	}
+}
+
+- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
+{
+	self = [super awakeAfterUsingCoder:aDecoder];
+
+	if (self)
+	{
+		[self initImageViewAnimation];
+		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+		[self addObserver:self forKeyPath:@"layer.speed" options:NSKeyValueObservingOptionNew context:NULL];
+		
+		if ([AudioStreamController wxyc].isPlaying)
+			[self startAnimation];
+	}
+	
+	return self;
 }
 
 @end

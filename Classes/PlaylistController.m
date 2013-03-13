@@ -44,11 +44,8 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 		 }];
 		 
 		 self.state = LP_DONE;
-		 NSLog(@"It Worked: %@", [mappingResult array]);
-		 // Or if you're only expecting a single object:
-		 NSLog(@"It Worked: %@", [mappingResult firstObject]);
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-		 NSLog(@"It Failed: %@", error);
+
 	 }];
 }
 

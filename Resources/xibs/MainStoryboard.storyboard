@@ -102,7 +102,7 @@
                                                         <action selector="pushPlay:" destination="pID-91-qlN" eventType="touchUpInside" id="pvo-R6-0bi"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cassette reel@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="fbW-hU-JPw">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cassette reel@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="fbW-hU-JPw" customClass="CassetteReelViewController">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="68" id="l9p-0Z-9cp"/>
                                                     </constraints>
@@ -144,7 +144,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="containerView" destination="XKj-MI-JxF" id="bnL-RO-a9g"/>
-                                    <outlet property="leftCassetteReel" destination="fbW-hU-JPw" id="0km-SO-qac"/>
+                                    <outlet property="leftCassetteReel" destination="fbW-hU-JPw" id="Scx-lA-M6O"/>
                                     <outlet property="playButton" destination="62x-af-eXr" id="DFk-cV-U5y"/>
                                     <outlet property="rightCassetteReel" destination="jFz-fW-c8M" id="LPz-8B-sRA"/>
                                     <outlet property="shadowView" destination="9QB-CZ-jMH" id="uNy-Tq-1vB"/>
@@ -483,6 +483,9 @@
                 <relationship kind="outlet" name="timeView" candidateClass="UIImageView"/>
             </relationships>
         </class>
+        <class className="CassetteReelViewController" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CassetteReelViewController.h"/>
+        </class>
         <class className="DelineationCell" superclassName="LivePlaylistTableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DelineationCell.h"/>
         </class>
@@ -510,6 +513,7 @@
         <class className="PlayerCell" superclassName="LivePlaylistTableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayerCell.h"/>
             <relationships>
+                <relationship kind="action" name="pushPlay:"/>
                 <relationship kind="outlet" name="leftCassetteReel" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="rightCassetteReel" candidateClass="UIImageView"/>
