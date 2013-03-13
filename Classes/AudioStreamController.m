@@ -10,21 +10,26 @@
 #import "AudioStreamController.h"
 #include <AVFoundation/AVFoundation.h>
 #include <AudioToolbox/AudioToolbox.h>
-#import "AudioStreamer.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface AudioStreamController() {
-	AudioStreamer *streamer;
-}
+@interface AudioStreamController()
 
-void interruptionListener(void *inClientData, UInt32 inInterruptionState);
-- (void)destroyStreamer;
-- (void)createStreamer;
-- (void)playbackStateChanged:(NSNotification *)aNotification;
+@property (nonatomic, strong) AVPlayer *player;
 
 @end
 
 
 @implementation AudioStreamController
+
+static AudioStreamController *wxyc;
+
++ (instancetype)wxyc
+{
+	if (!wxyc)
+		wxyc = [[AudioStreamController alloc] initWithURL:[NSURL URLWithString:@"http://152.2.204.90:8000/wxyc.mp3"]];
+	
+	return wxyc;
+}
 
 #pragma mark - Public Methods
 
@@ -32,175 +37,44 @@ void interruptionListener(void *inClientData, UInt32 inInterruptionState);
 {
 	NSError* error = nil;
 	[[AVAudioSession sharedInstance] setActive:YES error:&error];
-	[[AVAudioSession sharedInstance]
-	 setCategory:AVAudioSessionCategoryPlayback
-	 error: nil];
+	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 
-	[self createStreamer];
-	[streamer start];
+	[self.player play];
 }
 
 - (void)stop
 {
-	[streamer stop];
-	[self destroyStreamer];
+	[self.player pause];
 }
 
 - (BOOL)isPlaying
 {
-	return [streamer isPlaying];
+	return self.player.rate != 0;
 }
 
-
-#pragma mark Private Methods
-
-- (void)destroyStreamer
+- (AVPlayer *)player
 {
-	if (streamer)
-	{
-		[[NSNotificationCenter defaultCenter]
-		 removeObserver:self
-		 name:ASStatusChangedNotification
-		 object:streamer];
-		
-		[streamer stop];
-		streamer = nil;
-	}
+	if (!_player)
+		_player = [[AVPlayer alloc] initWithURL:self.URL];
 	
-	[[UIApplication sharedApplication] endReceivingRemoteControlEvents];
-	
-	//do this so we can still update the volume slider after we destroy the streamer
-	NSError *activationError = nil;
-	[session setActive:YES error:&activationError];
+	return _player;
 }
 
-- (void)createStreamer
-{
-	if (streamer)
-		return;
-	
-	[self destroyStreamer];
-	
-	streamer = [[AudioStreamer alloc] initWithURL:self.URL];
-	
-	[[NSNotificationCenter defaultCenter]
-	 addObserver:self
-	 selector:@selector(playbackStateChanged:)
-	 name:ASStatusChangedNotification
-	 object:streamer];
-	
-	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-}
+#pragma mark
 
-- (void)playbackStateChanged:(NSNotification *)aNotification
-{
-	if ([streamer state] == AS_STOPPED) {
-		if ([streamer errorCode] == AS_NO_ERROR) {
-			NSError* error;
-			[session setActive:NO error:&error];
-		} else {
-			[self stop];
-			[self start];
-		}
-	}
-
-	BOOL newNetworkActivityIndicatorVisibleState = ([streamer isWaiting]) && !([streamer isPlaying] || [streamer isIdle]);
-	
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = newNetworkActivityIndicatorVisibleState;
-}
-
-#pragma mark -
-#pragma mark AVAudioSessionDelegate
-
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event
-{
-	switch (event.subtype) {
-		case UIEventSubtypeRemoteControlTogglePlayPause:
-			if ([streamer isPlaying]) {
-				[streamer stop];
-			} else {
-				[streamer start];
-			}
-			break;
-		case UIEventSubtypeRemoteControlPlay:
-			[streamer start];
-			break;
-		case UIEventSubtypeRemoteControlPause:
-		case UIEventSubtypeRemoteControlStop:
-			[streamer stop];
-		default:
-			break;
-	}
-//	if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) {
-//		if ([streamer isPlaying]) {
-//			[streamer stop];
-//		} else {
-//			[streamer start];
-//		}
-//	}
-//	if (event.subtype == UIEventSubtypeRemoteControlPlay) {
-//		[self pushPlay:nil];
-//	}
-//	if (event.subtype == UIEventSubtypeRemoteControlPause) {
-//		[self pushStop:nil];
-//	}
-//	if (event.subtype == UIEventSubtypeRemoteControlStop) {
-//		[self pushStop:nil];
-//	}
-//	if (event.subtype == UIEventSubtypeRemoteControlNextTrack) {
-//		
-//	}
-//	if (event.subtype == UIEventSubtypeRemoteControlPreviousTrack) {
-//		
-//	}
-}
-
-- (void)beginInterruption {
-	[streamer stop];
-}
-
-- (void)endInterruption { }
-
-- (void) initAudioSession {
-	session = [AVAudioSession sharedInstance];
-	session.delegate = self;
-	NSError *activationError = nil;
-	[session setActive:YES error: &activationError];
-
-	UInt32 otherAudioIsPlaying;
-	UInt32 otherAudioIsPlaying_size = sizeof(otherAudioIsPlaying);
-	
-	AudioSessionGetProperty (kAudioSessionProperty_InterruptionType,
-							 &otherAudioIsPlaying_size,
-							 &otherAudioIsPlaying);
-	
-	if (otherAudioIsPlaying) {
-		[[AVAudioSession sharedInstance]
-		 setCategory: AVAudioSessionCategoryAmbient
-		 error: nil];		
-	} else {
-		[[AVAudioSession sharedInstance]
-		 setCategory:AVAudioSessionCategoryPlayback
-		 error: nil];
-	}
-}
-
-
-#pragma mark 
-
-- (id)initWithURL:(NSURL*)aURL
+- (id)initWithURL:(NSURL*)URL
 {
 	self = [super init];
 	
 	if (self)
-		[self setURL:aURL];
+		_URL = URL;
 	
 	return self;
 }
 
-- (void)dealloc
++ (NSSet *)keyPathsForValuesAffectingIsPlaying
 {
-	[self destroyStreamer];
+	return [NSSet setWithObject:@"player.rate"];
 }
 
 @end

@@ -7,20 +7,15 @@
 //
 #include <AVFoundation/AVFoundation.h>
 
-@class AudioStreamer;
+@interface AudioStreamController : NSObject
 
-@interface AudioStreamController : NSObject <AVAudioSessionDelegate> {
-	@public
-	
-	@private
-	AVAudioSession *session;
-}
++ (instancetype)wxyc;
 
--(void)start;
--(void)stop;
--(id)initWithURL:(NSURL*)aURL;
+- (void)start;
+- (void)stop;
+- (id)initWithURL:(NSURL*)aURL;
 
 @property (nonatomic, readonly) BOOL isPlaying;
-@property (nonatomic, strong) NSURL* URL;
+@property (nonatomic, readonly, strong) NSURL *URL;
 
 @end

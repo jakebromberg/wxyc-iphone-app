@@ -4,6 +4,3 @@
 [submodule "Classes/Libraries/SBJSON"]
 	path = Classes/Libraries/SBJSON
 	url = https://jake.bromberg%40gmail.com@github.com/stig/json-framework.git
-[submodule "Classes/Libraries/AudioStreamer"]
-	path = Classes/Libraries/AudioStreamer
-	url = git://github.com/mattgallagher/AudioStreamer.git

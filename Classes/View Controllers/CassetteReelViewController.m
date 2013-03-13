@@ -7,34 +7,23 @@
 //
 
 #import "CassetteReelViewController.h"
-#import "AudioStreamer.h"
+#import "AudioStreamController.h"
 
 @implementation CassetteReelViewController
 
-- (void)playbackStateChanged:(NSNotification *)aNotification 
+- (void)setImageView:(UIImageView *)imageView
 {
-	if ([[aNotification object] class] != [AudioStreamer class])
-		return;
+	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
 	
-	AudioStreamer* stream = (AudioStreamer*) [aNotification object];
-	AudioStreamerState state = stream.state;
-	
-	if(state == AS_PLAYING) {
-		[self startAnimation];
-	} else {
-		[self stopAnimation];
-	}
-}
-
--(void)setImageView:(UIImageView *)imageView
-{
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackStateChanged:) name:ASStatusChangedNotification object:nil];
 	[super setImageView:imageView];
 }
 
-- (void)dealloc
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	if ([AudioStreamController wxyc].isPlaying)
+		[self.imageView startAnimating];
+	else
+		[self.imageView stopAnimating];
 }
 
 @end
