@@ -107,7 +107,7 @@
                                                         <constraint firstAttribute="width" constant="68" id="l9p-0Z-9cp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cassette reel@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="jFz-fW-c8M">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cassette reel@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="jFz-fW-c8M" customClass="CassetteReelViewController">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="68" id="4ha-IP-wYX"/>
                                                         <constraint firstAttribute="width" constant="68" id="M88-6r-cWO"/>
@@ -513,10 +513,9 @@
         <class className="PlayerCell" superclassName="LivePlaylistTableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayerCell.h"/>
             <relationships>
-                <relationship kind="action" name="pushPlay:"/>
-                <relationship kind="outlet" name="leftCassetteReel" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftCassetteReel" candidateClass="CassetteReelViewController"/>
                 <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightCassetteReel" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="rightCassetteReel" candidateClass="CassetteReelViewController"/>
             </relationships>
         </class>
         <class className="TalksetCell" superclassName="DelineationCell">
