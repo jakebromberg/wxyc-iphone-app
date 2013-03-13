@@ -36,7 +36,6 @@
 		234D189711407D1500812919 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 234D189411407D1500812919 /* about.html */; };
 		234D189811407D1500812919 /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = 234D189511407D1500812919 /* article.html */; };
 		234D189911407D1500812919 /* iphoneapp.css in Resources */ = {isa = PBXBuildFile; fileRef = 234D189611407D1500812919 /* iphoneapp.css */; };
-		234DA3491650709C0056F43C /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 234DA34416506CD90056F43C /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		23539B9A12809A4D004F9A11 /* album_cover_placeholder.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 23539B9912809A4D004F9A11 /* album_cover_placeholder.PNG */; };
 		2353AB1412823AC6004F9A11 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2353AB1212823AC6004F9A11 /* DetailsView.xib */; };
 		235D725E113EE6EF00370285 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235D725D113EE6EF00370285 /* NewsDetailViewController.m */; };
@@ -152,13 +151,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		23638027163226F000AAC2CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 259C301615128079003066A2;
-			remoteInfo = RestKitResources;
-		};
 		23EF279B14F5DC4100EA7ACB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */;
@@ -230,8 +222,6 @@
 		234D189411407D1500812919 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		234D189511407D1500812919 /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
 		234D189611407D1500812919 /* iphoneapp.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = iphoneapp.css; sourceTree = "<group>"; };
-		234DA34316506CD90056F43C /* AudioStreamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioStreamer.h; path = Libraries/AudioStreamer/Classes/AudioStreamer.h; sourceTree = "<group>"; };
-		234DA34416506CD90056F43C /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AudioStreamer.m; path = Libraries/AudioStreamer/Classes/AudioStreamer.m; sourceTree = "<group>"; };
 		23539B9912809A4D004F9A11 /* album_cover_placeholder.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = album_cover_placeholder.PNG; sourceTree = "<group>"; };
 		2353AB1312823AC6004F9A11 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailsView.xib; sourceTree = "<group>"; };
 		235D725C113EE6EF00370285 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
@@ -741,8 +731,6 @@
 			isa = PBXGroup;
 			children = (
 				235DE11616ED2BAC005640E9 /* SDWebImage */,
-				234DA34316506CD90056F43C /* AudioStreamer.h */,
-				234DA34416506CD90056F43C /* AudioStreamer.m */,
 				23924A171289B3D400EFC0FA /* FTUtils */,
 				2353A7D712820BAC004F9A11 /* MGImageUtilities */,
 				277757411631BBE900349E12 /* SBJSON */,
@@ -831,7 +819,6 @@
 				23EF279E14F5DC4100EA7ACB /* RestKitTests.octest */,
 				23EF27A014F5DC4100EA7ACB /* RestKit.framework */,
 				23EF27A214F5DC4100EA7ACB /* RestKitFrameworkTests.octest */,
-				23638028163226F000AAC2CF /* RestKitResources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -992,13 +979,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		23638028163226F000AAC2CF /* RestKitResources.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitResources.bundle;
-			remoteRef = 23638027163226F000AAC2CF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		23EF279C14F5DC4100EA7ACB /* libRestKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1116,7 +1096,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				234DA3491650709C0056F43C /* AudioStreamer.m in Sources */,
 				23EE3A231527F4090006CDA5 /* Talkset.m in Sources */,
 				23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */,
 				23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */,
