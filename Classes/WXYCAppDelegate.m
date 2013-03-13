@@ -16,7 +16,7 @@
 
 - (void)handleTimer
 {
-	[self.livePlaylistCtrlr updatePlaylist];
+	[self.livePlaylistCtrlr fetchPlaylist];
 }
 
 #pragma mark - Core Data stack
