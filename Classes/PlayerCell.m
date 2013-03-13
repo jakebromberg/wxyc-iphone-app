@@ -30,29 +30,57 @@
 {
 	[super prepareForReuse];
 	
-	if (![AudioStreamController.wxyc isPlaying])
-	{
-		[AudioStreamController.wxyc start];
-		self.playButton.imageView.image = [UIImage imageNamed:@"stop-button.png"];
-		[self.leftCassetteReel stopAnimation];
-	} else {
-		[AudioStreamController.wxyc stop];
-		self.playButton.imageView.image = [UIImage imageNamed:@"play-button.png"];
-		[self.leftCassetteReel startAnimation];
+	@try {
+		[[AudioStreamController wxyc] removeObserver:self forKeyPath:@"isPlaying"];
 	}
+	@catch (NSException *exception) {
+		
+	}
+	@finally {
+		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+	}
+	
+	[self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
 }
 
+- (void)configureInterfaceForPlayingState:(BOOL)isPlaying
+{
+	if (isPlaying)
+	{
+		[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
+		[self.leftCassetteReel startAnimation];
+		[self.rightCassetteReel startAnimation];
+	} else {
+		[self.playButton setImage:[UIImage imageNamed:@"play-button.png"] forState:UIControlStateNormal];
+		[self.leftCassetteReel stopAnimation];
+		[self.rightCassetteReel stopAnimating];
+	}
+}
 - (IBAction)pushPlay:(id)sender
 {
-	if (![AudioStreamController.wxyc isPlaying])
+	if ([AudioStreamController.wxyc isPlaying])
 	{
-		[AudioStreamController.wxyc start];
-		self.playButton.imageView.image = [UIImage imageNamed:@"stop-button.png"];
-	} else {
 		[AudioStreamController.wxyc stop];
-		self.playButton.imageView.image = [UIImage imageNamed:@"play-button.png"];
+	} else {
+		[AudioStreamController.wxyc start];
 	}
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if ([keyPath isEqualToString:@"isPlaying"])
+	{
+		[self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
+	}
+}
+
+- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
+{
+	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+
+	[self configureInterfaceForPlayingState:[AudioStreamController wxyc].isPlaying];
+	
+	return [super awakeAfterUsingCoder:aDecoder];
+}
 
 @end
