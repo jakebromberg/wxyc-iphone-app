@@ -13,6 +13,12 @@
 #import "TalksetCell.h"
 #import "NSString+Additions.h"
 
+@interface LivePlaylistTableViewController ()
+
+@property (nonatomic, strong) PlayerCell *playerCell;
+
+@end
+
 @implementation LivePlaylistTableViewController
 
 static const int kNumEntriesToFetch = 20;
@@ -34,12 +40,12 @@ PlaylistController* livePlaylistCtrl;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.row == 1)
-		return [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
-
 	if (indexPath.row == 0)
 		return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
 
+	if (indexPath.row == 1)
+		return [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
+	
 	NSManagedObject *playlistEntry = livePlaylistCtrl.playlist[indexPath.row - 2];
 	NSString *entryType = [playlistEntry.class.description append:@"Cell"];
 	LivePlaylistTableViewCell *cell;

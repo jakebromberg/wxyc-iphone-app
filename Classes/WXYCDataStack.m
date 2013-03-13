@@ -67,8 +67,6 @@ static WXYCDataStack *sharedInstance = nil;
 		NSLog(@"Error: %@, %@", error, [error userInfo]);
     }    
 
-	NSLog(@"storeURL %@",[_persistentStoreCoordinator.persistentStores[0] URL]);
-	
     return _persistentStoreCoordinator;
 }
 
