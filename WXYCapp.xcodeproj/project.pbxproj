@@ -12,8 +12,6 @@
 		230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230EB0FC127600210065308D /* CoreAudio.framework */; };
 		231FF290112B7E0300339C9C /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231FF28F112B7E0300339C9C /* NewsTableViewController.m */; };
 		2325E0EF1288A70800B064BB /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325E0EA1288A70800B064BB /* Playcut.m */; };
-		23293B5B16B8BC010077FBAF /* buddha_machine_08.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 23293B5A16B8BB900077FBAF /* buddha_machine_08.m4a */; };
-		23293B5D16B8BD180077FBAF /* buddha_machine_08.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23293B5C16B8BD180077FBAF /* buddha_machine_08.mp3 */; };
 		232E24DE1267A7ED007F7679 /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24C81267A7ED007F7679 /* about_icon.png */; };
 		232E24E01267A7ED007F7679 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CA1267A7ED007F7679 /* blueArrow.png */; };
 		232E24E11267A7ED007F7679 /* Default-inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CB1267A7ED007F7679 /* Default-inv.png */; };
@@ -1068,8 +1066,6 @@
 				234B4A77129384B7001B3EB2 /* ShareItemAccessoryView.xib in Resources */,
 				23E750ED129AFEE5005A9468 /* testJSON.txt in Resources */,
 				237906DD16B4E9BE00F67A17 /* Default-568h@2x.png in Resources */,
-				23293B5B16B8BC010077FBAF /* buddha_machine_08.m4a in Resources */,
-				23293B5D16B8BD180077FBAF /* buddha_machine_08.mp3 in Resources */,
 				23F8176216EBC35E005BF24F /* MainStoryboard.storyboard in Resources */,
 				235DE14E16ED4EDB005640E9 /* player-elements.png in Resources */,
 				235DE15016ED4F26005640E9 /* play-button.png in Resources */,

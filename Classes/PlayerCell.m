@@ -10,6 +10,7 @@
 #import "PlayerCell.h"
 #import "AudioStreamController.h"
 #import "CassetteReelViewController.h"
+#import "NSString+Additions.h"
 
 @interface PlayerCell ()
 
@@ -58,12 +59,24 @@
 }
 - (IBAction)pushPlay:(id)sender
 {
+	[self playPushButtonSFX];
+
 	if ([AudioStreamController.wxyc isPlaying])
 	{
 		[AudioStreamController.wxyc stop];
 	} else {
 		[AudioStreamController.wxyc start];
 	}
+	
+}
+
+- (void)playPushButtonSFX
+{
+	SystemSoundID soundID;
+	NSURL *url = [NSURL fileURLWithPath:[NSBundle.mainBundle.resourcePath append:@"/cassette button push.aif"]];
+	
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
+	AudioServicesPlaySystemSound (soundID);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
