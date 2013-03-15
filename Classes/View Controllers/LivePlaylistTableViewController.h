@@ -4,11 +4,5 @@
 //
 
 @interface LivePlaylistTableViewController : UITableViewController<UITableViewDataSource, UITabBarControllerDelegate>
-{
-	NSIndexSet *indicesOfPlaycuts;
-	int selectedRow;
-}
-
-@property NSUInteger maxEntriesToDisplay;
 
 @end

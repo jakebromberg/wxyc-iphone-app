@@ -13,15 +13,7 @@
 #import "TalksetCell.h"
 #import "NSString+Additions.h"
 
-@interface LivePlaylistTableViewController ()
-
-@property (nonatomic, strong) PlayerCell *playerCell;
-
-@end
-
 @implementation LivePlaylistTableViewController
-
-static const int kNumEntriesToFetch = 20;
 
 PlaylistController* livePlaylistCtrl;
 
@@ -29,13 +21,7 @@ PlaylistController* livePlaylistCtrl;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (livePlaylistCtrl.playlist.count == 0)
-		return 2;
-	
-	if ([self maxEntriesToDisplay] >= livePlaylistCtrl.playlist.count)
-		_maxEntriesToDisplay = livePlaylistCtrl.playlist.count;
-
-	return [self maxEntriesToDisplay]+2;
+	return livePlaylistCtrl.playlist.count + 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,7 +70,7 @@ PlaylistController* livePlaylistCtrl;
 		return 40;
 	
 	//boundary case
-	if (indexPath.row > ([self maxEntriesToDisplay]))
+	if (indexPath.row >= livePlaylistCtrl.playlist.count)
 		return 0;
 	
 	return [NSClassFromString([self classNameForCellAtIndexPath:indexPath]) height];
@@ -96,8 +82,6 @@ PlaylistController* livePlaylistCtrl;
 {
 	[super viewDidLoad];
 
-	_maxEntriesToDisplay = kNumEntriesToFetch;
-	
 	WXYCAppDelegate *appDelegate = (WXYCAppDelegate *)[UIApplication sharedApplication].delegate;
 	livePlaylistCtrl = [appDelegate livePlaylistCtrlr];
 
