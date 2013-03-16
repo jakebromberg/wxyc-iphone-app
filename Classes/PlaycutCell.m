@@ -67,9 +67,12 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-	[UIView animateWithDuration:.5 animations:^{
-		self.shareBar.alpha = 1 - self.shareBar.alpha;
-	}];
+	if (selected != self.selected)
+		[UIView animateWithDuration:.5 animations:^{
+			self.shareBar.alpha = 1 - self.shareBar.alpha;
+		}];
+	
+	[super setSelected:selected animated:animated];
 }
 
 #pragma initializer stuff
