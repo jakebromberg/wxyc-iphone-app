@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import <Social/Social.h>
 #import "NSString+Additions.h"
+#import "WebViewController.h"
 
 @interface PlaycutCell ()
 
@@ -64,7 +65,11 @@
 
 - (IBAction)search:(id)sender
 {
-	
+	NSString *url = [@"http://google.com/search?q=%@+%@" formattedWith:@[[self.titleLabel.text urlEncodeUsingEncoding:NSUTF8StringEncoding], [self.artistLabel.text urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
+	WebViewController *webViewController = [[WebViewController alloc] init];
+	[self.window.rootViewController presentViewController:webViewController animated:YES completion:nil];
+	[webViewController loadURL:[NSURL URLWithString:url]];
+//	[(UINavigationController*)[self valueForKeyPath:@"window.rootViewController.moreNavigationController"] pushViewController:webViewController animated:YES];
 }
 
 #pragma - Cell Lifecycle
