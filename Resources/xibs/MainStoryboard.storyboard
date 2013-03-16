@@ -475,6 +475,56 @@
         <image name="player-elements.png" width="477" height="123"/>
         <image name="playlist_icon.png" width="24" height="24"/>
     </resources>
+    <classes>
+        <class className="BreakpointCell" superclassName="DelineationCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BreakpointCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="CassetteReelViewController" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CassetteReelViewController.h"/>
+        </class>
+        <class className="DelineationCell" superclassName="LivePlaylistTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DelineationCell.h"/>
+        </class>
+        <class className="LivePlaylistTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LivePlaylistTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="shadowView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="LivePlaylistTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LivePlaylistTableViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PlaycutCell" superclassName="LivePlaylistTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaycutCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="albumArt" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PlayerCell" superclassName="LivePlaylistTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayerCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="leftCassetteReel" candidateClass="CassetteReelViewController"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightCassetteReel" candidateClass="CassetteReelViewController"/>
+            </relationships>
+        </class>
+        <class className="TalksetCell" superclassName="DelineationCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TalksetCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="someLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
