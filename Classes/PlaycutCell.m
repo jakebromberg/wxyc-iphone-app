@@ -21,6 +21,8 @@
 @property (nonatomic, weak) IBOutlet UIImageView *albumArt;
 @property (nonatomic, weak) IBOutlet UIView *shareBar;
 
+@property (nonatomic, setter = isShareBarVisible:) BOOL isShareBarVisible;
+
 - (IBAction)shareOnFacebook:(id)sender;
 - (IBAction)shareOnTwitter:(id)sender;
 - (IBAction)favorite:(id)sender;
@@ -65,12 +67,25 @@
 	
 }
 
+#pragma - Cell Lifecycle
+
+- (void)prepareForReuse
+{
+	self.isShareBarVisible = NO;
+}
+
+- (void)isShareBarVisible:(BOOL)isShareBarVisible
+{
+	_isShareBarVisible = isShareBarVisible;
+	
+	[UIView animateWithDuration:.5 animations:^{
+		self.shareBar.alpha = (self.isShareBarVisible ? 1 : 0);
+	}];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-	if (selected != self.selected)
-		[UIView animateWithDuration:.5 animations:^{
-			self.shareBar.alpha = 1 - self.shareBar.alpha;
-		}];
+	self.isShareBarVisible = !self.isShareBarVisible;
 	
 	[super setSelected:selected animated:animated];
 }
