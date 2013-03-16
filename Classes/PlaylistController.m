@@ -7,12 +7,7 @@
 //
 
 #import <RestKit/RestKit.h>
-#import <CoreData/CoreData.h>
 #import "PlaylistController.h"
-#import "Playcut.h"
-#import "Talkset.h"
-#import "Breakpoint.h"
-#import "PlaylistMapping.h"
 #import "NSString+Additions.h"
 
 NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
