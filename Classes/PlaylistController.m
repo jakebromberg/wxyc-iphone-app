@@ -17,13 +17,39 @@
 
 NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
-@interface PlaylistController() {
-	PlaylistMapping* playlistMapping;
-}
+@interface PlaylistController()
+
+@property (nonatomic, strong) PlaylistMapping* playlistMapping;
+@property (nonatomic, readonly) NSDictionary *parameters;
+@property (nonatomic, readonly) NSString *path;
 
 @end
 
 @implementation PlaylistController
+
+- (NSString *)path
+{
+	return @"playlists/recentEntries";
+}
+
+- (NSDictionary *)parameters
+{
+	if (self.playlist.count)
+	{
+		return @{
+			@"v" : @"2",
+			@"direction" : @"next",
+			@"referenceID" : [[self.playlist lastObject] valueForKeyPath:@"chronOrderID"] ?: @""
+		};
+	}
+	else
+	{
+		return @{
+			@"v" : @"2",
+			@"n" : @"100",
+		};
+	}
+}
 
 - (void)setState:(PlaylistControllerState)state
 {
@@ -38,22 +64,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 - (void)fetchPlaylist
 {
-	NSString *path = @"playlists/recentEntries";
-	NSDictionary *parameters;
-	
-	if (self.playlist.count)
-		parameters = @{
-			@"v" : @"2",
-			@"direction" : @"next",
-			@"referenceID" : [[self.playlist lastObject] valueForKeyPath:@"chronOrderID"] ?: @""
-		};
-	else
-		parameters = @{
-			 @"v" : @"2",
-			 @"n" : @"100",
-		 };
-	
-	[RKObjectManager.sharedManager getObjectsAtPath:path parameters:parameters success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
+	[RKObjectManager.sharedManager getObjectsAtPath:self.path parameters:self.parameters success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
 	 {
 		 NSComparisonResult (^comparator)(id a, id b) = ^NSComparisonResult(id a, id b){
 			 return [[b valueForKey:@"chronOrderID"] compare:[a valueForKey:@"chronOrderID"]];
@@ -61,8 +72,6 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 		 
 		 NSArray *newEntries = [[mappingResult array] sortedArrayUsingComparator:comparator];
 		 _playlist = [[_playlist arrayByAddingObjectsFromArray:newEntries] sortedArrayUsingComparator:comparator];
-		 
-		 
 		 
 		 self.state = LP_DONE;
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -77,7 +86,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	self = [super init];
 	
 	if (self)
-		playlistMapping = [[PlaylistMapping alloc] init];
+		_playlistMapping = [[PlaylistMapping alloc] init];
 
 	return self;
 }
