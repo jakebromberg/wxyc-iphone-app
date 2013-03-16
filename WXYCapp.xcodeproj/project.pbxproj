@@ -92,16 +92,12 @@
 		23DBC351113F801200C19BD0 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* WebView.xib */; };
 		23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39201527D0CF0006CDA5 /* AudioStreamController.m */; };
 		23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39221527D0EF0006CDA5 /* PlaylistController.m */; };
-		23EE39A71527F0790006CDA5 /* BlogEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39241527D10A0006CDA5 /* BlogEntryTableViewCell.m */; };
 		23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */; };
 		23EE39AB1527F0790006CDA5 /* LoadPreviousEntriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39281527D12A0006CDA5 /* LoadPreviousEntriesCell.m */; };
 		23EE39AD1527F0790006CDA5 /* BreakpointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392A1527D1340006CDA5 /* BreakpointCell.m */; };
 		23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392C1527D1400006CDA5 /* DelineationCell.m */; };
 		23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392E1527D1490006CDA5 /* PlaycutCell.m */; };
 		23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39341527D16C0006CDA5 /* TalksetCell.m */; };
-		23EE39BC1527F0790006CDA5 /* TransparentBackgroundUIToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE393A1527D1930006CDA5 /* TransparentBackgroundUIToolbar.m */; };
-		23EE39C01527F0790006CDA5 /* ShareItemTextInputAccessoryInsertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE393E1527D1B60006CDA5 /* ShareItemTextInputAccessoryInsertButton.m */; };
-		23EE39C21527F0790006CDA5 /* ShareItemTextInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39401527D1B60006CDA5 /* ShareItemTextInputAccessoryView.m */; };
 		23EE39C41527F0790006CDA5 /* IndefinitelySpinningImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */; };
 		23EE39E61527F0790006CDA5 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39641527EB070006CDA5 /* Playlist.m */; };
 		23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39661527EB070006CDA5 /* PlaylistEntry.m */; };
@@ -112,7 +108,6 @@
 		23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */; };
 		23EE3A0C1527F07A0006CDA5 /* WXYCDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE399B1527EC660006CDA5 /* WXYCDataStack.m */; };
 		23EE3A231527F4090006CDA5 /* Talkset.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE3A211527F3D00006CDA5 /* Talkset.m */; };
-		23F407D611238B1300A4A3D3 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F407D511238B1300A4A3D3 /* AboutView.xib */; };
 		23F7A8101646E34E008E97FD /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23EF279C14F5DC4100EA7ACB /* libRestKit.a */; };
 		23F8176216EBC35E005BF24F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */; };
 		23F8176916EBDDD1005BF24F /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F8176816EBDDD1005BF24F /* NSString+Additions.m */; };
@@ -280,8 +275,6 @@
 		23EE39201527D0CF0006CDA5 /* AudioStreamController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamController.m; sourceTree = "<group>"; };
 		23EE39211527D0EF0006CDA5 /* PlaylistController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaylistController.h; sourceTree = "<group>"; };
 		23EE39221527D0EF0006CDA5 /* PlaylistController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaylistController.m; sourceTree = "<group>"; };
-		23EE39231527D10A0006CDA5 /* BlogEntryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlogEntryTableViewCell.h; sourceTree = "<group>"; };
-		23EE39241527D10A0006CDA5 /* BlogEntryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlogEntryTableViewCell.m; sourceTree = "<group>"; };
 		23EE39251527D1210006CDA5 /* LivePlaylistTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LivePlaylistTableViewCell.h; sourceTree = "<group>"; };
 		23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LivePlaylistTableViewCell.m; sourceTree = "<group>"; };
 		23EE39271527D12A0006CDA5 /* LoadPreviousEntriesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadPreviousEntriesCell.h; sourceTree = "<group>"; };
@@ -294,12 +287,6 @@
 		23EE392E1527D1490006CDA5 /* PlaycutCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaycutCell.m; sourceTree = "<group>"; };
 		23EE39331527D16C0006CDA5 /* TalksetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TalksetCell.h; sourceTree = "<group>"; };
 		23EE39341527D16C0006CDA5 /* TalksetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TalksetCell.m; sourceTree = "<group>"; };
-		23EE39391527D1930006CDA5 /* TransparentBackgroundUIToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransparentBackgroundUIToolbar.h; sourceTree = "<group>"; };
-		23EE393A1527D1930006CDA5 /* TransparentBackgroundUIToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransparentBackgroundUIToolbar.m; sourceTree = "<group>"; };
-		23EE393D1527D1B60006CDA5 /* ShareItemTextInputAccessoryInsertButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareItemTextInputAccessoryInsertButton.h; sourceTree = "<group>"; };
-		23EE393E1527D1B60006CDA5 /* ShareItemTextInputAccessoryInsertButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareItemTextInputAccessoryInsertButton.m; sourceTree = "<group>"; };
-		23EE393F1527D1B60006CDA5 /* ShareItemTextInputAccessoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareItemTextInputAccessoryView.h; sourceTree = "<group>"; };
-		23EE39401527D1B60006CDA5 /* ShareItemTextInputAccessoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareItemTextInputAccessoryView.m; sourceTree = "<group>"; };
 		23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndefinitelySpinningImageViewController.h; sourceTree = "<group>"; };
 		23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndefinitelySpinningImageViewController.m; sourceTree = "<group>"; };
 		23EE39631527EB070006CDA5 /* Playlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
@@ -324,7 +311,6 @@
 		23EE3A211527F3D00006CDA5 /* Talkset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Talkset.m; sourceTree = "<group>"; };
 		23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		23F1127912A8782A00DD6C1D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = iphoneos4.0/System/Library/Frameworks/MessageUI.framework; sourceTree = "<group>"; };
-		23F407D511238B1300A4A3D3 /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
 		23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		23F8176716EBDDD1005BF24F /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		23F8176816EBDDD1005BF24F /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
@@ -533,7 +519,6 @@
 		2328C68A1060107F00063811 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
-				23F407D511238B1300A4A3D3 /* AboutView.xib */,
 				23B32DF9126E7134008414F4 /* FavoritesTableView.xib */,
 				23DBC34E113F801200C19BD0 /* WebView.xib */,
 				23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */,
@@ -677,15 +662,7 @@
 			children = (
 				2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */,
 				2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */,
-				23EE39231527D10A0006CDA5 /* BlogEntryTableViewCell.h */,
-				23EE39241527D10A0006CDA5 /* BlogEntryTableViewCell.m */,
 				230EDC331506875D001C173F /* Live Playlist Table View Cells */,
-				23EE39391527D1930006CDA5 /* TransparentBackgroundUIToolbar.h */,
-				23EE393A1527D1930006CDA5 /* TransparentBackgroundUIToolbar.m */,
-				23EE393D1527D1B60006CDA5 /* ShareItemTextInputAccessoryInsertButton.h */,
-				23EE393E1527D1B60006CDA5 /* ShareItemTextInputAccessoryInsertButton.m */,
-				23EE393F1527D1B60006CDA5 /* ShareItemTextInputAccessoryView.h */,
-				23EE39401527D1B60006CDA5 /* ShareItemTextInputAccessoryView.m */,
 				23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */,
 				23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */,
 				2353A13F12810065004F9A11 /* AlbumCoverSearch */,
@@ -914,7 +891,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F407D611238B1300A4A3D3 /* AboutView.xib in Resources */,
 				23DBC351113F801200C19BD0 /* WebView.xib in Resources */,
 				234D189711407D1500812919 /* about.html in Resources */,
 				23C817C1114C4C78000D9C22 /* WXYC_iPhone_App_Distribution_Provisioning_Profile.mobileprovision in Resources */,
@@ -989,16 +965,12 @@
 				23EE3A231527F4090006CDA5 /* Talkset.m in Sources */,
 				23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */,
 				23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */,
-				23EE39A71527F0790006CDA5 /* BlogEntryTableViewCell.m in Sources */,
 				23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */,
 				23EE39AB1527F0790006CDA5 /* LoadPreviousEntriesCell.m in Sources */,
 				23EE39AD1527F0790006CDA5 /* BreakpointCell.m in Sources */,
 				23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */,
 				23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */,
 				23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */,
-				23EE39BC1527F0790006CDA5 /* TransparentBackgroundUIToolbar.m in Sources */,
-				23EE39C01527F0790006CDA5 /* ShareItemTextInputAccessoryInsertButton.m in Sources */,
-				23EE39C21527F0790006CDA5 /* ShareItemTextInputAccessoryView.m in Sources */,
 				23EE39C41527F0790006CDA5 /* IndefinitelySpinningImageViewController.m in Sources */,
 				23EE39E61527F0790006CDA5 /* Playlist.m in Sources */,
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,
