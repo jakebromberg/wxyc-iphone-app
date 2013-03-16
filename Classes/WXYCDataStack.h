@@ -16,5 +16,6 @@
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 + (WXYCDataStack *)sharedInstance;
+- (void)purgeObsoleteEntries;
 
 @end
