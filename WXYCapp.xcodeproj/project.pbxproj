@@ -14,7 +14,6 @@
 		232E24DE1267A7ED007F7679 /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24C81267A7ED007F7679 /* about_icon.png */; };
 		232E24E11267A7ED007F7679 /* Default-inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CB1267A7ED007F7679 /* Default-inv.png */; };
 		232E24E21267A7ED007F7679 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CC1267A7ED007F7679 /* Default.png */; };
-		232E24E51267A7ED007F7679 /* Icon-Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CF1267A7ED007F7679 /* Icon-Settings.png */; };
 		232E24E61267A7ED007F7679 /* playlist_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24D01267A7ED007F7679 /* playlist_icon.png */; };
 		232E24E71267A7ED007F7679 /* radio_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24D11267A7ED007F7679 /* radio_icon.png */; };
 		232E24F21267A7ED007F7679 /* wxyc-logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 232E24DD1267A7ED007F7679 /* wxyc-logo.gif */; };
@@ -41,6 +40,10 @@
 		2364876A16F4DD7300DF2C27 /* tabbar-item-favorites-unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2364876616F4DD7200DF2C27 /* tabbar-item-favorites-unselected@2x.png */; };
 		2364876B16F4DD7300DF2C27 /* tabbar-item-info-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2364876716F4DD7200DF2C27 /* tabbar-item-info-selected@2x.png */; };
 		2364876C16F4DD7300DF2C27 /* tabbar-item-info-unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2364876816F4DD7300DF2C27 /* tabbar-item-info-unselected@2x.png */; };
+		23648A5916F5231400DF2C27 /* facebook-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 23648A5816F5231400DF2C27 /* facebook-share.png */; };
+		23648A5B16F5231A00DF2C27 /* twitter-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 23648A5A16F5231A00DF2C27 /* twitter-share.png */; };
+		23648A5D16F524D100DF2C27 /* favorites-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 23648A5C16F524D000DF2C27 /* favorites-share.png */; };
+		23648A5F16F525B700DF2C27 /* search-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 23648A5E16F525B600DF2C27 /* search-share.png */; };
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
 		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
@@ -178,7 +181,6 @@
 		232E24C81267A7ED007F7679 /* about_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_icon.png; sourceTree = "<group>"; };
 		232E24CB1267A7ED007F7679 /* Default-inv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-inv.png"; sourceTree = "<group>"; };
 		232E24CC1267A7ED007F7679 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		232E24CF1267A7ED007F7679 /* Icon-Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Settings.png"; sourceTree = "<group>"; };
 		232E24D01267A7ED007F7679 /* playlist_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist_icon.png; sourceTree = "<group>"; };
 		232E24D11267A7ED007F7679 /* radio_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_icon.png; sourceTree = "<group>"; };
 		232E24DD1267A7ED007F7679 /* wxyc-logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "wxyc-logo.gif"; sourceTree = "<group>"; };
@@ -219,6 +221,10 @@
 		2364876616F4DD7200DF2C27 /* tabbar-item-favorites-unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-item-favorites-unselected@2x.png"; sourceTree = "<group>"; };
 		2364876716F4DD7200DF2C27 /* tabbar-item-info-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-item-info-selected@2x.png"; sourceTree = "<group>"; };
 		2364876816F4DD7300DF2C27 /* tabbar-item-info-unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-item-info-unselected@2x.png"; sourceTree = "<group>"; };
+		23648A5816F5231400DF2C27 /* facebook-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-share.png"; sourceTree = "<group>"; };
+		23648A5A16F5231A00DF2C27 /* twitter-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-share.png"; sourceTree = "<group>"; };
+		23648A5C16F524D000DF2C27 /* favorites-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-share.png"; sourceTree = "<group>"; };
+		23648A5E16F525B600DF2C27 /* search-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-share.png"; sourceTree = "<group>"; };
 		23651003111211C700C192CB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		23651056111211D300C192CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		237578921266CBB500E6177B /* cassette button push.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cassette button push.aif"; path = "sounds/cassette button push.aif"; sourceTree = "<group>"; };
@@ -434,7 +440,6 @@
 				232E24D11267A7ED007F7679 /* radio_icon.png */,
 				232E24D01267A7ED007F7679 /* playlist_icon.png */,
 				23B32A7212690ECC008414F4 /* playlist_icon@2x.png */,
-				232E24CF1267A7ED007F7679 /* Icon-Settings.png */,
 			);
 			name = toolbar;
 			sourceTree = "<group>";
@@ -499,6 +504,10 @@
 				23A23D0216ED801300C9AF7C /* clock-11.png */,
 				23A23D0316ED801400C9AF7C /* clock-12.png */,
 				237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */,
+				23648A5C16F524D000DF2C27 /* favorites-share.png */,
+				23648A5E16F525B600DF2C27 /* search-share.png */,
+				23648A5A16F5231A00DF2C27 /* twitter-share.png */,
+				23648A5816F5231400DF2C27 /* facebook-share.png */,
 				230EB27812762B5A0065308D /* walkman */,
 				230EB27712762B460065308D /* toolbar */,
 				237E914D12930E5400A07456 /* casey-burns-app-icon.png */,
@@ -899,7 +908,6 @@
 				232E24DE1267A7ED007F7679 /* about_icon.png in Resources */,
 				232E24E11267A7ED007F7679 /* Default-inv.png in Resources */,
 				232E24E21267A7ED007F7679 /* Default.png in Resources */,
-				232E24E51267A7ED007F7679 /* Icon-Settings.png in Resources */,
 				232E24E61267A7ED007F7679 /* playlist_icon.png in Resources */,
 				232E24E71267A7ED007F7679 /* radio_icon.png in Resources */,
 				232E24F21267A7ED007F7679 /* wxyc-logo.gif in Resources */,
@@ -952,6 +960,10 @@
 				2364876A16F4DD7300DF2C27 /* tabbar-item-favorites-unselected@2x.png in Resources */,
 				2364876B16F4DD7300DF2C27 /* tabbar-item-info-selected@2x.png in Resources */,
 				2364876C16F4DD7300DF2C27 /* tabbar-item-info-unselected@2x.png in Resources */,
+				23648A5916F5231400DF2C27 /* facebook-share.png in Resources */,
+				23648A5B16F5231A00DF2C27 /* twitter-share.png in Resources */,
+				23648A5D16F524D100DF2C27 /* favorites-share.png in Resources */,
+				23648A5F16F525B700DF2C27 /* search-share.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
