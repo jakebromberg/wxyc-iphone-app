@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Live Playlist Table View Controller - Playlist-->
+        <!--Live Playlist Table View Controller-->
         <scene sceneID="DWe-dR-v9k">
             <objects>
                 <tableViewController id="w6z-1c-RlV" customClass="LivePlaylistTableViewController" sceneMemberID="viewController">
@@ -340,23 +340,23 @@
                             <outlet property="delegate" destination="w6z-1c-RlV" id="cEk-DP-zB7"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Playlist" image="playlist_icon.png" id="gAK-6L-4ZJ"/>
+                    <tabBarItem key="tabBarItem" title="" image="playlist_icon.png" id="gAK-6L-4ZJ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1G-Nu-6Pk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="373" y="407"/>
         </scene>
-        <!--View Controller - News-->
+        <!--View Controller-->
         <scene sceneID="fEF-tW-mi3">
             <objects>
                 <viewController id="hbN-Xh-kZm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" image="Station-Updates-icon@2x.png" id="CyC-ha-Kex"/>
+                    <tabBarItem key="tabBarItem" title="" image="Station-Updates-icon@2x.png" id="CyC-ha-Kex"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFv-tU-BLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="373" y="1096"/>
         </scene>
-        <!--Table View Controller - Favorites-->
+        <!--Table View Controller-->
         <scene sceneID="6rk-Iy-j3m">
             <objects>
                 <tableViewController id="Xb5-pU-15i" sceneMemberID="viewController">
@@ -437,7 +437,7 @@
                             <outlet property="delegate" destination="Xb5-pU-15i" id="Ydw-yY-zHK"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="favorites-tabbar-icon.png" id="rXU-gk-dVv"/>
+                    <tabBarItem key="tabBarItem" title="" image="favorites-tabbar-icon.png" id="rXU-gk-dVv"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcC-6U-Oii" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,27 +9,39 @@
 
 @implementation WXYCAppDelegate
 
-- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-	_livePlaylistCtrlr = [[PlaylistController alloc] init];
-	[_livePlaylistCtrlr fetchPlaylist];
-
-	return YES;
-}
-
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-	[self.window addSubview:_rootController.view];
-	
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 
 	[NSTimer scheduledTimerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
+	
+	[self customizeTabBarAppearance];
+	
+	_livePlaylistCtrlr = [[PlaylistController alloc] init];
+	[_livePlaylistCtrlr fetchPlaylist];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
 	//Clean out old data from previous launch
 	[[WXYCDataStack sharedInstance] purgeObsoleteEntries];
+}
+
+- (void)customizeTabBarAppearance
+{
+	UITabBar *tabBar = [self.window.rootViewController valueForKeyPath:@"tabBar"];
+
+	[tabBar.items[0] setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
+	[tabBar.items[0] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-playlist-selected.png"]
+				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-playlist-unselected.png"]];
+	
+	[tabBar.items[1] setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
+	[tabBar.items[1] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-favorites-selected.png"]
+				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-favorites-unselected.png"]];
+	
+	[tabBar.items[2] setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
+	[tabBar.items[2] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-info-selected.png"]
+				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-info-unselected.png"]];
 }
 
 @end
