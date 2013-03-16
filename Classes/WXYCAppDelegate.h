@@ -9,6 +9,5 @@
 
 @property (nonatomic, strong) PlaylistController *livePlaylistCtrlr;
 @property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet UITabBarController *rootController;
 
 @end
