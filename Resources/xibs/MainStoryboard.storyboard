@@ -183,13 +183,101 @@
                                                     <color key="textColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noz-sf-egu" userLabel="Share Bar">
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtA-XQ-1X5" userLabel="Facebook">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="43" id="8Cn-9L-mZY"/>
+                                                                <constraint firstAttribute="height" constant="42" id="goB-tk-zoQ"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                            <state key="normal" title="FB">
+                                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <state key="highlighted">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="shareOnFacebook:" destination="ep5-ic-zed" eventType="touchUpInside" id="tka-IQ-WJ7"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48Z-Hp-jKm" userLabel="Twitter">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="43" id="cgk-pt-RNs"/>
+                                                                <constraint firstAttribute="height" constant="42" id="y10-aN-BQB"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                            <state key="normal" title="TW">
+                                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <state key="highlighted">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="shareOnTwitter:" destination="ep5-ic-zed" eventType="touchUpInside" id="cZ7-6e-IEC"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTW-Yr-32s" userLabel="Favorite">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="43" id="8No-lA-nWw"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                            <state key="normal" title="&lt;3">
+                                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <state key="highlighted">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="favorite:" destination="ep5-ic-zed" eventType="touchUpInside" id="DRh-wX-44d"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvj-p7-gt6" userLabel="Search">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="43" id="vUA-3d-yDo"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                            <state key="normal" title="S">
+                                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <state key="highlighted">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="search:" destination="ep5-ic-zed" eventType="touchUpInside" id="GLV-tx-tHK"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstItem="48Z-Hp-jKm" firstAttribute="top" secondItem="noz-sf-egu" secondAttribute="top" constant="4" id="3a8-cQ-ezb"/>
+                                                        <constraint firstAttribute="trailing" secondItem="vvj-p7-gt6" secondAttribute="trailing" constant="17" id="C9K-ax-DDZ"/>
+                                                        <constraint firstItem="vvj-p7-gt6" firstAttribute="top" secondItem="sTW-Yr-32s" secondAttribute="top" type="default" id="Jue-qo-brY"/>
+                                                        <constraint firstItem="sTW-Yr-32s" firstAttribute="bottom" secondItem="48Z-Hp-jKm" secondAttribute="bottom" type="default" id="Ufy-xm-FQC"/>
+                                                        <constraint firstItem="vvj-p7-gt6" firstAttribute="bottom" secondItem="sTW-Yr-32s" secondAttribute="bottom" type="default" id="XjL-At-FZd"/>
+                                                        <constraint firstItem="UtA-XQ-1X5" firstAttribute="centerY" secondItem="noz-sf-egu" secondAttribute="centerY" type="default" id="g9N-km-y0r"/>
+                                                        <constraint firstItem="48Z-Hp-jKm" firstAttribute="leading" secondItem="noz-sf-egu" secondAttribute="leading" constant="92" id="qVS-TO-xMl"/>
+                                                        <constraint firstAttribute="trailing" secondItem="sTW-Yr-32s" secondAttribute="trailing" constant="90" id="qfU-PI-O9Q"/>
+                                                        <constraint firstItem="sTW-Yr-32s" firstAttribute="top" secondItem="48Z-Hp-jKm" secondAttribute="top" type="default" id="xxS-7F-7e3"/>
+                                                        <constraint firstItem="UtA-XQ-1X5" firstAttribute="leading" secondItem="noz-sf-egu" secondAttribute="leading" constant="17" id="zGd-hV-oGc"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="4FI-NM-CgH" firstAttribute="leading" secondItem="nXq-Um-xPu" secondAttribute="leading" type="default" id="1e1-LT-rvE"/>
+                                                <constraint firstAttribute="bottom" secondItem="noz-sf-egu" secondAttribute="bottom" constant="1" id="BII-oZ-QaS"/>
                                                 <constraint firstItem="HXH-0I-6vs" firstAttribute="trailing" secondItem="nXq-Um-xPu" secondAttribute="trailing" type="default" id="KVU-TV-wsH"/>
                                                 <constraint firstAttribute="bottom" secondItem="4FI-NM-CgH" secondAttribute="bottom" constant="24" id="RZZ-vk-Hrm"/>
+                                                <constraint firstItem="noz-sf-egu" firstAttribute="trailing" secondItem="nXq-Um-xPu" secondAttribute="trailing" type="default" id="W9d-AK-7eN"/>
                                                 <constraint firstItem="gTn-AH-4wK" firstAttribute="leading" secondItem="nXq-Um-xPu" secondAttribute="leading" type="default" id="g7p-Xx-izS"/>
+                                                <constraint firstItem="noz-sf-egu" firstAttribute="leading" secondItem="nXq-Um-xPu" secondAttribute="leading" type="default" id="jub-tp-Qj5"/>
+                                                <constraint firstItem="noz-sf-egu" firstAttribute="top" secondItem="nXq-Um-xPu" secondAttribute="top" constant="300" id="pZV-cQ-Idy"/>
                                                 <constraint firstItem="HXH-0I-6vs" firstAttribute="leading" secondItem="nXq-Um-xPu" secondAttribute="leading" type="default" id="qOI-md-1V6"/>
                                                 <constraint firstAttribute="bottom" secondItem="gTn-AH-4wK" secondAttribute="bottom" constant="6" id="qq7-uQ-zhO"/>
                                                 <constraint firstItem="HXH-0I-6vs" firstAttribute="top" secondItem="nXq-Um-xPu" secondAttribute="top" type="default" id="sn5-tK-zQ9"/>
@@ -202,19 +290,20 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="I1y-sb-rAb" firstAttribute="bottom" secondItem="ep5-ic-zed" secondAttribute="bottom" type="default" id="1qE-Ar-pgd"/>
+                                    <constraint firstItem="nXq-Um-xPu" firstAttribute="top" secondItem="ep5-ic-zed" secondAttribute="top" constant="10" id="V6W-5o-YRF"/>
                                     <constraint firstItem="I1y-sb-rAb" firstAttribute="leading" secondItem="ep5-ic-zed" secondAttribute="leading" constant="10" id="VGd-Mn-k0Z"/>
                                     <constraint firstItem="I1y-sb-rAb" firstAttribute="top" secondItem="nXq-Um-xPu" secondAttribute="top" type="default" id="VX8-oU-WU7"/>
                                     <constraint firstItem="nXq-Um-xPu" firstAttribute="bottom" secondItem="ep5-ic-zed" secondAttribute="bottom" type="default" id="jMh-N6-bNc"/>
-                                    <constraint firstItem="I1y-sb-rAb" firstAttribute="top" secondItem="ep5-ic-zed" secondAttribute="top" constant="10" id="mmR-Pw-qim"/>
+                                    <constraint firstItem="nXq-Um-xPu" firstAttribute="centerX" secondItem="ep5-ic-zed" secondAttribute="centerX" type="default" id="jm6-4T-fAs"/>
                                     <constraint firstItem="I1y-sb-rAb" firstAttribute="trailing" secondItem="nXq-Um-xPu" secondAttribute="trailing" type="default" id="ud1-rV-xM8"/>
                                     <constraint firstItem="I1y-sb-rAb" firstAttribute="leading" secondItem="nXq-Um-xPu" secondAttribute="leading" type="default" id="wLV-H6-FMt"/>
-                                    <constraint firstItem="I1y-sb-rAb" firstAttribute="centerX" secondItem="ep5-ic-zed" secondAttribute="centerX" type="default" id="wwY-vy-qeC"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="albumArt" destination="HXH-0I-6vs" id="mJp-de-cUS"/>
                                     <outlet property="artistLabel" destination="4FI-NM-CgH" id="7lL-Ec-IWA"/>
                                     <outlet property="containerView" destination="nXq-Um-xPu" id="cGw-6H-wn6"/>
                                     <outlet property="shadowView" destination="I1y-sb-rAb" id="ojv-Ii-bYl"/>
+                                    <outlet property="shareBar" destination="noz-sf-egu" id="gyn-hg-nwj"/>
                                     <outlet property="titleLabel" destination="gTn-AH-4wK" id="Yxe-ax-tmM"/>
                                 </connections>
                             </tableViewCell>
@@ -505,8 +594,13 @@
         <class className="PlaycutCell" superclassName="LivePlaylistTableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaycutCell.h"/>
             <relationships>
+                <relationship kind="action" name="favorite:"/>
+                <relationship kind="action" name="search:"/>
+                <relationship kind="action" name="shareOnFacebook:"/>
+                <relationship kind="action" name="shareOnTwitter:"/>
                 <relationship kind="outlet" name="albumArt" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="shareBar" candidateClass="UIView"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
