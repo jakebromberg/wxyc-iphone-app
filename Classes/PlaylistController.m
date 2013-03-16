@@ -39,7 +39,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 		return @{
 			@"v" : @"2",
 			@"direction" : @"next",
-			@"referenceID" : [[self.playlist lastObject] valueForKeyPath:@"chronOrderID"] ?: @""
+			@"referenceID" : [self.playlist[0] valueForKeyPath:@"chronOrderID"] ?: @""
 		};
 	}
 	else
@@ -51,21 +51,15 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	}
 }
 
-//- (void)setState:(PlaylistControllerState)state
-//{
-//	if (_state != state)
-//	{
-//		_state = state;
-//		[[NSNotificationCenter defaultCenter] postNotificationName:LPStatusChangedNotification object:self];
-//	}
-//}
-
 #pragma mark JSON Business
 
 - (void)fetchPlaylist
 {
 	[RKObjectManager.sharedManager getObjectsAtPath:self.path parameters:self.parameters success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
 	 {
+		 if (mappingResult.array.count == 0)
+			 return;
+		 
 		 NSComparisonResult (^comparator)(id a, id b) = ^NSComparisonResult(id a, id b){
 			 return [[b valueForKey:@"chronOrderID"] compare:[a valueForKey:@"chronOrderID"]];
 		 };

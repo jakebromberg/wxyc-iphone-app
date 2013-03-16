@@ -12,13 +12,6 @@
 
 @implementation WXYCAppDelegate
 
-#pragma mark - Fetched results controller
-
-- (void)handleTimer
-{
-	[self.livePlaylistCtrlr fetchPlaylist];
-}
-
 #pragma mark - Core Data stack
 
 - (NSManagedObjectContext *) managedObjectContext
@@ -65,8 +58,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Application's documents directory
+#pragma mark - Application's documents directory
 
 - (NSString *)applicationDocumentsDirectory
 {
@@ -123,39 +115,13 @@
 			NSLog(@"Error %@", error);
 		}		
 		
-		
-		
         if ([_managedObjectContext hasChanges] && ![_managedObjectContext save:&error]) {
 			// Handle the error.
         } 
     }
 
-	AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-	
-	NSError *setCategoryError = nil;
-	[audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
-	if (setCategoryError) { /* handle the error condition */ }
-	
-	NSError *activationError = nil;
-	[audioSession setActive:YES error:&activationError];
-	if (activationError) {
-		/* handle the error condition */ 
-	}
-	
-//	NSURL* url = [NSURL URLWithString:@"http://localhost/"];
-//	_livePlaylistCtrlr = [[PlaylistController alloc] initWithBaseURL:url];
-//	[_livePlaylistCtrlr fetchPlaylist];
-	
-//	NSTimer *updatePlaylist;
-//	updatePlaylist = [NSTimer scheduledTimerWithTimeInterval: 30
-//													  target: livePlaylistCtrlr
-//													selector: @selector(updatePlaylist)
-//													userInfo: nil
-//													 repeats: YES];
+	NSTimer *updatePlaylist;
+	updatePlaylist = [NSTimer scheduledTimerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 }
-
-//- (void)applicationDidBecomeActive:(UIApplication *)application {
-//	[[NSNotificationCenter defaultCenter] postNotificationName:@"applicationDidBecomeActive"];
-//}
 
 @end
