@@ -19,6 +19,8 @@
 	
 	_livePlaylistCtrlr = [[PlaylistController alloc] init];
 	[_livePlaylistCtrlr fetchPlaylist];
+	
+	[NSTimer timerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
