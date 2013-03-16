@@ -12,5 +12,6 @@
 
 - (instancetype)append:(NSString *)string;
 - (NSString*)formattedWith:(NSArray*)arguments;
+- (NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
 
 @end

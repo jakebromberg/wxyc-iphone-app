@@ -17,6 +17,11 @@
 
 @implementation WebViewController
 
+- (void)loadURL:(NSURL*)url
+{
+	[self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
 - (void)refreshButtons
 {
 	self.backButton.enabled = self.webView.canGoBack;
@@ -29,22 +34,26 @@
 	}
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
 	[self refreshButtons];
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	[self refreshButtons];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
 	self.navigationItem.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	[self refreshButtons];
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
 	NSLog(@"expected:%d, got:%d", UIWebViewNavigationTypeLinkClicked, navigationType);
 	if (navigationType == UIWebViewNavigationTypeLinkClicked) {
 		[self.webView loadRequest:request];
@@ -53,7 +62,8 @@
 	return YES;
 }
 
-- (IBAction) reloadButtonPush:(id)sender {
+- (IBAction) reloadButtonPush:(id)sender
+{
 	if (self.webView.loading) {
 		[self.webView stopLoading];
 	} else {
@@ -63,17 +73,20 @@
 	[self refreshButtons];
 }
 
-- (IBAction) backButtonPush:(id)sender {
+- (IBAction) backButtonPush:(id)sender
+{
 	[self.webView goBack];
 	[self refreshButtons];
 }
 
-- (IBAction) forwardButtonPush:(id)sender {
+- (IBAction) forwardButtonPush:(id)sender
+{
 	[self.webView goForward];
 	[self refreshButtons];
 }
 
-- (IBAction) actionButtonPush:(id)sender {
+- (IBAction) actionButtonPush:(id)sender
+{
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@""
 															 delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
 													otherButtonTitles:@"Copy Link", @"Open In Safari", nil];
@@ -81,10 +94,15 @@
 	[actionSheet showInView:self.webView]; // show from our table view (pops up in the middle of the table)
 }
 
-#pragma mark -
-#pragma mark UIActionSheetDelegate business
+- (IBAction)closePush:(id)sender
+{
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+#pragma mark - UIActionSheetDelegate business
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
 	NSLog(@"buttonIndex %i", buttonIndex);
 	
 	if (buttonIndex == 0) {

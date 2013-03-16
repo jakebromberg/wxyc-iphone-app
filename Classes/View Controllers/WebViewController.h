@@ -8,10 +8,12 @@
 
 @interface WebViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate>
 
-- (IBAction) reloadButtonPush:(id)sender;
-- (IBAction) backButtonPush:(id)sender;
-- (IBAction) forwardButtonPush:(id)sender;
-- (IBAction) actionButtonPush:(id)sender;
+- (void)loadURL:(NSURL*)url;
+
+- (IBAction)reloadButtonPush:(id)sender;
+- (IBAction)backButtonPush:(id)sender;
+- (IBAction)forwardButtonPush:(id)sender;
+- (IBAction)actionButtonPush:(id)sender;
 
 @property (nonatomic, strong) IBOutlet UIWebView *webView;
 
