@@ -445,10 +445,10 @@
             </objects>
             <point key="canvasLocation" x="373" y="1096"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Favorites Table View Controller - Favorites-->
         <scene sceneID="6rk-Iy-j3m">
             <objects>
-                <tableViewController id="Xb5-pU-15i" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="" title="Favorites" id="Xb5-pU-15i" customClass="FavoritesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="320" sectionHeaderHeight="22" sectionFooterHeight="22" id="bs8-2M-pnI">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -544,8 +544,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="w6z-1c-RlV" kind="relationship" relationship="viewControllers" id="6ta-ct-c1i"/>
-                        <segue destination="hbN-Xh-kZm" kind="relationship" relationship="viewControllers" id="FSd-8w-uXt"/>
                         <segue destination="Xb5-pU-15i" kind="relationship" relationship="viewControllers" id="A2j-8p-jTL"/>
+                        <segue destination="hbN-Xh-kZm" kind="relationship" relationship="viewControllers" id="FSd-8w-uXt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Wm-Lq-xSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -577,6 +577,9 @@
         </class>
         <class className="DelineationCell" superclassName="LivePlaylistTableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DelineationCell.h"/>
+        </class>
+        <class className="FavoritesTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
         </class>
         <class className="LivePlaylistTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LivePlaylistTableViewCell.h"/>

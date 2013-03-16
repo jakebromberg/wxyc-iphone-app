@@ -6,13 +6,10 @@
 //  Copyright 2010 WXYC. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "NextPrevDetailsDelegate.h"
-//#import "NextPrevDetailsViewController.h"
 
-
-@interface FavoritesTableViewController : UITableViewController <NextPrevDetailsDelegate> {
+@interface FavoritesTableViewController : UITableViewController
+{
 	NSManagedObjectContext *managedObjectContext;
 	NSNotificationCenter *dnc;
 	NSFetchRequest *request;
@@ -20,7 +17,6 @@
 	int selectedRow;
 }
 
-@property (nonatomic, strong) IBOutlet UITableView *favoritesTableView;
 @property (nonatomic, strong) NSMutableArray *favoritesArray; //necessary or else we assign favoritesArray a CFArray type
 
 @end
