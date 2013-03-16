@@ -544,6 +544,7 @@
         <scene sceneID="Roo-mD-COq">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="0er-G7-ubv" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="xoR-ES-jf1">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>

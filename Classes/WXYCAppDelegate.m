@@ -11,16 +11,12 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-
-	[NSTimer scheduledTimerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
-	
 	[self customizeTabBarAppearance];
 	
 	_livePlaylistCtrlr = [[PlaylistController alloc] init];
 	[_livePlaylistCtrlr fetchPlaylist];
 	
-	[NSTimer timerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
