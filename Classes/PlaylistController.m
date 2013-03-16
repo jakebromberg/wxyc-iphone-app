@@ -51,14 +51,14 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	}
 }
 
-- (void)setState:(PlaylistControllerState)state
-{
-	if (_state != state)
-	{
-		_state = state;
-		[[NSNotificationCenter defaultCenter] postNotificationName:LPStatusChangedNotification object:self];
-	}
-}
+//- (void)setState:(PlaylistControllerState)state
+//{
+//	if (_state != state)
+//	{
+//		_state = state;
+//		[[NSNotificationCenter defaultCenter] postNotificationName:LPStatusChangedNotification object:self];
+//	}
+//}
 
 #pragma mark JSON Business
 
@@ -71,9 +71,12 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 		 };
 		 
 		 NSArray *newEntries = [[mappingResult array] sortedArrayUsingComparator:comparator];
-		 _playlist = [[_playlist arrayByAddingObjectsFromArray:newEntries] sortedArrayUsingComparator:comparator];
+		 _playlist = [[[_playlist arrayByAddingObjectsFromArray:newEntries] sortedArrayUsingComparator:comparator] copy];
 		 
-		 self.state = LP_DONE;
+		 _state = LP_DONE;
+		 
+		 [[NSNotificationCenter defaultCenter] postNotificationName:LPStatusChangedNotification object:self userInfo:@{ @"newEntries": newEntries}];
+
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 
 	 }];
@@ -86,7 +89,10 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	self = [super init];
 	
 	if (self)
+	{
 		_playlistMapping = [[PlaylistMapping alloc] init];
+		_playlist = [NSArray array];
+	}
 
 	return self;
 }
