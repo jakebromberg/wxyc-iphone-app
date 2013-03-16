@@ -7,7 +7,6 @@
 //
 
 #import "PlaycutCell.h"
-#import "Playcut.h"
 #import "NSArray+Additions.h"
 #import "GoogleImageSearch.h"
 #import <QuartzCore/QuartzCore.h>
@@ -47,7 +46,7 @@
 	{
 		SLComposeViewController *sheet = [SLComposeViewController composeViewControllerForServiceType:serviceType];
 		
-		NSString *initialText = [@"Listening to %@ by %@ on WXYC!" formattedWith:@[self.titleLabel.text, self.artistLabel.text]];
+		NSString *initialText = [@"Listening to \"%@\" by %@ on WXYC!" formattedWith:@[self.titleLabel.text, self.artistLabel.text]];
 		[sheet setInitialText:initialText];
 		[sheet addImage:self.albumArt.image];
 		[sheet addURL:[NSURL URLWithString:@"http://wxyc.org/"]];
