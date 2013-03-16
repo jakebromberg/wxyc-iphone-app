@@ -69,7 +69,6 @@
 	WebViewController *webViewController = [[WebViewController alloc] init];
 	[self.window.rootViewController presentViewController:webViewController animated:YES completion:nil];
 	[webViewController loadURL:[NSURL URLWithString:url]];
-//	[(UINavigationController*)[self valueForKeyPath:@"window.rootViewController.moreNavigationController"] pushViewController:webViewController animated:YES];
 }
 
 #pragma - Cell Lifecycle
