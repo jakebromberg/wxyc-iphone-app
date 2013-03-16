@@ -33,9 +33,12 @@ PlaylistController* livePlaylistCtrl;
 	if (indexPath.row == 1)
 		return [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
 	
+	if (indexPath.row - 2 >= livePlaylistCtrl.playlist.count)
+		return nil;
+	
+	LivePlaylistTableViewCell *cell;
 	NSManagedObject *playlistEntry = livePlaylistCtrl.playlist[indexPath.row - 2];
 	NSString *entryType = [playlistEntry.class.description append:@"Cell"];
-	LivePlaylistTableViewCell *cell;
 	
 	@try {
 		cell = [tableView dequeueReusableCellWithIdentifier:entryType forIndexPath:indexPath];
@@ -71,7 +74,7 @@ PlaylistController* livePlaylistCtrl;
 		return 40;
 	
 	//boundary case
-	if (indexPath.row >= livePlaylistCtrl.playlist.count)
+	if (indexPath.row - 2 >= livePlaylistCtrl.playlist.count)
 		return 0;
 	
 	return [NSClassFromString([self classNameForCellAtIndexPath:indexPath]) height];
@@ -92,7 +95,11 @@ PlaylistController* livePlaylistCtrl;
 	{
 		if (livePlaylistCtrl.state == LP_DONE)
 		{
-			id newEntries = note.userInfo[@"newEntries"];
+			NSArray *newEntries = note.userInfo[@"newEntries"];
+			
+			if (newEntries.count == 0)
+				return;
+				
 			NSMutableArray *newIndexPaths = [NSMutableArray arrayWithCapacity:[newEntries count]];
 			
 			for (int i = 0; i < [newEntries count]; i++) {
