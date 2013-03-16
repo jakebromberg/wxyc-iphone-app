@@ -10,7 +10,6 @@
 #import "FavoritesTableViewController.h"
 #import "WXYCDataStack.h"
 #import "Playcut.h"
-//#import "PlaycutViewController.h"
 
 @implementation FavoritesTableViewController
 
@@ -29,7 +28,6 @@
 	
 	[self.tableView reloadData];
 }
-
 
 #pragma mark - View lifecycle
 
@@ -67,16 +65,16 @@
 	self.favoritesArray = mutableFetchResults;
 }
 
-
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
 	self.favoritesArray = nil;
 	[dnc removeObserver:self name:NSManagedObjectContextDidSaveNotification object:managedObjectContext];
 }
 
-#pragma mark -
-#pragma mark Table view data source methods
+#pragma mark - Table view data source methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
 	// Only one section.
     return 1;
 }
@@ -111,7 +109,8 @@
 	return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	return YES;
 }
 
@@ -119,14 +118,15 @@
 	return UITableViewCellEditingStyleDelete;
 }
 
-
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {	
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
     [super setEditing:editing animated:animated];
 	
 	self.navigationItem.rightBarButtonItem.enabled = !editing;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 		[managedObjectContext deleteObject:_favoritesArray[indexPath.row]];
 		[_favoritesArray removeObjectAtIndex:[indexPath row]];
@@ -138,62 +138,6 @@
 			exit(-1);  // Fail
 		}
     }   
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//	selectedRow = indexPath.row;
-//	
-//	PlaycutViewController *detail = [[PlaycutViewController alloc] initWithNibName:@"DetailsView" bundle:nil];
-//	detail.hidesBottomBarWhenPushed = YES;
-//	[[self navigationController] pushViewController:detail animated:YES];
-}
-
-#pragma mark - NextPrevDetailsDelegate business
-#pragma mark
-
--(id)NPnext
-{
-	if ([self hasNext])
-	{
-		selectedRow++;
-		
-		[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
-									animated:NO scrollPosition:UITableViewScrollPositionMiddle ];
-		
-		return _favoritesArray[selectedRow];
-	}
-	
-	return nil;
-}
-
--(id)NPcurrent
-{
-	return _favoritesArray[selectedRow];
-}
-
--(id)NPprev {
-	if ([self hasPrev])
-	{
-		selectedRow--;
-		
-		[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:0] 
-									animated:NO scrollPosition:UITableViewScrollPositionMiddle ];
-		
-		return _favoritesArray[selectedRow];
-	}
-	
-	return nil;
-}
-
--(BOOL)hasNext
-{
-	return (selectedRow+1 < _favoritesArray.count);
-}
-
--(BOOL)hasPrev
-{
-	return (selectedRow-1 >= 0);
 }
 
 @end

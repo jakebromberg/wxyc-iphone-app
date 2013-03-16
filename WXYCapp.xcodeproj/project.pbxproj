@@ -351,7 +351,6 @@
 		23EE39661527EB070006CDA5 /* PlaylistEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaylistEntry.m; sourceTree = "<group>"; };
 		23EE39671527EB100006CDA5 /* Breakpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Breakpoint.h; sourceTree = "<group>"; };
 		23EE39681527EB100006CDA5 /* Breakpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Breakpoint.m; sourceTree = "<group>"; };
-		23EE39731527EB9D0006CDA5 /* NextPrevDetailsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NextPrevDetailsDelegate.h; sourceTree = "<group>"; };
 		23EE39761527EBB90006CDA5 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
 		23EE39781527EBC40006CDA5 /* CassetteReelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CassetteReelViewController.h; sourceTree = "<group>"; };
 		23EE397A1527EBCF0006CDA5 /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -756,7 +755,6 @@
 		23BF128C113B10EE00A72DE7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				23EE39731527EB9D0006CDA5 /* NextPrevDetailsDelegate.h */,
 				23B32DF5126E70BF008414F4 /* FavoritesTableViewController */,
 				238CC1C512664111006EC552 /* CasssetteReelViewController */,
 				23BF132F113B465B00A72DE7 /* AboutViewController */,
