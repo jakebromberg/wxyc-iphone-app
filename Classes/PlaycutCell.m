@@ -72,6 +72,7 @@
 - (void)prepareForReuse
 {
 	self.isShareBarVisible = NO;
+	[self.albumArt cancelCurrentImageLoad];
 }
 
 - (void)isShareBarVisible:(BOOL)isShareBarVisible
