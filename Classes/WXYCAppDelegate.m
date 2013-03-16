@@ -11,6 +11,8 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
+	[MagicalRecord setupCoreDataStack];
+	
 	[self customizeTabBarAppearance];
 	
 	_livePlaylistCtrlr = [[PlaylistController alloc] init];

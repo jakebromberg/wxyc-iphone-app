@@ -70,6 +70,7 @@
 		23648AB316F5293E00DF2C27 /* MagicalRecord+Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = 23648A9516F5293E00DF2C27 /* MagicalRecord+Setup.m */; };
 		23648AB416F5293E00DF2C27 /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 23648A9716F5293E00DF2C27 /* MagicalRecord+ShorthandSupport.m */; };
 		23648AB516F5293E00DF2C27 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 23648A9916F5293E00DF2C27 /* MagicalRecord.m */; };
+		23648AB716F52D2500DF2C27 /* favorites-share-favorited.png in Resources */ = {isa = PBXBuildFile; fileRef = 23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */; };
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
 		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
@@ -305,6 +306,7 @@
 		23648A9916F5293E00DF2C27 /* MagicalRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalRecord.m; sourceTree = "<group>"; };
 		23648A9A16F5293E00DF2C27 /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		23648A9B16F5293E00DF2C27 /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
+		23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-share-favorited.png"; sourceTree = "<group>"; };
 		23651003111211C700C192CB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		23651056111211D300C192CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		237578921266CBB500E6177B /* cassette button push.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cassette button push.aif"; path = "sounds/cassette button push.aif"; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 				23A23D0216ED801300C9AF7C /* clock-11.png */,
 				23A23D0316ED801400C9AF7C /* clock-12.png */,
 				237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */,
+				23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */,
 				23648A5C16F524D000DF2C27 /* favorites-share.png */,
 				23648A5E16F525B600DF2C27 /* search-share.png */,
 				23648A5A16F5231A00DF2C27 /* twitter-share.png */,
@@ -1147,6 +1150,7 @@
 				23648A5B16F5231A00DF2C27 /* twitter-share.png in Resources */,
 				23648A5D16F524D100DF2C27 /* favorites-share.png in Resources */,
 				23648A5F16F525B700DF2C27 /* search-share.png in Resources */,
+				23648AB716F52D2500DF2C27 /* favorites-share-favorited.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

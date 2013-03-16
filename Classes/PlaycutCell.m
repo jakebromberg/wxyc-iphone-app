@@ -21,6 +21,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *albumArt;
 @property (nonatomic, weak) IBOutlet UIView *shareBar;
+@property (nonatomic, weak) IBOutlet UIButton *favoriteButton;
 
 @property (nonatomic, setter = isShareBarVisible:) BOOL isShareBarVisible;
 
@@ -60,7 +61,13 @@
 
 - (IBAction)favorite:(id)sender
 {
+	if ([[self.entity valueForKey:@"favorite"] isEqual:@(YES)])
+		[self.entity setValue:@(NO) forKey:@"favorite"];
+	else
+		[self.entity setValue:@(YES) forKey:@"favorite"];
 	
+	[self.entity.managedObjectContext saveToPersistentStoreAndWait];
+	[self refreshFavoriteIcon];
 }
 
 - (IBAction)search:(id)sender
@@ -102,6 +109,14 @@
 	return 360.f;
 }
 
+- (void)refreshFavoriteIcon
+{
+	if ([[self.entity valueForKey:@"favorite"] isEqual:@(YES)])
+		[self.favoriteButton setImage:[UIImage imageNamed:@"favorites-share-favorited.png"] forState:UIControlStateNormal];
+	else
+		[self.favoriteButton setImage:[UIImage imageNamed:@"favorites-share.png"] forState:UIControlStateNormal];
+}
+
 - (void)setEntity:(NSManagedObject *)entity
 {
 	[super setEntity:entity];
@@ -128,6 +143,8 @@
 		
 		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] success:successHandler failure:nil finally:nil];
 	}
+	
+	[self refreshFavoriteIcon];
 }
 
 - (id)initWithEntity:(NSManagedObject *)entity

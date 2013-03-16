@@ -9,14 +9,14 @@
 #import <CoreData/CoreData.h>
 
 @interface FavoritesTableViewController : UITableViewController
-{
-	NSManagedObjectContext *managedObjectContext;
-	NSNotificationCenter *dnc;
-	NSFetchRequest *request;
+//{
+//	NSManagedObjectContext *managedObjectContext;
+//	NSNotificationCenter *dnc;
+//	NSFetchRequest *request;
+//
+//	int selectedRow;
+//}
 
-	int selectedRow;
-}
-
-@property (nonatomic, strong) NSMutableArray *favoritesArray; //necessary or else we assign favoritesArray a CFArray type
+@property (nonatomic, strong) NSArray *favoritesArray;
 
 @end
