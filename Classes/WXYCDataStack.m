@@ -8,6 +8,13 @@
 
 #import "WXYCDataStack.h"
 #import "WXYCAppDelegate.h"
+#import "Playcut.h"
+
+@interface WXYCDataStack ()
+
+@property (nonatomic, strong) NSString *applicationDocumentsDirectory;
+
+@end
 
 @implementation WXYCDataStack
 
@@ -95,10 +102,41 @@ static WXYCDataStack *sharedInstance = nil;
     return basePath;
 }
 
+- (void)purgeObsoleteEntries
+{
+	if (_managedObjectContext)
+	{
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(Favorite == %@) || (Favorite == %@)", nil, @NO];
+		
+		NSFetchRequest *request = [[NSFetchRequest alloc] init];
+		NSEntityDescription *entity = [NSEntityDescription entityForName:@"Playcut" inManagedObjectContext:_managedObjectContext];
+		[request setEntity:entity];
+		[request setPredicate:predicate];
+		
+		NSArray *fetchResults = nil;
+		NSError *error = nil;
+		if ((fetchResults = [_managedObjectContext executeFetchRequest:request error:&error])) {
+			for(Playcut *cut in fetchResults) {
+				[_managedObjectContext deleteObject:cut];
+			}
+		} else {
+			NSLog(@"Error %@", error);
+		}
+		
+        if ([_managedObjectContext hasChanges] && ![_managedObjectContext save:&error]) {
+			// Handle the error.
+        }
+    }
+}
+
+#pragma - singleton stuff
+
 + (id)allocWithZone:(NSZone *)zone {
     @synchronized(self) {
         if (sharedInstance == nil) {
             sharedInstance = [super allocWithZone:zone];
+			sharedInstance.storeURL = [NSURL fileURLWithPath:[sharedInstance.applicationDocumentsDirectory stringByAppendingPathComponent: @"WXYC.sqlite"]];
+
             return sharedInstance;  // assignment and return on first allocation
         }
     }

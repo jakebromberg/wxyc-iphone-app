@@ -78,7 +78,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 #pragma mark constructors
 
-- (id)initWithBaseURL:(NSString*)url
+- (id)init
 {
 	self = [super init];
 	
@@ -87,9 +87,8 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 		_playlistMapping = [[PlaylistMapping alloc] init];
 		_playlist = [NSArray array];
 	}
-
+	
 	return self;
 }
-
 
 @end

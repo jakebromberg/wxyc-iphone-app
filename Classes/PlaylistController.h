@@ -23,7 +23,7 @@ typedef enum {
 extern NSString * const LPStatusChangedNotification;
 
 - (void)fetchPlaylist;
-- (PlaylistController*)initWithBaseURL:(NSURL*)url;
+- (PlaylistController*)init;
 
 @property (readonly) PlaylistControllerState state;
 @property (readonly, nonatomic, strong) NSArray *playlist;
