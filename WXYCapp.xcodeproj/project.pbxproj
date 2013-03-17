@@ -17,6 +17,7 @@
 		232E24E61267A7ED007F7679 /* playlist_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24D01267A7ED007F7679 /* playlist_icon.png */; };
 		232E24E71267A7ED007F7679 /* radio_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24D11267A7ED007F7679 /* radio_icon.png */; };
 		232E24F21267A7ED007F7679 /* wxyc-logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 232E24DD1267A7ED007F7679 /* wxyc-logo.gif */; };
+		2348DED016F564E40058C3EF /* Playlist1.0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2348DECD16F564E40058C3EF /* Playlist1.0.xcdatamodeld */; };
 		234946D61263A6DD00022117 /* cassette reel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 234946D51263A6DD00022117 /* cassette reel@2x.png */; };
 		234A74D5153B6D3100C30053 /* PlaylistMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 234A74D4153B6D3100C30053 /* PlaylistMapping.m */; };
 		234B49F712936B0A001B3EB2 /* toolbar-cassette.png in Resources */ = {isa = PBXBuildFile; fileRef = 234B49F512936B0A001B3EB2 /* toolbar-cassette.png */; };
@@ -103,6 +104,8 @@
 		23A23D0B16ED801700C9AF7C /* clock-9.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23D0116ED801200C9AF7C /* clock-9.png */; };
 		23A23D0C16ED801700C9AF7C /* clock-11.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23D0216ED801300C9AF7C /* clock-11.png */; };
 		23A23D0D16ED801700C9AF7C /* clock-12.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23D0316ED801400C9AF7C /* clock-12.png */; };
+		23AEB9DE16F615CE00E2EBB1 /* clock-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 23AEB9DC16F615CE00E2EBB1 /* clock-8.png */; };
+		23AEB9DF16F615CE00E2EBB1 /* clock-10.png in Resources */ = {isa = PBXBuildFile; fileRef = 23AEB9DD16F615CE00E2EBB1 /* clock-10.png */; };
 		23B09AC316EEA05B003C2173 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B09AC216EEA05B003C2173 /* chat.png */; };
 		23B32A6612690875008414F4 /* radio_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A6512690875008414F4 /* radio_icon@2x.png */; };
 		23B32A6B1269089D008414F4 /* Station-Updates-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A6A1269089D008414F4 /* Station-Updates-icon@2x.png */; };
@@ -113,7 +116,6 @@
 		23B32D49126E386B008414F4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B32D48126E386B008414F4 /* CoreData.framework */; };
 		23B32DF8126E70D7008414F4 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B32DF7126E70D7008414F4 /* FavoritesTableViewController.m */; };
 		23B32DFA126E7134008414F4 /* FavoritesTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B32DF9126E7134008414F4 /* FavoritesTableView.xib */; };
-		23B32EE3126E85FA008414F4 /* Playlist.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 23B32EE2126E85FA008414F4 /* Playlist.xcdatamodel */; };
 		23B613F7164EFA64004547C2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B613F5164EF06C004547C2 /* Social.framework */; };
 		23C2A943128A46AD00D61A4A /* reload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A941128A46AD00D61A4A /* reload@2x.png */; };
 		23C2A944128A46AD00D61A4A /* right-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A942128A46AD00D61A4A /* right-arrow@2x.png */; };
@@ -214,6 +216,8 @@
 		232E24D01267A7ED007F7679 /* playlist_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist_icon.png; sourceTree = "<group>"; };
 		232E24D11267A7ED007F7679 /* radio_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_icon.png; sourceTree = "<group>"; };
 		232E24DD1267A7ED007F7679 /* wxyc-logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "wxyc-logo.gif"; sourceTree = "<group>"; };
+		2348DECE16F564E40058C3EF /* Playlist2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playlist2.xcdatamodel; sourceTree = "<group>"; };
+		2348DECF16F564E40058C3EF /* Playlist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playlist.xcdatamodel; sourceTree = "<group>"; };
 		234946D51263A6DD00022117 /* cassette reel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cassette reel@2x.png"; sourceTree = "<group>"; };
 		234A74D3153B6D3100C30053 /* PlaylistMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistMapping.h; path = Models/PlaylistMapping.h; sourceTree = "<group>"; };
 		234A74D4153B6D3100C30053 /* PlaylistMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistMapping.m; path = Models/PlaylistMapping.m; sourceTree = "<group>"; };
@@ -347,6 +351,8 @@
 		23A23D0116ED801200C9AF7C /* clock-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-9.png"; sourceTree = "<group>"; };
 		23A23D0216ED801300C9AF7C /* clock-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-11.png"; sourceTree = "<group>"; };
 		23A23D0316ED801400C9AF7C /* clock-12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-12.png"; sourceTree = "<group>"; };
+		23AEB9DC16F615CE00E2EBB1 /* clock-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-8.png"; sourceTree = "<group>"; };
+		23AEB9DD16F615CE00E2EBB1 /* clock-10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-10.png"; sourceTree = "<group>"; };
 		23B09AC216EEA05B003C2173 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
 		23B32A6512690875008414F4 /* radio_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_icon@2x.png"; sourceTree = "<group>"; };
 		23B32A6A1269089D008414F4 /* Station-Updates-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Station-Updates-icon@2x.png"; sourceTree = "<group>"; };
@@ -357,7 +363,6 @@
 		23B32D48126E386B008414F4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		23B32DF7126E70D7008414F4 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
 		23B32DF9126E7134008414F4 /* FavoritesTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesTableView.xib; sourceTree = "<group>"; };
-		23B32EE2126E85FA008414F4 /* Playlist.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Playlist.xcdatamodel; sourceTree = "<group>"; };
 		23B613F5164EF06C004547C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		23B613F8164EFA8D004547C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		23C2A941128A46AD00D61A4A /* reload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reload@2x.png"; sourceTree = "<group>"; };
@@ -584,17 +589,8 @@
 		2328C6891060107500063811 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				23AEB9E316F615D500E2EBB1 /* Clock */,
 				23B09AC216EEA05B003C2173 /* chat.png */,
-				23A23CFA16ED800C00C9AF7C /* clock-1.png */,
-				23A23CFB16ED800D00C9AF7C /* clock-2.png */,
-				23A23CFC16ED800D00C9AF7C /* clock-3.png */,
-				23A23CFD16ED800E00C9AF7C /* clock-4.png */,
-				23A23CFE16ED800F00C9AF7C /* clock-5.png */,
-				23A23CFF16ED801000C9AF7C /* clock-6.png */,
-				23A23D0016ED801200C9AF7C /* clock-7.png */,
-				23A23D0116ED801200C9AF7C /* clock-9.png */,
-				23A23D0216ED801300C9AF7C /* clock-11.png */,
-				23A23D0316ED801400C9AF7C /* clock-12.png */,
 				237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */,
 				23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */,
 				23648A5C16F524D000DF2C27 /* favorites-share.png */,
@@ -819,6 +815,25 @@
 			name = CasssetteReelViewController;
 			sourceTree = "<group>";
 		};
+		23AEB9E316F615D500E2EBB1 /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				23A23CFA16ED800C00C9AF7C /* clock-1.png */,
+				23A23CFB16ED800D00C9AF7C /* clock-2.png */,
+				23A23CFC16ED800D00C9AF7C /* clock-3.png */,
+				23A23CFD16ED800E00C9AF7C /* clock-4.png */,
+				23A23CFE16ED800F00C9AF7C /* clock-5.png */,
+				23A23CFF16ED801000C9AF7C /* clock-6.png */,
+				23A23D0016ED801200C9AF7C /* clock-7.png */,
+				23AEB9DC16F615CE00E2EBB1 /* clock-8.png */,
+				23A23D0116ED801200C9AF7C /* clock-9.png */,
+				23AEB9DD16F615CE00E2EBB1 /* clock-10.png */,
+				23A23D0216ED801300C9AF7C /* clock-11.png */,
+				23A23D0316ED801400C9AF7C /* clock-12.png */,
+			);
+			name = Clock;
+			sourceTree = "<group>";
+		};
 		23B32D1D126E3268008414F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -984,7 +999,7 @@
 				232E24FC1267A8D4007F7679 /* sounds */,
 				2328C6891060107500063811 /* images */,
 				2328C68A1060107F00063811 /* xibs */,
-				23B32EE2126E85FA008414F4 /* Playlist.xcdatamodel */,
+				2348DECD16F564E40058C3EF /* Playlist1.0.xcdatamodeld */,
 				23C817C0114C4C78000D9C22 /* WXYC_iPhone_App_Distribution_Provisioning_Profile.mobileprovision */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 			);
@@ -1177,6 +1192,8 @@
 				23648A5D16F524D100DF2C27 /* favorites-share.png in Resources */,
 				23648A5F16F525B700DF2C27 /* search-share.png in Resources */,
 				23648AB716F52D2500DF2C27 /* favorites-share-favorited.png in Resources */,
+				23AEB9DE16F615CE00E2EBB1 /* clock-8.png in Resources */,
+				23AEB9DF16F615CE00E2EBB1 /* clock-10.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1210,7 +1227,6 @@
 				23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */,
 				23EE3A0C1527F07A0006CDA5 /* WXYCDataStack.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				23B32EE3126E85FA008414F4 /* Playlist.xcdatamodel in Sources */,
 				234A74D5153B6D3100C30053 /* PlaylistMapping.m in Sources */,
 				2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */,
 				2777575B1631BBE900349E12 /* NSObject+SBJson.m in Sources */,
@@ -1258,6 +1274,7 @@
 				238AE95D16F5407800779128 /* NSObject+MKBlockAdditions.m in Sources */,
 				238AE95E16F5407800779128 /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				238AE95F16F5407800779128 /* UIAlertView+MKBlockAdditions.m in Sources */,
+				2348DED016F564E40058C3EF /* Playlist1.0.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1277,7 +1294,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1303,7 +1320,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = WXYC;
-				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1313,7 +1330,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1334,7 +1351,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = WXYC;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "52C4BD97-EE43-46DD-91E8-E98607B79F55";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -1362,7 +1379,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1387,7 +1405,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = WXYC;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "52C4BD97-EE43-46DD-91E8-E98607B79F55";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ABC5AE31-B2CD-4F9F-956B-143B8B5E445E";
 				SDKROOT = iphoneos;
 			};
 			name = Distribution;
@@ -1449,6 +1468,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2348DECD16F564E40058C3EF /* Playlist1.0.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2348DECE16F564E40058C3EF /* Playlist2.xcdatamodel */,
+				2348DECF16F564E40058C3EF /* Playlist.xcdatamodel */,
+			);
+			currentVersion = 2348DECE16F564E40058C3EF /* Playlist2.xcdatamodel */;
+			path = Playlist1.0.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }
