@@ -40,11 +40,13 @@ static AudioStreamController *wxyc;
 	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 
 	[self.player play];
+	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
 
 - (void)stop
 {
 	[self.player pause];
+	[[UIApplication sharedApplication] endReceivingRemoteControlEvents];
 }
 
 - (BOOL)isPlaying
@@ -55,7 +57,10 @@ static AudioStreamController *wxyc;
 - (AVPlayer *)player
 {
 	if (!_player)
+	{
 		_player = [[AVPlayer alloc] initWithURL:self.URL];
+		_player.usesExternalPlaybackWhileExternalScreenIsActive = YES;
+	}
 	
 	return _player;
 }
