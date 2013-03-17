@@ -29,7 +29,7 @@
 	
 	Breakpoint* breakpoint = (Breakpoint*)entity;
 	
-	double timeSinceEpoch = [[NSString stringWithFormat: @"%@", [breakpoint valueForKey:@"hour"]] doubleValue] / 1000;
+	double timeSinceEpoch = [[breakpoint valueForKey:@"hour"] doubleValue] / 1000;
 	NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeSinceEpoch];
 	
 	NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
@@ -38,8 +38,8 @@
 	NSString* dateString = [dateFormatter stringFromDate:date];
 	self.timeLabel.text = dateString;
 	
-	NSString *hour = [dateString substringToIndex:1];
-	self.timeView.image = [UIImage imageNamed:[NSString stringWithFormat:@"clock-%@", hour]];
+	dateFormatter.dateFormat = @"hh";
+	self.timeView.image = [UIImage imageNamed:[NSString stringWithFormat:@"clock-%@", [dateFormatter stringFromDate:date]]];
 }
 
 @end
