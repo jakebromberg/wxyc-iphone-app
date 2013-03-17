@@ -14,6 +14,7 @@
 #import <Social/Social.h>
 #import "NSString+Additions.h"
 #import "WebViewController.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
 @interface PlaycutCell ()
 
@@ -62,12 +63,20 @@
 - (IBAction)favorite:(id)sender
 {
 	if ([[self.entity valueForKey:@"favorite"] isEqual:@(YES)])
-		[self.entity setValue:@(NO) forKey:@"favorite"];
+		[UIAlertView alertViewWithTitle:nil message:@"Unfavorite this track, reallly?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unfavorite"] onDismiss:^(int buttonIndex)
+		 {
+			 [self.entity setValue:@(NO) forKey:@"favorite"];
+			 [self.entity.managedObjectContext saveToPersistentStoreAndWait];
+			 [self refreshFavoriteIcon];
+		 } onCancel:^{
+			 
+		 }];
 	else
+	{
 		[self.entity setValue:@(YES) forKey:@"favorite"];
-	
-	[self.entity.managedObjectContext saveToPersistentStoreAndWait];
-	[self refreshFavoriteIcon];
+		[self.entity.managedObjectContext saveToPersistentStoreAndWait];
+		[self refreshFavoriteIcon];
+	}
 }
 
 - (IBAction)search:(id)sender
