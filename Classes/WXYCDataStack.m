@@ -53,8 +53,10 @@ static WXYCDataStack *sharedInstance = nil;
     if (_managedObjectModel)
         return _managedObjectModel;
 	
-    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
-    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Playlist1.0" ofType:@"momd"];
+    NSURL *momURL = [NSURL fileURLWithPath:path];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:momURL];
+//    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
 	return _managedObjectModel;
 }
 
@@ -68,8 +70,9 @@ static WXYCDataStack *sharedInstance = nil;
     if (_persistentStoreCoordinator)
         return _persistentStoreCoordinator;
 	
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+	
 	NSError *error;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:self.storeURL options:nil error:&error]) {
 		NSLog(@"Error: %@, %@", error, [error userInfo]);
     }    
@@ -79,7 +82,7 @@ static WXYCDataStack *sharedInstance = nil;
 
 - (NSURL *)storeURL
 {
-	return [NSURL fileURLWithPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"WXYC.sqlite"]];
+	return [NSURL fileURLWithPath:[[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"WXYC7.sqlite"]];
 }
 
 #pragma mark - Singleton methods

@@ -11,7 +11,8 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"WXYC2.sqlite"];
+	[MagicalRecord setDefaultModelNamed:@"Playlist1.0.momd"];
+	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"WXYC78.sqlite"];
 	
 	[self customizeTabBarAppearance];
 	
