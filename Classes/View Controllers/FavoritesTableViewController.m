@@ -21,13 +21,11 @@
 {
     [super viewDidLoad];
 	
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(Favorite == %@)", @YES];
-	self.favoritesArray = [Playcut findAllSortedBy:@"chronOrderID" ascending:NO withPredicate:predicate];
+	self.favoritesArray = [Playcut findByAttribute:@"Favorite" withValue:@YES];
 	
 	[[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
 	{
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(Favorite == %@)", @YES];
-		self.favoritesArray = [Playcut findAllSortedBy:@"chronOrderID" ascending:NO withPredicate:predicate];
+		self.favoritesArray = [Playcut findByAttribute:@"Favorite" withValue:@YES];
 		[self.tableView reloadData];
 	}];
 }

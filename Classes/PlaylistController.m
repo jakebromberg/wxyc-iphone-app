@@ -89,11 +89,11 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	Playcut *playcut = self.playlist[index];
 	
 	[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo =
-	@{
-		MPMediaItemPropertyAlbumTitle : [playcut valueForKey:@"album"] ?: @"",
-		MPMediaItemPropertyArtist : [playcut valueForKey:@"artist"] ?: @"",
-		MPMediaItemPropertyTitle : [playcut valueForKey:@"song"] ?: @"",
-	};
+		@{
+			MPMediaItemPropertyAlbumTitle : [playcut valueForKey:@"album"] ?: @"",
+			MPMediaItemPropertyArtist : [playcut valueForKey:@"artist"] ?: @"",
+			MPMediaItemPropertyTitle : [playcut valueForKey:@"song"] ?: @"",
+		};
 }
 
 #pragma mark constructors

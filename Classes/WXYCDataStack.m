@@ -56,7 +56,6 @@ static WXYCDataStack *sharedInstance = nil;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Playlist1.0" ofType:@"momd"];
     NSURL *momURL = [NSURL fileURLWithPath:path];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:momURL];
-//    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
 	return _managedObjectModel;
 }
 
