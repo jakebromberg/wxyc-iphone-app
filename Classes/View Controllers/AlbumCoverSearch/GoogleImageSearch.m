@@ -7,13 +7,12 @@
 //
 
 #import "GoogleImageSearch.h"
-#import "SBJSON.h"
 #import "NSArray+Additions.h"
+#import "NSString+Additions.h"
 
 @implementation GoogleImageSearch
 
-static NSString *IMAGE_SEARCH_URL = @"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=%@&key=%@&q=album+%@";
-static const NSString *MED_IMG_SIZE = @"medium";
+static NSString *IMAGE_SEARCH_URL = @"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=%@&key=%@&q=%@";
 static const NSString *LARGE_IMG_SIZE = @"large";
 static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6wxYzrId3_vCc7hSxiVhd0OeM4oTlndTkE3v2ankvuA";
 
@@ -23,9 +22,11 @@ static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6w
 	__block void (^_failure)(NSString *) = failure;
 	__block void (^_finally)(NSString *) = finally;
 	
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,NULL), ^{
+	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,NULL);
+	dispatch_async(queue, ^{
 		NSString *query = [[keywords join:@"+"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-		NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:IMAGE_SEARCH_URL, MED_IMG_SIZE, API_KEY, query, nil]];
+		NSString *urlString = [IMAGE_SEARCH_URL formattedWith:@[LARGE_IMG_SIZE, API_KEY, query]];
+		NSURL *URL = [NSURL URLWithString:urlString];
 		
 
 		NSURLRequest *request = [NSURLRequest requestWithURL:URL];
