@@ -11,7 +11,7 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-	[MagicalRecord setupCoreDataStack];
+	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"WXYC2.sqlite"];
 	
 	[self customizeTabBarAppearance];
 	

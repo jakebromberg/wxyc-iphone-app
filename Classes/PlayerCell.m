@@ -15,8 +15,8 @@
 @interface PlayerCell ()
 
 @property (nonatomic, weak) IBOutlet UIButton *playButton;
-@property (nonatomic, weak) IBOutlet CassetteReelViewController *leftCassetteReel;
-@property (nonatomic, weak) IBOutlet CassetteReelViewController *rightCassetteReel;
+@property (nonatomic, strong) IBOutlet CassetteReelViewController *leftCassetteReel;
+@property (nonatomic, strong) IBOutlet CassetteReelViewController *rightCassetteReel;
 
 @end
 
@@ -57,6 +57,7 @@
 		[self.rightCassetteReel stopAnimating];
 	}
 }
+
 - (IBAction)pushPlay:(id)sender
 {
 	[self playPushButtonSFX];
@@ -67,7 +68,6 @@
 	} else {
 		[AudioStreamController.wxyc start];
 	}
-	
 }
 
 - (void)playPushButtonSFX
@@ -91,7 +91,7 @@
 {
 	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
 
-	[self configureInterfaceForPlayingState:[AudioStreamController wxyc].isPlaying];
+//	[self configureInterfaceForPlayingState:[AudioStreamController wxyc].isPlaying];
 	
 	return [super awakeAfterUsingCoder:aDecoder];
 }
