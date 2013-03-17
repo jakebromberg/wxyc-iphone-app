@@ -463,8 +463,79 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="40" id="ZJm-PI-4jU" userLabel="Header Cell - PlayerCell" customClass="PlayerCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTv-M5-lxh">
+                                            <color key="backgroundColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="39" id="Xtv-uH-pBL"/>
+                                            </constraints>
+                                            <attributedString key="attributedText">
+                                                <fragment content="♥ ">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <font key="NSFont" size="21" name="HiraKakuProN-W3"/>
+                                                        <font key="NSOriginalFont" size="21" name="HelveticaNeue-Light"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="W X Y C ">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <font key="NSFont" size="21" name="HelveticaNeue-Light"/>
+                                                        <font key="NSOriginalFont" size="21" name="HelveticaNeue-Light"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="89.3 ">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <font key="NSFont" size="21" name="HelveticaNeue"/>
+                                                        <font key="NSOriginalFont" size="21" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="♥">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="21" name="HiraKakuProN-W3"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LgB-aO-T1P">
+                                            <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnR-65-5AY">
+                                            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="0.58039218189999997" green="0.79607850309999995" blue="0.86274516580000005" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstItem="TnR-65-5AY" firstAttribute="trailing" secondItem="ZJm-PI-4jU" secondAttribute="trailing" type="default" id="2WB-eF-RrC"/>
+                                    <constraint firstItem="LgB-aO-T1P" firstAttribute="trailing" secondItem="ZJm-PI-4jU" secondAttribute="trailing" type="default" id="3ha-2h-sGy"/>
+                                    <constraint firstAttribute="bottom" secondItem="TnR-65-5AY" secondAttribute="bottom" constant="39" id="8Eb-BO-l8S"/>
+                                    <constraint firstItem="LgB-aO-T1P" firstAttribute="leading" secondItem="ZJm-PI-4jU" secondAttribute="leading" type="default" id="E65-0P-MSh"/>
+                                    <constraint firstItem="BTv-M5-lxh" firstAttribute="trailing" secondItem="ZJm-PI-4jU" secondAttribute="trailing" type="default" id="F3D-Y0-w6w"/>
+                                    <constraint firstItem="TnR-65-5AY" firstAttribute="leading" secondItem="ZJm-PI-4jU" secondAttribute="leading" type="default" id="Lx5-Lj-cLJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="LgB-aO-T1P" secondAttribute="bottom" constant="-1" id="OwS-TU-Hau"/>
+                                    <constraint firstItem="LgB-aO-T1P" firstAttribute="top" secondItem="ZJm-PI-4jU" secondAttribute="top" constant="39" id="VhW-YE-Dt1"/>
+                                    <constraint firstItem="BTv-M5-lxh" firstAttribute="leading" secondItem="ZJm-PI-4jU" secondAttribute="leading" type="default" id="kAK-6M-2G1"/>
+                                    <constraint firstItem="TnR-65-5AY" firstAttribute="top" secondItem="ZJm-PI-4jU" secondAttribute="top" type="default" id="pQz-Gg-a2l"/>
+                                    <constraint firstItem="BTv-M5-lxh" firstAttribute="top" secondItem="ZJm-PI-4jU" secondAttribute="top" type="default" id="qa7-27-WFk"/>
+                                </constraints>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlaycutCell" rowHeight="360" id="NvV-T3-hDd" customClass="PlaycutCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="360"/>
+                                <rect key="frame" x="0.0" y="62" width="320" height="360"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="359"/>
