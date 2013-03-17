@@ -11,6 +11,7 @@
 #import "WXYCDataStack.h"
 #import "Playcut.h"
 #import "PlaycutCell.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
 @implementation FavoritesTableViewController
 
@@ -29,13 +30,6 @@
 		self.favoritesArray = [Playcut findAllSortedBy:@"chronOrderID" ascending:NO withPredicate:predicate];
 		[self.tableView reloadData];
 	}];
-}
-
-#pragma mark - IBAction
-
-- (IBAction)favoritePushed:(id)sender
-{
-	
 }
 
 #pragma mark - Table view data source methods
