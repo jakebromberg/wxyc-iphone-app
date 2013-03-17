@@ -33,7 +33,7 @@ NSString* baseURL = @"http://wxyc.info/";
 	[RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/plain"];
 	_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:baseURL]];
 	
-	[RKManagedObjectStore setDefaultStore:[[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:[WXYCDataStack sharedInstance].persistentStoreCoordinator]];
+	[RKManagedObjectStore setDefaultStore:[[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:[NSManagedObjectContext defaultContext].persistentStoreCoordinator]];
 	_objectManager.managedObjectStore = [RKManagedObjectStore defaultStore];
 	[_objectManager.managedObjectStore createManagedObjectContexts];
 }
