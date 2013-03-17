@@ -1,9 +1,6 @@
 [submodule "RestKit"]
 	path = RestKit
 	url = https://github.com/RestKit/RestKit.git
-[submodule "Classes/Libraries/SBJSON"]
-	path = Classes/Libraries/SBJSON
-	url = https://jake.bromberg%40gmail.com@github.com/stig/json-framework.git
 [submodule "Classes/Libraries/Magical Record"]
 	path = Classes/Libraries/Magical Record
 	url = git@github.com:magicalpanda/MagicalRecord.git
