@@ -7,3 +7,6 @@
 [submodule "Classes/Libraries/Magical Record"]
 	path = Classes/Libraries/Magical Record
 	url = git@github.com:magicalpanda/MagicalRecord.git
+[submodule "Classes/Libraries/MKBlockAdditions"]
+	path = Classes/Libraries/MKBlockAdditions
+	url = git@github.com:MugunthKumar/UIKitCategoryAdditions.git
