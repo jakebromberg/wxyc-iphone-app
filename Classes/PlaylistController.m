@@ -9,6 +9,10 @@
 #import <RestKit/RestKit.h>
 #import "PlaylistController.h"
 #import "NSString+Additions.h"
+#import "Playcut.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "AudioStreamController.h"
+#import "NSArray+Additions.h"
 
 NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
@@ -65,13 +69,39 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 		 _state = LP_DONE;
 		 
 		 [[NSNotificationCenter defaultCenter] postNotificationName:LPStatusChangedNotification object:self userInfo:@{ @"newEntries": newEntries}];
-
+		 
+		 [self configureNowPlayingInfo];
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 
 	 }];
 }
+	 
+- (void)configureNowPlayingInfo
+{
+	NSUInteger index = [self.playlist indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+		return [obj class] == [Playcut class];
+	}];
+	
+	if (index == NSNotFound) {
+		return;
+	}
+	
+	Playcut *playcut = self.playlist[index];
+	
+	[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo =
+	@{
+		MPMediaItemPropertyAlbumTitle : [playcut valueForKey:@"album"] ?: @"",
+		MPMediaItemPropertyArtist : [playcut valueForKey:@"artist"] ?: @"",
+		MPMediaItemPropertyTitle : [playcut valueForKey:@"song"] ?: @"",
+	};
+}
 
 #pragma mark constructors
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	[self configureNowPlayingInfo];
+}
 
 - (id)init
 {
@@ -81,6 +111,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	{
 		_playlistMapping = [[PlaylistMapping alloc] init];
 		_playlist = [NSArray array];
+		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
 	}
 	
 	return self;

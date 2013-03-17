@@ -13,10 +13,41 @@
 #import "TalksetCell.h"
 #import "PlaylistEntry.h"
 #import "NSString+Additions.h"
+#import "AudioStreamController.h"
 
 @implementation LivePlaylistTableViewController
 
 PlaylistController* livePlaylistCtrl;
+
+- (BOOL)canBecomeFirstResponder
+{
+	return YES;
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent {
+	
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+		
+        switch (receivedEvent.subtype) {
+				
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+				if ([AudioStreamController wxyc].isPlaying)
+					[[AudioStreamController wxyc] stop];
+				else
+					[[AudioStreamController wxyc] start];
+                break;
+				
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                break;
+				
+            case UIEventSubtypeRemoteControlNextTrack:
+                break;
+				
+            default:
+                break;
+        }
+    }
+}
 
 #pragma mark - UITableViewController
 

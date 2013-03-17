@@ -91,8 +91,6 @@
 {
 	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
 
-//	[self configureInterfaceForPlayingState:[AudioStreamController wxyc].isPlaying];
-	
 	return [super awakeAfterUsingCoder:aDecoder];
 }
 
