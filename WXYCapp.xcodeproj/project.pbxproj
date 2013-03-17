@@ -77,6 +77,9 @@
 		237906DD16B4E9BE00F67A17 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */; };
 		237E914F12930E5400A07456 /* casey-burns-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914D12930E5400A07456 /* casey-burns-app-icon.png */; };
 		237E915012930E5400A07456 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */; };
+		238AE95D16F5407800779128 /* NSObject+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 238AE95816F5407800779128 /* NSObject+MKBlockAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		238AE95E16F5407800779128 /* UIActionSheet+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 238AE95A16F5407800779128 /* UIActionSheet+MKBlockAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		238AE95F16F5407800779128 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 238AE95C16F5407800779128 /* UIAlertView+MKBlockAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		238CC1C81266413D006EC552 /* CassetteReelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 238CC1C71266413D006EC552 /* CassetteReelViewController.m */; };
 		23924C8D1289ECCC00EFC0FA /* toolbar-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924C891289ECCC00EFC0FA /* toolbar-down.png */; };
 		23924C8E1289ECCC00EFC0FA /* toolbar-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924C8A1289ECCC00EFC0FA /* toolbar-down@2x.png */; };
@@ -313,6 +316,13 @@
 		237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		237E914D12930E5400A07456 /* casey-burns-app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon.png"; sourceTree = "<group>"; };
 		237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
+		238AE95616F5407800779128 /* MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBlockAdditions.h; sourceTree = "<group>"; };
+		238AE95716F5407800779128 /* NSObject+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MKBlockAdditions.h"; sourceTree = "<group>"; };
+		238AE95816F5407800779128 /* NSObject+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MKBlockAdditions.m"; sourceTree = "<group>"; };
+		238AE95916F5407800779128 /* UIActionSheet+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+MKBlockAdditions.h"; sourceTree = "<group>"; };
+		238AE95A16F5407800779128 /* UIActionSheet+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+MKBlockAdditions.m"; sourceTree = "<group>"; };
+		238AE95B16F5407800779128 /* UIAlertView+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+MKBlockAdditions.h"; sourceTree = "<group>"; };
+		238AE95C16F5407800779128 /* UIAlertView+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKBlockAdditions.m"; sourceTree = "<group>"; };
 		238CC1C71266413D006EC552 /* CassetteReelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CassetteReelViewController.m; sourceTree = "<group>"; };
 		23924C891289ECCC00EFC0FA /* toolbar-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-down.png"; sourceTree = "<group>"; };
 		23924C8A1289ECCC00EFC0FA /* toolbar-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-down@2x.png"; sourceTree = "<group>"; };
@@ -785,6 +795,21 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		238AE95516F5407800779128 /* MKAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				238AE95616F5407800779128 /* MKBlockAdditions.h */,
+				238AE95716F5407800779128 /* NSObject+MKBlockAdditions.h */,
+				238AE95816F5407800779128 /* NSObject+MKBlockAdditions.m */,
+				238AE95916F5407800779128 /* UIActionSheet+MKBlockAdditions.h */,
+				238AE95A16F5407800779128 /* UIActionSheet+MKBlockAdditions.m */,
+				238AE95B16F5407800779128 /* UIAlertView+MKBlockAdditions.h */,
+				238AE95C16F5407800779128 /* UIAlertView+MKBlockAdditions.m */,
+			);
+			name = MKAdditions;
+			path = Libraries/MKBlockAdditions/MKAdditions;
+			sourceTree = "<group>";
+		};
 		238CC1C512664111006EC552 /* CasssetteReelViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,6 +850,7 @@
 		23BF128B113B0E2100A72DE7 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				238AE95516F5407800779128 /* MKAdditions */,
 				23648A6016F5293E00DF2C27 /* MagicalRecord */,
 				235DE11616ED2BAC005640E9 /* SDWebImage */,
 				277757411631BBE900349E12 /* SBJSON */,
@@ -1229,6 +1255,9 @@
 				23648AB316F5293E00DF2C27 /* MagicalRecord+Setup.m in Sources */,
 				23648AB416F5293E00DF2C27 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				23648AB516F5293E00DF2C27 /* MagicalRecord.m in Sources */,
+				238AE95D16F5407800779128 /* NSObject+MKBlockAdditions.m in Sources */,
+				238AE95E16F5407800779128 /* UIActionSheet+MKBlockAdditions.m in Sources */,
+				238AE95F16F5407800779128 /* UIAlertView+MKBlockAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
