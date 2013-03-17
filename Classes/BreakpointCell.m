@@ -38,8 +38,8 @@
 	NSString* dateString = [dateFormatter stringFromDate:date];
 	self.timeLabel.text = dateString;
 	
-	dateFormatter.dateFormat = @"hh";
-	self.timeView.image = [UIImage imageNamed:[NSString stringWithFormat:@"clock-%@", [dateFormatter stringFromDate:date]]];
+	dateFormatter.dateFormat = @"h";
+	self.timeView.image = [UIImage imageNamed:[NSString stringWithFormat:@"clock-%@.png", [dateFormatter stringFromDate:date]]];
 }
 
 @end
