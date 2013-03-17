@@ -44,15 +44,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return self.favoritesArray.count;
+	return self.favoritesArray.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	if (indexPath.row == 0)
+		return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
+	
     PlaycutCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlaycutCell"];
-	cell.entity = _favoritesArray[indexPath.row];
+	cell.entity = _favoritesArray[indexPath.row - 1];
     
 	return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.row == 0)
+		return 40;
+	
+	return [NSClassFromString(@"PlaycutCell") height];
 }
 
 @end
