@@ -87,7 +87,8 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Distribution"
+      customArchiveName = "WXYC"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

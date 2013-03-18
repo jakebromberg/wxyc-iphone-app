@@ -126,6 +126,7 @@
 		23DBC351113F801200C19BD0 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* WebView.xib */; };
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
 		23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59E16F65960003CC6A8 /* Breakpoint.m */; };
+		23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */; };
 		23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39201527D0CF0006CDA5 /* AudioStreamController.m */; };
 		23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39221527D0EF0006CDA5 /* PlaylistController.m */; };
 		23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */; };
@@ -362,6 +363,7 @@
 		23E0A59B16F6590C003CC6A8 /* Playlist2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playlist2.xcdatamodel; sourceTree = "<group>"; };
 		23E0A59D16F65960003CC6A8 /* Breakpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Breakpoint.h; path = Models/Breakpoint.h; sourceTree = "<group>"; };
 		23E0A59E16F65960003CC6A8 /* Breakpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Breakpoint.m; path = Models/Breakpoint.m; sourceTree = "<group>"; };
+		23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23E77B1E1118DCB3007D373D /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EE391F1527D0CF0006CDA5 /* AudioStreamController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamController.h; sourceTree = "<group>"; };
 		23EE39201527D0CF0006CDA5 /* AudioStreamController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamController.m; sourceTree = "<group>"; };
@@ -901,6 +903,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */,
 				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -1122,6 +1125,7 @@
 				23648AB716F52D2500DF2C27 /* favorites-share-favorited.png in Resources */,
 				23AEB9DE16F615CE00E2EBB1 /* clock-8.png in Resources */,
 				23AEB9DF16F615CE00E2EBB1 /* clock-10.png in Resources */,
+				23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1246,7 +1250,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: WXYC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WXYC";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1267,7 +1272,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = WXYC;
-				PROVISIONING_PROFILE = "52C4BD97-EE43-46DD-91E8-E98607B79F55";
+				PROVISIONING_PROFILE = "F988D5D6-EE10-49B2-95FC-FADBC4D279B4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F988D5D6-EE10-49B2-95FC-FADBC4D279B4";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -1295,8 +1301,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: WXYC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WXYC";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1321,8 +1327,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = WXYC;
-				PROVISIONING_PROFILE = "52C4BD97-EE43-46DD-91E8-E98607B79F55";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ABC5AE31-B2CD-4F9F-956B-143B8B5E445E";
+				PROVISIONING_PROFILE = "F988D5D6-EE10-49B2-95FC-FADBC4D279B4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F988D5D6-EE10-49B2-95FC-FADBC4D279B4";
 				SDKROOT = iphoneos;
 			};
 			name = Distribution;
