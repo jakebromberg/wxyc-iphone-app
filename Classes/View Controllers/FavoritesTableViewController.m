@@ -63,7 +63,7 @@
 	if (indexPath.row == 0)
 		return 40;
 	
-	return [NSClassFromString(@"PlaycutCell") height];
+	return [PlaycutCell height];
 }
 
 @end
