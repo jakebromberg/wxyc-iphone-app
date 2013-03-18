@@ -41,7 +41,7 @@
 		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
 	}
 	
-	[self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
+	[self configureInterfaceForPlayingState:AudioStreamController.wxyc.isPlaying];
 }
 
 - (void)configureInterfaceForPlayingState:(BOOL)isPlaying
@@ -76,7 +76,7 @@
 	NSURL *url = [NSURL fileURLWithPath:[NSBundle.mainBundle.resourcePath append:@"/cassette button push.aif"]];
 	
 	AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
-	AudioServicesPlaySystemSound (soundID);
+	AudioServicesPlaySystemSound(soundID);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
