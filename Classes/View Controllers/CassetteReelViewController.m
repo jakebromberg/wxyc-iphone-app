@@ -13,7 +13,6 @@
 
 @interface CassetteReelViewController ()
 
-@property (atomic) BOOL isAnimating;
 @property (nonatomic, strong) IndefinitelySpinningAnimation *animation;
 
 @end
@@ -38,11 +37,6 @@
 
 - (void)startAnimation
 {
-	if (self.isAnimating)
-		return;
-	
-	self.isAnimating = YES;
-	
 	if (![self.layer animationForKey:@"spinAnimation"])
 		[self.layer addAnimation:[IndefinitelySpinningAnimation getAnimation] forKey:@"spinAnimation"];
 	
@@ -56,11 +50,9 @@
 
 - (void)stopAnimation
 {
-	if (!self.isAnimating)
-		return;
-	
-	self.isAnimating = NO;
-	
+	if (![self.layer animationForKey:@"spinAnimation"])
+		[self.layer addAnimation:[IndefinitelySpinningAnimation getAnimation] forKey:@"spinAnimation"];
+
     CFTimeInterval pausedTime = [self.layer convertTime:CACurrentMediaTime() fromLayer:nil];
     self.layer.speed = 0.0;
     self.layer.timeOffset = pausedTime;
@@ -68,12 +60,12 @@
 
 - (void)initImageViewAnimation
 {
-	if (![self.layer animationForKey:@"spinAnimation"])
-	{
-		[self.layer addAnimation:self.animation forKey:@"spinAnimation"];
-		self.isAnimating = YES;
+	[self.layer addAnimation:self.animation forKey:@"spinAnimation"];
+	
+	if (AudioStreamController.wxyc.isPlaying)
+		[self startAnimation];
+	else
 		[self stopAnimation];
-	}
 }
 
 - (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
@@ -82,9 +74,7 @@
 
 	if (self)
 	{
-		[self initImageViewAnimation];
 		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
-		[self addObserver:self forKeyPath:@"layer.speed" options:NSKeyValueObservingOptionNew context:NULL];
 		
 		if ([AudioStreamController wxyc].isPlaying)
 			[self startAnimation];
