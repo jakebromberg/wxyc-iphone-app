@@ -25,7 +25,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-	//Clean out old data from previous launch
+	//Clean out unfavorited data
 	[[WXYCDataStack sharedInstance] purgeObsoleteEntries];
 }
 
