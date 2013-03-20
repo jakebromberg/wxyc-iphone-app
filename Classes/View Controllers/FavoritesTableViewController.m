@@ -54,7 +54,8 @@
 	
     PlaycutCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlaycutCell"];
 	cell.entity = _favoritesArray[indexPath.row - 1];
-    
+    cell.selected = NO;
+	
 	return cell;
 }
 
