@@ -76,8 +76,10 @@
 	{
 		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
 		
-		if ([AudioStreamController wxyc].isPlaying)
-			[self startAnimation];
+		[self startAnimation];
+		
+		if (![AudioStreamController wxyc].isPlaying)
+			[self stopAnimation];
 	}
 	
 	return self;
