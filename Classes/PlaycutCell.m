@@ -63,7 +63,7 @@
 - (IBAction)favorite:(id)sender
 {
 	if ([[self.entity valueForKey:@"favorite"] isEqual:@(YES)])
-		[UIAlertView alertViewWithTitle:nil message:@"Unfavorite this track, for real?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unfavorite"] onDismiss:^(int buttonIndex)
+		[UIAlertView alertViewWithTitle:nil message:@"Unlove this track, for real?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unlove"] onDismiss:^(int buttonIndex)
 		 {
 			 [self.entity setValue:@(NO) forKey:@"favorite"];
 			 [self.entity.managedObjectContext saveToPersistentStoreAndWait];
