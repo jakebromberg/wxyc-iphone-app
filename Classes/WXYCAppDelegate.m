@@ -11,7 +11,8 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-	[MagicalRecord setDefaultModelNamed:@"Playlist1.0.momd"];
+	[MagicalRecord setDefaultModelNamed:@"Playlist.mom"];
+//	[MagicalRecord setDefaultModelNamed:@"Playlist1.0.momd"];
 	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"WXYC78.sqlite"];
 	
 	[self customizeTabBarAppearance];
