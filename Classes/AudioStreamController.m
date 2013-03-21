@@ -67,6 +67,11 @@ static AudioStreamController *wxyc;
 
 #pragma mark
 
+- (void)dealloc
+{
+	[self removeObserver:self forKeyPath:@"player.status"];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if ([keyPath isEqualToString:@"player.status"])
