@@ -35,6 +35,8 @@
 
 @implementation PlaycutCell
 
+#pragma - share stuff
+
 - (IBAction)shareOnFacebook:(id)sender
 {
 	[self shareForServiceType:SLServiceTypeFacebook];
@@ -87,14 +89,6 @@
 	[webViewController loadURL:[NSURL URLWithString:url]];
 }
 
-#pragma - Cell Lifecycle
-
-- (void)prepareForReuse
-{
-	self.isShareBarVisible = NO;
-	[self.albumArt cancelCurrentImageLoad];
-}
-
 - (void)isShareBarVisible:(BOOL)isShareBarVisible
 {
 	_isShareBarVisible = isShareBarVisible;
@@ -104,11 +98,18 @@
 	}];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	self.isShareBarVisible = !self.isShareBarVisible;
-	
-	[super setSelected:selected animated:animated];
+	if (event.type == UIEventTypeTouches)
+		self.isShareBarVisible = !self.isShareBarVisible;
+}
+
+#pragma - Cell Lifecycle
+
+- (void)prepareForReuse
+{
+	self.isShareBarVisible = NO;
+	[self.albumArt cancelCurrentImageLoad];
 }
 
 #pragma initializer stuff
@@ -138,7 +139,9 @@
 		self.albumArt.image = [UIImage imageWithData:[self.entity valueForKey:@"primaryImage"]];
 	} else {
 		self.albumArt.image = [UIImage imageNamed:@"album_cover_placeholder.PNG"];
+
 		__weak NSManagedObject *__entity = self.entity;
+		__weak UIImageView *__albumArt = self.albumArt;
 		
 		void (^completionHandler)(UIImage*, NSError*, SDImageCacheType) = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
 		{
@@ -147,7 +150,7 @@
 		};
 		
 		void (^successHandler)(NSString*) = ^(NSString *url) {
-			[self.albumArt setImageWithURL:[NSURL URLWithString:url] completed:completionHandler];
+			[__albumArt setImageWithURL:[NSURL URLWithString:url] completed:completionHandler];
 		};
 		
 		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] success:successHandler failure:nil finally:nil];
