@@ -13,17 +13,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="40" id="4Z1-lx-BvZ" userLabel="Header Cell - PlayerCell" customClass="PlayerCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="40" id="I7t-xy-7de" userLabel="Header Cell - PlayerCell" customClass="PlayerCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mox-Ga-w9B">
-                                            <color key="backgroundColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diS-QM-tT1">
+                                            <color key="backgroundColor" red="0.189" green="0.51263333330000005" blue="0.69999999999999996" alpha="1" colorSpace="deviceRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="39" id="CXZ-bV-1H5"/>
+                                                <constraint firstAttribute="height" constant="39" id="3Do-sw-Zop"/>
                                             </constraints>
                                             <attributedString key="attributedText">
                                                 <fragment content="W X Y C ">
@@ -45,28 +45,28 @@
                                             </attributedString>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KYH-d8-Zse">
-                                            <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeR-c8-ERD">
+                                            <color key="backgroundColor" red="0.11940146980000001" green="0.31705650689999998" blue="0.58337450030000004" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZc-Po-QbE">
-                                            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuO-sh-vYN">
+                                            <color key="backgroundColor" red="0.22950000000000001" green="0.58111666669999995" blue="0.84999999999999998" alpha="1" colorSpace="deviceRGB"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" red="0.58039218187332153" green="0.79607850313186646" blue="0.86274516582489014" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.58039218189999997" green="0.79607850309999995" blue="0.86274516580000005" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstItem="bZc-Po-QbE" firstAttribute="top" secondItem="4Z1-lx-BvZ" secondAttribute="top" type="default" id="7eL-0i-u7f"/>
-                                    <constraint firstItem="KYH-d8-Zse" firstAttribute="top" secondItem="4Z1-lx-BvZ" secondAttribute="top" constant="39" id="9b1-sx-tLz"/>
-                                    <constraint firstItem="KYH-d8-Zse" firstAttribute="leading" secondItem="4Z1-lx-BvZ" secondAttribute="leading" type="default" id="ALi-3L-O6m"/>
-                                    <constraint firstItem="bZc-Po-QbE" firstAttribute="leading" secondItem="4Z1-lx-BvZ" secondAttribute="leading" type="default" id="GCg-RF-KJ1"/>
-                                    <constraint firstItem="Mox-Ga-w9B" firstAttribute="trailing" secondItem="4Z1-lx-BvZ" secondAttribute="trailing" type="default" id="QeB-DY-WMX"/>
-                                    <constraint firstItem="Mox-Ga-w9B" firstAttribute="leading" secondItem="4Z1-lx-BvZ" secondAttribute="leading" type="default" id="Sg8-R7-0pa"/>
-                                    <constraint firstItem="Mox-Ga-w9B" firstAttribute="top" secondItem="4Z1-lx-BvZ" secondAttribute="top" type="default" id="UFI-d3-6lI"/>
-                                    <constraint firstItem="KYH-d8-Zse" firstAttribute="trailing" secondItem="4Z1-lx-BvZ" secondAttribute="trailing" type="default" id="UwQ-jS-JDt"/>
-                                    <constraint firstAttribute="bottom" secondItem="bZc-Po-QbE" secondAttribute="bottom" constant="39" id="gxu-t4-m61"/>
-                                    <constraint firstAttribute="bottom" secondItem="KYH-d8-Zse" secondAttribute="bottom" constant="-1" id="nCp-oj-PJh"/>
-                                    <constraint firstItem="bZc-Po-QbE" firstAttribute="trailing" secondItem="4Z1-lx-BvZ" secondAttribute="trailing" type="default" id="vph-BA-727"/>
+                                    <constraint firstItem="diS-QM-tT1" firstAttribute="trailing" secondItem="I7t-xy-7de" secondAttribute="trailing" type="default" id="649-7p-yhq"/>
+                                    <constraint firstItem="TuO-sh-vYN" firstAttribute="top" secondItem="I7t-xy-7de" secondAttribute="top" type="default" id="DXy-E4-5bs"/>
+                                    <constraint firstItem="diS-QM-tT1" firstAttribute="leading" secondItem="I7t-xy-7de" secondAttribute="leading" type="default" id="FiU-9C-IKz"/>
+                                    <constraint firstItem="IeR-c8-ERD" firstAttribute="top" secondItem="I7t-xy-7de" secondAttribute="top" constant="39" id="IOP-Tm-kR9"/>
+                                    <constraint firstItem="TuO-sh-vYN" firstAttribute="trailing" secondItem="I7t-xy-7de" secondAttribute="trailing" type="default" id="Rmi-wL-xcG"/>
+                                    <constraint firstAttribute="bottom" secondItem="IeR-c8-ERD" secondAttribute="bottom" constant="-1" id="bSu-eJ-ZaJ"/>
+                                    <constraint firstItem="TuO-sh-vYN" firstAttribute="leading" secondItem="I7t-xy-7de" secondAttribute="leading" type="default" id="gOd-yv-wRM"/>
+                                    <constraint firstItem="IeR-c8-ERD" firstAttribute="leading" secondItem="I7t-xy-7de" secondAttribute="leading" type="default" id="jPh-P0-oLm"/>
+                                    <constraint firstItem="IeR-c8-ERD" firstAttribute="trailing" secondItem="I7t-xy-7de" secondAttribute="trailing" type="default" id="rKz-4f-jk0"/>
+                                    <constraint firstAttribute="bottom" secondItem="TuO-sh-vYN" secondAttribute="bottom" constant="39" id="rPM-Fe-uVd"/>
+                                    <constraint firstItem="diS-QM-tT1" firstAttribute="top" secondItem="I7t-xy-7de" secondAttribute="top" type="default" id="zSn-aR-9r7"/>
                                 </constraints>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayerCell" rowHeight="74" id="pID-91-qlN" userLabel="Player Cell - PlayerCell" customClass="PlayerCell">
@@ -471,7 +471,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTv-M5-lxh">
-                                            <color key="backgroundColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.18900000000000003" green="0.51263333333333339" blue="0.70000000000000007" alpha="1" colorSpace="deviceRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="39" id="Xtv-uH-pBL"/>
                                             </constraints>
@@ -511,10 +511,10 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LgB-aO-T1P">
-                                            <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.1194014698266983" green="0.31705650687217712" blue="0.5833745002746582" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnR-65-5AY">
-                                            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.22950000000000001" green="0.58111666666666639" blue="0.84999999999999998" alpha="1" colorSpace="deviceRGB"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -741,6 +741,69 @@
         <image name="search-share.png" width="86" height="86"/>
         <image name="twitter-share.png" width="86" height="86"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+        </class>
+        <class className="BreakpointCell" superclassName="DelineationCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BreakpointCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="CassetteReelViewController" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CassetteReelViewController.h"/>
+        </class>
+        <class className="DelineationCell" superclassName="LivePlaylistTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DelineationCell.h"/>
+        </class>
+        <class className="FavoritesTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
+        </class>
+        <class className="LivePlaylistTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LivePlaylistTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="shadowView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="LivePlaylistTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LivePlaylistTableViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PlaycutCell" superclassName="LivePlaylistTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaycutCell.h"/>
+            <relationships>
+                <relationship kind="action" name="favorite:"/>
+                <relationship kind="action" name="search:"/>
+                <relationship kind="action" name="shareOnFacebook:"/>
+                <relationship kind="action" name="shareOnTwitter:"/>
+                <relationship kind="outlet" name="albumArt" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="shareBar" candidateClass="UIView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PlayerCell" superclassName="LivePlaylistTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayerCell.h"/>
+            <relationships>
+                <relationship kind="action" name="pushPlay:"/>
+                <relationship kind="outlet" name="leftCassetteReel" candidateClass="CassetteReelViewController"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightCassetteReel" candidateClass="CassetteReelViewController"/>
+            </relationships>
+        </class>
+        <class className="TalksetCell" superclassName="DelineationCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TalksetCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="someLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
