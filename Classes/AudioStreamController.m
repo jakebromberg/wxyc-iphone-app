@@ -67,12 +67,32 @@ static AudioStreamController *wxyc;
 
 #pragma mark
 
+- (void)dealloc
+{
+	[self removeObserver:self forKeyPath:@"player.status"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if ([keyPath isEqualToString:@"player.status"])
+	{
+		if (self.player.status == AVPlayerStatusFailed)
+		{
+			self.player = nil;
+			[self player];
+		}
+	}
+}
+
 - (id)initWithURL:(NSURL*)URL
 {
 	self = [super init];
 	
 	if (self)
+	{
 		_URL = URL;
+		[self addObserver:self forKeyPath:@"player.status" options:NSKeyValueObservingOptionNew context:NULL];
+	}
 	
 	return self;
 }
