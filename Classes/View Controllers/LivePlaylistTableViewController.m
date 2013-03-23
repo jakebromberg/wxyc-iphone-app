@@ -15,9 +15,15 @@
 #import "NSString+Additions.h"
 #import "AudioStreamController.h"
 
+@interface LivePlaylistTableViewController ()
+
+@property (nonatomic, strong) PlaylistController *livePlaylistCtrl;
+
+@end
+
 @implementation LivePlaylistTableViewController
 
-PlaylistController* livePlaylistCtrl;
+#pragma Remote Control stuff
 
 - (BOOL)canBecomeFirstResponder
 {
@@ -53,7 +59,7 @@ PlaylistController* livePlaylistCtrl;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return livePlaylistCtrl.playlist.count + 2;
+	return self.livePlaylistCtrl.playlist.count + 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,11 +70,11 @@ PlaylistController* livePlaylistCtrl;
 	if (indexPath.row == 1)
 		return [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
 	
-	if (indexPath.row - 2 >= livePlaylistCtrl.playlist.count)
+	if (indexPath.row - 2 >= self.livePlaylistCtrl.playlist.count)
 		return nil;
 	
 	LivePlaylistTableViewCell *cell;
-	NSManagedObject *playlistEntry = livePlaylistCtrl.playlist[indexPath.row - 2];
+	NSManagedObject *playlistEntry = self.livePlaylistCtrl.playlist[indexPath.row - 2];
 	NSString *entryType = [playlistEntry.class.description append:@"Cell"];
 	
 	@try {
@@ -92,7 +98,7 @@ PlaylistController* livePlaylistCtrl;
 
 - (NSString *)classNameForCellAtIndexPath:(NSIndexPath*)indexPath
 {
-	NSManagedObject *playlistEntry = (livePlaylistCtrl.playlist)[indexPath.row - 2];
+	NSManagedObject *playlistEntry = (self.livePlaylistCtrl.playlist)[indexPath.row - 2];
 	return [playlistEntry.class.description append:@"Cell"];
 }
 
@@ -105,7 +111,7 @@ PlaylistController* livePlaylistCtrl;
 		return 40;
 	
 	//boundary case
-	if (indexPath.row - 2 >= livePlaylistCtrl.playlist.count)
+	if (indexPath.row - 2 >= self.livePlaylistCtrl.playlist.count)
 		return 0;
 	
 	return [NSClassFromString([self classNameForCellAtIndexPath:indexPath]) height];
@@ -117,14 +123,9 @@ PlaylistController* livePlaylistCtrl;
 {
 	[super viewDidLoad];
 
-	WXYCAppDelegate *appDelegate = (WXYCAppDelegate *)[UIApplication sharedApplication].delegate;
-	livePlaylistCtrl = [appDelegate livePlaylistCtrlr];
-
-	[self.tableView reloadData];
-	
 	[[NSNotificationCenter defaultCenter] addObserverForName:LPStatusChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
 	{
-		if (livePlaylistCtrl.state == LP_DONE)
+		if (self.livePlaylistCtrl.state == LP_DONE)
 		{
 			NSArray *newEntries = note.userInfo[@"newEntries"];
 			
@@ -140,6 +141,19 @@ PlaylistController* livePlaylistCtrl;
 			[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
 		}
 	}];
+}
+
+#pragma - Initializer stuff
+
+- (PlaylistController *)livePlaylistCtrl
+{
+	if (!_livePlaylistCtrl)
+	{
+		WXYCAppDelegate *appDelegate = (WXYCAppDelegate *)[UIApplication sharedApplication].delegate;
+		_livePlaylistCtrl = [appDelegate livePlaylistCtrlr];
+	}
+
+	return _livePlaylistCtrl;
 }
 
 @end
