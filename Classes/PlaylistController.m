@@ -54,6 +54,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 - (void)fetchPlaylist
 {
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	[RKObjectManager.sharedManager getObjectsAtPath:self.path parameters:self.parameters success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
 	 {
 		 if (mappingResult.array.count == 0)
@@ -71,8 +72,9 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 		 [[NSNotificationCenter defaultCenter] postNotificationName:LPStatusChangedNotification object:self userInfo:@{ @"newEntries": newEntries}];
 		 
 		 [self configureNowPlayingInfo];
+		 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-
+		 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	 }];
 }
 	 
