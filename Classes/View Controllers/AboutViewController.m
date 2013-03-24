@@ -4,6 +4,7 @@
 //
 
 #import "AboutViewController.h"
+#import	"WebViewController.h"
 
 @implementation AboutViewController
 
@@ -32,11 +33,11 @@
 {
 	if (navigationType == UIWebViewNavigationTypeLinkClicked)
 	{
-		AboutViewController *webViewController = [[AboutViewController alloc] init];
+		WebViewController *webViewController = [[WebViewController alloc] init];
 		
-		[[self navigationController] pushViewController:webViewController animated:YES];
-		[((UIWebView *)webViewController.view) setScalesPageToFit:NO];
-		[((UIWebView *)webViewController.view) loadRequest:request];
+		[self.view.window.rootViewController presentViewController:webViewController animated:YES completion:nil];
+		[webViewController loadURL:request.URL];
+		webViewController.webView.scalesPageToFit = YES;
 		
 		return NO;
 	}
