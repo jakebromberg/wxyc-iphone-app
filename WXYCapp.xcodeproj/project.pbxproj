@@ -123,6 +123,7 @@
 		23C2AA38128A61BE00D61A4A /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C2AA37128A61BE00D61A4A /* delete@2x.png */; };
 		23C2AB1B128A6F8100D61A4A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */; };
 		23C817C1114C4C78000D9C22 /* WXYC_iPhone_App_Distribution_Provisioning_Profile.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 23C817C0114C4C78000D9C22 /* WXYC_iPhone_App_Distribution_Provisioning_Profile.mobileprovision */; };
+		23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */; };
 		23DBC351113F801200C19BD0 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* WebView.xib */; };
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
 		23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59E16F65960003CC6A8 /* Breakpoint.m */; };
@@ -359,6 +360,7 @@
 		23C2AA37128A61BE00D61A4A /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		23C817C0114C4C78000D9C22 /* WXYC_iPhone_App_Distribution_Provisioning_Profile.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; name = WXYC_iPhone_App_Distribution_Provisioning_Profile.mobileprovision; path = provisioning/WXYC_iPhone_App_Distribution_Provisioning_Profile.mobileprovision; sourceTree = "<group>"; };
+		23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
 		23DBC34E113F801200C19BD0 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		23E0A59B16F6590C003CC6A8 /* Playlist2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playlist2.xcdatamodel; sourceTree = "<group>"; };
 		23E0A59D16F65960003CC6A8 /* Breakpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Breakpoint.h; path = Models/Breakpoint.h; sourceTree = "<group>"; };
@@ -903,6 +905,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */,
 				23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */,
 				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -1126,6 +1129,7 @@
 				23AEB9DE16F615CE00E2EBB1 /* clock-8.png in Resources */,
 				23AEB9DF16F615CE00E2EBB1 /* clock-10.png in Resources */,
 				23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */,
+				23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
