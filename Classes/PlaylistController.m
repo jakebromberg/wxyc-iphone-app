@@ -95,6 +95,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 			MPMediaItemPropertyAlbumTitle : [playcut valueForKey:@"album"] ?: @"",
 			MPMediaItemPropertyArtist : [playcut valueForKey:@"artist"] ?: @"",
 			MPMediaItemPropertyTitle : [playcut valueForKey:@"song"] ?: @"",
+			MPMediaItemPropertyArtwork : [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:[playcut valueForKey:@"primaryImage"]] ?: [UIImage imageNamed:@"album_cover_placeholder.PNG"]]
 		};
 }
 
