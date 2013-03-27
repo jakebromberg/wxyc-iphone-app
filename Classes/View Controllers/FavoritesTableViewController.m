@@ -21,11 +21,11 @@
 {
     [super viewDidLoad];
 	
-	self.favoritesArray = [Playcut findByAttribute:@"Favorite" withValue:@YES];
+	self.favoritesArray = [Playcut findByAttribute:@"Favorite" withValue:@YES andOrderBy:@"chronOrderID" ascending:NO];
 	
 	[[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
 	{
-		self.favoritesArray = [Playcut findByAttribute:@"Favorite" withValue:@YES];
+		self.favoritesArray = [Playcut findByAttribute:@"Favorite" withValue:@YES andOrderBy:@"chronOrderID" ascending:NO];
 		[self.tableView reloadData];
 	}];
 }
