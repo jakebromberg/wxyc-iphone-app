@@ -162,7 +162,7 @@
                                         </view>
                                         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXq-Um-xPu">
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-0I-6vs">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-0I-6vs">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="tc2-dA-8Zj"/>
                                                     </constraints>
@@ -553,7 +553,7 @@
                                         </view>
                                         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="284-W7-Z8D">
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-Hj-O57">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-Hj-O57">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="dYp-6R-vFT"/>
                                                     </constraints>
