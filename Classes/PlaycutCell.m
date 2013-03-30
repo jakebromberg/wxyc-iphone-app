@@ -64,10 +64,10 @@
 
 - (IBAction)favorite:(id)sender
 {
-	if ([[self.entity valueForKey:@"favorite"] isEqual:@(YES)])
+	if ([[self.entity valueForKey:@"favorite"] isEqual:@YES])
 		[UIAlertView alertViewWithTitle:nil message:@"Unlove this track, for real?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unlove"] onDismiss:^(int buttonIndex)
 		 {
-			 [self.entity setValue:@(NO) forKey:@"favorite"];
+			 [self.entity setValue:@NO forKey:@"favorite"];
 			 [self.entity.managedObjectContext saveToPersistentStoreAndWait];
 			 [self refreshFavoriteIcon];
 		 } onCancel:^{
@@ -75,7 +75,7 @@
 		 }];
 	else
 	{
-		[self.entity setValue:@(YES) forKey:@"favorite"];
+		[self.entity setValue:@YES forKey:@"favorite"];
 		[self.entity.managedObjectContext saveToPersistentStoreAndWait];
 		[self refreshFavoriteIcon];
 	}
@@ -146,7 +146,12 @@
 		void (^completionHandler)(UIImage*, NSError*, SDImageCacheType) = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
 		{
 			if (!error)
+			{
 				[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
+				__albumArt.layer.shouldRasterize = YES;
+
+				[[NSManagedObjectContext defaultContext] saveToPersistentStore:nil];
+			}
 		};
 		
 		void (^successHandler)(NSString*) = ^(NSString *url) {
