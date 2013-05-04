@@ -41,10 +41,10 @@ NSString* baseURL = @"http://wxyc.info/";
 - (RKResponseDescriptor *)playcutMapping
 {
 	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Playcut" inManagedObjectStore:_objectManager.managedObjectStore];
-	mapping.identificationAttributes = @[@"playlistEntryID"] ;
+	mapping.identificationAttributes = @[@"id"] ;
 	
 	[mapping addAttributeMappingsFromDictionary:@{
-		 @"id": @"playlistEntryID",
+		 @"id" : @"id",
 		 @"chronOrderID": @"chronOrderID",
 		 @"hour": @"hour",
 		 @"artistName": @"artist",
@@ -61,13 +61,14 @@ NSString* baseURL = @"http://wxyc.info/";
 - (RKResponseDescriptor *)breakpointMapping
 {
 	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Breakpoint" inManagedObjectStore:_objectManager.managedObjectStore];
-	mapping.identificationAttributes = @[@"playlistEntryID"] ;
-	
+
 	[mapping addAttributeMappingsFromDictionary:@{
-		 @"id": @"playlistEntryID",
-		 @"chronOrderID": @"chronOrderID",
-		 @"hour": @"hour"
+	 @"id": @"id",
+	 @"chronOrderID": @"chronOrderID",
+	 @"hour": @"hour"
 	 }];
+	
+	mapping.identificationAttributes = @[@"id"] ;
 	
 	return [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:@"breakpoints" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 }
@@ -75,13 +76,13 @@ NSString* baseURL = @"http://wxyc.info/";
 - (RKResponseDescriptor *)talksetMapping
 {
 	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Talkset" inManagedObjectStore:_objectManager.managedObjectStore];
-	mapping.identificationAttributes = @[@"playlistEntryID"] ;
-	
 	[mapping addAttributeMappingsFromDictionary:@{
-		 @"id": @"playlistEntryID",
-		 @"chronOrderID": @"chronOrderID",
-		 @"hour": @"hour"
+	 @"id": @"id",
+	 @"chronOrderID": @"chronOrderID",
+	 @"hour": @"hour"
 	 }];
+	
+	mapping.identificationAttributes = @[@"id"] ;
 	
 	return [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:@"talksets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 }
