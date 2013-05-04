@@ -162,7 +162,7 @@
                                         </view>
                                         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXq-Um-xPu">
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-0I-6vs">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-0I-6vs">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="tc2-dA-8Zj"/>
                                                     </constraints>
@@ -326,19 +326,12 @@
                                                         <constraint firstAttribute="height" constant="27" id="XnO-ti-y8M"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcM-js-Upq">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcM-js-Upq">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="207" id="lz7-Or-den"/>
                                                     </constraints>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="1:00">
-                                                            <attributes>
-                                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                                <font key="NSFont" size="17" name="Helvetica-Light"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -553,7 +546,7 @@
                                         </view>
                                         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="284-W7-Z8D">
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-Hj-O57">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-Hj-O57">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="dYp-6R-vFT"/>
                                                     </constraints>
