@@ -13,10 +13,7 @@
 #import "Talkset.h"
 #import "Breakpoint.h"
 
-@interface PlaylistMapping() {
-	RKManagedObjectStore* objectStore;
-	NSArray *playlistClasses;
-}
+@interface PlaylistMapping()
 
 @property (readonly) RKResponseDescriptor *playcutMapping;
 @property (readonly) RKResponseDescriptor *talksetMapping;
@@ -26,7 +23,7 @@
 
 @implementation PlaylistMapping
 
-NSString* baseURL = @"http://wxyc.info/";
+static NSString* baseURL = @"http://wxyc.info/";
 
 - (void)initializeObjectManager
 {
@@ -63,9 +60,9 @@ NSString* baseURL = @"http://wxyc.info/";
 	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Breakpoint" inManagedObjectStore:_objectManager.managedObjectStore];
 
 	[mapping addAttributeMappingsFromDictionary:@{
-	 @"id": @"id",
-	 @"chronOrderID": @"chronOrderID",
-	 @"hour": @"hour"
+		@"id": @"id",
+		@"chronOrderID": @"chronOrderID",
+		@"hour": @"hour"
 	 }];
 	
 	mapping.identificationAttributes = @[@"id"] ;
@@ -77,9 +74,9 @@ NSString* baseURL = @"http://wxyc.info/";
 {
 	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Talkset" inManagedObjectStore:_objectManager.managedObjectStore];
 	[mapping addAttributeMappingsFromDictionary:@{
-	 @"id": @"id",
-	 @"chronOrderID": @"chronOrderID",
-	 @"hour": @"hour"
+		@"id": @"id",
+		@"chronOrderID": @"chronOrderID",
+		@"hour": @"hour"
 	 }];
 	
 	mapping.identificationAttributes = @[@"id"] ;
