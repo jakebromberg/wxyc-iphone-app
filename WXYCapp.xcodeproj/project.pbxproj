@@ -10,6 +10,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230EB0FC127600210065308D /* CoreAudio.framework */; };
+		2318562C173B274B00F15CC6 /* no-favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318562B173B274B00F15CC6 /* no-favorites.png */; };
 		2325E0EF1288A70800B064BB /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325E0EA1288A70800B064BB /* Playcut.m */; };
 		232E24DE1267A7ED007F7679 /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24C81267A7ED007F7679 /* about_icon.png */; };
 		232E24E11267A7ED007F7679 /* Default-inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CB1267A7ED007F7679 /* Default-inv.png */; };
@@ -197,6 +198,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		230EB0FC127600210065308D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		2318562B173B274B00F15CC6 /* no-favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-favorites.png"; sourceTree = "<group>"; };
 		2325E0E91288A70800B064BB /* Playcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playcut.h; path = Models/Playcut.h; sourceTree = "<group>"; };
 		2325E0EA1288A70800B064BB /* Playcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playcut.m; path = Models/Playcut.m; sourceTree = "<group>"; };
 		232E24C81267A7ED007F7679 /* about_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_icon.png; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 		2328C6891060107500063811 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2318562B173B274B00F15CC6 /* no-favorites.png */,
 				23AEB9E316F615D500E2EBB1 /* Clock */,
 				23B09AC216EEA05B003C2173 /* chat.png */,
 				237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */,
@@ -1126,6 +1129,7 @@
 				23AEB9DF16F615CE00E2EBB1 /* clock-10.png in Resources */,
 				23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */,
 				23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */,
+				2318562C173B274B00F15CC6 /* no-favorites.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

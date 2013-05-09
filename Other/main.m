@@ -1,4 +1,4 @@
- #import <UIKit/UIKit.h>
+#import <UIKit/UIKit.h>
 #import "WXYCAppDelegate.h"
 
 int main(int argc, char *argv[]) {

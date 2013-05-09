@@ -44,11 +44,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+	if (self.favoritesArray.count == 0)
+		return 2;
+	
 	return self.favoritesArray.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	if (self.favoritesArray.count == 0 && indexPath.row == 1)
+		return [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];
+	
 	if (indexPath.row == 0)
 		return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
 	
@@ -61,6 +67,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	if (self.favoritesArray.count == 0 && indexPath.row == 1)
+	{
+		self.tableView.scrollEnabled = NO;
+		return 360.f;
+	}
+	
 	if (indexPath.row == 0)
 		return 40;
 	
