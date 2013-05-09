@@ -7,3 +7,6 @@
 [submodule "Classes/Libraries/MKBlockAdditions"]
 	path = Classes/Libraries/MKBlockAdditions
 	url = git@github.com:MugunthKumar/UIKitCategoryAdditions.git
+[submodule "Classes/Libraries/NXEmptyView"]
+	path = Classes/Libraries/NXEmptyView
+	url = git@github.com:nxtbgthng/UITableView-NXEmptyView.git
