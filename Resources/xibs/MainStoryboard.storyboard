@@ -692,33 +692,34 @@
                                     <outlet property="titleLabel" destination="Vkj-F5-hkj" id="YHu-F4-A36"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EmptyCell" rowHeight="320" id="m8j-hz-wLS" userLabel="Empty Cell">
-                                <rect key="frame" x="0.0" y="422" width="320" height="320"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="no-favorites.png" translatesAutoresizingMaskIntoConstraints="NO" id="f7Y-Zx-cQj"/>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="f7Y-Zx-cQj" firstAttribute="leading" secondItem="m8j-hz-wLS" secondAttribute="leading" type="default" id="74P-UF-Y0U"/>
-                                    <constraint firstItem="f7Y-Zx-cQj" firstAttribute="trailing" secondItem="m8j-hz-wLS" secondAttribute="trailing" type="default" id="Abf-5S-Q2i"/>
-                                    <constraint firstItem="f7Y-Zx-cQj" firstAttribute="bottom" secondItem="m8j-hz-wLS" secondAttribute="bottom" type="default" id="Fwr-sG-5l5"/>
-                                    <constraint firstItem="f7Y-Zx-cQj" firstAttribute="top" secondItem="m8j-hz-wLS" secondAttribute="top" type="default" id="tbu-uH-egM"/>
-                                </constraints>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Xb5-pU-15i" id="Nhi-hW-IYr"/>
                             <outlet property="delegate" destination="Xb5-pU-15i" id="Ydw-yY-zHK"/>
+                            <outlet property="nxEV_emptyView" destination="m8j-hz-wLS" id="p4l-et-u5x"/>
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="favorites-tabbar-icon.png" id="rXU-gk-dVv"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcC-6U-Oii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EmptyCell" rowHeight="320" id="m8j-hz-wLS" userLabel="Empty Cell">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="no-favorites.png" translatesAutoresizingMaskIntoConstraints="NO" id="f7Y-Zx-cQj"/>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <constraints>
+                        <constraint firstItem="f7Y-Zx-cQj" firstAttribute="leading" secondItem="m8j-hz-wLS" secondAttribute="leading" type="default" id="74P-UF-Y0U"/>
+                        <constraint firstItem="f7Y-Zx-cQj" firstAttribute="trailing" secondItem="m8j-hz-wLS" secondAttribute="trailing" type="default" id="Abf-5S-Q2i"/>
+                        <constraint firstItem="f7Y-Zx-cQj" firstAttribute="bottom" secondItem="m8j-hz-wLS" secondAttribute="bottom" type="default" id="Fwr-sG-5l5"/>
+                        <constraint firstItem="f7Y-Zx-cQj" firstAttribute="top" secondItem="m8j-hz-wLS" secondAttribute="top" type="default" id="tbu-uH-egM"/>
+                    </constraints>
+                </tableViewCell>
             </objects>
             <point key="canvasLocation" x="373" y="1764"/>
         </scene>
@@ -760,68 +761,6 @@
         <image name="search-share.png" width="86" height="86"/>
         <image name="twitter-share.png" width="86" height="86"/>
     </resources>
-    <classes>
-        <class className="AboutViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
-        </class>
-        <class className="BreakpointCell" superclassName="DelineationCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BreakpointCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="CassetteReelViewController" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CassetteReelViewController.h"/>
-        </class>
-        <class className="DelineationCell" superclassName="LivePlaylistTableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DelineationCell.h"/>
-        </class>
-        <class className="FavoritesTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
-        </class>
-        <class className="LivePlaylistTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LivePlaylistTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="shadowView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="LivePlaylistTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LivePlaylistTableViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PlaycutCell" superclassName="LivePlaylistTableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaycutCell.h"/>
-            <relationships>
-                <relationship kind="action" name="favorite:"/>
-                <relationship kind="action" name="search:"/>
-                <relationship kind="action" name="shareOnFacebook:"/>
-                <relationship kind="action" name="shareOnTwitter:"/>
-                <relationship kind="outlet" name="albumArt" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="shareBar" candidateClass="UIView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PlayerCell" superclassName="LivePlaylistTableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayerCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="leftCassetteReel" candidateClass="CassetteReelViewController"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightCassetteReel" candidateClass="CassetteReelViewController"/>
-            </relationships>
-        </class>
-        <class className="TalksetCell" superclassName="DelineationCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TalksetCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="someLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

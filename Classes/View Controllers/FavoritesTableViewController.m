@@ -45,7 +45,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (self.favoritesArray.count == 0)
-		return 2;
+	{
+		tableView.scrollEnabled = NO;
+		return 0;
+	}
 	
 	return self.favoritesArray.count + 1;
 }

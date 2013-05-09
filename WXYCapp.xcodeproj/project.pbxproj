@@ -107,6 +107,7 @@
 		23AEB9DE16F615CE00E2EBB1 /* clock-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 23AEB9DC16F615CE00E2EBB1 /* clock-8.png */; };
 		23AEB9DF16F615CE00E2EBB1 /* clock-10.png in Resources */ = {isa = PBXBuildFile; fileRef = 23AEB9DD16F615CE00E2EBB1 /* clock-10.png */; };
 		23B09AC316EEA05B003C2173 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B09AC216EEA05B003C2173 /* chat.png */; };
+		23B10953173C4A4700257A73 /* UITableView+NXEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B10952173C4A4000257A73 /* UITableView+NXEmptyView.m */; };
 		23B32A6612690875008414F4 /* radio_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A6512690875008414F4 /* radio_icon@2x.png */; };
 		23B32A6B1269089D008414F4 /* Station-Updates-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A6A1269089D008414F4 /* Station-Updates-icon@2x.png */; };
 		23B32A7312690ECC008414F4 /* playlist_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B32A7212690ECC008414F4 /* playlist_icon@2x.png */; };
@@ -343,6 +344,8 @@
 		23AEB9DC16F615CE00E2EBB1 /* clock-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-8.png"; sourceTree = "<group>"; };
 		23AEB9DD16F615CE00E2EBB1 /* clock-10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-10.png"; sourceTree = "<group>"; };
 		23B09AC216EEA05B003C2173 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		23B10951173C4A4000257A73 /* UITableView+NXEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UITableView+NXEmptyView.h"; path = "Libraries/NXEmptyView/UITableView+NXEmptyView/UITableView+NXEmptyView.h"; sourceTree = "<group>"; };
+		23B10952173C4A4000257A73 /* UITableView+NXEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UITableView+NXEmptyView.m"; path = "Libraries/NXEmptyView/UITableView+NXEmptyView/UITableView+NXEmptyView.m"; sourceTree = "<group>"; };
 		23B32A6512690875008414F4 /* radio_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio_icon@2x.png"; sourceTree = "<group>"; };
 		23B32A6A1269089D008414F4 /* Station-Updates-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Station-Updates-icon@2x.png"; sourceTree = "<group>"; };
 		23B32A7212690ECC008414F4 /* playlist_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist_icon@2x.png"; sourceTree = "<group>"; };
@@ -801,6 +804,15 @@
 			name = Clock;
 			sourceTree = "<group>";
 		};
+		23B1094D173C4A3400257A73 /* UITableView+NXEmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				23B10951173C4A4000257A73 /* UITableView+NXEmptyView.h */,
+				23B10952173C4A4000257A73 /* UITableView+NXEmptyView.m */,
+			);
+			name = "UITableView+NXEmptyView";
+			sourceTree = "<group>";
+		};
 		23B32D1D126E3268008414F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -832,6 +844,7 @@
 		23BF128B113B0E2100A72DE7 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				23B1094D173C4A3400257A73 /* UITableView+NXEmptyView */,
 				238AE95516F5407800779128 /* MKAdditions */,
 				23648A6016F5293E00DF2C27 /* MagicalRecord */,
 				235DE11616ED2BAC005640E9 /* SDWebImage */,
@@ -1199,6 +1212,7 @@
 				238AE95F16F5407800779128 /* UIAlertView+MKBlockAdditions.m in Sources */,
 				23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */,
 				23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */,
+				23B10953173C4A4700257A73 /* UITableView+NXEmptyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
