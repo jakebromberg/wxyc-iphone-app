@@ -1244,7 +1244,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1269,7 +1269,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = WXYC;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FC491A09-0AFE-4851-B665-FF423E82ABA8";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
