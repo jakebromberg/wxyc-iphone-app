@@ -48,21 +48,23 @@
 	{
 		tableView.scrollEnabled = NO;
 		return 0;
+	} else
+	{
+		tableView.scrollEnabled = YES;
+		return self.favoritesArray.count;
 	}
-	
-	return self.favoritesArray.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (self.favoritesArray.count == 0 && indexPath.row == 1)
+	if (self.favoritesArray.count == 0 && indexPath.row == 0)
 		return [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];
-	
-	if (indexPath.row == 0)
-		return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
+//
+//	if (indexPath.row == 0)
+//		return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
 	
     PlaycutCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlaycutCell"];
-	cell.entity = _favoritesArray[indexPath.row - 1];
+	cell.entity = _favoritesArray[indexPath.row];
     cell.selected = NO;
 	
 	return cell;
@@ -76,8 +78,8 @@
 		return 360.f;
 	}
 	
-	if (indexPath.row == 0)
-		return 40;
+//	if (indexPath.row == 0)
+//		return 40;
 	
 	return [PlaycutCell height];
 }
