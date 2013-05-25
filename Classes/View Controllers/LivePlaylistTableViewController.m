@@ -15,6 +15,8 @@
 #import "NSString+Additions.h"
 #import "AudioStreamController.h"
 
+#define NUMBER_OF_HEADER_CELLS 1
+
 @interface LivePlaylistTableViewController ()
 
 @property (nonatomic, strong) PlaylistController *livePlaylistCtrl;
@@ -59,22 +61,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return self.livePlaylistCtrl.playlist.count + 2;
+	return self.livePlaylistCtrl.playlist.count + NUMBER_OF_HEADER_CELLS;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.row == 0)
-		return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
+//	if (indexPath.row == 0)
+//		return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
 
-	if (indexPath.row == 1)
+	if (indexPath.row == 0)
 		return [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
 	
-	if (indexPath.row - 2 >= self.livePlaylistCtrl.playlist.count)
+	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= self.livePlaylistCtrl.playlist.count)
 		return nil;
 	
 	LivePlaylistTableViewCell *cell;
-	NSManagedObject *playlistEntry = self.livePlaylistCtrl.playlist[indexPath.row - 2];
+	NSManagedObject *playlistEntry = self.livePlaylistCtrl.playlist[indexPath.row - NUMBER_OF_HEADER_CELLS];
 	NSString *entryType = [playlistEntry.class.description append:@"Cell"];
 	
 	@try {
@@ -98,20 +100,20 @@
 
 - (NSString *)classNameForCellAtIndexPath:(NSIndexPath*)indexPath
 {
-	NSManagedObject *playlistEntry = (self.livePlaylistCtrl.playlist)[indexPath.row - 2];
+	NSManagedObject *playlistEntry = (self.livePlaylistCtrl.playlist)[indexPath.row - NUMBER_OF_HEADER_CELLS];
 	return [playlistEntry.class.description append:@"Cell"];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.row == 1)
+	if (indexPath.row == 0)
 		return [PlayerCell height];
 	
-	if (indexPath.row == 0)
-		return 40;
+//	if (indexPath.row == 0)
+//		return 40;
 	
 	//boundary case
-	if (indexPath.row - 2 >= self.livePlaylistCtrl.playlist.count)
+	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= self.livePlaylistCtrl.playlist.count)
 		return 0;
 	
 	return [NSClassFromString([self classNameForCellAtIndexPath:indexPath]) height];
@@ -135,7 +137,7 @@
 			NSMutableArray *newIndexPaths = [NSMutableArray arrayWithCapacity:[newEntries count]];
 			
 			for (int i = 0; i < [newEntries count]; i++) {
-				[newIndexPaths addObject:[NSIndexPath indexPathForItem:i+2 inSection:0]];
+				[newIndexPaths addObject:[NSIndexPath indexPathForItem:i + NUMBER_OF_HEADER_CELLS inSection:0]];
 			}
 			
 			[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];

@@ -124,6 +124,8 @@
 		23C2A9EA128A59D100D61A4A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2A9E9128A59D100D61A4A /* SystemConfiguration.framework */; };
 		23C2AA38128A61BE00D61A4A /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C2AA37128A61BE00D61A4A /* delete@2x.png */; };
 		23C2AB1B128A6F8100D61A4A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */; };
+		23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */; };
+		23CD7B9617515FFD00BD4ED5 /* NavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */; };
 		23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */; };
 		23DBC351113F801200C19BD0 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* WebView.xib */; };
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
@@ -363,6 +365,9 @@
 		23C2A9E9128A59D100D61A4A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		23C2AA37128A61BE00D61A4A /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXYCTabBarControllerViewController.h; path = "Classes/View Controllers/WXYCTabBarControllerViewController.h"; sourceTree = SOURCE_ROOT; };
+		23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXYCTabBarControllerViewController.m; path = "Classes/View Controllers/WXYCTabBarControllerViewController.m"; sourceTree = SOURCE_ROOT; };
+		23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBar.xib; sourceTree = "<group>"; };
 		23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
 		23DBC34E113F801200C19BD0 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		23E0A59B16F6590C003CC6A8 /* Playlist2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playlist2.xcdatamodel; sourceTree = "<group>"; };
@@ -458,7 +463,7 @@
 			children = (
 				235E420D168CC2830088E19F /* Categories */,
 				2324AF3B1509B9F00080ACF2 /* Controllers */,
-				23BF148C113C06BC00A72DE7 /* Views */,
+				23BF148C113C06BC00A72DE7 /* Views and ViewControllers */,
 				23BF128B113B0E2100A72DE7 /* Libraries */,
 				23B32D1D126E3268008414F4 /* Models */,
 				23BF128C113B10EE00A72DE7 /* View Controllers */,
@@ -872,7 +877,7 @@
 			name = AboutViewController;
 			sourceTree = "<group>";
 		};
-		23BF148C113C06BC00A72DE7 /* Views */ = {
+		23BF148C113C06BC00A72DE7 /* Views and ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */,
@@ -881,7 +886,11 @@
 				23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */,
 				23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */,
 				2353A13F12810065004F9A11 /* AlbumCoverSearch */,
+				23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */,
+				23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */,
+				23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */,
 			);
+			name = "Views and ViewControllers";
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -1143,6 +1152,7 @@
 				23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */,
 				23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */,
 				2318562C173B274B00F15CC6 /* no-favorites.png in Resources */,
+				23CD7B9617515FFD00BD4ED5 /* NavigationBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,6 +1223,7 @@
 				23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */,
 				23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */,
 				23B10953173C4A4700257A73 /* UITableView+NXEmptyView.m in Sources */,
+				23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
