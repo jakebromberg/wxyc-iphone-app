@@ -66,9 +66,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//	if (indexPath.row == 0)
-//		return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
-
 	if (indexPath.row == 0)
 		return [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
 	
@@ -108,9 +105,6 @@
 {
 	if (indexPath.row == 0)
 		return [PlayerCell height];
-	
-//	if (indexPath.row == 0)
-//		return 40;
 	
 	//boundary case
 	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= self.livePlaylistCtrl.playlist.count)
