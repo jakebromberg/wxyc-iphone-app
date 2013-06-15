@@ -7,7 +7,6 @@
 //
 
 #import <RestKit/RestKit.h>
-#import "WXYCDataStack.h"
 #import "PlaylistMapping.h"
 #import "Playcut.h"
 #import "Talkset.h"

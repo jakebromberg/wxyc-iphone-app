@@ -5,7 +5,6 @@
 
 #import "WXYCAppDelegate.h"
 #import "PlaylistController.h"
-#import "WXYCDataStack.h"
 #import "Playcut.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>

@@ -8,7 +8,6 @@
 
 #import <CoreData/CoreData.h>
 #import "FavoritesTableViewController.h"
-#import "WXYCDataStack.h"
 #import "Playcut.h"
 #import "PlaycutCell.h"
 #import "UIAlertView+MKBlockAdditions.h"
@@ -59,10 +58,7 @@
 {
 	if (self.favoritesArray.count == 0 && indexPath.row == 0)
 		return [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];
-//
-//	if (indexPath.row == 0)
-//		return [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
-	
+
     PlaycutCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlaycutCell"];
 	cell.entity = _favoritesArray[indexPath.row];
     cell.selected = NO;
@@ -77,10 +73,7 @@
 		self.tableView.scrollEnabled = NO;
 		return 360.f;
 	}
-	
-//	if (indexPath.row == 0)
-//		return 40;
-	
+
 	return [PlaycutCell height];
 }
 

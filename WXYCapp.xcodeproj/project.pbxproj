@@ -146,7 +146,6 @@
 		23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE398F1527EC380006CDA5 /* GoogleImageSearch.m */; };
 		23EE3A081527F07A0006CDA5 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39971527EC5B0006CDA5 /* WebViewController.m */; };
 		23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */; };
-		23EE3A0C1527F07A0006CDA5 /* WXYCDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE399B1527EC660006CDA5 /* WXYCDataStack.m */; };
 		23EE3A231527F4090006CDA5 /* Talkset.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE3A211527F3D00006CDA5 /* Talkset.m */; };
 		23F7A8101646E34E008E97FD /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23EF279C14F5DC4100EA7ACB /* libRestKit.a */; };
 		23F8176216EBC35E005BF24F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */; };
@@ -407,8 +406,6 @@
 		23EE39971527EC5B0006CDA5 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYCAppDelegate.h; sourceTree = "<group>"; };
 		23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXYCAppDelegate.m; sourceTree = "<group>"; };
-		23EE399A1527EC660006CDA5 /* WXYCDataStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYCDataStack.h; sourceTree = "<group>"; };
-		23EE399B1527EC660006CDA5 /* WXYCDataStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXYCDataStack.m; sourceTree = "<group>"; };
 		23EE3A201527F3D00006CDA5 /* Talkset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Talkset.h; sourceTree = "<group>"; };
 		23EE3A211527F3D00006CDA5 /* Talkset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Talkset.m; sourceTree = "<group>"; };
 		23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
@@ -469,8 +466,6 @@
 				23BF128C113B10EE00A72DE7 /* View Controllers */,
 				23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */,
 				23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */,
-				23EE399A1527EC660006CDA5 /* WXYCDataStack.h */,
-				23EE399B1527EC660006CDA5 /* WXYCDataStack.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1183,7 +1178,6 @@
 				23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */,
 				23EE3A081527F07A0006CDA5 /* WebViewController.m in Sources */,
 				23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */,
-				23EE3A0C1527F07A0006CDA5 /* WXYCDataStack.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				234A74D5153B6D3100C30053 /* PlaylistMapping.m in Sources */,
 				2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */,
