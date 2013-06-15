@@ -10,7 +10,7 @@
 #import "AudioStreamController.h"
 #include <AVFoundation/AVFoundation.h>
 #include <AudioToolbox/AudioToolbox.h>
-#import <AVFoundation/AVFoundation.h>
+//#import <AVFoundation/AVFoundation.h>
 
 @interface AudioStreamController()
 
@@ -35,10 +35,6 @@ static AudioStreamController *wxyc;
 
 - (void)start
 {
-	NSError* error = nil;
-	[[AVAudioSession sharedInstance] setActive:YES error:&error];
-	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-
 	[self.player play];
 	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
