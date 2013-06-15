@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="0er-G7-ubv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2SK-M0-QIy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -9,7 +9,7 @@
             <objects>
                 <tableViewController id="w6z-1c-RlV" customClass="LivePlaylistTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fac-2N-zc8">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -162,7 +162,7 @@
                                         </view>
                                         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXq-Um-xPu">
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-0I-6vs">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-0I-6vs">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="tc2-dA-8Zj"/>
                                                     </constraints>
@@ -441,7 +441,7 @@
             <objects>
                 <viewController id="hbN-Xh-kZm" customClass="AboutViewController" sceneMemberID="viewController">
                     <webView key="view" contentMode="scaleToFill" id="tfY-Ti-2GI">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.15686275064945221" green="0.14901961386203766" blue="0.14901961386203766" alpha="1" colorSpace="deviceRGB"/>
                         <connections>
@@ -459,7 +459,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="" title="Favorites" id="Xb5-pU-15i" customClass="FavoritesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="360" sectionHeaderHeight="22" sectionFooterHeight="22" id="bs8-2M-pnI">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -546,7 +546,7 @@
                                         </view>
                                         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="284-W7-Z8D">
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-Hj-O57">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-Hj-O57">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="dYp-6R-vFT"/>
                                                     </constraints>
@@ -696,37 +696,43 @@
                         <connections>
                             <outlet property="dataSource" destination="Xb5-pU-15i" id="Nhi-hW-IYr"/>
                             <outlet property="delegate" destination="Xb5-pU-15i" id="Ydw-yY-zHK"/>
-                            <outlet property="nxEV_emptyView" destination="m8j-hz-wLS" id="p4l-et-u5x"/>
+                            <outlet property="nxEV_emptyView" destination="cjM-Cj-egk" id="uYT-mL-MsJ"/>
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="favorites-tabbar-icon.png" id="rXU-gk-dVv"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcC-6U-Oii" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EmptyCell" rowHeight="320" id="m8j-hz-wLS" userLabel="Empty Cell">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                <containerView contentMode="scaleToFill" id="cjM-Cj-egk">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="no-favorites.png" translatesAutoresizingMaskIntoConstraints="NO" id="f7Y-Zx-cQj"/>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </view>
-                    <constraints>
-                        <constraint firstItem="f7Y-Zx-cQj" firstAttribute="leading" secondItem="m8j-hz-wLS" secondAttribute="leading" type="default" id="74P-UF-Y0U"/>
-                        <constraint firstItem="f7Y-Zx-cQj" firstAttribute="trailing" secondItem="m8j-hz-wLS" secondAttribute="trailing" type="default" id="Abf-5S-Q2i"/>
-                        <constraint firstItem="f7Y-Zx-cQj" firstAttribute="bottom" secondItem="m8j-hz-wLS" secondAttribute="bottom" type="default" id="Fwr-sG-5l5"/>
-                        <constraint firstItem="f7Y-Zx-cQj" firstAttribute="top" secondItem="m8j-hz-wLS" secondAttribute="top" type="default" id="tbu-uH-egM"/>
-                    </constraints>
-                </tableViewCell>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <connections>
+                        <segue destination="ZQg-YF-lBi" kind="embed" id="WpH-G6-Tya"/>
+                    </connections>
+                </containerView>
             </objects>
             <point key="canvasLocation" x="373" y="1764"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="6eT-lh-iNS">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="2SK-M0-QIy" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kya-WG-y1t">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0er-G7-ubv" kind="relationship" relationship="rootViewController" id="4qd-2L-dZI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GoA-el-15j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1109" y="1070"/>
+        </scene>
+        <!--Tab Bar Controller View Controller-->
         <scene sceneID="Roo-mD-COq">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="0er-G7-ubv" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="0er-G7-ubv" customClass="WXYCTabBarControllerViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Isc-5m-VCz"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="xoR-ES-jf1">
@@ -743,6 +749,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Wm-Lq-xSH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-329" y="1096"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7p5-JE-7nX">
+            <objects>
+                <viewController id="ZQg-YF-lBi" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nuL-Kp-sJ2">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="no-favorites.png" translatesAutoresizingMaskIntoConstraints="NO" id="f7Y-Zx-cQj">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="ppF-qO-vv8"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f7Y-Zx-cQj" firstAttribute="centerY" secondItem="nuL-Kp-sJ2" secondAttribute="centerY" type="default" id="5wA-jh-k08"/>
+                            <constraint firstItem="f7Y-Zx-cQj" firstAttribute="leading" secondItem="nuL-Kp-sJ2" secondAttribute="leading" type="default" id="99W-m8-1EG"/>
+                            <constraint firstItem="f7Y-Zx-cQj" firstAttribute="trailing" secondItem="nuL-Kp-sJ2" secondAttribute="trailing" type="default" id="WBr-3h-KTy"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AsG-xw-jBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
@@ -761,6 +793,77 @@
         <image name="search-share.png" width="86" height="86"/>
         <image name="twitter-share.png" width="86" height="86"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+        </class>
+        <class className="BreakpointCell" superclassName="DelineationCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BreakpointCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="CassetteReelViewController" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CassetteReelViewController.h"/>
+        </class>
+        <class className="DelineationCell" superclassName="LivePlaylistTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DelineationCell.h"/>
+        </class>
+        <class className="FavoritesTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
+        </class>
+        <class className="LivePlaylistTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LivePlaylistTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="shadowView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="LivePlaylistTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LivePlaylistTableViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PlaycutCell" superclassName="LivePlaylistTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaycutCell.h"/>
+            <relationships>
+                <relationship kind="action" name="favorite:"/>
+                <relationship kind="action" name="search:"/>
+                <relationship kind="action" name="shareOnFacebook:"/>
+                <relationship kind="action" name="shareOnTwitter:"/>
+                <relationship kind="outlet" name="albumArt" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="shareBar" candidateClass="UIView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PlayerCell" superclassName="LivePlaylistTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayerCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="leftCassetteReel" candidateClass="CassetteReelViewController"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightCassetteReel" candidateClass="CassetteReelViewController"/>
+            </relationships>
+        </class>
+        <class className="TalksetCell" superclassName="DelineationCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TalksetCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="someLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nxEV_emptyView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="WXYCTabBarControllerViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WXYCTabBarControllerViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
