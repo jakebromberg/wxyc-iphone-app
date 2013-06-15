@@ -7,6 +7,8 @@
 #import "PlaylistController.h"
 #import "WXYCDataStack.h"
 #import "Playcut.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 // Use a class extension to expose access to MagicalRecord's private setter methods
 
@@ -21,15 +23,38 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
+	// bootstrap the app
+	[self configureAudioSession];
+	[self configureRootView];
+	[self configureCoreData];
+	[self tidyUpCoreData];
+	[self configureLivePlaylistController];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+	[self tidyUpCoreData];
+}
+
+#pragma mark - bootstrapping
+
+- (void)configureAudioSession
+{
+	NSError *sessionError = nil;
+	[[AVAudioSession sharedInstance] setDelegate:self];
+	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&sessionError];
+	
+	NSAssert(!sessionError, @"");
+	
+	UInt32 doChangeDefaultRoute = 1;
+	AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
+}
+
+- (void)configureRootView
+{
 	UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
 	UIView *navView = [[[NSBundle mainBundle] loadNibNamed:@"NavigationBar" owner:self.window.rootViewController options:nil] lastObject];
 	[navController.navigationBar insertSubview:navView atIndex:navController.navigationBar.subviews.count];
-	
-	[self configureCoreData];
-	[self tidyUpCoreData];
-	[self.livePlaylistCtrlr fetchPlaylist];
-	
-	[NSTimer scheduledTimerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 }
 
 - (void)configureCoreData
@@ -51,16 +76,6 @@
     objectManager.managedObjectStore = managedObjectStore;
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-	[self tidyUpCoreData];
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-	[self tidyUpCoreData];
-}
-
 - (void)tidyUpCoreData
 {
 	//Clean out unfavorited data
@@ -71,13 +86,16 @@
 	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 }
 
-- (PlaylistController *)livePlaylistCtrlr
+- (void)configureLivePlaylistController
 {
-	if (!_livePlaylistCtrlr)
-		_livePlaylistCtrlr = [[PlaylistController alloc] init];
+	[self.livePlaylistCtrlr fetchPlaylist];
 	
-	return _livePlaylistCtrlr;
+	[NSTimer scheduledTimerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 }
 
+- (PlaylistController *)livePlaylistCtrlr
+{
+	return _livePlaylistCtrlr ?: (_livePlaylistCtrlr = [[PlaylistController alloc] init]);
+}
 
 @end
