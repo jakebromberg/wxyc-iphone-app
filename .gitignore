@@ -6,3 +6,7 @@
 /WXYCapp.xcodeproj/xcuserdata/jbromberg.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
 provisioning/
 *.mobileprovision
+
+Classes/.DS_Store
+
+.DS_Store
