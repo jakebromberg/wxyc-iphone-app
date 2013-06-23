@@ -10,3 +10,6 @@
 [submodule "Classes/Libraries/NXEmptyView"]
 	path = Classes/Libraries/NXEmptyView
 	url = git@github.com:nxtbgthng/UITableView-NXEmptyView.git
+[submodule "Classes/Libraries/MTStatusBarOverlay"]
+	path = Classes/Libraries/MTStatusBarOverlay
+	url = git@github.com:myell0w/MTStatusBarOverlay.git
