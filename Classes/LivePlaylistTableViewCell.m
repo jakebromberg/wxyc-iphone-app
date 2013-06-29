@@ -18,6 +18,12 @@
 
 @implementation LivePlaylistTableViewCell
 
+- (id)initWithEntity:(NSManagedObject *)entity
+{
+	[self doesNotRecognizeSelector:_cmd];
+	return nil;
+}
+
 - (void)awakeFromNib
 {
 	self.containerView.layer.borderColor = [UIColor colorWithWhite:.70f alpha:1.f].CGColor;
@@ -36,12 +42,6 @@
 + (float)height
 {
 	return 44.0f;
-}
-
-- (id)initWithEntity:(NSManagedObject *)entity
-{
-	[self doesNotRecognizeSelector:_cmd];
-	return nil;
 }
 
 @end

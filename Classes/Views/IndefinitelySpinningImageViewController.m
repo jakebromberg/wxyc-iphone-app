@@ -11,6 +11,23 @@
 
 @implementation IndefinitelySpinningImageViewController
 
+#pragma mark initialization stuff
+
+- (void)initImageViewAnimation
+{
+	[self.imageView.layer addAnimation:[IndefinitelySpinningAnimation getAnimation] forKey:@"spinAnimation"];
+	[self pauseLayer:self.imageView.layer];
+}
+
+- (id)initWithImageView:(UIImageView*)imageView
+{
+	self = [super init];
+	self.imageView = imageView;
+	[self initImageViewAnimation];
+	
+	return self;
+}
+
 #pragma mark Public Methods
 
 - (void)animate:(BOOL)state
@@ -31,7 +48,7 @@
 	[self pauseLayer:self.imageView.layer];
 }
 
--(void)setImageView:(UIImageView *)imageView
+- (void)setImageView:(UIImageView *)imageView
 {
 	_imageView = imageView;
 	[self initImageViewAnimation];
@@ -55,23 +72,6 @@
 	
     CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
     layer.beginTime = timeSincePause;
-}
-
-#pragma mark initialization stuff
-
-- (void)initImageViewAnimation
-{
-	[self.imageView.layer addAnimation:[IndefinitelySpinningAnimation getAnimation] forKey:@"spinAnimation"];
-	[self pauseLayer:self.imageView.layer];
-}
-
-- (id)initWithImageView:(UIImageView*)imageView
-{
-	self = [super init];
-	self.imageView = imageView;
-	[self initImageViewAnimation];
-
-	return self;
 }
 
 @end

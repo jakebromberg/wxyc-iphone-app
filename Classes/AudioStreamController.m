@@ -10,7 +10,6 @@
 #import "AudioStreamController.h"
 #include <AVFoundation/AVFoundation.h>
 #include <AudioToolbox/AudioToolbox.h>
-//#import <AVFoundation/AVFoundation.h>
 
 @interface AudioStreamController()
 
@@ -20,6 +19,55 @@
 
 
 @implementation AudioStreamController
+
+- (id)initWithURL:(NSURL*)URL
+{
+	self = [super init];
+	
+	if (self)
+	{
+		_URL = URL;
+		[self addObserver:self forKeyPath:@"playerState" options:NSKeyValueObservingOptionNew context:NULL];
+	}
+	
+	return self;
+}
+
+- (void)dealloc
+{
+	[self removeObserver:self forKeyPath:@"player.status"];
+}
+
+#pragma mark - KVC/KVO Stuff
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if ([keyPath isEqualToString:@"player.status"])
+	{
+		if (self.player.status == AVPlayerStatusFailed)
+		{
+			self.player = nil;
+			[self player];
+		}
+	}
+}
+
++ (NSSet *)keyPathsForValuesAffectingIsPlaying
+{
+	return [NSSet setWithObject:@"playerState"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingPlayerState
+{
+	return [NSSet setWithArray:@[
+			@"player.currentItem.status",
+			@"player.currentItem.playbackLikelyToKeepUp",
+			@"player.currentItem.playbackBufferFull",
+			@"player.currentItem.playbackBufferEmpty"
+			]];
+}
+
+#pragma mark - WXYC Stuff
 
 static AudioStreamController *wxyc;
 
@@ -45,9 +93,38 @@ static AudioStreamController *wxyc;
 	[[UIApplication sharedApplication] endReceivingRemoteControlEvents];
 }
 
+#pragma mark - Getters
+
 - (BOOL)isPlaying
 {
-	return self.player.rate > 0;
+	switch (self.playerState) {
+		case AudioStreamControllerStateStopped:
+		case AudioStreamControllerStateError:
+		case AudioStreamControllerStateUnknown:
+			return NO;
+		default:
+			return YES;
+	}
+}
+
+- (AudioStreamControllerState)playerState
+{
+	if (self.player.currentItem.status == AVPlayerStatusFailed)
+		return AudioStreamControllerStateError;
+	
+	if (self.player.currentItem.status == AVPlayerStatusUnknown)
+		return AudioStreamControllerStateUnknown;
+	
+	if (self.player.currentItem.status == AVPlayerStatusReadyToPlay)
+	{
+		if (self.player.currentItem.playbackBufferEmpty && self.player.currentItem.playbackLikelyToKeepUp)
+			return AudioStreamControllerStateBuffering;
+
+		if (self.player.currentItem.playbackBufferFull || self.player.currentItem.playbackLikelyToKeepUp)
+			return AudioStreamControllerStatePlaying;
+	}
+	
+	return AudioStreamControllerStateStopped;
 }
 
 - (AVPlayer *)player
@@ -59,43 +136,6 @@ static AudioStreamController *wxyc;
 	}
 	
 	return _player;
-}
-
-#pragma mark
-
-- (void)dealloc
-{
-	[self removeObserver:self forKeyPath:@"player.status"];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"player.status"])
-	{
-		if (self.player.status == AVPlayerStatusFailed)
-		{
-			self.player = nil;
-			[self player];
-		}
-	}
-}
-
-- (id)initWithURL:(NSURL*)URL
-{
-	self = [super init];
-	
-	if (self)
-	{
-		_URL = URL;
-		[self addObserver:self forKeyPath:@"player.status" options:NSKeyValueObservingOptionNew context:NULL];
-	}
-	
-	return self;
-}
-
-+ (NSSet *)keyPathsForValuesAffectingIsPlaying
-{
-	return [NSSet setWithObject:@"player.rate"];
 }
 
 @end

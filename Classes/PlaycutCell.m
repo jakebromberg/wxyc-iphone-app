@@ -35,6 +35,68 @@
 
 @implementation PlaycutCell
 
+- (id)initWithEntity:(NSManagedObject *)entity
+{
+	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.class.description];
+	
+	if (self)
+	{
+		self.entity = entity;
+	}
+	
+	return self;
+}
+
+- (void)setEntity:(NSManagedObject *)entity
+{
+	[super setEntity:entity];
+	
+	self.artistLabel.text = [entity valueForKey:@"artist"] ?: @"";
+	self.titleLabel.text = [entity valueForKey:@"song"] ?: @"";
+	
+	if ([self.entity valueForKey:@"primaryImage"])
+	{
+		self.albumArt.image = [UIImage imageWithData:[self.entity valueForKey:@"primaryImage"]];
+	} else {
+		self.albumArt.image = [UIImage imageNamed:@"album_cover_placeholder.PNG"];
+		
+		__weak NSManagedObject *__entity = self.entity;
+		__weak UIImageView *__albumArt = self.albumArt;
+		
+		void (^completionHandler)(UIImage*, NSError*, SDImageCacheType) = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
+		{
+			if (!error)
+			{
+				[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
+				__albumArt.layer.shouldRasterize = YES;
+				
+				[[NSManagedObjectContext defaultContext] saveToPersistentStore:nil];
+			}
+		};
+		
+		void (^successHandler)(NSString*) = ^(NSString *url) {
+			[__albumArt setImageWithURL:[NSURL URLWithString:url] completed:completionHandler];
+		};
+		
+		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] success:successHandler failure:nil finally:nil];
+	}
+	
+	[self refreshFavoriteIcon];
+}
+
+- (void)refreshFavoriteIcon
+{
+	UIImage *favoriteIcon = [self favoriteIconImageForState:[[self.entity valueForKey:@"favorite"] isEqual:@(YES)]];
+	[self.favoriteButton setImage:favoriteIcon forState:UIControlStateNormal];
+}
+
+- (UIImage *)favoriteIconImageForState:(BOOL)state
+{
+	NSString *imageName = state ? @"favorites-share-favorited.png" : @"favorites-share.png";
+	
+	return [UIImage imageNamed:imageName];
+}
+
 #pragma - share stuff
 
 - (IBAction)shareOnFacebook:(id)sender
@@ -117,63 +179,6 @@
 + (float)height
 {
 	return 360.f;
-}
-
-- (void)refreshFavoriteIcon
-{
-	if ([[self.entity valueForKey:@"favorite"] isEqual:@(YES)])
-		[self.favoriteButton setImage:[UIImage imageNamed:@"favorites-share-favorited.png"] forState:UIControlStateNormal];
-	else
-		[self.favoriteButton setImage:[UIImage imageNamed:@"favorites-share.png"] forState:UIControlStateNormal];
-}
-
-- (void)setEntity:(NSManagedObject *)entity
-{
-	[super setEntity:entity];
-	
-	self.artistLabel.text = [entity valueForKey:@"artist"] ?: @"";
-	self.titleLabel.text = [entity valueForKey:@"song"] ?: @"";
-	
-	if ([self.entity valueForKey:@"primaryImage"])
-	{
-		self.albumArt.image = [UIImage imageWithData:[self.entity valueForKey:@"primaryImage"]];
-	} else {
-		self.albumArt.image = [UIImage imageNamed:@"album_cover_placeholder.PNG"];
-
-		__weak NSManagedObject *__entity = self.entity;
-		__weak UIImageView *__albumArt = self.albumArt;
-		
-		void (^completionHandler)(UIImage*, NSError*, SDImageCacheType) = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
-		{
-			if (!error)
-			{
-				[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
-				__albumArt.layer.shouldRasterize = YES;
-
-				[[NSManagedObjectContext defaultContext] saveToPersistentStore:nil];
-			}
-		};
-		
-		void (^successHandler)(NSString*) = ^(NSString *url) {
-			[__albumArt setImageWithURL:[NSURL URLWithString:url] completed:completionHandler];
-		};
-		
-		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] success:successHandler failure:nil finally:nil];
-	}
-	
-	[self refreshFavoriteIcon];
-}
-
-- (id)initWithEntity:(NSManagedObject *)entity
-{
-	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.class.description];
-	
-	if (self)
-	{
-		self.entity = entity;
-	}
-
-	return self;
 }
 
 @end

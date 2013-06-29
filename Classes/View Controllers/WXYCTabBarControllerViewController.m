@@ -13,16 +13,17 @@
 - (void)viewDidLoad
 {
 	UITabBar *tabBar = self.tabBar;
+	UIEdgeInsets edgeInsets = UIEdgeInsetsMake(6, 0, -6, 0);
 	
-	[tabBar.items[0] setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
+	[tabBar.items[0] setImageInsets:edgeInsets];
 	[tabBar.items[0] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-playlist-selected.png"]
 				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-playlist-unselected.png"]];
 	
-	[tabBar.items[1] setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
+	[tabBar.items[1] setImageInsets:edgeInsets];
 	[tabBar.items[1] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-favorites-selected.png"]
 				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-favorites-unselected.png"]];
 	
-	[tabBar.items[2] setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
+	[tabBar.items[2] setImageInsets:edgeInsets];
 	[tabBar.items[2] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-info-selected.png"]
 				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-info-unselected.png"]];
 }

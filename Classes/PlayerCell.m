@@ -22,9 +22,20 @@
 
 @implementation PlayerCell
 
+#pragma mark - appearance
+
 + (float)height
 {
 	return 74.0f;
+}
+
+#pragma mark - life cycle
+
+- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
+{
+	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+	
+	return [super awakeAfterUsingCoder:aDecoder];
 }
 
 - (void)prepareForReuse
@@ -43,6 +54,18 @@
 	
 	[self configureInterfaceForPlayingState:AudioStreamController.wxyc.isPlaying];
 }
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if ([keyPath isEqualToString:@"isPlaying"])
+	{
+		[self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
+	}
+}
+
+#pragma mark - view controller logic
 
 - (void)configureInterfaceForPlayingState:(BOOL)isPlaying
 {
@@ -77,21 +100,6 @@
 	
 	AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
 	AudioServicesPlaySystemSound(soundID);
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"isPlaying"])
-	{
-		[self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
-	}
-}
-
-- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
-{
-	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
-
-	return [super awakeAfterUsingCoder:aDecoder];
 }
 
 @end

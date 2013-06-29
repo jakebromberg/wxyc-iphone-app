@@ -17,6 +17,11 @@
 
 @implementation WebViewController
 
+- (void)viewDidLoad
+{
+	[self refreshButtons];
+}
+
 - (void)loadURL:(NSURL*)url
 {
 	[self.webView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -34,10 +39,7 @@
 	}
 }
 
-- (void)viewDidLoad
-{
-	[self refreshButtons];
-}
+#pragma mark - WebView delegate business
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
@@ -61,6 +63,8 @@
 	
 	return YES;
 }
+
+#pragma mark - IBAction handlers
 
 - (IBAction) reloadButtonPush:(id)sender
 {
@@ -103,8 +107,6 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	NSLog(@"buttonIndex %i", buttonIndex);
-	
 	if (buttonIndex == 0) {
 		[[UIPasteboard generalPasteboard] setValue:[self.webView.request.URL absoluteString] 
 								 forPasteboardType:(NSString*)kUTTypeUTF8PlainText];

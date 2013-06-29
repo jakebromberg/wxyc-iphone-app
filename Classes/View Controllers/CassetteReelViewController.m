@@ -9,7 +9,6 @@
 #import "CassetteReelViewController.h"
 #import "AudioStreamController.h"
 #import "IndefinitelySpinningAnimation.h"
-#import <QuartzCore/QuartzCore.h>
 
 @interface CassetteReelViewController ()
 
@@ -19,12 +18,21 @@
 
 @implementation CassetteReelViewController
 
-- (IndefinitelySpinningAnimation *)animation
+- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
-	if (!_animation)
-		_animation = [IndefinitelySpinningAnimation getAnimation];
+	self = [super awakeAfterUsingCoder:aDecoder];
 	
-	return _animation;
+	if (self)
+	{
+		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+		
+		[self startAnimation];
+		
+		if (![AudioStreamController wxyc].isPlaying)
+			[self stopAnimation];
+	}
+	
+	return self;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -52,37 +60,10 @@
 {
 	if (![self.layer animationForKey:@"spinAnimation"])
 		[self.layer addAnimation:[IndefinitelySpinningAnimation getAnimation] forKey:@"spinAnimation"];
-
+	
     CFTimeInterval pausedTime = [self.layer convertTime:CACurrentMediaTime() fromLayer:nil];
     self.layer.speed = 0.0;
     self.layer.timeOffset = pausedTime;
-}
-
-- (void)initImageViewAnimation
-{
-	[self.layer addAnimation:self.animation forKey:@"spinAnimation"];
-	
-	if (AudioStreamController.wxyc.isPlaying)
-		[self startAnimation];
-	else
-		[self stopAnimation];
-}
-
-- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
-{
-	self = [super awakeAfterUsingCoder:aDecoder];
-
-	if (self)
-	{
-		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
-		
-		[self startAnimation];
-		
-		if (![AudioStreamController wxyc].isPlaying)
-			[self stopAnimation];
-	}
-	
-	return self;
 }
 
 @end

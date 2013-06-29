@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2305477017769A4E00FA077A /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */; };
 		230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230EB0FC127600210065308D /* CoreAudio.framework */; };
 		2318562C173B274B00F15CC6 /* no-favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318562B173B274B00F15CC6 /* no-favorites.png */; };
 		2325E0EF1288A70800B064BB /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325E0EA1288A70800B064BB /* Playcut.m */; };
@@ -199,6 +200,8 @@
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2305476E17769A4E00FA077A /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = Libraries/MTStatusBarOverlay/MTStatusBarOverlay.h; sourceTree = "<group>"; };
+		2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = Libraries/MTStatusBarOverlay/MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		230EB0FC127600210065308D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		2318562B173B274B00F15CC6 /* no-favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-favorites.png"; sourceTree = "<group>"; };
 		2325E0E91288A70800B064BB /* Playcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playcut.h; path = Models/Playcut.h; sourceTree = "<group>"; };
@@ -476,6 +479,15 @@
 				23E77B1E1118DCB3007D373D /* WXYC.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2305476A17769A2E00FA077A /* MTStatusBarOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				2305476E17769A4E00FA077A /* MTStatusBarOverlay.h */,
+				2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */,
+			);
+			name = MTStatusBarOverlay;
 			sourceTree = "<group>";
 		};
 		230EB27712762B460065308D /* toolbar */ = {
@@ -844,6 +856,7 @@
 		23BF128B113B0E2100A72DE7 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2305476A17769A2E00FA077A /* MTStatusBarOverlay */,
 				23B1094D173C4A3400257A73 /* UITableView+NXEmptyView */,
 				238AE95516F5407800779128 /* MKAdditions */,
 				23648A6016F5293E00DF2C27 /* MagicalRecord */,
@@ -875,11 +888,8 @@
 		23BF148C113C06BC00A72DE7 /* Views and ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */,
-				2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */,
+				23D0675F177E9F7C006FB735 /* IndefinitelySpinningImageView */,
 				230EDC331506875D001C173F /* Live Playlist Table View Cells */,
-				23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */,
-				23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */,
 				2353A13F12810065004F9A11 /* AlbumCoverSearch */,
 				23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */,
 				23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */,
@@ -907,6 +917,17 @@
 				23C2A945128A476200D61A4A /* left-arrow@2x.png */,
 			);
 			name = WebView;
+			sourceTree = "<group>";
+		};
+		23D0675F177E9F7C006FB735 /* IndefinitelySpinningImageView */ = {
+			isa = PBXGroup;
+			children = (
+				23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */,
+				23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */,
+				2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */,
+				2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */,
+			);
+			name = IndefinitelySpinningImageView;
 			sourceTree = "<group>";
 		};
 		23EF279214F5DC4000EA7ACB /* Products */ = {
@@ -1218,6 +1239,7 @@
 				23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */,
 				23B10953173C4A4700257A73 /* UITableView+NXEmptyView.m in Sources */,
 				23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */,
+				2305477017769A4E00FA077A /* MTStatusBarOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

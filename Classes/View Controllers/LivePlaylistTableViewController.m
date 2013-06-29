@@ -24,6 +24,33 @@
 
 @implementation LivePlaylistTableViewController
 
+#pragma mark - UIViewController
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	
+	[[NSNotificationCenter defaultCenter] addObserverForName:LPStatusChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
+	 {
+		 if (self.livePlaylistCtrl.state == LP_DONE)
+		 {
+			 NSArray *newEntries = note.userInfo[@"newEntries"];
+			 
+			 if (newEntries.count == 0)
+				 return;
+			 
+			 NSMutableArray *newIndexPaths = [NSMutableArray arrayWithCapacity:[newEntries count]];
+			 
+			 for (int i = 0; i < [newEntries count]; i++) {
+				 [newIndexPaths addObject:[NSIndexPath indexPathForItem:i + NUMBER_OF_HEADER_CELLS inSection:0]];
+			 }
+			 
+			 [self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+		 }
+	 }];
+}
+
+
 #pragma Remote Control stuff
 
 - (BOOL)canBecomeFirstResponder
@@ -56,7 +83,7 @@
     }
 }
 
-#pragma mark - UITableViewController
+#pragma mark - UITableView Delegate Stuff
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -112,33 +139,7 @@
 	return [NSClassFromString([self classNameForCellAtIndexPath:indexPath]) height];
 }
 
-#pragma mark - UIViewController
-
-- (void)viewDidLoad
-{
-	[super viewDidLoad];
-
-	[[NSNotificationCenter defaultCenter] addObserverForName:LPStatusChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
-	{
-		if (self.livePlaylistCtrl.state == LP_DONE)
-		{
-			NSArray *newEntries = note.userInfo[@"newEntries"];
-			
-			if (newEntries.count == 0)
-				return;
-				
-			NSMutableArray *newIndexPaths = [NSMutableArray arrayWithCapacity:[newEntries count]];
-			
-			for (int i = 0; i < [newEntries count]; i++) {
-				[newIndexPaths addObject:[NSIndexPath indexPathForItem:i + NUMBER_OF_HEADER_CELLS inSection:0]];
-			}
-			
-			[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-		}
-	}];
-}
-
-#pragma - Initializer stuff
+#pragma - Getter Stuff
 
 - (PlaylistController *)livePlaylistCtrl
 {

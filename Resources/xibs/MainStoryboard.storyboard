@@ -160,13 +160,8 @@
                                         <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1y-sb-rAb" userLabel="Shadow View">
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXq-Um-xPu">
+                                        <view autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXq-Um-xPu">
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-0I-6vs">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="300" id="tc2-dA-8Zj"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Plaid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FI-NM-CgH">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="280" id="1Wf-Ek-RfG"/>
@@ -268,6 +263,11 @@
                                                         <constraint firstItem="UtA-XQ-1X5" firstAttribute="top" secondItem="sTW-Yr-32s" secondAttribute="top" type="default" id="wYT-MS-M74"/>
                                                     </constraints>
                                                 </view>
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-0I-6vs">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="300" id="tc2-dA-8Zj"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <constraints>
