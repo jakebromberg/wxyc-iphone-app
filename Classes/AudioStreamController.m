@@ -90,7 +90,7 @@ static AudioStreamController *wxyc;
 - (void)stop
 {
 	[self.player pause];
-	[[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+	self.player = nil;
 }
 
 #pragma mark - Getters
@@ -117,7 +117,7 @@ static AudioStreamController *wxyc;
 	
 	if (self.player.currentItem.status == AVPlayerStatusReadyToPlay)
 	{
-		if (self.player.currentItem.playbackBufferEmpty && self.player.currentItem.playbackLikelyToKeepUp)
+		if (self.player.currentItem.playbackBufferEmpty || self.player.currentItem.playbackLikelyToKeepUp)
 			return AudioStreamControllerStateBuffering;
 
 		if (self.player.currentItem.playbackBufferFull || self.player.currentItem.playbackLikelyToKeepUp)
