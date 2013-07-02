@@ -12,7 +12,7 @@
 #import "TalksetCell.h"
 #import "PlaylistEntry.h"
 #import "NSString+Additions.h"
-#import "AudioStreamController.h"
+#import "WXYCStreamController.h"
 
 #define NUMBER_OF_HEADER_CELLS 1
 
@@ -65,10 +65,10 @@
         switch (receivedEvent.subtype) {
 				
             case UIEventSubtypeRemoteControlTogglePlayPause:
-				if ([AudioStreamController wxyc].isPlaying)
-					[[AudioStreamController wxyc] stop];
+				if ([WXYCStreamController wxyc].isPlaying)
+					[[WXYCStreamController wxyc] stop];
 				else
-					[[AudioStreamController wxyc] start];
+					[[WXYCStreamController wxyc] start];
                 break;
 				
             case UIEventSubtypeRemoteControlPreviousTrack:

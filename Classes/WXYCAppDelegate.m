@@ -6,8 +6,15 @@
 #import "WXYCAppDelegate.h"
 #import "PlaylistController.h"
 #import "Playcut.h"
+#import "StatusBarController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+
+@interface WXYCAppDelegate ()
+
+@property (nonatomic, strong) StatusBarController *statusBarController;
+
+@end
 
 // Use a class extension to expose access to MagicalRecord's private setter methods
 
@@ -17,6 +24,7 @@
 + (void)MR_setDefaultContext:(NSManagedObjectContext *)moc;
 
 @end
+
 
 @implementation WXYCAppDelegate
 
@@ -28,6 +36,7 @@
 	[self configureCoreData];
 	[self tidyUpCoreData];
 	[self configureLivePlaylistController];
+	[self statusBarController];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -92,9 +101,16 @@
 	[NSTimer scheduledTimerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 }
 
+#pragma mark - Getters
+
 - (PlaylistController *)livePlaylistCtrlr
 {
 	return _livePlaylistCtrlr ?: (_livePlaylistCtrlr = [[PlaylistController alloc] init]);
+}
+
+- (StatusBarController *)statusBarController
+{
+	return _statusBarController ?: (_statusBarController = [[StatusBarController alloc] init]);
 }
 
 @end

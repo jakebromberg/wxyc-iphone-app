@@ -11,7 +11,9 @@
 #include <AVFoundation/AVFoundation.h>
 #include <AudioToolbox/AudioToolbox.h>
 
-@interface AudioStreamController()
+#define PLAYER_STATE_KVO @"playerState"
+
+@interface AudioStreamController ()
 
 @property (nonatomic, strong) AVPlayer *player;
 
@@ -27,34 +29,40 @@
 	if (self)
 	{
 		_URL = URL;
-		[self addObserver:self forKeyPath:@"playerState" options:NSKeyValueObservingOptionNew context:NULL];
+//		[self addObserver:self forKeyPath:@"player.status" options:NSKeyValueObservingOptionNew context:NULL];
+		[self addObserver:self forKeyPath:@"player.currentItem.loadedTimeRanges" options:NSKeyValueObservingOptionNew context:NULL];
 	}
 	
 	return self;
 }
 
-- (void)dealloc
-{
-	[self removeObserver:self forKeyPath:@"player.status"];
-}
+//- (void)dealloc
+//{
+//	[self removeObserver:self forKeyPath:@"player.status"];
+//}
 
 #pragma mark - KVC/KVO Stuff
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+	if ([keyPath isEqualToString:@"player.currentItem.loadedTimeRanges"])
+	{
+		
+	}
+	
 	if ([keyPath isEqualToString:@"player.status"])
 	{
-		if (self.player.status == AVPlayerStatusFailed)
+		if (_player.status == AVPlayerStatusFailed)
 		{
-			self.player = nil;
-			[self player];
+			_player = nil;
+//			[self player];
 		}
 	}
 }
 
 + (NSSet *)keyPathsForValuesAffectingIsPlaying
 {
-	return [NSSet setWithObject:@"playerState"];
+	return [NSSet setWithObject:PLAYER_STATE_KVO];
 }
 
 + (NSSet *)keyPathsForValuesAffectingPlayerState
@@ -63,67 +71,65 @@
 			@"player.currentItem.status",
 			@"player.currentItem.playbackLikelyToKeepUp",
 			@"player.currentItem.playbackBufferFull",
-			@"player.currentItem.playbackBufferEmpty"
+//			@"player.currentItem.playbackBufferEmpty"
 			]];
-}
-
-#pragma mark - WXYC Stuff
-
-static AudioStreamController *wxyc;
-
-+ (instancetype)wxyc
-{
-	if (!wxyc)
-		wxyc = [[AudioStreamController alloc] initWithURL:[NSURL URLWithString:@"http://152.2.204.90:8000/wxyc.mp3"]];
-	
-	return wxyc;
 }
 
 #pragma mark - Public Methods
 
 - (void)start
 {
-	[self.player play];
+	[self willChangeValueForKey:PLAYER_STATE_KVO];
+	
+	if (!_player)
+		[self player];
+	
+	[_player play];
 	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+	[self didChangeValueForKey:PLAYER_STATE_KVO];
 }
 
 - (void)stop
 {
-	[self.player pause];
-	self.player = nil;
+	[self willChangeValueForKey:PLAYER_STATE_KVO];
+	[_player pause];
+	_player = nil;
+	[self didChangeValueForKey:PLAYER_STATE_KVO];
 }
 
 #pragma mark - Getters
 
 - (BOOL)isPlaying
 {
-	switch (self.playerState) {
-		case AudioStreamControllerStateStopped:
-		case AudioStreamControllerStateError:
-		case AudioStreamControllerStateUnknown:
-			return NO;
-		default:
+	switch (self.playerState)
+	{
+		case AudioStreamControllerStatePlaying:
 			return YES;
+		default:
+			return NO;
 	}
 }
 
 - (AudioStreamControllerState)playerState
 {
-	if (self.player.currentItem.status == AVPlayerStatusFailed)
+	if (!_player)
+		return AudioStreamControllerStateInitialized;
+	
+	if (_player.status == AVPlayerStatusFailed)
 		return AudioStreamControllerStateError;
 	
-	if (self.player.currentItem.status == AVPlayerStatusUnknown)
+	if (_player.status == AVPlayerStatusUnknown)
 		return AudioStreamControllerStateUnknown;
 	
-	if (self.player.currentItem.status == AVPlayerStatusReadyToPlay)
-	{
-		if (self.player.currentItem.playbackBufferEmpty || self.player.currentItem.playbackLikelyToKeepUp)
-			return AudioStreamControllerStateBuffering;
-
-		if (self.player.currentItem.playbackBufferFull || self.player.currentItem.playbackLikelyToKeepUp)
-			return AudioStreamControllerStatePlaying;
-	}
+	if (!_player.currentItem.playbackLikelyToKeepUp && _player.rate == 0)
+		return AudioStreamControllerStateStopped;
 	
+	if ((_player.rate == 0.0f) && (_player.currentItem.playbackLikelyToKeepUp))
+		return AudioStreamControllerStateBuffering;
+	
+	if ((_player.rate > 0) && (_player.status == AVPlayerStatusReadyToPlay))
+		return AudioStreamControllerStatePlaying;
+
 	return AudioStreamControllerStateStopped;
 }
 

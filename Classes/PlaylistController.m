@@ -11,7 +11,7 @@
 #import "NSString+Additions.h"
 #import "Playcut.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "AudioStreamController.h"
+#import "WXYCStreamController.h"
 #import "NSArray+Additions.h"
 
 NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
@@ -41,7 +41,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	{
 		_playlistMapping = [[PlaylistMapping alloc] init];
 		_playlist = [NSArray array];
-		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+		[[WXYCStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
 	}
 	
 	return self;

@@ -75,6 +75,8 @@
 		23648AB716F52D2500DF2C27 /* favorites-share-favorited.png in Resources */ = {isa = PBXBuildFile; fileRef = 23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */; };
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
+		236BA5201782614B005BBF78 /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236BA51F1782614B005BBF78 /* StatusBarController.m */; };
+		236BA526178266F2005BBF78 /* WXYCStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236BA525178266F2005BBF78 /* WXYCStreamController.m */; };
 		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
 		237906DD16B4E9BE00F67A17 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */; };
 		237E914F12930E5400A07456 /* casey-burns-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914D12930E5400A07456 /* casey-burns-app-icon.png */; };
@@ -310,6 +312,10 @@
 		23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-share-favorited.png"; sourceTree = "<group>"; };
 		23651003111211C700C192CB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		23651056111211D300C192CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		236BA51E1782614B005BBF78 /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
+		236BA51F1782614B005BBF78 /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
+		236BA524178266F2005BBF78 /* WXYCStreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCStreamController.h; sourceTree = "<group>"; };
+		236BA525178266F2005BBF78 /* WXYCStreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCStreamController.m; sourceTree = "<group>"; };
 		237578921266CBB500E6177B /* cassette button push.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cassette button push.aif"; path = "sounds/cassette button push.aif"; sourceTree = "<group>"; };
 		237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		237E914D12930E5400A07456 /* casey-burns-app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon.png"; sourceTree = "<group>"; };
@@ -563,6 +569,10 @@
 				23EE39201527D0CF0006CDA5 /* AudioStreamController.m */,
 				23EE39211527D0EF0006CDA5 /* PlaylistController.h */,
 				23EE39221527D0EF0006CDA5 /* PlaylistController.m */,
+				236BA51E1782614B005BBF78 /* StatusBarController.h */,
+				236BA51F1782614B005BBF78 /* StatusBarController.m */,
+				236BA524178266F2005BBF78 /* WXYCStreamController.h */,
+				236BA525178266F2005BBF78 /* WXYCStreamController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1240,6 +1250,8 @@
 				23B10953173C4A4700257A73 /* UITableView+NXEmptyView.m in Sources */,
 				23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */,
 				2305477017769A4E00FA077A /* MTStatusBarOverlay.m in Sources */,
+				236BA5201782614B005BBF78 /* StatusBarController.m in Sources */,
+				236BA526178266F2005BBF78 /* WXYCStreamController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1259,6 +1271,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				COPY_PHASE_STRIP = NO;
@@ -1270,6 +1284,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Other/WXYC_Radio_Prefix.pch;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2/**",
 					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
@@ -1295,6 +1310,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: WXYC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WXYC";
 				COPY_PHASE_STRIP = YES;
@@ -1304,6 +1321,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Other/WXYC_Radio_Prefix.pch;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = Other/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
@@ -1346,6 +1364,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: WXYC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WXYC";
 				COPY_PHASE_STRIP = YES;
@@ -1355,6 +1375,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Other/WXYC_Radio_Prefix.pch;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(SOURCE_ROOT)/RestKit/Build/**",

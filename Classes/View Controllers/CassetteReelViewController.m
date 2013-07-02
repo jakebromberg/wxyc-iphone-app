@@ -7,7 +7,7 @@
 //
 
 #import "CassetteReelViewController.h"
-#import "AudioStreamController.h"
+#import "WXYCStreamController.h"
 #import "IndefinitelySpinningAnimation.h"
 
 @interface CassetteReelViewController ()
@@ -24,11 +24,11 @@
 	
 	if (self)
 	{
-		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+		[[WXYCStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
 		
 		[self startAnimation];
 		
-		if (![AudioStreamController wxyc].isPlaying)
+		if (![WXYCStreamController wxyc].isPlaying)
 			[self stopAnimation];
 	}
 	
@@ -37,7 +37,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if ([AudioStreamController wxyc].isPlaying)
+	if ([WXYCStreamController wxyc].isPlaying)
 		[self startAnimation];
 	else
 		[self stopAnimation];

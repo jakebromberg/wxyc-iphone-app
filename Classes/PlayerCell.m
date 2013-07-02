@@ -8,7 +8,7 @@
 //
 
 #import "PlayerCell.h"
-#import "AudioStreamController.h"
+#import "WXYCStreamController.h"
 #import "CassetteReelViewController.h"
 #import "NSString+Additions.h"
 
@@ -35,7 +35,7 @@
 
 - (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
-	[[AudioStreamController wxyc] addObserver:self forKeyPath:PLAYER_STATE_KVO options:NSKeyValueObservingOptionNew context:NULL];
+	[[WXYCStreamController wxyc] addObserver:self forKeyPath:PLAYER_STATE_KVO options:NSKeyValueObservingOptionNew context:NULL];
 	
 	return [super awakeAfterUsingCoder:aDecoder];
 }
@@ -45,13 +45,13 @@
 	[super prepareForReuse];
 	
 	@try {
-		[[AudioStreamController wxyc] removeObserver:self forKeyPath:PLAYER_STATE_KVO];
+		[[WXYCStreamController wxyc] removeObserver:self forKeyPath:PLAYER_STATE_KVO];
 	}
 	@catch (NSException *exception) {
 		
 	}
 	@finally {
-		[[AudioStreamController wxyc] addObserver:self forKeyPath:PLAYER_STATE_KVO options:NSKeyValueObservingOptionNew context:NULL];
+		[[WXYCStreamController wxyc] addObserver:self forKeyPath:PLAYER_STATE_KVO options:NSKeyValueObservingOptionNew context:NULL];
 	}
 	
 	[self configureInterface];
@@ -71,31 +71,33 @@
 
 - (void)configureInterface
 {
-	switch (AudioStreamController.wxyc.playerState) {
+	switch ([WXYCStreamController wxyc].playerState) {
 		case AudioStreamControllerStateUnknown:
 		case AudioStreamControllerStateBuffering:
 			[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
+			[self.leftCassetteReel stopAnimation];
+			[self.rightCassetteReel stopAnimating];
 			break;
 		case AudioStreamControllerStatePlaying:
 			[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
 			[self.leftCassetteReel startAnimation];
 			[self.rightCassetteReel startAnimation];
+			break;
 		default:
 			[self.playButton setImage:[UIImage imageNamed:@"play-button.png"] forState:UIControlStateNormal];
 			[self.leftCassetteReel stopAnimation];
 			[self.rightCassetteReel stopAnimating];
-
 			break;
 	}
 }
 
 - (IBAction)pushPlay:(id)sender
 {
-	if ([AudioStreamController.wxyc isPlaying])
+	if ([[WXYCStreamController wxyc] isPlaying])
 	{
-		[AudioStreamController.wxyc stop];
+		[[WXYCStreamController wxyc] stop];
 	} else {
-		[AudioStreamController.wxyc start];
+		[[WXYCStreamController wxyc] start];
 	}
 	
 	[self configureInterface];

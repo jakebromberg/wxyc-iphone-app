@@ -9,6 +9,7 @@
 
 typedef NS_ENUM(NSUInteger, AudioStreamControllerState)
 {
+	AudioStreamControllerStateInitialized,
 	AudioStreamControllerStateUnknown,
 	AudioStreamControllerStatePlaying,
 	AudioStreamControllerStateStopped,
@@ -17,8 +18,6 @@ typedef NS_ENUM(NSUInteger, AudioStreamControllerState)
 };
 
 @interface AudioStreamController : NSObject
-
-+ (instancetype)wxyc;
 
 - (void)start;
 - (void)stop;
