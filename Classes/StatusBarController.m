@@ -19,8 +19,6 @@
 	if (!self)
 		return nil;
 
-//	[[WXYCStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
-//
 	[[WXYCStreamController wxyc] addObserver:self forKeyPath:@"playerState" options:NSKeyValueObservingOptionNew context:NULL];
 	
 	return self;
@@ -28,15 +26,8 @@
 
 - (void)dealloc
 {
-//	[[WXYCStreamController wxyc] removeObserver:self forKeyPath:@"playerState"];
+	[[WXYCStreamController wxyc] removeObserver:self forKeyPath:@"playerState"];
 }
-
-//AudioStreamControllerStateInitialized,
-//AudioStreamControllerStateUnknown,
-//AudioStreamControllerStatePlaying,
-//AudioStreamControllerStateStopped,
-//AudioStreamControllerStateBuffering,
-//AudioStreamControllerStateError
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
