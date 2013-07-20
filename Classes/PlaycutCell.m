@@ -15,6 +15,7 @@
 #import "NSString+Additions.h"
 #import "WebViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
+#import "NSString+Additions.h"
 
 @interface PlaycutCell ()
 
@@ -121,6 +122,17 @@
 		[sheet addURL:[NSURL URLWithString:@"http://wxyc.org/"]];
 		
 		[self.window.rootViewController presentViewController:sheet animated:YES completion:nil];
+	} else {
+		NSString *serviceName;
+		
+		if (serviceType == SLServiceTypeFacebook)
+			serviceName = @"Facebook";
+		else
+			serviceName = @"Twitter";
+		
+		id title = [@"Not logged in to " append:serviceName];
+		id message = [@"Open Settings and add your %@ account" formattedWith:@[serviceName]];
+		[[UIAlertView alertViewWithTitle:title message:message] show];
 	}
 }
 
