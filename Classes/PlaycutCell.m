@@ -66,13 +66,16 @@
 		
 		void (^completionHandler)(UIImage*, NSError*, SDImageCacheType) = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
 		{
-			if (!error)
-			{
-				[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
-				__albumArt.layer.shouldRasterize = YES;
-				
-				[[NSManagedObjectContext defaultContext] saveToPersistentStore:nil];
-			}
+			dispatch_async(dispatch_queue_create("get_image", NULL), ^{
+				if (!error)
+				{
+					[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
+					__albumArt.layer.shouldRasterize = YES;
+					
+					[[NSManagedObjectContext defaultContext] saveToPersistentStore:nil];
+				}
+			});
+
 		};
 		
 		void (^successHandler)(NSString*) = ^(NSString *url) {
@@ -184,6 +187,7 @@
 {
 	self.isShareBarVisible = NO;
 	[self.albumArt cancelCurrentImageLoad];
+	self.albumArt.image = nil;
 }
 
 #pragma initializer stuff
