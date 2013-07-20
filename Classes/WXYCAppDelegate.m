@@ -31,7 +31,6 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
 	// bootstrap the app
-	[self configureAudioSession];
 	[self configureRootView];
 	[self configureCoreData];
 	[self tidyUpCoreData];
@@ -45,18 +44,6 @@
 }
 
 #pragma mark - bootstrapping
-
-- (void)configureAudioSession
-{
-	NSError *sessionError = nil;
-	[[AVAudioSession sharedInstance] setDelegate:self];
-	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&sessionError];
-	
-	NSAssert(!sessionError, @"");
-	
-	UInt32 doChangeDefaultRoute = 1;
-	AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
-}
 
 - (void)configureRootView
 {

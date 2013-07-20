@@ -31,9 +31,22 @@
 	if (self)
 	{
 		_URL = URL;
+		[self configureAudioSession];
 	}
 	
 	return self;
+}
+
+- (void)configureAudioSession
+{
+	NSError *sessionError = nil;
+	[[AVAudioSession sharedInstance] setDelegate:self];
+	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&sessionError];
+	
+	NSAssert(!sessionError, @"");
+	
+	UInt32 doChangeDefaultRoute = 1;
+	AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
 }
 
 - (void)dealloc
