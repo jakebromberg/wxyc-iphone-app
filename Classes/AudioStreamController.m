@@ -10,12 +10,14 @@
 #import "AudioStreamController.h"
 #include <AVFoundation/AVFoundation.h>
 #include <AudioToolbox/AudioToolbox.h>
+#import <CoreMedia/CoreMedia.h>
 
 #define PLAYER_STATE_KVO @"playerState"
 
 @interface AudioStreamController ()
 
 @property (nonatomic, strong) AVPlayer *player;
+@property (nonatomic, getter = isPlaying) BOOL isPlaying;
 
 @end
 
@@ -29,33 +31,25 @@
 	if (self)
 	{
 		_URL = URL;
-//		[self addObserver:self forKeyPath:@"player.status" options:NSKeyValueObservingOptionNew context:NULL];
-		[self addObserver:self forKeyPath:@"player.currentItem.loadedTimeRanges" options:NSKeyValueObservingOptionNew context:NULL];
 	}
 	
 	return self;
 }
 
-//- (void)dealloc
-//{
-//	[self removeObserver:self forKeyPath:@"player.status"];
-//}
+- (void)dealloc
+{
+	[self removeObserver:self forKeyPath:@"player.status"];
+}
 
 #pragma mark - KVC/KVO Stuff
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if ([keyPath isEqualToString:@"player.currentItem.loadedTimeRanges"])
-	{
-		
-	}
-	
 	if ([keyPath isEqualToString:@"player.status"])
 	{
 		if (_player.status == AVPlayerStatusFailed)
 		{
 			_player = nil;
-//			[self player];
 		}
 	}
 }
@@ -68,11 +62,11 @@
 + (NSSet *)keyPathsForValuesAffectingPlayerState
 {
 	return [NSSet setWithArray:@[
+			@"player.rate",
+			@"player.status",
 			@"player.currentItem.status",
 			@"player.currentItem.playbackLikelyToKeepUp",
-			@"player.currentItem.playbackBufferFull",
-//			@"player.currentItem.playbackBufferEmpty"
-			]];
+		]];
 }
 
 #pragma mark - Public Methods
@@ -93,7 +87,6 @@
 {
 	[self willChangeValueForKey:PLAYER_STATE_KVO];
 	[_player pause];
-	_player = nil;
 	[self didChangeValueForKey:PLAYER_STATE_KVO];
 }
 
@@ -113,7 +106,7 @@
 - (AudioStreamControllerState)playerState
 {
 	if (!_player)
-		return AudioStreamControllerStateInitialized;
+		return AudioStreamControllerStateStopped;
 	
 	if (_player.status == AVPlayerStatusFailed)
 		return AudioStreamControllerStateError;
@@ -121,10 +114,7 @@
 	if (_player.status == AVPlayerStatusUnknown)
 		return AudioStreamControllerStateUnknown;
 	
-	if (!_player.currentItem.playbackLikelyToKeepUp && _player.rate == 0)
-		return AudioStreamControllerStateStopped;
-	
-	if ((_player.rate == 0.0f) && (_player.currentItem.playbackLikelyToKeepUp))
+	if (!_player.currentItem.playbackLikelyToKeepUp)
 		return AudioStreamControllerStateBuffering;
 	
 	if ((_player.rate > 0) && (_player.status == AVPlayerStatusReadyToPlay))

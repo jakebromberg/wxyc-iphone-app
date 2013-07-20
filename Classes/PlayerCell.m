@@ -76,7 +76,7 @@
 		case AudioStreamControllerStateBuffering:
 			[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
 			[self.leftCassetteReel stopAnimation];
-			[self.rightCassetteReel stopAnimating];
+			[self.rightCassetteReel stopAnimation];
 			break;
 		case AudioStreamControllerStatePlaying:
 			[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
@@ -86,7 +86,7 @@
 		default:
 			[self.playButton setImage:[UIImage imageNamed:@"play-button.png"] forState:UIControlStateNormal];
 			[self.leftCassetteReel stopAnimation];
-			[self.rightCassetteReel stopAnimating];
+			[self.rightCassetteReel stopAnimation];
 			break;
 	}
 }

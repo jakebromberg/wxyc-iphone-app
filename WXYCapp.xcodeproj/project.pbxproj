@@ -10,6 +10,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2305477017769A4E00FA077A /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */; };
+		230640BE179B1EAB0054B673 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230640BD179B1EAB0054B673 /* CoreMedia.framework */; };
 		230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230EB0FC127600210065308D /* CoreAudio.framework */; };
 		2318562C173B274B00F15CC6 /* no-favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318562B173B274B00F15CC6 /* no-favorites.png */; };
 		2325E0EF1288A70800B064BB /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325E0EA1288A70800B064BB /* Playcut.m */; };
@@ -204,6 +205,7 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2305476E17769A4E00FA077A /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = Libraries/MTStatusBarOverlay/MTStatusBarOverlay.h; sourceTree = "<group>"; };
 		2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = Libraries/MTStatusBarOverlay/MTStatusBarOverlay.m; sourceTree = "<group>"; };
+		230640BD179B1EAB0054B673 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		230EB0FC127600210065308D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		2318562B173B274B00F15CC6 /* no-favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-favorites.png"; sourceTree = "<group>"; };
 		2325E0E91288A70800B064BB /* Playcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playcut.h; path = Models/Playcut.h; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				230640BE179B1EAB0054B673 /* CoreMedia.framework in Frameworks */,
 				235DE13716ED3B38005640E9 /* ImageIO.framework in Frameworks */,
 				23B613F7164EFA64004547C2 /* Social.framework in Frameworks */,
 				234B4AEB12938EF1001B3EB2 /* Security.framework in Frameworks */,
@@ -954,6 +957,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				230640BD179B1EAB0054B673 /* CoreMedia.framework */,
 				23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */,
 				23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */,
 				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
