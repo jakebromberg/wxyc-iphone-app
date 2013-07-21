@@ -7,20 +7,25 @@
 //
 
 #import "FavoriteShareAction.h"
-#import "NSString+Additions.h"
-#import "WebViewController.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
 @implementation FavoriteShareAction
 
 + (void)sharePlaycut:(Playcut *)playcut
 {
-	NSString *artist = [[playcut valueForKey:@"artist"] urlEncodeUsingEncoding:NSUTF8StringEncoding];
-	NSString *song = [[playcut valueForKey:@"song"] urlEncodeUsingEncoding:NSUTF8StringEncoding];
-	
-	NSString *url = [@"http://google.com/search?q=%@+%@" formattedWith:@[artist, song]];
-	WebViewController *webViewController = [[WebViewController alloc] init];
-	[[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:webViewController animated:YES completion:nil];
-	[webViewController loadURL:[NSURL URLWithString:url]];
+	if ([[playcut valueForKey:@"favorite"] isEqual:@YES])
+		[UIAlertView alertViewWithTitle:nil message:@"Unlove this track, for real?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unlove"] onDismiss:^(int buttonIndex)
+		 {
+			 [playcut setValue:@NO forKey:@"favorite"];
+			 [playcut.managedObjectContext saveToPersistentStoreAndWait];
+		 } onCancel:^{
+			 
+		 }];
+	else
+	{
+		[playcut setValue:@YES forKey:@"favorite"];
+		[playcut.managedObjectContext saveToPersistentStoreAndWait];
+	}
 }
 
 @end

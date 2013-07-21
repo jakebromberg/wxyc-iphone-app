@@ -7,15 +7,9 @@
 //
 
 #import "PlaycutCell.h"
-#import "NSArray+Additions.h"
 #import "GoogleImageSearch.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageView+WebCache.h"
-#import <Social/Social.h>
-#import "NSString+Additions.h"
-#import "WebViewController.h"
-#import "UIAlertView+MKBlockAdditions.h"
-#import "NSString+Additions.h"
 #import "PlaycutCellButton.h"
 
 @interface PlaycutCell ()
@@ -28,14 +22,9 @@
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *twitterButton;
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *facebookButton;
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *favoriteButton;
-
+@property (nonatomic, weak) IBOutlet PlaycutCellButton *searchButton;
 
 @property (nonatomic, setter = isShareBarVisible:) BOOL isShareBarVisible;
-
-- (IBAction)shareOnFacebook:(id)sender;
-- (IBAction)shareOnTwitter:(id)sender;
-- (IBAction)favorite:(id)sender;
-- (IBAction)search:(id)sender;
 
 @end
 
@@ -59,6 +48,8 @@
 	
 	self.twitterButton.playcut = (Playcut *)entity;
 	self.facebookButton.playcut = (Playcut *)entity;
+	self.favoriteButton.playcut = (Playcut *)entity;
+	self.searchButton.playcut = (Playcut *)entity;
 
 	self.artistLabel.text = [entity valueForKey:@"artist"] ?: @"";
 	self.titleLabel.text = [entity valueForKey:@"song"] ?: @"";
@@ -74,7 +65,8 @@
 		
 		void (^completionHandler)(UIImage*, NSError*, SDImageCacheType) = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
 		{
-			dispatch_async(dispatch_queue_create("get_image", NULL), ^{
+			dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, NULL);
+			dispatch_async(queue, ^{
 				if (!error)
 				{
 					[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
@@ -92,51 +84,9 @@
 		
 		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] success:successHandler failure:nil finally:nil];
 	}
-	
-	[self refreshFavoriteIcon];
-}
-
-- (void)refreshFavoriteIcon
-{
-	UIImage *favoriteIcon = [self favoriteIconImageForState:[[self.entity valueForKey:@"favorite"] isEqual:@(YES)]];
-	[self.favoriteButton setImage:favoriteIcon forState:UIControlStateNormal];
-}
-
-- (UIImage *)favoriteIconImageForState:(BOOL)state
-{
-	NSString *imageName = state ? @"favorites-share-favorited.png" : @"favorites-share.png";
-	
-	return [UIImage imageNamed:imageName];
 }
 
 #pragma - share stuff
-
-- (IBAction)favorite:(id)sender
-{
-	if ([[self.entity valueForKey:@"favorite"] isEqual:@YES])
-		[UIAlertView alertViewWithTitle:nil message:@"Unlove this track, for real?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unlove"] onDismiss:^(int buttonIndex)
-		 {
-			 [self.entity setValue:@NO forKey:@"favorite"];
-			 [self.entity.managedObjectContext saveToPersistentStoreAndWait];
-			 [self refreshFavoriteIcon];
-		 } onCancel:^{
-			 
-		 }];
-	else
-	{
-		[self.entity setValue:@YES forKey:@"favorite"];
-		[self.entity.managedObjectContext saveToPersistentStoreAndWait];
-		[self refreshFavoriteIcon];
-	}
-}
-
-- (IBAction)search:(id)sender
-{
-	NSString *url = [@"http://google.com/search?q=%@+%@" formattedWith:@[[self.titleLabel.text urlEncodeUsingEncoding:NSUTF8StringEncoding], [self.artistLabel.text urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
-	WebViewController *webViewController = [[WebViewController alloc] init];
-	[self.window.rootViewController presentViewController:webViewController animated:YES completion:nil];
-	[webViewController loadURL:[NSURL URLWithString:url]];
-}
 
 - (void)isShareBarVisible:(BOOL)isShareBarVisible
 {

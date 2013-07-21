@@ -77,6 +77,9 @@
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
 		23677471179C85AF009C1BAA /* PlaycutCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23677470179C85AF009C1BAA /* PlaycutCellButton.m */; };
+		23677477179C87EA009C1BAA /* FavoriteShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23677476179C87EA009C1BAA /* FavoriteShareButton.m */; };
+		2367747A179C88EF009C1BAA /* SearchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23677479179C88EF009C1BAA /* SearchButton.m */; };
+		2367747D179C8910009C1BAA /* SearchAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2367747C179C8910009C1BAA /* SearchAction.m */; };
 		236BA5201782614B005BBF78 /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236BA51F1782614B005BBF78 /* StatusBarController.m */; };
 		236BA526178266F2005BBF78 /* WXYCStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236BA525178266F2005BBF78 /* WXYCStreamController.m */; };
 		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
@@ -323,6 +326,12 @@
 		23651003111211C700C192CB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		23651056111211D300C192CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		23677470179C85AF009C1BAA /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
+		23677475179C87EA009C1BAA /* FavoriteShareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteShareButton.h; path = Views/FavoriteShareButton.h; sourceTree = "<group>"; };
+		23677476179C87EA009C1BAA /* FavoriteShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteShareButton.m; path = Views/FavoriteShareButton.m; sourceTree = "<group>"; };
+		23677478179C88EE009C1BAA /* SearchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchButton.h; path = Views/SearchButton.h; sourceTree = "<group>"; };
+		23677479179C88EF009C1BAA /* SearchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchButton.m; path = Views/SearchButton.m; sourceTree = "<group>"; };
+		2367747B179C890F009C1BAA /* SearchAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchAction.h; path = Views/SearchAction.h; sourceTree = "<group>"; };
+		2367747C179C8910009C1BAA /* SearchAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchAction.m; path = Views/SearchAction.m; sourceTree = "<group>"; };
 		236BA51E1782614B005BBF78 /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
 		236BA51F1782614B005BBF78 /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
 		236BA524178266F2005BBF78 /* WXYCStreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCStreamController.h; sourceTree = "<group>"; };
@@ -830,6 +839,10 @@
 				237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */,
 				23EAEFAA179C4514008E0960 /* TwitterShareButton.h */,
 				23EAEFAB179C4514008E0960 /* TwitterShareButton.m */,
+				23677475179C87EA009C1BAA /* FavoriteShareButton.h */,
+				23677476179C87EA009C1BAA /* FavoriteShareButton.m */,
+				23677478179C88EE009C1BAA /* SearchButton.h */,
+				23677479179C88EF009C1BAA /* SearchButton.m */,
 			);
 			name = "Share Buttons";
 			sourceTree = "<group>";
@@ -849,6 +862,8 @@
 				237DFA32179B9F5900AAEC4B /* PlaycutCellShareAction.h */,
 				23EAEFAD179C461E008E0960 /* FavoriteShareAction.h */,
 				23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */,
+				2367747B179C890F009C1BAA /* SearchAction.h */,
+				2367747C179C8910009C1BAA /* SearchAction.m */,
 			);
 			name = "Share Actions";
 			sourceTree = "<group>";
@@ -1344,6 +1359,9 @@
 				236BA5201782614B005BBF78 /* StatusBarController.m in Sources */,
 				236BA526178266F2005BBF78 /* WXYCStreamController.m in Sources */,
 				23677471179C85AF009C1BAA /* PlaycutCellButton.m in Sources */,
+				23677477179C87EA009C1BAA /* FavoriteShareButton.m in Sources */,
+				2367747A179C88EF009C1BAA /* SearchButton.m in Sources */,
+				2367747D179C8910009C1BAA /* SearchAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
