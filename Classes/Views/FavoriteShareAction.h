@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PlaycutCellShareAction.h"
 
-@interface FavoriteShareAction : NSObject
+@interface FavoriteShareAction : NSObject<PlaycutCellShareAction>
 
 @end

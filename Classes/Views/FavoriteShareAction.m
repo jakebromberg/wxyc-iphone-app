@@ -10,4 +10,9 @@
 
 @implementation FavoriteShareAction
 
++ (void)sharePlaycut:(Playcut *)playcut
+{
+	
+}
+
 @end
