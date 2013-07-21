@@ -11,14 +11,14 @@
 
 @implementation FacebookShareAction
 
-- (NSString *)SLServiceType
-{
-	return SLServiceTypeFacebook;
-}
-
-- (NSString *)serviceName
++ (NSString *)serviceName
 {
 	return @"Facebook";
+}
+
++ (NSString *)SLServiceType
+{
+	return SLServiceTypeFacebook;
 }
 
 @end

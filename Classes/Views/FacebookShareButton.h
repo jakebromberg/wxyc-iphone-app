@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PlaycutCellShareButton.h"
+#import "PlaycutCellButton.h"
 #import "Playcut.h"
 
 @interface FacebookShareButton : UIButton<PlaycutCellButton>

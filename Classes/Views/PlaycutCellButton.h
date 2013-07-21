@@ -12,7 +12,6 @@
 @protocol PlaycutCellButton <NSObject>
 
 - (instancetype)initWithPlaycut:(Playcut *)playcut;
-- (IBAction)touchUpInsideHandler:(id)sender;
 
 @property (nonatomic, strong) Playcut *playcut;
 @property (nonatomic, readonly) Class<PlaycutCellShareAction> playcutCellShareAction;

@@ -11,14 +11,14 @@
 
 @implementation TwitterShareAction
 
-- (NSString *)SLServiceType
-{
-	return SLServiceTypeTwitter;
-}
-
-- (NSString *)serviceName
++ (NSString *)serviceName
 {
 	return @"Twitter";
+}
+
++ (NSString *)SLServiceType
+{
+	return SLServiceTypeTwitter;
 }
 
 @end

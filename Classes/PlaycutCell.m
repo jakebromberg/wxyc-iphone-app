@@ -16,6 +16,7 @@
 #import "WebViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "NSString+Additions.h"
+#import "UIButton+PlaycutCell.h"
 
 @interface PlaycutCell ()
 
@@ -23,7 +24,11 @@
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *albumArt;
 @property (nonatomic, weak) IBOutlet UIView *shareBar;
+
+@property (nonatomic, weak) IBOutlet UIButton *twitterButton;
+@property (nonatomic, weak) IBOutlet UIButton *facebookButton;
 @property (nonatomic, weak) IBOutlet UIButton *favoriteButton;
+
 
 @property (nonatomic, setter = isShareBarVisible:) BOOL isShareBarVisible;
 
@@ -52,6 +57,9 @@
 {
 	[super setEntity:entity];
 	
+	self.twitterButton.playcut = (Playcut *)entity;
+	self.facebookButton.playcut = (Playcut *)entity;
+
 	self.artistLabel.text = [entity valueForKey:@"artist"] ?: @"";
 	self.titleLabel.text = [entity valueForKey:@"song"] ?: @"";
 	
@@ -102,42 +110,6 @@
 }
 
 #pragma - share stuff
-
-- (IBAction)shareOnFacebook:(id)sender
-{
-	[self shareForServiceType:SLServiceTypeFacebook];
-}
-
-- (IBAction)shareOnTwitter:(id)sender
-{
-	[self shareForServiceType:SLServiceTypeTwitter];
-}
-
-- (void)shareForServiceType:(NSString*)serviceType
-{
-	if ([SLComposeViewController isAvailableForServiceType:serviceType])
-	{
-		SLComposeViewController *sheet = [SLComposeViewController composeViewControllerForServiceType:serviceType];
-		
-		NSString *initialText = [@"Listening to \"%@\" by %@ on @WXYC!" formattedWith:@[self.titleLabel.text, self.artistLabel.text]];
-		[sheet setInitialText:initialText];
-		[sheet addImage:self.albumArt.image];
-		[sheet addURL:[NSURL URLWithString:@"http://wxyc.org/"]];
-		
-		[self.window.rootViewController presentViewController:sheet animated:YES completion:nil];
-	} else {
-		NSString *serviceName;
-		
-		if (serviceType == SLServiceTypeFacebook)
-			serviceName = @"Facebook";
-		else
-			serviceName = @"Twitter";
-		
-		id title = [@"Not logged in to " append:serviceName];
-		id message = [@"Open Settings and add your %@ account" formattedWith:@[serviceName]];
-		[[UIAlertView alertViewWithTitle:title message:message] show];
-	}
-}
 
 - (IBAction)favorite:(id)sender
 {

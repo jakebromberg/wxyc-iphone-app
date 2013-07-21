@@ -9,6 +9,14 @@
 #import "TwitterShareButton.h"
 #import "TwitterShareAction.h"
 #import "UIButton+PlaycutCell.h"
+#import "Singleton.h"
+
+@implementation TwitterShareButton
+
+@synthesize playcut;
+@dynamic playcutCellShareAction;
+
+@end
 
 @implementation TwitterShareButton (PlaycutCell)
 

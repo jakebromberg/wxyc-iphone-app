@@ -13,9 +13,12 @@
 @dynamic playcut;
 @dynamic playcutCellShareAction;
 
-- (IBAction)touchUpInsideHandler:(id)sender
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	[self.playcutCellShareAction sharePlaycut:self.playcut];
+	if (event.type == UIEventTypeTouches)
+	{
+		[self.playcutCellShareAction sharePlaycut:self.playcut];
+	}
 }
 
 - (instancetype)initWithPlaycut:(Playcut *)playcut

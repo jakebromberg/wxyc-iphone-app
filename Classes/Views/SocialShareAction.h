@@ -13,9 +13,7 @@
 
 @interface SocialShareAction : NSObject<PlaycutCellShareAction>
 
-@property (nonatomic, readonly) NSString *SLServiceType;
-@property (nonatomic, readonly) NSString *serviceName;
++ (NSString *)SLServiceType;
++ (NSString *)serviceName;
 
 @end
-
-SINGLETON_DECLARATION(SocialShareAction)
