@@ -7,7 +7,18 @@
 //
 
 #import "TwitterShareAction.h"
+#import <Social/Social.h>
 
 @implementation TwitterShareAction
+
+- (NSString *)SLServiceType
+{
+	return SLServiceTypeTwitter;
+}
+
+- (NSString *)serviceName
+{
+	return @"Twitter";
+}
 
 @end

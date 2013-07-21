@@ -17,7 +17,6 @@
 @dynamic SLServiceType;
 @dynamic serviceName;
 
-
 + (void)sharePlaycut:(Playcut *)playcut
 {
 	if ([SLComposeViewController isAvailableForServiceType:[SocialShareAction sharedInstance].SLServiceType])

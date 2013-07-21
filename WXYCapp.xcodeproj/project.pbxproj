@@ -82,7 +82,6 @@
 		237906DD16B4E9BE00F67A17 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */; };
 		237DFA29179B9A0100AAEC4B /* UIButton+PlaycutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA28179B9A0100AAEC4B /* UIButton+PlaycutCell.m */; };
 		237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */; };
-		237DFA30179B9DCF00AAEC4B /* PlaycutCellShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA2B179B9B0400AAEC4B /* PlaycutCellShareButton.m */; };
 		237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA34179BA17D00AAEC4B /* SocialShareAction.m */; };
 		237DFA3B179C36AC00AAEC4B /* FacebookShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA3A179C366000AAEC4B /* FacebookShareAction.m */; };
 		237E914F12930E5400A07456 /* casey-burns-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914D12930E5400A07456 /* casey-burns-app-icon.png */; };
@@ -142,6 +141,8 @@
 		23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */; };
 		23EAEFA2179C3F7A008E0960 /* FacebookShareAction.h in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA39179C366000AAEC4B /* FacebookShareAction.h */; };
 		23EAEFA8179C4316008E0960 /* TwitterShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */; };
+		23EAEFAC179C4534008E0960 /* TwitterShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFAB179C4514008E0960 /* TwitterShareButton.m */; };
+		23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */; };
 		23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39201527D0CF0006CDA5 /* AudioStreamController.m */; };
 		23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39221527D0EF0006CDA5 /* PlaylistController.m */; };
 		23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */; };
@@ -329,8 +330,6 @@
 		237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		237DFA27179B9A0100AAEC4B /* UIButton+PlaycutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+PlaycutCell.h"; path = "Views/UIButton+PlaycutCell.h"; sourceTree = "<group>"; };
 		237DFA28179B9A0100AAEC4B /* UIButton+PlaycutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+PlaycutCell.m"; path = "Views/UIButton+PlaycutCell.m"; sourceTree = "<group>"; };
-		237DFA2A179B9B0400AAEC4B /* PlaycutCellShareButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaycutCellShareButton.h; path = Views/PlaycutCellShareButton.h; sourceTree = "<group>"; };
-		237DFA2B179B9B0400AAEC4B /* PlaycutCellShareButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellShareButton.m; path = Views/PlaycutCellShareButton.m; sourceTree = "<group>"; };
 		237DFA2D179B9C1400AAEC4B /* FacebookShareButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FacebookShareButton.h; path = Views/FacebookShareButton.h; sourceTree = "<group>"; };
 		237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FacebookShareButton.m; path = Views/FacebookShareButton.m; sourceTree = "<group>"; };
 		237DFA31179B9E6800AAEC4B /* PlaycutCellButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaycutCellButton.h; path = Views/PlaycutCellButton.h; sourceTree = "<group>"; };
@@ -407,6 +406,10 @@
 		23E77B1E1118DCB3007D373D /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EAEFA6179C42F0008E0960 /* TwitterShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TwitterShareAction.h; path = Views/TwitterShareAction.h; sourceTree = "<group>"; };
 		23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TwitterShareAction.m; path = Views/TwitterShareAction.m; sourceTree = "<group>"; };
+		23EAEFAA179C4514008E0960 /* TwitterShareButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TwitterShareButton.h; path = Views/TwitterShareButton.h; sourceTree = "<group>"; };
+		23EAEFAB179C4514008E0960 /* TwitterShareButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TwitterShareButton.m; path = Views/TwitterShareButton.m; sourceTree = "<group>"; };
+		23EAEFAD179C461E008E0960 /* FavoriteShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FavoriteShareAction.h; path = Views/FavoriteShareAction.h; sourceTree = "<group>"; };
+		23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FavoriteShareAction.m; path = Views/FavoriteShareAction.m; sourceTree = "<group>"; };
 		23EE391F1527D0CF0006CDA5 /* AudioStreamController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamController.h; sourceTree = "<group>"; };
 		23EE39201527D0CF0006CDA5 /* AudioStreamController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamController.m; sourceTree = "<group>"; };
 		23EE39211527D0EF0006CDA5 /* PlaylistController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaylistController.h; sourceTree = "<group>"; };
@@ -825,10 +828,10 @@
 				237DFA31179B9E6800AAEC4B /* PlaycutCellButton.h */,
 				237DFA27179B9A0100AAEC4B /* UIButton+PlaycutCell.h */,
 				237DFA28179B9A0100AAEC4B /* UIButton+PlaycutCell.m */,
-				237DFA2A179B9B0400AAEC4B /* PlaycutCellShareButton.h */,
-				237DFA2B179B9B0400AAEC4B /* PlaycutCellShareButton.m */,
 				237DFA2D179B9C1400AAEC4B /* FacebookShareButton.h */,
 				237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */,
+				23EAEFAA179C4514008E0960 /* TwitterShareButton.h */,
+				23EAEFAB179C4514008E0960 /* TwitterShareButton.m */,
 			);
 			name = "Share Buttons";
 			sourceTree = "<group>";
@@ -846,6 +849,8 @@
 			children = (
 				23EAEFA9179C4320008E0960 /* Social */,
 				237DFA32179B9F5900AAEC4B /* PlaycutCellShareAction.h */,
+				23EAEFAD179C461E008E0960 /* FavoriteShareAction.h */,
+				23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */,
 			);
 			name = "Share Actions";
 			sourceTree = "<group>";
@@ -1286,6 +1291,7 @@
 				2325E0EF1288A70800B064BB /* Playcut.m in Sources */,
 				23B32DF8126E70D7008414F4 /* FavoritesTableViewController.m in Sources */,
 				238CC1C81266413D006EC552 /* CassetteReelViewController.m in Sources */,
+				23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */,
 				23EE39FC1527F07A0006CDA5 /* AboutViewController.m in Sources */,
 				4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */,
 				23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */,
@@ -1308,6 +1314,7 @@
 				237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */,
 				23648AA016F5293E00DF2C27 /* NSObject+MagicalDataImport.m in Sources */,
 				23648AA116F5293E00DF2C27 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
+				23EAEFAC179C4534008E0960 /* TwitterShareButton.m in Sources */,
 				23648AA216F5293E00DF2C27 /* NSString+MagicalDataImport.m in Sources */,
 				23648AA316F5293E00DF2C27 /* NSManagedObject+MagicalAggregation.m in Sources */,
 				23648AA416F5293E00DF2C27 /* NSManagedObject+MagicalDataImport.m in Sources */,
@@ -1322,7 +1329,6 @@
 				23648AAC16F5293E00DF2C27 /* NSManagedObjectModel+MagicalRecord.m in Sources */,
 				23648AAD16F5293E00DF2C27 /* NSPersistentStore+MagicalRecord.m in Sources */,
 				23648AAE16F5293E00DF2C27 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
-				237DFA30179B9DCF00AAEC4B /* PlaycutCellShareButton.m in Sources */,
 				23648AAF16F5293E00DF2C27 /* MagicalRecord+Actions.m in Sources */,
 				23648AB016F5293E00DF2C27 /* MagicalRecord+ErrorHandling.m in Sources */,
 				23648AB116F5293E00DF2C27 /* MagicalRecord+iCloud.m in Sources */,

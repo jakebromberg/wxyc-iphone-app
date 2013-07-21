@@ -7,9 +7,7 @@
 //
 
 #import "FacebookShareButton.h"
-#import <Social/Social.h>
 #import "UIButton+PlaycutCell.h"
-#import "NSString+Additions.h"
 #import "FacebookShareAction.h"
 
 @implementation FacebookShareButton (PlaycutCell)
