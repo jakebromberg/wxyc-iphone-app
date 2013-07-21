@@ -6,10 +6,8 @@
 //  Copyright (c) 2013 WXYC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "PlaycutCellButton.h"
-#import "Playcut.h"
 
-@interface FacebookShareButton : UIButton<PlaycutCellButton>
+@interface FacebookShareButton : PlaycutCellButton
 
 @end

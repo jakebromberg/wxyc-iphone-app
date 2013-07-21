@@ -7,17 +7,9 @@
 //
 
 #import "FacebookShareButton.h"
-#import "UIButton+PlaycutCell.h"
 #import "FacebookShareAction.h"
 
 @implementation FacebookShareButton
-
-@synthesize playcut;
-@dynamic playcutCellShareAction;
-
-@end
-
-@implementation FacebookShareButton (PlaycutCell)
 
 - (Class<PlaycutCellShareAction>)playcutCellShareAction
 {

@@ -6,9 +6,8 @@
 //  Copyright (c) 2013 WXYC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "PlaycutCellButton.h"
 
-@interface TwitterShareButton : UIButton<PlaycutCellButton>
+@interface TwitterShareButton : PlaycutCellButton
 
 @end

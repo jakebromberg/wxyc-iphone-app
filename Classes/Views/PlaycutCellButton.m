@@ -1,17 +1,14 @@
 //
-//  UIButton+PlaycutCell.m
+//  PlaycutCellButton.m
 //  WXYCapp
 //
-//  Created by Jake Bromberg on 7/20/13.
+//  Created by Jake Bromberg on 7/21/13.
 //  Copyright (c) 2013 WXYC. All rights reserved.
 //
 
-#import "UIButton+PlaycutCell.h"
+#import "PlaycutCellButton.h"
 
-@implementation UIButton (PlaycutCell)
-
-@dynamic playcut;
-@dynamic playcutCellShareAction;
+@implementation PlaycutCellButton
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {

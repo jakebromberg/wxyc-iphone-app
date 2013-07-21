@@ -76,11 +76,11 @@
 		23648AB716F52D2500DF2C27 /* favorites-share-favorited.png in Resources */ = {isa = PBXBuildFile; fileRef = 23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */; };
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
+		23677471179C85AF009C1BAA /* PlaycutCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23677470179C85AF009C1BAA /* PlaycutCellButton.m */; };
 		236BA5201782614B005BBF78 /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236BA51F1782614B005BBF78 /* StatusBarController.m */; };
 		236BA526178266F2005BBF78 /* WXYCStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236BA525178266F2005BBF78 /* WXYCStreamController.m */; };
 		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
 		237906DD16B4E9BE00F67A17 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */; };
-		237DFA29179B9A0100AAEC4B /* UIButton+PlaycutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA28179B9A0100AAEC4B /* UIButton+PlaycutCell.m */; };
 		237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */; };
 		237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA34179BA17D00AAEC4B /* SocialShareAction.m */; };
 		237DFA3B179C36AC00AAEC4B /* FacebookShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA3A179C366000AAEC4B /* FacebookShareAction.m */; };
@@ -322,14 +322,13 @@
 		23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-share-favorited.png"; sourceTree = "<group>"; };
 		23651003111211C700C192CB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		23651056111211D300C192CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		23677470179C85AF009C1BAA /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
 		236BA51E1782614B005BBF78 /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
 		236BA51F1782614B005BBF78 /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
 		236BA524178266F2005BBF78 /* WXYCStreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCStreamController.h; sourceTree = "<group>"; };
 		236BA525178266F2005BBF78 /* WXYCStreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCStreamController.m; sourceTree = "<group>"; };
 		237578921266CBB500E6177B /* cassette button push.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cassette button push.aif"; path = "sounds/cassette button push.aif"; sourceTree = "<group>"; };
 		237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		237DFA27179B9A0100AAEC4B /* UIButton+PlaycutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+PlaycutCell.h"; path = "Views/UIButton+PlaycutCell.h"; sourceTree = "<group>"; };
-		237DFA28179B9A0100AAEC4B /* UIButton+PlaycutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+PlaycutCell.m"; path = "Views/UIButton+PlaycutCell.m"; sourceTree = "<group>"; };
 		237DFA2D179B9C1400AAEC4B /* FacebookShareButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FacebookShareButton.h; path = Views/FacebookShareButton.h; sourceTree = "<group>"; };
 		237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FacebookShareButton.m; path = Views/FacebookShareButton.m; sourceTree = "<group>"; };
 		237DFA31179B9E6800AAEC4B /* PlaycutCellButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaycutCellButton.h; path = Views/PlaycutCellButton.h; sourceTree = "<group>"; };
@@ -826,8 +825,7 @@
 			isa = PBXGroup;
 			children = (
 				237DFA31179B9E6800AAEC4B /* PlaycutCellButton.h */,
-				237DFA27179B9A0100AAEC4B /* UIButton+PlaycutCell.h */,
-				237DFA28179B9A0100AAEC4B /* UIButton+PlaycutCell.m */,
+				23677470179C85AF009C1BAA /* PlaycutCellButton.m */,
 				237DFA2D179B9C1400AAEC4B /* FacebookShareButton.h */,
 				237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */,
 				23EAEFAA179C4514008E0960 /* TwitterShareButton.h */,
@@ -1301,7 +1299,6 @@
 				234A74D5153B6D3100C30053 /* PlaylistMapping.m in Sources */,
 				2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */,
 				235E4210168CC2830088E19F /* UIView+Additions.m in Sources */,
-				237DFA29179B9A0100AAEC4B /* UIButton+PlaycutCell.m in Sources */,
 				23F8176916EBDDD1005BF24F /* NSString+Additions.m in Sources */,
 				23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */,
 				235DE15516ED577D005640E9 /* PlayerCell.m in Sources */,
@@ -1346,6 +1343,7 @@
 				2305477017769A4E00FA077A /* MTStatusBarOverlay.m in Sources */,
 				236BA5201782614B005BBF78 /* StatusBarController.m in Sources */,
 				236BA526178266F2005BBF78 /* WXYCStreamController.m in Sources */,
+				23677471179C85AF009C1BAA /* PlaycutCellButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

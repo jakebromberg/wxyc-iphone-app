@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PlaycutCellShareAction.h"
 
-@protocol PlaycutCellButton <NSObject>
-
-- (instancetype)initWithPlaycut:(Playcut *)playcut;
+@interface PlaycutCellButton : UIButton
 
 @property (nonatomic, strong) Playcut *playcut;
 @property (nonatomic, readonly) Class<PlaycutCellShareAction> playcutCellShareAction;

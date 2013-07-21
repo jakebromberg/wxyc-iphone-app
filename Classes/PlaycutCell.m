@@ -16,7 +16,7 @@
 #import "WebViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "NSString+Additions.h"
-#import "UIButton+PlaycutCell.h"
+#import "PlaycutCellButton.h"
 
 @interface PlaycutCell ()
 
@@ -25,9 +25,9 @@
 @property (nonatomic, weak) IBOutlet UIImageView *albumArt;
 @property (nonatomic, weak) IBOutlet UIView *shareBar;
 
-@property (nonatomic, weak) IBOutlet UIButton *twitterButton;
-@property (nonatomic, weak) IBOutlet UIButton *facebookButton;
-@property (nonatomic, weak) IBOutlet UIButton *favoriteButton;
+@property (nonatomic, weak) IBOutlet PlaycutCellButton *twitterButton;
+@property (nonatomic, weak) IBOutlet PlaycutCellButton *facebookButton;
+@property (nonatomic, weak) IBOutlet PlaycutCellButton *favoriteButton;
 
 
 @property (nonatomic, setter = isShareBarVisible:) BOOL isShareBarVisible;
