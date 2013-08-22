@@ -6,7 +6,6 @@
 //  Copyright 2010 WXYC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "LivePlaylistTableViewCell.h"
 
 @interface LoadPreviousEntriesCell : LivePlaylistTableViewCell

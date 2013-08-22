@@ -6,12 +6,11 @@
 //  Copyright 2010 WXYC. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 
 @protocol GoogleImageSearchDelegate
 
--(void) handleGoogleImageSearchResults:(NSArray *)results;
+- (void)handleGoogleImageSearchResults:(NSArray *)results;
 
 @end
 

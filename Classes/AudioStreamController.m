@@ -10,7 +10,6 @@
 #import "AudioStreamController.h"
 #include <AVFoundation/AVFoundation.h>
 #include <AudioToolbox/AudioToolbox.h>
-//#import <AVFoundation/AVFoundation.h>
 
 @interface AudioStreamController()
 
@@ -26,7 +25,7 @@ static AudioStreamController *wxyc;
 + (instancetype)wxyc
 {
 	if (!wxyc)
-		wxyc = [[AudioStreamController alloc] initWithURL:[NSURL URLWithString:@"http://audio-mp3.ibiblio.org:8000/wxyc.mp3"]];
+		wxyc = [[AudioStreamController alloc] initWithURL:[NSURL URLWithString:@"http://152.2.204.90:8000/wxyc.mp3"]];
 	
 	return wxyc;
 }

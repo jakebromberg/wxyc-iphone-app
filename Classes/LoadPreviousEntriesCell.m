@@ -8,7 +8,6 @@
 
 #import "LoadPreviousEntriesCell.h"
 
-
 @implementation LoadPreviousEntriesCell
 
 - (id)init
