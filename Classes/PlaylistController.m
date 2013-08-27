@@ -11,7 +11,7 @@
 #import "NSString+Additions.h"
 #import "Playcut.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "WXYCStreamController.h"
+#import "AudioStreamController.h"
 #import "NSArray+Additions.h"
 
 NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
@@ -25,27 +25,6 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 @end
 
 @implementation PlaylistController
-
-#pragma mark constructors
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	[self configureNowPlayingInfo];
-}
-
-- (id)init
-{
-	self = [super init];
-	
-	if (self)
-	{
-		_playlistMapping = [[PlaylistMapping alloc] init];
-		_playlist = [NSArray array];
-		[[WXYCStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
-	}
-	
-	return self;
-}
 
 - (NSString *)path
 {
@@ -118,6 +97,27 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 			MPMediaItemPropertyTitle : [playcut valueForKey:@"song"] ?: @"",
 			MPMediaItemPropertyArtwork : [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:[playcut valueForKey:@"primaryImage"]] ?: [UIImage imageNamed:@"album_cover_placeholder.PNG"]]
 		};
+}
+
+#pragma mark constructors
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	[self configureNowPlayingInfo];
+}
+
+- (id)init
+{
+	self = [super init];
+	
+	if (self)
+	{
+		_playlistMapping = [[PlaylistMapping alloc] init];
+		_playlist = [NSArray array];
+		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+	}
+	
+	return self;
 }
 
 @end

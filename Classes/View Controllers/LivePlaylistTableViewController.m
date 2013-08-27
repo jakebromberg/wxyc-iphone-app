@@ -12,7 +12,7 @@
 #import "TalksetCell.h"
 #import "PlaylistEntry.h"
 #import "NSString+Additions.h"
-#import "WXYCStreamController.h"
+#import "AudioStreamController.h"
 
 #define NUMBER_OF_HEADER_CELLS 1
 
@@ -23,33 +23,6 @@
 @end
 
 @implementation LivePlaylistTableViewController
-
-#pragma mark - UIViewController
-
-- (void)viewDidLoad
-{
-	[super viewDidLoad];
-	
-	[[NSNotificationCenter defaultCenter] addObserverForName:LPStatusChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
-	 {
-		 if (self.livePlaylistCtrl.state == LP_DONE)
-		 {
-			 NSArray *newEntries = note.userInfo[@"newEntries"];
-			 
-			 if (newEntries.count == 0)
-				 return;
-			 
-			 NSMutableArray *newIndexPaths = [NSMutableArray arrayWithCapacity:[newEntries count]];
-			 
-			 for (int i = 0; i < [newEntries count]; i++) {
-				 [newIndexPaths addObject:[NSIndexPath indexPathForItem:i + NUMBER_OF_HEADER_CELLS inSection:0]];
-			 }
-			 
-			 [self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-		 }
-	 }];
-}
-
 
 #pragma Remote Control stuff
 
@@ -65,10 +38,10 @@
         switch (receivedEvent.subtype) {
 				
             case UIEventSubtypeRemoteControlTogglePlayPause:
-				if ([WXYCStreamController wxyc].isPlaying)
-					[[WXYCStreamController wxyc] stop];
+				if ([AudioStreamController wxyc].isPlaying)
+					[[AudioStreamController wxyc] stop];
 				else
-					[[WXYCStreamController wxyc] start];
+					[[AudioStreamController wxyc] start];
                 break;
 				
             case UIEventSubtypeRemoteControlPreviousTrack:
@@ -83,7 +56,7 @@
     }
 }
 
-#pragma mark - UITableView Delegate Stuff
+#pragma mark - UITableViewController
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -139,7 +112,33 @@
 	return [NSClassFromString([self classNameForCellAtIndexPath:indexPath]) height];
 }
 
-#pragma - Getter Stuff
+#pragma mark - UIViewController
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:LPStatusChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
+	{
+		if (self.livePlaylistCtrl.state == LP_DONE)
+		{
+			NSArray *newEntries = note.userInfo[@"newEntries"];
+			
+			if (newEntries.count == 0)
+				return;
+				
+			NSMutableArray *newIndexPaths = [NSMutableArray arrayWithCapacity:[newEntries count]];
+			
+			for (int i = 0; i < [newEntries count]; i++) {
+				[newIndexPaths addObject:[NSIndexPath indexPathForItem:i + NUMBER_OF_HEADER_CELLS inSection:0]];
+			}
+			
+			[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+		}
+	}];
+}
+
+#pragma - Initializer stuff
 
 - (PlaylistController *)livePlaylistCtrl
 {

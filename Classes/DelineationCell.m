@@ -11,18 +11,7 @@
 
 @implementation DelineationCell
 
-- (id)initWithEntity:(NSManagedObject *)entity
-{
-	if (!(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] description]]))
-		return nil;
-	
-	self.selectionStyle = UITableViewCellSelectionStyleNone;
-	self.entity = entity;
-	
-	return self;
-}
-
-- (void)addText:(NSString *)text
+- (void) addText:(NSString *) text
 {
 	UILabel *label = [[UILabel alloc]
 					  initWithFrame:CGRectMake( 10, 2.5f, 300, 16 )];
@@ -37,9 +26,19 @@
 	[self addSubview:label];
 }
 
-+ (float)height
-{
++ (float)height {
 	return 21.0f;
+}
+
+- (id)initWithEntity:(NSManagedObject *)entity
+{
+	if (!(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] description]]))
+		return nil;
+
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+	self.entity = entity;
+
+	return self;
 }
 
 @end

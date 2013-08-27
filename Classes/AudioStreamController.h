@@ -7,24 +7,15 @@
 //
 #include <AVFoundation/AVFoundation.h>
 
-typedef NS_ENUM(NSUInteger, AudioStreamControllerState)
-{
-	AudioStreamControllerStateInitialized,
-	AudioStreamControllerStateUnknown,
-	AudioStreamControllerStatePlaying,
-	AudioStreamControllerStateStopped,
-	AudioStreamControllerStateBuffering,
-	AudioStreamControllerStateError
-};
-
 @interface AudioStreamController : NSObject
+
++ (instancetype)wxyc;
 
 - (void)start;
 - (void)stop;
 - (id)initWithURL:(NSURL*)aURL;
 
-@property (nonatomic, readonly, getter = isPlaying) BOOL isPlaying;
+@property (nonatomic, readonly) BOOL isPlaying;
 @property (nonatomic, readonly, strong) NSURL *URL;
-@property (nonatomic, readonly) AudioStreamControllerState playerState;
 
 @end

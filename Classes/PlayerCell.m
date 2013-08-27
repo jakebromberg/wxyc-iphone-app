@@ -8,11 +8,9 @@
 //
 
 #import "PlayerCell.h"
-#import "WXYCStreamController.h"
+#import "AudioStreamController.h"
 #import "CassetteReelViewController.h"
 #import "NSString+Additions.h"
-
-#define PLAYER_STATE_KVO @"playerState"
 
 @interface PlayerCell ()
 
@@ -24,20 +22,9 @@
 
 @implementation PlayerCell
 
-#pragma mark - appearance
-
 + (float)height
 {
 	return 74.0f;
-}
-
-#pragma mark - life cycle
-
-- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
-{
-	[[WXYCStreamController wxyc] addObserver:self forKeyPath:PLAYER_STATE_KVO options:NSKeyValueObservingOptionNew context:NULL];
-	
-	return [super awakeAfterUsingCoder:aDecoder];
 }
 
 - (void)prepareForReuse
@@ -45,62 +32,66 @@
 	[super prepareForReuse];
 	
 	@try {
-		[[WXYCStreamController wxyc] removeObserver:self forKeyPath:PLAYER_STATE_KVO];
+		[[AudioStreamController wxyc] removeObserver:self forKeyPath:@"isPlaying"];
 	}
 	@catch (NSException *exception) {
 		
 	}
 	@finally {
-		[[WXYCStreamController wxyc] addObserver:self forKeyPath:PLAYER_STATE_KVO options:NSKeyValueObservingOptionNew context:NULL];
+		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
 	}
 	
-	[self configureInterface];
+	[self configureInterfaceForPlayingState:AudioStreamController.wxyc.isPlaying];
 }
 
-#pragma mark - KVO
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+- (void)configureInterfaceForPlayingState:(BOOL)isPlaying
 {
-	if ([keyPath isEqualToString:PLAYER_STATE_KVO])
+	if (isPlaying)
 	{
-		[self configureInterface];
-	}
-}
-
-#pragma mark - view controller logic
-
-- (void)configureInterface
-{
-	switch ([WXYCStreamController wxyc].playerState) {
-		case AudioStreamControllerStateUnknown:
-		case AudioStreamControllerStateBuffering:
-			[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
-			[self.leftCassetteReel stopAnimation];
-			[self.rightCassetteReel stopAnimation];
-			break;
-		case AudioStreamControllerStatePlaying:
-			[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
-			[self.leftCassetteReel startAnimation];
-			[self.rightCassetteReel startAnimation];
-			break;
-		default:
-			[self.playButton setImage:[UIImage imageNamed:@"play-button.png"] forState:UIControlStateNormal];
-			[self.leftCassetteReel stopAnimation];
-			[self.rightCassetteReel stopAnimation];
-			break;
+		[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
+		[self.leftCassetteReel startAnimation];
+		[self.rightCassetteReel startAnimation];
+	} else {
+		[self.playButton setImage:[UIImage imageNamed:@"play-button.png"] forState:UIControlStateNormal];
+		[self.leftCassetteReel stopAnimation];
+		[self.rightCassetteReel stopAnimating];
 	}
 }
 
 - (IBAction)pushPlay:(id)sender
 {
-	if ([[WXYCStreamController wxyc] isPlaying])
+	[self playPushButtonSFX];
+
+	if ([AudioStreamController.wxyc isPlaying])
 	{
-		[[WXYCStreamController wxyc] stop];
+		[AudioStreamController.wxyc stop];
 	} else {
-		[[WXYCStreamController wxyc] start];
+		[AudioStreamController.wxyc start];
 	}
+}
+
+- (void)playPushButtonSFX
+{
+	SystemSoundID soundID;
+	NSURL *url = [NSURL fileURLWithPath:[NSBundle.mainBundle.resourcePath append:@"/cassette button push.aif"]];
 	
-	[self configureInterface];
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
+	AudioServicesPlaySystemSound(soundID);
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if ([keyPath isEqualToString:@"isPlaying"])
+	{
+		[self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
+	}
+}
+
+- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
+{
+	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+
+	return [super awakeAfterUsingCoder:aDecoder];
 }
 
 @end

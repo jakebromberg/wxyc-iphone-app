@@ -10,130 +10,44 @@
 #import "AudioStreamController.h"
 #include <AVFoundation/AVFoundation.h>
 #include <AudioToolbox/AudioToolbox.h>
-#import <CoreMedia/CoreMedia.h>
+//#import <AVFoundation/AVFoundation.h>
 
-#define PLAYER_STATE_KVO @"playerState"
-
-@interface AudioStreamController ()
+@interface AudioStreamController()
 
 @property (nonatomic, strong) AVPlayer *player;
-@property (nonatomic, getter = isPlaying) BOOL isPlaying;
 
 @end
 
 
 @implementation AudioStreamController
 
-- (id)initWithURL:(NSURL*)URL
+static AudioStreamController *wxyc;
+
++ (instancetype)wxyc
 {
-	self = [super init];
+	if (!wxyc)
+		wxyc = [[AudioStreamController alloc] initWithURL:[NSURL URLWithString:@"http://audio-mp3.ibiblio.org:8000/wxyc.mp3"]];
 	
-	if (self)
-	{
-		_URL = URL;
-		[self configureAudioSession];
-	}
-	
-	return self;
-}
-
-- (void)configureAudioSession
-{
-	NSError *sessionError = nil;
-	[[AVAudioSession sharedInstance] setDelegate:self];
-	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&sessionError];
-	
-	NSAssert(!sessionError, @"");
-	
-	UInt32 doChangeDefaultRoute = 1;
-	AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
-}
-
-- (void)dealloc
-{
-	[self removeObserver:self forKeyPath:@"player.status"];
-}
-
-#pragma mark - KVC/KVO Stuff
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"player.status"])
-	{
-		if (_player.status == AVPlayerStatusFailed)
-		{
-			_player = nil;
-		}
-	}
-}
-
-+ (NSSet *)keyPathsForValuesAffectingIsPlaying
-{
-	return [NSSet setWithObject:PLAYER_STATE_KVO];
-}
-
-+ (NSSet *)keyPathsForValuesAffectingPlayerState
-{
-	return [NSSet setWithArray:@[
-			@"player.rate",
-			@"player.status",
-			@"player.currentItem.status",
-			@"player.currentItem.playbackLikelyToKeepUp",
-		]];
+	return wxyc;
 }
 
 #pragma mark - Public Methods
 
 - (void)start
 {
-	[self willChangeValueForKey:PLAYER_STATE_KVO];
-	
-	if (!_player)
-		[self player];
-	
-	[_player play];
+	[self.player play];
 	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-	[self didChangeValueForKey:PLAYER_STATE_KVO];
 }
 
 - (void)stop
 {
-	[self willChangeValueForKey:PLAYER_STATE_KVO];
-	[_player pause];
-	[self didChangeValueForKey:PLAYER_STATE_KVO];
+	[self.player pause];
+	[[UIApplication sharedApplication] endReceivingRemoteControlEvents];
 }
-
-#pragma mark - Getters
 
 - (BOOL)isPlaying
 {
-	switch (self.playerState)
-	{
-		case AudioStreamControllerStatePlaying:
-			return YES;
-		default:
-			return NO;
-	}
-}
-
-- (AudioStreamControllerState)playerState
-{
-	if (!_player)
-		return AudioStreamControllerStateStopped;
-	
-	if (_player.status == AVPlayerStatusFailed)
-		return AudioStreamControllerStateError;
-	
-	if (_player.status == AVPlayerStatusUnknown)
-		return AudioStreamControllerStateUnknown;
-	
-	if (!_player.currentItem.playbackLikelyToKeepUp)
-		return AudioStreamControllerStateBuffering;
-	
-	if ((_player.rate > 0) && (_player.status == AVPlayerStatusReadyToPlay))
-		return AudioStreamControllerStatePlaying;
-
-	return AudioStreamControllerStateStopped;
+	return self.player.rate > 0;
 }
 
 - (AVPlayer *)player
@@ -145,6 +59,43 @@
 	}
 	
 	return _player;
+}
+
+#pragma mark
+
+- (void)dealloc
+{
+	[self removeObserver:self forKeyPath:@"player.status"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if ([keyPath isEqualToString:@"player.status"])
+	{
+		if (self.player.status == AVPlayerStatusFailed)
+		{
+			self.player = nil;
+			[self player];
+		}
+	}
+}
+
+- (id)initWithURL:(NSURL*)URL
+{
+	self = [super init];
+	
+	if (self)
+	{
+		_URL = URL;
+		[self addObserver:self forKeyPath:@"player.status" options:NSKeyValueObservingOptionNew context:NULL];
+	}
+	
+	return self;
+}
+
++ (NSSet *)keyPathsForValuesAffectingIsPlaying
+{
+	return [NSSet setWithObject:@"player.rate"];
 }
 
 @end

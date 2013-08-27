@@ -6,15 +6,8 @@
 #import "WXYCAppDelegate.h"
 #import "PlaylistController.h"
 #import "Playcut.h"
-#import "StatusBarController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
-
-@interface WXYCAppDelegate ()
-
-@property (nonatomic, strong) StatusBarController *statusBarController;
-
-@end
 
 // Use a class extension to expose access to MagicalRecord's private setter methods
 
@@ -25,17 +18,16 @@
 
 @end
 
-
 @implementation WXYCAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
 	// bootstrap the app
+	[self configureAudioSession];
 	[self configureRootView];
 	[self configureCoreData];
 	[self tidyUpCoreData];
 	[self configureLivePlaylistController];
-	[self statusBarController];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -44,6 +36,18 @@
 }
 
 #pragma mark - bootstrapping
+
+- (void)configureAudioSession
+{
+	NSError *sessionError = nil;
+	[[AVAudioSession sharedInstance] setDelegate:self];
+	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&sessionError];
+	
+	NSAssert(!sessionError, @"");
+	
+	UInt32 doChangeDefaultRoute = 1;
+	AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
+}
 
 - (void)configureRootView
 {
@@ -88,16 +92,9 @@
 	[NSTimer scheduledTimerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 }
 
-#pragma mark - Getters
-
 - (PlaylistController *)livePlaylistCtrlr
 {
 	return _livePlaylistCtrlr ?: (_livePlaylistCtrlr = [[PlaylistController alloc] init]);
-}
-
-- (StatusBarController *)statusBarController
-{
-	return _statusBarController ?: (_statusBarController = [[StatusBarController alloc] init]);
 }
 
 @end

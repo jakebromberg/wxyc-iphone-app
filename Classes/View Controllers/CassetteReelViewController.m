@@ -7,8 +7,9 @@
 //
 
 #import "CassetteReelViewController.h"
-#import "WXYCStreamController.h"
+#import "AudioStreamController.h"
 #import "IndefinitelySpinningAnimation.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface CassetteReelViewController ()
 
@@ -18,26 +19,17 @@
 
 @implementation CassetteReelViewController
 
-- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
+- (IndefinitelySpinningAnimation *)animation
 {
-	self = [super awakeAfterUsingCoder:aDecoder];
+	if (!_animation)
+		_animation = [IndefinitelySpinningAnimation getAnimation];
 	
-	if (self)
-	{
-		[[WXYCStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
-		
-		[self startAnimation];
-		
-		if (![WXYCStreamController wxyc].isPlaying)
-			[self stopAnimation];
-	}
-	
-	return self;
+	return _animation;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if ([WXYCStreamController wxyc].isPlaying)
+	if ([AudioStreamController wxyc].isPlaying)
 		[self startAnimation];
 	else
 		[self stopAnimation];
@@ -60,10 +52,37 @@
 {
 	if (![self.layer animationForKey:@"spinAnimation"])
 		[self.layer addAnimation:[IndefinitelySpinningAnimation getAnimation] forKey:@"spinAnimation"];
-	
+
     CFTimeInterval pausedTime = [self.layer convertTime:CACurrentMediaTime() fromLayer:nil];
     self.layer.speed = 0.0;
     self.layer.timeOffset = pausedTime;
+}
+
+- (void)initImageViewAnimation
+{
+	[self.layer addAnimation:self.animation forKey:@"spinAnimation"];
+	
+	if (AudioStreamController.wxyc.isPlaying)
+		[self startAnimation];
+	else
+		[self stopAnimation];
+}
+
+- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
+{
+	self = [super awakeAfterUsingCoder:aDecoder];
+
+	if (self)
+	{
+		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+		
+		[self startAnimation];
+		
+		if (![AudioStreamController wxyc].isPlaying)
+			[self stopAnimation];
+	}
+	
+	return self;
 }
 
 @end

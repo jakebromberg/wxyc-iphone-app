@@ -10,8 +10,7 @@
 
 @implementation IndefinitelySpinningAnimation
 
-+ (id)getAnimation
-{
++ (id)getAnimation {
 	CABasicAnimation *spinAnimation;
 	
 	spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
