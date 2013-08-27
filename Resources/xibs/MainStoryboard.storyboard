@@ -767,6 +767,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsG-xw-jBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="874" y="1764"/>
         </scene>
     </scenes>
     <resources>
@@ -827,8 +828,6 @@
         <class className="PlaycutCell" superclassName="LivePlaylistTableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlaycutCell.h"/>
             <relationships>
-                <relationship kind="action" name="favorite:"/>
-                <relationship kind="action" name="search:"/>
                 <relationship kind="outlet" name="albumArt" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="facebookButton" candidateClass="PlaycutCellButton"/>
@@ -861,12 +860,6 @@
         </class>
         <class className="TwitterShareButton" superclassName="PlaycutCellButton">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TwitterShareButton.h"/>
-        </class>
-        <class className="UITableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nxEV_emptyView" candidateClass="UIView"/>
-            </relationships>
         </class>
         <class className="WXYCTabBarControllerViewController" superclassName="UITabBarController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WXYCTabBarControllerViewController.h"/>
