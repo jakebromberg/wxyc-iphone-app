@@ -4,6 +4,5 @@
     #import <UIKit/UIKit.h>
 	#import <Security/Security.h>
 
-	#define MR_SHORTHAND
-	#import "CoreData+MagicalRecord.h"
+    #import <CoreData+MagicalRecord.h>
 #endif

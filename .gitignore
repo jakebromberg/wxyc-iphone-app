@@ -10,3 +10,5 @@ provisioning/
 Classes/.DS_Store
 
 .DS_Store
+
+/Pods/
