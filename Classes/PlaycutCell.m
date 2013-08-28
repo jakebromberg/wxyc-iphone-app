@@ -15,6 +15,8 @@
 #import "NSString+Additions.h"
 #import "WebViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
+#import "NSString+Additions.h"
+#import "PlaycutCellButton.h"
 
 @interface PlaycutCell ()
 
@@ -22,7 +24,11 @@
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *albumArt;
 @property (nonatomic, weak) IBOutlet UIView *shareBar;
-@property (nonatomic, weak) IBOutlet UIButton *favoriteButton;
+
+@property (nonatomic, weak) IBOutlet PlaycutCellButton *twitterButton;
+@property (nonatomic, weak) IBOutlet PlaycutCellButton *facebookButton;
+@property (nonatomic, weak) IBOutlet PlaycutCellButton *favoriteButton;
+
 
 @property (nonatomic, setter = isShareBarVisible:) BOOL isShareBarVisible;
 
@@ -35,32 +41,75 @@
 
 @implementation PlaycutCell
 
-#pragma - share stuff
-
-- (IBAction)shareOnFacebook:(id)sender
+- (id)initWithEntity:(NSManagedObject *)entity
 {
-	[self shareForServiceType:SLServiceTypeFacebook];
-}
-
-- (IBAction)shareOnTwitter:(id)sender
-{
-	[self shareForServiceType:SLServiceTypeTwitter];
-}
-
-- (void)shareForServiceType:(NSString*)serviceType
-{
-	if ([SLComposeViewController isAvailableForServiceType:serviceType])
+	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.class.description];
+	
+	if (self)
 	{
-		SLComposeViewController *sheet = [SLComposeViewController composeViewControllerForServiceType:serviceType];
-		
-		NSString *initialText = [@"Listening to \"%@\" by %@ on @WXYC!" formattedWith:@[self.titleLabel.text, self.artistLabel.text]];
-		[sheet setInitialText:initialText];
-		[sheet addImage:self.albumArt.image];
-		[sheet addURL:[NSURL URLWithString:@"http://wxyc.org/"]];
-		
-		[self.window.rootViewController presentViewController:sheet animated:YES completion:nil];
+		self.entity = entity;
 	}
+	
+	return self;
 }
+
+- (void)setEntity:(NSManagedObject *)entity
+{
+	[super setEntity:entity];
+	
+	self.twitterButton.playcut = (Playcut *)entity;
+	self.facebookButton.playcut = (Playcut *)entity;
+
+	self.artistLabel.text = [entity valueForKey:@"artist"] ?: @"";
+	self.titleLabel.text = [entity valueForKey:@"song"] ?: @"";
+	
+	if ([self.entity valueForKey:@"primaryImage"])
+	{
+		self.albumArt.image = [UIImage imageWithData:[self.entity valueForKey:@"primaryImage"]];
+	} else {
+		self.albumArt.image = [UIImage imageNamed:@"album_cover_placeholder.PNG"];
+		
+		__weak NSManagedObject *__entity = self.entity;
+		__weak UIImageView *__albumArt = self.albumArt;
+		
+		void (^completionHandler)(UIImage*, NSError*, SDImageCacheType) = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
+		{
+			dispatch_async(dispatch_queue_create("get_image", NULL), ^{
+				if (!error)
+				{
+					[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
+					__albumArt.layer.shouldRasterize = YES;
+					
+					[[NSManagedObjectContext defaultContext] saveToPersistentStore:nil];
+				}
+			});
+
+		};
+		
+		void (^successHandler)(NSString*) = ^(NSString *url) {
+			[__albumArt setImageWithURL:[NSURL URLWithString:url] completed:completionHandler];
+		};
+		
+		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] success:successHandler failure:nil finally:nil];
+	}
+	
+	[self refreshFavoriteIcon];
+}
+
+- (void)refreshFavoriteIcon
+{
+	UIImage *favoriteIcon = [self favoriteIconImageForState:[[self.entity valueForKey:@"favorite"] isEqual:@(YES)]];
+	[self.favoriteButton setImage:favoriteIcon forState:UIControlStateNormal];
+}
+
+- (UIImage *)favoriteIconImageForState:(BOOL)state
+{
+	NSString *imageName = state ? @"favorites-share-favorited.png" : @"favorites-share.png";
+	
+	return [UIImage imageNamed:imageName];
+}
+
+#pragma - share stuff
 
 - (IBAction)favorite:(id)sender
 {
@@ -110,6 +159,7 @@
 {
 	self.isShareBarVisible = NO;
 	[self.albumArt cancelCurrentImageLoad];
+	self.albumArt.image = nil;
 }
 
 #pragma initializer stuff
@@ -117,63 +167,6 @@
 + (float)height
 {
 	return 360.f;
-}
-
-- (void)refreshFavoriteIcon
-{
-	if ([[self.entity valueForKey:@"favorite"] isEqual:@(YES)])
-		[self.favoriteButton setImage:[UIImage imageNamed:@"favorites-share-favorited.png"] forState:UIControlStateNormal];
-	else
-		[self.favoriteButton setImage:[UIImage imageNamed:@"favorites-share.png"] forState:UIControlStateNormal];
-}
-
-- (void)setEntity:(NSManagedObject *)entity
-{
-	[super setEntity:entity];
-	
-	self.artistLabel.text = [entity valueForKey:@"artist"] ?: @"";
-	self.titleLabel.text = [entity valueForKey:@"song"] ?: @"";
-	
-	if ([self.entity valueForKey:@"primaryImage"])
-	{
-		self.albumArt.image = [UIImage imageWithData:[self.entity valueForKey:@"primaryImage"]];
-	} else {
-		self.albumArt.image = [UIImage imageNamed:@"album_cover_placeholder.PNG"];
-
-		__weak NSManagedObject *__entity = self.entity;
-		__weak UIImageView *__albumArt = self.albumArt;
-		
-		void (^completionHandler)(UIImage*, NSError*, SDImageCacheType) = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
-		{
-			if (!error)
-			{
-				[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
-				__albumArt.layer.shouldRasterize = YES;
-
-				[[NSManagedObjectContext defaultContext] saveToPersistentStore:nil];
-			}
-		};
-		
-		void (^successHandler)(NSString*) = ^(NSString *url) {
-			[__albumArt setImageWithURL:[NSURL URLWithString:url] completed:completionHandler];
-		};
-		
-		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] success:successHandler failure:nil finally:nil];
-	}
-	
-	[self refreshFavoriteIcon];
-}
-
-- (id)initWithEntity:(NSManagedObject *)entity
-{
-	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.class.description];
-	
-	if (self)
-	{
-		self.entity = entity;
-	}
-
-	return self;
 }
 
 @end

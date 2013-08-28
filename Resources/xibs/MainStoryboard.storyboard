@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2SK-M0-QIy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2SK-M0-QIy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -160,13 +160,8 @@
                                         <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1y-sb-rAb" userLabel="Shadow View">
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXq-Um-xPu">
+                                        <view autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXq-Um-xPu">
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-0I-6vs">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="300" id="tc2-dA-8Zj"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Plaid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FI-NM-CgH">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="280" id="1Wf-Ek-RfG"/>
@@ -186,7 +181,7 @@
                                                 </label>
                                                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noz-sf-egu" userLabel="Share Bar">
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtA-XQ-1X5" userLabel="Facebook">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtA-XQ-1X5" userLabel="Facebook" customClass="FacebookShareButton">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="43" id="goZ-Gf-B5N"/>
                                                             </constraints>
@@ -198,11 +193,8 @@
                                                             <state key="highlighted">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="shareOnFacebook:" destination="ep5-ic-zed" eventType="touchUpInside" id="tka-IQ-WJ7"/>
-                                                            </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48Z-Hp-jKm" userLabel="Twitter">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48Z-Hp-jKm" userLabel="Twitter" customClass="TwitterShareButton">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="43" id="cgk-pt-RNs"/>
                                                                 <constraint firstAttribute="height" constant="44" id="j34-Bb-I5z"/>
@@ -215,9 +207,6 @@
                                                             <state key="highlighted">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="shareOnTwitter:" destination="ep5-ic-zed" eventType="touchUpInside" id="cZ7-6e-IEC"/>
-                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTW-Yr-32s" userLabel="Favorite">
                                                             <constraints>
@@ -268,6 +257,11 @@
                                                         <constraint firstItem="UtA-XQ-1X5" firstAttribute="top" secondItem="sTW-Yr-32s" secondAttribute="top" type="default" id="wYT-MS-M74"/>
                                                     </constraints>
                                                 </view>
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXH-0I-6vs">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="300" id="tc2-dA-8Zj"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <constraints>
@@ -302,10 +296,12 @@
                                     <outlet property="albumArt" destination="HXH-0I-6vs" id="mJp-de-cUS"/>
                                     <outlet property="artistLabel" destination="4FI-NM-CgH" id="7lL-Ec-IWA"/>
                                     <outlet property="containerView" destination="nXq-Um-xPu" id="cGw-6H-wn6"/>
+                                    <outlet property="facebookButton" destination="UtA-XQ-1X5" id="IfE-Zf-Tt4"/>
                                     <outlet property="favoriteButton" destination="sTW-Yr-32s" id="pRL-O4-nGT"/>
                                     <outlet property="shadowView" destination="I1y-sb-rAb" id="ojv-Ii-bYl"/>
                                     <outlet property="shareBar" destination="noz-sf-egu" id="gyn-hg-nwj"/>
                                     <outlet property="titleLabel" destination="gTn-AH-4wK" id="Yxe-ax-tmM"/>
+                                    <outlet property="twitterButton" destination="48Z-Hp-jKm" id="3Pd-kr-fRX"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BreakpointCell" rowHeight="50" id="IWA-o5-kTT" userLabel="Breakpoint Cell" customClass="BreakpointCell">
@@ -328,9 +324,10 @@
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcM-js-Upq">
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="G3i-gg-dtl"/>
                                                         <constraint firstAttribute="width" constant="207" id="lz7-Or-den"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -546,7 +543,7 @@
                                         </view>
                                         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="284-W7-Z8D">
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-Hj-O57">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="casey-burns-app-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-Hj-O57">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="dYp-6R-vFT"/>
                                                     </constraints>
@@ -810,6 +807,9 @@
         <class className="DelineationCell" superclassName="LivePlaylistTableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DelineationCell.h"/>
         </class>
+        <class className="FacebookShareButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FacebookShareButton.h"/>
+        </class>
         <class className="FavoritesTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
         </class>
@@ -835,9 +835,11 @@
                 <relationship kind="action" name="shareOnTwitter:"/>
                 <relationship kind="outlet" name="albumArt" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="facebookButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="shareBar" candidateClass="UIView"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="twitterButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="PlayerCell" superclassName="LivePlaylistTableViewCell">
@@ -853,6 +855,9 @@
             <relationships>
                 <relationship kind="outlet" name="someLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="TwitterShareButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TwitterShareButton.h"/>
         </class>
         <class className="UITableView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UITableView.h"/>

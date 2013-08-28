@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2305477017769A4E00FA077A /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */; };
+		230640BE179B1EAB0054B673 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230640BD179B1EAB0054B673 /* CoreMedia.framework */; };
 		230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230EB0FC127600210065308D /* CoreAudio.framework */; };
 		2318562C173B274B00F15CC6 /* no-favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318562B173B274B00F15CC6 /* no-favorites.png */; };
 		2325E0EF1288A70800B064BB /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325E0EA1288A70800B064BB /* Playcut.m */; };
@@ -74,8 +76,14 @@
 		23648AB716F52D2500DF2C27 /* favorites-share-favorited.png in Resources */ = {isa = PBXBuildFile; fileRef = 23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */; };
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
+		23677471179C85AF009C1BAA /* PlaycutCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23677470179C85AF009C1BAA /* PlaycutCellButton.m */; };
+		236BA5201782614B005BBF78 /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236BA51F1782614B005BBF78 /* StatusBarController.m */; };
+		236BA526178266F2005BBF78 /* WXYCStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236BA525178266F2005BBF78 /* WXYCStreamController.m */; };
 		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
 		237906DD16B4E9BE00F67A17 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */; };
+		237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */; };
+		237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA34179BA17D00AAEC4B /* SocialShareAction.m */; };
+		237DFA3B179C36AC00AAEC4B /* FacebookShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA3A179C366000AAEC4B /* FacebookShareAction.m */; };
 		237E914F12930E5400A07456 /* casey-burns-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914D12930E5400A07456 /* casey-burns-app-icon.png */; };
 		237E915012930E5400A07456 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */; };
 		238AE95D16F5407800779128 /* NSObject+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 238AE95816F5407800779128 /* NSObject+MKBlockAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -131,6 +139,10 @@
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
 		23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59E16F65960003CC6A8 /* Breakpoint.m */; };
 		23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */; };
+		23EAEFA2179C3F7A008E0960 /* FacebookShareAction.h in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA39179C366000AAEC4B /* FacebookShareAction.h */; };
+		23EAEFA8179C4316008E0960 /* TwitterShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */; };
+		23EAEFAC179C4534008E0960 /* TwitterShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFAB179C4514008E0960 /* TwitterShareButton.m */; };
+		23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */; };
 		23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39201527D0CF0006CDA5 /* AudioStreamController.m */; };
 		23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39221527D0EF0006CDA5 /* PlaylistController.m */; };
 		23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */; };
@@ -199,6 +211,9 @@
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2305476E17769A4E00FA077A /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = Libraries/MTStatusBarOverlay/MTStatusBarOverlay.h; sourceTree = "<group>"; };
+		2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = Libraries/MTStatusBarOverlay/MTStatusBarOverlay.m; sourceTree = "<group>"; };
+		230640BD179B1EAB0054B673 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		230EB0FC127600210065308D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		2318562B173B274B00F15CC6 /* no-favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-favorites.png"; sourceTree = "<group>"; };
 		2325E0E91288A70800B064BB /* Playcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playcut.h; path = Models/Playcut.h; sourceTree = "<group>"; };
@@ -307,8 +322,22 @@
 		23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-share-favorited.png"; sourceTree = "<group>"; };
 		23651003111211C700C192CB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		23651056111211D300C192CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		23677470179C85AF009C1BAA /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
+		236BA51E1782614B005BBF78 /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
+		236BA51F1782614B005BBF78 /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
+		236BA524178266F2005BBF78 /* WXYCStreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCStreamController.h; sourceTree = "<group>"; };
+		236BA525178266F2005BBF78 /* WXYCStreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCStreamController.m; sourceTree = "<group>"; };
 		237578921266CBB500E6177B /* cassette button push.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cassette button push.aif"; path = "sounds/cassette button push.aif"; sourceTree = "<group>"; };
 		237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		237DFA2D179B9C1400AAEC4B /* FacebookShareButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FacebookShareButton.h; path = Views/FacebookShareButton.h; sourceTree = "<group>"; };
+		237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FacebookShareButton.m; path = Views/FacebookShareButton.m; sourceTree = "<group>"; };
+		237DFA31179B9E6800AAEC4B /* PlaycutCellButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaycutCellButton.h; path = Views/PlaycutCellButton.h; sourceTree = "<group>"; };
+		237DFA32179B9F5900AAEC4B /* PlaycutCellShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaycutCellShareAction.h; path = Views/PlaycutCellShareAction.h; sourceTree = "<group>"; };
+		237DFA33179BA17D00AAEC4B /* SocialShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SocialShareAction.h; path = Views/SocialShareAction.h; sourceTree = "<group>"; };
+		237DFA34179BA17D00AAEC4B /* SocialShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SocialShareAction.m; path = Views/SocialShareAction.m; sourceTree = "<group>"; };
+		237DFA37179BB1D700AAEC4B /* Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		237DFA39179C366000AAEC4B /* FacebookShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FacebookShareAction.h; path = Views/FacebookShareAction.h; sourceTree = "<group>"; };
+		237DFA3A179C366000AAEC4B /* FacebookShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FacebookShareAction.m; path = Views/FacebookShareAction.m; sourceTree = "<group>"; };
 		237E914D12930E5400A07456 /* casey-burns-app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon.png"; sourceTree = "<group>"; };
 		237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
 		238AE95616F5407800779128 /* MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBlockAdditions.h; sourceTree = "<group>"; };
@@ -374,6 +403,12 @@
 		23E0A59E16F65960003CC6A8 /* Breakpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Breakpoint.m; path = Models/Breakpoint.m; sourceTree = "<group>"; };
 		23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23E77B1E1118DCB3007D373D /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		23EAEFA6179C42F0008E0960 /* TwitterShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TwitterShareAction.h; path = Views/TwitterShareAction.h; sourceTree = "<group>"; };
+		23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TwitterShareAction.m; path = Views/TwitterShareAction.m; sourceTree = "<group>"; };
+		23EAEFAA179C4514008E0960 /* TwitterShareButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TwitterShareButton.h; path = Views/TwitterShareButton.h; sourceTree = "<group>"; };
+		23EAEFAB179C4514008E0960 /* TwitterShareButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TwitterShareButton.m; path = Views/TwitterShareButton.m; sourceTree = "<group>"; };
+		23EAEFAD179C461E008E0960 /* FavoriteShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FavoriteShareAction.h; path = Views/FavoriteShareAction.h; sourceTree = "<group>"; };
+		23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FavoriteShareAction.m; path = Views/FavoriteShareAction.m; sourceTree = "<group>"; };
 		23EE391F1527D0CF0006CDA5 /* AudioStreamController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamController.h; sourceTree = "<group>"; };
 		23EE39201527D0CF0006CDA5 /* AudioStreamController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamController.m; sourceTree = "<group>"; };
 		23EE39211527D0EF0006CDA5 /* PlaylistController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaylistController.h; sourceTree = "<group>"; };
@@ -430,6 +465,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				230640BE179B1EAB0054B673 /* CoreMedia.framework in Frameworks */,
 				235DE13716ED3B38005640E9 /* ImageIO.framework in Frameworks */,
 				23B613F7164EFA64004547C2 /* Social.framework in Frameworks */,
 				234B4AEB12938EF1001B3EB2 /* Security.framework in Frameworks */,
@@ -458,6 +494,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				237DFA36179BAF4500AAEC4B /* Extensions */,
 				235E420D168CC2830088E19F /* Categories */,
 				2324AF3B1509B9F00080ACF2 /* Controllers */,
 				23BF148C113C06BC00A72DE7 /* Views and ViewControllers */,
@@ -476,6 +513,15 @@
 				23E77B1E1118DCB3007D373D /* WXYC.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2305476A17769A2E00FA077A /* MTStatusBarOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				2305476E17769A4E00FA077A /* MTStatusBarOverlay.h */,
+				2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */,
+			);
+			name = MTStatusBarOverlay;
 			sourceTree = "<group>";
 		};
 		230EB27712762B460065308D /* toolbar */ = {
@@ -523,6 +569,7 @@
 		230EDC331506875D001C173F /* Live Playlist Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				237DFA23179B99C100AAEC4B /* Playcut Cell */,
 				4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */,
 				4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */,
 				23EE39251527D1210006CDA5 /* LivePlaylistTableViewCell.h */,
@@ -533,8 +580,6 @@
 				23EE392A1527D1340006CDA5 /* BreakpointCell.m */,
 				23EE392B1527D1400006CDA5 /* DelineationCell.h */,
 				23EE392C1527D1400006CDA5 /* DelineationCell.m */,
-				23EE392D1527D1490006CDA5 /* PlaycutCell.h */,
-				23EE392E1527D1490006CDA5 /* PlaycutCell.m */,
 				23EE39331527D16C0006CDA5 /* TalksetCell.h */,
 				23EE39341527D16C0006CDA5 /* TalksetCell.m */,
 				235DE15316ED577A005640E9 /* PlayerCell.h */,
@@ -551,6 +596,10 @@
 				23EE39201527D0CF0006CDA5 /* AudioStreamController.m */,
 				23EE39211527D0EF0006CDA5 /* PlaylistController.h */,
 				23EE39221527D0EF0006CDA5 /* PlaylistController.m */,
+				236BA51E1782614B005BBF78 /* StatusBarController.h */,
+				236BA51F1782614B005BBF78 /* StatusBarController.m */,
+				236BA524178266F2005BBF78 /* WXYCStreamController.h */,
+				236BA525178266F2005BBF78 /* WXYCStreamController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -761,6 +810,49 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		237DFA23179B99C100AAEC4B /* Playcut Cell */ = {
+			isa = PBXGroup;
+			children = (
+				237DFA38179C363F00AAEC4B /* Share Actions */,
+				237DFA2C179B9BF300AAEC4B /* Share Buttons */,
+				23EE392D1527D1490006CDA5 /* PlaycutCell.h */,
+				23EE392E1527D1490006CDA5 /* PlaycutCell.m */,
+			);
+			name = "Playcut Cell";
+			sourceTree = "<group>";
+		};
+		237DFA2C179B9BF300AAEC4B /* Share Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				237DFA31179B9E6800AAEC4B /* PlaycutCellButton.h */,
+				23677470179C85AF009C1BAA /* PlaycutCellButton.m */,
+				237DFA2D179B9C1400AAEC4B /* FacebookShareButton.h */,
+				237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */,
+				23EAEFAA179C4514008E0960 /* TwitterShareButton.h */,
+				23EAEFAB179C4514008E0960 /* TwitterShareButton.m */,
+			);
+			name = "Share Buttons";
+			sourceTree = "<group>";
+		};
+		237DFA36179BAF4500AAEC4B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				237DFA37179BB1D700AAEC4B /* Singleton.h */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		237DFA38179C363F00AAEC4B /* Share Actions */ = {
+			isa = PBXGroup;
+			children = (
+				23EAEFA9179C4320008E0960 /* Social */,
+				237DFA32179B9F5900AAEC4B /* PlaycutCellShareAction.h */,
+				23EAEFAD179C461E008E0960 /* FavoriteShareAction.h */,
+				23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */,
+			);
+			name = "Share Actions";
+			sourceTree = "<group>";
+		};
 		238AE95516F5407800779128 /* MKAdditions */ = {
 			isa = PBXGroup;
 			children = (
@@ -844,6 +936,7 @@
 		23BF128B113B0E2100A72DE7 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2305476A17769A2E00FA077A /* MTStatusBarOverlay */,
 				23B1094D173C4A3400257A73 /* UITableView+NXEmptyView */,
 				238AE95516F5407800779128 /* MKAdditions */,
 				23648A6016F5293E00DF2C27 /* MagicalRecord */,
@@ -875,11 +968,8 @@
 		23BF148C113C06BC00A72DE7 /* Views and ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */,
-				2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */,
+				23D0675F177E9F7C006FB735 /* IndefinitelySpinningImageView */,
 				230EDC331506875D001C173F /* Live Playlist Table View Cells */,
-				23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */,
-				23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */,
 				2353A13F12810065004F9A11 /* AlbumCoverSearch */,
 				23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */,
 				23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */,
@@ -909,6 +999,30 @@
 			name = WebView;
 			sourceTree = "<group>";
 		};
+		23D0675F177E9F7C006FB735 /* IndefinitelySpinningImageView */ = {
+			isa = PBXGroup;
+			children = (
+				23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */,
+				23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */,
+				2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */,
+				2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */,
+			);
+			name = IndefinitelySpinningImageView;
+			sourceTree = "<group>";
+		};
+		23EAEFA9179C4320008E0960 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				237DFA33179BA17D00AAEC4B /* SocialShareAction.h */,
+				237DFA34179BA17D00AAEC4B /* SocialShareAction.m */,
+				237DFA39179C366000AAEC4B /* FacebookShareAction.h */,
+				237DFA3A179C366000AAEC4B /* FacebookShareAction.m */,
+				23EAEFA6179C42F0008E0960 /* TwitterShareAction.h */,
+				23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */,
+			);
+			name = Social;
+			sourceTree = "<group>";
+		};
 		23EF279214F5DC4000EA7ACB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,6 +1037,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				230640BD179B1EAB0054B673 /* CoreMedia.framework */,
 				23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */,
 				23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */,
 				23EF279114F5DC4000EA7ACB /* RestKit.xcodeproj */,
@@ -1158,6 +1273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23EAEFA2179C3F7A008E0960 /* FacebookShareAction.h in Sources */,
 				23EE3A231527F4090006CDA5 /* Talkset.m in Sources */,
 				23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */,
 				23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */,
@@ -1173,6 +1289,7 @@
 				2325E0EF1288A70800B064BB /* Playcut.m in Sources */,
 				23B32DF8126E70D7008414F4 /* FavoritesTableViewController.m in Sources */,
 				238CC1C81266413D006EC552 /* CassetteReelViewController.m in Sources */,
+				23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */,
 				23EE39FC1527F07A0006CDA5 /* AboutViewController.m in Sources */,
 				4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */,
 				23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */,
@@ -1189,11 +1306,16 @@
 				23648A9D16F5293E00DF2C27 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				23648A9E16F5293E00DF2C27 /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				23648A9F16F5293E00DF2C27 /* NSNumber+MagicalDataImport.m in Sources */,
+				23EAEFA8179C4316008E0960 /* TwitterShareAction.m in Sources */,
+				237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */,
+				237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */,
 				23648AA016F5293E00DF2C27 /* NSObject+MagicalDataImport.m in Sources */,
 				23648AA116F5293E00DF2C27 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
+				23EAEFAC179C4534008E0960 /* TwitterShareButton.m in Sources */,
 				23648AA216F5293E00DF2C27 /* NSString+MagicalDataImport.m in Sources */,
 				23648AA316F5293E00DF2C27 /* NSManagedObject+MagicalAggregation.m in Sources */,
 				23648AA416F5293E00DF2C27 /* NSManagedObject+MagicalDataImport.m in Sources */,
+				237DFA3B179C36AC00AAEC4B /* FacebookShareAction.m in Sources */,
 				23648AA516F5293E00DF2C27 /* NSManagedObject+MagicalFinders.m in Sources */,
 				23648AA616F5293E00DF2C27 /* NSManagedObject+MagicalRecord.m in Sources */,
 				23648AA716F5293E00DF2C27 /* NSManagedObject+MagicalRequests.m in Sources */,
@@ -1218,6 +1340,10 @@
 				23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */,
 				23B10953173C4A4700257A73 /* UITableView+NXEmptyView.m in Sources */,
 				23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */,
+				2305477017769A4E00FA077A /* MTStatusBarOverlay.m in Sources */,
+				236BA5201782614B005BBF78 /* StatusBarController.m in Sources */,
+				236BA526178266F2005BBF78 /* WXYCStreamController.m in Sources */,
+				23677471179C85AF009C1BAA /* PlaycutCellButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1237,6 +1363,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				COPY_PHASE_STRIP = NO;
@@ -1248,11 +1376,13 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Other/WXYC_Radio_Prefix.pch;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2/**",
 					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
 				);
 				INFOPLIST_FILE = Other/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes\"",
@@ -1273,6 +1403,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: WXYC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WXYC";
 				COPY_PHASE_STRIP = YES;
@@ -1282,8 +1414,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Other/WXYC_Radio_Prefix.pch;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = Other/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/usr/lib\"",
@@ -1324,6 +1458,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: WXYC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WXYC";
 				COPY_PHASE_STRIP = YES;
@@ -1333,12 +1469,14 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Other/WXYC_Radio_Prefix.pch;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(SOURCE_ROOT)/RestKit/Build/**",
 					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
 				);
 				INFOPLIST_FILE = Other/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/usr/lib\"",
