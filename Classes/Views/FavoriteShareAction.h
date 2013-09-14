@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 WXYC. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "PlaycutCellShareAction.h"
 
 @interface FavoriteShareAction : NSObject<PlaycutCellShareAction>

@@ -32,8 +32,8 @@
 
 @property (nonatomic, setter = isShareBarVisible:) BOOL isShareBarVisible;
 
-- (IBAction)shareOnFacebook:(id)sender;
-- (IBAction)shareOnTwitter:(id)sender;
+//- (IBAction)shareOnFacebook:(id)sender;
+//- (IBAction)shareOnTwitter:(id)sender;
 - (IBAction)favorite:(id)sender;
 - (IBAction)search:(id)sender;
 
