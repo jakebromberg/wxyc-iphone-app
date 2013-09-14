@@ -8,6 +8,6 @@
 
 #import "FacebookShareButton.m"
 
-@interface FacebookShareButton ()
+@interface FacebookShareButton
 
 @end
