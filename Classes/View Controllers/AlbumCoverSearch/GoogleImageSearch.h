@@ -6,18 +6,15 @@
 //  Copyright 2010 WXYC. All rights reserved.
 //
 
-#import <RestKit/RestKit.h>
+typedef void(^OperationHandler)(NSURL *returnedURL, NSError *message);
 
-@protocol GoogleImageSearchDelegate
+@protocol GoogleImageSearchDelegate;
 
-- (void)handleGoogleImageSearchResults:(NSArray *)results;
-
-@end
 
 @interface GoogleImageSearch : NSObject
 
 @property (nonatomic, strong) id<GoogleImageSearchDelegate> delegate;
 
-+ (void)searchWithKeywords:(NSArray *)keywords success:(void(^)(NSString *))success failure:(void(^)(NSString *))failure finally:(void(^)(NSString *))finally;
++ (void)searchWithKeywords:(NSArray *)keywords handler:(OperationHandler)operationHandler;
 
 @end

@@ -10,77 +10,107 @@
 #import "NSArray+Additions.h"
 #import "NSString+Additions.h"
 
-@implementation GoogleImageSearch
-
 static NSString *IMAGE_SEARCH_URL = @"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=%@&key=%@&q=%@";
 static const NSString *LARGE_IMG_SIZE = @"large";
 static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6wxYzrId3_vCc7hSxiVhd0OeM4oTlndTkE3v2ankvuA";
 
-+ (void)searchWithKeywords:(NSArray *)keywords success:(void(^)(NSString *))success failure:(void(^)(NSString *))failure finally:(void(^)(NSString *))finally
+typedef void(^OperationUnit)(id *accumulator, NSError **error);
+
+
+@interface GoogleImageSearch ()
+
++ (NSURLRequest *)requestForKeywords:(NSArray *)keywords;
+
+@end
+
+
+@implementation GoogleImageSearch
+
++ (void)searchWithKeywords:(NSArray *)keywords handler:(OperationHandler)operationHandler
 {
-	__block void (^_success)(NSString *) = success;
-	__block void (^_failure)(NSString *) = failure;
-	__block void (^_finally)(NSString *) = finally;
+	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, NULL);
+	dispatch_block_t block = fetchData(keywords, operationHandler);
 	
-	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,NULL);
-	dispatch_async(queue, ^{
-		NSString *query = [[keywords join:@"+"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-		NSString *urlString = [IMAGE_SEARCH_URL formattedWith:@[LARGE_IMG_SIZE, API_KEY, query]];
-		NSURL *URL = [NSURL URLWithString:urlString];
-		
+	dispatch_async(queue, block);
+}
 
-		NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-		NSURLResponse *response = nil;
-		NSError *error = nil;
-		NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+dispatch_block_t (^fetchData)(NSArray *, OperationHandler) = ^(NSArray *keywords, OperationHandler operationHandler)
+{
+	return ^{
+		id operationBlocks = @[
+			^(id *accumulator, NSError **error) {
+			   *accumulator = [GoogleImageSearch requestForKeywords:keywords];
+			},
+			 
+			^(id *accumulator, NSError **error) {
+			   *accumulator = [NSURLConnection sendSynchronousRequest:*accumulator returningResponse:nil error:error];
+			},
 
-		if (error)
+			^(id *accumulator, NSError **error) {
+			   *accumulator = [NSJSONSerialization JSONObjectWithData:*accumulator options:NSJSONReadingAllowFragments error:error];
+			},
+
+			^(id *accumulator, NSError **error) {
+				*accumulator = (*accumulator)[@"responseData"];
+				if (!*accumulator)
+					*error = [NSError errorWithDomain:(*accumulator)[@"responseDetails"] code:-1 userInfo:nil];
+			},
+
+			^(id *accumulator, NSError **error) {
+				*accumulator = (*accumulator)[@"results"];
+				if ([*accumulator count] == 0)
+					*error = [[NSError init] alloc];
+			},
+
+			 ^(id *accumulator, NSError **error) {
+				 *accumulator = (*accumulator)[0];
+				 if (!*accumulator)
+					 *error = [[NSError init] alloc];
+			 },
+			 
+			 ^(id *accumulator, NSError **error) {
+				 *accumulator = (*accumulator)[@"url"];
+				 if (!*accumulator)
+					 *error = [[NSError init] alloc];
+			 },
+			 ^(id *accumulator, NSError **error) {
+				 *accumulator = [*accumulator stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+				 if (!*accumulator)
+					 *error = [[NSError init] alloc];
+			 },
+			 
+
+//			^(id *accumulator, NSError **error) {
+//				*accumulator = [(*accumulator)[0][@"url"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//			},
+
+			^(id *accumulator, NSError **error) {
+				operationHandler([NSURL URLWithString:*accumulator], *error);
+			}
+		];
+
+		__block id accumulator;
+		__block NSError *error;
+
+		for(OperationUnit block in operationBlocks)
 		{
-			if (_failure)
-				_failure(error.description);
+			block(&accumulator, &error);
 			
-			return;
+			if (error)
+			{
+				operationHandler(nil, error);
+			}
 		}
-		
-		// Create a dictionary from the JSON string
-		NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-		
-		if (error)
-		{
-			if (_failure)
-				_failure(error.description);
-			
-			if (_finally)
-				finally(@"");
-			
-			return;
-		}
-		
-		id responseData = results[@"responseData"];
-		
-		if ([responseData isEqual:[NSNull null]])
-		{
-			if (_failure)
-				_failure(results[@"responseDetails"]);
-			
-			if (_finally)
-				_finally(@"");
-			
-			return;
-		}
-		
-		NSArray *innerResults = responseData[@"results"];
-		
-		if (innerResults.count) {
-			_success([innerResults[0][@"url"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
-		} else {
-			if (_failure)
-				_failure(error.description);
-		}
-		
-		if (_finally)
-			_finally(@"");
-	});
+	};
+};
+
++ (NSURLRequest *)requestForKeywords:(NSArray *)keywords
+{
+	NSString *query = [[keywords join:@"+"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSString *urlString = [IMAGE_SEARCH_URL formattedWith:@[LARGE_IMG_SIZE, API_KEY, query]];
+	NSURL *URL = [NSURL URLWithString:urlString];
+	
+	return [NSURLRequest requestWithURL:URL];
 }
 
 @end
