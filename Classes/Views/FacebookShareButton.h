@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 WXYC. All rights reserved.
 //
 
-#import "FacebookShareButton.m"
+#import "PlaycutCellButton.h"
 
-@interface FacebookShareButton
+@interface FacebookShareButton : PlaycutCellButton
 
 @end
