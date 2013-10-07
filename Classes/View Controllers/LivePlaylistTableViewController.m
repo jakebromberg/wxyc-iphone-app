@@ -112,8 +112,6 @@
 
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
-
 	[[NSNotificationCenter defaultCenter] addObserverForName:LPStatusChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
 	{
 		if (self.livePlaylistCtrl.state == LP_DONE)
