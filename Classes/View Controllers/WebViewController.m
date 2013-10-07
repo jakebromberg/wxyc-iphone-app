@@ -88,8 +88,11 @@
 - (IBAction) actionButtonPush:(id)sender
 {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@""
-															 delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
+															 delegate:self
+													cancelButtonTitle:@"Cancel"
+											   destructiveButtonTitle:nil
 													otherButtonTitles:@"Copy Link", @"Open In Safari", nil];
+	
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[actionSheet showInView:self.webView]; // show from our table view (pops up in the middle of the table)
 }
