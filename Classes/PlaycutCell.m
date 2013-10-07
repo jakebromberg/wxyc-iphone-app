@@ -7,12 +7,8 @@
 //
 
 #import "PlaycutCell.h"
-#import "NSArray+Additions.h"
 #import "GoogleImageSearch.h"
-#import <QuartzCore/QuartzCore.h>
 #import "UIImageView+WebCache.h"
-#import <Social/Social.h>
-#import "NSString+Additions.h"
 #import "WebViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "NSString+Additions.h"
@@ -29,11 +25,8 @@
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *facebookButton;
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *favoriteButton;
 
-
 @property (nonatomic, setter = isShareBarVisible:) BOOL isShareBarVisible;
 
-//- (IBAction)shareOnFacebook:(id)sender;
-//- (IBAction)shareOnTwitter:(id)sender;
 - (IBAction)favorite:(id)sender;
 - (IBAction)search:(id)sender;
 
@@ -72,25 +65,23 @@
 		__weak NSManagedObject *__entity = self.entity;
 		__weak UIImageView *__albumArt = self.albumArt;
 		
-		void (^completionHandler)(UIImage*, NSError*, SDImageCacheType) = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
+		SDWebImageCompletedBlock completionHandler = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
 		{
-			dispatch_async(dispatch_queue_create("get_image", NULL), ^{
-				if (!error)
-				{
-					[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
-					__albumArt.layer.shouldRasterize = YES;
-					
-					[[NSManagedObjectContext defaultContext] saveToPersistentStore:nil];
-				}
+			if (error)
+				return;
+			
+			dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+			dispatch_async(backgroundQueue, ^{
+				[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
+				[[NSManagedObjectContext contextForCurrentThread] saveToPersistentStoreAndWait];
 			});
-
 		};
 		
-		void (^successHandler)(NSString*) = ^(NSString *url) {
-			[__albumArt setImageWithURL:[NSURL URLWithString:url] completed:completionHandler];
+		OperationHandler handler = ^(NSURL *url, NSError *error) {
+			[__albumArt setImageWithURL:url completed:completionHandler];
 		};
 		
-		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] success:successHandler failure:nil finally:nil];
+		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] handler:handler];
 	}
 	
 	[self refreshFavoriteIcon];

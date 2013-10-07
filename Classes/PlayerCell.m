@@ -8,14 +8,15 @@
 
 #import "PlayerCell.h"
 #import "AudioStreamController.h"
-#import "CassetteReelViewController.h"
 #import "NSString+Additions.h"
+#import "CassetteReelView.h"
+#import "UIView+Spin.h"
 
 @interface PlayerCell ()
 
 @property (nonatomic, weak) IBOutlet UIButton *playButton;
-@property (nonatomic, strong) IBOutlet CassetteReelViewController *leftCassetteReel;
-@property (nonatomic, strong) IBOutlet CassetteReelViewController *rightCassetteReel;
+@property (nonatomic, strong) IBOutlet CassetteReelView *leftCassetteReel;
+@property (nonatomic, strong) IBOutlet CassetteReelView *rightCassetteReel;
 
 @end
 
@@ -48,19 +49,17 @@
 	if (isPlaying)
 	{
 		[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
-		[self.leftCassetteReel startAnimation];
-		[self.rightCassetteReel startAnimation];
+		[self.leftCassetteReel startSpin];
+		[self.rightCassetteReel startSpin];
 	} else {
 		[self.playButton setImage:[UIImage imageNamed:@"play-button.png"] forState:UIControlStateNormal];
-		[self.leftCassetteReel stopAnimation];
-		[self.rightCassetteReel stopAnimating];
+		[self.leftCassetteReel stopSpin];
+		[self.rightCassetteReel stopSpin];
 	}
 }
 
 - (IBAction)pushPlay:(id)sender
 {
-	[self playPushButtonSFX];
-
 	if ([AudioStreamController.wxyc isPlaying])
 	{
 		[AudioStreamController.wxyc stop];
@@ -69,20 +68,13 @@
 	}
 }
 
-- (void)playPushButtonSFX
-{
-	SystemSoundID soundID;
-	NSURL *url = [NSURL fileURLWithPath:[NSBundle.mainBundle.resourcePath append:@"/cassette button push.aif"]];
-	
-	AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
-	AudioServicesPlaySystemSound(soundID);
-}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if ([keyPath isEqualToString:@"isPlaying"])
 	{
 		[self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
+	} else {
+		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
 }
 
