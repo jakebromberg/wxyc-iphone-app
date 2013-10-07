@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		2305477017769A4E00FA077A /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */; };
 		230640BE179B1EAB0054B673 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230640BD179B1EAB0054B673 /* CoreMedia.framework */; };
 		230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230EB0FC127600210065308D /* CoreAudio.framework */; };
 		2318562C173B274B00F15CC6 /* no-favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318562B173B274B00F15CC6 /* no-favorites.png */; };
 		2325E0EF1288A70800B064BB /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325E0EA1288A70800B064BB /* Playcut.m */; };
+		232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */; };
+		232CFDC317EFB78B003A78B6 /* CassetteReelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 232CFDC217EFB78B003A78B6 /* CassetteReelView.m */; };
 		232E24DE1267A7ED007F7679 /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24C81267A7ED007F7679 /* about_icon.png */; };
 		232E24E11267A7ED007F7679 /* Default-inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CB1267A7ED007F7679 /* Default-inv.png */; };
 		232E24E21267A7ED007F7679 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CC1267A7ED007F7679 /* Default.png */; };
@@ -49,17 +50,11 @@
 		23648AB716F52D2500DF2C27 /* favorites-share-favorited.png in Resources */ = {isa = PBXBuildFile; fileRef = 23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */; };
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
-		23677471179C85AF009C1BAA /* PlaycutCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23677470179C85AF009C1BAA /* PlaycutCellButton.m */; };
-		236BA5201782614B005BBF78 /* StatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236BA51F1782614B005BBF78 /* StatusBarController.m */; };
-		236BA526178266F2005BBF78 /* WXYCStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236BA525178266F2005BBF78 /* WXYCStreamController.m */; };
-		237578931266CBB500E6177B /* cassette button push.aif in Resources */ = {isa = PBXBuildFile; fileRef = 237578921266CBB500E6177B /* cassette button push.aif */; };
 		237906DD16B4E9BE00F67A17 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */; };
 		237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */; };
 		237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA34179BA17D00AAEC4B /* SocialShareAction.m */; };
-		237DFA3B179C36AC00AAEC4B /* FacebookShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA3A179C366000AAEC4B /* FacebookShareAction.m */; };
 		237E914F12930E5400A07456 /* casey-burns-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914D12930E5400A07456 /* casey-burns-app-icon.png */; };
 		237E915012930E5400A07456 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */; };
-		238CC1C81266413D006EC552 /* CassetteReelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 238CC1C71266413D006EC552 /* CassetteReelViewController.m */; };
 		23924C8D1289ECCC00EFC0FA /* toolbar-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924C891289ECCC00EFC0FA /* toolbar-down.png */; };
 		23924C8E1289ECCC00EFC0FA /* toolbar-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924C8A1289ECCC00EFC0FA /* toolbar-down@2x.png */; };
 		23924C8F1289ECCC00EFC0FA /* toolbar-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924C8B1289ECCC00EFC0FA /* toolbar-up.png */; };
@@ -70,6 +65,7 @@
 		23924CA61289F04C00EFC0FA /* favorites-toolbar-icon-filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924CA01289F04C00EFC0FA /* favorites-toolbar-icon-filled@2x.png */; };
 		23924CA71289F04C00EFC0FA /* favorites-toolbar-icon-unfilled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924CA11289F04C00EFC0FA /* favorites-toolbar-icon-unfilled@2x.png */; };
 		23924CA81289F04C00EFC0FA /* favorites-toolbar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924CA21289F04C00EFC0FA /* favorites-toolbar-icon.png */; };
+		23996EE417CDA86300B1ECA7 /* FacebookShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23996EE317CDA86300B1ECA7 /* FacebookShareAction.m */; };
 		23A23CF316ED699700C9AF7C /* stop-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CF216ED699700C9AF7C /* stop-button.png */; };
 		23A23CF916ED747100C9AF7C /* wxyc-header-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CF816ED746F00C9AF7C /* wxyc-header-logo.png */; };
 		23A23D0416ED801700C9AF7C /* clock-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CFA16ED800C00C9AF7C /* clock-1.png */; };
@@ -101,6 +97,7 @@
 		23C2A9EA128A59D100D61A4A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2A9E9128A59D100D61A4A /* SystemConfiguration.framework */; };
 		23C2AA38128A61BE00D61A4A /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C2AA37128A61BE00D61A4A /* delete@2x.png */; };
 		23C2AB1B128A6F8100D61A4A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */; };
+		23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C4A72517E42379007DB35C /* UIView+Spin.m */; };
 		23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */; };
 		23CD7B9617515FFD00BD4ED5 /* NavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */; };
 		23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */; };
@@ -108,7 +105,6 @@
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
 		23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59E16F65960003CC6A8 /* Breakpoint.m */; };
 		23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */; };
-		23EAEFA2179C3F7A008E0960 /* FacebookShareAction.h in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA39179C366000AAEC4B /* FacebookShareAction.h */; };
 		23EAEFA8179C4316008E0960 /* TwitterShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */; };
 		23EAEFAC179C4534008E0960 /* TwitterShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFAB179C4514008E0960 /* TwitterShareButton.m */; };
 		23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */; };
@@ -120,7 +116,6 @@
 		23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392C1527D1400006CDA5 /* DelineationCell.m */; };
 		23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392E1527D1490006CDA5 /* PlaycutCell.m */; };
 		23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39341527D16C0006CDA5 /* TalksetCell.m */; };
-		23EE39C41527F0790006CDA5 /* IndefinitelySpinningImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */; };
 		23EE39E61527F0790006CDA5 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39641527EB070006CDA5 /* Playlist.m */; };
 		23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39661527EB070006CDA5 /* PlaylistEntry.m */; };
 		23EE39FC1527F07A0006CDA5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE397B1527EBCF0006CDA5 /* AboutViewController.m */; };
@@ -142,13 +137,14 @@
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		2305476E17769A4E00FA077A /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = Libraries/MTStatusBarOverlay/MTStatusBarOverlay.h; sourceTree = "<group>"; };
-		2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = Libraries/MTStatusBarOverlay/MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		230640BD179B1EAB0054B673 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		230EB0FC127600210065308D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		2318562B173B274B00F15CC6 /* no-favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-favorites.png"; sourceTree = "<group>"; };
 		2325E0E91288A70800B064BB /* Playcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playcut.h; path = Models/Playcut.h; sourceTree = "<group>"; };
 		2325E0EA1288A70800B064BB /* Playcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playcut.m; path = Models/Playcut.m; sourceTree = "<group>"; };
+		232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
+		232CFDC117EFB78B003A78B6 /* CassetteReelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CassetteReelView.h; path = Classes/Views/CassetteReelView.h; sourceTree = SOURCE_ROOT; };
+		232CFDC217EFB78B003A78B6 /* CassetteReelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CassetteReelView.m; path = Classes/Views/CassetteReelView.m; sourceTree = SOURCE_ROOT; };
 		232E24C81267A7ED007F7679 /* about_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_icon.png; sourceTree = "<group>"; };
 		232E24CB1267A7ED007F7679 /* Default-inv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-inv.png"; sourceTree = "<group>"; };
 		232E24CC1267A7ED007F7679 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -188,12 +184,6 @@
 		23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-share-favorited.png"; sourceTree = "<group>"; };
 		23651003111211C700C192CB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		23651056111211D300C192CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		23677470179C85AF009C1BAA /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
-		236BA51E1782614B005BBF78 /* StatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarController.h; sourceTree = "<group>"; };
-		236BA51F1782614B005BBF78 /* StatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarController.m; sourceTree = "<group>"; };
-		236BA524178266F2005BBF78 /* WXYCStreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCStreamController.h; sourceTree = "<group>"; };
-		236BA525178266F2005BBF78 /* WXYCStreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCStreamController.m; sourceTree = "<group>"; };
-		237578921266CBB500E6177B /* cassette button push.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cassette button push.aif"; path = "sounds/cassette button push.aif"; sourceTree = "<group>"; };
 		237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		237DFA2D179B9C1400AAEC4B /* FacebookShareButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FacebookShareButton.h; path = Views/FacebookShareButton.h; sourceTree = "<group>"; };
 		237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FacebookShareButton.m; path = Views/FacebookShareButton.m; sourceTree = "<group>"; };
@@ -201,12 +191,8 @@
 		237DFA32179B9F5900AAEC4B /* PlaycutCellShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaycutCellShareAction.h; path = Views/PlaycutCellShareAction.h; sourceTree = "<group>"; };
 		237DFA33179BA17D00AAEC4B /* SocialShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SocialShareAction.h; path = Views/SocialShareAction.h; sourceTree = "<group>"; };
 		237DFA34179BA17D00AAEC4B /* SocialShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SocialShareAction.m; path = Views/SocialShareAction.m; sourceTree = "<group>"; };
-		237DFA37179BB1D700AAEC4B /* Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
-		237DFA39179C366000AAEC4B /* FacebookShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FacebookShareAction.h; path = Views/FacebookShareAction.h; sourceTree = "<group>"; };
-		237DFA3A179C366000AAEC4B /* FacebookShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FacebookShareAction.m; path = Views/FacebookShareAction.m; sourceTree = "<group>"; };
 		237E914D12930E5400A07456 /* casey-burns-app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon.png"; sourceTree = "<group>"; };
 		237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
-		238CC1C71266413D006EC552 /* CassetteReelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CassetteReelViewController.m; sourceTree = "<group>"; };
 		23924C891289ECCC00EFC0FA /* toolbar-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-down.png"; sourceTree = "<group>"; };
 		23924C8A1289ECCC00EFC0FA /* toolbar-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-down@2x.png"; sourceTree = "<group>"; };
 		23924C8B1289ECCC00EFC0FA /* toolbar-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-up.png"; sourceTree = "<group>"; };
@@ -217,6 +203,8 @@
 		23924CA01289F04C00EFC0FA /* favorites-toolbar-icon-filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-toolbar-icon-filled@2x.png"; sourceTree = "<group>"; };
 		23924CA11289F04C00EFC0FA /* favorites-toolbar-icon-unfilled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-toolbar-icon-unfilled@2x.png"; sourceTree = "<group>"; };
 		23924CA21289F04C00EFC0FA /* favorites-toolbar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-toolbar-icon.png"; sourceTree = "<group>"; };
+		23996EE217CDA86300B1ECA7 /* FacebookShareAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookShareAction.h; path = Views/FacebookShareAction.h; sourceTree = "<group>"; };
+		23996EE317CDA86300B1ECA7 /* FacebookShareAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookShareAction.m; path = Views/FacebookShareAction.m; sourceTree = "<group>"; };
 		239DD7351061B7510035B7BF /* WXYC_Radio_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXYC_Radio_Prefix.pch; path = Other/WXYC_Radio_Prefix.pch; sourceTree = "<group>"; };
 		23A23CF216ED699700C9AF7C /* stop-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-button.png"; sourceTree = "<group>"; };
 		23A23CF816ED746F00C9AF7C /* wxyc-header-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wxyc-header-logo.png"; sourceTree = "<group>"; };
@@ -241,7 +229,7 @@
 		23B32B58126D667B008414F4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		23B32D48126E386B008414F4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		23B32DF7126E70D7008414F4 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
-		23B32DF9126E7134008414F4 /* FavoritesTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesTableView.xib; sourceTree = "<group>"; };
+		23B32DF9126E7134008414F4 /* FavoritesTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FavoritesTableView.xib; path = ../../Resources/xibs/FavoritesTableView.xib; sourceTree = "<group>"; };
 		23B613F5164EF06C004547C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		23B613F8164EFA8D004547C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		23C2A941128A46AD00D61A4A /* reload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reload@2x.png"; sourceTree = "<group>"; };
@@ -250,9 +238,11 @@
 		23C2A9E9128A59D100D61A4A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		23C2AA37128A61BE00D61A4A /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		23C4A72417E42379007DB35C /* UIView+Spin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Spin.h"; path = "../Categories/UIView+Spin.h"; sourceTree = "<group>"; };
+		23C4A72517E42379007DB35C /* UIView+Spin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Spin.m"; path = "../Categories/UIView+Spin.m"; sourceTree = "<group>"; };
 		23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXYCTabBarControllerViewController.h; path = "Classes/View Controllers/WXYCTabBarControllerViewController.h"; sourceTree = SOURCE_ROOT; };
 		23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXYCTabBarControllerViewController.m; path = "Classes/View Controllers/WXYCTabBarControllerViewController.m"; sourceTree = SOURCE_ROOT; };
-		23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBar.xib; sourceTree = "<group>"; };
+		23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NavigationBar.xib; path = Views/NavigationBar.xib; sourceTree = "<group>"; };
 		23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
 		23DBC34E113F801200C19BD0 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		23E0A59B16F6590C003CC6A8 /* Playlist2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playlist2.xcdatamodel; sourceTree = "<group>"; };
@@ -282,22 +272,19 @@
 		23EE392E1527D1490006CDA5 /* PlaycutCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaycutCell.m; sourceTree = "<group>"; };
 		23EE39331527D16C0006CDA5 /* TalksetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TalksetCell.h; sourceTree = "<group>"; };
 		23EE39341527D16C0006CDA5 /* TalksetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TalksetCell.m; sourceTree = "<group>"; };
-		23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndefinitelySpinningImageViewController.h; sourceTree = "<group>"; };
-		23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndefinitelySpinningImageViewController.m; sourceTree = "<group>"; };
 		23EE39631527EB070006CDA5 /* Playlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		23EE39641527EB070006CDA5 /* Playlist.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		23EE39651527EB070006CDA5 /* PlaylistEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaylistEntry.h; sourceTree = "<group>"; };
 		23EE39661527EB070006CDA5 /* PlaylistEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaylistEntry.m; sourceTree = "<group>"; };
 		23EE39761527EBB90006CDA5 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
-		23EE39781527EBC40006CDA5 /* CassetteReelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CassetteReelViewController.h; sourceTree = "<group>"; };
 		23EE397A1527EBCF0006CDA5 /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		23EE397B1527EBCF0006CDA5 /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		23EE398E1527EC380006CDA5 /* GoogleImageSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleImageSearch.h; sourceTree = "<group>"; };
 		23EE398F1527EC380006CDA5 /* GoogleImageSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleImageSearch.m; sourceTree = "<group>"; };
 		23EE39961527EC5B0006CDA5 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		23EE39971527EC5B0006CDA5 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYCAppDelegate.h; sourceTree = "<group>"; };
-		23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXYCAppDelegate.m; sourceTree = "<group>"; };
+		23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WXYCAppDelegate.h; path = Classes/WXYCAppDelegate.h; sourceTree = "<group>"; };
+		23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WXYCAppDelegate.m; path = Classes/WXYCAppDelegate.m; sourceTree = "<group>"; };
 		23EE3A201527F3D00006CDA5 /* Talkset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Talkset.h; sourceTree = "<group>"; };
 		23EE3A211527F3D00006CDA5 /* Talkset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Talkset.m; sourceTree = "<group>"; };
 		23F1127912A8782A00DD6C1D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = iphoneos4.0/System/Library/Frameworks/MessageUI.framework; sourceTree = "<group>"; };
@@ -351,15 +338,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				237DFA36179BAF4500AAEC4B /* Extensions */,
+				23C7060417E420A800908F44 /* Primary Views */,
+				23C7060517E420B000908F44 /* View Components */,
 				235E420D168CC2830088E19F /* Categories */,
 				2324AF3B1509B9F00080ACF2 /* Controllers */,
-				23BF148C113C06BC00A72DE7 /* Views and ViewControllers */,
-				23BF128B113B0E2100A72DE7 /* Libraries */,
 				23B32D1D126E3268008414F4 /* Models */,
-				23BF128C113B10EE00A72DE7 /* View Controllers */,
-				23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */,
-				23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -370,15 +353,6 @@
 				23E77B1E1118DCB3007D373D /* WXYC.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2305476A17769A2E00FA077A /* MTStatusBarOverlay */ = {
-			isa = PBXGroup;
-			children = (
-				2305476E17769A4E00FA077A /* MTStatusBarOverlay.h */,
-				2305476F17769A4E00FA077A /* MTStatusBarOverlay.m */,
-			);
-			name = MTStatusBarOverlay;
 			sourceTree = "<group>";
 		};
 		230EB27712762B460065308D /* toolbar */ = {
@@ -423,27 +397,14 @@
 			name = walkman;
 			sourceTree = "<group>";
 		};
-		230EDC331506875D001C173F /* Live Playlist Table View Cells */ = {
+		230EDC331506875D001C173F /* Live Playlist */ = {
 			isa = PBXGroup;
 			children = (
-				237DFA23179B99C100AAEC4B /* Playcut Cell */,
 				4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */,
 				4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */,
-				23EE39251527D1210006CDA5 /* LivePlaylistTableViewCell.h */,
-				23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */,
-				23EE39271527D12A0006CDA5 /* LoadPreviousEntriesCell.h */,
-				23EE39281527D12A0006CDA5 /* LoadPreviousEntriesCell.m */,
-				23EE39291527D1340006CDA5 /* BreakpointCell.h */,
-				23EE392A1527D1340006CDA5 /* BreakpointCell.m */,
-				23EE392B1527D1400006CDA5 /* DelineationCell.h */,
-				23EE392C1527D1400006CDA5 /* DelineationCell.m */,
-				23EE39331527D16C0006CDA5 /* TalksetCell.h */,
-				23EE39341527D16C0006CDA5 /* TalksetCell.m */,
-				235DE15316ED577A005640E9 /* PlayerCell.h */,
-				235DE15416ED577B005640E9 /* PlayerCell.m */,
+				23C7060617E420EF00908F44 /* Cells */,
 			);
-			name = "Live Playlist Table View Cells";
-			path = ..;
+			name = "Live Playlist";
 			sourceTree = "<group>";
 		};
 		2324AF3B1509B9F00080ACF2 /* Controllers */ = {
@@ -453,10 +414,6 @@
 				23EE39201527D0CF0006CDA5 /* AudioStreamController.m */,
 				23EE39211527D0EF0006CDA5 /* PlaylistController.h */,
 				23EE39221527D0EF0006CDA5 /* PlaylistController.m */,
-				236BA51E1782614B005BBF78 /* StatusBarController.h */,
-				236BA51F1782614B005BBF78 /* StatusBarController.m */,
-				236BA524178266F2005BBF78 /* WXYCStreamController.h */,
-				236BA525178266F2005BBF78 /* WXYCStreamController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -493,19 +450,10 @@
 		2328C68A1060107F00063811 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
-				23B32DF9126E7134008414F4 /* FavoritesTableView.xib */,
 				23DBC34E113F801200C19BD0 /* WebView.xib */,
 				23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */,
 			);
 			path = xibs;
-			sourceTree = "<group>";
-		};
-		232E24FC1267A8D4007F7679 /* sounds */ = {
-			isa = PBXGroup;
-			children = (
-				237578921266CBB500E6177B /* cassette button push.aif */,
-			);
-			name = sounds;
 			sourceTree = "<group>";
 		};
 		232E24FD1267A8DD007F7679 /* html */ = {
@@ -516,14 +464,14 @@
 			path = html;
 			sourceTree = "<group>";
 		};
-		2353A13F12810065004F9A11 /* AlbumCoverSearch */ = {
+		2353A13F12810065004F9A11 /* Google Image Search */ = {
 			isa = PBXGroup;
 			children = (
 				23EE398E1527EC380006CDA5 /* GoogleImageSearch.h */,
 				23EE398F1527EC380006CDA5 /* GoogleImageSearch.m */,
 			);
-			name = AlbumCoverSearch;
-			path = "../View Controllers/AlbumCoverSearch";
+			name = "Google Image Search";
+			path = "View Controllers/AlbumCoverSearch";
 			sourceTree = "<group>";
 		};
 		235E420D168CC2830088E19F /* Categories */ = {
@@ -554,25 +502,13 @@
 			isa = PBXGroup;
 			children = (
 				237DFA31179B9E6800AAEC4B /* PlaycutCellButton.h */,
-				23677470179C85AF009C1BAA /* PlaycutCellButton.m */,
+				232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */,
 				237DFA2D179B9C1400AAEC4B /* FacebookShareButton.h */,
 				237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */,
 				23EAEFAA179C4514008E0960 /* TwitterShareButton.h */,
 				23EAEFAB179C4514008E0960 /* TwitterShareButton.m */,
-				23677475179C87EA009C1BAA /* FavoriteShareButton.h */,
-				23677476179C87EA009C1BAA /* FavoriteShareButton.m */,
-				23677478179C88EE009C1BAA /* SearchButton.h */,
-				23677479179C88EF009C1BAA /* SearchButton.m */,
 			);
 			name = "Share Buttons";
-			sourceTree = "<group>";
-		};
-		237DFA36179BAF4500AAEC4B /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				237DFA37179BB1D700AAEC4B /* Singleton.h */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 		237DFA38179C363F00AAEC4B /* Share Actions */ = {
@@ -582,19 +518,22 @@
 				237DFA32179B9F5900AAEC4B /* PlaycutCellShareAction.h */,
 				23EAEFAD179C461E008E0960 /* FavoriteShareAction.h */,
 				23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */,
-				2367747B179C890F009C1BAA /* SearchAction.h */,
-				2367747C179C8910009C1BAA /* SearchAction.m */,
 			);
 			name = "Share Actions";
 			sourceTree = "<group>";
 		};
-		238CC1C512664111006EC552 /* CasssetteReelViewController */ = {
+		238CC1C512664111006EC552 /* Casssette Reel */ = {
 			isa = PBXGroup;
 			children = (
-				23EE39781527EBC40006CDA5 /* CassetteReelViewController.h */,
-				238CC1C71266413D006EC552 /* CassetteReelViewController.m */,
+				232CFDC117EFB78B003A78B6 /* CassetteReelView.h */,
+				232CFDC217EFB78B003A78B6 /* CassetteReelView.m */,
+				2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */,
+				2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */,
+				23C4A72417E42379007DB35C /* UIView+Spin.h */,
+				23C4A72517E42379007DB35C /* UIView+Spin.m */,
 			);
-			name = CasssetteReelViewController;
+			name = "Casssette Reel";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		23AEB9E316F615D500E2EBB1 /* Clock */ = {
@@ -619,6 +558,7 @@
 		23B32D1D126E3268008414F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */,
 				23E0A59D16F65960003CC6A8 /* Breakpoint.h */,
 				23E0A59E16F65960003CC6A8 /* Breakpoint.m */,
 				23EE3A201527F3D00006CDA5 /* Talkset.h */,
@@ -635,54 +575,25 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		23B32DF5126E70BF008414F4 /* FavoritesTableViewController */ = {
+		23B32DF5126E70BF008414F4 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
 				23EE39761527EBB90006CDA5 /* FavoritesTableViewController.h */,
 				23B32DF7126E70D7008414F4 /* FavoritesTableViewController.m */,
+				23B32DF9126E7134008414F4 /* FavoritesTableView.xib */,
 			);
-			name = FavoritesTableViewController;
-			sourceTree = "<group>";
-		};
-		23BF128B113B0E2100A72DE7 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Libraries;
-			sourceTree = "<group>";
-		};
-		23BF128C113B10EE00A72DE7 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				23B32DF5126E70BF008414F4 /* FavoritesTableViewController */,
-				238CC1C512664111006EC552 /* CasssetteReelViewController */,
-				23BF132F113B465B00A72DE7 /* AboutViewController */,
-				23BF148D113C06EE00A72DE7 /* WebView Controller */,
-			);
+			name = Favorites;
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		23BF132F113B465B00A72DE7 /* AboutViewController */ = {
+		23BF132F113B465B00A72DE7 /* About */ = {
 			isa = PBXGroup;
 			children = (
 				23EE397A1527EBCF0006CDA5 /* AboutViewController.h */,
 				23EE397B1527EBCF0006CDA5 /* AboutViewController.m */,
 			);
-			name = AboutViewController;
-			sourceTree = "<group>";
-		};
-		23BF148C113C06BC00A72DE7 /* Views and ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				23D0675F177E9F7C006FB735 /* IndefinitelySpinningImageView */,
-				230EDC331506875D001C173F /* Live Playlist Table View Cells */,
-				2353A13F12810065004F9A11 /* AlbumCoverSearch */,
-				23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */,
-				23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */,
-				23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */,
-			);
-			name = "Views and ViewControllers";
-			path = Views;
+			name = About;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		23BF148D113C06EE00A72DE7 /* WebView Controller */ = {
@@ -692,6 +603,7 @@
 				23EE39971527EC5B0006CDA5 /* WebViewController.m */,
 			);
 			name = "WebView Controller";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		23C2A948128A476900D61A4A /* WebView */ = {
@@ -705,15 +617,55 @@
 			name = WebView;
 			sourceTree = "<group>";
 		};
-		23D0675F177E9F7C006FB735 /* IndefinitelySpinningImageView */ = {
+		23C4A72317E422E0007DB35C /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
-				23EE39411527D1C00006CDA5 /* IndefinitelySpinningImageViewController.h */,
-				23EE39421527D1C00006CDA5 /* IndefinitelySpinningImageViewController.m */,
-				2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */,
-				2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */,
+				23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */,
+				23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */,
 			);
-			name = IndefinitelySpinningImageView;
+			name = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		23C7060417E420A800908F44 /* Primary Views */ = {
+			isa = PBXGroup;
+			children = (
+				23C4A72317E422E0007DB35C /* Tab Bar */,
+				230EDC331506875D001C173F /* Live Playlist */,
+				23B32DF5126E70BF008414F4 /* Favorites */,
+				23BF132F113B465B00A72DE7 /* About */,
+			);
+			name = "Primary Views";
+			sourceTree = "<group>";
+		};
+		23C7060517E420B000908F44 /* View Components */ = {
+			isa = PBXGroup;
+			children = (
+				23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */,
+				23BF148D113C06EE00A72DE7 /* WebView Controller */,
+				2353A13F12810065004F9A11 /* Google Image Search */,
+				238CC1C512664111006EC552 /* Casssette Reel */,
+			);
+			name = "View Components";
+			sourceTree = "<group>";
+		};
+		23C7060617E420EF00908F44 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				23EE39251527D1210006CDA5 /* LivePlaylistTableViewCell.h */,
+				23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */,
+				23EE39271527D12A0006CDA5 /* LoadPreviousEntriesCell.h */,
+				23EE39281527D12A0006CDA5 /* LoadPreviousEntriesCell.m */,
+				23EE39291527D1340006CDA5 /* BreakpointCell.h */,
+				23EE392A1527D1340006CDA5 /* BreakpointCell.m */,
+				23EE392B1527D1400006CDA5 /* DelineationCell.h */,
+				23EE392C1527D1400006CDA5 /* DelineationCell.m */,
+				23EE39331527D16C0006CDA5 /* TalksetCell.h */,
+				23EE39341527D16C0006CDA5 /* TalksetCell.m */,
+				235DE15316ED577A005640E9 /* PlayerCell.h */,
+				235DE15416ED577B005640E9 /* PlayerCell.m */,
+				237DFA23179B99C100AAEC4B /* Playcut Cell */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		23EAEFA9179C4320008E0960 /* Social */ = {
@@ -721,10 +673,10 @@
 			children = (
 				237DFA33179BA17D00AAEC4B /* SocialShareAction.h */,
 				237DFA34179BA17D00AAEC4B /* SocialShareAction.m */,
-				237DFA39179C366000AAEC4B /* FacebookShareAction.h */,
-				237DFA3A179C366000AAEC4B /* FacebookShareAction.m */,
 				23EAEFA6179C42F0008E0960 /* TwitterShareAction.h */,
 				23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */,
+				23996EE217CDA86300B1ECA7 /* FacebookShareAction.h */,
+				23996EE317CDA86300B1ECA7 /* FacebookShareAction.m */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -736,7 +688,7 @@
 				23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */,
 				23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97315FDCFA39411CA2CEA /* Bootstrapping */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -745,21 +697,21 @@
 			name = CustomTemplate;
 			sourceTree = "<group>";
 		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+		29B97315FDCFA39411CA2CEA /* Bootstrapping */ = {
 			isa = PBXGroup;
 			children = (
-				29B97316FDCFA39411CA2CEA /* main.m */,
 				239DD7351061B7510035B7BF /* WXYC_Radio_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */,
+				23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */,
 			);
-			name = "Other Sources";
+			name = Bootstrapping;
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */,
 				232E24FD1267A8DD007F7679 /* html */,
-				232E24FC1267A8D4007F7679 /* sounds */,
 				2328C6891060107500063811 /* images */,
 				2328C68A1060107F00063811 /* xibs */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -857,7 +809,6 @@
 				23DBC351113F801200C19BD0 /* WebView.xib in Resources */,
 				234D189711407D1500812919 /* about.html in Resources */,
 				234946D61263A6DD00022117 /* cassette reel@2x.png in Resources */,
-				237578931266CBB500E6177B /* cassette button push.aif in Resources */,
 				232E24DE1267A7ED007F7679 /* about_icon.png in Resources */,
 				232E24E11267A7ED007F7679 /* Default-inv.png in Resources */,
 				232E24E21267A7ED007F7679 /* Default.png in Resources */,
@@ -967,22 +918,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23EAEFA2179C3F7A008E0960 /* FacebookShareAction.h in Sources */,
 				23EE3A231527F4090006CDA5 /* Talkset.m in Sources */,
 				23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */,
 				23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */,
+				23996EE417CDA86300B1ECA7 /* FacebookShareAction.m in Sources */,
 				23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */,
 				23EE39AB1527F0790006CDA5 /* LoadPreviousEntriesCell.m in Sources */,
 				23EE39AD1527F0790006CDA5 /* BreakpointCell.m in Sources */,
 				23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */,
 				23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */,
 				23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */,
-				23EE39C41527F0790006CDA5 /* IndefinitelySpinningImageViewController.m in Sources */,
+				23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */,
 				23EE39E61527F0790006CDA5 /* Playlist.m in Sources */,
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,
+				232CFDC317EFB78B003A78B6 /* CassetteReelView.m in Sources */,
+				232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */,
 				2325E0EF1288A70800B064BB /* Playcut.m in Sources */,
 				23B32DF8126E70D7008414F4 /* FavoritesTableViewController.m in Sources */,
-				238CC1C81266413D006EC552 /* CassetteReelViewController.m in Sources */,
 				23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */,
 				23EE39FC1527F07A0006CDA5 /* AboutViewController.m in Sources */,
 				4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */,
@@ -1000,17 +952,9 @@
 				237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */,
 				237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */,
 				23EAEFAC179C4534008E0960 /* TwitterShareButton.m in Sources */,
-				237DFA3B179C36AC00AAEC4B /* FacebookShareAction.m in Sources */,
 				23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */,
 				23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */,
 				23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */,
-				2305477017769A4E00FA077A /* MTStatusBarOverlay.m in Sources */,
-				236BA5201782614B005BBF78 /* StatusBarController.m in Sources */,
-				236BA526178266F2005BBF78 /* WXYCStreamController.m in Sources */,
-				23677471179C85AF009C1BAA /* PlaycutCellButton.m in Sources */,
-				23677477179C87EA009C1BAA /* FavoriteShareButton.m in Sources */,
-				2367747A179C88EF009C1BAA /* SearchButton.m in Sources */,
-				2367747D179C8910009C1BAA /* SearchAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1134,11 +1078,7 @@
 					MR_SHORTHAND,
 				);
 				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(SDKROOT)/usr/include/libxml2",
-					"$(SOURCE_ROOT)/RestKit/Build/**",
-					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
-				);
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = Other/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
