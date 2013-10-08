@@ -39,15 +39,15 @@ dispatch_block_t (^fetchData)(NSArray *, OperationHandler) = ^(NSArray *keywords
 	return ^{
 		id operationBlocks = @[
 			^(id *accumulator, NSError **error) {
-			   *accumulator = [GoogleImageSearch requestForKeywords:keywords];
+			  *accumulator = [GoogleImageSearch requestForKeywords:keywords];
 			},
-			 
+			
 			^(id *accumulator, NSError **error) {
-			   *accumulator = [NSURLConnection sendSynchronousRequest:*accumulator returningResponse:nil error:error];
+			  *accumulator = [NSURLConnection sendSynchronousRequest:*accumulator returningResponse:nil error:error];
 			},
 
 			^(id *accumulator, NSError **error) {
-			   *accumulator = [NSJSONSerialization JSONObjectWithData:*accumulator options:NSJSONReadingAllowFragments error:error];
+			  *accumulator = [NSJSONSerialization JSONObjectWithData:*accumulator options:NSJSONReadingAllowFragments error:error];
 			},
 
 			^(id *accumulator, NSError **error) {
@@ -62,27 +62,24 @@ dispatch_block_t (^fetchData)(NSArray *, OperationHandler) = ^(NSArray *keywords
 					*error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
 			},
 
-			 ^(id *accumulator, NSError **error) {
-				 *accumulator = (*accumulator)[0];
-				 if (!*accumulator || ([NSNull null] == *accumulator))
-					 *error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
-			 },
+			^(id *accumulator, NSError **error) {
+				*accumulator = (*accumulator)[0];
+				if (!*accumulator || ([NSNull null] == *accumulator))
+					*error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
+			},
+			
+			^(id *accumulator, NSError **error) {
+				*accumulator = (*accumulator)[@"url"];
+				if (!*accumulator || ([NSNull null] == *accumulator))
+					*error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
+			},
 			 
-			 ^(id *accumulator, NSError **error) {
-				 *accumulator = (*accumulator)[@"url"];
-				 if (!*accumulator || ([NSNull null] == *accumulator))
-					 *error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
-			 },
-			 ^(id *accumulator, NSError **error) {
-				 *accumulator = [*accumulator stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-				 if (!*accumulator)
-					 *error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
-			 },
-			 
-
-//			^(id *accumulator, NSError **error) {
-//				*accumulator = [(*accumulator)[0][@"url"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//			},
+			^(id *accumulator, NSError **error) {
+				*accumulator = [*accumulator stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+				if (!*accumulator)
+					*error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
+			},
+			
 
 			^(id *accumulator, NSError **error) {
 				operationHandler([NSURL URLWithString:*accumulator], *error);

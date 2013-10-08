@@ -27,29 +27,16 @@
 	return YES;
 }
 
-- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent {
-	
-    if (receivedEvent.type == UIEventTypeRemoteControl) {
-		
-        switch (receivedEvent.subtype) {
-				
-            case UIEventSubtypeRemoteControlTogglePlayPause:
-				if ([AudioStreamController wxyc].isPlaying)
-					[[AudioStreamController wxyc] stop];
-				else
-					[[AudioStreamController wxyc] start];
-                break;
-				
-            case UIEventSubtypeRemoteControlPreviousTrack:
-                break;
-				
-            case UIEventSubtypeRemoteControlNextTrack:
-                break;
-				
-            default:
-                break;
-        }
-    }
+- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent
+{
+	if ((receivedEvent.type != UIEventTypeRemoteControl) ||
+		(receivedEvent.subtype != UIEventSubtypeRemoteControlTogglePlayPause))
+		return;
+
+	if ([AudioStreamController wxyc].isPlaying)
+		[[AudioStreamController wxyc] stop];
+	else
+		[[AudioStreamController wxyc] start];
 }
 
 #pragma mark - UITableViewController
@@ -67,14 +54,15 @@
 	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= self.livePlaylistCtrl.playlist.count)
 		return nil;
 	
+	NSString *entryType = [self classNameForPlaylistEntryAtIndexPath:indexPath];
+	
 	LivePlaylistTableViewCell *cell;
-	NSManagedObject *playlistEntry = self.livePlaylistCtrl.playlist[indexPath.row - NUMBER_OF_HEADER_CELLS];
-	NSString *entryType = [playlistEntry.class.description append:@"Cell"];
 	
 	@try {
 		cell = [tableView dequeueReusableCellWithIdentifier:entryType forIndexPath:indexPath];
 	}
-	@catch (NSException *exception) {
+	@catch (...)
+	{
 		Class class = NSClassFromString(entryType);
 		
 		if (class) {
@@ -84,16 +72,20 @@
 		}
 	}
 	
-	cell.entity = playlistEntry;
+	cell.entity = [self playlistEntryForIndexPath:indexPath];
 	cell.delegate = self;
 	
 	return cell;
 }
 
-- (NSString *)classNameForCellAtIndexPath:(NSIndexPath*)indexPath
+- (NSManagedObject *)playlistEntryForIndexPath:(NSIndexPath *)indexPath
 {
-	NSManagedObject *playlistEntry = (self.livePlaylistCtrl.playlist)[indexPath.row - NUMBER_OF_HEADER_CELLS];
-	return [playlistEntry.class.description append:@"Cell"];
+	return (self.livePlaylistCtrl.playlist)[indexPath.row - NUMBER_OF_HEADER_CELLS];
+}
+
+- (NSString *)classNameForPlaylistEntryAtIndexPath:(NSIndexPath*)indexPath
+{
+	return [[self playlistEntryForIndexPath:indexPath].class.description append:@"Cell"];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,7 +97,7 @@
 	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= self.livePlaylistCtrl.playlist.count)
 		return 0;
 	
-	return [NSClassFromString([self classNameForCellAtIndexPath:indexPath]) height];
+	return [NSClassFromString([self classNameForPlaylistEntryAtIndexPath:indexPath]) height];
 }
 
 #pragma mark - UIViewController
