@@ -52,31 +52,31 @@ dispatch_block_t (^fetchData)(NSArray *, OperationHandler) = ^(NSArray *keywords
 
 			^(id *accumulator, NSError **error) {
 				*accumulator = (*accumulator)[@"responseData"];
-				if (!*accumulator)
+				if (!*accumulator || ([NSNull null] == *accumulator))
 					*error = [NSError errorWithDomain:(*accumulator)[@"responseDetails"] code:-1 userInfo:nil];
 			},
 
 			^(id *accumulator, NSError **error) {
 				*accumulator = (*accumulator)[@"results"];
 				if ([*accumulator count] == 0)
-					*error = [[NSError init] alloc];
+					*error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
 			},
 
 			 ^(id *accumulator, NSError **error) {
 				 *accumulator = (*accumulator)[0];
-				 if (!*accumulator)
-					 *error = [[NSError init] alloc];
+				 if (!*accumulator || ([NSNull null] == *accumulator))
+					 *error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
 			 },
 			 
 			 ^(id *accumulator, NSError **error) {
 				 *accumulator = (*accumulator)[@"url"];
-				 if (!*accumulator)
-					 *error = [[NSError init] alloc];
+				 if (!*accumulator || ([NSNull null] == *accumulator))
+					 *error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
 			 },
 			 ^(id *accumulator, NSError **error) {
 				 *accumulator = [*accumulator stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 				 if (!*accumulator)
-					 *error = [[NSError init] alloc];
+					 *error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
 			 },
 			 
 
@@ -99,6 +99,7 @@ dispatch_block_t (^fetchData)(NSArray *, OperationHandler) = ^(NSArray *keywords
 			if (error)
 			{
 				operationHandler(nil, error);
+				break;
 			}
 		}
 	};
