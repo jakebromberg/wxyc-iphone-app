@@ -8,7 +8,6 @@
 #import "PlaylistController.h"
 #import "PlayerCell.h"
 #import "NSString+Additions.h"
-#import "AudioStreamController.h"
 
 #define NUMBER_OF_HEADER_CELLS 1
 
@@ -25,18 +24,6 @@
 - (BOOL)canBecomeFirstResponder
 {
 	return YES;
-}
-
-- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent
-{
-	if ((receivedEvent.type != UIEventTypeRemoteControl) ||
-		(receivedEvent.subtype != UIEventSubtypeRemoteControlTogglePlayPause))
-		return;
-
-	if ([AudioStreamController wxyc].isPlaying)
-		[[AudioStreamController wxyc] stop];
-	else
-		[[AudioStreamController wxyc] start];
 }
 
 #pragma mark - UITableViewController

@@ -24,7 +24,6 @@
 {
 	// bootstrap the app
 	[self configureAudioSession];
-	[self configureRootView];
 	[self configureCoreData];
 	[self tidyUpCoreData];
 	[self configureLivePlaylistController];
@@ -47,13 +46,6 @@
 	
 	UInt32 doChangeDefaultRoute = 1;
 	AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
-}
-
-- (void)configureRootView
-{
-	UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
-	UIView *navView = [[[NSBundle mainBundle] loadNibNamed:@"NavigationBar" owner:self.window.rootViewController options:nil] lastObject];
-	[navController.navigationBar insertSubview:navView atIndex:navController.navigationBar.subviews.count];
 }
 
 - (void)configureCoreData

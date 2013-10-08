@@ -91,6 +91,8 @@
 		23B32DF8126E70D7008414F4 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B32DF7126E70D7008414F4 /* FavoritesTableViewController.m */; };
 		23B32DFA126E7134008414F4 /* FavoritesTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B32DF9126E7134008414F4 /* FavoritesTableView.xib */; };
 		23B613F7164EFA64004547C2 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B613F5164EF06C004547C2 /* Social.framework */; };
+		23C113081803823800B7B5FE /* NavigationBarTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C113071803823800B7B5FE /* NavigationBarTitle.xib */; };
+		23C1130E1803BCDD00B7B5FE /* XYCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C1130D1803BCDD00B7B5FE /* XYCRootViewController.m */; };
 		23C2A943128A46AD00D61A4A /* reload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A941128A46AD00D61A4A /* reload@2x.png */; };
 		23C2A944128A46AD00D61A4A /* right-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A942128A46AD00D61A4A /* right-arrow@2x.png */; };
 		23C2A946128A476200D61A4A /* left-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C2A945128A476200D61A4A /* left-arrow@2x.png */; };
@@ -99,7 +101,6 @@
 		23C2AB1B128A6F8100D61A4A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */; };
 		23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C4A72517E42379007DB35C /* UIView+Spin.m */; };
 		23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */; };
-		23CD7B9617515FFD00BD4ED5 /* NavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */; };
 		23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */; };
 		23DBC351113F801200C19BD0 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* WebView.xib */; };
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
@@ -232,6 +233,9 @@
 		23B32DF9126E7134008414F4 /* FavoritesTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FavoritesTableView.xib; path = ../../Resources/xibs/FavoritesTableView.xib; sourceTree = "<group>"; };
 		23B613F5164EF06C004547C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		23B613F8164EFA8D004547C2 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		23C113071803823800B7B5FE /* NavigationBarTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationBarTitle.xib; sourceTree = "<group>"; };
+		23C1130C1803BCDD00B7B5FE /* XYCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYCRootViewController.h; path = Models/XYCRootViewController.h; sourceTree = "<group>"; };
+		23C1130D1803BCDD00B7B5FE /* XYCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYCRootViewController.m; path = Models/XYCRootViewController.m; sourceTree = "<group>"; };
 		23C2A941128A46AD00D61A4A /* reload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reload@2x.png"; sourceTree = "<group>"; };
 		23C2A942128A46AD00D61A4A /* right-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow@2x.png"; sourceTree = "<group>"; };
 		23C2A945128A476200D61A4A /* left-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow@2x.png"; sourceTree = "<group>"; };
@@ -242,7 +246,6 @@
 		23C4A72517E42379007DB35C /* UIView+Spin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Spin.m"; path = "../Categories/UIView+Spin.m"; sourceTree = "<group>"; };
 		23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXYCTabBarControllerViewController.h; path = "Classes/View Controllers/WXYCTabBarControllerViewController.h"; sourceTree = SOURCE_ROOT; };
 		23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXYCTabBarControllerViewController.m; path = "Classes/View Controllers/WXYCTabBarControllerViewController.m"; sourceTree = SOURCE_ROOT; };
-		23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NavigationBar.xib; path = Views/NavigationBar.xib; sourceTree = "<group>"; };
 		23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
 		23DBC34E113F801200C19BD0 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		23E0A59B16F6590C003CC6A8 /* Playlist2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playlist2.xcdatamodel; sourceTree = "<group>"; };
@@ -640,10 +643,12 @@
 		23C7060517E420B000908F44 /* View Components */ = {
 			isa = PBXGroup;
 			children = (
-				23CD7B9517515FFD00BD4ED5 /* NavigationBar.xib */,
+				23C113071803823800B7B5FE /* NavigationBarTitle.xib */,
 				23BF148D113C06EE00A72DE7 /* WebView Controller */,
 				2353A13F12810065004F9A11 /* Google Image Search */,
 				238CC1C512664111006EC552 /* Casssette Reel */,
+				23C1130C1803BCDD00B7B5FE /* XYCRootViewController.h */,
+				23C1130D1803BCDD00B7B5FE /* XYCRootViewController.m */,
 			);
 			name = "View Components";
 			sourceTree = "<group>";
@@ -828,6 +833,7 @@
 				23924C901289ECCC00EFC0FA /* toolbar-up@2x.png in Resources */,
 				23924CA31289F04C00EFC0FA /* favorites-tabbar-icon.png in Resources */,
 				23924CA41289F04C00EFC0FA /* favorites-tabbar-icon@2x.png in Resources */,
+				23C113081803823800B7B5FE /* NavigationBarTitle.xib in Resources */,
 				23924CA51289F04C00EFC0FA /* favorites-toolbar-icon-filled.png in Resources */,
 				23924CA61289F04C00EFC0FA /* favorites-toolbar-icon-filled@2x.png in Resources */,
 				23924CA71289F04C00EFC0FA /* favorites-toolbar-icon-unfilled@2x.png in Resources */,
@@ -874,7 +880,6 @@
 				23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */,
 				23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */,
 				2318562C173B274B00F15CC6 /* no-favorites.png in Resources */,
-				23CD7B9617515FFD00BD4ED5 /* NavigationBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -933,6 +938,7 @@
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,
 				232CFDC317EFB78B003A78B6 /* CassetteReelView.m in Sources */,
 				232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */,
+				23C1130E1803BCDD00B7B5FE /* XYCRootViewController.m in Sources */,
 				2325E0EF1288A70800B064BB /* Playcut.m in Sources */,
 				23B32DF8126E70D7008414F4 /* FavoritesTableViewController.m in Sources */,
 				23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */,

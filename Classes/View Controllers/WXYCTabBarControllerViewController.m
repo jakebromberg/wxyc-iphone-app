@@ -8,23 +8,32 @@
 
 #import "WXYCTabBarControllerViewController.h"
 
+static const UIEdgeInsets insets = (UIEdgeInsets){6, 0, -6, 0};
+
 @implementation WXYCTabBarControllerViewController
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+	return UIStatusBarStyleLightContent;
+}
 
 - (void)viewDidLoad
 {
 	UITabBar *tabBar = self.tabBar;
 	
-	[tabBar.items[0] setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
+	[tabBar.items[0] setImageInsets:insets];
 	[tabBar.items[0] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-playlist-selected.png"]
 				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-playlist-unselected.png"]];
 	
-	[tabBar.items[1] setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
+	[tabBar.items[1] setImageInsets:insets];
 	[tabBar.items[1] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-favorites-selected.png"]
 				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-favorites-unselected.png"]];
 	
-	[tabBar.items[2] setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
+	[tabBar.items[2] setImageInsets:insets];
 	[tabBar.items[2] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-info-selected.png"]
 				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-info-unselected.png"]];
+	
+	[self setNeedsStatusBarAppearanceUpdate];
 }
 
 @end
