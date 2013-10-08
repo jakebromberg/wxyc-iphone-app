@@ -413,7 +413,7 @@
                             <outlet property="delegate" destination="hbN-Xh-kZm" id="ZTE-Y5-0SL"/>
                         </connections>
                     </webView>
-                    <tabBarItem key="tabBarItem" title="" image="Station-Updates-icon.png" id="CyC-ha-Kex"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar-item-info-selected.png" id="CyC-ha-Kex"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFv-tU-BLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -675,7 +675,7 @@
                             <outlet property="nxEV_emptyView" destination="cjM-Cj-egk" id="uYT-mL-MsJ"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="favorites-tabbar-icon.png" id="rXU-gk-dVv"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar-item-favorites-selected.png" id="rXU-gk-dVv"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcC-6U-Oii" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <containerView contentMode="scaleToFill" id="cjM-Cj-egk">
@@ -759,19 +759,24 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Station-Updates-icon.png" width="24" height="24"/>
         <image name="casey-burns-app-icon.png" width="57" height="57"/>
+        <image name="cassette reel.png" width="49" height="49"/>
         <image name="cassette reel.png" width="49" height="49"/>
         <image name="chat.png" width="123" height="123"/>
         <image name="clock-1.png" width="123" height="123"/>
         <image name="facebook-share.png" width="86" height="86"/>
+        <image name="facebook-share.png" width="86" height="86"/>
         <image name="favorites-share.png" width="86" height="86"/>
-        <image name="favorites-tabbar-icon.png" width="25" height="21"/>
+        <image name="favorites-share.png" width="86" height="86"/>
         <image name="no-favorites.png" width="610" height="610"/>
         <image name="play-button.png" width="123" height="123"/>
         <image name="player-elements.png" width="477" height="123"/>
         <image name="search-share.png" width="86" height="86"/>
+        <image name="search-share.png" width="86" height="86"/>
+        <image name="tabbar-item-favorites-selected.png" width="107" height="49"/>
+        <image name="tabbar-item-info-selected.png" width="107" height="49"/>
         <image name="tabbar-item-playlist-selected.png" width="107" height="49"/>
+        <image name="twitter-share.png" width="86" height="86"/>
         <image name="twitter-share.png" width="86" height="86"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
