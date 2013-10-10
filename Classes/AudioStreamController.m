@@ -79,7 +79,7 @@ static AudioStreamController *wxyc;
 	}
 }
 
-- (id)initWithURL:(NSURL*)URL
+- (instancetype)initWithURL:(NSURL*)URL
 {
 	self = [super init];
 	

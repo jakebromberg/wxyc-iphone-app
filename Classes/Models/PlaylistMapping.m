@@ -83,7 +83,7 @@ static NSString* baseURL = @"http://wxyc.info/";
 	return [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:@"talksets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 }
 
-- (id)init
+- (instancetype)init
 {
 	if (self = [super init])
 	{

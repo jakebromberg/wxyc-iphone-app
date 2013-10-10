@@ -30,7 +30,7 @@
 	return 21.0f;
 }
 
-- (id)initWithEntity:(NSManagedObject *)entity
+- (instancetype)initWithEntity:(NSManagedObject *)entity
 {
 	if (!(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] description]]))
 		return nil;

@@ -34,7 +34,7 @@
 
 @implementation PlaycutCell
 
-- (id)initWithEntity:(NSManagedObject *)entity
+- (instancetype)initWithEntity:(NSManagedObject *)entity
 {
 	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.class.description];
 	

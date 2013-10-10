@@ -18,7 +18,7 @@
 @interface LivePlaylistTableViewCell : UITableViewCell <LivePlaylistViewControllerCallback>
 
 + (float)height;
-- (id)initWithEntity:(NSManagedObject*)entity;
+- (instancetype)initWithEntity:(NSManagedObject*)entity;
 
 @property (nonatomic, strong) NSManagedObject *entity;
 @property (nonatomic, strong) UITableViewController *delegate;

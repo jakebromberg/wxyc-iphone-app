@@ -10,7 +10,7 @@
 
 @implementation LoadPreviousEntriesCell
 
-- (id)init
+- (instancetype)init
 {
 	self = [NSBundle.mainBundle loadNibNamed:@"LoadPreviousEntriesCell" owner:self options:nil].lastObject;
 
