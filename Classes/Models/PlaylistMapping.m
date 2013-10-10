@@ -51,7 +51,7 @@ static NSString* baseURL = @"http://wxyc.info/";
 		 @"songTitle": @"song"
 	 }];
 	
-	return [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:@"playcuts" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+	return [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"playcuts" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 }
 
 - (RKResponseDescriptor *)breakpointMapping
@@ -66,7 +66,7 @@ static NSString* baseURL = @"http://wxyc.info/";
 	
 	mapping.identificationAttributes = @[@"id"] ;
 	
-	return [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:@"breakpoints" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+	return [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"breakpoints" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 }
 
 - (RKResponseDescriptor *)talksetMapping
@@ -80,7 +80,7 @@ static NSString* baseURL = @"http://wxyc.info/";
 	
 	mapping.identificationAttributes = @[@"id"] ;
 	
-	return [RKResponseDescriptor responseDescriptorWithMapping:mapping pathPattern:nil keyPath:@"talksets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+	return [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"talksets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 }
 
 - (instancetype)init
