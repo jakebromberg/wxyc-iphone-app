@@ -6,26 +6,20 @@
 //  Copyright 2010 WXYC. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 #import "PlaylistMapping.h"
+#import "NSObject+Singleton.h"
 
-typedef enum {
-	LP_INITIALIZED = 0,
-	LP_WAITING_FOR_DATA,
-	LP_FETCHING,
-	LP_PARSING,
-	LP_DONE
-} PlaylistControllerState;
-
-@interface PlaylistController : NSObject
-
-extern NSString * const LPStatusChangedNotification;
+@interface PlaylistController : NSObject <XYCSingleton>
 
 - (void)fetchPlaylist;
 - (PlaylistController*)init;
 
-@property (readonly) PlaylistControllerState state;
+@end
+
+
+@interface PlaylistController (Playlist)
+
 @property (readonly, nonatomic, strong) NSArray *playlist;
 
 @end

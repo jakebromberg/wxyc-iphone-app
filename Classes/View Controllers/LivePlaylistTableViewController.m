@@ -4,18 +4,11 @@
 //
 
 #import "LivePlaylistTableViewController.h"
-#import "WXYCAppDelegate.h"
 #import "PlaylistController.h"
 #import "PlayerCell.h"
 #import "NSString+Additions.h"
 
 #define NUMBER_OF_HEADER_CELLS 1
-
-@interface LivePlaylistTableViewController ()
-
-@property (nonatomic, strong) PlaylistController *livePlaylistCtrl;
-
-@end
 
 @implementation LivePlaylistTableViewController
 
@@ -30,7 +23,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return self.livePlaylistCtrl.playlist.count + NUMBER_OF_HEADER_CELLS;
+	return [[PlaylistController sharedObject] playlist].count + NUMBER_OF_HEADER_CELLS;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -38,7 +31,7 @@
 	if (indexPath.row == 0)
 		return [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
 	
-	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= self.livePlaylistCtrl.playlist.count)
+	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= [[PlaylistController sharedObject] playlist].count)
 		return nil;
 	
 	NSString *entryType = [self classNameForPlaylistEntryAtIndexPath:indexPath];
@@ -67,7 +60,7 @@
 
 - (NSManagedObject *)playlistEntryForIndexPath:(NSIndexPath *)indexPath
 {
-	return (self.livePlaylistCtrl.playlist)[indexPath.row - NUMBER_OF_HEADER_CELLS];
+	return ([[PlaylistController sharedObject] playlist])[indexPath.row - NUMBER_OF_HEADER_CELLS];
 }
 
 - (NSString *)classNameForPlaylistEntryAtIndexPath:(NSIndexPath*)indexPath
@@ -80,8 +73,7 @@
 	if (indexPath.row == 0)
 		return [PlayerCell height];
 	
-	//boundary case
-	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= self.livePlaylistCtrl.playlist.count)
+	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= [[PlaylistController sharedObject] playlist].count)
 		return 0;
 	
 	return [NSClassFromString([self classNameForPlaylistEntryAtIndexPath:indexPath]) height];
@@ -91,37 +83,28 @@
 
 - (void)viewDidLoad
 {
-	[[NSNotificationCenter defaultCenter] addObserverForName:LPStatusChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
-	{
-		if (self.livePlaylistCtrl.state == LP_DONE)
-		{
-			NSArray *newEntries = note.userInfo[@"newEntries"];
-			
-			if (newEntries.count == 0)
-				return;
-				
-			NSMutableArray *newIndexPaths = [NSMutableArray arrayWithCapacity:[newEntries count]];
-			
-			for (int i = 0; i < [newEntries count]; i++) {
-				[newIndexPaths addObject:[NSIndexPath indexPathForItem:i + NUMBER_OF_HEADER_CELLS inSection:0]];
-			}
-			
-			[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-		}
-	}];
+	[[PlaylistController sharedObject] addObserver:self forKeyPath:@"playlist" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
-#pragma - Initializer stuff
-
-- (PlaylistController *)livePlaylistCtrl
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if (!_livePlaylistCtrl)
+	if ([keyPath isEqualToString:@"playlist"])
 	{
-		WXYCAppDelegate *appDelegate = (WXYCAppDelegate *)[UIApplication sharedApplication].delegate;
-		_livePlaylistCtrl = [appDelegate livePlaylistCtrlr];
-	}
+		NSUInteger numNewEntries = [change[NSKeyValueChangeNewKey] count];
 
-	return _livePlaylistCtrl;
+		if (numNewEntries == 0)
+			return;
+		
+		NSMutableArray *newIndexPaths = [NSMutableArray arrayWithCapacity:numNewEntries];
+		
+		for (int i = 0; i < numNewEntries; i++) {
+			[newIndexPaths addObject:[NSIndexPath indexPathForItem:i + NUMBER_OF_HEADER_CELLS inSection:0]];
+		}
+		
+		[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+	} else {
+		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
 }
 
 @end

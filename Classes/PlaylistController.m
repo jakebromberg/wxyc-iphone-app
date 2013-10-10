@@ -9,23 +9,20 @@
 #import <RestKit/RestKit.h>
 #import "PlaylistController.h"
 #import "Playcut.h"
-#import <MediaPlayer/MediaPlayer.h>
-//<<<<<<< HEAD
-//#import "WXYCStreamController.h"
-//=======
 #import "AudioStreamController.h"
 #import "NSArray+Additions.h"
-//>>>>>>> dcc357820e1246dc28acf5f5ebdb8b498efcec39
 
 NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 
 @interface PlaylistController()
 
+@property (nonatomic, strong, readwrite) NSMutableArray *playlist;
 @property (nonatomic, strong) PlaylistMapping* playlistMapping;
 @property (nonatomic, readonly) NSDictionary *parameters;
 @property (nonatomic, readonly) NSString *path;
 
 @end
+
 
 @implementation PlaylistController
 
@@ -41,7 +38,7 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 		return @{
 			@"v" : @"2",
 			@"direction" : @"next",
-			@"referenceID" : [self.playlist[0] valueForKeyPath:@"chronOrderID"] ?: @""
+			@"referenceID" : [[self.playlist firstObject] valueForKeyPath:@"chronOrderID"] ?: @""
 		};
 	}
 	else
@@ -63,61 +60,39 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 		 if (mappingResult.array.count == 0)
 			 return;
 		 
-		 NSComparisonResult (^comparator)(id a, id b) = ^NSComparisonResult(id a, id b){
-			 return [[b valueForKey:@"chronOrderID"] compare:[a valueForKey:@"chronOrderID"]];
-		 };
+		 NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_playlist.count, mappingResult.array.count)];
+
+		 [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlist"];
+
+		 NSArray *sortedArray = [mappingResult.array sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"chronOrderID" ascending:NO]]];
+		 [self.playlist addObjectsFromArray:sortedArray];
 		 
-		 NSArray *newEntries = [[mappingResult array] sortedArrayUsingComparator:comparator];
-		 _playlist = [[[_playlist arrayByAddingObjectsFromArray:newEntries] sortedArrayUsingComparator:comparator] copy];
+		 [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlist"];
 		 
-		 _state = LP_DONE;
-		 
-		 [[NSNotificationCenter defaultCenter] postNotificationName:LPStatusChangedNotification object:self userInfo:@{ @"newEntries": newEntries}];
-		 
-		 [self configureNowPlayingInfo];
 		 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 		 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	 }];
 }
 	 
-- (void)configureNowPlayingInfo
-{
-	NSUInteger index = [self.playlist indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-		return [obj class] == [Playcut class];
-	}];
-	
-	if (index == NSNotFound) {
-		return;
-	}
-	
-	Playcut *playcut = self.playlist[index];
-	
-	[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo =
-		@{
-			MPMediaItemPropertyAlbumTitle : [playcut valueForKey:@"album"] ?: @"",
-			MPMediaItemPropertyArtist : [playcut valueForKey:@"artist"] ?: @"",
-			MPMediaItemPropertyTitle : [playcut valueForKey:@"song"] ?: @"",
-			MPMediaItemPropertyArtwork : [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:[playcut valueForKey:@"primaryImage"]] ?: [UIImage imageNamed:@"album_cover_placeholder.PNG"]]
-		};
-}
-
 #pragma mark constructors
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
++ (BOOL)automaticallyNotifiesObserversOfPlaylist
 {
-	[self configureNowPlayingInfo];
+	return NO;
 }
 
-- (id)init
+- (instancetype)init
 {
 	self = [super init];
 	
 	if (self)
 	{
 		_playlistMapping = [[PlaylistMapping alloc] init];
-		_playlist = [NSArray array];
-		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+		_playlist = [NSMutableArray array];
+		
+		[self fetchPlaylist];
+		[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 	}
 	
 	return self;

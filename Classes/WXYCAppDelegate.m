@@ -22,11 +22,9 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-	// bootstrap the app
 	[self configureAudioSession];
 	[self configureCoreData];
 	[self tidyUpCoreData];
-	[self configureLivePlaylistController];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -75,18 +73,6 @@
 	}
 	
 	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
-}
-
-- (void)configureLivePlaylistController
-{
-	[self.livePlaylistCtrlr fetchPlaylist];
-	
-	[NSTimer scheduledTimerWithTimeInterval:30 target:self.livePlaylistCtrlr selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
-}
-
-- (PlaylistController *)livePlaylistCtrlr
-{
-	return _livePlaylistCtrlr ?: (_livePlaylistCtrlr = [[PlaylistController alloc] init]);
 }
 
 @end
