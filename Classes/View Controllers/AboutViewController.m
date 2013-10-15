@@ -5,6 +5,13 @@
 
 #import "AboutViewController.h"
 #import	"WebViewController.h"
+#import "UIApplication+PresentViewController.h"
+
+@interface AboutViewController ()
+
+@property UIWebView *view;
+
+@end
 
 @implementation AboutViewController
 
@@ -16,7 +23,7 @@
 	NSURL* url = [NSURL fileURLWithPath:aboutTemplatePath];
 	NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
 	
-	[(UIWebView *)self.view loadRequest:requestObj];
+	[self.view loadRequest:requestObj];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
@@ -31,18 +38,14 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-	if (navigationType == UIWebViewNavigationTypeLinkClicked)
-	{
-		WebViewController *webViewController = [[WebViewController alloc] init];
-		
-		[self.view.window.rootViewController presentViewController:webViewController animated:YES completion:nil];
-		[webViewController loadURL:request.URL];
-		webViewController.webView.scalesPageToFit = YES;
-		
-		return NO;
-	}
-	
-	return YES;
+    if (navigationType != UIWebViewNavigationTypeLinkClicked)
+        return YES;
+    
+    WebViewController *webViewController = [[WebViewController alloc] initWithRequest:request];
+    webViewController.webView.scalesPageToFit = YES;
+    [UIApplication presentViewController:webViewController animated:YES completion:nil];
+    
+    return NO;
 }
 
 @end

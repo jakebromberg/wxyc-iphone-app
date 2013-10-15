@@ -17,6 +17,18 @@
 
 @implementation WebViewController
 
+- (instancetype)initWithRequest:(NSURLRequest *)request
+{
+    self = [super init];
+    
+    if (!self)
+        return nil;
+    
+    [self.webView loadRequest:[NSURLRequest requestWithURL:request]];
+    
+    return self;
+}
+
 - (void)loadURL:(NSURL*)url
 {
 	[self.webView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -54,10 +66,8 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-	NSLog(@"expected:%d, got:%d", UIWebViewNavigationTypeLinkClicked, navigationType);
-	if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+	if (navigationType == UIWebViewNavigationTypeLinkClicked)
 		[self.webView loadRequest:request];
-	}
 	
 	return YES;
 }
@@ -106,11 +116,9 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	NSLog(@"buttonIndex %i", buttonIndex);
-	
 	if (buttonIndex == 0) {
 		[[UIPasteboard generalPasteboard] setValue:[self.webView.request.URL absoluteString] 
-								 forPasteboardType:(NSString*)kUTTypeUTF8PlainText];
+								 forPasteboardType:(__bridge NSString *)kUTTypeUTF8PlainText];
 	} else if (buttonIndex == 1) {
 		[[UIApplication sharedApplication] openURL:self.webView.request.URL];
 	}
