@@ -53,7 +53,7 @@ dispatch_block_t (^fetchData)(NSArray *, OperationHandler) = ^(NSArray *keywords
 			^(id *accumulator, NSError **error) {
 				*accumulator = (*accumulator)[@"responseData"];
 				if (!*accumulator || ([NSNull null] == *accumulator))
-					*error = [NSError errorWithDomain:(*accumulator)[@"responseDetails"] code:-1 userInfo:nil];
+					*error = [NSError errorWithDomain:@"" code:-1 userInfo:nil];
 			},
 
 			^(id *accumulator, NSError **error) {
