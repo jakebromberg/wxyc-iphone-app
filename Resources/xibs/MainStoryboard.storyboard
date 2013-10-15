@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2SK-M0-QIy">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
@@ -295,7 +295,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="mcM-js-Upq" firstAttribute="leading" secondItem="LaG-hG-JcT" secondAttribute="leading" constant="40" id="0TN-pC-6PI"/>
                                                 <constraint firstItem="KLU-nV-ibT" firstAttribute="leading" secondItem="LaG-hG-JcT" secondAttribute="leading" constant="7" id="YcP-tR-mgN"/>
@@ -428,81 +427,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="40" id="ZJm-PI-4jU" userLabel="Header Cell - PlayerCell" customClass="PlayerCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="40"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZJm-PI-4jU" id="tgf-Ha-hMJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTv-M5-lxh">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
-                                            <color key="backgroundColor" red="0.18900000000000003" green="0.51263333333333339" blue="0.70000000000000007" alpha="1" colorSpace="deviceRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="39" id="Xtv-uH-pBL"/>
-                                            </constraints>
-                                            <attributedString key="attributedText">
-                                                <fragment content="♥ ">
-                                                    <attributes>
-                                                        <color key="NSColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <font key="NSFont" size="21" name="HiraKakuProN-W3"/>
-                                                        <font key="NSOriginalFont" size="21" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="W X Y C ">
-                                                    <attributes>
-                                                        <color key="NSColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <font key="NSFont" size="21" name="HelveticaNeue-Light"/>
-                                                        <font key="NSOriginalFont" size="21" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="89.3 ">
-                                                    <attributes>
-                                                        <color key="NSColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <font key="NSFont" size="21" name="HelveticaNeue"/>
-                                                        <font key="NSOriginalFont" size="21" name="HelveticaNeue"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="♥">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="21" name="HiraKakuProN-W3"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LgB-aO-T1P">
-                                            <rect key="frame" x="0.0" y="40" width="320" height="2"/>
-                                            <color key="backgroundColor" red="0.1194014698266983" green="0.31705650687217712" blue="0.5833745002746582" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TnR-65-5AY">
-                                            <rect key="frame" x="0.0" y="39" width="320" height="1"/>
-                                            <color key="backgroundColor" red="0.22950000000000001" green="0.58111666666666639" blue="0.84999999999999998" alpha="1" colorSpace="deviceRGB"/>
-                                        </view>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.58039218189999997" green="0.79607850309999995" blue="0.86274516580000005" alpha="1" colorSpace="deviceRGB"/>
-                                <constraints>
-                                    <constraint firstItem="LgB-aO-T1P" firstAttribute="leading" secondItem="ZJm-PI-4jU" secondAttribute="leading" id="0qm-di-t9r"/>
-                                    <constraint firstItem="BTv-M5-lxh" firstAttribute="trailing" secondItem="ZJm-PI-4jU" secondAttribute="trailing" id="1aY-j9-uad"/>
-                                    <constraint firstItem="LgB-aO-T1P" firstAttribute="top" secondItem="ZJm-PI-4jU" secondAttribute="top" constant="39" id="4Y6-S9-uW6"/>
-                                    <constraint firstAttribute="bottom" secondItem="LgB-aO-T1P" secondAttribute="bottom" constant="-1" id="7ko-OD-o6V"/>
-                                    <constraint firstItem="TnR-65-5AY" firstAttribute="trailing" secondItem="ZJm-PI-4jU" secondAttribute="trailing" id="E70-KV-IaZ"/>
-                                    <constraint firstItem="BTv-M5-lxh" firstAttribute="leading" secondItem="ZJm-PI-4jU" secondAttribute="leading" id="RTl-Im-xEw"/>
-                                    <constraint firstAttribute="bottom" secondItem="TnR-65-5AY" secondAttribute="bottom" constant="39" id="Rf0-nQ-gY9"/>
-                                    <constraint firstItem="BTv-M5-lxh" firstAttribute="top" secondItem="ZJm-PI-4jU" secondAttribute="top" id="hk5-ha-4GJ"/>
-                                    <constraint firstItem="TnR-65-5AY" firstAttribute="leading" secondItem="ZJm-PI-4jU" secondAttribute="leading" id="i7w-ed-Kle"/>
-                                    <constraint firstItem="LgB-aO-T1P" firstAttribute="trailing" secondItem="ZJm-PI-4jU" secondAttribute="trailing" id="nIR-Tf-YVc"/>
-                                    <constraint firstItem="TnR-65-5AY" firstAttribute="top" secondItem="ZJm-PI-4jU" secondAttribute="top" id="qlf-xF-IyP"/>
-                                </constraints>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlaycutCell" rowHeight="360" id="NvV-T3-hDd" customClass="PlaycutCell">
-                                <rect key="frame" x="0.0" y="62" width="320" height="360"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="360"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NvV-T3-hDd" id="nkJ-AE-HBO">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
@@ -756,27 +682,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsG-xw-jBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="822" y="1764"/>
         </scene>
     </scenes>
     <resources>
         <image name="casey-burns-app-icon.png" width="57" height="57"/>
         <image name="cassette reel.png" width="49" height="49"/>
-        <image name="cassette reel.png" width="49" height="49"/>
         <image name="chat.png" width="123" height="123"/>
         <image name="clock-1.png" width="123" height="123"/>
         <image name="facebook-share.png" width="86" height="86"/>
-        <image name="facebook-share.png" width="86" height="86"/>
-        <image name="favorites-share.png" width="86" height="86"/>
         <image name="favorites-share.png" width="86" height="86"/>
         <image name="no-favorites.png" width="610" height="610"/>
         <image name="play-button.png" width="123" height="123"/>
         <image name="player-elements.png" width="477" height="123"/>
         <image name="search-share.png" width="86" height="86"/>
-        <image name="search-share.png" width="86" height="86"/>
         <image name="tabbar-item-favorites-selected.png" width="107" height="49"/>
         <image name="tabbar-item-info-selected.png" width="107" height="49"/>
         <image name="tabbar-item-playlist-selected.png" width="107" height="49"/>
-        <image name="twitter-share.png" width="86" height="86"/>
         <image name="twitter-share.png" width="86" height="86"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
