@@ -71,8 +71,10 @@
 	
 	[self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlist"];
 	
-	NSArray *sortedArray = [results sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"chronOrderID" ascending:NO]]];
-	[self.playlist addObjectsFromArray:sortedArray];
+	[self.playlist addObjectsFromArray:results];
+    [self.playlist sortUsingComparator:^NSComparisonResult(Playcut *p1, Playcut *p2) {
+        return [[p2 valueForKey:@"chronOrderID"] compare:[p1 valueForKey:@"chronOrderID"]];
+    }];
 	
 	[self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlist"];
 }

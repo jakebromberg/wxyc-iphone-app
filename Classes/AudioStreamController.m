@@ -26,27 +26,17 @@
 	if (self)
 	{
 		_URL = URL;
-		[self addObserver:self forKeyPath:@"player.status" options:NSKeyValueObservingOptionNew context:NULL];
+        
+        [self observeProperty:@keypath(self.player.status) withBlock:^(__weak AudioStreamController *self, id old, id new) {
+             if (self.player.status == AVPlayerStatusFailed)
+             {
+                 self.player = nil;
+                 [self player];
+             }
+         }];
 	}
 	
 	return self;
-}
-
-- (void)dealloc
-{
-	[self removeObserver:self forKeyPath:@"player.status"];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"player.status"])
-	{
-		if (self.player.status == AVPlayerStatusFailed)
-		{
-			self.player = nil;
-			[self player];
-		}
-	}
 }
 
 - (void)configureAudioSession
@@ -105,7 +95,7 @@ static AudioStreamController *wxyc;
 
 + (NSSet *)keyPathsForValuesAffectingIsPlaying
 {
-	return [NSSet setWithObject:@"player.rate"];
+	return [NSSet setWithObject:@keypath(AudioStreamController.new, player.rate)];
 }
 
 @end

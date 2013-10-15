@@ -83,12 +83,12 @@
 
 - (void)viewDidLoad
 {
-	[[PlaylistController sharedObject] addObserver:self forKeyPath:@"playlist" options:NSKeyValueObservingOptionNew context:NULL];
+	[[PlaylistController sharedObject] addObserver:self forKeyPath:@keypath(PlaylistController.sharedObject, playlist) options:NSKeyValueObservingOptionNew context:NULL];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if ([keyPath isEqualToString:@"playlist"])
+	if ([keyPath isEqualToString:@keypath(PlaylistController.sharedObject, playlist)])
 	{
 		NSUInteger numNewEntries = [change[NSKeyValueChangeNewKey] count];
 
