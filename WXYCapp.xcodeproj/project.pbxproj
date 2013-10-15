@@ -150,6 +150,7 @@
 		231EC0CA1807C59F00D93649 /* NSObject+Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Singleton.m"; sourceTree = "<group>"; };
 		231EC0CC180BB2B000D93649 /* XYCDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYCDataStack.h; path = Models/XYCDataStack.h; sourceTree = "<group>"; };
 		231EC0CD180BB2B000D93649 /* XYCDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYCDataStack.m; path = Models/XYCDataStack.m; sourceTree = "<group>"; };
+		231EC0CF180CFD1100D93649 /* keypath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keypath.h; sourceTree = "<group>"; };
 		2325E0E91288A70800B064BB /* Playcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playcut.h; path = Models/Playcut.h; sourceTree = "<group>"; };
 		2325E0EA1288A70800B064BB /* Playcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playcut.m; path = Models/Playcut.m; sourceTree = "<group>"; };
 		232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
@@ -352,7 +353,7 @@
 			children = (
 				23C7060417E420A800908F44 /* Primary Views */,
 				23C7060517E420B000908F44 /* View Components */,
-				235E420D168CC2830088E19F /* Categories */,
+				235E420D168CC2830088E19F /* Utilities */,
 				2324AF3B1509B9F00080ACF2 /* Controllers */,
 				23B32D1D126E3268008414F4 /* Models */,
 			);
@@ -488,7 +489,7 @@
 			path = "View Controllers/AlbumCoverSearch";
 			sourceTree = "<group>";
 		};
-		235E420D168CC2830088E19F /* Categories */ = {
+		235E420D168CC2830088E19F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				231EC0C91807C59F00D93649 /* NSObject+Singleton.h */,
@@ -499,7 +500,9 @@
 				23F8176816EBDDD1005BF24F /* NSString+Additions.m */,
 				23F8176A16EBDE13005BF24F /* NSArray+Additions.h */,
 				23F8176B16EBDE13005BF24F /* NSArray+Additions.m */,
+				231EC0CF180CFD1100D93649 /* keypath.h */,
 			);
+			name = Utilities;
 			path = Categories;
 			sourceTree = "<group>";
 		};
