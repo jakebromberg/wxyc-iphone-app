@@ -8,8 +8,7 @@
 //
 
 #import "AudioStreamController.h"
-#include <AVFoundation/AVFoundation.h>
-#include <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface AudioStreamController()
 
@@ -19,6 +18,47 @@
 
 
 @implementation AudioStreamController
+
+- (instancetype)initWithURL:(NSURL*)URL
+{
+	self = [super init];
+	
+	if (self)
+	{
+		_URL = URL;
+		[self addObserver:self forKeyPath:@"player.status" options:NSKeyValueObservingOptionNew context:NULL];
+	}
+	
+	return self;
+}
+
+- (void)dealloc
+{
+	[self removeObserver:self forKeyPath:@"player.status"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if ([keyPath isEqualToString:@"player.status"])
+	{
+		if (self.player.status == AVPlayerStatusFailed)
+		{
+			self.player = nil;
+			[self player];
+		}
+	}
+}
+
+- (void)configureAudioSession
+{
+	NSError *error = nil;
+	[[AVAudioSession sharedInstance] setDelegate:self];
+	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+	[[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionCategoryOptionDefaultToSpeaker error:&error];
+}
+
+
+#pragma WXYC factory method
 
 static AudioStreamController *wxyc;
 
@@ -35,6 +75,7 @@ static AudioStreamController *wxyc;
 - (void)start
 {
 	[self.player play];
+	[self configureAudioSession];
 	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
 
@@ -61,36 +102,6 @@ static AudioStreamController *wxyc;
 }
 
 #pragma mark
-
-- (void)dealloc
-{
-	[self removeObserver:self forKeyPath:@"player.status"];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"player.status"])
-	{
-		if (self.player.status == AVPlayerStatusFailed)
-		{
-			self.player = nil;
-			[self player];
-		}
-	}
-}
-
-- (instancetype)initWithURL:(NSURL*)URL
-{
-	self = [super init];
-	
-	if (self)
-	{
-		_URL = URL;
-		[self addObserver:self forKeyPath:@"player.status" options:NSKeyValueObservingOptionNew context:NULL];
-	}
-	
-	return self;
-}
 
 + (NSSet *)keyPathsForValuesAffectingIsPlaying
 {

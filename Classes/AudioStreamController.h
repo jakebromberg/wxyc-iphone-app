@@ -5,7 +5,6 @@
 //  Created by Jake Bromberg on 3/8/12.
 //  Copyright (c) 2012 WXYC. All rights reserved.
 //
-#include <AVFoundation/AVFoundation.h>
 
 @interface AudioStreamController : NSObject
 
