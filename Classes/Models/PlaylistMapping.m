@@ -27,11 +27,14 @@ static NSString* baseURL = @"http://wxyc.info/";
 - (void)initializeObjectManager
 {
 	[RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/plain"];
-	_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:baseURL]];
 	
 	[RKManagedObjectStore setDefaultStore:[[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:[NSManagedObjectContext defaultContext].persistentStoreCoordinator]];
+
+	_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:baseURL]];
 	_objectManager.managedObjectStore = [RKManagedObjectStore defaultStore];
 	[_objectManager.managedObjectStore createManagedObjectContexts];
+	
+	[RKObjectManager setSharedManager:_objectManager];
 }
 
 - (RKResponseDescriptor *)playcutMapping
@@ -64,7 +67,7 @@ static NSString* baseURL = @"http://wxyc.info/";
 		@"hour": @"hour"
 	 }];
 	
-	mapping.identificationAttributes = @[@"id"] ;
+	mapping.identificationAttributes = @[@"id"];
 	
 	return [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"breakpoints" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 }
@@ -78,7 +81,7 @@ static NSString* baseURL = @"http://wxyc.info/";
 		@"hour": @"hour"
 	 }];
 	
-	mapping.identificationAttributes = @[@"id"] ;
+	mapping.identificationAttributes = @[@"id"];
 	
 	return [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"talksets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
 }
