@@ -13,6 +13,7 @@
 @required
 
 + (instancetype)sharedObject;
++ (void)loadSingleton;
 
 @end
 

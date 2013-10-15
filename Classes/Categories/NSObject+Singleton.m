@@ -10,16 +10,26 @@
 
 @implementation NSObject (Singleton)
 
-static NSObject *_sharedObject;
+static NSMapTable *sharedObjects;
 
-+ (id)sharedObject
++ (void)load
 {
-	static dispatch_once_t initOnceToken;
-	dispatch_once(&initOnceToken, ^{
-		_sharedObject = [[self alloc] init];
-	});
+	sharedObjects = [NSMapTable strongToStrongObjectsMapTable];
+}
+
++ (void)loadSingleton
+{
+	[self sharedObject];
+}
+
++ (instancetype)sharedObject
+{
+	id objectifiedSelf = [NSValue valueWithNonretainedObject:[self class]];
 	
-	return _sharedObject;
+	if (![sharedObjects objectForKey:objectifiedSelf])
+		[sharedObjects setObject:[[self alloc] init] forKey:objectifiedSelf];
+
+	return [sharedObjects objectForKey:objectifiedSelf];
 }
 
 @end
