@@ -25,7 +25,7 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-	return UIStatusBarStyleBlackOpaque;
+	return UIStatusBarStyleLightContent;
 }
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent
