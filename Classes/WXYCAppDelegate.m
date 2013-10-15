@@ -4,75 +4,17 @@
 //
 
 #import "WXYCAppDelegate.h"
-#import "PlaylistController.h"
-#import "Playcut.h"
-#import <AVFoundation/AVFoundation.h>
-#import <AudioToolbox/AudioToolbox.h>
-
-// Use a class extension to expose access to MagicalRecord's private setter methods
-
-@interface NSManagedObjectContext ()
-
-+ (void)MR_setRootSavingContext:(NSManagedObjectContext *)context;
-+ (void)MR_setDefaultContext:(NSManagedObjectContext *)moc;
-
-@end
+#import "PlaylistMapping.h"
+#import "XYCDataStack.h"
+#import "LockscreenMediaController.h"
 
 @implementation WXYCAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-	[self configureAudioSession];
-	[self configureCoreData];
-	[self tidyUpCoreData];
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-	[self tidyUpCoreData];
-}
-
-#pragma mark - bootstrapping
-
-- (void)configureAudioSession
-{
-	NSError *sessionError = nil;
-	[[AVAudioSession sharedInstance] setDelegate:self];
-	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&sessionError];
-	
-	NSAssert(!sessionError, @"");
-	
-	UInt32 doChangeDefaultRoute = 1;
-	AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
-}
-
-- (void)configureCoreData
-{
-	NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Playlist2" ofType:@"momd"]];
-    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
-    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
-    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"WXYC78.sqlite"];
-    NSError *error = nil;
-    [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
-    [managedObjectStore createManagedObjectContexts];
-	
-	// Configure MagicalRecord to use RestKit's Core Data stack
-    [NSPersistentStoreCoordinator MR_setDefaultStoreCoordinator:managedObjectStore.persistentStoreCoordinator];
-    [NSManagedObjectContext MR_setRootSavingContext:managedObjectStore.persistentStoreManagedObjectContext];
-    [NSManagedObjectContext MR_setDefaultContext:managedObjectStore.mainQueueManagedObjectContext];
-	
-	RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://wxyc.info/"]];
-    objectManager.managedObjectStore = managedObjectStore;
-}
-
-- (void)tidyUpCoreData
-{
-	//Clean out unfavorited data
-	for (Playcut *playcut in [Playcut findByAttribute:@"Favorite" withValue:@NO]) {
-		[playcut deleteEntity];
-	}
-	
-	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+	[XYCDataStack loadSingleton];
+	[PlaylistMapping loadSingleton];
+	[LockscreenMediaController loadSingleton];
 }
 
 @end
