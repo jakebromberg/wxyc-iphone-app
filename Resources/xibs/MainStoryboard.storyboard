@@ -51,13 +51,13 @@
                                                         <action selector="pushPlay:" destination="pID-91-qlN" eventType="touchUpInside" id="pvo-R6-0bi"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cassette reel.png" translatesAutoresizingMaskIntoConstraints="NO" id="fbW-hU-JPw" customClass="CassetteReelView">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cassette reel.png" translatesAutoresizingMaskIntoConstraints="NO" id="fbW-hU-JPw">
                                                     <rect key="frame" x="68" y="-1" width="68" height="68"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="68" id="l9p-0Z-9cp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cassette reel.png" translatesAutoresizingMaskIntoConstraints="NO" id="jFz-fW-c8M" customClass="CassetteReelView">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cassette reel.png" translatesAutoresizingMaskIntoConstraints="NO" id="jFz-fW-c8M">
                                                     <rect key="frame" x="227" y="-1" width="68" height="68"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="68" id="4ha-IP-wYX"/>

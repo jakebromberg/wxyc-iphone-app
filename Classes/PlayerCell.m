@@ -8,15 +8,13 @@
 
 #import "PlayerCell.h"
 #import "AudioStreamController.h"
-#import "NSString+Additions.h"
-#import "CassetteReelView.h"
 #import "UIView+Spin.h"
 
 @interface PlayerCell ()
 
 @property (nonatomic, weak) IBOutlet UIButton *playButton;
-@property (nonatomic, strong) IBOutlet CassetteReelView *leftCassetteReel;
-@property (nonatomic, strong) IBOutlet CassetteReelView *rightCassetteReel;
+@property (nonatomic, strong) IBOutlet UIImageView *leftCassetteReel;
+@property (nonatomic, strong) IBOutlet UIImageView *rightCassetteReel;
 
 @end
 
@@ -27,21 +25,35 @@
 	return 74.0f;
 }
 
+- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
+{
+    [self setUpObservation];
+    
+	return [super awakeAfterUsingCoder:aDecoder];
+}
+
 - (void)prepareForReuse
 {
 	[super prepareForReuse];
 	
 	@try {
-		[[AudioStreamController wxyc] removeObserver:self forKeyPath:@"isPlaying"];
+        [self removeAllObservations];
 	}
 	@catch (NSException *exception) {
 		
 	}
 	@finally {
-		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+        [self setUpObservation];
 	}
 	
 	[self configureInterfaceForPlayingState:AudioStreamController.wxyc.isPlaying];
+}
+
+- (void)setUpObservation
+{
+    [self observeObject:[AudioStreamController wxyc] property:@keypath(AudioStreamController.wxyc, isPlaying) withBlock:^(__weak id self, __weak id object, id old, id new) {
+        [self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
+    }];
 }
 
 - (void)configureInterfaceForPlayingState:(BOOL)isPlaying
@@ -49,12 +61,12 @@
 	if (isPlaying)
 	{
 		[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
-		[self.leftCassetteReel startSpin];
-		[self.rightCassetteReel startSpin];
+        [self.rightCassetteReel startSpin];
+        [self.leftCassetteReel startSpin];
 	} else {
 		[self.playButton setImage:[UIImage imageNamed:@"play-button.png"] forState:UIControlStateNormal];
-		[self.leftCassetteReel stopSpin];
-		[self.rightCassetteReel stopSpin];
+        [self.rightCassetteReel stopSpin];
+        [self.leftCassetteReel stopSpin];
 	}
 }
 
@@ -66,23 +78,6 @@
 	} else {
 		[AudioStreamController.wxyc start];
 	}
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"isPlaying"])
-	{
-		[self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
-	} else {
-		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-	}
-}
-
-- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
-{
-	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
-
-	return [super awakeAfterUsingCoder:aDecoder];
 }
 
 @end
