@@ -26,7 +26,7 @@
 
 + (void)sharePlaycut:(Playcut *)playcut
 {
-	if ([SLComposeViewController isAvailableForServiceType:self.class.SLServiceType])
+	if ([SLComposeViewController isAvailableForServiceType:self.SLServiceType])
 	{
 		SLComposeViewController *sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
 		
@@ -41,8 +41,8 @@
 		
 		[[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:sheet animated:YES completion:nil];
 	} else {
-		id title = [@"Not logged in to " append:self.class.serviceName];
-		id message = [@"Open Settings and add your %@ account" formattedWith:@[self.class.serviceName]];
+		id title = [@"Not logged in to " append:self.serviceName];
+		id message = [@"Open Settings and add your %@ account" formattedWith:@[self.serviceName]];
 		[[UIAlertView alertViewWithTitle:title message:message] show];
 	}
 }
