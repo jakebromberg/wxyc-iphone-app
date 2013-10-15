@@ -5,4 +5,5 @@
 	#import <Security/Security.h>
 
     #import <CoreData+MagicalRecord.h>
+    #import <Block-KVO/MTKObserving.h>
 #endif
