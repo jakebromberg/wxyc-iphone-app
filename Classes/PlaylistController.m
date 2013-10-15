@@ -12,12 +12,9 @@
 #import "AudioStreamController.h"
 #import "NSArray+Additions.h"
 
-NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
-
 @interface PlaylistController()
 
 @property (nonatomic, strong, readwrite) NSMutableArray *playlist;
-@property (nonatomic, strong) PlaylistMapping* playlistMapping;
 @property (nonatomic, readonly) NSDictionary *parameters;
 @property (nonatomic, readonly) NSString *path;
 
@@ -55,26 +52,31 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 - (void)fetchPlaylist
 {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	
 	[RKObjectManager.sharedManager getObjectsAtPath:self.path parameters:self.parameters success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
 	 {
-		 if (mappingResult.array.count == 0)
-			 return;
-		 
-		 NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_playlist.count, mappingResult.array.count)];
-
-		 [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlist"];
-
-		 NSArray *sortedArray = [mappingResult.array sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"chronOrderID" ascending:NO]]];
-		 [self.playlist addObjectsFromArray:sortedArray];
-		 
-		 [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlist"];
-		 
+		 [self appendResultsToPlaylist:mappingResult.array];
 		 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 		 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	 }];
 }
-	 
+
+- (void)appendResultsToPlaylist:(NSArray *)results
+{
+	if (results.count == 0)
+		return;
+	
+	NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_playlist.count, results.count)];
+	
+	[self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlist"];
+	
+	NSArray *sortedArray = [results sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"chronOrderID" ascending:NO]]];
+	[self.playlist addObjectsFromArray:sortedArray];
+	
+	[self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlist"];
+}
+
 #pragma mark constructors
 
 + (BOOL)automaticallyNotifiesObserversOfPlaylist
@@ -88,7 +90,6 @@ NSString* const LPStatusChangedNotification = @"LPStatusChangedNotification";
 	
 	if (self)
 	{
-		_playlistMapping = [[PlaylistMapping alloc] init];
 		_playlist = [NSMutableArray array];
 		
 		[self fetchPlaylist];
