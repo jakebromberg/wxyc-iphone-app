@@ -30,13 +30,13 @@
 	{
 		SLComposeViewController *sheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
 		
-		NSString *song = [playcut valueForKey:@"song"];
-		NSString *artist = [playcut valueForKey:@"artist"];
-		NSString *initialText = [@"Listening to \"%@\" by %@ on @WXYC!" formattedWith:@[song, artist]];
-		[sheet setInitialText:initialText];
+		[sheet setInitialText:({
+			NSString *song = playcut.Song ?: @"";
+			NSString *artist = playcut.Artist ?: @"";
+			[@"Listening to \"%@\" by %@ on @WXYC!" formattedWith:@[song, artist]];
+		})];
 		
-		UIImage *image = [UIImage imageWithData:[playcut valueForKey:@"primaryImage"]];
-		[sheet addImage:image];
+		[sheet addImage:[UIImage imageWithData:playcut.PrimaryImage]];
 		[sheet addURL:[NSURL URLWithString:@"http://wxyc.org/"]];
 		
 		[[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:sheet animated:YES completion:nil];

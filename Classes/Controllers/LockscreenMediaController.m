@@ -56,10 +56,10 @@
 - (NSDictionary *)nowPlayingInfoForPlaycut:(Playcut *)playcut
 {
 	return @{
-		MPMediaItemPropertyAlbumTitle : [playcut valueForKey:@"album"] ?: @"",
-		MPMediaItemPropertyArtist : [playcut valueForKey:@"artist"] ?: @"",
-		MPMediaItemPropertyTitle : [playcut valueForKey:@"song"] ?: @"",
-		MPMediaItemPropertyArtwork : [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:[playcut valueForKey:@"primaryImage"]] ?: [UIImage imageNamed:@"album_cover_placeholder.PNG"]]
+		MPMediaItemPropertyAlbumTitle : playcut.Album ?: @"",
+		MPMediaItemPropertyArtist : playcut.Artist ?: @"",
+		MPMediaItemPropertyTitle : playcut.Song ?: @"",
+		MPMediaItemPropertyArtwork : [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:playcut.PrimaryImage] ?: [UIImage imageNamed:@"album_cover_placeholder.PNG"]]
 	};
 }
 

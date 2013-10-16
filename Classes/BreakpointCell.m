@@ -29,7 +29,7 @@
 	
 	Breakpoint *breakpoint = (Breakpoint *)entity;
 	
-	double timeSinceEpoch = [[breakpoint valueForKey:@"hour"] doubleValue] / 1000;
+	double timeSinceEpoch = [breakpoint.hour doubleValue] / 1000;
 	NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeSinceEpoch];
 	
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
