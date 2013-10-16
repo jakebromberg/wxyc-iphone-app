@@ -13,7 +13,7 @@
 @interface PlaylistController : NSObject <XYCSingleton>
 
 - (void)fetchPlaylist;
-- (PlaylistController*)init;
+- (PlaylistController *)init;
 
 @end
 

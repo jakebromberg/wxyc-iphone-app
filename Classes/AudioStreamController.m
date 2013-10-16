@@ -19,7 +19,7 @@
 
 @implementation AudioStreamController
 
-- (instancetype)initWithURL:(NSURL*)URL
+- (instancetype)initWithURL:(NSURL *)URL
 {
 	self = [super init];
 	

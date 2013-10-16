@@ -15,7 +15,7 @@
 	return [self stringByAppendingString:string];
 }
 
-- (NSString*)formattedWith:(NSArray*)arguments
+- (NSString *)formattedWith:(NSArray *)arguments
 {
 	NSRange range = NSMakeRange(0, arguments.count);
 	NSMutableData *data = [NSMutableData dataWithLength:sizeof(id) * arguments.count];

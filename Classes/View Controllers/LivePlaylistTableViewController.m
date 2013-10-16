@@ -62,7 +62,7 @@
 	return ([[PlaylistController sharedObject] playlist])[indexPath.row - NUMBER_OF_HEADER_CELLS];
 }
 
-- (NSString *)classNameForPlaylistEntryAtIndexPath:(NSIndexPath*)indexPath
+- (NSString *)classNameForPlaylistEntryAtIndexPath:(NSIndexPath *)indexPath
 {
 	return [[self playlistEntryForIndexPath:indexPath].class.description append:@"Cell"];
 }

@@ -27,7 +27,7 @@
 {
 	super.entity = entity;
 	
-	Breakpoint *breakpoint = (Breakpoint*)entity;
+	Breakpoint *breakpoint = (Breakpoint *)entity;
 	
 	double timeSinceEpoch = [[breakpoint valueForKey:@"hour"] doubleValue] / 1000;
 	NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeSinceEpoch];

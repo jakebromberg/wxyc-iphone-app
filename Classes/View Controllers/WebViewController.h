@@ -8,7 +8,7 @@
 
 @interface WebViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate>
 
-- (void)loadURL:(NSURL*)url;
+- (void)loadURL:(NSURL *)url;
 
 - (IBAction)reloadButtonPush:(id)sender;
 - (IBAction)backButtonPush:(id)sender;

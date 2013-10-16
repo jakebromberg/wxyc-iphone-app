@@ -29,14 +29,14 @@
 
 #pragma mark Core Animation business
 
-- (void)pauseLayer:(CALayer*)layer
+- (void)pauseLayer:(CALayer *)layer
 {
     CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
     layer.speed = 0.0;
     layer.timeOffset = pausedTime;
 }
 
-- (void)resumeLayer:(CALayer*)layer
+- (void)resumeLayer:(CALayer *)layer
 {
     CFTimeInterval pausedTime = [layer timeOffset];
     layer.speed = 1.0;

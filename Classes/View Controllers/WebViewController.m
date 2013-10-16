@@ -17,7 +17,7 @@
 
 @implementation WebViewController
 
-- (void)loadURL:(NSURL*)url
+- (void)loadURL:(NSURL *)url
 {
 	[self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
@@ -110,7 +110,7 @@
 	
 	if (buttonIndex == 0) {
 		[[UIPasteboard generalPasteboard] setValue:[self.webView.request.URL absoluteString] 
-								 forPasteboardType:(NSString*)kUTTypeUTF8PlainText];
+								 forPasteboardType:(NSString *)kUTTypeUTF8PlainText];
 	} else if (buttonIndex == 1) {
 		[[UIApplication sharedApplication] openURL:self.webView.request.URL];
 	}
