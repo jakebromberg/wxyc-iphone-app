@@ -12,7 +12,7 @@
 
 - (void)start;
 - (void)stop;
-- (instancetype)initWithURL:(NSURL*)aURL;
+- (instancetype)initWithURL:(NSURL *)aURL;
 
 @property (nonatomic, readonly) BOOL isPlaying;
 @property (nonatomic, readonly, strong) NSURL *URL;

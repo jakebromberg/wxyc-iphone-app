@@ -27,15 +27,15 @@
 {
 	super.entity = entity;
 	
-	Breakpoint* breakpoint = (Breakpoint*)entity;
+	Breakpoint *breakpoint = (Breakpoint*)entity;
 	
 	double timeSinceEpoch = [[breakpoint valueForKey:@"hour"] doubleValue] / 1000;
 	NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeSinceEpoch];
 	
-	NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"h:00 a";
 	
-	NSString* dateString = [dateFormatter stringFromDate:date];
+	NSString *dateString = [dateFormatter stringFromDate:date];
 	self.timeLabel.text = dateString;
 	
 	dateFormatter.dateFormat = @"h";

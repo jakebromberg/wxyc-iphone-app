@@ -12,8 +12,8 @@
 {
 	[super viewDidLoad];
 	
-	NSString* aboutTemplatePath = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"];
-	NSURL* url = [NSURL fileURLWithPath:aboutTemplatePath];
+	NSString *aboutTemplatePath = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"];
+	NSURL *url = [NSURL fileURLWithPath:aboutTemplatePath];
 	NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
 	
 	[(UIWebView *)self.view loadRequest:requestObj];

@@ -22,7 +22,7 @@
 
 @implementation PlaylistMapping
 
-static NSString* baseURL = @"http://wxyc.info/";
+static NSString *baseURL = @"http://wxyc.info/";
 
 - (void)initializeObjectManager
 {
@@ -39,7 +39,7 @@ static NSString* baseURL = @"http://wxyc.info/";
 
 - (RKResponseDescriptor *)playcutMapping
 {
-	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass([Playcut class]) inManagedObjectStore:_objectManager.managedObjectStore];
+	RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass([Playcut class]) inManagedObjectStore:_objectManager.managedObjectStore];
 	mapping.identificationAttributes = @[@"id"] ;
 	
 	[mapping addAttributeMappingsFromDictionary:@{
@@ -59,7 +59,7 @@ static NSString* baseURL = @"http://wxyc.info/";
 
 - (RKResponseDescriptor *)breakpointMapping
 {
-	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Breakpoint" inManagedObjectStore:_objectManager.managedObjectStore];
+	RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:@"Breakpoint" inManagedObjectStore:_objectManager.managedObjectStore];
 
 	[mapping addAttributeMappingsFromDictionary:@{
 		@"id": @"id",
@@ -74,7 +74,7 @@ static NSString* baseURL = @"http://wxyc.info/";
 
 - (RKResponseDescriptor *)talksetMapping
 {
-	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Talkset" inManagedObjectStore:_objectManager.managedObjectStore];
+	RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:@"Talkset" inManagedObjectStore:_objectManager.managedObjectStore];
 	[mapping addAttributeMappingsFromDictionary:@{
 		@"id": @"id",
 		@"chronOrderID": @keypath(Playcut.new, chronOrderID),
