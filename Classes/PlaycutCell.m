@@ -25,6 +25,7 @@
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *facebookButton;
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *favoriteButton;
 
+@property (nonatomic, strong) Playcut *entity;
 @property (nonatomic, setter = isShareBarVisible:) BOOL isShareBarVisible;
 
 - (IBAction)favorite:(id)sender;
@@ -34,35 +35,23 @@
 
 @implementation PlaycutCell
 
-- (instancetype)initWithEntity:(NSManagedObject *)entity
+- (void)setEntity:(Playcut *)playcut
 {
-	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.class.description];
+	[super setEntity:playcut];
 	
-	if (self)
-	{
-		self.entity = entity;
-	}
-	
-	return self;
-}
+	self.twitterButton.playcut = playcut;
+	self.facebookButton.playcut = playcut;
 
-- (void)setEntity:(NSManagedObject *)entity
-{
-	[super setEntity:entity];
+	self.artistLabel.text = playcut.Artist;
+	self.titleLabel.text = playcut.Song;
 	
-	self.twitterButton.playcut = (Playcut *)entity;
-	self.facebookButton.playcut = (Playcut *)entity;
-
-	self.artistLabel.text = [entity valueForKey:@"artist"] ?: @"";
-	self.titleLabel.text = [entity valueForKey:@"song"] ?: @"";
-	
-	if ([self.entity valueForKey:@"primaryImage"])
+	if (self.entity.PrimaryImage)
 	{
-		self.albumArt.image = [UIImage imageWithData:[self.entity valueForKey:@"primaryImage"]];
+		self.albumArt.image = [UIImage imageWithData:self.entity.PrimaryImage];
 	} else {
 		self.albumArt.image = [UIImage imageNamed:@"album_cover_placeholder.PNG"];
 		
-		__weak NSManagedObject *__entity = self.entity;
+		__weak Playcut *__entity = self.entity;
 		__weak UIImageView *__albumArt = self.albumArt;
 		
 		SDWebImageCompletedBlock completionHandler = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
@@ -72,7 +61,7 @@
 			
 			dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
 			dispatch_async(backgroundQueue, ^{
-				[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
+				__entity.PrimaryImage = UIImagePNGRepresentation(image);
 				[[NSManagedObjectContext contextForCurrentThread] saveToPersistentStoreAndWait];
 			});
 		};
@@ -89,7 +78,7 @@
 
 - (void)refreshFavoriteIcon
 {
-	UIImage *favoriteIcon = [self favoriteIconImageForState:[[self.entity valueForKey:@"favorite"] isEqual:@(YES)]];
+	UIImage *favoriteIcon = [self favoriteIconImageForState:[self.entity.Favorite isEqual:@(YES)]];
 	[self.favoriteButton setImage:favoriteIcon forState:UIControlStateNormal];
 }
 
@@ -104,10 +93,10 @@
 
 - (IBAction)favorite:(id)sender
 {
-	if ([[self.entity valueForKey:@"favorite"] isEqual:@YES])
+	if ([self.entity.Favorite isEqualToValue:@YES])
 		[UIAlertView alertViewWithTitle:nil message:@"Unlove this track, for real?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unlove"] onDismiss:^(int buttonIndex)
 		 {
-			 [self.entity setValue:@NO forKey:@"favorite"];
+			 self.entity.Favorite = @NO;
 			 [self.entity.managedObjectContext saveToPersistentStoreAndWait];
 			 [self refreshFavoriteIcon];
 		 } onCancel:^{
@@ -115,7 +104,7 @@
 		 }];
 	else
 	{
-		[self.entity setValue:@YES forKey:@"favorite"];
+		self.entity.Favorite = @YES;
 		[self.entity.managedObjectContext saveToPersistentStoreAndWait];
 		[self refreshFavoriteIcon];
 	}

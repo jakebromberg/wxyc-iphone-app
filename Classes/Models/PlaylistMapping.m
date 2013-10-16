@@ -39,19 +39,19 @@ static NSString* baseURL = @"http://wxyc.info/";
 
 - (RKResponseDescriptor *)playcutMapping
 {
-	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Playcut" inManagedObjectStore:_objectManager.managedObjectStore];
+	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass([Playcut class]) inManagedObjectStore:_objectManager.managedObjectStore];
 	mapping.identificationAttributes = @[@"id"] ;
 	
 	[mapping addAttributeMappingsFromDictionary:@{
 		 @"id" : @"id",
-		 @"chronOrderID": @"chronOrderID",
-		 @"hour": @"hour",
-		 @"artistName": @"artist",
-		 @"labelName": @"label",
-		 @"releaseTitle": @"album",
-		 @"request": @"request",
-		 @"rotation": @"rotation",
-		 @"songTitle": @"song"
+		 @"chronOrderID": @keypath(Playcut.new, chronOrderID),
+		 @"hour": @keypath(Playcut.new, hour),
+		 @"artistName": @keypath(Playcut.new, Artist),
+		 @"labelName": @keypath(Playcut.new, Label),
+		 @"releaseTitle": @keypath(Playcut.new, Album),
+		 @"request": @keypath(Playcut.new, Request),
+		 @"rotation": @keypath(Playcut.new, Rotation),
+		 @"songTitle": @keypath(Playcut.new, Song)
 	 }];
 	
 	return [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"playcuts" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -63,8 +63,8 @@ static NSString* baseURL = @"http://wxyc.info/";
 
 	[mapping addAttributeMappingsFromDictionary:@{
 		@"id": @"id",
-		@"chronOrderID": @"chronOrderID",
-		@"hour": @"hour"
+		@"chronOrderID": @keypath(Playcut.new, chronOrderID),
+		@"hour": @keypath(Playcut.new, hour)
 	 }];
 	
 	mapping.identificationAttributes = @[@"id"];
@@ -77,8 +77,8 @@ static NSString* baseURL = @"http://wxyc.info/";
 	RKEntityMapping* mapping = [RKEntityMapping mappingForEntityForName:@"Talkset" inManagedObjectStore:_objectManager.managedObjectStore];
 	[mapping addAttributeMappingsFromDictionary:@{
 		@"id": @"id",
-		@"chronOrderID": @"chronOrderID",
-		@"hour": @"hour"
+		@"chronOrderID": @keypath(Playcut.new, chronOrderID),
+		@"hour": @keypath(Playcut.new, hour)
 	 }];
 	
 	mapping.identificationAttributes = @[@"id"];

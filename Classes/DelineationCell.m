@@ -7,11 +7,10 @@
 //
 
 #import "DelineationCell.h"
-#import <CoreData/CoreData.h>
 
 @implementation DelineationCell
 
-- (void) addText:(NSString *) text
+- (void)addText:(NSString *)text
 {
 	UILabel *label = [[UILabel alloc]
 					  initWithFrame:CGRectMake( 10, 2.5f, 300, 16 )];
@@ -26,19 +25,9 @@
 	[self addSubview:label];
 }
 
-+ (float)height {
-	return 21.0f;
-}
-
-- (instancetype)initWithEntity:(NSManagedObject *)entity
++ (float)height
 {
-	if (!(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[[self class] description]]))
-		return nil;
-
-	self.selectionStyle = UITableViewCellSelectionStyleNone;
-	self.entity = entity;
-
-	return self;
+	return 21.0f;
 }
 
 @end

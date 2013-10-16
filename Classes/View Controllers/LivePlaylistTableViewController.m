@@ -53,7 +53,6 @@
 	}
 	
 	cell.entity = [self playlistEntryForIndexPath:indexPath];
-	cell.delegate = self;
 	
 	return cell;
 }

@@ -6,21 +6,10 @@
 //  Copyright (c) 2012 WXYC. All rights reserved.
 //
 
-#import <CoreData/CoreData.h>
-
-@protocol LivePlaylistViewControllerCallback
-
-@property (nonatomic, retain) UITableViewController *delegate;
-
-@end
-
-
-@interface LivePlaylistTableViewCell : UITableViewCell <LivePlaylistViewControllerCallback>
+@interface LivePlaylistTableViewCell : UITableViewCell
 
 + (float)height;
-- (instancetype)initWithEntity:(NSManagedObject*)entity;
 
 @property (nonatomic, strong) NSManagedObject *entity;
-@property (nonatomic, strong) UITableViewController *delegate;
 
 @end

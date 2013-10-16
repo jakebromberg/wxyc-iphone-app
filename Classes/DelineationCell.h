@@ -11,7 +11,6 @@
 @interface DelineationCell : LivePlaylistTableViewCell
 
 - (void)addText:(NSString *)text;
-- (instancetype)initWithEntity:(NSManagedObject *)entity;
 
 @end
 
