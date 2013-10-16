@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Breakpoint" representedClassName="Breakpoint" parentEntity="Entry" syncable="YES"/>
     <entity name="Entry" representedClassName="PlaylistEntry" isAbstract="YES" syncable="YES">
         <attribute name="chronOrderID" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -22,10 +22,10 @@
     </entity>
     <entity name="Talkset" representedClassName="Talkset" parentEntity="Entry" syncable="YES"/>
     <elements>
-        <element name="Entry" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Playlist" positionX="160" positionY="192" width="128" height="60"/>
-        <element name="Breakpoint" positionX="160" positionY="192" width="128" height="45"/>
-        <element name="Talkset" positionX="160" positionY="192" width="128" height="45"/>
-        <element name="Playcut" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="Breakpoint" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Entry" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Playcut" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Playlist" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Talkset" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
