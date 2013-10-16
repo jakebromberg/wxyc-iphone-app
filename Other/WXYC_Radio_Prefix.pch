@@ -5,4 +5,7 @@
 	#import <Security/Security.h>
 
     #import <CoreData+MagicalRecord.h>
+
+	#import "metamacros.h"
+	#import "keypath.h"
 #endif
