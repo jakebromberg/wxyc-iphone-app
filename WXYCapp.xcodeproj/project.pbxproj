@@ -11,6 +11,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		230640BE179B1EAB0054B673 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230640BD179B1EAB0054B673 /* CoreMedia.framework */; };
 		230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230EB0FC127600210065308D /* CoreAudio.framework */; };
+		2316CDAF180E1FD100DB837E /* SearchShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2316CDAE180E1FD100DB837E /* SearchShareButton.m */; };
 		2318562C173B274B00F15CC6 /* no-favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318562B173B274B00F15CC6 /* no-favorites.png */; };
 		231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0C218066DFB00D93649 /* LockscreenMediaController.m */; };
 		231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0CA1807C59F00D93649 /* NSObject+Singleton.m */; };
@@ -19,6 +20,8 @@
 		231EC0D6180E109800D93649 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0D5180E109800D93649 /* Breakpoint.m */; };
 		231EC0D9180E109800D93649 /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0D8180E109800D93649 /* Playcut.m */; };
 		231EC0DC180E109800D93649 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DB180E109800D93649 /* Playlist.m */; };
+		231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DD180E18ED00D93649 /* FavoriteShareButton.m */; };
+		231EC0E2180E19B600D93649 /* SearchShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0E1180E19B600D93649 /* SearchShareAction.m */; };
 		232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */; };
 		232CFDC317EFB78B003A78B6 /* CassetteReelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 232CFDC217EFB78B003A78B6 /* CassetteReelView.m */; };
 		232E24DE1267A7ED007F7679 /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24C81267A7ED007F7679 /* about_icon.png */; };
@@ -143,6 +146,8 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		230640BD179B1EAB0054B673 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		230EB0FC127600210065308D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		2316CDAD180E1FD100DB837E /* SearchShareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchShareButton.h; path = Views/SearchShareButton.h; sourceTree = "<group>"; };
+		2316CDAE180E1FD100DB837E /* SearchShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchShareButton.m; path = Views/SearchShareButton.m; sourceTree = "<group>"; };
 		2318562B173B274B00F15CC6 /* no-favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-favorites.png"; sourceTree = "<group>"; };
 		231EC0C118066DFB00D93649 /* LockscreenMediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LockscreenMediaController.h; path = Controllers/LockscreenMediaController.h; sourceTree = "<group>"; };
 		231EC0C218066DFB00D93649 /* LockscreenMediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LockscreenMediaController.m; path = Controllers/LockscreenMediaController.m; sourceTree = "<group>"; };
@@ -160,6 +165,10 @@
 		231EC0D8180E109800D93649 /* Playcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playcut.m; path = Models/Playcut.m; sourceTree = "<group>"; };
 		231EC0DA180E109800D93649 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playlist.h; path = Models/Playlist.h; sourceTree = "<group>"; };
 		231EC0DB180E109800D93649 /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playlist.m; path = Models/Playlist.m; sourceTree = "<group>"; };
+		231EC0DD180E18ED00D93649 /* FavoriteShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteShareButton.m; path = Views/FavoriteShareButton.m; sourceTree = "<group>"; };
+		231EC0DF180E191700D93649 /* FavoriteShareButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FavoriteShareButton.h; path = Views/FavoriteShareButton.h; sourceTree = "<group>"; };
+		231EC0E0180E19B600D93649 /* SearchShareAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchShareAction.h; path = Views/SearchShareAction.h; sourceTree = "<group>"; };
+		231EC0E1180E19B600D93649 /* SearchShareAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchShareAction.m; path = Views/SearchShareAction.m; sourceTree = "<group>"; };
 		232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
 		232CFDC117EFB78B003A78B6 /* CassetteReelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CassetteReelView.h; path = Classes/Views/CassetteReelView.h; sourceTree = SOURCE_ROOT; };
 		232CFDC217EFB78B003A78B6 /* CassetteReelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CassetteReelView.m; path = Classes/Views/CassetteReelView.m; sourceTree = SOURCE_ROOT; };
@@ -528,6 +537,10 @@
 				237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */,
 				23EAEFAA179C4514008E0960 /* TwitterShareButton.h */,
 				23EAEFAB179C4514008E0960 /* TwitterShareButton.m */,
+				231EC0DF180E191700D93649 /* FavoriteShareButton.h */,
+				231EC0DD180E18ED00D93649 /* FavoriteShareButton.m */,
+				2316CDAD180E1FD100DB837E /* SearchShareButton.h */,
+				2316CDAE180E1FD100DB837E /* SearchShareButton.m */,
 			);
 			name = "Share Buttons";
 			sourceTree = "<group>";
@@ -579,13 +592,13 @@
 		23B32D1D126E3268008414F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */,
 				231EC0D4180E109800D93649 /* Breakpoint.h */,
 				231EC0D5180E109800D93649 /* Breakpoint.m */,
 				231EC0D7180E109800D93649 /* Playcut.h */,
 				231EC0D8180E109800D93649 /* Playcut.m */,
 				231EC0DA180E109800D93649 /* Playlist.h */,
 				231EC0DB180E109800D93649 /* Playlist.m */,
-				23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */,
 				23EE39651527EB070006CDA5 /* PlaylistEntry.h */,
 				23EE39661527EB070006CDA5 /* PlaylistEntry.m */,
 				234A74D3153B6D3100C30053 /* PlaylistMapping.h */,
@@ -710,6 +723,8 @@
 				23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */,
 				23996EE217CDA86300B1ECA7 /* FacebookShareAction.h */,
 				23996EE317CDA86300B1ECA7 /* FacebookShareAction.m */,
+				231EC0E0180E19B600D93649 /* SearchShareAction.h */,
+				231EC0E1180E19B600D93649 /* SearchShareAction.m */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -966,6 +981,7 @@
 				231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */,
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,
 				231EC0D6180E109800D93649 /* Breakpoint.m in Sources */,
+				2316CDAF180E1FD100DB837E /* SearchShareButton.m in Sources */,
 				232CFDC317EFB78B003A78B6 /* CassetteReelView.m in Sources */,
 				232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */,
 				23C1130E1803BCDD00B7B5FE /* XYCRootViewController.m in Sources */,
@@ -976,6 +992,7 @@
 				231EC0D3180E109800D93649 /* Talkset.m in Sources */,
 				23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */,
 				23EE3A081527F07A0006CDA5 /* WebViewController.m in Sources */,
+				231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */,
 				23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				234A74D5153B6D3100C30053 /* PlaylistMapping.m in Sources */,
@@ -992,6 +1009,7 @@
 				23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */,
 				231EC0DC180E109800D93649 /* Playlist.m in Sources */,
 				23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */,
+				231EC0E2180E19B600D93649 /* SearchShareAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,16 +18,4 @@
 	}
 }
 
-- (instancetype)initWithPlaycut:(Playcut *)playcut
-{
-	self = [super init];
-	
-	if (!self)
-	{
-		self.playcut = playcut;
-	}
-	
-	return self;
-}
-
 @end

@@ -165,7 +165,7 @@
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTW-Yr-32s" userLabel="Favorite">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTW-Yr-32s" userLabel="Favorite" customClass="FavoriteShareButton">
                                                             <rect key="frame" x="167" y="3" width="43" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="43" id="c3D-Db-Qgu"/>
@@ -178,11 +178,8 @@
                                                             <state key="highlighted">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="favorite:" destination="ep5-ic-zed" eventType="touchUpInside" id="DRh-wX-44d"/>
-                                                            </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvj-p7-gt6" userLabel="Search">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvj-p7-gt6" userLabel="Search" customClass="SearchShareButton">
                                                             <rect key="frame" x="240" y="3" width="43" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="43" id="vUA-3d-yDo"/>
@@ -195,9 +192,6 @@
                                                             <state key="highlighted">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="search:" destination="ep5-ic-zed" eventType="touchUpInside" id="GLV-tx-tHK"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -257,7 +251,8 @@
                                     <outlet property="artistLabel" destination="4FI-NM-CgH" id="7lL-Ec-IWA"/>
                                     <outlet property="containerView" destination="nXq-Um-xPu" id="cGw-6H-wn6"/>
                                     <outlet property="facebookButton" destination="UtA-XQ-1X5" id="IfE-Zf-Tt4"/>
-                                    <outlet property="favoriteButton" destination="sTW-Yr-32s" id="pRL-O4-nGT"/>
+                                    <outlet property="favoriteButton" destination="sTW-Yr-32s" id="Wfq-pU-wgW"/>
+                                    <outlet property="searchButton" destination="vvj-p7-gt6" id="hd9-Qr-Kq9"/>
                                     <outlet property="shadowView" destination="I1y-sb-rAb" id="ojv-Ii-bYl"/>
                                     <outlet property="shareBar" destination="noz-sf-egu" id="gyn-hg-nwj"/>
                                     <outlet property="titleLabel" destination="gTn-AH-4wK" id="Yxe-ax-tmM"/>
