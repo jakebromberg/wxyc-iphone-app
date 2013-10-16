@@ -1,15 +1,15 @@
 //
-//  Breakpoint.m
+//  Talkset.m
 //  WXYCapp
 //
 //  Created by Jake Bromberg on 10/15/13.
 //  Copyright (c) 2013 WXYC. All rights reserved.
 //
 
-#import "Breakpoint.h"
+#import "Talkset.h"
 
 
-@implementation Breakpoint
+@implementation Talkset
 
 
 @end

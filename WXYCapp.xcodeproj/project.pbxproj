@@ -15,7 +15,10 @@
 		231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0C218066DFB00D93649 /* LockscreenMediaController.m */; };
 		231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0CA1807C59F00D93649 /* NSObject+Singleton.m */; };
 		231EC0CE180BB2B000D93649 /* XYCDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0CD180BB2B000D93649 /* XYCDataStack.m */; };
-		2325E0EF1288A70800B064BB /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2325E0EA1288A70800B064BB /* Playcut.m */; };
+		231EC0D3180E109800D93649 /* Talkset.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0D2180E109800D93649 /* Talkset.m */; };
+		231EC0D6180E109800D93649 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0D5180E109800D93649 /* Breakpoint.m */; };
+		231EC0D9180E109800D93649 /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0D8180E109800D93649 /* Playcut.m */; };
+		231EC0DC180E109800D93649 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DB180E109800D93649 /* Playlist.m */; };
 		232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */; };
 		232CFDC317EFB78B003A78B6 /* CassetteReelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 232CFDC217EFB78B003A78B6 /* CassetteReelView.m */; };
 		232E24DE1267A7ED007F7679 /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24C81267A7ED007F7679 /* about_icon.png */; };
@@ -107,7 +110,6 @@
 		23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */; };
 		23DBC351113F801200C19BD0 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* WebView.xib */; };
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
-		23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59E16F65960003CC6A8 /* Breakpoint.m */; };
 		23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */; };
 		23EAEFA8179C4316008E0960 /* TwitterShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */; };
 		23EAEFAC179C4534008E0960 /* TwitterShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFAB179C4514008E0960 /* TwitterShareButton.m */; };
@@ -120,13 +122,11 @@
 		23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392C1527D1400006CDA5 /* DelineationCell.m */; };
 		23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392E1527D1490006CDA5 /* PlaycutCell.m */; };
 		23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39341527D16C0006CDA5 /* TalksetCell.m */; };
-		23EE39E61527F0790006CDA5 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39641527EB070006CDA5 /* Playlist.m */; };
 		23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39661527EB070006CDA5 /* PlaylistEntry.m */; };
 		23EE39FC1527F07A0006CDA5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE397B1527EBCF0006CDA5 /* AboutViewController.m */; };
 		23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE398F1527EC380006CDA5 /* GoogleImageSearch.m */; };
 		23EE3A081527F07A0006CDA5 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39971527EC5B0006CDA5 /* WebViewController.m */; };
 		23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */; };
-		23EE3A231527F4090006CDA5 /* Talkset.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE3A211527F3D00006CDA5 /* Talkset.m */; };
 		23F8176216EBC35E005BF24F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */; };
 		23F8176916EBDDD1005BF24F /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F8176816EBDDD1005BF24F /* NSString+Additions.m */; };
 		23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F8176B16EBDE13005BF24F /* NSArray+Additions.m */; };
@@ -151,8 +151,15 @@
 		231EC0CC180BB2B000D93649 /* XYCDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYCDataStack.h; path = Models/XYCDataStack.h; sourceTree = "<group>"; };
 		231EC0CD180BB2B000D93649 /* XYCDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYCDataStack.m; path = Models/XYCDataStack.m; sourceTree = "<group>"; };
 		231EC0CF180CFD1100D93649 /* keypath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keypath.h; sourceTree = "<group>"; };
-		2325E0E91288A70800B064BB /* Playcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playcut.h; path = Models/Playcut.h; sourceTree = "<group>"; };
-		2325E0EA1288A70800B064BB /* Playcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playcut.m; path = Models/Playcut.m; sourceTree = "<group>"; };
+		231EC0D0180CFD7900D93649 /* metamacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		231EC0D1180E109800D93649 /* Talkset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Talkset.h; path = Models/Talkset.h; sourceTree = "<group>"; };
+		231EC0D2180E109800D93649 /* Talkset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Talkset.m; path = Models/Talkset.m; sourceTree = "<group>"; };
+		231EC0D4180E109800D93649 /* Breakpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Breakpoint.h; path = Models/Breakpoint.h; sourceTree = "<group>"; };
+		231EC0D5180E109800D93649 /* Breakpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Breakpoint.m; path = Models/Breakpoint.m; sourceTree = "<group>"; };
+		231EC0D7180E109800D93649 /* Playcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playcut.h; path = Models/Playcut.h; sourceTree = "<group>"; };
+		231EC0D8180E109800D93649 /* Playcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playcut.m; path = Models/Playcut.m; sourceTree = "<group>"; };
+		231EC0DA180E109800D93649 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playlist.h; path = Models/Playlist.h; sourceTree = "<group>"; };
+		231EC0DB180E109800D93649 /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playlist.m; path = Models/Playlist.m; sourceTree = "<group>"; };
 		232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
 		232CFDC117EFB78B003A78B6 /* CassetteReelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CassetteReelView.h; path = Classes/Views/CassetteReelView.h; sourceTree = SOURCE_ROOT; };
 		232CFDC217EFB78B003A78B6 /* CassetteReelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CassetteReelView.m; path = Classes/Views/CassetteReelView.m; sourceTree = SOURCE_ROOT; };
@@ -259,8 +266,6 @@
 		23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
 		23DBC34E113F801200C19BD0 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		23E0A59B16F6590C003CC6A8 /* Playlist2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playlist2.xcdatamodel; sourceTree = "<group>"; };
-		23E0A59D16F65960003CC6A8 /* Breakpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Breakpoint.h; path = Models/Breakpoint.h; sourceTree = "<group>"; };
-		23E0A59E16F65960003CC6A8 /* Breakpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Breakpoint.m; path = Models/Breakpoint.m; sourceTree = "<group>"; };
 		23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23E77B1E1118DCB3007D373D /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EAEFA6179C42F0008E0960 /* TwitterShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TwitterShareAction.h; path = Views/TwitterShareAction.h; sourceTree = "<group>"; };
@@ -285,8 +290,6 @@
 		23EE392E1527D1490006CDA5 /* PlaycutCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaycutCell.m; sourceTree = "<group>"; };
 		23EE39331527D16C0006CDA5 /* TalksetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TalksetCell.h; sourceTree = "<group>"; };
 		23EE39341527D16C0006CDA5 /* TalksetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TalksetCell.m; sourceTree = "<group>"; };
-		23EE39631527EB070006CDA5 /* Playlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
-		23EE39641527EB070006CDA5 /* Playlist.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		23EE39651527EB070006CDA5 /* PlaylistEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaylistEntry.h; sourceTree = "<group>"; };
 		23EE39661527EB070006CDA5 /* PlaylistEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaylistEntry.m; sourceTree = "<group>"; };
 		23EE39761527EBB90006CDA5 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
@@ -298,8 +301,6 @@
 		23EE39971527EC5B0006CDA5 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WXYCAppDelegate.h; path = Classes/WXYCAppDelegate.h; sourceTree = "<group>"; };
 		23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WXYCAppDelegate.m; path = Classes/WXYCAppDelegate.m; sourceTree = "<group>"; };
-		23EE3A201527F3D00006CDA5 /* Talkset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Talkset.h; sourceTree = "<group>"; };
-		23EE3A211527F3D00006CDA5 /* Talkset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Talkset.m; sourceTree = "<group>"; };
 		23F1127912A8782A00DD6C1D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = iphoneos4.0/System/Library/Frameworks/MessageUI.framework; sourceTree = "<group>"; };
 		23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		23F8176716EBDDD1005BF24F /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
@@ -501,6 +502,7 @@
 				23F8176A16EBDE13005BF24F /* NSArray+Additions.h */,
 				23F8176B16EBDE13005BF24F /* NSArray+Additions.m */,
 				231EC0CF180CFD1100D93649 /* keypath.h */,
+				231EC0D0180CFD7900D93649 /* metamacros.h */,
 			);
 			name = Utilities;
 			path = Categories;
@@ -577,21 +579,21 @@
 		23B32D1D126E3268008414F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				231EC0D4180E109800D93649 /* Breakpoint.h */,
+				231EC0D5180E109800D93649 /* Breakpoint.m */,
+				231EC0D7180E109800D93649 /* Playcut.h */,
+				231EC0D8180E109800D93649 /* Playcut.m */,
+				231EC0DA180E109800D93649 /* Playlist.h */,
+				231EC0DB180E109800D93649 /* Playlist.m */,
 				23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */,
-				231EC0CC180BB2B000D93649 /* XYCDataStack.h */,
-				231EC0CD180BB2B000D93649 /* XYCDataStack.m */,
-				23E0A59D16F65960003CC6A8 /* Breakpoint.h */,
-				23E0A59E16F65960003CC6A8 /* Breakpoint.m */,
-				23EE3A201527F3D00006CDA5 /* Talkset.h */,
-				23EE3A211527F3D00006CDA5 /* Talkset.m */,
-				23EE39631527EB070006CDA5 /* Playlist.h */,
-				23EE39641527EB070006CDA5 /* Playlist.m */,
 				23EE39651527EB070006CDA5 /* PlaylistEntry.h */,
 				23EE39661527EB070006CDA5 /* PlaylistEntry.m */,
-				2325E0E91288A70800B064BB /* Playcut.h */,
-				2325E0EA1288A70800B064BB /* Playcut.m */,
 				234A74D3153B6D3100C30053 /* PlaylistMapping.h */,
 				234A74D4153B6D3100C30053 /* PlaylistMapping.m */,
+				231EC0D1180E109800D93649 /* Talkset.h */,
+				231EC0D2180E109800D93649 /* Talkset.m */,
+				231EC0CC180BB2B000D93649 /* XYCDataStack.h */,
+				231EC0CD180BB2B000D93649 /* XYCDataStack.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -949,7 +951,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23EE3A231527F4090006CDA5 /* Talkset.m in Sources */,
 				23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */,
 				23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */,
 				23996EE417CDA86300B1ECA7 /* FacebookShareAction.m in Sources */,
@@ -962,17 +963,17 @@
 				23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */,
 				231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */,
 				23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */,
-				23EE39E61527F0790006CDA5 /* Playlist.m in Sources */,
 				231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */,
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,
+				231EC0D6180E109800D93649 /* Breakpoint.m in Sources */,
 				232CFDC317EFB78B003A78B6 /* CassetteReelView.m in Sources */,
 				232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */,
 				23C1130E1803BCDD00B7B5FE /* XYCRootViewController.m in Sources */,
-				2325E0EF1288A70800B064BB /* Playcut.m in Sources */,
 				23B32DF8126E70D7008414F4 /* FavoritesTableViewController.m in Sources */,
 				23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */,
 				23EE39FC1527F07A0006CDA5 /* AboutViewController.m in Sources */,
 				4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */,
+				231EC0D3180E109800D93649 /* Talkset.m in Sources */,
 				23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */,
 				23EE3A081527F07A0006CDA5 /* WebViewController.m in Sources */,
 				23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */,
@@ -984,11 +985,12 @@
 				23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */,
 				235DE15516ED577D005640E9 /* PlayerCell.m in Sources */,
 				23EAEFA8179C4316008E0960 /* TwitterShareAction.m in Sources */,
+				231EC0D9180E109800D93649 /* Playcut.m in Sources */,
 				237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */,
 				237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */,
 				23EAEFAC179C4534008E0960 /* TwitterShareButton.m in Sources */,
 				23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */,
-				23E0A59F16F65960003CC6A8 /* Breakpoint.m in Sources */,
+				231EC0DC180E109800D93649 /* Playlist.m in Sources */,
 				23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  Breakpoint.h
+//  Talkset.h
 //  WXYCapp
 //
 //  Created by Jake Bromberg on 10/15/13.
@@ -11,7 +11,7 @@
 #import "PlaylistEntry.h"
 
 
-@interface Breakpoint : PlaylistEntry
+@interface Talkset : PlaylistEntry
 
 
 @end
