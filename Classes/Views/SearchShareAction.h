@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 WXYC. All rights reserved.
 //
 
-#import "SocialShareAction.h"
+#import "PlaycutCellShareAction.h"
 
-@interface SearchShareAction : SocialShareAction
+@interface SearchShareAction : NSObject <PlaycutCellShareAction>
 
 @end
