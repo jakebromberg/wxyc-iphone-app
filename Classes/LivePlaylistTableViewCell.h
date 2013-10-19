@@ -6,10 +6,12 @@
 //  Copyright (c) 2012 WXYC. All rights reserved.
 //
 
+#import "PlaylistEntry.h"
+
 @interface LivePlaylistTableViewCell : UITableViewCell
 
 + (float)height;
 
-@property (nonatomic, strong) NSManagedObject *entity;
+@property (nonatomic, strong) PlaylistEntry *entity;
 
 @end
