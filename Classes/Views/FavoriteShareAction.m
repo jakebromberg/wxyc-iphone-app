@@ -7,8 +7,6 @@
 //
 
 #import "FavoriteShareAction.h"
-#import "NSString+Additions.h"
-#import "WebViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
 
 @implementation FavoriteShareAction
@@ -17,7 +15,7 @@
 {
 	if ([playcut.Favorite isEqual:@YES])
 	{
-		[UIAlertView alertViewWithTitle:nil message:@"Unlove this track, for real?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unlove"] onDismiss:^(int buttonIndex)
+		[UIAlertView alertViewWithTitle:@"💔" message:@"Unlove this track, for real?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unlove"] onDismiss:^(int buttonIndex)
 		 {
 			 playcut.Favorite = @NO;
 			 [playcut.managedObjectContext saveToPersistentStoreAndWait];
