@@ -12,6 +12,7 @@
 		230640BE179B1EAB0054B673 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230640BD179B1EAB0054B673 /* CoreMedia.framework */; };
 		230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230EB0FC127600210065308D /* CoreAudio.framework */; };
 		2316CDAF180E1FD100DB837E /* SearchShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2316CDAE180E1FD100DB837E /* SearchShareButton.m */; };
+		2316CDB2181317BF00DB837E /* NSIndexPath+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2316CDB1181317BF00DB837E /* NSIndexPath+Additions.m */; };
 		2318562C173B274B00F15CC6 /* no-favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318562B173B274B00F15CC6 /* no-favorites.png */; };
 		231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0C218066DFB00D93649 /* LockscreenMediaController.m */; };
 		231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0CA1807C59F00D93649 /* NSObject+Singleton.m */; };
@@ -30,6 +31,8 @@
 		232E24E61267A7ED007F7679 /* playlist_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24D01267A7ED007F7679 /* playlist_icon.png */; };
 		232E24E71267A7ED007F7679 /* radio_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24D11267A7ED007F7679 /* radio_icon.png */; };
 		232E24F21267A7ED007F7679 /* wxyc-logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 232E24DD1267A7ED007F7679 /* wxyc-logo.gif */; };
+		23456D94181B4A7B00C88621 /* NSObject+KVOBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 23456D93181B4A7B00C88621 /* NSObject+KVOBlocks.m */; };
+		23456D96181B59ED00C88621 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23456D95181B59ED00C88621 /* Images.xcassets */; };
 		234946D61263A6DD00022117 /* cassette reel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 234946D51263A6DD00022117 /* cassette reel@2x.png */; };
 		234A74D5153B6D3100C30053 /* PlaylistMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 234A74D4153B6D3100C30053 /* PlaylistMapping.m */; };
 		234B49F712936B0A001B3EB2 /* toolbar-cassette.png in Resources */ = {isa = PBXBuildFile; fileRef = 234B49F512936B0A001B3EB2 /* toolbar-cassette.png */; };
@@ -37,6 +40,8 @@
 		234B4AEB12938EF1001B3EB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 234B4AEA12938EF1001B3EB2 /* Security.framework */; };
 		234D189711407D1500812919 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 234D189411407D1500812919 /* about.html */; };
 		23539B9A12809A4D004F9A11 /* album_cover_placeholder.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 23539B9912809A4D004F9A11 /* album_cover_placeholder.PNG */; };
+		235481A71818E30700342DEC /* UIApplication+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235481A61818E30700342DEC /* UIApplication+PresentViewController.m */; };
+		235481AA1818E56500342DEC /* NSObject+ObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 235481A91818E56500342DEC /* NSObject+ObjectBuilder.m */; };
 		235DE13716ED3B38005640E9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235DE13616ED3B38005640E9 /* ImageIO.framework */; };
 		235DE14E16ED4EDB005640E9 /* player-elements.png in Resources */ = {isa = PBXBuildFile; fileRef = 235DE14D16ED4EDB005640E9 /* player-elements.png */; };
 		235DE15016ED4F26005640E9 /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 235DE14F16ED4F26005640E9 /* play-button.png */; };
@@ -59,7 +64,6 @@
 		23648AB716F52D2500DF2C27 /* favorites-share-favorited.png in Resources */ = {isa = PBXBuildFile; fileRef = 23648AB616F52D2500DF2C27 /* favorites-share-favorited.png */; };
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
-		237906DD16B4E9BE00F67A17 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */; };
 		237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */; };
 		237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA34179BA17D00AAEC4B /* SocialShareAction.m */; };
 		237E914F12930E5400A07456 /* casey-burns-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914D12930E5400A07456 /* casey-burns-app-icon.png */; };
@@ -110,10 +114,8 @@
 		23C2AB1B128A6F8100D61A4A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */; };
 		23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C4A72517E42379007DB35C /* UIView+Spin.m */; };
 		23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */; };
-		23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */; };
-		23DBC351113F801200C19BD0 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* WebView.xib */; };
+		23DBC351113F801200C19BD0 /* SimpleWebBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* SimpleWebBrowser.xib */; };
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
-		23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */; };
 		23EAEFA8179C4316008E0960 /* TwitterShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */; };
 		23EAEFAC179C4534008E0960 /* TwitterShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFAB179C4514008E0960 /* TwitterShareButton.m */; };
 		23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */; };
@@ -128,7 +130,7 @@
 		23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39661527EB070006CDA5 /* PlaylistEntry.m */; };
 		23EE39FC1527F07A0006CDA5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE397B1527EBCF0006CDA5 /* AboutViewController.m */; };
 		23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE398F1527EC380006CDA5 /* GoogleImageSearch.m */; };
-		23EE3A081527F07A0006CDA5 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39971527EC5B0006CDA5 /* WebViewController.m */; };
+		23EE3A081527F07A0006CDA5 /* SimpleWebBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39971527EC5B0006CDA5 /* SimpleWebBrowser.m */; };
 		23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */; };
 		23F8176216EBC35E005BF24F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */; };
 		23F8176916EBDDD1005BF24F /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F8176816EBDDD1005BF24F /* NSString+Additions.m */; };
@@ -148,6 +150,8 @@
 		230EB0FC127600210065308D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		2316CDAD180E1FD100DB837E /* SearchShareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchShareButton.h; path = Views/SearchShareButton.h; sourceTree = "<group>"; };
 		2316CDAE180E1FD100DB837E /* SearchShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchShareButton.m; path = Views/SearchShareButton.m; sourceTree = "<group>"; };
+		2316CDB0181317BF00DB837E /* NSIndexPath+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+Additions.h"; sourceTree = "<group>"; };
+		2316CDB1181317BF00DB837E /* NSIndexPath+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+Additions.m"; sourceTree = "<group>"; };
 		2318562B173B274B00F15CC6 /* no-favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-favorites.png"; sourceTree = "<group>"; };
 		231EC0C118066DFB00D93649 /* LockscreenMediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LockscreenMediaController.h; path = Controllers/LockscreenMediaController.h; sourceTree = "<group>"; };
 		231EC0C218066DFB00D93649 /* LockscreenMediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LockscreenMediaController.m; path = Controllers/LockscreenMediaController.m; sourceTree = "<group>"; };
@@ -178,15 +182,21 @@
 		232E24D01267A7ED007F7679 /* playlist_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist_icon.png; sourceTree = "<group>"; };
 		232E24D11267A7ED007F7679 /* radio_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_icon.png; sourceTree = "<group>"; };
 		232E24DD1267A7ED007F7679 /* wxyc-logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "wxyc-logo.gif"; sourceTree = "<group>"; };
+		23456D92181B4A7B00C88621 /* NSObject+KVOBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KVOBlocks.h"; sourceTree = "<group>"; };
+		23456D93181B4A7B00C88621 /* NSObject+KVOBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KVOBlocks.m"; sourceTree = "<group>"; };
+		23456D95181B59ED00C88621 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WXYC/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		234946D51263A6DD00022117 /* cassette reel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cassette reel@2x.png"; sourceTree = "<group>"; };
 		234A74D3153B6D3100C30053 /* PlaylistMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistMapping.h; path = Models/PlaylistMapping.h; sourceTree = "<group>"; };
 		234A74D4153B6D3100C30053 /* PlaylistMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistMapping.m; path = Models/PlaylistMapping.m; sourceTree = "<group>"; };
 		234B49F512936B0A001B3EB2 /* toolbar-cassette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-cassette.png"; sourceTree = "<group>"; };
 		234B49F612936B0A001B3EB2 /* toolbar-cassette@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-cassette@2x.png"; sourceTree = "<group>"; };
 		234B4AEA12938EF1001B3EB2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		234B4FAA1293AEC3001B3EB2 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
 		234D189411407D1500812919 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		23539B9912809A4D004F9A11 /* album_cover_placeholder.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = album_cover_placeholder.PNG; sourceTree = "<group>"; };
+		235481A51818E30700342DEC /* UIApplication+PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+PresentViewController.h"; sourceTree = "<group>"; };
+		235481A61818E30700342DEC /* UIApplication+PresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+PresentViewController.m"; sourceTree = "<group>"; };
+		235481A81818E56500342DEC /* NSObject+ObjectBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ObjectBuilder.h"; sourceTree = "<group>"; };
+		235481A91818E56500342DEC /* NSObject+ObjectBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ObjectBuilder.m"; sourceTree = "<group>"; };
 		235DE13616ED3B38005640E9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		235DE14D16ED4EDB005640E9 /* player-elements.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player-elements.png"; sourceTree = "<group>"; };
 		235DE14F16ED4F26005640E9 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
@@ -272,10 +282,8 @@
 		23C4A72517E42379007DB35C /* UIView+Spin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Spin.m"; path = "../Categories/UIView+Spin.m"; sourceTree = "<group>"; };
 		23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXYCTabBarControllerViewController.h; path = "Classes/View Controllers/WXYCTabBarControllerViewController.h"; sourceTree = SOURCE_ROOT; };
 		23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXYCTabBarControllerViewController.m; path = "Classes/View Controllers/WXYCTabBarControllerViewController.m"; sourceTree = SOURCE_ROOT; };
-		23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
-		23DBC34E113F801200C19BD0 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
+		23DBC34E113F801200C19BD0 /* SimpleWebBrowser.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SimpleWebBrowser.xib; path = ../../Resources/xibs/SimpleWebBrowser.xib; sourceTree = "<group>"; };
 		23E0A59B16F6590C003CC6A8 /* Playlist2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playlist2.xcdatamodel; sourceTree = "<group>"; };
-		23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23E77B1E1118DCB3007D373D /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EAEFA6179C42F0008E0960 /* TwitterShareAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TwitterShareAction.h; path = Views/TwitterShareAction.h; sourceTree = "<group>"; };
 		23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TwitterShareAction.m; path = Views/TwitterShareAction.m; sourceTree = "<group>"; };
@@ -306,11 +314,10 @@
 		23EE397B1527EBCF0006CDA5 /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		23EE398E1527EC380006CDA5 /* GoogleImageSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleImageSearch.h; sourceTree = "<group>"; };
 		23EE398F1527EC380006CDA5 /* GoogleImageSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleImageSearch.m; sourceTree = "<group>"; };
-		23EE39961527EC5B0006CDA5 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
-		23EE39971527EC5B0006CDA5 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		23EE39961527EC5B0006CDA5 /* SimpleWebBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleWebBrowser.h; sourceTree = "<group>"; };
+		23EE39971527EC5B0006CDA5 /* SimpleWebBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleWebBrowser.m; sourceTree = "<group>"; };
 		23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WXYCAppDelegate.h; path = Classes/WXYCAppDelegate.h; sourceTree = "<group>"; };
 		23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WXYCAppDelegate.m; path = Classes/WXYCAppDelegate.m; sourceTree = "<group>"; };
-		23F1127912A8782A00DD6C1D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = iphoneos4.0/System/Library/Frameworks/MessageUI.framework; sourceTree = "<group>"; };
 		23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		23F8176716EBDDD1005BF24F /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		23F8176816EBDDD1005BF24F /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
@@ -475,7 +482,6 @@
 		2328C68A1060107F00063811 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
-				23DBC34E113F801200C19BD0 /* WebView.xib */,
 				23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */,
 			);
 			path = xibs;
@@ -487,6 +493,15 @@
 				234D189411407D1500812919 /* about.html */,
 			);
 			path = html;
+			sourceTree = "<group>";
+		};
+		23456D90181A334800C88621 /* Key-Value Observing */ = {
+			isa = PBXGroup;
+			children = (
+				23456D92181B4A7B00C88621 /* NSObject+KVOBlocks.h */,
+				23456D93181B4A7B00C88621 /* NSObject+KVOBlocks.m */,
+			);
+			name = "Key-Value Observing";
 			sourceTree = "<group>";
 		};
 		2353A13F12810065004F9A11 /* Google Image Search */ = {
@@ -502,6 +517,7 @@
 		235E420D168CC2830088E19F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				23456D90181A334800C88621 /* Key-Value Observing */,
 				231EC0C91807C59F00D93649 /* NSObject+Singleton.h */,
 				231EC0CA1807C59F00D93649 /* NSObject+Singleton.m */,
 				235E420E168CC2830088E19F /* UIView+Additions.h */,
@@ -512,6 +528,12 @@
 				23F8176B16EBDE13005BF24F /* NSArray+Additions.m */,
 				231EC0CF180CFD1100D93649 /* keypath.h */,
 				231EC0D0180CFD7900D93649 /* metamacros.h */,
+				2316CDB0181317BF00DB837E /* NSIndexPath+Additions.h */,
+				2316CDB1181317BF00DB837E /* NSIndexPath+Additions.m */,
+				235481A51818E30700342DEC /* UIApplication+PresentViewController.h */,
+				235481A61818E30700342DEC /* UIApplication+PresentViewController.m */,
+				235481A81818E56500342DEC /* NSObject+ObjectBuilder.h */,
+				235481A91818E56500342DEC /* NSObject+ObjectBuilder.m */,
 			);
 			name = Utilities;
 			path = Categories;
@@ -632,13 +654,14 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		23BF148D113C06EE00A72DE7 /* WebView Controller */ = {
+		23BF148D113C06EE00A72DE7 /* Simple Web Browser */ = {
 			isa = PBXGroup;
 			children = (
-				23EE39961527EC5B0006CDA5 /* WebViewController.h */,
-				23EE39971527EC5B0006CDA5 /* WebViewController.m */,
+				23EE39961527EC5B0006CDA5 /* SimpleWebBrowser.h */,
+				23EE39971527EC5B0006CDA5 /* SimpleWebBrowser.m */,
+				23DBC34E113F801200C19BD0 /* SimpleWebBrowser.xib */,
 			);
-			name = "WebView Controller";
+			name = "Simple Web Browser";
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
@@ -686,7 +709,7 @@
 			isa = PBXGroup;
 			children = (
 				23C113071803823800B7B5FE /* NavigationBarTitle.xib */,
-				23BF148D113C06EE00A72DE7 /* WebView Controller */,
+				23BF148D113C06EE00A72DE7 /* Simple Web Browser */,
 				2353A13F12810065004F9A11 /* Google Image Search */,
 				238CC1C512664111006EC552 /* Casssette Reel */,
 				23C1130F1803C13E00B7B5FE /* Root View Controller */,
@@ -732,9 +755,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				230640BD179B1EAB0054B673 /* CoreMedia.framework */,
-				23CE526816FF576F00F080C4 /* casey-burns-app-icon@2x.png */,
-				23E0A5A016F69E15003CC6A8 /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Bootstrapping */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -759,6 +779,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				23456D95181B59ED00C88621 /* Images.xcassets */,
 				232E24FD1267A8DD007F7679 /* html */,
 				2328C6891060107500063811 /* images */,
 				2328C68A1060107F00063811 /* xibs */,
@@ -770,28 +791,27 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				230640BD179B1EAB0054B673 /* CoreMedia.framework */,
+				C80948779A0C4AFDB5BE7C39 /* libPods.a */,
+				2777576B1631BD8700349E12 /* libxml2.dylib */,
 				23601927105F05C600E6A6FB /* AudioToolbox.framework */,
 				23B32B58126D667B008414F4 /* AVFoundation.framework */,
 				236019EB105F060B00E6A6FB /* CFNetwork.framework */,
 				230EB0FC127600210065308D /* CoreAudio.framework */,
 				23B32D48126E386B008414F4 /* CoreData.framework */,
 				23651003111211C700C192CB /* CoreGraphics.framework */,
+				230640BD179B1EAB0054B673 /* CoreMedia.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				235DE13616ED3B38005640E9 /* ImageIO.framework */,
-				2777576B1631BD8700349E12 /* libxml2.dylib */,
-				234B4FAA1293AEC3001B3EB2 /* libxml2.dylib */,
 				23601B9A105F116000E6A6FB /* MediaPlayer.framework */,
 				277757681631BD4800349E12 /* MessageUI.framework */,
-				23F1127912A8782A00DD6C1D /* MessageUI.framework */,
 				23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */,
 				23651056111211D300C192CB /* QuartzCore.framework */,
 				234B4AEA12938EF1001B3EB2 /* Security.framework */,
 				23B613F5164EF06C004547C2 /* Social.framework */,
-				23B613F8164EFA8D004547C2 /* Social.framework */,
+				230640BD179B1EAB0054B673 /* CoreMedia.framework */,
 				23C2A9E9128A59D100D61A4A /* SystemConfiguration.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				C80948779A0C4AFDB5BE7C39 /* libPods.a */,
+				23B613F8164EFA8D004547C2 /* Social.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -854,7 +874,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23DBC351113F801200C19BD0 /* WebView.xib in Resources */,
+				23DBC351113F801200C19BD0 /* SimpleWebBrowser.xib in Resources */,
 				234D189711407D1500812919 /* about.html in Resources */,
 				234946D61263A6DD00022117 /* cassette reel@2x.png in Resources */,
 				232E24DE1267A7ED007F7679 /* about_icon.png in Resources */,
@@ -889,7 +909,6 @@
 				237E915012930E5400A07456 /* casey-burns-app-icon@2x.png in Resources */,
 				234B49F712936B0A001B3EB2 /* toolbar-cassette.png in Resources */,
 				234B49F812936B0A001B3EB2 /* toolbar-cassette@2x.png in Resources */,
-				237906DD16B4E9BE00F67A17 /* Default-568h@2x.png in Resources */,
 				23F8176216EBC35E005BF24F /* MainStoryboard.storyboard in Resources */,
 				235DE14E16ED4EDB005640E9 /* player-elements.png in Resources */,
 				235DE15016ED4F26005640E9 /* play-button.png in Resources */,
@@ -902,6 +921,7 @@
 				23A23D0816ED801700C9AF7C /* clock-5.png in Resources */,
 				23A23D0916ED801700C9AF7C /* clock-6.png in Resources */,
 				23A23D0A16ED801700C9AF7C /* clock-7.png in Resources */,
+				23456D96181B59ED00C88621 /* Images.xcassets in Resources */,
 				23A23D0B16ED801700C9AF7C /* clock-9.png in Resources */,
 				23A23D0C16ED801700C9AF7C /* clock-11.png in Resources */,
 				23A23D0D16ED801700C9AF7C /* clock-12.png in Resources */,
@@ -920,8 +940,6 @@
 				23648AB716F52D2500DF2C27 /* favorites-share-favorited.png in Resources */,
 				23AEB9DE16F615CE00E2EBB1 /* clock-8.png in Resources */,
 				23AEB9DF16F615CE00E2EBB1 /* clock-10.png in Resources */,
-				23E0A5A116F69E15003CC6A8 /* Default-568h@2x.png in Resources */,
-				23CE526916FF576F00F080C4 /* casey-burns-app-icon@2x.png in Resources */,
 				2318562C173B274B00F15CC6 /* no-favorites.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -973,17 +991,21 @@
 				23EE39AB1527F0790006CDA5 /* LoadPreviousEntriesCell.m in Sources */,
 				23EE39AD1527F0790006CDA5 /* BreakpointCell.m in Sources */,
 				23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */,
+				235481AA1818E56500342DEC /* NSObject+ObjectBuilder.m in Sources */,
 				23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */,
 				231EC0CE180BB2B000D93649 /* XYCDataStack.m in Sources */,
+				235481A71818E30700342DEC /* UIApplication+PresentViewController.m in Sources */,
 				23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */,
 				231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */,
 				23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */,
 				231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */,
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,
+				23456D94181B4A7B00C88621 /* NSObject+KVOBlocks.m in Sources */,
 				231EC0D6180E109800D93649 /* Breakpoint.m in Sources */,
 				2316CDAF180E1FD100DB837E /* SearchShareButton.m in Sources */,
 				232CFDC317EFB78B003A78B6 /* CassetteReelView.m in Sources */,
 				232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */,
+				2316CDB2181317BF00DB837E /* NSIndexPath+Additions.m in Sources */,
 				23C1130E1803BCDD00B7B5FE /* XYCRootViewController.m in Sources */,
 				23B32DF8126E70D7008414F4 /* FavoritesTableViewController.m in Sources */,
 				23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */,
@@ -991,7 +1013,7 @@
 				4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */,
 				231EC0D3180E109800D93649 /* Talkset.m in Sources */,
 				23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */,
-				23EE3A081527F07A0006CDA5 /* WebViewController.m in Sources */,
+				23EE3A081527F07A0006CDA5 /* SimpleWebBrowser.m in Sources */,
 				231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */,
 				23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
@@ -1021,6 +1043,8 @@
 			baseConfigurationReference = 301ED3726EAB431A91FE0405 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1048,7 +1072,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = WXYC;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FC491A09-0AFE-4851-B665-FF423E82ABA8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1058,6 +1082,8 @@
 			baseConfigurationReference = 301ED3726EAB431A91FE0405 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1102,10 +1128,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3E494D36-BA6E-4F7B-80E4-B5B96F013EB9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F988D5D6-EE10-49B2-95FC-FADBC4D279B4";
 				SDKROOT = iphoneos;
 			};
 			name = Distribution;
@@ -1115,6 +1141,8 @@
 			baseConfigurationReference = 301ED3726EAB431A91FE0405 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1159,7 +1187,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PROVISIONING_PROFILE = "";
@@ -1176,7 +1204,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
