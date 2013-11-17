@@ -173,6 +173,7 @@
 		231EC0DF180E191700D93649 /* FavoriteShareButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FavoriteShareButton.h; path = Views/FavoriteShareButton.h; sourceTree = "<group>"; };
 		231EC0E0180E19B600D93649 /* SearchShareAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchShareAction.h; path = Views/SearchShareAction.h; sourceTree = "<group>"; };
 		231EC0E1180E19B600D93649 /* SearchShareAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchShareAction.m; path = Views/SearchShareAction.m; sourceTree = "<group>"; };
+		23257F6B183855B70003EC73 /* CommonInitializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommonInitializer.h; path = Classes/Utilities/CommonInitializer.h; sourceTree = SOURCE_ROOT; };
 		232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
 		232CFDC117EFB78B003A78B6 /* CassetteReelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CassetteReelView.h; path = Classes/Views/CassetteReelView.h; sourceTree = SOURCE_ROOT; };
 		232CFDC217EFB78B003A78B6 /* CassetteReelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CassetteReelView.m; path = Classes/Views/CassetteReelView.m; sourceTree = SOURCE_ROOT; };
@@ -534,6 +535,7 @@
 				235481A61818E30700342DEC /* UIApplication+PresentViewController.m */,
 				235481A81818E56500342DEC /* NSObject+ObjectBuilder.h */,
 				235481A91818E56500342DEC /* NSObject+ObjectBuilder.m */,
+				23257F6B183855B70003EC73 /* CommonInitializer.h */,
 			);
 			name = Utilities;
 			path = Categories;
