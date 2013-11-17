@@ -122,7 +122,6 @@
 		23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39201527D0CF0006CDA5 /* AudioStreamController.m */; };
 		23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39221527D0EF0006CDA5 /* PlaylistController.m */; };
 		23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */; };
-		23EE39AB1527F0790006CDA5 /* LoadPreviousEntriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39281527D12A0006CDA5 /* LoadPreviousEntriesCell.m */; };
 		23EE39AD1527F0790006CDA5 /* BreakpointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392A1527D1340006CDA5 /* BreakpointCell.m */; };
 		23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392C1527D1400006CDA5 /* DelineationCell.m */; };
 		23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE392E1527D1490006CDA5 /* PlaycutCell.m */; };
@@ -298,8 +297,6 @@
 		23EE39221527D0EF0006CDA5 /* PlaylistController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaylistController.m; sourceTree = "<group>"; };
 		23EE39251527D1210006CDA5 /* LivePlaylistTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LivePlaylistTableViewCell.h; sourceTree = "<group>"; };
 		23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LivePlaylistTableViewCell.m; sourceTree = "<group>"; };
-		23EE39271527D12A0006CDA5 /* LoadPreviousEntriesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadPreviousEntriesCell.h; sourceTree = "<group>"; };
-		23EE39281527D12A0006CDA5 /* LoadPreviousEntriesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadPreviousEntriesCell.m; sourceTree = "<group>"; };
 		23EE39291527D1340006CDA5 /* BreakpointCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BreakpointCell.h; sourceTree = "<group>"; };
 		23EE392A1527D1340006CDA5 /* BreakpointCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BreakpointCell.m; sourceTree = "<group>"; };
 		23EE392B1527D1400006CDA5 /* DelineationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelineationCell.h; sourceTree = "<group>"; };
@@ -724,8 +721,6 @@
 			children = (
 				23EE39251527D1210006CDA5 /* LivePlaylistTableViewCell.h */,
 				23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */,
-				23EE39271527D12A0006CDA5 /* LoadPreviousEntriesCell.h */,
-				23EE39281527D12A0006CDA5 /* LoadPreviousEntriesCell.m */,
 				23EE39291527D1340006CDA5 /* BreakpointCell.h */,
 				23EE392A1527D1340006CDA5 /* BreakpointCell.m */,
 				23EE392B1527D1400006CDA5 /* DelineationCell.h */,
@@ -990,7 +985,6 @@
 				23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */,
 				23996EE417CDA86300B1ECA7 /* FacebookShareAction.m in Sources */,
 				23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */,
-				23EE39AB1527F0790006CDA5 /* LoadPreviousEntriesCell.m in Sources */,
 				23EE39AD1527F0790006CDA5 /* BreakpointCell.m in Sources */,
 				23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */,
 				235481AA1818E56500342DEC /* NSObject+ObjectBuilder.m in Sources */,
