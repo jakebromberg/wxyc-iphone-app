@@ -6,104 +6,90 @@
 #import "LivePlaylistTableViewController.h"
 #import "PlaylistController.h"
 #import "PlayerCell.h"
-#import "NSString+Additions.h"
+#import "NSIndexPath+Additions.h"
+#import "NSObject+KVOBlocks.h"
+#import "NSObject+LivePlaylistTableViewCellMappings.h"
 
-#define NUMBER_OF_HEADER_CELLS 1
+typedef enum {
+	kPlayerSection = 0,
+	kPlaylistSection,
+	kNumberOfSections
+} LivePlaylistTableSections;
+
+@interface LivePlaylistTableViewController ()
+
+@property (nonatomic, readonly) NSArray *playlist;
+
+@end
 
 @implementation LivePlaylistTableViewController
 
-#pragma Remote Control stuff
-
-- (BOOL)canBecomeFirstResponder
++ (void)initialize
 {
-	return YES;
+	[[UITableViewCell appearanceWhenContainedIn:[self class], nil] setBackgroundColor:[UIColor clearColor]];
 }
 
 #pragma mark - UITableViewController
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return kNumberOfSections;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [[PlaylistController sharedObject] playlist].count + NUMBER_OF_HEADER_CELLS;
+	switch (section)
+	{
+		case kPlayerSection:
+			return 1;
+		default:
+			return self.playlist.count;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.row == 0)
-		return [tableView dequeueReusableCellWithIdentifier:@"PlayerCell" forIndexPath:indexPath];
-	
-	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= [[PlaylistController sharedObject] playlist].count)
-		return nil;
-	
-	NSString *entryType = [self classNameForPlaylistEntryAtIndexPath:indexPath];
-	
-	LivePlaylistTableViewCell *cell;
-	
-	@try {
-		cell = [tableView dequeueReusableCellWithIdentifier:entryType forIndexPath:indexPath];
-	}
-	@catch (...)
+	LivePlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([self classOfCellAtIndexPath:indexPath]) forIndexPath:indexPath];
+
+	if (indexPath.section == kPlaylistSection)
 	{
-		Class class = NSClassFromString(entryType);
-		
-		if (class) {
-			cell = [[class alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:entryType];
-		} else {
-			cell = [[LivePlaylistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"unknown"];
-		}
+		NSAssert(indexPath.row < self.playlist.count, @"Index path %@ exceeds playlist count %d", indexPath, self.playlist.count);
+		cell.entity = self.playlist[indexPath.row];
 	}
-	
-	cell.entity = [self playlistEntryForIndexPath:indexPath];
 	
 	return cell;
 }
 
-- (NSManagedObject *)playlistEntryForIndexPath:(NSIndexPath *)indexPath
-{
-	return ([[PlaylistController sharedObject] playlist])[indexPath.row - NUMBER_OF_HEADER_CELLS];
-}
-
-- (NSString *)classNameForPlaylistEntryAtIndexPath:(NSIndexPath *)indexPath
-{
-	return [[self playlistEntryForIndexPath:indexPath].class.description append:@"Cell"];
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.row == 0)
-		return [PlayerCell height];
+	return [[self classOfCellAtIndexPath:indexPath] height];
+}
+
+- (Class)classOfCellAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.section == kPlayerSection)
+		return [PlayerCell class];
 	
-	if (indexPath.row - NUMBER_OF_HEADER_CELLS >= [[PlaylistController sharedObject] playlist].count)
-		return 0;
-	
-	return [NSClassFromString([self classNameForPlaylistEntryAtIndexPath:indexPath]) height];
+	return [self.playlist[indexPath.row] correspondingTableViewCellClass];
 }
 
 #pragma mark - UIViewController
 
 - (void)viewDidLoad
 {
-	[[PlaylistController sharedObject] addObserver:self forKeyPath:@"playlist" options:NSKeyValueObservingOptionNew context:NULL];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"playlist"])
+	[[PlaylistController sharedObject] observeKeyPath:@keypath(PlaylistController.sharedObject, playlist) changeBlock:^(NSDictionary *change)
 	{
-		NSUInteger numNewEntries = [change[NSKeyValueChangeNewKey] count];
-
-		if (numNewEntries == 0)
-			return;
-		
-		NSMutableArray *newIndexPaths = [NSMutableArray arrayWithCapacity:numNewEntries];
-		
-		for (int i = 0; i < numNewEntries; i++) {
-			[newIndexPaths addObject:[NSIndexPath indexPathForItem:i + NUMBER_OF_HEADER_CELLS inSection:0]];
-		}
+		id newIndexPaths = [NSIndexPath indexPathsForItemsInRange:NSMakeRange(0, [change[NSKeyValueChangeNewKey] count]) section:kPlaylistSection];
 		
 		[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-	} else {
-		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-	}
+	}];
+}
+
+#pragma mark - Properties
+
+- (NSArray *)playlist
+{
+	return [[PlaylistController sharedObject] playlist];
 }
 
 @end

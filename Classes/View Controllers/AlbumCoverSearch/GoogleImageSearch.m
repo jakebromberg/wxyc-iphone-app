@@ -26,7 +26,7 @@ typedef void(^OperationUnit)(id *accumulator, NSError **error);
 
 @implementation GoogleImageSearch
 
-+ (void)searchWithKeywords:(NSArray *)keywords handler:(OperationHandler)operationHandler
++ (void)searchWithKeywords:(NSArray *)keywords completionHandler:(OperationHandler)operationHandler
 {
 	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, NULL);
 	dispatch_block_t block = fetchData(keywords, operationHandler);

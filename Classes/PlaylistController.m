@@ -8,8 +8,6 @@
 
 #import <RestKit/RestKit.h>
 #import "PlaylistController.h"
-#import "Playcut.h"
-#import "AudioStreamController.h"
 #import "NSArray+Additions.h"
 
 @interface PlaylistController()
@@ -86,17 +84,15 @@
 
 - (instancetype)init
 {
-	self = [super init];
+	return COMMON_INIT([super init]);
+}
+
+- (void)commonInit
+{
+	_playlist = [NSMutableArray array];
 	
-	if (self)
-	{
-		_playlist = [NSMutableArray array];
-		
-		[self fetchPlaylist];
-		[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
-	}
-	
-	return self;
+	[self fetchPlaylist];
+	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 }
 
 @end

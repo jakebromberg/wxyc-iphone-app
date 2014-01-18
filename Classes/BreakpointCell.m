@@ -23,7 +23,7 @@
 	return 50.0f;
 }
 
-- (void) setEntity:(NSManagedObject *)entity
+- (void) setEntity:(PlaylistEntry *)entity
 {
 	super.entity = entity;
 	

@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 WXYC. All rights reserved.
 //
 
+#import "metamacros.h"
+
+
 #ifndef WXYCapp_CommonInitializer_h
 #define WXYCapp_CommonInitializer_h
 

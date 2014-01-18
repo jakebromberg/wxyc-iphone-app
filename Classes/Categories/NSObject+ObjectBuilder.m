@@ -12,9 +12,7 @@
 
 - (instancetype)initWithPropertyDictionary:(NSDictionary *)dictionary
 {
-	self = [self init];
-	
-	if (!self) return nil;
+	if (!(self = [self init])) return nil;
 	
 	[self setValuesForKeysWithDictionary:dictionary];
 	

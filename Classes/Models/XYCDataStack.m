@@ -17,24 +17,22 @@
 
 @end
 
-@implementation XYCDataStack 
+@implementation XYCDataStack
 
 - (id)init
 {
-	self = [super init];
-	
-	if (!self)
-		return nil;
-	
+	return COMMON_INIT([super init]);
+}
+
+- (void)commonInit
+{
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillTerminateNotification object:[UIApplication sharedApplication] queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
-	{
-		[self tidyUpCoreData];
-	}];
+	 {
+		 [self tidyUpCoreData];
+	 }];
 	
 	[self configureCoreData];
 	[self tidyUpCoreData];
-	
-	return self;
 }
 
 - (void)configureCoreData

@@ -7,6 +7,20 @@
 #import "NSObject+KVOBlocks.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
+typedef enum {
+	PopupCopyLink,
+	PopupOpenInSafari,
+	PopupCancel,
+	PopupCount
+} BrowserPopupLabels;
+
+static NSString * const PopupLabels[PopupCount] = {
+	[PopupCopyLink] = @"Copy Link",
+	[PopupOpenInSafari] = @"Open In Safari",
+	[PopupCancel] = @"Cancel",
+};
+
+
 @interface SimpleWebBrowser ()
 
 @property (nonatomic, strong) IBOutlet UIWebView *webView;
@@ -15,77 +29,57 @@
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *forwardButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *reloadButton;
 
-- (IBAction)reloadButtonPush:(id)sender;
+- (IBAction)reloadButtonPushed:(id)sender;
 - (IBAction)backButtonPush:(id)sender;
 - (IBAction)forwardButtonPush:(id)sender;
 - (IBAction)actionButtonPush:(id)sender;
 
 @end
 
+
 @implementation SimpleWebBrowser
 
 - (instancetype)initWithURL:(NSURL *)url
 {
-	self = [super initWithNibName:nil bundle:nil];
-	
-	if (!self) return nil;
+	if (!(self = [super initWithNibName:nil bundle:nil])) return nil;
 	
 	self.url = url;
 	
 	return self;
 }
 
-- (void)setUrl:(NSURL *)url
-{
-	if ([_url isEqual:url])
-		return;
-	
-	_url = [url copy];
-	
-	[self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
-}
-
-- (void)setWebView:(UIWebView *)webView
-{
-	_webView = webView;
-	
-	[self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
-}
-
 - (void)viewDidLoad
 {
-	NSKeyValueObservingOptions options = NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew;
-	static void *context = &context;
+	__typeof(self) __self = self;
 
-	[self.webView observeKeyPath:@keypath(self.webView, canGoBack) changeBlock:^(NSDictionary *change) {
-		self.backButton.enabled = self.webView.canGoBack;
+	[self.webView observeKeyPath:@keypath(self.webView, canGoBack) changeBlock:^(NSDictionary *change)
+	{
+		__self.backButton.enabled = __self.webView.canGoBack;
 	}];
-//	[self.webView addObserver:self forKeyPath:@keypath(self.webView, canGoBack) options:options context:context];
-	[self.webView addObserver:self forKeyPath:@keypath(self.webView, canGoForward) options:options context:context];
-	[self.webView addObserver:self forKeyPath:@keypath(self.webView, loading) options:options context:context];
-}
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@keypath(self.webView, canGoBack)])
+	[self.webView observeKeyPath:@keypath(self.webView, canGoForward) changeBlock:^(NSDictionary *change)
 	{
-		self.backButton.enabled = self.webView.canGoBack;
-	}
-	else if ([keyPath isEqualToString:@keypath(self.webView, canGoForward)])
+		__self.forwardButton.enabled = __self.webView.canGoForward;
+	}];
+	
+	[self.webView observeKeyPath:@keypath(self.webView, loading) changeBlock:^(NSDictionary *change)
 	{
-		self.forwardButton.enabled = self.webView.canGoForward;
-	}
-	else if ([keyPath isEqualToString:@keypath(self.webView, loading)])
-	{
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = self.webView.loading;
+		[UIApplication sharedApplication].networkActivityIndicatorVisible = __self.webView.loading;
+		 
+		NSString *imageName = __self.webView.loading ? @"delete.png" : @"reload.png";
+		__self.reloadButton.image = [UIImage imageNamed:imageName];
+		 
+		__self.navigationItem.title = __self.webView.loading ? [__self.webView stringByEvaluatingJavaScriptFromString:@"document.title"] : @"";
+	}];
+	
+	[self observeKeyPath:@keypath(self, webView) changeBlock:^(NSDictionary *change) {
+		[__self.webView loadRequest:[NSURLRequest requestWithURL:__self.url]];
+	}];
 
-		NSString *imageName = self.webView.loading ? @"delete.png" : @"reload.png";
-		self.reloadButton.image = [UIImage imageNamed:imageName];
-		
-		self.navigationItem.title = self.webView.loading ? [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"] : @"";
-	} else {
-		
-	}
+
+	[self observeKeyPath:@keypath(self, url) changeBlock:^(NSDictionary *change) {
+		[__self.webView loadRequest:[NSURLRequest requestWithURL:__self.url]];
+	}];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -95,7 +89,7 @@
 	return YES;
 }
 
-- (IBAction) reloadButtonPush:(id)sender
+- (IBAction)reloadButtonPushed:(id)sender
 {
 	if (self.webView.loading)
 	{
@@ -105,7 +99,7 @@
 	}
 }
 
-- (IBAction) backButtonPush:(id)sender
+- (IBAction)backButtonPush:(id)sender
 {
 	[self.webView goBack];
 }
@@ -118,10 +112,10 @@
 - (IBAction)actionButtonPush:(id)sender
 {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@""
-															 delegate:self
-													cancelButtonTitle:@"Cancel"
-											   destructiveButtonTitle:nil
-													otherButtonTitles:@"Copy Link", @"Open In Safari", nil];
+					 delegate:self
+			cancelButtonTitle:PopupLabels[PopupCancel]
+	   destructiveButtonTitle:nil
+			otherButtonTitles:PopupLabels[PopupCopyLink], PopupLabels[PopupOpenInSafari], nil];
 	
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[actionSheet showInView:self.webView]; // show from our table view (pops up in the middle of the table)
@@ -136,15 +130,17 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	NSLog(@"buttonIndex %i", buttonIndex);
-	
-	if (buttonIndex == 0) {
-		[[UIPasteboard generalPasteboard] setValue:[self.webView.request.URL absoluteString] 
-								 forPasteboardType:(NSString *)kUTTypeUTF8PlainText];
-	} else if (buttonIndex == 1) {
-		[[UIApplication sharedApplication] openURL:self.webView.request.URL];
+	switch (buttonIndex) {
+		case PopupCopyLink:
+			[[UIPasteboard generalPasteboard] setValue:self.webView.request.URL.absoluteString
+									 forPasteboardType:(NSString *)kUTTypeUTF8PlainText];
+			break;
+		case PopupOpenInSafari:
+			[[UIApplication sharedApplication] openURL:self.webView.request.URL];
+			break;
+		default:
+			break;
 	}
 }
 
 @end
-

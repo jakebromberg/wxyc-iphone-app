@@ -4,13 +4,18 @@
 //
 
 #import "WXYCAppDelegate.h"
-#import "PlaylistMapping.h"
 #import "XYCDataStack.h"
+#import "PlaylistMapping.h"
 #import "LockscreenMediaController.h"
 
 @implementation WXYCAppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
+{
+	[[self class] instantiateSingletons];
+}
+
++ (void)instantiateSingletons
 {
 	[XYCDataStack loadSingleton];
 	[PlaylistMapping loadSingleton];

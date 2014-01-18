@@ -24,6 +24,17 @@
 
 static NSString *baseURL = @"http://wxyc.info/";
 
+- (instancetype)init
+{
+	return COMMON_INIT([super init]);
+}
+
+- (void)commonInit
+{
+	[self initializeObjectManager];
+	[self addMappingsToObjectManager];
+}
+
 - (void)initializeObjectManager
 {
 	[RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/plain"];
@@ -35,6 +46,15 @@ static NSString *baseURL = @"http://wxyc.info/";
 	[_objectManager.managedObjectStore createManagedObjectContexts];
 	
 	[RKObjectManager setSharedManager:_objectManager];
+}
+
+#pragma mark Mappings
+
+- (void)addMappingsToObjectManager
+{
+	[[RKObjectManager sharedManager] addResponseDescriptor:self.playcutMapping];
+	[[RKObjectManager sharedManager] addResponseDescriptor:self.talksetMapping];
+	[[RKObjectManager sharedManager] addResponseDescriptor:self.breakpointMapping];
 }
 
 - (RKResponseDescriptor *)playcutMapping
@@ -84,20 +104,6 @@ static NSString *baseURL = @"http://wxyc.info/";
 	mapping.identificationAttributes = @[@"id"];
 	
 	return [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:nil keyPath:@"talksets" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-}
-
-- (instancetype)init
-{
-	if (self = [super init])
-	{
-		[self initializeObjectManager];
-
-		[[RKObjectManager sharedManager] addResponseDescriptor:self.playcutMapping];
-		[[RKObjectManager sharedManager] addResponseDescriptor:self.talksetMapping];
-		[[RKObjectManager sharedManager] addResponseDescriptor:self.breakpointMapping];
-	}
-
-	return self;
 }
 
 @end

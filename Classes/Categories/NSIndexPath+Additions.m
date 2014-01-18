@@ -10,7 +10,7 @@
 
 @implementation NSIndexPath (Additions)
 
-+ (NSArray *)indexPathsForItemsInRange:(NSRange)range section:(NSInteger)section;
++ (NSArray *)indexPathsForItemsInRange:(NSRange)range section:(NSInteger)section
 {
 	NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:range.length];
 	

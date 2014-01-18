@@ -12,7 +12,4 @@
 
 @property (nonatomic, copy) NSURL *url;
 
-//- (void)loadURL:(NSURL *)url;
-
-
 @end

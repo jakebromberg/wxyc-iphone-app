@@ -9,14 +9,13 @@
 #import "PlayerCell.h"
 #import "AudioStreamController.h"
 #import "NSString+Additions.h"
-#import "CassetteReelView.h"
 #import "UIView+Spin.h"
 
 @interface PlayerCell ()
 
 @property (nonatomic, weak) IBOutlet UIButton *playButton;
-@property (nonatomic, strong) IBOutlet CassetteReelView *leftCassetteReel;
-@property (nonatomic, strong) IBOutlet CassetteReelView *rightCassetteReel;
+@property (nonatomic, strong) IBOutlet UIView *leftCassetteReel;
+@property (nonatomic, strong) IBOutlet UIView *rightCassetteReel;
 
 @end
 

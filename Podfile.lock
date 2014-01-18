@@ -1,14 +1,5 @@
 PODS:
-  - AFNetworking (1.3.2)
-  - libwebp (0.3.0-rc7):
-    - libwebp/dec
-    - libwebp/dsp
-    - libwebp/utils
-    - libwebp/webp
-  - libwebp/dec (0.3.0-rc7)
-  - libwebp/dsp (0.3.0-rc7)
-  - libwebp/utils (0.3.0-rc7)
-  - libwebp/webp (0.3.0-rc7)
+  - AFNetworking (1.3.3)
   - MagicalRecord (2.1)
   - MTStatusBarOverlay (0.9.1)
   - RestKit (0.20.3):
@@ -27,10 +18,8 @@ PODS:
   - RestKit/Support (0.20.3):
     - TransitionKit (= 1.1.1)
   - SDWebImage (3.4):
-    - libwebp
-    - SDWebImage/MapKit
-  - SDWebImage/MapKit (3.4):
-    - libwebp
+    - SDWebImage/Core
+  - SDWebImage/Core (3.4)
   - SOCKit (1.1)
   - TransitionKit (1.1.1)
   - UIKitCategoryAdditions (0.0.1)
@@ -45,12 +34,11 @@ DEPENDENCIES:
   - UITableView-NXEmptyView (~> 0.1.4)
 
 SPEC CHECKSUMS:
-  AFNetworking: 7f9bcd7c287a75476cd5c61e82fd3380e93e4c54
-  libwebp: 40517fa1fd3716eded73b4696c45fc0b66e4b414
+  AFNetworking: 0700ec7a58c36ad217173e167f6e4df7270df66b
   MagicalRecord: 64e7184c240087a45e9588a722eaf05b0ad837f7
   MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
   RestKit: 1f181c180105a92f11ec4f6cd7de37625e516d83
-  SDWebImage: f13f791e411c632489824aa7f129e230b52bf5c4
+  SDWebImage: 366188f04c019bfd712d45e3b36aa52070f4abd8
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
   TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
   UIKitCategoryAdditions: 393e65777c35ce92af6b32797d2e456c2df411ac

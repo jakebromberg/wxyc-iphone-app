@@ -10,8 +10,8 @@
 
 @interface LivePlaylistTableViewCell : UITableViewCell
 
-+ (float)height;
-
 @property (nonatomic, strong) PlaylistEntry *entity;
+
++ (float)height;
 
 @end

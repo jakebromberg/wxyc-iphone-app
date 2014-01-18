@@ -4,7 +4,8 @@
 //
 
 #import "AboutViewController.h"
-#import	"WebViewController.h"
+#import	"SimpleWebBrowser.h"
+#import "UIApplication+PresentViewController.h"
 
 @implementation AboutViewController
 
@@ -32,17 +33,13 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
 	if (navigationType == UIWebViewNavigationTypeLinkClicked)
-	{
-		WebViewController *webViewController = [[WebViewController alloc] init];
-		
-		[self.view.window.rootViewController presentViewController:webViewController animated:YES completion:nil];
-		[webViewController loadURL:request.URL];
-		webViewController.webView.scalesPageToFit = YES;
-		
-		return NO;
-	}
+		return YES;
 	
-	return YES;
+	SimpleWebBrowser *webViewController = [[SimpleWebBrowser alloc] initWithURL:request.URL];
+	
+	[UIApplication presentViewController:webViewController];
+
+	return NO;
 }
 
 @end

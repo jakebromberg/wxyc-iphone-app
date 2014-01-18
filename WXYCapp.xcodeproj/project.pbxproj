@@ -24,7 +24,6 @@
 		231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DD180E18ED00D93649 /* FavoriteShareButton.m */; };
 		231EC0E2180E19B600D93649 /* SearchShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0E1180E19B600D93649 /* SearchShareAction.m */; };
 		232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */; };
-		232CFDC317EFB78B003A78B6 /* CassetteReelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 232CFDC217EFB78B003A78B6 /* CassetteReelView.m */; };
 		232E24DE1267A7ED007F7679 /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24C81267A7ED007F7679 /* about_icon.png */; };
 		232E24E11267A7ED007F7679 /* Default-inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CB1267A7ED007F7679 /* Default-inv.png */; };
 		232E24E21267A7ED007F7679 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CC1267A7ED007F7679 /* Default.png */; };
@@ -46,7 +45,6 @@
 		235DE14E16ED4EDB005640E9 /* player-elements.png in Resources */ = {isa = PBXBuildFile; fileRef = 235DE14D16ED4EDB005640E9 /* player-elements.png */; };
 		235DE15016ED4F26005640E9 /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 235DE14F16ED4F26005640E9 /* play-button.png */; };
 		235DE15516ED577D005640E9 /* PlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235DE15416ED577B005640E9 /* PlayerCell.m */; };
-		235E4210168CC2830088E19F /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E420F168CC2830088E19F /* UIView+Additions.m */; };
 		23601A7E105F089800E6A6FB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23601927105F05C600E6A6FB /* AudioToolbox.framework */; };
 		23601A80105F089D00E6A6FB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236019EB105F060B00E6A6FB /* CFNetwork.framework */; };
 		23601B9B105F116000E6A6FB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23601B9A105F116000E6A6FB /* MediaPlayer.framework */; };
@@ -114,6 +112,7 @@
 		23C2AB1B128A6F8100D61A4A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */; };
 		23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C4A72517E42379007DB35C /* UIView+Spin.m */; };
 		23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */; };
+		23DB86A91858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DB86A81858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m */; };
 		23DBC351113F801200C19BD0 /* SimpleWebBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* SimpleWebBrowser.xib */; };
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
 		23EAEFA8179C4316008E0960 /* TwitterShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EAEFA7179C42F0008E0960 /* TwitterShareAction.m */; };
@@ -174,8 +173,6 @@
 		231EC0E1180E19B600D93649 /* SearchShareAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchShareAction.m; path = Views/SearchShareAction.m; sourceTree = "<group>"; };
 		23257F6B183855B70003EC73 /* CommonInitializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommonInitializer.h; path = Classes/Utilities/CommonInitializer.h; sourceTree = SOURCE_ROOT; };
 		232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
-		232CFDC117EFB78B003A78B6 /* CassetteReelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CassetteReelView.h; path = Classes/Views/CassetteReelView.h; sourceTree = SOURCE_ROOT; };
-		232CFDC217EFB78B003A78B6 /* CassetteReelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CassetteReelView.m; path = Classes/Views/CassetteReelView.m; sourceTree = SOURCE_ROOT; };
 		232E24C81267A7ED007F7679 /* about_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_icon.png; sourceTree = "<group>"; };
 		232E24CB1267A7ED007F7679 /* Default-inv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-inv.png"; sourceTree = "<group>"; };
 		232E24CC1267A7ED007F7679 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -202,8 +199,6 @@
 		235DE14F16ED4F26005640E9 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
 		235DE15316ED577A005640E9 /* PlayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCell.h; sourceTree = "<group>"; };
 		235DE15416ED577B005640E9 /* PlayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCell.m; sourceTree = "<group>"; };
-		235E420E168CC2830088E19F /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
-		235E420F168CC2830088E19F /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		23601927105F05C600E6A6FB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		236019EB105F060B00E6A6FB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		23601B9A105F116000E6A6FB /* MediaPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -282,6 +277,8 @@
 		23C4A72517E42379007DB35C /* UIView+Spin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Spin.m"; path = "../Categories/UIView+Spin.m"; sourceTree = "<group>"; };
 		23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXYCTabBarControllerViewController.h; path = "Classes/View Controllers/WXYCTabBarControllerViewController.h"; sourceTree = SOURCE_ROOT; };
 		23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXYCTabBarControllerViewController.m; path = "Classes/View Controllers/WXYCTabBarControllerViewController.m"; sourceTree = SOURCE_ROOT; };
+		23DB86A71858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+LivePlaylistTableViewCellMappings.h"; path = "Categories/NSObject+LivePlaylistTableViewCellMappings.h"; sourceTree = "<group>"; };
+		23DB86A81858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+LivePlaylistTableViewCellMappings.m"; path = "Categories/NSObject+LivePlaylistTableViewCellMappings.m"; sourceTree = "<group>"; };
 		23DBC34E113F801200C19BD0 /* SimpleWebBrowser.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SimpleWebBrowser.xib; path = ../../Resources/xibs/SimpleWebBrowser.xib; sourceTree = "<group>"; };
 		23E0A59B16F6590C003CC6A8 /* Playlist2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Playlist2.xcdatamodel; sourceTree = "<group>"; };
 		23E77B1E1118DCB3007D373D /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -518,8 +515,6 @@
 				23456D90181A334800C88621 /* Key-Value Observing */,
 				231EC0C91807C59F00D93649 /* NSObject+Singleton.h */,
 				231EC0CA1807C59F00D93649 /* NSObject+Singleton.m */,
-				235E420E168CC2830088E19F /* UIView+Additions.h */,
-				235E420F168CC2830088E19F /* UIView+Additions.m */,
 				23F8176716EBDDD1005BF24F /* NSString+Additions.h */,
 				23F8176816EBDDD1005BF24F /* NSString+Additions.m */,
 				23F8176A16EBDE13005BF24F /* NSArray+Additions.h */,
@@ -580,8 +575,6 @@
 		238CC1C512664111006EC552 /* Casssette Reel */ = {
 			isa = PBXGroup;
 			children = (
-				232CFDC117EFB78B003A78B6 /* CassetteReelView.h */,
-				232CFDC217EFB78B003A78B6 /* CassetteReelView.m */,
 				2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */,
 				2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */,
 				23C4A72417E42379007DB35C /* UIView+Spin.h */,
@@ -730,6 +723,8 @@
 				235DE15316ED577A005640E9 /* PlayerCell.h */,
 				235DE15416ED577B005640E9 /* PlayerCell.m */,
 				237DFA23179B99C100AAEC4B /* Playcut Cell */,
+				23DB86A71858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.h */,
+				23DB86A81858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -995,11 +990,11 @@
 				231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */,
 				23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */,
 				231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */,
+				23DB86A91858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m in Sources */,
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,
 				23456D94181B4A7B00C88621 /* NSObject+KVOBlocks.m in Sources */,
 				231EC0D6180E109800D93649 /* Breakpoint.m in Sources */,
 				2316CDAF180E1FD100DB837E /* SearchShareButton.m in Sources */,
-				232CFDC317EFB78B003A78B6 /* CassetteReelView.m in Sources */,
 				232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */,
 				2316CDB2181317BF00DB837E /* NSIndexPath+Additions.m in Sources */,
 				23C1130E1803BCDD00B7B5FE /* XYCRootViewController.m in Sources */,
@@ -1015,7 +1010,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				234A74D5153B6D3100C30053 /* PlaylistMapping.m in Sources */,
 				2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */,
-				235E4210168CC2830088E19F /* UIView+Additions.m in Sources */,
 				23F8176916EBDDD1005BF24F /* NSString+Additions.m in Sources */,
 				23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */,
 				235DE15516ED577D005640E9 /* PlayerCell.m in Sources */,
@@ -1039,8 +1033,6 @@
 			baseConfigurationReference = 301ED3726EAB431A91FE0405 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1078,8 +1070,6 @@
 			baseConfigurationReference = 301ED3726EAB431A91FE0405 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1137,8 +1127,6 @@
 			baseConfigurationReference = 301ED3726EAB431A91FE0405 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

@@ -22,28 +22,19 @@
 
 - (instancetype)map:(NSArrayMapBlock)mapBlock
 {
-	NSMutableArray *mappedArray = [self mutableCopy];
+	NSMutableArray *mappedArray = [NSMutableArray array];
 	
 	[self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		[mappedArray addObject:mapBlock(obj, obj)];
+		[mappedArray addObject:mapBlock(obj, idx)];
 	}];
 	
 	return mappedArray;
 }
 
-- (instancetype)filter:(NSArrayFilterBlock)filterBlock
+- (instancetype)filter:(BOOL(^)(id obj, NSUInteger, BOOL *stop))filterBlock
 {
-	NSMutableArray *filteredArray = [NSMutableArray array];
-	
-	[self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		BOOL passesTest = filterBlock(obj, idx, stop);
-		
-		if (passesTest) {
-			[filteredArray addObject:obj];
-		}
-	}];
-	
-	return filteredArray;
+	NSIndexSet *indexSet = [self indexesOfObjectsPassingTest:filterBlock];
+	return [self objectsAtIndexes:indexSet];
 }
 
 - (id)objectPassingTest:(BOOL(^)(id obj))test
@@ -55,7 +46,7 @@
 	if (idx == NSNotFound)
 		return nil;
 	else
-		return [self objectAtIndex:idx];
+		return self[idx];
 }
 
 @end

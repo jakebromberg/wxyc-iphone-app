@@ -18,8 +18,9 @@
 @end
 
 
-@interface NSObject (Singleton) <XYCSingleton>
+@interface NSObject (Singleton)
 
 + (instancetype)sharedObject;
++ (void)loadSingleton;
 
 @end

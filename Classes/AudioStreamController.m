@@ -9,10 +9,13 @@
 
 #import "AudioStreamController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "NSObject+KVOBlocks.h"
 
 @interface AudioStreamController()
 
 @property (nonatomic, strong) AVPlayer *player;
+
+- (void)resetPlayer;
 
 @end
 
@@ -25,11 +28,23 @@
 	
 	if (self)
 	{
-		_URL = URL;
-		[self addObserver:self forKeyPath:@"player.status" options:NSKeyValueObservingOptionNew context:NULL];
+		_URL = [URL copy];
+		[self addObservers];
 	}
 	
 	return self;
+}
+
+- (void)addObservers
+{
+	__block __typeof(self) __self = self;
+	
+	[self observeKeyPath:@keypath(self, player.status) changeBlock:^(NSDictionary *change) {
+		if (__self.player.status == AVPlayerStatusFailed)
+		{
+			[__self resetPlayer];
+		}
+	}];
 }
 
 - (void)dealloc
@@ -37,38 +52,14 @@
 	[self removeObserver:self forKeyPath:@"player.status"];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"player.status"])
-	{
-		if (self.player.status == AVPlayerStatusFailed)
-		{
-			self.player = nil;
-			[self player];
-		}
-	}
-}
-
 - (void)configureAudioSession
 {
 	NSError *error = nil;
 	[[AVAudioSession sharedInstance] setDelegate:self];
-	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
 	[[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionCategoryOptionDefaultToSpeaker error:&error];
 }
 
-
-#pragma WXYC factory method
-
-static AudioStreamController *wxyc;
-
-+ (instancetype)wxyc
-{
-	if (!wxyc)
-		wxyc = [[AudioStreamController alloc] initWithURL:[NSURL URLWithString:@"http://152.2.204.90:8000/wxyc.mp3"]];
-	
-	return wxyc;
-}
 
 #pragma mark - Public Methods
 
@@ -93,19 +84,38 @@ static AudioStreamController *wxyc;
 - (AVPlayer *)player
 {
 	if (!_player)
-	{
-		_player = [[AVPlayer alloc] initWithURL:self.URL];
-		_player.usesExternalPlaybackWhileExternalScreenIsActive = YES;
-	}
+		[self resetPlayer];
 	
 	return _player;
 }
 
-#pragma mark
+#pragma mark - Player methods
+
+- (void)resetPlayer
+{
+	self.player = [[AVPlayer alloc] initWithURL:self.URL];
+	self.player.usesExternalPlaybackWhileExternalScreenIsActive = YES;
+}
 
 + (NSSet *)keyPathsForValuesAffectingIsPlaying
 {
 	return [NSSet setWithObject:@"player.rate"];
+}
+
+@end
+
+
+@implementation AudioStreamController (WXYC)
+
+
++ (instancetype)wxyc
+{
+	static AudioStreamController __strong *wxyc;
+	
+	if (!wxyc)
+		wxyc = [[AudioStreamController alloc] initWithURL:[NSURL URLWithString:@"http://152.2.204.90:8000/wxyc.mp3"]];
+	
+	return wxyc;
 }
 
 @end

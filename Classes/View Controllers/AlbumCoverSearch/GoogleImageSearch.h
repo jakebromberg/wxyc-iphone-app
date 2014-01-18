@@ -15,6 +15,6 @@ typedef void(^OperationHandler)(NSURL *returnedURL, NSError *message);
 
 @property (nonatomic, strong) id<GoogleImageSearchDelegate> delegate;
 
-+ (void)searchWithKeywords:(NSArray *)keywords handler:(OperationHandler)operationHandler;
++ (void)searchWithKeywords:(NSArray *)keywords completionHandler:(OperationHandler)operationHandler;
 
 @end

@@ -9,10 +9,6 @@
 #import "XYCRootViewController.h"
 #import "AudioStreamController.h"
 
-@interface XYCRootViewController ()
-
-@end
-
 @implementation XYCRootViewController
 
 - (void)viewDidLoad
@@ -26,6 +22,11 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
 	return UIStatusBarStyleLightContent;
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+	return YES;
 }
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent

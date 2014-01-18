@@ -97,7 +97,7 @@
     
     if (!proxy)
     {
-        proxy = [[XYCKVOProxy alloc] initWithObserver:observer];
+        proxy = [[XYCKVOProxy alloc] initWithObserver:self];
 		[self.observerProxyMap setObject:proxy forKey:[NSValue valueWithPointer:&observer]];
     }
     
