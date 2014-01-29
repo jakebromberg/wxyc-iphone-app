@@ -10,7 +10,5 @@
 
 @interface DelineationCell : LivePlaylistTableViewCell
 
-- (void)addText:(NSString *)text;
-
 @end
 
