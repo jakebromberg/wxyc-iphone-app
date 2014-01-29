@@ -8,8 +8,8 @@
 
 #import "PlayerCell.h"
 #import "AudioStreamController.h"
-#import "NSString+Additions.h"
 #import "UIView+Spin.h"
+#import "NSObject+KVOBlocks.h"
 
 @interface PlayerCell ()
 
@@ -26,21 +26,15 @@
 	return 74.0f;
 }
 
-- (void)prepareForReuse
+- (instancetype)awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
-	[super prepareForReuse];
+	__block __typeof(self) __self = self;
 	
-	@try {
-		[[AudioStreamController wxyc] removeObserver:self forKeyPath:@"isPlaying"];
-	}
-	@catch (NSException *exception) {
-		
-	}
-	@finally {
-		[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
-	}
+	[[AudioStreamController wxyc] addBlockObserver:self forKeyPath:@keypath(AudioStreamController.wxyc, isPlaying) changeBlock:^(NSDictionary *change) {
+		[__self configureInterfaceForPlayingState:[change[NSKeyValueChangeNewKey] boolValue]];
+	}];
 	
-	[self configureInterfaceForPlayingState:AudioStreamController.wxyc.isPlaying];
+	return [super awakeAfterUsingCoder:aDecoder];
 }
 
 - (void)configureInterfaceForPlayingState:(BOOL)isPlaying
@@ -65,23 +59,6 @@
 	} else {
 		[AudioStreamController.wxyc start];
 	}
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"isPlaying"])
-	{
-		[self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
-	} else {
-		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-	}
-}
-
-- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
-{
-	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
-
-	return [super awakeAfterUsingCoder:aDecoder];
 }
 
 @end
