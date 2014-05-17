@@ -20,7 +20,7 @@
 	return [self join:@""];
 }
 
-- (instancetype)map:(NSArrayMapBlock)mapBlock
+- (NSArray *)map:(NSArrayMapBlock)mapBlock
 {
 	NSMutableArray *mappedArray = [NSMutableArray array];
 	
@@ -31,7 +31,7 @@
 	return mappedArray;
 }
 
-- (instancetype)filter:(BOOL(^)(id obj, NSUInteger, BOOL *stop))filterBlock
+- (NSArray *)filter:(BOOL(^)(id obj, NSUInteger, BOOL *stop))filterBlock
 {
 	NSIndexSet *indexSet = [self indexesOfObjectsPassingTest:filterBlock];
 	return [self objectsAtIndexes:indexSet];
@@ -47,6 +47,15 @@
 		return nil;
 	else
 		return self[idx];
+}
+
+- (NSArray *)objectsPassingTest:(BOOL (^)(id))test
+{
+	NSIndexSet *indexes = [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+		return test(obj);
+	}];
+	
+	return [self objectsAtIndexes:indexes];
 }
 
 @end
