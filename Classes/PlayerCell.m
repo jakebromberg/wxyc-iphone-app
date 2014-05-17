@@ -23,7 +23,7 @@
 
 + (float)height
 {
-	return 74.0f;
+	return 84.0f;
 }
 
 - (instancetype)awakeAfterUsingCoder:(NSCoder *)aDecoder
