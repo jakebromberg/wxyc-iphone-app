@@ -112,6 +112,7 @@
 		23C2AB1B128A6F8100D61A4A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */; };
 		23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C4A72517E42379007DB35C /* UIView+Spin.m */; };
 		23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */; };
+		23CF2DDF19241CB7004E91D7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */; };
 		23DB86A91858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DB86A81858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m */; };
 		23DBC351113F801200C19BD0 /* SimpleWebBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* SimpleWebBrowser.xib */; };
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
@@ -273,8 +274,8 @@
 		23C2A9E9128A59D100D61A4A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		23C2AA37128A61BE00D61A4A /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		23C2AB1A128A6F8100D61A4A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		23C4A72417E42379007DB35C /* UIView+Spin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Spin.h"; path = "../Categories/UIView+Spin.h"; sourceTree = "<group>"; };
-		23C4A72517E42379007DB35C /* UIView+Spin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Spin.m"; path = "../Categories/UIView+Spin.m"; sourceTree = "<group>"; };
+		23C4A72417E42379007DB35C /* UIView+Spin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Spin.h"; sourceTree = "<group>"; };
+		23C4A72517E42379007DB35C /* UIView+Spin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Spin.m"; sourceTree = "<group>"; };
 		23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXYCTabBarControllerViewController.h; path = "Classes/View Controllers/WXYCTabBarControllerViewController.h"; sourceTree = SOURCE_ROOT; };
 		23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXYCTabBarControllerViewController.m; path = "Classes/View Controllers/WXYCTabBarControllerViewController.m"; sourceTree = SOURCE_ROOT; };
 		23DB86A71858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+LivePlaylistTableViewCellMappings.h"; path = "Categories/NSObject+LivePlaylistTableViewCellMappings.h"; sourceTree = "<group>"; };
@@ -513,6 +514,8 @@
 			isa = PBXGroup;
 			children = (
 				23456D90181A334800C88621 /* Key-Value Observing */,
+				23C4A72417E42379007DB35C /* UIView+Spin.h */,
+				23C4A72517E42379007DB35C /* UIView+Spin.m */,
 				231EC0C91807C59F00D93649 /* NSObject+Singleton.h */,
 				231EC0CA1807C59F00D93649 /* NSObject+Singleton.m */,
 				23F8176716EBDDD1005BF24F /* NSString+Additions.h */,
@@ -577,8 +580,6 @@
 			children = (
 				2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */,
 				2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */,
-				23C4A72417E42379007DB35C /* UIView+Spin.h */,
-				23C4A72517E42379007DB35C /* UIView+Spin.m */,
 			);
 			name = "Casssette Reel";
 			path = "View Controllers";
@@ -837,7 +838,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = NO;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = WXYC;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
@@ -896,6 +897,7 @@
 				23C113081803823800B7B5FE /* NavigationBarTitle.xib in Resources */,
 				23924CA51289F04C00EFC0FA /* favorites-toolbar-icon-filled.png in Resources */,
 				23924CA61289F04C00EFC0FA /* favorites-toolbar-icon-filled@2x.png in Resources */,
+				23CF2DDF19241CB7004E91D7 /* Default-568h@2x.png in Resources */,
 				23924CA71289F04C00EFC0FA /* favorites-toolbar-icon-unfilled@2x.png in Resources */,
 				23924CA81289F04C00EFC0FA /* favorites-toolbar-icon.png in Resources */,
 				23C2A943128A46AD00D61A4A /* reload@2x.png in Resources */,
@@ -1113,7 +1115,6 @@
 		238966F81062BCFA002ED494 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: WXYC";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1170,7 +1171,6 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jacob Bromberg (UJQFLBMELA)";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1188,7 +1188,6 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
