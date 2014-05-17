@@ -102,8 +102,8 @@
 	dispatch_once(&onceToken, ^{
 		backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
 	});
-	
-	__weak __typeof(self) __self = self;
+
+	__block __weak __typeof(self) __self = self;
 
 	return ^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
 		if (error || !finished)
@@ -151,7 +151,7 @@
 
 + (float)height
 {
-	return 380.f;
+	return 360.f;
 }
 
 @end

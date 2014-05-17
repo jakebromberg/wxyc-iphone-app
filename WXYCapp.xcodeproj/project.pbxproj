@@ -113,6 +113,10 @@
 		23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C4A72517E42379007DB35C /* UIView+Spin.m */; };
 		23CD7B9417515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */; };
 		23CF2DDF19241CB7004E91D7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237906DC16B4E9BE00F67A17 /* Default-568h@2x.png */; };
+		23CF2DE119281435004E91D7 /* PlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CF2DE019281435004E91D7 /* PlayerCell.xib */; };
+		23CF2DE319281457004E91D7 /* BreakpointCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CF2DE219281457004E91D7 /* BreakpointCell.xib */; };
+		23CF2DE7192816DD004E91D7 /* TalksetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CF2DE6192816DD004E91D7 /* TalksetCell.xib */; };
+		23CF2DE9192817F3004E91D7 /* PlaycutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CF2DE8192817F3004E91D7 /* PlaycutCell.xib */; };
 		23DB86A91858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DB86A81858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m */; };
 		23DBC351113F801200C19BD0 /* SimpleWebBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBC34E113F801200C19BD0 /* SimpleWebBrowser.xib */; };
 		23E0A59C16F6590C003CC6A8 /* Playlist2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */; };
@@ -278,6 +282,10 @@
 		23C4A72517E42379007DB35C /* UIView+Spin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Spin.m"; sourceTree = "<group>"; };
 		23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXYCTabBarControllerViewController.h; path = "Classes/View Controllers/WXYCTabBarControllerViewController.h"; sourceTree = SOURCE_ROOT; };
 		23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXYCTabBarControllerViewController.m; path = "Classes/View Controllers/WXYCTabBarControllerViewController.m"; sourceTree = SOURCE_ROOT; };
+		23CF2DE019281435004E91D7 /* PlayerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlayerCell.xib; path = Views/PlayerCell.xib; sourceTree = "<group>"; };
+		23CF2DE219281457004E91D7 /* BreakpointCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BreakpointCell.xib; sourceTree = "<group>"; };
+		23CF2DE6192816DD004E91D7 /* TalksetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TalksetCell.xib; path = Views/TalksetCell.xib; sourceTree = "<group>"; };
+		23CF2DE8192817F3004E91D7 /* PlaycutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaycutCell.xib; path = Views/PlaycutCell.xib; sourceTree = "<group>"; };
 		23DB86A71858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+LivePlaylistTableViewCellMappings.h"; path = "Categories/NSObject+LivePlaylistTableViewCellMappings.h"; sourceTree = "<group>"; };
 		23DB86A81858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+LivePlaylistTableViewCellMappings.m"; path = "Categories/NSObject+LivePlaylistTableViewCellMappings.m"; sourceTree = "<group>"; };
 		23DBC34E113F801200C19BD0 /* SimpleWebBrowser.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SimpleWebBrowser.xib; path = ../../Resources/xibs/SimpleWebBrowser.xib; sourceTree = "<group>"; };
@@ -543,6 +551,7 @@
 				237DFA2C179B9BF300AAEC4B /* Share Buttons */,
 				23EE392D1527D1490006CDA5 /* PlaycutCell.h */,
 				23EE392E1527D1490006CDA5 /* PlaycutCell.m */,
+				23CF2DE8192817F3004E91D7 /* PlaycutCell.xib */,
 			);
 			name = "Playcut Cell";
 			sourceTree = "<group>";
@@ -715,19 +724,38 @@
 			children = (
 				23EE39251527D1210006CDA5 /* LivePlaylistTableViewCell.h */,
 				23EE39261527D1210006CDA5 /* LivePlaylistTableViewCell.m */,
+				23CF2DE4192814CE004E91D7 /* Delineation Cells */,
+				23CF2DE5192814E1004E91D7 /* Player Cell */,
+				237DFA23179B99C100AAEC4B /* Playcut Cell */,
+				23DB86A71858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.h */,
+				23DB86A81858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		23CF2DE4192814CE004E91D7 /* Delineation Cells */ = {
+			isa = PBXGroup;
+			children = (
+				23CF2DE219281457004E91D7 /* BreakpointCell.xib */,
 				23EE39291527D1340006CDA5 /* BreakpointCell.h */,
 				23EE392A1527D1340006CDA5 /* BreakpointCell.m */,
 				23EE392B1527D1400006CDA5 /* DelineationCell.h */,
 				23EE392C1527D1400006CDA5 /* DelineationCell.m */,
 				23EE39331527D16C0006CDA5 /* TalksetCell.h */,
 				23EE39341527D16C0006CDA5 /* TalksetCell.m */,
+				23CF2DE6192816DD004E91D7 /* TalksetCell.xib */,
+			);
+			name = "Delineation Cells";
+			sourceTree = "<group>";
+		};
+		23CF2DE5192814E1004E91D7 /* Player Cell */ = {
+			isa = PBXGroup;
+			children = (
+				23CF2DE019281435004E91D7 /* PlayerCell.xib */,
 				235DE15316ED577A005640E9 /* PlayerCell.h */,
 				235DE15416ED577B005640E9 /* PlayerCell.m */,
-				237DFA23179B99C100AAEC4B /* Playcut Cell */,
-				23DB86A71858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.h */,
-				23DB86A81858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m */,
 			);
-			name = Cells;
+			name = "Player Cell";
 			sourceTree = "<group>";
 		};
 		23EAEFA9179C4320008E0960 /* Social */ = {
@@ -894,6 +922,7 @@
 				23924C901289ECCC00EFC0FA /* toolbar-up@2x.png in Resources */,
 				23924CA31289F04C00EFC0FA /* favorites-tabbar-icon.png in Resources */,
 				23924CA41289F04C00EFC0FA /* favorites-tabbar-icon@2x.png in Resources */,
+				23CF2DE7192816DD004E91D7 /* TalksetCell.xib in Resources */,
 				23C113081803823800B7B5FE /* NavigationBarTitle.xib in Resources */,
 				23924CA51289F04C00EFC0FA /* favorites-toolbar-icon-filled.png in Resources */,
 				23924CA61289F04C00EFC0FA /* favorites-toolbar-icon-filled@2x.png in Resources */,
@@ -921,14 +950,17 @@
 				23A23D0916ED801700C9AF7C /* clock-6.png in Resources */,
 				23A23D0A16ED801700C9AF7C /* clock-7.png in Resources */,
 				23456D96181B59ED00C88621 /* Images.xcassets in Resources */,
+				23CF2DE9192817F3004E91D7 /* PlaycutCell.xib in Resources */,
 				23A23D0B16ED801700C9AF7C /* clock-9.png in Resources */,
 				23A23D0C16ED801700C9AF7C /* clock-11.png in Resources */,
 				23A23D0D16ED801700C9AF7C /* clock-12.png in Resources */,
 				23B09AC316EEA05B003C2173 /* chat.png in Resources */,
 				2364875D16F4C96300DF2C27 /* tabbar-item-unselected@2x.png in Resources */,
+				23CF2DE319281457004E91D7 /* BreakpointCell.xib in Resources */,
 				2364876216F4D2C400DF2C27 /* tabbar-item-playlist-unselected@2x.png in Resources */,
 				2364876416F4D37A00DF2C27 /* tabbar-item-playlist-selected@2x.png in Resources */,
 				2364876916F4DD7300DF2C27 /* tabbar-item-favorites-selected@2x.png in Resources */,
+				23CF2DE119281435004E91D7 /* PlayerCell.xib in Resources */,
 				2364876A16F4DD7300DF2C27 /* tabbar-item-favorites-unselected@2x.png in Resources */,
 				2364876B16F4DD7300DF2C27 /* tabbar-item-info-selected@2x.png in Resources */,
 				2364876C16F4DD7300DF2C27 /* tabbar-item-info-unselected@2x.png in Resources */,

@@ -12,8 +12,8 @@
 
 @interface LivePlaylistTableViewCell ()
 
-@property  (nonatomic, weak) IBOutlet UIView *containerView;
-@property  (nonatomic, strong) UIView *shadowView;
+@property  (nonatomic, weak) IBOutlet __block UIView *containerView;
+@property  (nonatomic, strong) __block UIView *shadowView;
 
 @end
 
@@ -38,6 +38,7 @@
 	
 	[self observeKeyPath:@keypath(self.containerView, frame) changeBlock:^(id change) {
 		_shadowView.frame = _containerView.frame;
+		[_shadowView setNeedsDisplay];
 	}];
 }
 

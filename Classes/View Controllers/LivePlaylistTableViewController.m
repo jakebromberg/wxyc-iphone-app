@@ -9,6 +9,11 @@
 #import "NSIndexPath+Additions.h"
 #import "NSObject+KVOBlocks.h"
 #import "NSObject+LivePlaylistTableViewCellMappings.h"
+#import "BreakpointCell.h"
+
+#import "TalksetCell.h"
+#import "PlayerCell.h"
+#import "PlaycutCell.h"
 
 typedef enum {
 	kPlayerSection = 0,
@@ -30,6 +35,24 @@ typedef enum {
 }
 
 #pragma mark - UITableViewController
+
+- (void)awakeFromNib
+{
+	const NSArray *cellClasses = @[
+		PlayerCell.class,
+		PlaycutCell.class,
+		TalksetCell.class,
+		BreakpointCell.class,
+	];
+	
+	for (Class cellClass in cellClasses)
+	{
+		NSString *className = NSStringFromClass(cellClass);
+		UINib *nib = [UINib nibWithNibName:className bundle:nil];
+		
+		[self.tableView registerNib:nib forCellReuseIdentifier:className];
+	}
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
