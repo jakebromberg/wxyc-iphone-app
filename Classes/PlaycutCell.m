@@ -51,7 +51,9 @@
 	
 	[self observeKeyPath:@keypath(self, entity.PrimaryImage) changeBlock:^(NSDictionary *change)
 	{
-		__self.albumArt.image = [UIImage imageWithData:__self.entity.PrimaryImage];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			__self.albumArt.image = [__self imageForAlbumArt];
+		});
 	}];
 }
 
@@ -95,13 +97,18 @@
 
 - (SDWebImageDownloaderCompletedBlock)imageDownloadHandler
 {
+	static dispatch_queue_t backgroundQueue;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+	});
+	
 	__weak __typeof(self) __self = self;
 
 	return ^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-		if (error)
+		if (error || !finished)
 			return;
 		
-		dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
 		dispatch_async(backgroundQueue, ^{
 			__self.entity.PrimaryImage = UIImagePNGRepresentation(image);
 			[[NSManagedObjectContext contextForCurrentThread] saveToPersistentStoreAndWait];
@@ -144,7 +151,7 @@
 
 + (float)height
 {
-	return 360.f;
+	return 380.f;
 }
 
 @end
