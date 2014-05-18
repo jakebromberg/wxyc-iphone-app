@@ -109,7 +109,12 @@
 		if (error || !finished)
 			return;
 		
+		
 		dispatch_async(backgroundQueue, ^{
+			SDImageCache *cache = [SDImageCache sharedImageCache];
+			id key = [@[self.artistLabel.text, self.titleLabel.text] componentsJoinedByString:@""];
+			[cache storeImage:image forKey:key];
+			
 			__self.entity.PrimaryImage = UIImagePNGRepresentation(image);
 			[[NSManagedObjectContext contextForCurrentThread] saveToPersistentStoreAndWait];
 		});
