@@ -7,7 +7,6 @@
 //
 
 #import <RestKit/RestKit.h>
-#import "PlaylistMapping.h"
 #import "NSObject+Singleton.h"
 
 @interface PlaylistController : NSObject <XYCSingleton>

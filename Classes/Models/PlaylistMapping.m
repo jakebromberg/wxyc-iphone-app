@@ -14,6 +14,8 @@
 
 @interface PlaylistMapping()
 
+@property (nonatomic, strong) RKObjectManager *objectManager;
+
 @property (readonly) RKResponseDescriptor *playcutMapping;
 @property (readonly) RKResponseDescriptor *talksetMapping;
 @property (readonly) RKResponseDescriptor *breakpointMapping;
@@ -22,7 +24,7 @@
 
 @implementation PlaylistMapping
 
-static NSString *baseURL = @"http://wxyc.info/";
+static NSString * const baseURL = @"http://wxyc.info/";
 
 - (instancetype)init
 {

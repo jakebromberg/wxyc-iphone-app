@@ -90,9 +90,12 @@
 - (void)commonInit
 {
 	_playlist = [NSMutableArray array];
-	
-	[self fetchPlaylist];
-	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
+	{
+		[self fetchPlaylist];
+		[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
+	}];
 }
 
 @end

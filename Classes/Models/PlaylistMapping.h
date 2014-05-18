@@ -12,6 +12,4 @@
 
 @interface PlaylistMapping : NSObject <XYCSingleton>
 
-@property (nonatomic, strong) RKObjectManager *objectManager;
-
 @end
