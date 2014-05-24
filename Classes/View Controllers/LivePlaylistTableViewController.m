@@ -15,11 +15,12 @@
 #import "PlayerCell.h"
 #import "PlaycutCell.h"
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
+{
 	kPlayerSection = 0,
 	kPlaylistSection,
 	kNumberOfSections
-} LivePlaylistTableSections;
+};
 
 @interface LivePlaylistTableViewController ()
 
