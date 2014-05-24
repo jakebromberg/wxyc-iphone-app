@@ -33,7 +33,7 @@
 		23456D94181B4A7B00C88621 /* NSObject+KVOBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 23456D93181B4A7B00C88621 /* NSObject+KVOBlocks.m */; };
 		23456D96181B59ED00C88621 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23456D95181B59ED00C88621 /* Images.xcassets */; };
 		234946D61263A6DD00022117 /* cassette reel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 234946D51263A6DD00022117 /* cassette reel@2x.png */; };
-		234A74D5153B6D3100C30053 /* PlaylistMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 234A74D4153B6D3100C30053 /* PlaylistMapping.m */; };
+		234A74D5153B6D3100C30053 /* PlaylistMappingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 234A74D4153B6D3100C30053 /* PlaylistMappingsManager.m */; };
 		234B49F712936B0A001B3EB2 /* toolbar-cassette.png in Resources */ = {isa = PBXBuildFile; fileRef = 234B49F512936B0A001B3EB2 /* toolbar-cassette.png */; };
 		234B49F812936B0A001B3EB2 /* toolbar-cassette@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 234B49F612936B0A001B3EB2 /* toolbar-cassette@2x.png */; };
 		234B4AEB12938EF1001B3EB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 234B4AEA12938EF1001B3EB2 /* Security.framework */; };
@@ -66,6 +66,9 @@
 		237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA34179BA17D00AAEC4B /* SocialShareAction.m */; };
 		237E914F12930E5400A07456 /* casey-burns-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914D12930E5400A07456 /* casey-burns-app-icon.png */; };
 		237E915012930E5400A07456 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */; };
+		238F6D751931516700EF95BA /* PlaycutMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 238F6D741931516700EF95BA /* PlaycutMapping.m */; };
+		238F6D781931517800EF95BA /* TalksetMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 238F6D771931517800EF95BA /* TalksetMapping.m */; };
+		238F6D7B1931518400EF95BA /* BreakpointMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 238F6D7A1931518400EF95BA /* BreakpointMapping.m */; };
 		23924C8D1289ECCC00EFC0FA /* toolbar-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924C891289ECCC00EFC0FA /* toolbar-down.png */; };
 		23924C8E1289ECCC00EFC0FA /* toolbar-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924C8A1289ECCC00EFC0FA /* toolbar-down@2x.png */; };
 		23924C8F1289ECCC00EFC0FA /* toolbar-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924C8B1289ECCC00EFC0FA /* toolbar-up.png */; };
@@ -188,8 +191,8 @@
 		23456D93181B4A7B00C88621 /* NSObject+KVOBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KVOBlocks.m"; sourceTree = "<group>"; };
 		23456D95181B59ED00C88621 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WXYC/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		234946D51263A6DD00022117 /* cassette reel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cassette reel@2x.png"; sourceTree = "<group>"; };
-		234A74D3153B6D3100C30053 /* PlaylistMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistMapping.h; path = Models/PlaylistMapping.h; sourceTree = "<group>"; };
-		234A74D4153B6D3100C30053 /* PlaylistMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistMapping.m; path = Models/PlaylistMapping.m; sourceTree = "<group>"; };
+		234A74D3153B6D3100C30053 /* PlaylistMappingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistMappingsManager.h; path = Models/PlaylistMappingsManager.h; sourceTree = "<group>"; };
+		234A74D4153B6D3100C30053 /* PlaylistMappingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistMappingsManager.m; path = Models/PlaylistMappingsManager.m; sourceTree = "<group>"; };
 		234B49F512936B0A001B3EB2 /* toolbar-cassette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-cassette.png"; sourceTree = "<group>"; };
 		234B49F612936B0A001B3EB2 /* toolbar-cassette@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-cassette@2x.png"; sourceTree = "<group>"; };
 		234B4AEA12938EF1001B3EB2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -230,6 +233,12 @@
 		237DFA34179BA17D00AAEC4B /* SocialShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SocialShareAction.m; path = Views/SocialShareAction.m; sourceTree = "<group>"; };
 		237E914D12930E5400A07456 /* casey-burns-app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon.png"; sourceTree = "<group>"; };
 		237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
+		238F6D731931516700EF95BA /* PlaycutMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaycutMapping.h; path = Models/PlaycutMapping.h; sourceTree = "<group>"; };
+		238F6D741931516700EF95BA /* PlaycutMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutMapping.m; path = Models/PlaycutMapping.m; sourceTree = "<group>"; };
+		238F6D761931517800EF95BA /* TalksetMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TalksetMapping.h; path = Models/TalksetMapping.h; sourceTree = "<group>"; };
+		238F6D771931517800EF95BA /* TalksetMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TalksetMapping.m; path = Models/TalksetMapping.m; sourceTree = "<group>"; };
+		238F6D791931518400EF95BA /* BreakpointMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BreakpointMapping.h; path = Models/BreakpointMapping.h; sourceTree = "<group>"; };
+		238F6D7A1931518400EF95BA /* BreakpointMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BreakpointMapping.m; path = Models/BreakpointMapping.m; sourceTree = "<group>"; };
 		23924C891289ECCC00EFC0FA /* toolbar-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-down.png"; sourceTree = "<group>"; };
 		23924C8A1289ECCC00EFC0FA /* toolbar-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-down@2x.png"; sourceTree = "<group>"; };
 		23924C8B1289ECCC00EFC0FA /* toolbar-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-up.png"; sourceTree = "<group>"; };
@@ -594,6 +603,21 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		238F6D711931227400EF95BA /* RK Mappings */ = {
+			isa = PBXGroup;
+			children = (
+				234A74D3153B6D3100C30053 /* PlaylistMappingsManager.h */,
+				234A74D4153B6D3100C30053 /* PlaylistMappingsManager.m */,
+				238F6D731931516700EF95BA /* PlaycutMapping.h */,
+				238F6D741931516700EF95BA /* PlaycutMapping.m */,
+				238F6D761931517800EF95BA /* TalksetMapping.h */,
+				238F6D771931517800EF95BA /* TalksetMapping.m */,
+				238F6D791931518400EF95BA /* BreakpointMapping.h */,
+				238F6D7A1931518400EF95BA /* BreakpointMapping.m */,
+			);
+			name = "RK Mappings";
+			sourceTree = "<group>";
+		};
 		23AEB9E316F615D500E2EBB1 /* Clock */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,6 +640,7 @@
 		23B32D1D126E3268008414F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				238F6D711931227400EF95BA /* RK Mappings */,
 				23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */,
 				231EC0D4180E109800D93649 /* Breakpoint.h */,
 				231EC0D5180E109800D93649 /* Breakpoint.m */,
@@ -625,8 +650,6 @@
 				231EC0DB180E109800D93649 /* Playlist.m */,
 				23EE39651527EB070006CDA5 /* PlaylistEntry.h */,
 				23EE39661527EB070006CDA5 /* PlaylistEntry.m */,
-				234A74D3153B6D3100C30053 /* PlaylistMapping.h */,
-				234A74D4153B6D3100C30053 /* PlaylistMapping.m */,
 				231EC0D1180E109800D93649 /* Talkset.h */,
 				231EC0D2180E109800D93649 /* Talkset.m */,
 				231EC0CC180BB2B000D93649 /* XYCDataStack.h */,
@@ -1023,8 +1046,10 @@
 				23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */,
 				235481AA1818E56500342DEC /* NSObject+ObjectBuilder.m in Sources */,
 				23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */,
+				238F6D751931516700EF95BA /* PlaycutMapping.m in Sources */,
 				231EC0CE180BB2B000D93649 /* XYCDataStack.m in Sources */,
 				235481A71818E30700342DEC /* UIApplication+PresentViewController.m in Sources */,
+				238F6D7B1931518400EF95BA /* BreakpointMapping.m in Sources */,
 				23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */,
 				231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */,
 				23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */,
@@ -1045,9 +1070,10 @@
 				23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */,
 				23EE3A081527F07A0006CDA5 /* SimpleWebBrowser.m in Sources */,
 				231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */,
+				238F6D781931517800EF95BA /* TalksetMapping.m in Sources */,
 				23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				234A74D5153B6D3100C30053 /* PlaylistMapping.m in Sources */,
+				234A74D5153B6D3100C30053 /* PlaylistMappingsManager.m in Sources */,
 				2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */,
 				23F8176916EBDDD1005BF24F /* NSString+Additions.m in Sources */,
 				23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */,

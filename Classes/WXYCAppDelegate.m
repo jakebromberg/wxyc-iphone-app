@@ -5,7 +5,6 @@
 
 #import "WXYCAppDelegate.h"
 #import "XYCDataStack.h"
-#import "PlaylistMapping.h"
 #import "LockscreenMediaController.h"
 #import "PlaylistController.h"
 
@@ -20,7 +19,6 @@
 {
 	[XYCDataStack loadSingleton];
 	[PlaylistController loadSingleton];
-	[PlaylistMapping loadSingleton];
 	[LockscreenMediaController loadSingleton];
 }
 
