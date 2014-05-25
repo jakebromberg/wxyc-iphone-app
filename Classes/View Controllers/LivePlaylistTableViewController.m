@@ -5,12 +5,12 @@
 
 #import "LivePlaylistTableViewController.h"
 #import "PlaylistController.h"
-#import "PlayerCell.h"
 #import "NSIndexPath+Additions.h"
 #import "NSObject+KVOBlocks.h"
 #import "NSObject+LivePlaylistTableViewCellMappings.h"
-#import "BreakpointCell.h"
 
+#import "PlayerCell.h"
+#import "BreakpointCell.h"
 #import "TalksetCell.h"
 #import "PlayerCell.h"
 #import "PlaycutCell.h"
@@ -101,7 +101,9 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 
 - (void)viewDidLoad
 {
-	[[PlaylistController sharedObject] observeKeyPath:@keypath(PlaylistController.sharedObject, playlist) changeBlock:^(NSDictionary *change)
+	PlaylistController *ctrlr = [PlaylistController sharedObject];
+	
+	[ctrlr observeKeyPath:@keypath(ctrlr, playlist) changeBlock:^(NSDictionary *change)
 	{
 		id newIndexPaths = [NSIndexPath indexPathsForItemsInRange:NSMakeRange(0, [change[NSKeyValueChangeNewKey] count]) section:kPlaylistSection];
 		
