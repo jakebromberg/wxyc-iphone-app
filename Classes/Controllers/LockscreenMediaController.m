@@ -12,6 +12,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "AudioStreamController.h"
 #import "NSArray+Additions.h"
+#import "NSObject+KVOBlocks.h"
 
 @interface LockscreenMediaController ()
 
@@ -29,23 +30,18 @@
 
 - (instancetype)init
 {
-	return COMMON_INIT([super init]);
-}
-
-- (void)commonInit
-{
-	[[PlaylistController sharedObject] addObserver:self forKeyPath:@"playlist" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
-	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"playlist"] || [keyPath isEqualToString:@"isPlaying"])
+	if (!(self = [super init]))
+		return nil;
+	
+	id changeBlock = ^(NSDictionary *change)
 	{
 		[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = self.firstPlaycut.nowPlayingInfo;
-	} else {
-		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-	}
+	};
+	
+	[[PlaylistController sharedObject] observeKeyPath:@keypath(PlaylistController *, playlist) changeBlock:changeBlock];
+	[[AudioStreamController wxyc] observeKeyPath:@keypath(AudioStreamController *, isPlaying) changeBlock:changeBlock];
+	
+	return self;
 }
 
 - (Playcut *)firstPlaycut
