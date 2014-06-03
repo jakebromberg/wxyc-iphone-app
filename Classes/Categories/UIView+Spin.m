@@ -9,13 +9,15 @@
 #import "UIView+Spin.h"
 #import "IndefinitelySpinningAnimation.h"
 
+static NSString * const kSpinKey = @"spinAnimation";
+
 @implementation UIView (Spin)
 
 - (void)startSpin
 {
-	if (![self.layer animationForKey:@"spinAnimation"])
+	if (![self.layer animationForKey:kSpinKey])
 	{
-		[self.layer addAnimation:[IndefinitelySpinningAnimation getAnimation] forKey:@"spinAnimation"];
+		[self.layer addAnimation:[IndefinitelySpinningAnimation animation] forKey:kSpinKey];
 		[self pauseLayer:self.layer];
 	}
 	
