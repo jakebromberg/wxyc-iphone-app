@@ -99,7 +99,7 @@
 
 + (NSSet *)keyPathsForValuesAffectingIsPlaying
 {
-	return [NSSet setWithObject:@"player.rate"];
+	return [NSSet setWithObject:@keypath(AudioStreamController *, player.rate)];
 }
 
 @end
