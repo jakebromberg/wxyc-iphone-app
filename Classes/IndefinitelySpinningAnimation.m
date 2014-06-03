@@ -10,10 +10,10 @@
 
 @implementation IndefinitelySpinningAnimation
 
-+ (id)getAnimation
++ (instancetype)animation
 {
-	CABasicAnimation *spinAnimation;
-	
+	IndefinitelySpinningAnimation *spinAnimation;
+
 	spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
 	spinAnimation.duration = 2;
 	spinAnimation.repeatCount = FLT_MAX;

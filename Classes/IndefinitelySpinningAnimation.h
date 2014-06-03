@@ -8,8 +8,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-@interface IndefinitelySpinningAnimation : CAAnimation
+@interface IndefinitelySpinningAnimation : CABasicAnimation
 
-+ (id)getAnimation;
++ (instancetype)animation;
 
 @end
