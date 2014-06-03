@@ -104,20 +104,22 @@
 	});
 
 	__block __weak __typeof(self) __self = self;
-
-	return ^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+	__block NSManagedObjectID *entityID = self.entity.objectID;
+	return ^(UIImage *image, NSData *data, NSError *error, BOOL finished)
+	{
 		if (error || !finished)
 			return;
 		
+		SDImageCache *cache = [SDImageCache sharedImageCache];
+		id key = [@[__self.artistLabel.text, __self.titleLabel.text] componentsJoinedByString:@""];
+		[cache storeImage:image forKey:key];
 		
-		dispatch_async(backgroundQueue, ^{
-			SDImageCache *cache = [SDImageCache sharedImageCache];
-			id key = [@[self.artistLabel.text, self.titleLabel.text] componentsJoinedByString:@""];
-			[cache storeImage:image forKey:key];
-			
-			__self.entity.PrimaryImage = UIImagePNGRepresentation(image);
-			[[NSManagedObjectContext contextForCurrentThread] saveToPersistentStoreAndWait];
-		});
+		Playcut *playcut = (Playcut *) [[NSManagedObjectContext contextForCurrentThread] objectWithID:entityID];
+		playcut.PrimaryImage = UIImagePNGRepresentation(image);
+		
+		[[NSManagedObjectContext contextForCurrentThread] saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+			NSLog(@"%uc %@", success, error);
+		}];
 	};
 }
 
