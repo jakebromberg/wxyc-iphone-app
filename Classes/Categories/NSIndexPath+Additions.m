@@ -14,7 +14,8 @@
 {
 	NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:range.length];
 	
-	for (int i = range.location; i < range.length; i++) {
+	for (NSUInteger i = range.location; i < range.length; i++)
+	{
 		[indexPaths addObject:[NSIndexPath indexPathForItem:i inSection:section]];
 	}
 	
