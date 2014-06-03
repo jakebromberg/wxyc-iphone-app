@@ -61,4 +61,11 @@
 	}
 }
 
+- (void)setHidden:(BOOL)hidden
+{
+	[super setHidden:hidden];
+	
+	[self configureInterfaceForPlayingState:[[AudioStreamController wxyc] isPlaying]];
+}
+
 @end
