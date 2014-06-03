@@ -107,12 +107,8 @@
 - (void)tidyUpCoreData
 {
 	//Clean out unfavorited data
-	for (Playcut *playcut in [Playcut findByAttribute:@keypath(Playcut *, Favorite) withValue:@NO])
-	{
-		[playcut deleteEntity];
-	}
-	
-	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+	NSPredicate *p = [NSPredicate predicateWithFormat:@"%K = %@", @keypath(Playcut *, Favorite), @NO];
+	[Playcut deleteAllMatchingPredicate:p];
 }
 
 @end
