@@ -10,9 +10,12 @@
 
 @implementation WXYCAppDelegate
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	[[self class] instantiateSingletons];
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+	
+	return YES;
 }
 
 + (void)instantiateSingletons
@@ -20,6 +23,11 @@
 	[XYCDataStack loadSingleton];
 	[PlaylistController loadSingleton];
 	[LockscreenMediaController loadSingleton];
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+	[[PlaylistController sharedObject] fetchPlaylistWithCompletionHandler:completionHandler];
 }
 
 @end

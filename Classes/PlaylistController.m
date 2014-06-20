@@ -47,17 +47,32 @@
 
 #pragma mark JSON Business
 
-- (void)fetchPlaylist
+- (void)fetchPlaylistWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	
 	[RKObjectManager.sharedManager getObjectsAtPath:self.path parameters:self.parameters success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
 	 {
+		 if (mappingResult.array.count)
+		 {
+			 if (completionHandler) completionHandler(UIBackgroundFetchResultNewData);
+		 } else {
+			 if (completionHandler) completionHandler(UIBackgroundFetchResultNoData);
+		 }
+		 
 		 [self appendResultsToPlaylist:mappingResult.array];
 		 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		 
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 		 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		 
+		 if (completionHandler) completionHandler(UIBackgroundFetchResultFailed);
 	 }];
+}
+
+- (void)fetchPlaylist
+{
+	[self fetchPlaylistWithCompletionHandler:nil];
 }
 
 - (void)appendResultsToPlaylist:(NSArray *)results
@@ -94,7 +109,7 @@
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
 	{
 		[self fetchPlaylist];
-		[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
+		[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 	}];
 }
 

@@ -11,6 +11,7 @@
 
 @interface PlaylistController : NSObject <XYCSingleton>
 
+- (void)fetchPlaylistWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 - (void)fetchPlaylist;
 
 @end
