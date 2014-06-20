@@ -105,7 +105,8 @@ dispatch_block_t (^fetchData)(NSArray *, OperationHandler) = ^(NSArray *keywords
 + (NSURLRequest *)requestForKeywords:(NSArray *)keywords
 {
 	NSString *query = [[keywords join:@"+"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSString *urlString = [IMAGE_SEARCH_URL formattedWith:@[LARGE_IMG_SIZE, API_KEY, query]];
+	
+	NSString *urlString = [NSString stringWithFormat:IMAGE_SEARCH_URL,LARGE_IMG_SIZE, API_KEY, query];
 	NSURL *URL = [NSURL URLWithString:urlString];
 	
 	return [NSURLRequest requestWithURL:URL];
