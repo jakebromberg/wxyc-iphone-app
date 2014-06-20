@@ -66,6 +66,10 @@
 		237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA34179BA17D00AAEC4B /* SocialShareAction.m */; };
 		237E914F12930E5400A07456 /* casey-burns-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914D12930E5400A07456 /* casey-burns-app-icon.png */; };
 		237E915012930E5400A07456 /* casey-burns-app-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */; };
+		2380F0A319549661001939DD /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2380F0A219549661001939DD /* NotificationCenter.framework */; };
+		2380F0A919549661001939DD /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2380F0A819549661001939DD /* TodayViewController.m */; };
+		2380F0AB19549661001939DD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2380F0AA19549661001939DD /* MainInterface.storyboard */; };
+		2380F0AE19549661001939DD /* org.wxyc.iphoneapp.WXYC-Today-Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2380F0A119549661001939DD /* org.wxyc.iphoneapp.WXYC-Today-Extension.appex */; };
 		238F6D751931516700EF95BA /* PlaycutMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 238F6D741931516700EF95BA /* PlaycutMapping.m */; };
 		238F6D781931517800EF95BA /* TalksetMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 238F6D771931517800EF95BA /* TalksetMapping.m */; };
 		238F6D7B1931518400EF95BA /* BreakpointMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 238F6D7A1931518400EF95BA /* BreakpointMapping.m */; };
@@ -148,6 +152,37 @@
 		4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */; };
 		D09655E1CE0145B9BF14F261 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C80948779A0C4AFDB5BE7C39 /* libPods.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2380F0AC19549661001939DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2380F0A019549661001939DD;
+			remoteInfo = "WXYC Today Extension";
+		};
+		2380F0AF19549661001939DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2380F0A019549661001939DD;
+			remoteInfo = "WXYC Today Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2380F0B519549661001939DD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2380F0AE19549661001939DD /* org.wxyc.iphoneapp.WXYC-Today-Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -233,6 +268,12 @@
 		237DFA34179BA17D00AAEC4B /* SocialShareAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SocialShareAction.m; path = Views/SocialShareAction.m; sourceTree = "<group>"; };
 		237E914D12930E5400A07456 /* casey-burns-app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon.png"; sourceTree = "<group>"; };
 		237E914E12930E5400A07456 /* casey-burns-app-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "casey-burns-app-icon@2x.png"; sourceTree = "<group>"; };
+		2380F0A119549661001939DD /* org.wxyc.iphoneapp.WXYC-Today-Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "org.wxyc.iphoneapp.WXYC-Today-Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2380F0A219549661001939DD /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		2380F0A619549661001939DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2380F0A719549661001939DD /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		2380F0A819549661001939DD /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		2380F0AA19549661001939DD /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		238F6D731931516700EF95BA /* PlaycutMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaycutMapping.h; path = Models/PlaycutMapping.h; sourceTree = "<group>"; };
 		238F6D741931516700EF95BA /* PlaycutMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutMapping.m; path = Models/PlaycutMapping.m; sourceTree = "<group>"; };
 		238F6D761931517800EF95BA /* TalksetMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TalksetMapping.h; path = Models/TalksetMapping.h; sourceTree = "<group>"; };
@@ -375,6 +416,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2380F09E19549661001939DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2380F0A319549661001939DD /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -394,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				23E77B1E1118DCB3007D373D /* WXYC.app */,
+				2380F0A119549661001939DD /* org.wxyc.iphoneapp.WXYC-Today-Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -591,6 +641,25 @@
 				23EAEFAE179C461E008E0960 /* FavoriteShareAction.m */,
 			);
 			name = "Share Actions";
+			sourceTree = "<group>";
+		};
+		2380F0A419549661001939DD /* WXYC Today Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2380F0A719549661001939DD /* TodayViewController.h */,
+				2380F0A819549661001939DD /* TodayViewController.m */,
+				2380F0AA19549661001939DD /* MainInterface.storyboard */,
+				2380F0A519549661001939DD /* Supporting Files */,
+			);
+			path = "WXYC Today Extension";
+			sourceTree = "<group>";
+		};
+		2380F0A519549661001939DD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2380F0A619549661001939DD /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		238CC1C512664111006EC552 /* Casssette Reel */ = {
@@ -802,6 +871,7 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Bootstrapping */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				2380F0A419549661001939DD /* WXYC Today Extension */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				301ED3726EAB431A91FE0405 /* Pods.xcconfig */,
@@ -843,7 +913,6 @@
 				230EB0FC127600210065308D /* CoreAudio.framework */,
 				23B32D48126E386B008414F4 /* CoreData.framework */,
 				23651003111211C700C192CB /* CoreGraphics.framework */,
-				230640BD179B1EAB0054B673 /* CoreMedia.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				235DE13616ED3B38005640E9 /* ImageIO.framework */,
 				23601B9A105F116000E6A6FB /* MediaPlayer.framework */,
@@ -856,6 +925,7 @@
 				23C2A9E9128A59D100D61A4A /* SystemConfiguration.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				23B613F8164EFA8D004547C2 /* Social.framework */,
+				2380F0A219549661001939DD /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -872,15 +942,35 @@
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				902F1F23146E47CD8FD64F81 /* Copy Pods Resources */,
+				2380F0B519549661001939DD /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2380F0AD19549661001939DD /* PBXTargetDependency */,
+				2380F0B019549661001939DD /* PBXTargetDependency */,
 			);
 			name = WXYC;
 			productName = ORBooks;
 			productReference = 23E77B1E1118DCB3007D373D /* WXYC.app */;
 			productType = "com.apple.product-type.application";
+		};
+		2380F0A019549661001939DD /* WXYC Today Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2380F0B419549661001939DD /* Build configuration list for PBXNativeTarget "WXYC Today Extension" */;
+			buildPhases = (
+				2380F09D19549661001939DD /* Sources */,
+				2380F09E19549661001939DD /* Frameworks */,
+				2380F09F19549661001939DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WXYC Today Extension";
+			productName = "WXYC Today Extension";
+			productReference = 2380F0A119549661001939DD /* org.wxyc.iphoneapp.WXYC-Today-Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -893,6 +983,10 @@
 				ORGANIZATIONNAME = WXYC;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 92V374HC38;
+					};
+					2380F0A019549661001939DD = {
+						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = 92V374HC38;
 					};
 				};
@@ -914,6 +1008,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* WXYC */,
+				2380F0A019549661001939DD /* WXYC Today Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -995,6 +1090,14 @@
 				23AEB9DE16F615CE00E2EBB1 /* clock-8.png in Resources */,
 				23AEB9DF16F615CE00E2EBB1 /* clock-10.png in Resources */,
 				2318562C173B274B00F15CC6 /* no-favorites.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2380F09F19549661001939DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2380F0AB19549661001939DD /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,7 +1193,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2380F09D19549661001939DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2380F0A919549661001939DD /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2380F0AD19549661001939DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2380F0A019549661001939DD /* WXYC Today Extension */;
+			targetProxy = 2380F0AC19549661001939DD /* PBXContainerItemProxy */;
+		};
+		2380F0B019549661001939DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2380F0A019549661001939DD /* WXYC Today Extension */;
+			targetProxy = 2380F0AF19549661001939DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -1169,6 +1293,125 @@
 				SDKROOT = iphoneos;
 			};
 			name = Release;
+		};
+		2380F0B119549661001939DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "WXYC Today Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "org.wxyc.iphoneapp.$(TARGET_NAME:rfc1034identifier)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2380F0B219549661001939DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "WXYC Today Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "org.wxyc.iphoneapp.$(TARGET_NAME:rfc1034identifier)";
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2380F0B319549661001939DD /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "WXYC Today Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "org.wxyc.iphoneapp.$(TARGET_NAME:rfc1034identifier)";
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
 		};
 		238966F81062BCFA002ED494 /* Distribution */ = {
 			isa = XCBuildConfiguration;
@@ -1269,6 +1512,15 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		2380F0B419549661001939DD /* Build configuration list for PBXNativeTarget "WXYC Today Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2380F0B119549661001939DD /* Debug */,
+				2380F0B219549661001939DD /* Release */,
+				2380F0B319549661001939DD /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WXYCapp" */ = {
 			isa = XCConfigurationList;
