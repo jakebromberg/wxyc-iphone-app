@@ -8,8 +8,19 @@
 
 #import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
+#import "PlaylistController.h"
+#import "Playcut.h"
+
+static const NCUpdateResult XYCBackgroundFetchMappings[] =
+{
+	[UIBackgroundFetchResultFailed] = NCUpdateResultFailed,
+	[UIBackgroundFetchResultNewData] = NCUpdateResultNewData,
+	[UIBackgroundFetchResultNoData] = NCUpdateResultNoData,
+};
 
 @interface TodayViewController () <NCWidgetProviding>
+
+@property (nonatomic, weak) IBOutlet UILabel *label;
 
 @end
 
@@ -33,14 +44,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
-    // Perform any setup necessary in order to update the view.
-    
-    // If an error is encoutered, use NCUpdateResultFailed
-    // If there's no update required, use NCUpdateResultNoData
-    // If there's an update, use NCUpdateResultNewData
+- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler
+{
+	[[PlaylistController sharedObject] fetchPlaylistWithCompletionHandler:^(UIBackgroundFetchResult result)
+	{
+		Playcut *playcut = [[PlaylistController sharedObject] firstPlaycut];
+		self.label.text = playcut.Song;
+		completionHandler(XYCBackgroundFetchMappings[result]);
+	}];
+}
 
-    completionHandler(NCUpdateResultNewData);
+- (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets
+{
+	return defaultMarginInsets;
 }
 
 @end
