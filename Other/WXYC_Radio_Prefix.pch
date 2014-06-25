@@ -4,6 +4,7 @@
     #import <UIKit/UIKit.h>
 	#import <Security/Security.h>
 
+	#define MR_SHORTHAND 1
     #import <CoreData+MagicalRecord.h>
 
 	#import "CommonInitializer.h"
