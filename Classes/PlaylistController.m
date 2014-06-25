@@ -9,6 +9,7 @@
 #import <RestKit/RestKit.h>
 #import "PlaylistController.h"
 #import "NSArray+Additions.h"
+#import "Playcut.h"
 
 @interface PlaylistController()
 
@@ -20,6 +21,13 @@
 
 
 @implementation PlaylistController
+
+- (Playcut *)firstPlaycut
+{
+	return [self.playlist objectPassingTest:^BOOL(id obj) {
+		return [obj isKindOfClass:[Playcut class]];
+	}];
+}
 
 - (NSString *)path
 {
@@ -49,8 +57,6 @@
 
 - (void)fetchPlaylistWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-	
 	[RKObjectManager.sharedManager getObjectsAtPath:self.path parameters:self.parameters success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
 	 {
 		 if (mappingResult.array.count)
@@ -60,13 +66,13 @@
 			 if (completionHandler) completionHandler(UIBackgroundFetchResultNoData);
 		 }
 		 
-		 [self appendResultsToPlaylist:mappingResult.array];
-		 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		 [self appendResultsToPlaylist:[mappingResult.array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, id b) {
+			 return ![self.playlist containsObject:evaluatedObject];
+		 }]]];
 		 
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-		 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-		 
-		 if (completionHandler) completionHandler(UIBackgroundFetchResultFailed);
+		 if (completionHandler)
+			 completionHandler(UIBackgroundFetchResultFailed);
 	 }];
 }
 
@@ -99,11 +105,8 @@
 
 - (instancetype)init
 {
-	return COMMON_INIT([super init]);
-}
-
-- (void)commonInit
-{
+	if (!(self = [super init])) return nil;
+	
 	_playlist = [NSMutableArray array];
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
@@ -111,6 +114,8 @@
 		[self fetchPlaylist];
 		[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 	}];
+
+	return self;
 }
 
 @end

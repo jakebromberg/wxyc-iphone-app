@@ -9,6 +9,8 @@
 #import <RestKit/RestKit.h>
 #import "NSObject+Singleton.h"
 
+@class Playcut;
+
 @interface PlaylistController : NSObject <XYCSingleton>
 
 - (void)fetchPlaylistWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
@@ -19,6 +21,7 @@
 
 @interface PlaylistController (Playlist)
 
-@property (readonly, nonatomic, strong) NSArray *playlist;
+@property (nonatomic, readonly) Playcut *firstPlaycut;
+@property (nonatomic, strong, readonly) NSArray *playlist;
 
 @end
