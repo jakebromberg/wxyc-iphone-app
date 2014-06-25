@@ -7,7 +7,6 @@
 //
 
 #import "FavoriteShareAction.h"
-#import "UIAlertView+MKBlockAdditions.h"
 
 @implementation FavoriteShareAction
 
@@ -15,13 +14,17 @@
 {
 	if ([playcut.Favorite isEqual:@YES])
 	{
-		[UIAlertView alertViewWithTitle:@"💔" message:@"Unlove this track, for real?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unlove"] onDismiss:^(int buttonIndex)
-		 {
-			 playcut.Favorite = @NO;
-			 [playcut.managedObjectContext saveToPersistentStoreAndWait];
-		 } onCancel:^{
-			 return;
-		 }];
+		UIAlertController *alertViewController = [UIAlertController alertControllerWithTitle:@"💔" message:@"Unlove this track, for real?" preferredStyle:UIAlertControllerStyleAlert];
+		
+		[alertViewController addAction:[UIAlertAction actionWithTitle:@"Unlove" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action)
+		{
+			playcut.Favorite = @NO;
+			[playcut.managedObjectContext saveToPersistentStoreAndWait];
+		}]];
+		
+		[alertViewController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+		
+		[[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertViewController animated:YES completion:nil];
 	}
 	else
 	{

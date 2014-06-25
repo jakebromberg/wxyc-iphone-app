@@ -8,7 +8,6 @@
 
 #import "SocialShareAction.h"
 #import "NSString+Additions.h"
-#import "UIAlertView+MKBlockAdditions.h"
 
 @implementation SocialShareAction
 
@@ -41,9 +40,14 @@
 		
 		[[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:sheet animated:YES completion:nil];
 	} else {
-		id title = [@"Not logged in to " append:self.class.serviceName];
-		id message = [@"Open Settings and add your %@ account" formattedWith:@[self.class.serviceName]];
-		[[UIAlertView alertViewWithTitle:title message:message] show];
+		UIAlertController *alertViewController = [UIAlertController
+			alertControllerWithTitle:[@"Not logged in to " append:self.class.serviceName]
+							 message:[@"Open Settings and add your %@ account" formattedWith:@[self.class.serviceName]]
+					  preferredStyle:UIAlertControllerStyleAlert];
+		
+		[alertViewController addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:nil]];
+		
+		[[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertViewController animated:YES completion:nil];
 	}
 }
 
