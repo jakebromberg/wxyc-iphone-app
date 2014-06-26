@@ -2,8 +2,8 @@
 //  Playcut.m
 //  WXYCapp
 //
-//  Created by Jake Bromberg on 10/15/13.
-//  Copyright (c) 2013 WXYC. All rights reserved.
+//  Created by Jake Bromberg on 6/25/14.
+//  Copyright (c) 2014 WXYC. All rights reserved.
 //
 
 #import "Playcut.h"
@@ -19,5 +19,6 @@
 @dynamic Request;
 @dynamic Rotation;
 @dynamic Song;
+@dynamic imageURL;
 
 @end

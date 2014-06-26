@@ -17,9 +17,6 @@
 		231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0C218066DFB00D93649 /* LockscreenMediaController.m */; };
 		231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0CA1807C59F00D93649 /* NSObject+Singleton.m */; };
 		231EC0CE180BB2B000D93649 /* XYCDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0CD180BB2B000D93649 /* XYCDataStack.m */; };
-		231EC0D3180E109800D93649 /* Talkset.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0D2180E109800D93649 /* Talkset.m */; };
-		231EC0D6180E109800D93649 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0D5180E109800D93649 /* Breakpoint.m */; };
-		231EC0D9180E109800D93649 /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0D8180E109800D93649 /* Playcut.m */; };
 		231EC0DC180E109800D93649 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DB180E109800D93649 /* Playlist.m */; };
 		231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DD180E18ED00D93649 /* FavoriteShareButton.m */; };
 		231EC0E2180E19B600D93649 /* SearchShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0E1180E19B600D93649 /* SearchShareAction.m */; };
@@ -63,7 +60,6 @@
 		23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651003111211C700C192CB /* CoreGraphics.framework */; };
 		23651057111211D300C192CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23651056111211D300C192CB /* QuartzCore.framework */; };
 		23653F751954C8D9009AF000 /* PlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39221527D0EF0006CDA5 /* PlaylistController.m */; };
-		23653F761954CCBB009AF000 /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0D8180E109800D93649 /* Playcut.m */; };
 		23653F771954CCCD009AF000 /* PlaylistEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39661527EB070006CDA5 /* PlaylistEntry.m */; };
 		237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */; };
 		237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA34179BA17D00AAEC4B /* SocialShareAction.m */; };
@@ -148,6 +144,10 @@
 		23F8176216EBC35E005BF24F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */; };
 		23F8176916EBDDD1005BF24F /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F8176816EBDDD1005BF24F /* NSString+Additions.m */; };
 		23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F8176B16EBDE13005BF24F /* NSArray+Additions.m */; };
+		23FEE2ED195C64D600D467F0 /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF96E9195B21A0000328B5 /* Playcut.m */; };
+		23FF96E4195B219F000328B5 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF96E3195B219F000328B5 /* Breakpoint.m */; };
+		23FF96E7195B21A0000328B5 /* Talkset.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF96E6195B21A0000328B5 /* Talkset.m */; };
+		23FF96EA195B21A0000328B5 /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF96E9195B21A0000328B5 /* Playcut.m */; };
 		2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */; };
 		277757671631BD3000349E12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		277757691631BD4800349E12 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277757681631BD4800349E12 /* MessageUI.framework */; };
@@ -206,12 +206,6 @@
 		231EC0CD180BB2B000D93649 /* XYCDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYCDataStack.m; path = Models/XYCDataStack.m; sourceTree = "<group>"; };
 		231EC0CF180CFD1100D93649 /* keypath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keypath.h; sourceTree = "<group>"; };
 		231EC0D0180CFD7900D93649 /* metamacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
-		231EC0D1180E109800D93649 /* Talkset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Talkset.h; path = Models/Talkset.h; sourceTree = "<group>"; };
-		231EC0D2180E109800D93649 /* Talkset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Talkset.m; path = Models/Talkset.m; sourceTree = "<group>"; };
-		231EC0D4180E109800D93649 /* Breakpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Breakpoint.h; path = Models/Breakpoint.h; sourceTree = "<group>"; };
-		231EC0D5180E109800D93649 /* Breakpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Breakpoint.m; path = Models/Breakpoint.m; sourceTree = "<group>"; };
-		231EC0D7180E109800D93649 /* Playcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playcut.h; path = Models/Playcut.h; sourceTree = "<group>"; };
-		231EC0D8180E109800D93649 /* Playcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playcut.m; path = Models/Playcut.m; sourceTree = "<group>"; };
 		231EC0DA180E109800D93649 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playlist.h; path = Models/Playlist.h; sourceTree = "<group>"; };
 		231EC0DB180E109800D93649 /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playlist.m; path = Models/Playlist.m; sourceTree = "<group>"; };
 		231EC0DD180E18ED00D93649 /* FavoriteShareButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteShareButton.m; path = Views/FavoriteShareButton.m; sourceTree = "<group>"; };
@@ -385,6 +379,13 @@
 		23F8176816EBDDD1005BF24F /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		23F8176A16EBDE13005BF24F /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
 		23F8176B16EBDE13005BF24F /* NSArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Additions.m"; sourceTree = "<group>"; };
+		23FF96E1195B20A9000328B5 /* Playlist 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Playlist 3.xcdatamodel"; sourceTree = "<group>"; };
+		23FF96E2195B219F000328B5 /* Breakpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Breakpoint.h; path = Models/Breakpoint.h; sourceTree = "<group>"; };
+		23FF96E3195B219F000328B5 /* Breakpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Breakpoint.m; path = Models/Breakpoint.m; sourceTree = "<group>"; };
+		23FF96E5195B21A0000328B5 /* Talkset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Talkset.h; path = Models/Talkset.h; sourceTree = "<group>"; };
+		23FF96E6195B21A0000328B5 /* Talkset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Talkset.m; path = Models/Talkset.m; sourceTree = "<group>"; };
+		23FF96E8195B21A0000328B5 /* Playcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Playcut.h; path = Models/Playcut.h; sourceTree = "<group>"; };
+		23FF96E9195B21A0000328B5 /* Playcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Playcut.m; path = Models/Playcut.m; sourceTree = "<group>"; };
 		2777573D1631BB1600349E12 /* IndefinitelySpinningAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IndefinitelySpinningAnimation.h; path = Classes/IndefinitelySpinningAnimation.h; sourceTree = SOURCE_ROOT; };
 		2777573E1631BB1600349E12 /* IndefinitelySpinningAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IndefinitelySpinningAnimation.m; path = Classes/IndefinitelySpinningAnimation.m; sourceTree = SOURCE_ROOT; };
 		277757681631BD4800349E12 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -719,17 +720,17 @@
 			isa = PBXGroup;
 			children = (
 				238F6D711931227400EF95BA /* RK Mappings */,
+				23FF96E2195B219F000328B5 /* Breakpoint.h */,
+				23FF96E8195B21A0000328B5 /* Playcut.h */,
+				23FF96E9195B21A0000328B5 /* Playcut.m */,
+				23FF96E5195B21A0000328B5 /* Talkset.h */,
+				23FF96E6195B21A0000328B5 /* Talkset.m */,
+				23FF96E3195B219F000328B5 /* Breakpoint.m */,
 				23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */,
-				231EC0D4180E109800D93649 /* Breakpoint.h */,
-				231EC0D5180E109800D93649 /* Breakpoint.m */,
-				231EC0D7180E109800D93649 /* Playcut.h */,
-				231EC0D8180E109800D93649 /* Playcut.m */,
 				231EC0DA180E109800D93649 /* Playlist.h */,
 				231EC0DB180E109800D93649 /* Playlist.m */,
 				23EE39651527EB070006CDA5 /* PlaylistEntry.h */,
 				23EE39661527EB070006CDA5 /* PlaylistEntry.m */,
-				231EC0D1180E109800D93649 /* Talkset.h */,
-				231EC0D2180E109800D93649 /* Talkset.m */,
 				231EC0CC180BB2B000D93649 /* XYCDataStack.h */,
 				231EC0CD180BB2B000D93649 /* XYCDataStack.m */,
 			);
@@ -1204,6 +1205,7 @@
 			files = (
 				23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */,
 				23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */,
+				23FF96E4195B219F000328B5 /* Breakpoint.m in Sources */,
 				23996EE417CDA86300B1ECA7 /* FacebookShareAction.m in Sources */,
 				23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */,
 				23EE39AD1527F0790006CDA5 /* BreakpointCell.m in Sources */,
@@ -1218,10 +1220,10 @@
 				231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */,
 				23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */,
 				231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */,
+				23FF96E7195B21A0000328B5 /* Talkset.m in Sources */,
 				23DB86A91858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m in Sources */,
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,
 				23456D94181B4A7B00C88621 /* NSObject+KVOBlocks.m in Sources */,
-				231EC0D6180E109800D93649 /* Breakpoint.m in Sources */,
 				2316CDAF180E1FD100DB837E /* SearchShareButton.m in Sources */,
 				232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */,
 				2316CDB2181317BF00DB837E /* NSIndexPath+Additions.m in Sources */,
@@ -1230,7 +1232,7 @@
 				23EAEFAF179C4636008E0960 /* FavoriteShareAction.m in Sources */,
 				23EE39FC1527F07A0006CDA5 /* AboutViewController.m in Sources */,
 				4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */,
-				231EC0D3180E109800D93649 /* Talkset.m in Sources */,
+				23FF96EA195B21A0000328B5 /* Playcut.m in Sources */,
 				23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */,
 				23EE3A081527F07A0006CDA5 /* SimpleWebBrowser.m in Sources */,
 				231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */,
@@ -1243,7 +1245,6 @@
 				23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */,
 				235DE15516ED577D005640E9 /* PlayerCell.m in Sources */,
 				23EAEFA8179C4316008E0960 /* TwitterShareAction.m in Sources */,
-				231EC0D9180E109800D93649 /* Playcut.m in Sources */,
 				237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */,
 				237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */,
 				23EAEFAC179C4534008E0960 /* TwitterShareButton.m in Sources */,
@@ -1258,9 +1259,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23653F761954CCBB009AF000 /* Playcut.m in Sources */,
 				2380F0BE1954BE1F001939DD /* TodayViewController.m in Sources */,
 				23653F771954CCCD009AF000 /* PlaylistEntry.m in Sources */,
+				23FEE2ED195C64D600D467F0 /* Playcut.m in Sources */,
 				23653F751954C8D9009AF000 /* PlaylistController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1620,6 +1621,7 @@
 		23E0A59A16F6590C003CC6A8 /* Playlist2.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				23FF96E1195B20A9000328B5 /* Playlist 3.xcdatamodel */,
 				23E0A59B16F6590C003CC6A8 /* Playlist2.xcdatamodel */,
 			);
 			currentVersion = 23E0A59B16F6590C003CC6A8 /* Playlist2.xcdatamodel */;
