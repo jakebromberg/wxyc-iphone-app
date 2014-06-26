@@ -22,6 +22,6 @@
 @interface PlaylistController (Playlist)
 
 @property (nonatomic, readonly) Playcut *firstPlaycut;
-@property (nonatomic, strong, readonly) NSArray *playlist;
+@property (nonatomic, strong, readonly) NSArray *playlistEntries;
 
 @end

@@ -13,7 +13,7 @@
 
 @interface PlaylistController()
 
-@property (nonatomic, strong, readwrite) NSMutableArray *playlist;
+@property (nonatomic, strong, readwrite) NSMutableArray *playlistEntries;
 @property (nonatomic, readonly) NSDictionary *parameters;
 @property (nonatomic, readonly) NSString *path;
 
@@ -24,7 +24,7 @@
 
 - (Playcut *)firstPlaycut
 {
-	return [self.playlist objectPassingTest:^BOOL(id obj) {
+	return [self.playlistEntries objectPassingTest:^BOOL(id obj) {
 		return [obj isKindOfClass:[Playcut class]];
 	}];
 }
@@ -36,12 +36,12 @@
 
 - (NSDictionary *)parameters
 {
-	if (self.playlist.count)
+	if (self.playlistEntries.count)
 	{
 		return @{
 			@"v" : @"2",
 			@"direction" : @"next",
-			@"referenceID" : [[self.playlist firstObject] valueForKeyPath:@"chronOrderID"] ?: @""
+			@"referenceID" : [[self.playlistEntries firstObject] valueForKeyPath:@"chronOrderID"] ?: @""
 		};
 	}
 	else
@@ -67,7 +67,7 @@
 		 }
 		 
 		 [self appendResultsToPlaylist:[mappingResult.array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, id b) {
-			 return ![self.playlist containsObject:evaluatedObject];
+			 return ![self.playlistEntries containsObject:evaluatedObject];
 		 }]]];
 		 
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -86,14 +86,14 @@
 	if (results.count == 0)
 		return;
 	
-	NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_playlist.count, results.count)];
+	NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_playlistEntries.count, results.count)];
 	
-	[self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlist"];
+	[self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlistEntries"];
 	
 	NSArray *sortedArray = [results sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"chronOrderID" ascending:NO]]];
-	[self.playlist addObjectsFromArray:sortedArray];
+	[self.playlistEntries addObjectsFromArray:sortedArray];
 	
-	[self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlist"];
+	[self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlistEntries"];
 }
 
 #pragma mark constructors
@@ -107,7 +107,7 @@
 {
 	if (!(self = [super init])) return nil;
 	
-	_playlist = [NSMutableArray array];
+	_playlistEntries = [NSMutableArray array];
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
 	{

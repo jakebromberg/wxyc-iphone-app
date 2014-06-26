@@ -103,7 +103,7 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 {
 	PlaylistController *ctrlr = [PlaylistController sharedObject];
 	
-	[ctrlr observeKeyPath:@keypath(ctrlr, playlist) changeBlock:^(NSDictionary *change)
+	[ctrlr observeKeyPath:@keypath(ctrlr, playlistEntries) changeBlock:^(NSDictionary *change)
 	{
 		id newIndexPaths = [NSIndexPath indexPathsForItemsInRange:NSMakeRange(0, [change[NSKeyValueChangeNewKey] count]) section:kPlaylistSection];
 		
@@ -115,7 +115,7 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 
 - (NSArray *)playlist
 {
-	return [[PlaylistController sharedObject] playlist];
+	return [[PlaylistController sharedObject] playlistEntries];
 }
 
 @end
