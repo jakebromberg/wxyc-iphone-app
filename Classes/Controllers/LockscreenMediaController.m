@@ -38,7 +38,7 @@
 		[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = self.firstPlaycut.nowPlayingInfo;
 	};
 	
-	[[PlaylistController sharedObject] observeKeyPath:@keypath(PlaylistController *, playlist) changeBlock:changeBlock];
+	[[PlaylistController sharedObject] observeKeyPath:@keypath(PlaylistController *, playlistEntries) changeBlock:changeBlock];
 	[[AudioStreamController wxyc] observeKeyPath:@keypath(AudioStreamController *, isPlaying) changeBlock:changeBlock];
 	
 	return self;
@@ -46,7 +46,7 @@
 
 - (Playcut *)firstPlaycut
 {
-	return [[[PlaylistController sharedObject] playlist] objectPassingTest:^BOOL(id obj) {
+	return [[[PlaylistController sharedObject] playlistEntries] objectPassingTest:^BOOL(id obj) {
 		return [obj class] == [Playcut class];
 	}];
 }
