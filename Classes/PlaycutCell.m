@@ -28,12 +28,11 @@
 
 #pragma mark State
 
-@property (nonatomic, strong) Playcut *entity;
+@property (nonatomic, strong) __block Playcut *entity;
 @property (nonatomic, getter = isShareBarVisible) BOOL shareBarVisible;
 
 #pragma mark Syntactic Sugar
 
-@property (nonatomic, readonly) SDWebImageCompletedBlock downloadImageBlock;
 @property (nonatomic, readonly) OperationHandler googleImageSearchHandler;
 @property (nonatomic, readonly) UIImage *imageForAlbumArt;
 
@@ -74,52 +73,39 @@
 
 - (UIImage *)imageForAlbumArt
 {
-	if (self.entity.PrimaryImage)
+	if (self.entity.imageURL)
 	{
-		return [UIImage imageWithData:self.entity.PrimaryImage];
+		UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.entity.imageURL];
+		
+		if (!image)
+		{
+			[self.albumArt setImageWithURL:[NSURL URLWithString:self.entity.imageURL]];
+		} else {
+			return image;
+		}
 	} else {
 		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] completionHandler:self.googleImageSearchHandler];
-
-		return [UIImage imageNamed:@"album_cover_placeholder.PNG"];
 	}
+	
+	return [UIImage imageNamed:@"album_cover_placeholder.PNG"];
 }
 
 - (OperationHandler)googleImageSearchHandler
 {
-	return ^(NSURL *url, NSError *error) {
-		[[SDWebImageDownloader sharedDownloader]
-		 downloadImageWithURL:url
-					  options:SDWebImageRetryFailed
-					 progress:nil
-					completed:self.imageDownloadHandler];
-	};
-}
-
-- (SDWebImageDownloaderCompletedBlock)imageDownloadHandler
-{
-	static dispatch_queue_t backgroundQueue;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-	});
-
-	__block __weak __typeof(self) __self = self;
-	__block NSManagedObjectID *entityID = self.entity.objectID;
-	return ^(UIImage *image, NSData *data, NSError *error, BOOL finished)
+	return ^(NSURL *url, NSError *error)
 	{
-		if (error || !finished)
+		if (error)
 			return;
 		
-		SDImageCache *cache = [SDImageCache sharedImageCache];
-		id key = [@[__self.artistLabel.text, __self.titleLabel.text] componentsJoinedByString:@""];
-		[cache storeImage:image forKey:key];
-		
-		Playcut *playcut = (Playcut *) [[NSManagedObjectContext contextForCurrentThread] objectWithID:entityID];
-		playcut.PrimaryImage = UIImagePNGRepresentation(image);
+		Playcut *playcut = (Playcut *) [[NSManagedObjectContext contextForCurrentThread] objectWithID:self.entity.objectID];
+
+		playcut.imageURL = [url absoluteString];
 		
 		[[NSManagedObjectContext contextForCurrentThread] saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
 			NSLog(@"%uc %@", success, error);
 		}];
+
+		[self.albumArt setImageWithURL:url];
 	};
 }
 
@@ -146,7 +132,6 @@
 {
 	self.shareBarVisible = NO;
 	[self.albumArt cancelCurrentImageLoad];
-	self.albumArt.image = nil;
 }
 
 - (void)dealloc
