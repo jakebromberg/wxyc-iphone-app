@@ -12,8 +12,8 @@
 
 @interface LivePlaylistTableViewCell ()
 
-@property  (nonatomic, weak) IBOutlet __block UIView *containerView;
-@property  (nonatomic, strong) __block UIView *shadowView;
+@property (nonatomic, weak) IBOutlet UIView *containerView;
+@property (nonatomic, strong) CALayer *shadowLayer;
 
 @end
 
@@ -34,36 +34,31 @@
 	self.containerView.layer.cornerRadius = 5.f;
 	self.containerView.layer.masksToBounds = YES;
 
-	[self insertSubview:self.shadowView belowSubview:self.containerView];
+	[self.layer insertSublayer:self.shadowLayer atIndex:0];
 	
 	[self observeKeyPath:@keypath(self.containerView, frame) changeBlock:^(id change) {
-		_shadowView.frame = _containerView.frame;
-		[_shadowView setNeedsDisplay];
+		self.containerView.frame = _containerView.frame;
+		self.shadowLayer.frame = _containerView.frame;
+		[self.containerView setNeedsDisplay];
 	}];
 }
 
-- (UIView *)shadowView
+- (CALayer *)shadowLayer
 {
-	if (!_shadowView)
-	{
-		_shadowView = [[UIView alloc] initWithFrame:self.containerView.frame];
-		_shadowView.backgroundColor = [UIColor grayColor];
-		_shadowView.layer.shadowColor = [UIColor colorWithWhite:.75f alpha:1.f].CGColor;
-		_shadowView.layer.shadowOffset = (CGSize){-.5f, 1.f};
-		_shadowView.layer.shadowRadius = 1.5f;
-		_shadowView.layer.shadowOpacity = 1;
-		_shadowView.layer.cornerRadius = 5.f;
-		_shadowView.layer.masksToBounds = NO;
-		_shadowView.layer.shouldRasterize = YES;
-		_shadowView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-	}
-	
-	return _shadowView;
-}
+	CALayer *shadowLayer = [CALayer layer];
+	shadowLayer.frame = self.containerView.frame;
+	shadowLayer.backgroundColor = [UIColor clearColor].CGColor;
+	shadowLayer.shadowColor = [UIColor colorWithWhite:.75f alpha:1.f].CGColor;
+	shadowLayer.shadowOffset = (CGSize){-.5f, 1.f};
+	shadowLayer.shadowRadius = 1.5f;
+	shadowLayer.shadowOpacity = 1;
+	shadowLayer.shadowPath = CGPathCreateWithRoundedRect(self.containerView.bounds, 5.f, 5.f, &CGAffineTransformIdentity);
+	shadowLayer.cornerRadius = 5.f;
+	shadowLayer.masksToBounds = NO;
+	shadowLayer.shouldRasterize = YES;
+	shadowLayer.rasterizationScale = [UIScreen mainScreen].scale;
 
-- (void)dealloc
-{
-	_shadowView = nil;
+	return shadowLayer;
 }
 
 @end
