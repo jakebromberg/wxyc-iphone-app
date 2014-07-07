@@ -19,11 +19,14 @@ static const UIEdgeInsets insets = (UIEdgeInsets){6, 0, -6, 0};
 
 - (void)viewDidLoad
 {
+	[super viewDidLoad];
+	
 	UITabBar *tabBar = self.tabBar;
 	
 	[tabBar.items[0] setImageInsets:insets];
-	[tabBar.items[0] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-playlist-selected.png"]
-				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-playlist-unselected.png"]];
+	[tabBar.items[0] setImage:[UIImage imageNamed:@"tabbar-item-playlist-selected.png"]];
+	[tabBar.items[0] setSelectedImage:[UIImage imageNamed:@"tabbar-item-playlist-unselected.png"]];
+//				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-playlist-unselected.png"]];
 	
 	[tabBar.items[1] setImageInsets:insets];
 	[tabBar.items[1] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-favorites-selected.png"]

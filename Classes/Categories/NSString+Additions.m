@@ -21,6 +21,9 @@
 	NSMutableData *data = [NSMutableData dataWithLength:sizeof(id) * arguments.count];
 	[arguments getObjects:(__unsafe_unretained id *)data.mutableBytes range:range];
 	
+	NSLog(@"%@", data.bytes);
+	NSLog(@"%@", self);
+	
 	return [[NSString alloc] initWithFormat:self arguments:data.mutableBytes];
 }
 

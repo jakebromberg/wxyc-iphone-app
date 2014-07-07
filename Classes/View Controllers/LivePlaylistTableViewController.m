@@ -53,7 +53,30 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 		
 		[self.tableView registerNib:nib forCellReuseIdentifier:className];
 	}
+	
+	self.tableView.estimatedRowHeight = 360.f;
+	self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
+
+#pragma mark - UIViewController
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	
+	PlaylistController *ctrlr = [PlaylistController sharedObject];
+	
+	[ctrlr observeKeyPath:@keypath(ctrlr, playlistEntries) changeBlock:^(NSDictionary *change)
+	{
+		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			id newIndexPaths = [NSIndexPath indexPathsForItemsInRange:NSMakeRange(0, [change[NSKeyValueChangeNewKey] count]) section:kPlaylistSection];
+			
+			[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+		}];
+	}];
+}
+
+#pragma mark UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -73,11 +96,11 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	LivePlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([self classOfCellAtIndexPath:indexPath]) forIndexPath:indexPath];
+	LivePlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self identifierForCellAtIndexPath:indexPath] forIndexPath:indexPath];
 
 	if (indexPath.section == kPlaylistSection)
 	{
-		NSAssert(indexPath.row < self.playlist.count, @"Index path %@ exceeds playlist count %d", indexPath, self.playlist.count);
+		NSAssert(indexPath.row < self.playlist.count, @"Index path %@ exceeds playlist count %lu", indexPath, (unsigned long)self.playlist.count);
 		cell.entity = self.playlist[indexPath.row];
 	}
 	
@@ -97,18 +120,9 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 	return [self.playlist[indexPath.row] correspondingTableViewCellClass];
 }
 
-#pragma mark - UIViewController
-
-- (void)viewDidLoad
+- (NSString *)identifierForCellAtIndexPath:(NSIndexPath *)indexPath
 {
-	PlaylistController *ctrlr = [PlaylistController sharedObject];
-	
-	[ctrlr observeKeyPath:@keypath(ctrlr, playlistEntries) changeBlock:^(NSDictionary *change)
-	{
-		id newIndexPaths = [NSIndexPath indexPathsForItemsInRange:NSMakeRange(0, [change[NSKeyValueChangeNewKey] count]) section:kPlaylistSection];
-		
-		[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-	}];
+	return NSStringFromClass([self classOfCellAtIndexPath:indexPath]);
 }
 
 #pragma mark - Properties

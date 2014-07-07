@@ -20,6 +20,7 @@
 		231EC0DC180E109800D93649 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DB180E109800D93649 /* Playlist.m */; };
 		231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DD180E18ED00D93649 /* FavoriteShareButton.m */; };
 		231EC0E2180E19B600D93649 /* SearchShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0E1180E19B600D93649 /* SearchShareAction.m */; };
+		232B5A2119630D78000F11DE /* GoogleImageSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE398F1527EC380006CDA5 /* GoogleImageSearch.m */; };
 		232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */; };
 		232E24DE1267A7ED007F7679 /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24C81267A7ED007F7679 /* about_icon.png */; };
 		232E24E11267A7ED007F7679 /* Default-inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24CB1267A7ED007F7679 /* Default-inv.png */; };
@@ -83,6 +84,8 @@
 		23924CA71289F04C00EFC0FA /* favorites-toolbar-icon-unfilled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924CA11289F04C00EFC0FA /* favorites-toolbar-icon-unfilled@2x.png */; };
 		23924CA81289F04C00EFC0FA /* favorites-toolbar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 23924CA21289F04C00EFC0FA /* favorites-toolbar-icon.png */; };
 		23996EE417CDA86300B1ECA7 /* FacebookShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 23996EE317CDA86300B1ECA7 /* FacebookShareAction.m */; };
+		239C4C291960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 239C4C281960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m */; };
+		239C4C2A1960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 239C4C281960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m */; };
 		23A23CF316ED699700C9AF7C /* stop-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CF216ED699700C9AF7C /* stop-button.png */; };
 		23A23CF916ED747100C9AF7C /* wxyc-header-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CF816ED746F00C9AF7C /* wxyc-header-logo.png */; };
 		23A23D0416ED801700C9AF7C /* clock-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A23CFA16ED800C00C9AF7C /* clock-1.png */; };
@@ -290,6 +293,8 @@
 		23924CA21289F04C00EFC0FA /* favorites-toolbar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-toolbar-icon.png"; sourceTree = "<group>"; };
 		23996EE217CDA86300B1ECA7 /* FacebookShareAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookShareAction.h; path = Views/FacebookShareAction.h; sourceTree = "<group>"; };
 		23996EE317CDA86300B1ECA7 /* FacebookShareAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookShareAction.m; path = Views/FacebookShareAction.m; sourceTree = "<group>"; };
+		239C4C271960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYCAlbumArtDownloadOperation.h; sourceTree = "<group>"; };
+		239C4C281960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYCAlbumArtDownloadOperation.m; sourceTree = "<group>"; };
 		239DD7351061B7510035B7BF /* WXYC_Radio_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXYC_Radio_Prefix.pch; path = Other/WXYC_Radio_Prefix.pch; sourceTree = "<group>"; };
 		23A23CF216ED699700C9AF7C /* stop-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-button.png"; sourceTree = "<group>"; };
 		23A23CF816ED746F00C9AF7C /* wxyc-header-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wxyc-header-logo.png"; sourceTree = "<group>"; };
@@ -334,10 +339,6 @@
 		23CF2DE219281457004E91D7 /* BreakpointCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BreakpointCell.xib; sourceTree = "<group>"; };
 		23CF2DE6192816DD004E91D7 /* TalksetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TalksetCell.xib; path = Views/TalksetCell.xib; sourceTree = "<group>"; };
 		23CF2DE8192817F3004E91D7 /* PlaycutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaycutCell.xib; path = Views/PlaycutCell.xib; sourceTree = "<group>"; };
-		23D2D9D31954C76D0084282C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23D2D9D41954C76D0084282C /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
-		23D2D9D51954C76D0084282C /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
-		23D2D9D71954C76D0084282C /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		23DB86A71858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+LivePlaylistTableViewCellMappings.h"; path = "Categories/NSObject+LivePlaylistTableViewCellMappings.h"; sourceTree = "<group>"; };
 		23DB86A81858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+LivePlaylistTableViewCellMappings.m"; path = "Categories/NSObject+LivePlaylistTableViewCellMappings.m"; sourceTree = "<group>"; };
 		23DBC34E113F801200C19BD0 /* SimpleWebBrowser.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SimpleWebBrowser.xib; path = ../../Resources/xibs/SimpleWebBrowser.xib; sourceTree = "<group>"; };
@@ -817,6 +818,8 @@
 				2353A13F12810065004F9A11 /* Google Image Search */,
 				238CC1C512664111006EC552 /* Casssette Reel */,
 				23C1130F1803C13E00B7B5FE /* Root View Controller */,
+				239C4C271960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.h */,
+				239C4C281960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m */,
 			);
 			name = "View Components";
 			sourceTree = "<group>";
@@ -860,25 +863,6 @@
 			name = "Player Cell";
 			sourceTree = "<group>";
 		};
-		23D2D9D11954C76D0084282C /* asdf */ = {
-			isa = PBXGroup;
-			children = (
-				23D2D9D41954C76D0084282C /* TodayViewController.h */,
-				23D2D9D51954C76D0084282C /* TodayViewController.m */,
-				23D2D9D71954C76D0084282C /* MainInterface.storyboard */,
-				23D2D9D21954C76D0084282C /* Supporting Files */,
-			);
-			path = asdf;
-			sourceTree = "<group>";
-		};
-		23D2D9D21954C76D0084282C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				23D2D9D31954C76D0084282C /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		23EAEFA9179C4320008E0960 /* Social */ = {
 			isa = PBXGroup;
 			children = (
@@ -901,7 +885,6 @@
 				29B97315FDCFA39411CA2CEA /* Bootstrapping */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				2380F0A419549661001939DD /* WXYC Today Extension */,
-				23D2D9D11954C76D0084282C /* asdf */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				301ED3726EAB431A91FE0405 /* Pods.xcconfig */,
@@ -1234,6 +1217,7 @@
 				4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */,
 				23FF96EA195B21A0000328B5 /* Playcut.m in Sources */,
 				23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */,
+				239C4C291960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m in Sources */,
 				23EE3A081527F07A0006CDA5 /* SimpleWebBrowser.m in Sources */,
 				231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */,
 				238F6D781931517800EF95BA /* TalksetMapping.m in Sources */,
@@ -1259,7 +1243,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				232B5A2119630D78000F11DE /* GoogleImageSearch.m in Sources */,
 				2380F0BE1954BE1F001939DD /* TodayViewController.m in Sources */,
+				239C4C2A1960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m in Sources */,
 				23653F771954CCCD009AF000 /* PlaylistEntry.m in Sources */,
 				23FEE2ED195C64D600D467F0 /* Playcut.m in Sources */,
 				23653F751954C8D9009AF000 /* PlaylistController.m in Sources */,

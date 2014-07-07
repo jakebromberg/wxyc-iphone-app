@@ -59,17 +59,37 @@
 {
 	[RKObjectManager.sharedManager getObjectsAtPath:self.path parameters:self.parameters success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
 	 {
-		 if (mappingResult.array.count)
+		 if (mappingResult.array.count == 0)
 		 {
-			 if (completionHandler) completionHandler(UIBackgroundFetchResultNewData);
-		 } else {
-			 if (completionHandler) completionHandler(UIBackgroundFetchResultNoData);
+			 if (completionHandler)
+				 completionHandler(UIBackgroundFetchResultNoData);
+			 
+			 return;
 		 }
+
+		 NSIndexSet *indexes = [mappingResult.array indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+			 return ![self.playlistEntries containsObject:obj];
+		 }];
 		 
-		 [self appendResultsToPlaylist:[mappingResult.array filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, id b) {
-			 return ![self.playlistEntries containsObject:evaluatedObject];
-		 }]]];
-		 
+		 if (indexes.count == 0)
+		 {
+			 if (completionHandler)
+				 completionHandler(UIBackgroundFetchResultNoData);
+		 }
+		 else
+		 {
+			 NSArray *array = [mappingResult.array objectsAtIndexes:indexes];
+			 
+			 array = [mappingResult.array sortedArrayUsingComparator:^NSComparisonResult(PlaylistEntry *e1, PlaylistEntry *e2) {
+				 return [e2.chronOrderID compare:e1.chronOrderID];
+			 }];
+//		 [self addPlaylistEntries:[mappingResult.array objectsAtIndexes:indexes]];
+			 
+			 [self addPlaylistEntries:array];
+			 
+			 if (completionHandler)
+				 completionHandler(UIBackgroundFetchResultNewData);
+		 }
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 		 if (completionHandler)
 			 completionHandler(UIBackgroundFetchResultFailed);
@@ -81,16 +101,16 @@
 	[self fetchPlaylistWithCompletionHandler:nil];
 }
 
-- (void)appendResultsToPlaylist:(NSArray *)results
+- (void)addPlaylistEntries:(NSArray *)entries
 {
-	if (results.count == 0)
+	if (entries.count == 0)
 		return;
 	
-	NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_playlistEntries.count, results.count)];
+	NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(_playlistEntries.count, entries.count)];
 	
 	[self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlistEntries"];
 	
-	NSArray *sortedArray = [results sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"chronOrderID" ascending:NO]]];
+	NSArray *sortedArray = [entries sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"chronOrderID" ascending:NO]]];
 	[self.playlistEntries addObjectsFromArray:sortedArray];
 	
 	[self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexSet forKey:@"playlistEntries"];

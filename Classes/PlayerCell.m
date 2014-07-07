@@ -28,10 +28,8 @@
 
 - (instancetype)awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
-	__block __typeof(self) __self = self;
-	
 	[[AudioStreamController wxyc] addBlockObserver:self forKeyPath:@keypath(AudioStreamController.wxyc, isPlaying) changeBlock:^(NSDictionary *change) {
-		[__self configureInterfaceForPlayingState:[change[NSKeyValueChangeNewKey] boolValue]];
+		[self configureInterfaceForPlayingState:[change[NSKeyValueChangeNewKey] boolValue]];
 	}];
 	
 	return [super awakeAfterUsingCoder:aDecoder];

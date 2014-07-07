@@ -6,15 +6,14 @@
 //  Copyright 2010 WXYC. All rights reserved.
 //
 
-typedef void(^OperationHandler)(NSURL *returnedURL, NSError *message);
+#import <Foundation/Foundation.h>
 
-@protocol GoogleImageSearchDelegate;
-
+typedef void(^OperationHandler)(NSURL *imageURL, NSError *error);
 
 @interface GoogleImageSearch : NSObject
 
-@property (nonatomic, strong) id<GoogleImageSearchDelegate> delegate;
+- (instancetype)initWithKeywords:(NSArray *)keywords completionHandler:(OperationHandler)completionHandler NS_DESIGNATED_INITIALIZER;
 
-+ (void)searchWithKeywords:(NSArray *)keywords completionHandler:(OperationHandler)operationHandler;
+- (void)cancel;
 
 @end

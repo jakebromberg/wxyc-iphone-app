@@ -8,108 +8,81 @@
 
 #import "GoogleImageSearch.h"
 #import "NSArray+Additions.h"
-#import "NSString+Additions.h"
-
-static NSString *IMAGE_SEARCH_URL = @"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=%@&key=%@&q=%@";
-static const NSString *LARGE_IMG_SIZE = @"large";
-static const NSString *API_KEY = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6wxYzrId3_vCc7hSxiVhd0OeM4oTlndTkE3v2ankvuA";
-
-typedef void(^OperationUnit)(id *accumulator, NSError **error);
-
 
 @interface GoogleImageSearch ()
 
-+ (NSURLRequest *)requestForKeywords:(NSArray *)keywords;
+@property (nonatomic, strong) NSURLSessionDataTask *task;
+@property (nonatomic, strong) OperationHandler completionHandler;
 
 @end
 
 
 @implementation GoogleImageSearch
 
-+ (void)searchWithKeywords:(NSArray *)keywords completionHandler:(OperationHandler)operationHandler
+- (instancetype)initWithKeywords:(NSArray *)keywords completionHandler:(OperationHandler)completionHandler
 {
-	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, NULL);
-	dispatch_block_t block = fetchData(keywords, operationHandler);
+	if (!(self = [super init])) return nil;
 	
-	dispatch_async(queue, block);
+	self.completionHandler = completionHandler;
+	
+	__weak __typeof(self) wSelf = self;
+	
+	NSString *query = [self.class queryForKeywords:keywords];
+	NSURL *URL = [self.class URLForQuery:query];
+	
+	self.task = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+	{
+		__typeof(self) sSelf = wSelf;
+		
+		if (error)
+		{
+			sSelf.completionHandler(nil, error);
+			return;
+		}
+		
+		id obj = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+		
+		if (error)
+		{
+			sSelf.completionHandler(nil, error);
+			return;
+		}
+		
+		NSString *URLString = [[obj valueForKeyPath:@"responseData.results.url"] firstObject];
+		NSURL *URL = [NSURL URLWithString:URLString];
+		
+		sSelf.completionHandler(URL, nil);
+	}];
+	
+	[self.task resume];
+	
+	return self;
 }
 
-dispatch_block_t (^fetchData)(NSArray *, OperationHandler) = ^(NSArray *keywords, OperationHandler operationHandler)
+- (void)cancel
 {
-	return ^{
-		id operationBlocks = @[
-			^(id *accumulator, NSError **error) {
-			  *accumulator = [GoogleImageSearch requestForKeywords:keywords];
-			},
-			
-			^(id *accumulator, NSError **error) {
-			  *accumulator = [NSURLConnection sendSynchronousRequest:*accumulator returningResponse:nil error:error];
-			},
+	[self.task cancel];
+}
 
-			^(id *accumulator, NSError **error) {
-			  *accumulator = [NSJSONSerialization JSONObjectWithData:*accumulator options:NSJSONReadingAllowFragments error:error];
-			},
-
-			^(id *accumulator, NSError **error) {
-				*accumulator = (*accumulator)[@"responseData"];
-				if (!*accumulator || ([NSNull null] == *accumulator))
-					*error = [NSError errorWithDomain:@"" code:-1 userInfo:nil];
-			},
-
-			^(id *accumulator, NSError **error) {
-				*accumulator = (*accumulator)[@"results"];
-				if ([*accumulator count] == 0)
-					*error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
-			},
-
-			^(id *accumulator, NSError **error) {
-				*accumulator = (*accumulator)[0];
-				if (!*accumulator || ([NSNull null] == *accumulator))
-					*error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
-			},
-			
-			^(id *accumulator, NSError **error) {
-				*accumulator = (*accumulator)[@"url"];
-				if (!*accumulator || ([NSNull null] == *accumulator))
-					*error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
-			},
-			 
-			^(id *accumulator, NSError **error) {
-				*accumulator = [*accumulator stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-				if (!*accumulator)
-					*error = [NSError errorWithDomain:@"" code:@"" userInfo:nil];
-			},
-			
-
-			^(id *accumulator, NSError **error) {
-				operationHandler([NSURL URLWithString:*accumulator], *error);
-			}
-		];
-
-		__block id accumulator;
-		__block NSError *error;
-
-		for(OperationUnit block in operationBlocks)
-		{
-			block(&accumulator, &error);
-			
-			if (error)
-			{
-				operationHandler(nil, error);
-				break;
-			}
-		}
-	};
-};
-
-+ (NSURLRequest *)requestForKeywords:(NSArray *)keywords
++ (NSURL *)URLForQuery:(NSString *)query
 {
-	NSString *query = [[keywords join:@"+"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	static NSString *kImageSearchURL = @"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=%@&key=%@&q=%@";
+	static const NSString *kLargeImage = @"large";
+	static const NSString *kAPIKey = @"ABQIAAAA5dyU_ZOZxVJ-rCQOTnH3khTF4zxbv1moelZ6wxYzrId3_vCc7hSxiVhd0OeM4oTlndTkE3v2ankvuA";
+
+	NSString *URLString = [NSString stringWithFormat:kImageSearchURL, kLargeImage, kAPIKey, query];
 	
-	NSString *urlString = [NSString stringWithFormat:IMAGE_SEARCH_URL,LARGE_IMG_SIZE, API_KEY, query];
-	NSURL *URL = [NSURL URLWithString:urlString];
-	
-	return [NSURLRequest requestWithURL:URL];
+	return [NSURL URLWithString:URLString];
+}
+
++ (NSString *)queryForKeywords:(NSArray *)keywords
+{
+	return [[keywords join:@"+"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (void)dealloc
+{
+	[self.task cancel];
 }
 
 @end

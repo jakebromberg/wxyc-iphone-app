@@ -7,10 +7,12 @@
 //
 
 #import "PlaycutCell.h"
-#import "GoogleImageSearch.h"
-#import "UIImageView+WebCache.h"
+//#import "GoogleImageSearch.h"
+//#import "UIImageView+WebCache.h"
 #import "PlaycutCellButton.h"
 #import "NSObject+KVOBlocks.h"
+#import "NSArray+Additions.h"
+#import "XYCAlbumArtDownloadOperation.h"
 
 @interface PlaycutCell ()
 
@@ -30,11 +32,7 @@
 
 @property (nonatomic, strong) __block Playcut *entity;
 @property (nonatomic, getter = isShareBarVisible) BOOL shareBarVisible;
-
-#pragma mark Syntactic Sugar
-
-@property (nonatomic, readonly) OperationHandler googleImageSearchHandler;
-@property (nonatomic, readonly) UIImage *imageForAlbumArt;
+@property (nonatomic, strong) XYCAlbumArtDownloadOperation *artDownloadOperation;
 
 @end
 
@@ -51,7 +49,7 @@
 	[self observeKeyPath:@keypath(self, entity.PrimaryImage) changeBlock:^(NSDictionary *change)
 	{
 		dispatch_async(dispatch_get_main_queue(), ^{
-			__self.albumArt.image = [__self imageForAlbumArt];
+			__self.albumArt.image = [UIImage imageWithData:self.entity.PrimaryImage];
 		});
 	}];
 }
@@ -73,39 +71,37 @@
 
 - (UIImage *)imageForAlbumArt
 {
-	if (self.entity.imageURL)
+	if (self.entity.PrimaryImage)
 	{
-		UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.entity.imageURL];
-		
-		if (!image)
-		{
-			[self.albumArt setImageWithURL:[NSURL URLWithString:self.entity.imageURL]];
-		} else {
-			return image;
-		}
-	} else {
-		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] completionHandler:self.googleImageSearchHandler];
+		return [UIImage imageWithData:self.entity.PrimaryImage];
 	}
+	
+	id keywords = @[self.artistLabel.text, self.titleLabel.text];
+	self.artDownloadOperation = [[XYCAlbumArtDownloadOperation alloc]
+								 initWithKeywords:keywords
+								 options:0
+								 progress:nil
+								 completed:self.downloadCompletion];
 	
 	return [UIImage imageNamed:@"album_cover_placeholder.PNG"];
 }
 
-- (OperationHandler)googleImageSearchHandler
+- (XYCAlbumArtDownloaderCompletedBlock)downloadCompletion
 {
-	return ^(NSURL *url, NSError *error)
+	__block __typeof(self.entity.objectID) __objectID = self.entity.objectID;
+	
+	return ^(UIImage *image, NSData *data, NSError *error, BOOL finished)
 	{
 		if (error)
 			return;
 		
-		Playcut *playcut = (Playcut *) [[NSManagedObjectContext contextForCurrentThread] objectWithID:self.entity.objectID];
+		Playcut *playcut = (Playcut *) [[NSManagedObjectContext contextForCurrentThread] objectWithID:__objectID];
 
-		playcut.imageURL = [url absoluteString];
+		playcut.PrimaryImage = data;
 		
 		[[NSManagedObjectContext contextForCurrentThread] saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
 			NSLog(@"%uc %@", success, error);
 		}];
-
-		[self.albumArt setImageWithURL:url];
 	};
 }
 
@@ -131,7 +127,7 @@
 - (void)prepareForReuse
 {
 	self.shareBarVisible = NO;
-	[self.albumArt cancelCurrentImageLoad];
+	[self.artDownloadOperation cancel];
 }
 
 - (void)dealloc
