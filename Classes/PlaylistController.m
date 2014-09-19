@@ -83,17 +83,20 @@
 			 array = [mappingResult.array sortedArrayUsingComparator:^NSComparisonResult(PlaylistEntry *e1, PlaylistEntry *e2) {
 				 return [e2.chronOrderID compare:e1.chronOrderID];
 			 }];
-//		 [self addPlaylistEntries:[mappingResult.array objectsAtIndexes:indexes]];
 			 
 			 [self addPlaylistEntries:array];
 			 
 			 if (completionHandler)
 				 completionHandler(UIBackgroundFetchResultNewData);
 		 }
+         
+         [self performSelector:@selector(fetchPlaylist) withObject:nil afterDelay:5];
 	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 		 if (completionHandler)
 			 completionHandler(UIBackgroundFetchResultFailed);
-	 }];
+
+         [self performSelector:@selector(fetchPlaylist) withObject:nil afterDelay:30];
+     }];
 }
 
 - (void)fetchPlaylist
@@ -132,7 +135,6 @@
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
 	{
 		[self fetchPlaylist];
-		[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(fetchPlaylist) userInfo:nil repeats:YES];
 	}];
 
 	return self;
