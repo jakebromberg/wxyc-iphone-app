@@ -16,9 +16,9 @@ PODS:
   - RestKit/ObjectMapping (0.20.3)
   - RestKit/Support (0.20.3):
     - TransitionKit (= 1.1.1)
-  - SDWebImage (3.6):
+  - SDWebImage (3.7.1):
     - SDWebImage/Core
-  - SDWebImage/Core (3.6)
+  - SDWebImage/Core (3.7.1)
   - SOCKit (1.1)
   - TransitionKit (1.1.1)
   - UITableView-NXEmptyView (0.1.6)
@@ -33,7 +33,7 @@ SPEC CHECKSUMS:
   AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   RestKit: 7f9490e709ee745e166c4d2aa7a8d132831275b0
-  SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SOCKit: d8d0dd3688ae1026c12367570da8fa8e1a6980fb
   TransitionKit: b573f93c422f6aedf7d40e93e7c2f202d1295063
   UITableView-NXEmptyView: 4322b391d08f8272e4f1860e4a182eba300d05dd
