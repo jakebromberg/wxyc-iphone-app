@@ -145,7 +145,6 @@
 		23EE3A081527F07A0006CDA5 /* SimpleWebBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39971527EC5B0006CDA5 /* SimpleWebBrowser.m */; };
 		23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */; };
 		23F8176216EBC35E005BF24F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */; };
-		23F8176916EBDDD1005BF24F /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F8176816EBDDD1005BF24F /* NSString+Additions.m */; };
 		23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F8176B16EBDE13005BF24F /* NSArray+Additions.m */; };
 		23FEE2ED195C64D600D467F0 /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF96E9195B21A0000328B5 /* Playcut.m */; };
 		23FF96E4195B219F000328B5 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF96E3195B219F000328B5 /* Breakpoint.m */; };
@@ -376,8 +375,6 @@
 		23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WXYCAppDelegate.h; path = Classes/WXYCAppDelegate.h; sourceTree = "<group>"; };
 		23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WXYCAppDelegate.m; path = Classes/WXYCAppDelegate.m; sourceTree = "<group>"; };
 		23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		23F8176716EBDDD1005BF24F /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
-		23F8176816EBDDD1005BF24F /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		23F8176A16EBDE13005BF24F /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
 		23F8176B16EBDE13005BF24F /* NSArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Additions.m"; sourceTree = "<group>"; };
 		23FF96E1195B20A9000328B5 /* Playlist 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Playlist 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -596,8 +593,6 @@
 				23C4A72517E42379007DB35C /* UIView+Spin.m */,
 				231EC0C91807C59F00D93649 /* NSObject+Singleton.h */,
 				231EC0CA1807C59F00D93649 /* NSObject+Singleton.m */,
-				23F8176716EBDDD1005BF24F /* NSString+Additions.h */,
-				23F8176816EBDDD1005BF24F /* NSString+Additions.m */,
 				23F8176A16EBDE13005BF24F /* NSArray+Additions.h */,
 				23F8176B16EBDE13005BF24F /* NSArray+Additions.m */,
 				231EC0CF180CFD1100D93649 /* keypath.h */,
@@ -1225,7 +1220,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				234A74D5153B6D3100C30053 /* PlaylistMappingsManager.m in Sources */,
 				2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */,
-				23F8176916EBDDD1005BF24F /* NSString+Additions.m in Sources */,
 				23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */,
 				235DE15516ED577D005640E9 /* PlayerCell.m in Sources */,
 				23EAEFA8179C4316008E0960 /* TwitterShareAction.m in Sources */,

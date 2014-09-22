@@ -43,6 +43,8 @@
 - (void)awakeFromNib
 {
 	[super awakeFromNib];
+    
+    self.shareBar.alpha = 0.f;
 	
 	__weak __typeof(self) __self = self;
 	

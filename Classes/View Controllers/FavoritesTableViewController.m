@@ -19,6 +19,10 @@
 {
     [super viewDidLoad];
 	
+    UINib *playcutCellNib = [UINib nibWithNibName:NSStringFromClass([PlaycutCell class]) bundle:nil];
+    [self.tableView registerNib:playcutCellNib forCellReuseIdentifier:NSStringFromClass([PlaycutCell class])];
+//    [self.tableView registerClass:[PlaycutCell class] forCellReuseIdentifier:NSStringFromClass([PlaycutCell class])];
+    
 	self.favoritesArray = [Playcut findByAttribute:@"Favorite" withValue:@YES andOrderBy:@"chronOrderID" ascending:NO];
 	
 	[[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
@@ -61,8 +65,8 @@
 	if (self.favoritesArray.count == 0 && indexPath.row == 0)
 		return [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];
 
-    PlaycutCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlaycutCell"];
-	cell.entity = _favoritesArray[indexPath.row];
+    PlaycutCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PlaycutCell class])];
+	cell.entity = self.favoritesArray[indexPath.row];
     cell.selected = NO;
 	
 	return cell;

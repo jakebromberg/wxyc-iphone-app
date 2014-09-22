@@ -7,7 +7,6 @@
 //
 
 #import "SocialShareAction.h"
-#import "NSString+Additions.h"
 
 @implementation SocialShareAction
 
@@ -32,7 +31,7 @@
 		[sheet setInitialText:({
 			NSString *song = playcut.Song ?: @"";
 			NSString *artist = playcut.Artist ?: @"";
-			[@"Listening to \"%@\" by %@ on @WXYC!" formattedWith:@[song, artist]];
+			[NSString stringWithFormat:@"Listening to \"%@\" by %@ on @WXYC!", song, artist];
 		})];
 		
 		[sheet addImage:[UIImage imageWithData:playcut.PrimaryImage]];
@@ -41,8 +40,8 @@
 		[[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:sheet animated:YES completion:nil];
 	} else {
 		UIAlertController *alertViewController = [UIAlertController
-			alertControllerWithTitle:[@"Not logged in to " append:self.class.serviceName]
-							 message:[@"Open Settings and add your %@ account" formattedWith:@[self.class.serviceName]]
+			alertControllerWithTitle:[@"Not logged in to " stringByAppendingString:self.class.serviceName]
+							 message:[NSString stringWithFormat:@"Open Settings and add your %@ account", self.class.serviceName]
 					  preferredStyle:UIAlertControllerStyleAlert];
 		
 		[alertViewController addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:nil]];
