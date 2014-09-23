@@ -50,6 +50,8 @@ static NSString * const PopupLabels[PopupCount] = {
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
 	__typeof(self) __self = self;
 
 	[self.webView observeKeyPath:@keypath(self.webView, canGoBack) changeBlock:^(NSDictionary *change)

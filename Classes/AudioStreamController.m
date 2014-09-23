@@ -55,7 +55,6 @@
 - (void)configureAudioSession
 {
 	NSError *error = nil;
-	[[AVAudioSession sharedInstance] setDelegate:self];
 	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
 	[[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionCategoryOptionDefaultToSpeaker error:&error];
 }
