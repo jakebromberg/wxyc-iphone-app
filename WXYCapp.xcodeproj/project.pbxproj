@@ -144,6 +144,8 @@
 		23EE3A021527F07A0006CDA5 /* GoogleImageSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE398F1527EC380006CDA5 /* GoogleImageSearch.m */; };
 		23EE3A081527F07A0006CDA5 /* SimpleWebBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39971527EC5B0006CDA5 /* SimpleWebBrowser.m */; };
 		23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */; };
+		23F1569419D1DBF70070DA20 /* LaunchImage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23F1569319D1DBF70070DA20 /* LaunchImage.pdf */; };
+		23F1569619D1DC030070DA20 /* AppIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 23F1569519D1DC030070DA20 /* AppIcon.pdf */; };
 		23F8176216EBC35E005BF24F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */; };
 		23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F8176B16EBDE13005BF24F /* NSArray+Additions.m */; };
 		23FEE2ED195C64D600D467F0 /* Playcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF96E9195B21A0000328B5 /* Playcut.m */; };
@@ -374,6 +376,8 @@
 		23EE39971527EC5B0006CDA5 /* SimpleWebBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleWebBrowser.m; sourceTree = "<group>"; };
 		23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WXYCAppDelegate.h; path = Classes/WXYCAppDelegate.h; sourceTree = "<group>"; };
 		23EE39991527EC660006CDA5 /* WXYCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WXYCAppDelegate.m; path = Classes/WXYCAppDelegate.m; sourceTree = "<group>"; };
+		23F1569319D1DBF70070DA20 /* LaunchImage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LaunchImage.pdf; sourceTree = "<group>"; };
+		23F1569519D1DC030070DA20 /* AppIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AppIcon.pdf; sourceTree = "<group>"; };
 		23F8176116EBC35E005BF24F /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		23F8176A16EBDE13005BF24F /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
 		23F8176B16EBDE13005BF24F /* NSArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Additions.m"; sourceTree = "<group>"; };
@@ -392,7 +396,7 @@
 		301ED3726EAB431A91FE0405 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LivePlaylistTableViewController.h; path = "View Controllers/LivePlaylistTableViewController.h"; sourceTree = "<group>"; };
 		4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LivePlaylistTableViewController.m; path = "View Controllers/LivePlaylistTableViewController.m"; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Other/Info.plist; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Other/Info.plist; sourceTree = "<group>"; };
 		C80948779A0C4AFDB5BE7C39 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -873,6 +877,15 @@
 			name = Social;
 			sourceTree = "<group>";
 		};
+		23F1569719D1DC150070DA20 /* pdf */ = {
+			isa = PBXGroup;
+			children = (
+				23F1569519D1DC030070DA20 /* AppIcon.pdf */,
+				23F1569319D1DBF70070DA20 /* LaunchImage.pdf */,
+			);
+			name = pdf;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -890,6 +903,7 @@
 		29B97315FDCFA39411CA2CEA /* Bootstrapping */ = {
 			isa = PBXGroup;
 			children = (
+				8D1107310486CEB800E47090 /* Info.plist */,
 				239DD7351061B7510035B7BF /* WXYC_Radio_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				23EE39981527EC660006CDA5 /* WXYCAppDelegate.h */,
@@ -902,10 +916,10 @@
 			isa = PBXGroup;
 			children = (
 				23456D95181B59ED00C88621 /* Images.xcassets */,
+				23F1569719D1DC150070DA20 /* pdf */,
 				232E24FD1267A8DD007F7679 /* html */,
 				2328C6891060107500063811 /* images */,
 				2328C68A1060107F00063811 /* xibs */,
-				8D1107310486CEB800E47090 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1032,6 +1046,7 @@
 				234D189711407D1500812919 /* about.html in Resources */,
 				234946D61263A6DD00022117 /* cassette reel@2x.png in Resources */,
 				232E24DE1267A7ED007F7679 /* about_icon.png in Resources */,
+				23F1569419D1DBF70070DA20 /* LaunchImage.pdf in Resources */,
 				232E24E11267A7ED007F7679 /* Default-inv.png in Resources */,
 				232E24E21267A7ED007F7679 /* Default.png in Resources */,
 				232E24E61267A7ED007F7679 /* playlist_icon.png in Resources */,
@@ -1056,6 +1071,7 @@
 				23924CA61289F04C00EFC0FA /* favorites-toolbar-icon-filled@2x.png in Resources */,
 				23CF2DDF19241CB7004E91D7 /* Default-568h@2x.png in Resources */,
 				23924CA71289F04C00EFC0FA /* favorites-toolbar-icon-unfilled@2x.png in Resources */,
+				23F1569619D1DC030070DA20 /* AppIcon.pdf in Resources */,
 				23924CA81289F04C00EFC0FA /* favorites-toolbar-icon.png in Resources */,
 				23C2A943128A46AD00D61A4A /* reload@2x.png in Resources */,
 				23C2A944128A46AD00D61A4A /* right-arrow@2x.png in Resources */,
@@ -1267,6 +1283,8 @@
 			baseConfigurationReference = 301ED3726EAB431A91FE0405 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1305,6 +1323,8 @@
 			baseConfigurationReference = 301ED3726EAB431A91FE0405 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1495,6 +1515,8 @@
 			baseConfigurationReference = 301ED3726EAB431A91FE0405 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
