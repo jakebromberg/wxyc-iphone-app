@@ -9,12 +9,13 @@
 #import "PlayerCell.h"
 #import "AudioStreamController.h"
 #import "UIView+Spin.h"
+#import "NSObject+KVOBlocks.h"
 
 @interface PlayerCell ()
 
 @property (nonatomic, weak) IBOutlet UIButton *playButton;
-@property (nonatomic, strong) IBOutlet UIImageView *leftCassetteReel;
-@property (nonatomic, strong) IBOutlet UIImageView *rightCassetteReel;
+@property (nonatomic, strong) IBOutlet UIView *leftCassetteReel;
+@property (nonatomic, strong) IBOutlet UIView *rightCassetteReel;
 
 @end
 
@@ -22,38 +23,16 @@
 
 + (float)height
 {
-	return 74.0f;
+	return 84.0f;
 }
 
-- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
+- (instancetype)awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
-    [self setUpObservation];
-    
+	[[AudioStreamController wxyc] addBlockObserver:self forKeyPath:@keypath(AudioStreamController.wxyc, isPlaying) changeBlock:^(NSDictionary *change) {
+		[self configureInterfaceForPlayingState:[change[NSKeyValueChangeNewKey] boolValue]];
+	}];
+	
 	return [super awakeAfterUsingCoder:aDecoder];
-}
-
-- (void)prepareForReuse
-{
-	[super prepareForReuse];
-	
-	@try {
-        [self removeAllObservations];
-	}
-	@catch (NSException *exception) {
-		
-	}
-	@finally {
-        [self setUpObservation];
-	}
-	
-	[self configureInterfaceForPlayingState:AudioStreamController.wxyc.isPlaying];
-}
-
-- (void)setUpObservation
-{
-    [self observeObject:[AudioStreamController wxyc] property:@keypath(AudioStreamController.wxyc, isPlaying) withBlock:^(__weak id self, __weak id object, id old, id new) {
-        [self configureInterfaceForPlayingState:[AudioStreamController.wxyc isPlaying]];
-    }];
 }
 
 - (void)configureInterfaceForPlayingState:(BOOL)isPlaying
@@ -61,12 +40,12 @@
 	if (isPlaying)
 	{
 		[self.playButton setImage:[UIImage imageNamed:@"stop-button.png"] forState:UIControlStateNormal];
-        [self.rightCassetteReel startSpin];
-        [self.leftCassetteReel startSpin];
+		[self.leftCassetteReel startSpin];
+		[self.rightCassetteReel startSpin];
 	} else {
 		[self.playButton setImage:[UIImage imageNamed:@"play-button.png"] forState:UIControlStateNormal];
-        [self.rightCassetteReel stopSpin];
-        [self.leftCassetteReel stopSpin];
+		[self.leftCassetteReel stopSpin];
+		[self.rightCassetteReel stopSpin];
 	}
 }
 
@@ -78,6 +57,13 @@
 	} else {
 		[AudioStreamController.wxyc start];
 	}
+}
+
+- (void)setHidden:(BOOL)hidden
+{
+	[super setHidden:hidden];
+	
+	[self configureInterfaceForPlayingState:[[AudioStreamController wxyc] isPlaying]];
 }
 
 @end

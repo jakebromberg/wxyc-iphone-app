@@ -2,7 +2,7 @@
 //  UIApplication+PresentViewController.h
 //  WXYCapp
 //
-//  Created by Jake Bromberg on 10/15/13.
+//  Created by Jake Bromberg on 10/23/13.
 //  Copyright (c) 2013 WXYC. All rights reserved.
 //
 
@@ -10,6 +10,6 @@
 
 @interface UIApplication (PresentViewController)
 
-+ (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^)(void))completion;
++ (void)presentViewController:(UIViewController *)viewControllerToPresent;
 
 @end

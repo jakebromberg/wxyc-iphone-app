@@ -11,55 +11,58 @@
 #import "Playcut.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "AudioStreamController.h"
+#import "NSArray+Additions.h"
+#import "NSObject+KVOBlocks.h"
+
+@interface LockscreenMediaController ()
+
+@property (nonatomic, readonly) Playcut *firstPlaycut;
+
+@end
+
+@interface Playcut (LockscreenMediaController)
+
+@property (nonatomic, readonly) NSDictionary *nowPlayingInfo;
+
+@end
 
 @implementation LockscreenMediaController
 
 - (instancetype)init
 {
-	self = [super init];
-	
-	if (!self)
+	if (!(self = [super init]))
 		return nil;
 	
-	[[PlaylistController sharedObject] addObserver:self forKeyPath:@"playlist" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
-	[[AudioStreamController wxyc] addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionNew context:NULL];
+	id changeBlock = ^(NSDictionary *change)
+	{
+		[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = self.firstPlaycut.nowPlayingInfo;
+	};
+	
+	[[PlaylistController sharedObject] observeKeyPath:@keypath(PlaylistController *, playlistEntries) changeBlock:changeBlock];
+	[[AudioStreamController wxyc] observeKeyPath:@keypath(AudioStreamController *, isPlaying) changeBlock:changeBlock];
 	
 	return self;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if ([keyPath isEqualToString:@"playlist"] || [keyPath isEqualToString:@"isPlaying"])
-	{
-		[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = [self nowPlayingInfoForPlaycut:[self firstPlaycut]];
-	} else {
-		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-	}
-}
-
 - (Playcut *)firstPlaycut
 {
-	NSArray *playlist = [[PlaylistController sharedObject] playlist];
-
-	NSUInteger index = [playlist indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+	return [[[PlaylistController sharedObject] playlistEntries] objectPassingTest:^BOOL(id obj) {
 		return [obj class] == [Playcut class];
 	}];
-	
-	if (index == NSNotFound)
-	{
-		return nil;
-	} else {
-		return playlist[index];
-	}
 }
 
-- (NSDictionary *)nowPlayingInfoForPlaycut:(Playcut *)playcut
+@end
+
+
+@implementation Playcut (LockscreenMediaController)
+
+- (NSDictionary *)nowPlayingInfo
 {
 	return @{
-		MPMediaItemPropertyAlbumTitle : [playcut valueForKey:@"album"] ?: @"",
-		MPMediaItemPropertyArtist : [playcut valueForKey:@"artist"] ?: @"",
-		MPMediaItemPropertyTitle : [playcut valueForKey:@"song"] ?: @"",
-		MPMediaItemPropertyArtwork : [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:[playcut valueForKey:@"primaryImage"]] ?: [UIImage imageNamed:@"album_cover_placeholder.PNG"]]
+		MPMediaItemPropertyAlbumTitle : self.Album ?: @"",
+		MPMediaItemPropertyArtist : self.Artist ?: @"",
+		MPMediaItemPropertyTitle : self.Song ?: @"",
+		MPMediaItemPropertyArtwork : [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:self.PrimaryImage] ?: [UIImage imageNamed:@"album_cover_placeholder.PNG"]]
 	};
 }
 

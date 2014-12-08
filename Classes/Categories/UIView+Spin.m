@@ -9,13 +9,15 @@
 #import "UIView+Spin.h"
 #import "IndefinitelySpinningAnimation.h"
 
+static NSString * const kSpinKey = @"spinAnimation";
+
 @implementation UIView (Spin)
 
 - (void)startSpin
 {
-	if (![self.layer animationForKey:@"spinAnimation"])
+	if (![self.layer animationForKey:kSpinKey])
 	{
-		[self.layer addAnimation:[IndefinitelySpinningAnimation getAnimation] forKey:@"spinAnimation"];
+		[self.layer addAnimation:[IndefinitelySpinningAnimation animation] forKey:kSpinKey];
 		[self pauseLayer:self.layer];
 	}
 	
@@ -29,14 +31,14 @@
 
 #pragma mark Core Animation business
 
-- (void)pauseLayer:(CALayer*)layer
+- (void)pauseLayer:(CALayer *)layer
 {
     CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
     layer.speed = 0.0;
     layer.timeOffset = pausedTime;
 }
 
-- (void)resumeLayer:(CALayer*)layer
+- (void)resumeLayer:(CALayer *)layer
 {
     CFTimeInterval pausedTime = [layer timeOffset];
     layer.speed = 1.0;

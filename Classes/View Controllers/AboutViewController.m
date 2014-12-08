@@ -4,14 +4,8 @@
 //
 
 #import "AboutViewController.h"
-#import	"WebViewController.h"
+#import	"SimpleWebBrowser.h"
 #import "UIApplication+PresentViewController.h"
-
-@interface AboutViewController ()
-
-@property UIWebView *view;
-
-@end
 
 @implementation AboutViewController
 
@@ -19,11 +13,11 @@
 {
 	[super viewDidLoad];
 	
-	NSString* aboutTemplatePath = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"];
-	NSURL* url = [NSURL fileURLWithPath:aboutTemplatePath];
+	NSString *aboutTemplatePath = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"html"];
+	NSURL *url = [NSURL fileURLWithPath:aboutTemplatePath];
 	NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
 	
-	[self.view loadRequest:requestObj];
+	[(UIWebView *)self.view loadRequest:requestObj];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
@@ -38,14 +32,14 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    if (navigationType != UIWebViewNavigationTypeLinkClicked)
-        return YES;
-    
-    WebViewController *webViewController = [[WebViewController alloc] initWithRequest:request];
-    webViewController.webView.scalesPageToFit = YES;
-    [UIApplication presentViewController:webViewController animated:YES completion:nil];
-    
-    return NO;
+	if (navigationType == UIWebViewNavigationTypeLinkClicked)
+		return YES;
+	
+	SimpleWebBrowser *webViewController = [[SimpleWebBrowser alloc] initWithURL:request.URL];
+	
+	[UIApplication presentViewController:webViewController];
+
+	return NO;
 }
 
 @end

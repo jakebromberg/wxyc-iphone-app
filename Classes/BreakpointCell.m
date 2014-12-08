@@ -8,11 +8,38 @@
 
 #import "BreakpointCell.h"
 #import "Breakpoint.h"
+#import "NSArray+Additions.h"
 
 @interface BreakpointCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *timeView;
+
+@end
+
+@implementation Breakpoint (BreakpointCell)
+
+- (NSString *)breakpointLabelString
+{
+	double timeSinceEpoch = [self.hour doubleValue] / 1000;
+	NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeSinceEpoch];
+	
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	dateFormatter.dateFormat = @"h:00 a";
+	
+	return [dateFormatter stringFromDate:date];
+}
+
+- (UIImage *)breakpointClockIcon
+{
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	dateFormatter.dateFormat = @"h";
+	
+	double timeSinceEpoch = [self.hour doubleValue] / 1000;
+	NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeSinceEpoch];
+	
+	return [UIImage imageNamed:[@[@"clock-", [dateFormatter stringFromDate:date], @".png"] join]];
+}
 
 @end
 
@@ -23,23 +50,12 @@
 	return 50.0f;
 }
 
-- (void) setEntity:(NSManagedObject *)entity
+- (void)setEntity:(Breakpoint *)entity
 {
 	super.entity = entity;
 	
-	Breakpoint* breakpoint = (Breakpoint*)entity;
-	
-	double timeSinceEpoch = [[breakpoint valueForKey:@"hour"] doubleValue] / 1000;
-	NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeSinceEpoch];
-	
-	NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-	dateFormatter.dateFormat = @"h:00 a";
-	
-	NSString* dateString = [dateFormatter stringFromDate:date];
-	self.timeLabel.text = dateString;
-	
-	dateFormatter.dateFormat = @"h";
-	self.timeView.image = [UIImage imageNamed:[NSString stringWithFormat:@"clock-%@.png", [dateFormatter stringFromDate:date]]];
+	self.timeLabel.text = entity.breakpointLabelString;
+	self.timeView.image = entity.breakpointClockIcon;
 }
 
 @end

@@ -1,49 +1,24 @@
-// 
+//
 //  Playcut.m
 //  WXYCapp
 //
-//  Created by Jake on 11/8/10.
-//  Copyright 2010 WXYC. All rights reserved.
+//  Created by Jake Bromberg on 6/25/14.
+//  Copyright (c) 2014 WXYC. All rights reserved.
 //
 
 #import "Playcut.h"
 
 
-@implementation Playcut 
+@implementation Playcut
 
-@dynamic request;
-@dynamic artist;
-@dynamic album;
-@dynamic label;
-@dynamic primaryImage;
-@dynamic song;
-@dynamic rotation;
-@dynamic favorite;
-@dynamic image;
-
-@end
-
-@implementation ImageToDataTransformer
-
-
-+ (BOOL)allowsReverseTransformation {
-	return YES;
-}
-
-+ (Class)transformedValueClass {
-	return [NSData class];
-}
-
-
-- (id)transformedValue:(id)value {
-	NSData *data = UIImagePNGRepresentation(value);
-	return data;
-}
-
-
-- (id)reverseTransformedValue:(id)value {
-	UIImage *uiImage = [[UIImage alloc] initWithData:value];
-	return uiImage;
-}
+@dynamic Album;
+@dynamic Artist;
+@dynamic Favorite;
+@dynamic Label;
+@dynamic PrimaryImage;
+@dynamic Request;
+@dynamic Rotation;
+@dynamic Song;
+@dynamic imageURL;
 
 @end

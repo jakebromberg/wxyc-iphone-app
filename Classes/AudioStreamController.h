@@ -8,13 +8,17 @@
 
 @interface AudioStreamController : NSObject
 
-+ (instancetype)wxyc;
-
+- (instancetype)initWithURL:(NSURL *)aURL;
 - (void)start;
 - (void)stop;
-- (instancetype)initWithURL:(NSURL*)aURL;
 
 @property (nonatomic, readonly) BOOL isPlaying;
 @property (nonatomic, readonly, strong) NSURL *URL;
+
+@end
+
+@interface AudioStreamController (WXYC)
+
++ (instancetype)wxyc;
 
 @end

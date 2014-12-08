@@ -37,7 +37,4 @@ metamacro_if_eq(1, metamacro_argcount(__VA_ARGS__))(keypath1(__VA_ARGS__))(keypa
 (((void)(NO && ((void)PATH, NO)), strchr(# PATH, '.') + 1))
 
 #define keypath2(OBJ, PATH) \
-(((void)(NO && ((void)OBJ.PATH, NO)), # PATH))
-
-#define keypathClass(CLASS, PATH) \
-keypath2(CLASS.new, PATH)
+"" ? @ # PATH : (__typeof__(((__typeof__(OBJ))nil).PATH, @"")) nil

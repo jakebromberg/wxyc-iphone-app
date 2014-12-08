@@ -24,12 +24,18 @@ static NSMapTable *sharedObjects;
 
 + (instancetype)sharedObject
 {
-	id objectifiedSelf = [NSValue valueWithNonretainedObject:[self class]];
-	
-	if (![sharedObjects objectForKey:objectifiedSelf])
-		[sharedObjects setObject:[[self alloc] init] forKey:objectifiedSelf];
+	if (![self conformsToProtocol:@protocol(XYCSingleton)])
+		return nil;
 
-	return [sharedObjects objectForKey:objectifiedSelf];
+	id sharedObject = [sharedObjects objectForKey:[self class]];
+	
+	if (!sharedObject)
+	{
+		sharedObject = [[self alloc] init];
+		[sharedObjects setObject:sharedObject forKey:[self class]];
+	}
+	
+	return sharedObject;
 }
 
 @end

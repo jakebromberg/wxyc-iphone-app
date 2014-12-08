@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SimpleWebBrowser">
             <connections>
                 <outlet property="backButton" destination="20" id="32"/>
                 <outlet property="forwardButton" destination="22" id="33"/>
                 <outlet property="reloadButton" destination="16" id="34"/>
                 <outlet property="toolbar" destination="15" id="35"/>
-                <outlet property="view" destination="8" id="31"/>
-                <outlet property="webView" destination="7" id="12"/>
+                <outlet property="view" destination="8" id="7U1-Z9-vIT"/>
+                <outlet property="webView" destination="7" id="Ty1-Bg-RWZ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,7 +34,7 @@
                     <items>
                         <barButtonItem image="reload.png" style="plain" id="16" userLabel="Reload">
                             <connections>
-                                <action selector="reloadButtonPush:" destination="-1" id="28"/>
+                                <action selector="reloadButtonPushed:" destination="-1" id="XCk-Ua-XeE"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="19"/>

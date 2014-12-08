@@ -9,75 +9,106 @@
 #import "XYCDataStack.h"
 #import <RestKit/RestKit.h>
 #import "Playcut.h"
+#import "PlaylistMappingsManager.h"
 
 @interface NSManagedObjectContext ()
 
++ (void)MR_setupCoreDataStackWithManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
 + (void)MR_setRootSavingContext:(NSManagedObjectContext *)context;
 + (void)MR_setDefaultContext:(NSManagedObjectContext *)moc;
 
 @end
 
-@implementation XYCDataStack 
+@implementation XYCDataStack
 
 - (id)init
 {
-	self = [super init];
-	
-	if (!self)
-		return nil;
-	
+	return COMMON_INIT([super init]);
+}
+
+- (void)commonInit
+{
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillTerminateNotification object:[UIApplication sharedApplication] queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
-	{
-		[self tidyUpCoreData];
-	}];
+	 {
+		 [self tidyUpCoreData];
+	 }];
 	
-	[self configureCoreData];
+	[self setupRestKit];
+	[self setupMagicalRecord];
 	[self tidyUpCoreData];
+}
+
+- (void)setupRestKit
+{
+	[RKManagedObjectStore setDefaultStore:[self managedObjectStore]];
+	[RKObjectManager setSharedManager:[self objectManager]];
+	[RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/plain"];
+	[PlaylistMappingsManager addResponseDescriptorsToObjectManager:[self objectManager]];
+}
+
+- (void)setupMagicalRecord
+{
+	RKManagedObjectStore *mos = [self managedObjectStore];
 	
-	return self;
+    [NSPersistentStoreCoordinator MR_setDefaultStoreCoordinator:mos.persistentStoreCoordinator];
+    [NSManagedObjectContext MR_setRootSavingContext:mos.persistentStoreManagedObjectContext];
+    [NSManagedObjectContext MR_setDefaultContext:mos.mainQueueManagedObjectContext];
 }
 
-- (void)configureCoreData
+- (RKObjectManager *)objectManager CA_CONST
 {
-    RKManagedObjectStore *managedObjectStore = [self createManagedObjectStore];
-	[self configureManagedObjectStore:managedObjectStore];
-	[self configureMagicalRecordWithManagedObjectStore:managedObjectStore];
+	static RKObjectManager *om;
 	
-	RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://wxyc.info/"]];
-    objectManager.managedObjectStore = managedObjectStore;
-}
-
-- (RKManagedObjectStore *)createManagedObjectStore
-{
-	NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Playlist2" ofType:@"momd"]];
-    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		om = [RKObjectManager managerWithBaseURL:[self baseURL]];
+		om.managedObjectStore = [RKManagedObjectStore defaultStore];
+	});
 	
-    return [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+	return om;
 }
 
-- (void)configureManagedObjectStore:(RKManagedObjectStore *)managedObjectStore
+- (NSURL *)baseURL CA_CONST
 {
-    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"WXYC78.sqlite"];
-    NSError *error = nil;
-    [managedObjectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
-    [managedObjectStore createManagedObjectContexts];
+	return [NSURL URLWithString:@"http://wxyc.info/"];
 }
 
-- (void)configureMagicalRecordWithManagedObjectStore:(RKManagedObjectStore *)managedObjectStore
+- (RKManagedObjectStore *)managedObjectStore CA_CONST
 {
-    [NSPersistentStoreCoordinator MR_setDefaultStoreCoordinator:managedObjectStore.persistentStoreCoordinator];
-    [NSManagedObjectContext MR_setRootSavingContext:managedObjectStore.persistentStoreManagedObjectContext];
-    [NSManagedObjectContext MR_setDefaultContext:managedObjectStore.mainQueueManagedObjectContext];
+	static RKManagedObjectStore *mos;
+	
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^()
+	{
+		NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[self modelURL]];
+		mos = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+		
+		NSError *error = nil;
+		[mos addSQLitePersistentStoreAtPath:[self storePath] fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+		
+		NSAssert(!error, @"%@", error);
+
+		[mos createManagedObjectContexts];
+	});
+	
+    return mos;
+}
+
+- (NSURL *)modelURL CA_CONST
+{
+	return [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Playlist2" ofType:@"momd"]];
+}
+
+- (NSString *)storePath CA_CONST
+{
+	return [RKApplicationDataDirectory() stringByAppendingPathComponent:@"WXYC78.sqlite"];
 }
 
 - (void)tidyUpCoreData
 {
 	//Clean out unfavorited data
-	for (Playcut *playcut in [Playcut findByAttribute:@"Favorite" withValue:@NO]) {
-		[playcut deleteEntity];
-	}
-	
-	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+	NSPredicate *p = [NSPredicate predicateWithFormat:@"%K = %@", @keypath(Playcut *, Favorite), @NO];
+	[Playcut deleteAllMatchingPredicate:p];
 }
 
 @end

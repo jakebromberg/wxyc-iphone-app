@@ -8,9 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+typedef id(^NSArrayMapBlock) (id obj, NSUInteger idx);
+typedef id(^NSArrayFilterBlock) (id obj, NSUInteger, BOOL *stop);
+
 @interface NSArray (Additions)
 
 - (NSString *)join:(NSString *)glue;
 - (NSString *)join;
+
+- (NSArray *)map:(NSArrayMapBlock)mapBlock;
+- (NSArray *)filter:(BOOL(^)(id obj, NSUInteger, BOOL *stop))filterBlock;
+
+- (id)objectPassingTest:(BOOL(^)(id obj))test;
+- (NSArray *)objectsPassingTest:(BOOL(^)(id obj))test;
 
 @end

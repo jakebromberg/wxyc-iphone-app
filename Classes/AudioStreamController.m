@@ -9,29 +9,32 @@
 
 #import "AudioStreamController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "NSObject+KVOBlocks.h"
 
 @interface AudioStreamController()
 
 @property (nonatomic, strong) AVPlayer *player;
+
+- (void)resetPlayer;
 
 @end
 
 
 @implementation AudioStreamController
 
-- (instancetype)initWithURL:(NSURL*)URL
+- (instancetype)initWithURL:(NSURL *)URL
 {
 	self = [super init];
 	
 	if (self)
 	{
-		_URL = URL;
+		_URL = [URL copy];
         
         [self observeProperty:@keypath(self.player.status) withBlock:^(__weak AudioStreamController *self, id old, id new) {
              if (self.player.status == AVPlayerStatusFailed)
              {
                  self.player = nil;
-                 [self player];
+
              }
          }];
 	}
@@ -42,23 +45,10 @@
 - (void)configureAudioSession
 {
 	NSError *error = nil;
-	[[AVAudioSession sharedInstance] setDelegate:self];
-	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+	[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
 	[[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionCategoryOptionDefaultToSpeaker error:&error];
 }
 
-
-#pragma WXYC factory method
-
-static AudioStreamController *wxyc;
-
-+ (instancetype)wxyc
-{
-	if (!wxyc)
-		wxyc = [[AudioStreamController alloc] initWithURL:[NSURL URLWithString:@"http://152.2.204.90:8000/wxyc.mp3"]];
-	
-	return wxyc;
-}
 
 #pragma mark - Public Methods
 
@@ -83,19 +73,38 @@ static AudioStreamController *wxyc;
 - (AVPlayer *)player
 {
 	if (!_player)
-	{
-		_player = [[AVPlayer alloc] initWithURL:self.URL];
-		_player.usesExternalPlaybackWhileExternalScreenIsActive = YES;
-	}
+		[self resetPlayer];
 	
 	return _player;
 }
 
-#pragma mark
+#pragma mark - Player methods
+
+- (void)resetPlayer
+{
+	self.player = [[AVPlayer alloc] initWithURL:self.URL];
+	self.player.usesExternalPlaybackWhileExternalScreenIsActive = YES;
+}
 
 + (NSSet *)keyPathsForValuesAffectingIsPlaying
 {
-	return [NSSet setWithObject:@keypath(AudioStreamController.new, player.rate)];
+
+}
+
+@end
+
+
+@implementation AudioStreamController (WXYC)
+
+
++ (instancetype)wxyc
+{
+	static AudioStreamController __strong *wxyc;
+	
+	if (!wxyc)
+		wxyc = [[AudioStreamController alloc] initWithURL:[NSURL URLWithString:@"http://152.2.204.90:8000/wxyc.mp3"]];
+	
+	return wxyc;
 }
 
 @end

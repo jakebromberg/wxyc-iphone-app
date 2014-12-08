@@ -7,27 +7,30 @@
 //
 
 #import "FavoriteShareAction.h"
-#import "NSString+Additions.h"
-#import "WebViewController.h"
-#import "UIApplication+PresentViewController.h"
 
 @implementation FavoriteShareAction
 
 + (void)sharePlaycut:(Playcut *)playcut
 {
-    NSURLRequest *request = [FavoriteShareAction urlRequestForPlaycut:playcut];
-	WebViewController *webViewController = [[WebViewController alloc] initWithRequest:request];
-    [UIApplication presentViewController:webViewController animated:YES completion:nil];
-}
-
-+ (NSURLRequest *)urlRequestForPlaycut:(Playcut *)playcut
-{
-	NSString *artist = [[playcut valueForKey:@"artist"] urlEncodeUsingEncoding:NSUTF8StringEncoding];
-	NSString *song = [[playcut valueForKey:@"song"] urlEncodeUsingEncoding:NSUTF8StringEncoding];
-	NSString *url = [@"http://google.com/search?q=%@+%@" formattedWith:@[artist, song]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    
-    return request;
+	if ([playcut.Favorite isEqual:@YES])
+	{
+		UIAlertController *alertViewController = [UIAlertController alertControllerWithTitle:@"💔" message:@"Unlove this track, for real?" preferredStyle:UIAlertControllerStyleAlert];
+		
+		[alertViewController addAction:[UIAlertAction actionWithTitle:@"Unlove" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action)
+		{
+			playcut.Favorite = @NO;
+			[playcut.managedObjectContext saveToPersistentStoreAndWait];
+		}]];
+		
+		[alertViewController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+		
+		[[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alertViewController animated:YES completion:nil];
+	}
+	else
+	{
+		playcut.Favorite = @YES;
+		[playcut.managedObjectContext saveToPersistentStoreAndWait];
+	}
 }
 
 @end

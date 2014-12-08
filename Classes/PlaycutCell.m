@@ -7,131 +7,111 @@
 //
 
 #import "PlaycutCell.h"
-#import "GoogleImageSearch.h"
-#import "UIImageView+WebCache.h"
-#import "WebViewController.h"
-#import "UIAlertView+MKBlockAdditions.h"
-#import "NSString+Additions.h"
+//#import "GoogleImageSearch.h"
+//#import "UIImageView+WebCache.h"
 #import "PlaycutCellButton.h"
+#import "NSObject+KVOBlocks.h"
+#import "NSArray+Additions.h"
+#import "XYCAlbumArtDownloadOperation.h"
 
 @interface PlaycutCell ()
 
+#pragma mark IBOutlet Stuff
+
+@property (nonatomic, weak) IBOutlet UIImageView *albumArt;
 @property (nonatomic, weak) IBOutlet UILabel *artistLabel;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *albumArt;
 @property (nonatomic, weak) IBOutlet UIView *shareBar;
 
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *twitterButton;
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *facebookButton;
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *favoriteButton;
+@property (nonatomic, weak) IBOutlet PlaycutCellButton *searchButton;
 
-@property (nonatomic, setter = isShareBarVisible:) BOOL isShareBarVisible;
+#pragma mark State
 
-- (IBAction)favorite:(id)sender;
-- (IBAction)search:(id)sender;
+@property (nonatomic, strong) __block Playcut *entity;
+@property (nonatomic, getter = isShareBarVisible) BOOL shareBarVisible;
+@property (nonatomic, strong) XYCAlbumArtDownloadOperation *artDownloadOperation;
 
 @end
 
+#pragma mark -
+
 @implementation PlaycutCell
 
-- (instancetype)initWithEntity:(NSManagedObject *)entity
+- (void)awakeFromNib
 {
-	self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:self.class.description];
+	[super awakeFromNib];
+    
+    self.shareBar.alpha = 0.f;
 	
-	if (self)
+	__weak __typeof(self) __self = self;
+	
+	[self observeKeyPath:@keypath(self, entity.PrimaryImage) changeBlock:^(NSDictionary *change)
 	{
-		self.entity = entity;
+		dispatch_async(dispatch_get_main_queue(), ^{
+			__self.albumArt.image = [UIImage imageWithData:self.entity.PrimaryImage];
+		});
+	}];
+}
+
+- (void)setEntity:(Playcut *)playcut
+{
+	[super setEntity:playcut];
+	
+	self.twitterButton.playcut = playcut;
+	self.facebookButton.playcut = playcut;
+	self.favoriteButton.playcut = playcut;
+	self.searchButton.playcut = playcut;
+	
+	self.artistLabel.text = playcut.Artist;
+	self.titleLabel.text = playcut.Song;
+	
+	self.albumArt.image = self.imageForAlbumArt;
+}
+
+- (UIImage *)imageForAlbumArt
+{
+	if (self.entity.PrimaryImage)
+	{
+		return [UIImage imageWithData:self.entity.PrimaryImage];
 	}
 	
-	return self;
+	id keywords = @[self.artistLabel.text, self.titleLabel.text];
+	self.artDownloadOperation = [[XYCAlbumArtDownloadOperation alloc]
+								 initWithKeywords:keywords
+								 options:0
+								 progress:nil
+								 completed:self.downloadCompletion];
+	
+	return [UIImage imageNamed:@"album_cover_placeholder.PNG"];
 }
 
-- (void)setEntity:(NSManagedObject *)entity
+- (XYCAlbumArtDownloaderCompletedBlock)downloadCompletion
 {
-	[super setEntity:entity];
+	__block __typeof(self.entity.objectID) __objectID = self.entity.objectID;
 	
-	self.twitterButton.playcut = (Playcut *)entity;
-	self.facebookButton.playcut = (Playcut *)entity;
-
-	self.artistLabel.text = [entity valueForKey:@"artist"] ?: @"";
-	self.titleLabel.text = [entity valueForKey:@"song"] ?: @"";
-	
-	if ([self.entity valueForKey:@"primaryImage"])
+	return ^(UIImage *image, NSData *data, NSError *error, BOOL finished)
 	{
-		self.albumArt.image = [UIImage imageWithData:[self.entity valueForKey:@"primaryImage"]];
-	} else {
-		self.albumArt.image = [UIImage imageNamed:@"album_cover_placeholder.PNG"];
+		if (error)
+			return;
 		
-		__weak NSManagedObject *__entity = self.entity;
-		__weak UIImageView *__albumArt = self.albumArt;
+		Playcut *playcut = (Playcut *) [[NSManagedObjectContext contextForCurrentThread] objectWithID:__objectID];
+
+		playcut.PrimaryImage = data;
 		
-		SDWebImageCompletedBlock completionHandler = ^(UIImage *image, NSError *error, SDImageCacheType cacheType)
-		{
-			if (error)
-				return;
-			
-			dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-			dispatch_async(backgroundQueue, ^{
-				[__entity setValue:UIImagePNGRepresentation(image) forKey:@"primaryImage"];
-				[[NSManagedObjectContext contextForCurrentThread] saveToPersistentStoreAndWait];
-			});
-		};
-		
-		OperationHandler handler = ^(NSURL *url, NSError *error) {
-			[__albumArt setImageWithURL:url completed:completionHandler];
-		};
-		
-		[GoogleImageSearch searchWithKeywords:@[self.artistLabel.text, self.titleLabel.text] handler:handler];
-	}
-	
-	[self refreshFavoriteIcon];
+		[[NSManagedObjectContext contextForCurrentThread] saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+			NSLog(@"%uc %@", success, error);
+		}];
+	};
 }
 
-- (void)refreshFavoriteIcon
-{
-	UIImage *favoriteIcon = [self favoriteIconImageForState:[[self.entity valueForKey:@"favorite"] isEqual:@(YES)]];
-	[self.favoriteButton setImage:favoriteIcon forState:UIControlStateNormal];
-}
+#pragma Share stuff
 
-- (UIImage *)favoriteIconImageForState:(BOOL)state
+- (void)setShareBarVisible:(BOOL)shareBarVisible
 {
-	NSString *imageName = state ? @"favorites-share-favorited.png" : @"favorites-share.png";
-	
-	return [UIImage imageNamed:imageName];
-}
-
-#pragma - share stuff
-
-- (IBAction)favorite:(id)sender
-{
-	if ([[self.entity valueForKey:@"favorite"] isEqual:@YES])
-		[UIAlertView alertViewWithTitle:nil message:@"Unlove this track, for real?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Unlove"] onDismiss:^(int buttonIndex)
-		 {
-			 [self.entity setValue:@NO forKey:@"favorite"];
-			 [self.entity.managedObjectContext saveToPersistentStoreAndWait];
-			 [self refreshFavoriteIcon];
-		 } onCancel:^{
-			 
-		 }];
-	else
-	{
-		[self.entity setValue:@YES forKey:@"favorite"];
-		[self.entity.managedObjectContext saveToPersistentStoreAndWait];
-		[self refreshFavoriteIcon];
-	}
-}
-
-- (IBAction)search:(id)sender
-{
-	NSString *url = [@"http://google.com/search?q=%@+%@" formattedWith:@[[self.titleLabel.text urlEncodeUsingEncoding:NSUTF8StringEncoding], [self.artistLabel.text urlEncodeUsingEncoding:NSUTF8StringEncoding]]];
-	WebViewController *webViewController = [[WebViewController alloc] init];
-	[self.window.rootViewController presentViewController:webViewController animated:YES completion:nil];
-	[webViewController loadURL:[NSURL URLWithString:url]];
-}
-
-- (void)isShareBarVisible:(BOOL)isShareBarVisible
-{
-	_isShareBarVisible = isShareBarVisible;
+	_shareBarVisible = shareBarVisible;
 	
 	[UIView animateWithDuration:.5 animations:^{
 		self.shareBar.alpha = (self.isShareBarVisible ? 1 : 0);
@@ -141,16 +121,20 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	if (event.type == UIEventTypeTouches)
-		self.isShareBarVisible = !self.isShareBarVisible;
+		self.shareBarVisible = !self.isShareBarVisible;
 }
 
-#pragma - Cell Lifecycle
+#pragma Cell Lifecycle
 
 - (void)prepareForReuse
 {
-	self.isShareBarVisible = NO;
-	[self.albumArt cancelCurrentImageLoad];
-	self.albumArt.image = nil;
+	self.shareBarVisible = NO;
+	[self.artDownloadOperation cancel];
+}
+
+- (void)dealloc
+{
+	[self removeBlockObservers];
 }
 
 #pragma initializer stuff

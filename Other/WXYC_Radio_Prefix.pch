@@ -4,6 +4,10 @@
     #import <UIKit/UIKit.h>
 	#import <Security/Security.h>
 
+	#define MR_SHORTHAND 1
     #import <CoreData+MagicalRecord.h>
-    #import <Block-KVO/MTKObserving.h>
+
+	#import "CommonInitializer.h"
+	#import "metamacros.h"
+	#import "keypath.h"
 #endif

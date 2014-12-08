@@ -12,28 +12,23 @@ static const UIEdgeInsets insets = (UIEdgeInsets){6, 0, -6, 0};
 
 @implementation WXYCTabBarControllerViewController
 
-- (UIStatusBarStyle)preferredStatusBarStyle
+- (void)viewWillAppear:(BOOL)animated
 {
-	return UIStatusBarStyleLightContent;
-}
-
-- (void)viewDidLoad
-{
+	[super viewWillAppear:animated];
+	
 	UITabBar *tabBar = self.tabBar;
 	
 	[tabBar.items[0] setImageInsets:insets];
-	[tabBar.items[0] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-playlist-selected.png"]
-				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-playlist-unselected.png"]];
+    [tabBar.items[0] setImage:[UIImage imageNamed:@"tabbar-item-playlist-selected.png"]];
+    [tabBar.items[0] setSelectedImage:[UIImage imageNamed:@"tabbar-item-playlist-unselected.png"]];
 	
 	[tabBar.items[1] setImageInsets:insets];
-	[tabBar.items[1] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-favorites-selected.png"]
-				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-favorites-unselected.png"]];
+    [tabBar.items[1] setImage:[UIImage imageNamed:@"tabbar-item-favorites-selected.png"]];
+    [tabBar.items[1] setSelectedImage:[UIImage imageNamed:@"tabbar-item-favorites-unselected.png"]];
 	
 	[tabBar.items[2] setImageInsets:insets];
-	[tabBar.items[2] setFinishedSelectedImage:[UIImage imageNamed:@"tabbar-item-info-selected.png"]
-				  withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar-item-info-unselected.png"]];
-	
-	[self setNeedsStatusBarAppearanceUpdate];
+    [tabBar.items[2] setImage:[UIImage imageNamed:@"tabbar-item-info-selected.png"]];
+    [tabBar.items[2] setSelectedImage:[UIImage imageNamed:@"tabbar-item-info-unselected.png"]];
 }
 
 @end

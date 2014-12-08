@@ -20,4 +20,42 @@
 	return [self join:@""];
 }
 
+- (NSArray *)map:(NSArrayMapBlock)mapBlock
+{
+	NSMutableArray *mappedArray = [NSMutableArray array];
+	
+	[self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		[mappedArray addObject:mapBlock(obj, idx)];
+	}];
+	
+	return mappedArray;
+}
+
+- (NSArray *)filter:(BOOL(^)(id obj, NSUInteger, BOOL *stop))filterBlock
+{
+	NSIndexSet *indexSet = [self indexesOfObjectsPassingTest:filterBlock];
+	return [self objectsAtIndexes:indexSet];
+}
+
+- (id)objectPassingTest:(BOOL(^)(id obj))test
+{
+	NSUInteger idx = [self indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+		return test(obj);
+	}];
+	
+	if (idx == NSNotFound)
+		return nil;
+	else
+		return self[idx];
+}
+
+- (NSArray *)objectsPassingTest:(BOOL (^)(id))test
+{
+	NSIndexSet *indexes = [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+		return test(obj);
+	}];
+	
+	return [self objectsAtIndexes:indexes];
+}
+
 @end
