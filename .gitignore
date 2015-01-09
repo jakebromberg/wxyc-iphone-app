@@ -6,11 +6,8 @@
 /WXYCapp.xcodeproj/xcuserdata/jbromberg.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
 provisioning/
 *.mobileprovision
-
 Classes/.DS_Store
-
 .DS_Store
-
 /Pods/
 /WXYCapp.xcodeproj/xcuserdata/jake.xcuserdatad/xcschemes/WXYC.xcscheme
 /WXYCapp.xcworkspace/xcuserdata/
@@ -20,3 +17,4 @@ Classes/.DS_Store
 /WXYCapp.xcodeproj/project.pbxproj.orig
 /RestKit/
 /DerivedData/
+WXYCapp.xcodeproj/xcuserdata/
