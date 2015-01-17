@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2SK-M0-QIy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2SK-M0-QIy">
     <dependencies>
-        <deployment version="2048" defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment version="2048" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Live Playlist Table View Controller-->
@@ -39,7 +39,7 @@
                             <outlet property="delegate" destination="hbN-Xh-kZm" id="ZTE-Y5-0SL"/>
                         </connections>
                     </webView>
-                    <tabBarItem key="tabBarItem" title="" image="tabbar-item-info-selected.png" id="CyC-ha-Kex"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar-item-favorites-selected" id="CyC-ha-Kex"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFv-tU-BLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,9 +146,9 @@
     </scenes>
     <resources>
         <image name="no-favorites.png" width="610" height="610"/>
+        <image name="tabbar-item-favorites-selected" width="107" height="49"/>
         <image name="tabbar-item-favorites-selected.png" width="107" height="49"/>
         <image name="tabbar-item-favorites-unselected.png" width="107" height="49"/>
-        <image name="tabbar-item-info-selected.png" width="107" height="49"/>
         <image name="tabbar-item-playlist-selected.png" width="107" height="49"/>
         <image name="tabbar-item-playlist-unselected.png" width="107" height="49"/>
     </resources>

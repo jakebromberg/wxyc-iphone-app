@@ -30,13 +30,13 @@
 	{
 		_URL = [URL copy];
         
-        [self observeProperty:@keypath(self.player.status) withBlock:^(__weak AudioStreamController *self, id old, id new) {
-             if (self.player.status == AVPlayerStatusFailed)
-             {
-                 self.player = nil;
-
-             }
-         }];
+        [self observeKeyPath:@keypath(self, player.status) changeBlock:^(NSDictionary *change) {
+            if (self.player.status == AVPlayerStatusFailed)
+            {
+                self.player = nil;
+                
+            }
+        }];
 	}
 	
 	return self;
@@ -88,7 +88,7 @@
 
 + (NSSet *)keyPathsForValuesAffectingIsPlaying
 {
-
+    return [NSSet setWithObject:@keypath(AudioStreamController *, player.rate)];
 }
 
 @end

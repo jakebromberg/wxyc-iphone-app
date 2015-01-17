@@ -19,16 +19,16 @@ static const UIEdgeInsets insets = (UIEdgeInsets){6, 0, -6, 0};
 	UITabBar *tabBar = self.tabBar;
 	
 	[tabBar.items[0] setImageInsets:insets];
-    [tabBar.items[0] setImage:[UIImage imageNamed:@"tabbar-item-playlist-selected.png"]];
-    [tabBar.items[0] setSelectedImage:[UIImage imageNamed:@"tabbar-item-playlist-unselected.png"]];
+    [tabBar.items[0] setImage:[[UIImage imageNamed:@"tabbar-item-playlist-selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBar.items[0] setSelectedImage:[[UIImage imageNamed:@"tabbar-item-playlist-unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 	
 	[tabBar.items[1] setImageInsets:insets];
-    [tabBar.items[1] setImage:[UIImage imageNamed:@"tabbar-item-favorites-selected.png"]];
-    [tabBar.items[1] setSelectedImage:[UIImage imageNamed:@"tabbar-item-favorites-unselected.png"]];
+    [tabBar.items[1] setImage:[[UIImage imageNamed:@"tabbar-item-favorites-selected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBar.items[1] setSelectedImage:[[UIImage imageNamed:@"tabbar-item-favorites-unselected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 	
 	[tabBar.items[2] setImageInsets:insets];
-    [tabBar.items[2] setImage:[UIImage imageNamed:@"tabbar-item-info-selected.png"]];
-    [tabBar.items[2] setSelectedImage:[UIImage imageNamed:@"tabbar-item-info-unselected.png"]];
+    [tabBar.items[2] setImage:[[UIImage imageNamed:@"tabbar-item-info-selected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBar.items[2] setSelectedImage:[[UIImage imageNamed:@"tabbar-item-info-unselected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 }
 
 @end
