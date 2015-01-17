@@ -14,7 +14,7 @@
 {
 	IndefinitelySpinningAnimation *spinAnimation;
 
-	spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+	spinAnimation = [self animationWithKeyPath:@"transform.rotation.z"];
 	spinAnimation.duration = 2;
 	spinAnimation.repeatCount = FLT_MAX;
 	spinAnimation.autoreverses = NO;
