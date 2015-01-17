@@ -8,7 +8,7 @@
 
 @interface AudioStreamController : NSObject
 
-- (instancetype)initWithURL:(NSURL *)aURL;
+- (instancetype)initWithURL:(NSURL *)aURL NS_DESIGNATED_INITIALIZER;
 - (void)start;
 - (void)stop;
 

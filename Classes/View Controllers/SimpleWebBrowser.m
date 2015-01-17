@@ -7,12 +7,12 @@
 #import "NSObject+KVOBlocks.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
-typedef enum {
+typedef NS_ENUM(NSInteger, BrowserPopupLabels) {
 	PopupCopyLink,
 	PopupOpenInSafari,
 	PopupCancel,
 	PopupCount
-} BrowserPopupLabels;
+} ;
 
 static NSString * const PopupLabels[PopupCount] = {
 	[PopupCopyLink] = @"Copy Link",

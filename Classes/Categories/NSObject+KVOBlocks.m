@@ -10,7 +10,7 @@
 
 @interface XYCKVOProxy : NSObject
 
-- (instancetype)initWithObserver:(id)observer;
+- (instancetype)initWithObserver:(id)observer NS_DESIGNATED_INITIALIZER;
 
 - (void)addObservationBlock:(ObservationBlock)block forKeyPath:(NSString *)keypath options:(NSKeyValueObservingOptions)options;
 - (void)removeAllObservationBlocks;

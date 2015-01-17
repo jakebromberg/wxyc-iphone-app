@@ -8,7 +8,7 @@
 
 @interface SimpleWebBrowser : UIViewController <UIWebViewDelegate, UIActionSheetDelegate>
 
-- (instancetype)initWithURL:(NSURL *)url;
+- (instancetype)initWithURL:(NSURL *)url NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, copy) NSURL *url;
 

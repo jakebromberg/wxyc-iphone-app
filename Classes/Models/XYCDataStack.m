@@ -21,21 +21,20 @@
 
 @implementation XYCDataStack
 
-- (id)init
+- (instancetype)init
 {
-	return COMMON_INIT([super init]);
-}
-
-- (void)commonInit
-{
-	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillTerminateNotification object:[UIApplication sharedApplication] queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
-	 {
-		 [self tidyUpCoreData];
-	 }];
-	
-	[self setupRestKit];
-	[self setupMagicalRecord];
-	[self tidyUpCoreData];
+    if (!(self = [super init])) return nil;
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillTerminateNotification object:[UIApplication sharedApplication] queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
+     {
+         [self tidyUpCoreData];
+     }];
+    
+    [self setupRestKit];
+    [self setupMagicalRecord];
+    [self tidyUpCoreData];
+    
+	return self;
 }
 
 - (void)setupRestKit

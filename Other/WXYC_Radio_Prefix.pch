@@ -7,7 +7,6 @@
 	#define MR_SHORTHAND 1
     #import <CoreData+MagicalRecord.h>
 
-	#import "CommonInitializer.h"
 	#import "metamacros.h"
 	#import "keypath.h"
 #endif
