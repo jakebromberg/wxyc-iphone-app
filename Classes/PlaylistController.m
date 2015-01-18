@@ -6,7 +6,6 @@
 //  Copyright 2010 WXYC. All rights reserved.
 //
 
-#import <RestKit/RestKit.h>
 #import "PlaylistController.h"
 #import "NSArray+Additions.h"
 #import "Playcut.h"
