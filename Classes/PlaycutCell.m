@@ -118,11 +118,11 @@
 	}];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	if (event.type == UIEventTypeTouches)
-		self.shareBarVisible = !self.isShareBarVisible;
-}
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//	if (event.type == UIEventTypeTouches)
+//		self.shareBarVisible = !self.isShareBarVisible;
+//}
 
 #pragma Cell Lifecycle
 

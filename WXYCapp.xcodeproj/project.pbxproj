@@ -158,6 +158,9 @@
 		2777576C1631BD8700349E12 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2777576B1631BD8700349E12 /* libxml2.dylib */; };
 		3DE12A674E1B41D78273ADB6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C80948779A0C4AFDB5BE7C39 /* libPods.a */; };
 		4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */; };
+		BE51B0491A6B415B000CA885 /* PlaycutDetailsTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BE51B0481A6B415B000CA885 /* PlaycutDetailsTransition.m */; };
+		BE56244B1A6AE5BA0026AF24 /* PlaycutDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5624491A6AE5BA0026AF24 /* PlaycutDetailsViewController.m */; };
+		BE56244C1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE56244A1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib */; };
 		D09655E1CE0145B9BF14F261 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C80948779A0C4AFDB5BE7C39 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -397,6 +400,11 @@
 		4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LivePlaylistTableViewController.m; path = "View Controllers/LivePlaylistTableViewController.m"; sourceTree = "<group>"; };
 		80D819792D3B4776FF7F91D5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Other/Info.plist; sourceTree = "<group>"; };
+		BE51B0471A6B415B000CA885 /* PlaycutDetailsTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaycutDetailsTransition.h; path = "View Components/PlaycutDetailsTransition.h"; sourceTree = "<group>"; };
+		BE51B0481A6B415B000CA885 /* PlaycutDetailsTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutDetailsTransition.m; path = "View Components/PlaycutDetailsTransition.m"; sourceTree = "<group>"; };
+		BE5624481A6AE5BA0026AF24 /* PlaycutDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaycutDetailsViewController.h; path = Controllers/PlaycutDetailsViewController.h; sourceTree = "<group>"; };
+		BE5624491A6AE5BA0026AF24 /* PlaycutDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutDetailsViewController.m; path = Controllers/PlaycutDetailsViewController.m; sourceTree = "<group>"; };
+		BE56244A1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaycutDetailsViewController.xib; path = Controllers/PlaycutDetailsViewController.xib; sourceTree = "<group>"; };
 		C05A52AE5EF7C1D4C9C410AF /* Pods.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.distribution.xcconfig; path = "Pods/Target Support Files/Pods/Pods.distribution.xcconfig"; sourceTree = "<group>"; };
 		C80948779A0C4AFDB5BE7C39 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -805,6 +813,9 @@
 				230EDC331506875D001C173F /* Live Playlist */,
 				23B32DF5126E70BF008414F4 /* Favorites */,
 				23BF132F113B465B00A72DE7 /* About */,
+				BE5624481A6AE5BA0026AF24 /* PlaycutDetailsViewController.h */,
+				BE5624491A6AE5BA0026AF24 /* PlaycutDetailsViewController.m */,
+				BE56244A1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib */,
 			);
 			name = "Primary Views";
 			sourceTree = "<group>";
@@ -819,6 +830,8 @@
 				23C1130F1803C13E00B7B5FE /* Root View Controller */,
 				239C4C271960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.h */,
 				239C4C281960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m */,
+				BE51B0471A6B415B000CA885 /* PlaycutDetailsTransition.h */,
+				BE51B0481A6B415B000CA885 /* PlaycutDetailsTransition.m */,
 			);
 			name = "View Components";
 			sourceTree = "<group>";
@@ -1079,6 +1092,7 @@
 				23C113081803823800B7B5FE /* NavigationBarTitle.xib in Resources */,
 				23924CA51289F04C00EFC0FA /* favorites-toolbar-icon-filled.png in Resources */,
 				23924CA61289F04C00EFC0FA /* favorites-toolbar-icon-filled@2x.png in Resources */,
+				BE56244C1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib in Resources */,
 				23CF2DDF19241CB7004E91D7 /* Default-568h@2x.png in Resources */,
 				23924CA71289F04C00EFC0FA /* favorites-toolbar-icon-unfilled@2x.png in Resources */,
 				23F1569619D1DC030070DA20 /* AppIcon.pdf in Resources */,
@@ -1207,10 +1221,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE51B0491A6B415B000CA885 /* PlaycutDetailsTransition.m in Sources */,
 				23EE39A31527EF320006CDA5 /* AudioStreamController.m in Sources */,
 				23EE39A51527EF320006CDA5 /* PlaylistController.m in Sources */,
 				23FF96E4195B219F000328B5 /* Breakpoint.m in Sources */,
 				23996EE417CDA86300B1ECA7 /* FacebookShareAction.m in Sources */,
+				BE56244B1A6AE5BA0026AF24 /* PlaycutDetailsViewController.m in Sources */,
 				23EE39A91527F0790006CDA5 /* LivePlaylistTableViewCell.m in Sources */,
 				23EE39AD1527F0790006CDA5 /* BreakpointCell.m in Sources */,
 				23EE39AF1527F0790006CDA5 /* DelineationCell.m in Sources */,

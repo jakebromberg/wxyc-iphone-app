@@ -4,7 +4,10 @@
 //
 
 #import "LivePlaylistTableViewController.h"
+#import "PlaycutDetailsViewController.h"
 #import "PlaylistController.h"
+#import "PlaycutDetailsTransition.h"
+
 #import "NSIndexPath+Additions.h"
 #import "NSObject+KVOBlocks.h"
 #import "NSObject+LivePlaylistTableViewCellMappings.h"
@@ -25,6 +28,7 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 @interface LivePlaylistTableViewController ()
 
 @property (nonatomic, readonly) NSArray *playlist;
+@property (nonatomic, strong) PlaycutDetailsTransition *transition;
 
 @end
 
@@ -94,6 +98,17 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 	}
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PlaycutDetailsViewController *vc = [[PlaycutDetailsViewController alloc] initWithNibName:nil bundle:nil];
+    vc.transitioningDelegate = self.transition;
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - UITableViewDataSource
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	LivePlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self identifierForCellAtIndexPath:indexPath] forIndexPath:indexPath];
@@ -130,6 +145,16 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 - (NSArray *)playlist
 {
 	return [[PlaylistController sharedObject] playlistEntries];
+}
+
+- (PlaycutDetailsTransition *)transition
+{
+    if (!_transition)
+    {
+        _transition = [[PlaycutDetailsTransition alloc] init];
+    }
+    
+    return _transition;
 }
 
 @end
