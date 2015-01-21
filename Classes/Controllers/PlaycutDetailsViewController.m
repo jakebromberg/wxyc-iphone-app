@@ -12,10 +12,14 @@
 
 @property (nonatomic, weak, readwrite) IBOutlet UIImageView *albumImage;
 
+@property (nonatomic, assign) BOOL prefersStatusBarHidden;
+
 @end
 
 
 @implementation PlaycutDetailsViewController
+
+@synthesize prefersStatusBarHidden = _prefersStatusBarHidden;
 
 - (void)viewDidLoad
 {
@@ -26,19 +30,41 @@
     self.view.layer.cornerRadius = 3.f;
     self.view.backgroundColor = [UIColor darkGrayColor];
     
-    [self setNeedsStatusBarAppearanceUpdate];
+    self.prefersStatusBarHidden = YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    
+//    self.prefersStatusBarHidden = YES;
+//}
+
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    
+//    self.prefersStatusBarHidden = YES;
+//}
+
+- (void)setPrefersStatusBarHidden:(BOOL)prefersStatusBarHidden
 {
-    [super viewWillAppear:animated];
+    if (_prefersStatusBarHidden == prefersStatusBarHidden)
+        return;
+    
+    _prefersStatusBarHidden = prefersStatusBarHidden;
     
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (BOOL)prefersStatusBarHidden
 {
-    return YES;
+    return _prefersStatusBarHidden;
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

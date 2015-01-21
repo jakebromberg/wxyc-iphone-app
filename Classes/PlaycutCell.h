@@ -10,4 +10,6 @@
 
 @interface PlaycutCell : LivePlaylistTableViewCell
 
+@property (nonatomic, weak, readonly) UIImageView *albumArt;
+
 @end

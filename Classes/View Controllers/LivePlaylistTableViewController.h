@@ -4,10 +4,12 @@
 //
 
 @protocol XYCSimpleTableViewDelegate <UITableViewDataSource, UITableViewDelegate>
+@class PlaycutCell;
 
 - (instancetype)initWithFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController;
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong, readonly) UIImageView *cellArtSnapshot;
 
 @end
 
