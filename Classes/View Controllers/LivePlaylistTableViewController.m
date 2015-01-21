@@ -58,7 +58,12 @@
 	PlaylistController *ctrlr = [PlaylistController sharedObject];
 	
 	[ctrlr observeKeyPath:@keypath(ctrlr, playlistEntries) changeBlock:^(NSDictionary *change) {
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        if ([change[NSKeyValueChangeNewKey] count] == 0)
+        {
+            return;
+        }
+
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			id newIndexPaths = [NSIndexPath indexPathsForItemsInRange:NSMakeRange(0, [change[NSKeyValueChangeNewKey] count]) section:kPlaylistSection];
 			
 			[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];

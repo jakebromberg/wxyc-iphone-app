@@ -95,16 +95,27 @@
 	return ^(UIImage *image, NSData *data, NSError *error, BOOL finished)
 	{
 		if (error)
+        {
 			return;
-		
+        }
+        
 		Playcut *playcut = (Playcut *) [[NSManagedObjectContext contextForCurrentThread] objectWithID:__objectID];
 
 		playcut.PrimaryImage = data;
 		
 		[[NSManagedObjectContext contextForCurrentThread] saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-			NSLog(@"%uc %@", success, error);
+            if (error) {
+                NSLog(@"the impossible happened");
+            }
 		}];
 	};
+}
+
+- (void)setArtDownloadOperation:(XYCAlbumArtDownloadOperation *)artDownloadOperation
+{
+    [_artDownloadOperation cancel];
+    
+    _artDownloadOperation = artDownloadOperation;
 }
 
 #pragma Share stuff
@@ -134,6 +145,7 @@
 
 - (void)dealloc
 {
+    [_artDownloadOperation cancel];
 	[self removeBlockObservers];
 }
 
