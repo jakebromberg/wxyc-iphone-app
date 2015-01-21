@@ -6,10 +6,11 @@
 //  Copyright (c) 2015 WXYC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Playcut.h"
 
 @interface PlaycutDetailsViewController : UIViewController
 
+@property (nonatomic, strong) Playcut *playcut;
 @property (nonatomic, weak, readonly) UIImageView *albumImage;
 
 @end
