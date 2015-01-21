@@ -37,8 +37,6 @@
 	
 	self.tableView.estimatedRowHeight = 360.f;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
-	self.tableView.estimatedSectionHeaderHeight = 78.0f;
-	self.tableView.sectionHeaderHeight = 78.f;
 }
 
 @end
