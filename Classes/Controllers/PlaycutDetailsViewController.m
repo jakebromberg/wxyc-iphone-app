@@ -25,27 +25,24 @@
 {
     [super viewDidLoad];
     
-    self.view.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    self.view.layer.borderWidth = 3.f;
-    self.view.layer.cornerRadius = 3.f;
-    self.view.backgroundColor = [UIColor darkGrayColor];
+    CALayer *outline = [CALayer layer];
+    outline.frame = self.view.layer.frame;
+    outline.borderColor = [[UIColor lightGrayColor] CGColor];
+    outline.borderWidth = 3.f;
+    outline.cornerRadius = 6.f;
+    [self.view.layer addSublayer:outline];
+    
+    self.albumImage.image = [UIImage imageWithData:self.playcut.PrimaryImage];
     
     self.prefersStatusBarHidden = YES;
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    
-//    self.prefersStatusBarHidden = YES;
-//}
-
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    
-//    self.prefersStatusBarHidden = YES;
-//}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.albumImage.hidden = NO;
+}
 
 - (void)setPrefersStatusBarHidden:(BOOL)prefersStatusBarHidden
 {

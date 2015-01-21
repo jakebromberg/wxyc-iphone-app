@@ -89,17 +89,19 @@
     self.tableView.estimatedSectionHeaderHeight = 78.0f;
     self.cellArtSnapshot = ({
         PlaycutCell *cell = (id) [tableView cellForRowAtIndexPath:indexPath];
-
         UIImageView *art = [[UIImageView alloc] initWithFrame:(CGRect) {
             .origin = [cell.albumArt.superview convertPoint:cell.albumArt.frame.origin toView:cell.window],
             .size = cell.albumArt.frame.size
         }];
 
+        art.contentMode = cell.albumArt.contentMode;
+        art.clipsToBounds = YES;
         art.image = cell.albumArt.image;
         art;
     });
     
     PlaycutDetailsViewController *vc = [[PlaycutDetailsViewController alloc] initWithNibName:nil bundle:nil];
+    vc.playcut = self.playlist[indexPath.row];
     vc.transitioningDelegate = self.transition;
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
     

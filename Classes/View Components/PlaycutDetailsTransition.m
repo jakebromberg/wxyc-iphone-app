@@ -47,17 +47,32 @@
         [fromVC.view snapshotViewAfterScreenUpdates:NO];
     })];
 
-    CGRect toFrame = toVC.albumImage.frame;
-    
     [[transitionContext containerView] addSubview:toVC.view];
     toVC.view.frame = CGRectOffset(toVC.view.frame, 0, toVC.view.frame.size.height);
-
+    
     [[transitionContext containerView] addSubview:self.cellArtSnaphot];
+
+    UIView *tabBarSnaphot = ({
+        XYCRootViewController *fromVC = (id) [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+        UITabBarController *tabBarController = [[fromVC childViewControllers] lastObject];
+        UIView *snapshot = [tabBarController.tabBar snapshotViewAfterScreenUpdates:NO];
+        snapshot.frame = (CGRect) {
+            .origin = [tabBarController.tabBar.window convertPoint:tabBarController.tabBar.frame.origin fromView:tabBarController.view],
+            .size = snapshot.frame.size,
+        };
+        snapshot;
+    });
+    [[transitionContext containerView] addSubview:tabBarSnaphot];
+
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
         toVC.view.frame = (CGRect) { CGPointZero, toVC.view.frame.size };
-        self.cellArtSnaphot.frame = toFrame;
+        
+        self.cellArtSnaphot.frame = toVC.albumImage.frame;
+        
+        tabBarSnaphot.frame = CGRectOffset(tabBarSnaphot.frame, 0, tabBarSnaphot.frame.size.height);
     } completion:^(BOOL finished) {
+        [self.cellArtSnaphot removeFromSuperview];
         [transitionContext completeTransition:YES];
         NSLog(@"%@", self.cellArtSnaphot);
     }];
