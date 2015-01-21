@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 
 @interface LivePlaylistTableViewController ()
 
+@property (nonatomic, strong, readwrite) UIImageView *cellArtSnapshot;
 @property (nonatomic, readonly) NSArray *playlist;
 @property (nonatomic, strong) PlaycutDetailsTransition *transition;
 
@@ -70,8 +71,7 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 	
 	PlaylistController *ctrlr = [PlaylistController sharedObject];
 	
-	[ctrlr observeKeyPath:@keypath(ctrlr, playlistEntries) changeBlock:^(NSDictionary *change)
-	{
+	[ctrlr observeKeyPath:@keypath(ctrlr, playlistEntries) changeBlock:^(NSDictionary *change) {
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			id newIndexPaths = [NSIndexPath indexPathsForItemsInRange:NSMakeRange(0, [change[NSKeyValueChangeNewKey] count]) section:kPlaylistSection];
 			
@@ -100,6 +100,18 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.cellArtSnapshot = ({
+        PlaycutCell *cell = (id) [tableView cellForRowAtIndexPath:indexPath];
+
+        UIImageView *art = [[UIImageView alloc] initWithFrame:(CGRect) {
+            .origin = [cell.albumArt.superview convertPoint:cell.albumArt.frame.origin toView:cell.window],
+            .size = cell.albumArt.frame.size
+        }];
+
+        art.image = cell.albumArt.image;
+        art;
+    });
+    
     PlaycutDetailsViewController *vc = [[PlaycutDetailsViewController alloc] initWithNibName:nil bundle:nil];
     vc.transitioningDelegate = self.transition;
     vc.modalPresentationStyle = UIModalPresentationFullScreen;

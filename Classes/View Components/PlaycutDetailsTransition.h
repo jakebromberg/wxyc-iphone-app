@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class PlaycutDetailsTransitionAnimator;
+@class PlaycutCell;
 
 @interface PlaycutDetailsTransition : NSObject <UIViewControllerTransitioningDelegate>
 
@@ -18,6 +19,8 @@
 
 
 @interface PlaycutDetailsTransitionAnimator : NSObject  <UIViewControllerAnimatedTransitioning>
+
+@property (nonatomic, strong) UIImageView *cellArtSnaphot;
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext;
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext;

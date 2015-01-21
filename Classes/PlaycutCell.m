@@ -18,7 +18,7 @@
 
 #pragma mark IBOutlet Stuff
 
-@property (nonatomic, weak) IBOutlet UIImageView *albumArt;
+@property (nonatomic, weak, readwrite) IBOutlet UIImageView *albumArt;
 @property (nonatomic, weak) IBOutlet UILabel *artistLabel;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIView *shareBar;
