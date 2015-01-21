@@ -42,11 +42,12 @@
 {
     PlaycutDetailsViewController *toVC = (id) [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
+    UIView *fromVCSnapshot;
     [[transitionContext containerView] addSubview:({
         XYCRootViewController *fromVC = (id) [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-        [fromVC.view snapshotViewAfterScreenUpdates:NO];
+        fromVCSnapshot = [fromVC.view snapshotViewAfterScreenUpdates:NO];
     })];
-
+    
     [[transitionContext containerView] addSubview:toVC.view];
     toVC.view.frame = CGRectOffset(toVC.view.frame, 0, toVC.view.frame.size.height);
     
@@ -64,13 +65,16 @@
     });
     [[transitionContext containerView] addSubview:tabBarSnaphot];
 
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:.05 options:0 animations:^{
+        tabBarSnaphot.frame = CGRectOffset(tabBarSnaphot.frame, 0, tabBarSnaphot.frame.size.height);
+    } completion:^(BOOL finished) {
+
+    }];
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
         toVC.view.frame = (CGRect) { CGPointZero, toVC.view.frame.size };
         
         self.cellArtSnaphot.frame = toVC.albumImage.frame;
-        
-        tabBarSnaphot.frame = CGRectOffset(tabBarSnaphot.frame, 0, tabBarSnaphot.frame.size.height);
     } completion:^(BOOL finished) {
         [self.cellArtSnaphot removeFromSuperview];
         [transitionContext completeTransition:YES];
