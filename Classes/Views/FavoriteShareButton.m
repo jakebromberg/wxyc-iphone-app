@@ -26,13 +26,13 @@
 {
 	[super setPlaycut:playcut];
 	
-	[self addObserver:self forKeyPath:@keypath(self.playcut.Favorite) options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
+	[self addObserver:self forKeyPath:@keypath(self, playcut.Favorite) options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
 
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if ([keyPath isEqualToString:@keypath(self.playcut.Favorite)])
+	if ([keyPath isEqualToString:@keypath(self, playcut.Favorite)])
 	{
 		[self refreshFavoriteIcon];
 	}
