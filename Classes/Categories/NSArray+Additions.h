@@ -17,7 +17,7 @@ typedef id(^NSArrayFilterBlock) (id obj, NSUInteger, BOOL *stop);
 - (NSString *)join;
 
 - (NSArray *)map:(NSArrayMapBlock)mapBlock;
-- (NSArray *)filter:(BOOL(^)(id obj, NSUInteger, BOOL *stop))filterBlock;
+- (NSArray *)filter:(BOOL(^)(id obj, NSUInteger idx, BOOL *stop))filterBlock;
 
 - (id)objectPassingTest:(BOOL(^)(id obj))test;
 - (NSArray *)objectsPassingTest:(BOOL(^)(id obj))test;
