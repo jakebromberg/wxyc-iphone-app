@@ -30,11 +30,15 @@
  * refactoring, such that changing the name of the property will also update any
  * uses of \@keypath.
  */
+
+//#define keypath(OBJ, PATH) \
+//    "" ? @ # PATH : (__typeof__(^ NSString * { (void)((__typeof__(OBJ))nil).PATH; return nil; }())) nil
+
 #define keypath(...) \
-metamacro_if_eq(1, metamacro_argcount(__VA_ARGS__))(keypath1(__VA_ARGS__))(keypath2(__VA_ARGS__))
+    metamacro_if_eq(1, metamacro_argcount(__VA_ARGS__))(keypath1(__VA_ARGS__))(keypath2(__VA_ARGS__))
 
 #define keypath1(PATH) \
-(((void)(NO && ((void)PATH, NO)), strchr(# PATH, '.') + 1))
+    (((void)(NO && ((void)PATH, NO)), strchr(# PATH, '.') + 1))
 
 #define keypath2(OBJ, PATH) \
-"" ? @ # PATH : (__typeof__(((__typeof__(OBJ))nil).PATH, @"")) nil
+    "" ? @ # PATH : (__typeof__(((__typeof__(OBJ))nil).PATH, @"")) nil
