@@ -165,6 +165,7 @@
 		BE51B0491A6B415B000CA885 /* PlaycutDetailsTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BE51B0481A6B415B000CA885 /* PlaycutDetailsTransition.m */; };
 		BE56244B1A6AE5BA0026AF24 /* PlaycutDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5624491A6AE5BA0026AF24 /* PlaycutDetailsViewController.m */; };
 		BE56244C1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE56244A1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib */; };
+		BE5D1B491A705F7200340B4C /* LivePlaylistTransitionSnaphot.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5D1B481A705F7200340B4C /* LivePlaylistTransitionSnaphot.m */; };
 		D09655E1CE0145B9BF14F261 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C80948779A0C4AFDB5BE7C39 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -417,6 +418,8 @@
 		BE5624481A6AE5BA0026AF24 /* PlaycutDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaycutDetailsViewController.h; path = Controllers/PlaycutDetailsViewController.h; sourceTree = "<group>"; };
 		BE5624491A6AE5BA0026AF24 /* PlaycutDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutDetailsViewController.m; path = Controllers/PlaycutDetailsViewController.m; sourceTree = "<group>"; };
 		BE56244A1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaycutDetailsViewController.xib; path = Controllers/PlaycutDetailsViewController.xib; sourceTree = "<group>"; };
+		BE5D1B471A705F7200340B4C /* LivePlaylistTransitionSnaphot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePlaylistTransitionSnaphot.h; sourceTree = "<group>"; };
+		BE5D1B481A705F7200340B4C /* LivePlaylistTransitionSnaphot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePlaylistTransitionSnaphot.m; sourceTree = "<group>"; };
 		C05A52AE5EF7C1D4C9C410AF /* Pods.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.distribution.xcconfig; path = "Pods/Target Support Files/Pods/Pods.distribution.xcconfig"; sourceTree = "<group>"; };
 		C80948779A0C4AFDB5BE7C39 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -529,6 +532,8 @@
 				4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */,
 				4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */,
 				23C7060617E420EF00908F44 /* Cells */,
+				BE5D1B471A705F7200340B4C /* LivePlaylistTransitionSnaphot.h */,
+				BE5D1B481A705F7200340B4C /* LivePlaylistTransitionSnaphot.m */,
 			);
 			name = "Live Playlist";
 			sourceTree = "<group>";
@@ -1283,6 +1288,7 @@
 				23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				234A74D5153B6D3100C30053 /* PlaylistMappingsManager.m in Sources */,
+				BE5D1B491A705F7200340B4C /* LivePlaylistTransitionSnaphot.m in Sources */,
 				2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */,
 				23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */,
 				235DE15516ED577D005640E9 /* PlayerCell.m in Sources */,

@@ -26,6 +26,8 @@
 	[[UITableViewCell appearanceWhenContainedIn:[self class], nil] setBackgroundColor:[UIColor clearColor]];
 }
 
+#pragma mark - UITableViewController
+
 - (void)awakeFromNib
 {
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
@@ -59,9 +61,7 @@
 	
 	[ctrlr observeKeyPath:@keypath(ctrlr, playlistEntries) changeBlock:^(NSDictionary *change) {
         if ([change[NSKeyValueChangeNewKey] count] == 0)
-        {
             return;
-        }
 
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			id newIndexPaths = [NSIndexPath indexPathsForItemsInRange:NSMakeRange(0, [change[NSKeyValueChangeNewKey] count]) section:kPlaylistSection];
@@ -92,6 +92,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.tableView.estimatedSectionHeaderHeight = 78.0f;
+    if (indexPath.section == kPlayerSection)
+        return;
+    
+    if ([self.playlist[indexPath.row] class] != [Playcut class])
+        return;
+    
+    id a = [[LivePlaylistTransitionSnaphot alloc] initWithViewController:self selectedCell:(id)[tableView cellForRowAtIndexPath:indexPath]];
+    NSLog(@"%@", a);
+    
     self.cellArtSnapshot = ({
         PlaycutCell *cell = (id) [tableView cellForRowAtIndexPath:indexPath];
         UIImageView *art = [[UIImageView alloc] initWithFrame:(CGRect) {
