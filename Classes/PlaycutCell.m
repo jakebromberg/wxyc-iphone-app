@@ -7,8 +7,6 @@
 //
 
 #import "PlaycutCell.h"
-//#import "GoogleImageSearch.h"
-//#import "UIImageView+WebCache.h"
 #import "PlaycutCellButton.h"
 #import "NSObject+KVOBlocks.h"
 #import "NSArray+Additions.h"
@@ -100,7 +98,6 @@
         }
         
 		Playcut *playcut = (Playcut *) [[NSManagedObjectContext contextForCurrentThread] objectWithID:__objectID];
-
 		playcut.PrimaryImage = data;
 		
 		[[NSManagedObjectContext contextForCurrentThread] saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
@@ -128,12 +125,6 @@
 		self.shareBar.alpha = (self.isShareBarVisible ? 1 : 0);
 	}];
 }
-
-//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//	if (event.type == UIEventTypeTouches)
-//		self.shareBarVisible = !self.isShareBarVisible;
-//}
 
 #pragma Cell Lifecycle
 
