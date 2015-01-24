@@ -7,6 +7,7 @@
 #import "PlaycutDetailsViewController.h"
 #import "PlaylistController.h"
 #import "PlaycutDetailsTransition.h"
+#import "LivePlaylistTransitionSnaphot.h"
 
 #import "NSIndexPath+Additions.h"
 #import "NSObject+KVOBlocks.h"
@@ -73,9 +74,7 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 	
 	[ctrlr observeKeyPath:@keypath(ctrlr, playlistEntries) changeBlock:^(NSDictionary *change) {
         if ([change[NSKeyValueChangeNewKey] count] == 0)
-        {
             return;
-        }
 
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
 			id newIndexPaths = [NSIndexPath indexPathsForItemsInRange:NSMakeRange(0, [change[NSKeyValueChangeNewKey] count]) section:kPlaylistSection];
@@ -105,6 +104,15 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == kPlayerSection)
+        return;
+    
+    if ([self.playlist[indexPath.row] class] != [Playcut class])
+        return;
+    
+    id a = [[LivePlaylistTransitionSnaphot alloc] initWithViewController:self selectedCell:(id)[tableView cellForRowAtIndexPath:indexPath]];
+    NSLog(@"%@", a);
+    
     self.cellArtSnapshot = ({
         PlaycutCell *cell = (id) [tableView cellForRowAtIndexPath:indexPath];
         UIImageView *art = [[UIImageView alloc] initWithFrame:(CGRect) {

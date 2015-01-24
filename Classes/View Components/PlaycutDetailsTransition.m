@@ -53,6 +53,17 @@
     
     [[transitionContext containerView] addSubview:self.cellArtSnaphot];
 
+    UIView *navBarSnapshot = ({
+        XYCRootViewController *fromVC = (id) [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+        UIView *snapshot = [fromVC.navigationBar snapshotViewAfterScreenUpdates:NO];
+        snapshot.frame = (CGRect) {
+            .origin = [fromVC.navigationBar.window convertPoint:fromVC.navigationBar.frame.origin fromView:fromVC.view],
+            .size = snapshot.frame.size,
+        };
+        snapshot;
+    });
+    [[transitionContext containerView] addSubview:navBarSnapshot];
+    
     UIView *tabBarSnaphot = ({
         XYCRootViewController *fromVC = (id) [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
         UITabBarController *tabBarController = [[fromVC childViewControllers] lastObject];
@@ -65,8 +76,10 @@
     });
     [[transitionContext containerView] addSubview:tabBarSnaphot];
 
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:.05 options:0 animations:^{
-        tabBarSnaphot.frame = CGRectOffset(tabBarSnaphot.frame, 0, tabBarSnaphot.frame.size.height);
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] - .1 delay:.05 options:0 animations:^{
+        navBarSnapshot.alpha = 0;
+//        tabBarSnaphot.frame = CGRectOffset(tabBarSnaphot.frame, 0, tabBarSnaphot.frame.size.height);
+        tabBarSnaphot.alpha = 0;
     } completion:^(BOOL finished) {
 
     }];

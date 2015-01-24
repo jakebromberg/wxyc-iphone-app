@@ -12,10 +12,8 @@
 
 @interface LivePlaylistTableViewCell ()
 
-@property (nonatomic, weak) IBOutlet UIView *containerView;
-@property (nonatomic, strong) CALayer *shadowLayer;
-
 @end
+
 
 @implementation LivePlaylistTableViewCell
 
@@ -36,8 +34,9 @@
     
     [self.contentView.layer insertSublayer:self.shadowLayer atIndex:0];
 
+    __weak __typeof(self) welf = self;
     [self observeKeyPath:@keypath(self.containerView.layer, frame) changeBlock:^(NSDictionary *change) {
-        _shadowLayer.shadowPath = CGPathCreateWithRoundedRect(self.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
+        welf.shadowLayer.shadowPath = CGPathCreateWithRoundedRect(welf.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
 	}];
 }
 
@@ -59,6 +58,17 @@
     }
     
 	return _shadowLayer;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([self class]) bundle:nil];
+    NSArray *nibContents = [nib instantiateWithOwner:nil options:nil];
+    LivePlaylistTableViewCell *copy = [nibContents firstObject];
+    
+    copy.entity = self.entity;
+    
+    return copy;
 }
 
 @end
