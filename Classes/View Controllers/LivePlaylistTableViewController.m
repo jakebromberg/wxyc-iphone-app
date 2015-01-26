@@ -1,30 +1,19 @@
 //
 //  Created by Jake Bromberg.
-//  Copyright WXYC 2009-10. All rights reserved.
+//  Copyright WXYC 2009. All rights reserved.
 //
 
 #import "LivePlaylistTableViewController.h"
-#import "PlaylistController.h"
-#import "NSIndexPath+Additions.h"
-#import "NSObject+KVOBlocks.h"
 #import "NSObject+LivePlaylistTableViewCellMappings.h"
 
 #import "PlayerCell.h"
 #import "BreakpointCell.h"
 #import "TalksetCell.h"
-#import "PlayerCell.h"
 #import "PlaycutCell.h"
 
-typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
-{
-	kPlayerSection = 0,
-	kPlaylistSection,
-	kNumberOfSections
-};
+@interface LivePlaylistTableViewController () <NSFetchedResultsControllerDelegate>
 
-@interface LivePlaylistTableViewController ()
-
-@property (nonatomic, readonly) NSArray *playlist;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -39,6 +28,9 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 
 - (void)awakeFromNib
 {
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
+    
+    
 	const NSArray *cellClasses = @[
 		PlayerCell.class,
 		PlaycutCell.class,
@@ -56,53 +48,68 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 	
 	self.tableView.estimatedRowHeight = 360.f;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedSectionHeaderHeight = 78.0f;
+    self.tableView.sectionHeaderHeight = 78.f;
 }
 
 #pragma mark - UIViewController
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-	[super viewDidLoad];
-	
-	PlaylistController *ctrlr = [PlaylistController sharedObject];
-	
-	[ctrlr observeKeyPath:@keypath(ctrlr, playlistEntries) changeBlock:^(NSDictionary *change)
-	{
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			id newIndexPaths = [NSIndexPath indexPathsForItemsInRange:NSMakeRange(0, [change[NSKeyValueChangeNewKey] count]) section:kPlaylistSection];
-			
-			[self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-		}];
-	}];
+    [super viewWillAppear:animated];
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[self fetchRequest] managedObjectContext:[NSManagedObjectContext rootSavingContext] sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController.delegate = self;
+    
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    
+    if (error)
+    {
+        NSLog(@"%@", error);
+    }
+}
+
+- (NSFetchRequest *)fetchRequest
+{
+    static NSFetchRequest *fetchRequest;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Entry"];
+        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@keypath(PlaylistEntry *, chronOrderID) ascending:NO]];
+    });
+    
+    return fetchRequest;
 }
 
 #pragma mark UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return kNumberOfSections;
+	return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	switch (section)
-	{
-		case kPlayerSection:
-			return 1;
-		default:
-			return self.playlist.count;
-	}
+    return [[[self.fetchedResultsController sections] lastObject] numberOfObjects];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
+    PlayerCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PlayerCell class])];
+    header.bounds = cell.bounds;
+    [header addSubview:cell];
+    
+    return header;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	LivePlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self identifierForCellAtIndexPath:indexPath] forIndexPath:indexPath];
 
-	if (indexPath.section == kPlaylistSection)
-	{
-		NSAssert(indexPath.row < self.playlist.count, @"Index path %@ exceeds playlist count %lu", indexPath, (unsigned long)self.playlist.count);
-		cell.entity = self.playlist[indexPath.row];
-	}
+    cell.entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	
 	return cell;
 }
@@ -114,10 +121,7 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 
 - (Class)classOfCellAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.section == kPlayerSection)
-		return [PlayerCell class];
-	
-	return [self.playlist[indexPath.row] correspondingTableViewCellClass];
+	return [[self.fetchedResultsController objectAtIndexPath:indexPath] correspondingTableViewCellClass];
 }
 
 - (NSString *)identifierForCellAtIndexPath:(NSIndexPath *)indexPath
@@ -127,9 +131,35 @@ typedef NS_ENUM(NSUInteger, LivePlaylistTableSections)
 
 #pragma mark - Properties
 
-- (NSArray *)playlist
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-	return [[PlaylistController sharedObject] playlistEntries];
+    [self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
+{
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeMove:
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeUpdate:
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
 }
 
 @end
