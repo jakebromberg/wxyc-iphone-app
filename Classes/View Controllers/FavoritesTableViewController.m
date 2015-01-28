@@ -21,17 +21,16 @@
 	
     UINib *playcutCellNib = [UINib nibWithNibName:NSStringFromClass([PlaycutCell class]) bundle:nil];
     [self.tableView registerNib:playcutCellNib forCellReuseIdentifier:NSStringFromClass([PlaycutCell class])];
-//    [self.tableView registerClass:[PlaycutCell class] forCellReuseIdentifier:NSStringFromClass([PlaycutCell class])];
     
 	self.favoritesArray = [Playcut findByAttribute:@"Favorite" withValue:@YES andOrderBy:@"chronOrderID" ascending:NO];
 	
 	[[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
 	{
 		self.favoritesArray = [Playcut findByAttribute:@"Favorite" withValue:@YES andOrderBy:@"chronOrderID" ascending:NO];
-		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[self.tableView reloadData];
-		});
+
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.tableView reloadData];
+        }];
 	}];
 }
 
