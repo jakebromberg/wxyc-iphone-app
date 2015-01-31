@@ -9,6 +9,8 @@
 #import "XYCDataStack.h"
 #import <RestKit/RestKit.h>
 #import "Playcut.h"
+#import "Breakpoint.h"
+#import "Talkset.h"
 #import "PlaylistMappingsManager.h"
 
 @interface NSManagedObjectContext ()
@@ -108,6 +110,9 @@
 	//Clean out unfavorited data
 	NSPredicate *p = [NSPredicate predicateWithFormat:@"%K = %@", @keypath(Playcut *, Favorite), @NO];
 	[Playcut deleteAllMatchingPredicate:p];
+	
+	[Talkset deleteAllMatchingPredicate:nil];
+	[Breakpoint deleteAllMatchingPredicate:nil];
 }
 
 @end

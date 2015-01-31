@@ -58,13 +58,13 @@
 {
     [super viewWillAppear:animated];
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[self fetchRequest] managedObjectContext:[NSManagedObjectContext rootSavingContext] sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:[self fetchRequest] managedObjectContext:[NSManagedObjectContext defaultContext] sectionNameKeyPath:nil cacheName:nil];
     self.fetchedResultsController.delegate = self;
     
     NSError *error;
-    [self.fetchedResultsController performFetch:&error];
+    BOOL success = [self.fetchedResultsController performFetch:&error];
     
-    if (error)
+    if (error || !success)
     {
         NSLog(@"%@", error);
     }
@@ -138,6 +138,8 @@
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
+	NSAssert([NSThread currentThread] == [NSThread mainThread], @"[NSThread currentThread] != [NSThread mainThread]");
+	
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
