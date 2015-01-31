@@ -3,6 +3,15 @@
 //  Copyright WXYC 2009-10. All rights reserved.
 //
 
-@interface LivePlaylistTableViewController : UITableViewController <UITableViewDataSource, UITabBarControllerDelegate>
+@protocol XYCSimpleTableViewDelegate <UITableViewDataSource, UITableViewDelegate>
+
+- (instancetype)initWithFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController;
+
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
+@end
+
+
+@interface LivePlaylistTableViewController : UITableViewController
 
 @end
