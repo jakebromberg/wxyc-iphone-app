@@ -13,6 +13,8 @@
 
 @interface PlaycutDetailsTransition : NSObject <UIViewControllerTransitioningDelegate>
 
+@property (nonatomic, strong) UIImageView *cellArtSnapshot;
+
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source;
 
 @end

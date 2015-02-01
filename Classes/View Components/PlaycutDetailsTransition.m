@@ -17,14 +17,9 @@
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(LivePlaylistTableViewController *)source
 {
     PlaycutDetailsTransitionAnimator *animator = [[PlaycutDetailsTransitionAnimator alloc] init];
-    animator.cellArtSnaphot = source.cellArtSnapshot;
-//    animator.cellSnaphot.frame = ({
-//        CGPoint newPoint = [presented.view convertPoint:animator.cellSnaphot.frame.origin
-//                                    fromCoordinateSpace:source.view];
-//        (CGRect) { newPoint, animator.cellSnaphot.frame.size };
-//    });
-    
-    return animator;
+    animator.cellArtSnaphot = self.cellArtSnapshot;
+
+	return animator;
 }
 
 @end
@@ -36,7 +31,6 @@
 {
     return .5;
 }
-
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {

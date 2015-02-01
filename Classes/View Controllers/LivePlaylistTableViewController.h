@@ -3,9 +3,16 @@
 //  Copyright WXYC 2009-10. All rights reserved.
 //
 
-@class PlaycutCell;
+@protocol XYCSimpleTableViewDelegate <UITableViewDataSource, UITableViewDelegate>
 
-@interface LivePlaylistTableViewController : UITableViewController <UITableViewDataSource, UITabBarControllerDelegate>
+- (instancetype)initWithFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController;
+
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
+@end
+
+
+@interface LivePlaylistTableViewController : UITableViewController
 
 @property (nonatomic, strong, readonly) UIImageView *cellArtSnapshot;
 
