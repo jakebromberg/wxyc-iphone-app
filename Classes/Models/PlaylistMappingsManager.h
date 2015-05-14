@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 WXYC. All rights reserved.
 //
 
-#import <RestKit/RestKit.h>
+//#import <RestKit/RestKit.h>
 
 @protocol XYCPlaylistMapping <NSObject>
 
@@ -21,6 +21,6 @@
 
 @interface PlaylistMappingsManager : NSObject
 
-+ (void)addResponseDescriptorsToObjectManager:(RKObjectManager *)objectManager;
+//+ (void)addResponseDescriptorsToObjectManager:(RKObjectManager *)objectManager;
 
 @end

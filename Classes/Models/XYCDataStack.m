@@ -7,15 +7,15 @@
 //
 
 #import "XYCDataStack.h"
-#import <RestKit/RestKit.h>
+//#import <RestKit/RestKit.h>
 #import "Playcut.h"
 #import "Breakpoint.h"
 #import "Talkset.h"
-#import "PlaylistMappingsManager.h"
+//#import "PlaylistMappingsManager.h"
 
 @interface NSManagedObjectContext ()
 
-+ (void)MR_setupCoreDataStackWithManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
+//+ (void)MR_setupCoreDataStackWithManagedObjectStore:(RKManagedObjectStore *)managedObjectStore;
 + (void)MR_setRootSavingContext:(NSManagedObjectContext *)context;
 + (void)MR_setDefaultContext:(NSManagedObjectContext *)moc;
 

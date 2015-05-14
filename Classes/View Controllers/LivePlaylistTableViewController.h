@@ -3,6 +3,8 @@
 //  Copyright WXYC 2009-10. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
+
 @protocol XYCSimpleTableViewDelegate <UITableViewDataSource, UITableViewDelegate>
 
 - (instancetype)initWithFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController;

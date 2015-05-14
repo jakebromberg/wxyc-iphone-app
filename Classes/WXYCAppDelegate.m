@@ -4,7 +4,7 @@
 //
 
 #import "WXYCAppDelegate.h"
-#import "XYCDataStack.h"
+//#import "XYCDataStack.h"
 #import "LockscreenMediaController.h"
 #import "PlaylistController.h"
 #import "NSObject+KVOBlocks.h"
@@ -15,18 +15,18 @@
 {
 	[[self class] instantiateSingletons];
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-	[RKObjectManager.sharedManager observeKeyPath:@keypath(RKObjectManager.sharedManager, operationQueue.operationCount) changeBlock:^(NSDictionary *change)
-	{
-		BOOL isBusy = 0 != RKObjectManager.sharedManager.operationQueue.operationCount;
-		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:isBusy];
-	}];
+//	[RKObjectManager.sharedManager observeKeyPath:@keypath(RKObjectManager.sharedManager, operationQueue.operationCount) changeBlock:^(NSDictionary *change)
+//	{
+//		BOOL isBusy = 0 != RKObjectManager.sharedManager.operationQueue.operationCount;
+//		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:isBusy];
+//	}];
 
 	return YES;
 }
 
 + (void)instantiateSingletons
 {
-	[XYCDataStack loadSingleton];
+//	[XYCDataStack loadSingleton];
 	[PlaylistController loadSingleton];
 	[LockscreenMediaController loadSingleton];
 }

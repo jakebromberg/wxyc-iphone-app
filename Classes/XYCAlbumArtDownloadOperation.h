@@ -6,18 +6,13 @@
 //  Copyright (c) 2014 WXYC. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "SDWebImageOperation.h"
-#import "SDWebImageDownloader.h"
+#import <UIKit/UIKit.h>
 
-#define XYCAlbumArtOperation SDWebImageOperation
-typedef SDWebImageDownloaderOptions XYCAlbumArtDownloaderOptions;
-typedef SDWebImageDownloaderProgressBlock XYCAlbumArtDownloaderProgressBlock;
-typedef SDWebImageDownloaderCompletedBlock XYCAlbumArtDownloaderCompletedBlock;
+typedef void(^XYCAlbumArtDownloaderCompletedBlock)(UIImage *image, NSData *data, NSError *error, BOOL finished);
 
 @interface XYCAlbumArtDownloadOperation : NSObject
 
-- (instancetype)initWithKeywords:(NSArray *)keywords options:(XYCAlbumArtDownloaderOptions)options progress:(XYCAlbumArtDownloaderProgressBlock)progressBlock completed:(XYCAlbumArtDownloaderCompletedBlock)completedBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithKeywords:(NSArray *)keywords completed:(XYCAlbumArtDownloaderCompletedBlock)completedBlock NS_DESIGNATED_INITIALIZER;
 - (void)cancel;
 
 @end

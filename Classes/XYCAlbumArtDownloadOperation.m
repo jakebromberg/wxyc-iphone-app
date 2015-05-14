@@ -8,29 +8,20 @@
 
 #import "XYCAlbumArtDownloadOperation.h"
 #import "GoogleImageSearch.h"
-#import "SDWebImageDownloader.h"
 
 @interface XYCAlbumArtDownloadOperation ()
 
-@property (nonatomic, assign) XYCAlbumArtDownloaderOptions options;
-@property (nonatomic, strong) XYCAlbumArtDownloaderProgressBlock progressBlock;
-@property (nonatomic, strong) XYCAlbumArtDownloaderCompletedBlock completedBlock;
-
 @property (nonatomic, strong) GoogleImageSearch *imageSearch;
-@property (nonatomic, strong) id<SDWebImageOperation> imageDownloadOperation;
+@property (nonatomic, strong) NSURLSessionDataTask *imageDownloadOperation;
 
 @end
 
 
 @implementation XYCAlbumArtDownloadOperation
 
-- (instancetype)initWithKeywords:(NSArray *)keywords options:(XYCAlbumArtDownloaderOptions)options progress:(XYCAlbumArtDownloaderProgressBlock)progressBlock completed:(XYCAlbumArtDownloaderCompletedBlock)completedBlock
+- (instancetype)initWithKeywords:(NSArray *)keywords completed:(XYCAlbumArtDownloaderCompletedBlock)completedBlock
 {
 	if (!(self = [super init])) return nil;
-	
-	_options = options;
-	_progressBlock = progressBlock;
-	_completedBlock = completedBlock;
 	
 	__block __typeof(self) wSelf = self;
 	
@@ -38,10 +29,13 @@
 	{
 		__typeof(self) sSelf = wSelf;
 		
-		if (error)
-			sSelf.completedBlock(nil, nil, error, NO);
-		
-		_imageDownloadOperation = [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:imageURL options:sSelf.options progress:sSelf.progressBlock completed:sSelf.completedBlock];
+        if (error) {
+            completedBlock(nil, nil, error, NO);
+        }
+        
+        sSelf.imageDownloadOperation = [[NSURLSession sharedSession] dataTaskWithURL:imageURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            completedBlock([UIImage imageWithData:data], data, error, YES);
+        }];
 	}];
 	
 	return self;
