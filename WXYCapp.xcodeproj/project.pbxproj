@@ -16,7 +16,6 @@
 		2318562C173B274B00F15CC6 /* no-favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318562B173B274B00F15CC6 /* no-favorites.png */; };
 		231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0C218066DFB00D93649 /* LockscreenMediaController.m */; };
 		231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0CA1807C59F00D93649 /* NSObject+Singleton.m */; };
-		231EC0CE180BB2B000D93649 /* XYCDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0CD180BB2B000D93649 /* XYCDataStack.m */; };
 		231EC0DC180E109800D93649 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DB180E109800D93649 /* Playlist.m */; };
 		231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DD180E18ED00D93649 /* FavoriteShareButton.m */; };
 		231EC0E2180E19B600D93649 /* SearchShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0E1180E19B600D93649 /* SearchShareAction.m */; };
@@ -31,7 +30,6 @@
 		23456D94181B4A7B00C88621 /* NSObject+KVOBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 23456D93181B4A7B00C88621 /* NSObject+KVOBlocks.m */; };
 		23456D96181B59ED00C88621 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23456D95181B59ED00C88621 /* Images.xcassets */; };
 		234946D61263A6DD00022117 /* cassette reel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 234946D51263A6DD00022117 /* cassette reel@2x.png */; };
-		234A74D5153B6D3100C30053 /* PlaylistMappingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 234A74D4153B6D3100C30053 /* PlaylistMappingsManager.m */; };
 		234B49F712936B0A001B3EB2 /* toolbar-cassette.png in Resources */ = {isa = PBXBuildFile; fileRef = 234B49F512936B0A001B3EB2 /* toolbar-cassette.png */; };
 		234B49F812936B0A001B3EB2 /* toolbar-cassette@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 234B49F612936B0A001B3EB2 /* toolbar-cassette@2x.png */; };
 		234B4AEB12938EF1001B3EB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 234B4AEA12938EF1001B3EB2 /* Security.framework */; };
@@ -162,6 +160,8 @@
 		2777576C1631BD8700349E12 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2777576B1631BD8700349E12 /* libxml2.dylib */; };
 		3DE12A674E1B41D78273ADB6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C80948779A0C4AFDB5BE7C39 /* libPods.a */; };
 		4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */; };
+		BE0E27DE1AFBD6F80026E579 /* XYCNetworkingStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E27DD1AFBD6F80026E579 /* XYCNetworkingStack.m */; };
+		BE0E27DF1AFBD6F80026E579 /* XYCNetworkingStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E27DD1AFBD6F80026E579 /* XYCNetworkingStack.m */; };
 		BE51B0491A6B415B000CA885 /* PlaycutDetailsTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BE51B0481A6B415B000CA885 /* PlaycutDetailsTransition.m */; };
 		BE56244B1A6AE5BA0026AF24 /* PlaycutDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5624491A6AE5BA0026AF24 /* PlaycutDetailsViewController.m */; };
 		BE56244C1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE56244A1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib */; };
@@ -413,6 +413,8 @@
 		4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LivePlaylistTableViewController.m; path = "View Controllers/LivePlaylistTableViewController.m"; sourceTree = "<group>"; };
 		80D819792D3B4776FF7F91D5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Other/Info.plist; sourceTree = "<group>"; };
+		BE0E27DC1AFBD6F80026E579 /* XYCNetworkingStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYCNetworkingStack.h; path = Models/XYCNetworkingStack.h; sourceTree = "<group>"; };
+		BE0E27DD1AFBD6F80026E579 /* XYCNetworkingStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYCNetworkingStack.m; path = Models/XYCNetworkingStack.m; sourceTree = "<group>"; };
 		BE51B0471A6B415B000CA885 /* PlaycutDetailsTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaycutDetailsTransition.h; path = "View Components/PlaycutDetailsTransition.h"; sourceTree = "<group>"; };
 		BE51B0481A6B415B000CA885 /* PlaycutDetailsTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutDetailsTransition.m; path = "View Components/PlaycutDetailsTransition.m"; sourceTree = "<group>"; };
 		BE5624481A6AE5BA0026AF24 /* PlaycutDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaycutDetailsViewController.h; path = Controllers/PlaycutDetailsViewController.h; sourceTree = "<group>"; };
@@ -758,6 +760,8 @@
 				23EE39661527EB070006CDA5 /* PlaylistEntry.m */,
 				231EC0CC180BB2B000D93649 /* XYCDataStack.h */,
 				231EC0CD180BB2B000D93649 /* XYCDataStack.m */,
+				BE0E27DC1AFBD6F80026E579 /* XYCNetworkingStack.h */,
+				BE0E27DD1AFBD6F80026E579 /* XYCNetworkingStack.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1258,9 +1262,9 @@
 				235481AA1818E56500342DEC /* NSObject+ObjectBuilder.m in Sources */,
 				23EE39B11527F0790006CDA5 /* PlaycutCell.m in Sources */,
 				238F6D751931516700EF95BA /* PlaycutMapping.m in Sources */,
-				231EC0CE180BB2B000D93649 /* XYCDataStack.m in Sources */,
 				235481A71818E30700342DEC /* UIApplication+PresentViewController.m in Sources */,
 				238F6D7B1931518400EF95BA /* BreakpointMapping.m in Sources */,
+				BE0E27DE1AFBD6F80026E579 /* XYCNetworkingStack.m in Sources */,
 				23EE39B31527F0790006CDA5 /* TalksetCell.m in Sources */,
 				231EC0C318066DFB00D93649 /* LockscreenMediaController.m in Sources */,
 				23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */,
@@ -1287,7 +1291,6 @@
 				238F6D781931517800EF95BA /* TalksetMapping.m in Sources */,
 				23EE3A0A1527F07A0006CDA5 /* WXYCAppDelegate.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				234A74D5153B6D3100C30053 /* PlaylistMappingsManager.m in Sources */,
 				BE5D1B491A705F7200340B4C /* LivePlaylistTransitionSnaphot.m in Sources */,
 				2777573F1631BB1600349E12 /* IndefinitelySpinningAnimation.m in Sources */,
 				23F8176C16EBDE13005BF24F /* NSArray+Additions.m in Sources */,
@@ -1311,6 +1314,7 @@
 				2380F0BE1954BE1F001939DD /* TodayViewController.m in Sources */,
 				239C4C2A1960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m in Sources */,
 				23653F771954CCCD009AF000 /* PlaylistEntry.m in Sources */,
+				BE0E27DF1AFBD6F80026E579 /* XYCNetworkingStack.m in Sources */,
 				23FEE2ED195C64D600D467F0 /* Playcut.m in Sources */,
 				23653F751954C8D9009AF000 /* PlaylistController.m in Sources */,
 			);
@@ -1442,6 +1446,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 					MR_SHORTHAND,
+					"TARGET_IS_EXTENSION=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1486,6 +1491,7 @@
 					"$(inherited)",
 					"COCOAPODS=1",
 					MR_SHORTHAND,
+					"TARGET_IS_EXTENSION=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1530,6 +1536,7 @@
 					"$(inherited)",
 					"COCOAPODS=1",
 					MR_SHORTHAND,
+					"TARGET_IS_EXTENSION=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

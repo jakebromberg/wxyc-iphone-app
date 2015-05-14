@@ -6,14 +6,13 @@
 //  Copyright 2010 WXYC. All rights reserved.
 //
 
-#import <RestKit/RestKit.h>
 #import "NSObject+Singleton.h"
 
 @class Playcut;
 
 @interface PlaylistController : NSObject <XYCSingleton>
 
-- (void)fetchPlaylistWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
+- (void)fetchPlaylistWithCompletionHandler:(id)completionHandler;
 - (void)fetchPlaylist;
 
 @end

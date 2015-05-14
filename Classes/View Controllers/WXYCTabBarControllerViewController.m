@@ -13,7 +13,7 @@
 #import "XYCLivePlaylistDelegate.h"
 #import "XYCSimpleFetchedResultsDelegate.h"
 
-static const UIEdgeInsets insets = (UIEdgeInsets){6, 0, -6, 0};
+static const UIEdgeInsets insets = (UIEdgeInsets) {6, 0, -6, 0};
 
 typedef NS_ENUM(NSUInteger, XYCTabBarItems) {
     XYCLivePlaylistItem,
@@ -42,9 +42,9 @@ typedef NS_ENUM(NSUInteger, XYCTabBarItems) {
 
 @implementation WXYCTabBarControllerViewController
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidLoad
 {
-	[super viewWillAppear:animated];
+	[super viewDidLoad];
 	
 	self.livePlaylistItem.imageInsets = insets;
     self.livePlaylistItem.image = [[UIImage imageNamed:@"tabbar-item-playlist-unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -58,8 +58,8 @@ typedef NS_ENUM(NSUInteger, XYCTabBarItems) {
     self.infoItem.image = [[UIImage imageNamed:@"tabbar-item-info-unselected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.infoItem.selectedImage = [[UIImage imageNamed:@"tabbar-item-info-selected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 	
-	[self setUpLivePlaylistViewController];
-	[self setUpFavoritesViewController];
+//	[self setUpLivePlaylistViewController];
+//	[self setUpFavoritesViewController];
 }
 
 - (void)setUpLivePlaylistViewController

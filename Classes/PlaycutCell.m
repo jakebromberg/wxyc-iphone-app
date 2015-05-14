@@ -11,6 +11,7 @@
 #import "NSObject+KVOBlocks.h"
 #import "NSArray+Additions.h"
 #import "XYCAlbumArtDownloadOperation.h"
+#import <MagicalRecord/MagicalRecordShorthand.h>
 
 @interface PlaycutCell ()
 
@@ -79,8 +80,6 @@
 	id keywords = @[self.artistLabel.text, self.titleLabel.text];
 	self.artDownloadOperation = [[XYCAlbumArtDownloadOperation alloc]
 								 initWithKeywords:keywords
-								 options:0
-								 progress:nil
 								 completed:self.downloadCompletion];
 	
 	return [UIImage imageNamed:@"album_cover_placeholder.PNG"];

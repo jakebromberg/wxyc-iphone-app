@@ -11,11 +11,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "NSObject+KVOBlocks.h"
 
-@interface AudioStreamController()
+@interface AudioStreamController ()
 
 @property (nonatomic, strong) AVPlayer *player;
-
-- (void)resetPlayer;
 
 @end
 
@@ -30,13 +28,13 @@
 	{
 		_URL = [URL copy];
         
-        [self observeKeyPath:@keypath(self, player.status) changeBlock:^(NSDictionary *change) {
-            if (self.player.status == AVPlayerStatusFailed)
-            {
-                self.player = nil;
-                
-            }
-        }];
+//        [self observeKeyPath:@keypath(self, player.status) changeBlock:^(NSDictionary *change) {
+//            if (self.player.status == AVPlayerStatusFailed)
+//            {
+//                self.player = nil;
+//                
+//            }
+//        }];
 	}
 	
 	return self;
@@ -72,19 +70,15 @@
 
 - (AVPlayer *)player
 {
-	if (!_player)
-		[self resetPlayer];
-	
+    if (!_player || _player.status == AVPlayerStatusFailed) {
+        self.player = [[AVPlayer alloc] initWithURL:self.URL];
+        self.player.usesExternalPlaybackWhileExternalScreenIsActive = YES;
+    }
+    
 	return _player;
 }
 
 #pragma mark - Player methods
-
-- (void)resetPlayer
-{
-	self.player = [[AVPlayer alloc] initWithURL:self.URL];
-	self.player.usesExternalPlaybackWhileExternalScreenIsActive = YES;
-}
 
 + (NSSet *)keyPathsForValuesAffectingIsPlaying
 {
