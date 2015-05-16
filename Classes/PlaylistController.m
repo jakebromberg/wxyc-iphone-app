@@ -9,6 +9,8 @@
 #import "PlaylistController.h"
 #import "NSArray+Additions.h"
 #import "Playcut.h"
+#import "NSManagedObject+MagicalRecord.h"
+#import "NSManagedObjectContext+MagicalRecord.h"
 
 @interface PlaylistController()
 
@@ -79,9 +81,41 @@
 			return;
 		}
 		
-		for (id obj in fetchedResults[@"playcuts"]) {
-			NSLog(@"%@", obj);
+//		@property (nonatomic, retain) NSString * Album;
+//		@property (nonatomic, retain) NSString * Artist;
+//		@property (nonatomic, retain) NSNumber * Favorite;
+//		@property (nonatomic, retain) NSString * Label;
+//		@property (nonatomic, retain) NSData * PrimaryImage;
+//		@property (nonatomic, retain) NSNumber * Request;
+//		@property (nonatomic, retain) NSNumber * Rotation;
+//		@property (nonatomic, retain) NSString * Song;
+//		@property (nonatomic, retain) NSString * imageURL;
+//		@property (nonatomic, strong) NSNumber * playlistEntryID;
+//		@property (nonatomic, strong) NSNumber * chronOrderID;
+//		@property (nonatomic, strong) NSNumber * hour;
+//		@property (nonatomic, strong) Playlist * belongsToPlaylist;
+
+		for (NSDictionary *playcut in fetchedResults[@"playcuts"]) {
+			Playcut *p = [Playcut MR_createEntity];
+			p.Artist = playcut[@"artistName"];
+			p.chronOrderID = playcut[@"chronOrderID"];
+			p.hour = playcut[@"hour"];
+//			p.id = playcut[@"playlistEntryID"];
+			p.Label = playcut[@"labelName"];
+			p.Request = @([playcut[@"request"] boolValue]);
+			p.Rotation = @([playcut[@"rotation"] boolValue]);
+			p.Song = playcut[@"songTitle"];
+			p.Album = playcut[@"releaseTitle"];
+			
+			NSError *error;
+			[[NSManagedObjectContext MR_rootSavingContext] save:&error];
+			
+			if (error) {
+				NSLog(@"%@", error);
+			}
 		}
+		
+		NSLog(@"HI!");
 	}];
 	
 	[task resume];

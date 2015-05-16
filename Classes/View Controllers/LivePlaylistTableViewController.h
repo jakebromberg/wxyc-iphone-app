@@ -6,7 +6,6 @@
 #import <CoreData/CoreData.h>
 
 @protocol XYCSimpleTableViewDelegate <UITableViewDataSource, UITableViewDelegate>
-@class PlaycutCell;
 
 - (instancetype)initWithFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController;
 
