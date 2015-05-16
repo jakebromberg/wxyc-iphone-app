@@ -10,6 +10,18 @@
 #import "PlayerCell.h"
 #import "PlaycutCell.h"
 #import "NSObject+LivePlaylistTableViewCellMappings.h"
+#import "Playcut.h"
+#import "LivePlaylistTransitionSnaphot.h"
+#import "PlaycutDetailsTransition.h"
+#import "PlaycutDetailsViewController.h"
+
+@interface XYCLivePlaylistDelegate ()
+
+@property (nonatomic, strong, readwrite) UIImageView *cellArtSnapshot;
+@property (nonatomic, strong) PlaycutDetailsTransition *transition;
+
+@end
+
 
 @implementation XYCLivePlaylistDelegate
 
@@ -18,6 +30,7 @@
 	if (!(self = [super init])) return nil;
 	
 	_fetchedResultsController = fetchedResultsController;
+	_transition = [[PlaycutDetailsTransition alloc] init];
 	
 	NSError *error;
 	BOOL success = [_fetchedResultsController performFetch:&error];
@@ -74,6 +87,36 @@
 - (NSString *)identifierForCellAtIndexPath:(NSIndexPath *)indexPath
 {
 	return NSStringFromClass([self classOfCellAtIndexPath:indexPath]);
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	Playcut *playcut = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	
+	if ([playcut class] != [Playcut class])
+		return;
+	
+	self.cellArtSnapshot = ({
+		PlaycutCell *cell = (id) [tableView cellForRowAtIndexPath:indexPath];
+		UIImageView *art = [[UIImageView alloc] initWithFrame:(CGRect) {
+			.origin = [cell.albumArt.superview convertPoint:cell.albumArt.frame.origin toView:cell.window],
+			.size = cell.albumArt.frame.size
+		}];
+		
+		art.contentMode = cell.albumArt.contentMode;
+		art.clipsToBounds = YES;
+		art.image = cell.albumArt.image;
+		art;
+	});
+	
+	self.transition.cellArtSnapshot = self.cellArtSnapshot;
+	
+	PlaycutDetailsViewController *vc = [[PlaycutDetailsViewController alloc] initWithNibName:nil bundle:nil];
+	vc.playcut = playcut;
+	vc.transitioningDelegate = self.transition;
+	vc.modalPresentationStyle = UIModalPresentationFullScreen;
+	
+	[self.presentingViewController presentViewController:vc animated:YES completion:nil];
 }
 
 @end

@@ -851,6 +851,8 @@
 				23C1130F1803C13E00B7B5FE /* Root View Controller */,
 				239C4C271960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.h */,
 				239C4C281960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m */,
+				BE51B0471A6B415B000CA885 /* PlaycutDetailsTransition.h */,
+				BE51B0481A6B415B000CA885 /* PlaycutDetailsTransition.m */,
 				2399E5D01A7D67CC00EF6572 /* NSFetchedResultsController+XYCViewControllers.h */,
 				2399E5D11A7D67CC00EF6572 /* NSFetchedResultsController+XYCViewControllers.m */,
 				2399E5D31A7D6B3C00EF6572 /* XYCSimpleFetchedResultsDelegate.h */,

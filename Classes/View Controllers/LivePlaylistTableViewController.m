@@ -4,8 +4,6 @@
 //
 
 #import "LivePlaylistTableViewController.h"
-#import "NSObject+LivePlaylistTableViewCellMappings.h"
-
 #import "PlayerCell.h"
 #import "BreakpointCell.h"
 #import "TalksetCell.h"
@@ -91,7 +89,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.tableView.estimatedSectionHeaderHeight = 78.0f;
+	self.tableView.estimatedSectionHeaderHeight = 78.0f;
     if (indexPath.section == kPlayerSection)
         return;
     

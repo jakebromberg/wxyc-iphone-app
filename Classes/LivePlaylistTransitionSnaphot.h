@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LivePlaylistTableViewController.h"
+#import "PlaycutCell.h"
 
 @interface LivePlaylistTransitionSnaphot : NSObject
 

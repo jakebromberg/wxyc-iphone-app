@@ -11,6 +11,7 @@
 #import "FavoritesTableViewController.h"
 #import "NSFetchedResultsController+XYCViewControllers.h"
 #import "XYCLivePlaylistDelegate.h"
+#import "XYCFavoritesDelegate.h"
 #import "XYCSimpleFetchedResultsDelegate.h"
 
 static const UIEdgeInsets insets = (UIEdgeInsets) {6, 0, -6, 0};
@@ -30,11 +31,11 @@ typedef NS_ENUM(NSUInteger, XYCTabBarItems) {
 
 
 @property (nonatomic, readonly) LivePlaylistTableViewController *livePlaylistTableViewController;
-@property (nonatomic, strong) id<XYCSimpleTableViewDelegate> livePlaylistTableViewDelegate;
+@property (nonatomic, strong) XYCLivePlaylistDelegate *livePlaylistTableViewDelegate;
 @property (nonatomic, strong) id<NSFetchedResultsControllerDelegate> livePlaylistFetchedResultsDelegate;
 
 @property (nonatomic, readonly) FavoritesTableViewController *favoritesTableViewController;
-@property (nonatomic, strong) id<XYCSimpleTableViewDelegate> favoritesTableViewDelegate;
+@property (nonatomic, strong) XYCFavoritesDelegate *favoritesTableViewDelegate;
 @property (nonatomic, strong) id<NSFetchedResultsControllerDelegate> favoritesFetchedResultsDelegate;
 
 @end
@@ -69,6 +70,8 @@ typedef NS_ENUM(NSUInteger, XYCTabBarItems) {
 	livePlaylistFetchedResultsController.delegate = self.livePlaylistFetchedResultsDelegate;
 	
 	self.livePlaylistTableViewDelegate = [[XYCLivePlaylistDelegate alloc] initWithFetchedResultsController:livePlaylistFetchedResultsController];
+	self.livePlaylistTableViewDelegate.presentingViewController = self.livePlaylistTableViewController;
+	
 	self.livePlaylistTableViewController.tableView.delegate = self.livePlaylistTableViewDelegate;
 	self.livePlaylistTableViewController.tableView.dataSource = self.livePlaylistTableViewDelegate;
 	[self.livePlaylistTableViewController.tableView reloadData];
@@ -80,7 +83,7 @@ typedef NS_ENUM(NSUInteger, XYCTabBarItems) {
 	self.favoritesFetchedResultsDelegate = [[XYCSimpleFetchedResultsDelegate alloc] initWithTableView:self.favoritesTableViewController.tableView];
 	livePlaylistFetchedResultsController.delegate = self.favoritesFetchedResultsDelegate;
 	
-	self.favoritesTableViewDelegate = [[XYCLivePlaylistDelegate alloc] initWithFetchedResultsController:livePlaylistFetchedResultsController];
+	self.favoritesTableViewDelegate = [[XYCFavoritesDelegate alloc] initWithFetchedResultsController:livePlaylistFetchedResultsController];
 	self.favoritesTableViewController.tableView.delegate = self.favoritesTableViewDelegate;
 	self.favoritesTableViewController.tableView.dataSource = self.favoritesTableViewDelegate;
 	[self.favoritesTableViewController.tableView reloadData];

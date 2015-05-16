@@ -18,4 +18,6 @@
 
 @interface LivePlaylistTableViewController : UITableViewController
 
+@property (nonatomic, strong, readonly) UIImageView *cellArtSnapshot;
+
 @end
