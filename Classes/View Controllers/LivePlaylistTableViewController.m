@@ -8,6 +8,10 @@
 #import "BreakpointCell.h"
 #import "TalksetCell.h"
 #import "PlaycutCell.h"
+#import "PlaycutDetailsViewController.h"
+#import "PlaylistController.h"
+#import "NSObject+KVOBlocks.h"
+#import "NSIndexPath+Additions.h"
 
 @implementation LivePlaylistTableViewController
 
@@ -37,6 +41,13 @@
 	
 	self.tableView.estimatedRowHeight = 360.f;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
+}
+
+#pragma mark - Properties
+
+- (NSArray *)playlist
+{
+	return [[PlaylistController sharedObject] playlistEntries];
 }
 
 @end

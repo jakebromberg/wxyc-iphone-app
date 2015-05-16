@@ -4,7 +4,7 @@
 //
 
 #import "WXYCAppDelegate.h"
-//#import "XYCDataStack.h"
+#import "XYCDataStack.h"
 #import "LockscreenMediaController.h"
 #import "PlaylistController.h"
 #import "NSObject+KVOBlocks.h"
@@ -26,7 +26,7 @@
 
 + (void)instantiateSingletons
 {
-//	[XYCDataStack loadSingleton];
+	[XYCDataStack loadSingleton];
 	[PlaylistController loadSingleton];
 	[LockscreenMediaController loadSingleton];
 }
