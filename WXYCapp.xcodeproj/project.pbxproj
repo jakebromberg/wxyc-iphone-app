@@ -61,6 +61,8 @@
 		23653F751954C8D9009AF000 /* PlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39221527D0EF0006CDA5 /* PlaylistController.m */; };
 		23653F771954CCCD009AF000 /* PlaylistEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE39661527EB070006CDA5 /* PlaylistEntry.m */; };
 		2379A2861B07B065005C2E49 /* XYCDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0CD180BB2B000D93649 /* XYCDataStack.m */; };
+		2379A2871B08E26D005C2E49 /* Talkset.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF96E6195B21A0000328B5 /* Talkset.m */; };
+		2379A2881B08E272005C2E49 /* Breakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF96E3195B219F000328B5 /* Breakpoint.m */; };
 		237DFA2F179B9D9D00AAEC4B /* FacebookShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA2E179B9C1400AAEC4B /* FacebookShareButton.m */; };
 		237DFA35179BAD8F00AAEC4B /* SocialShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 237DFA34179BA17D00AAEC4B /* SocialShareAction.m */; };
 		237E914F12930E5400A07456 /* casey-burns-app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 237E914D12930E5400A07456 /* casey-burns-app-icon.png */; };
@@ -1315,9 +1317,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				232B5A2119630D78000F11DE /* GoogleImageSearch.m in Sources */,
+				2379A2881B08E272005C2E49 /* Breakpoint.m in Sources */,
 				2380F0BE1954BE1F001939DD /* TodayViewController.m in Sources */,
 				239C4C2A1960FF1E00CFF88A /* XYCAlbumArtDownloadOperation.m in Sources */,
 				23653F771954CCCD009AF000 /* PlaylistEntry.m in Sources */,
+				2379A2871B08E26D005C2E49 /* Talkset.m in Sources */,
 				BE0E27DF1AFBD6F80026E579 /* XYCNetworkingStack.m in Sources */,
 				23FEE2ED195C64D600D467F0 /* Playcut.m in Sources */,
 				23653F751954C8D9009AF000 /* PlaylistController.m in Sources */,

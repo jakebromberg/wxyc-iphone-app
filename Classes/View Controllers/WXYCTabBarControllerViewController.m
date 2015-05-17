@@ -59,7 +59,7 @@ typedef NS_ENUM(NSUInteger, XYCTabBarItems) {
     self.infoItem.image = [[UIImage imageNamed:@"tabbar-item-info-unselected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.infoItem.selectedImage = [[UIImage imageNamed:@"tabbar-item-info-selected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 	
-//	[self setUpLivePlaylistViewController];
+	[self setUpLivePlaylistViewController];
 //	[self setUpFavoritesViewController];
 }
 
