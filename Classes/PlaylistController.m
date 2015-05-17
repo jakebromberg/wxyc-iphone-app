@@ -11,6 +11,8 @@
 #import "Playcut.h"
 #import "NSManagedObject+MagicalRecord.h"
 #import "NSManagedObjectContext+MagicalRecord.h"
+#import "Breakpoint.h"
+#import "Talkset.h"
 
 @interface PlaylistController()
 
@@ -81,84 +83,40 @@
 			return;
 		}
 		
-//		@property (nonatomic, retain) NSString * Album;
-//		@property (nonatomic, retain) NSString * Artist;
-//		@property (nonatomic, retain) NSNumber * Favorite;
-//		@property (nonatomic, retain) NSString * Label;
-//		@property (nonatomic, retain) NSData * PrimaryImage;
-//		@property (nonatomic, retain) NSNumber * Request;
-//		@property (nonatomic, retain) NSNumber * Rotation;
-//		@property (nonatomic, retain) NSString * Song;
-//		@property (nonatomic, retain) NSString * imageURL;
-//		@property (nonatomic, strong) NSNumber * playlistEntryID;
-//		@property (nonatomic, strong) NSNumber * chronOrderID;
-//		@property (nonatomic, strong) NSNumber * hour;
-//		@property (nonatomic, strong) Playlist * belongsToPlaylist;
+		NSManagedObjectContext *context = [NSManagedObjectContext MR_rootSavingContext];
 
+		for (NSDictionary *playcut in fetchedResults[@"breakpoints"]) {
+			Breakpoint *e = [Breakpoint MR_createInContext:context];
+			e.chronOrderID = playcut[@"chronOrderID"];
+			e.hour = playcut[@"hour"];
+		}
+
+		for (NSDictionary *playcut in fetchedResults[@"talksets"]) {
+			Talkset *t = [Talkset MR_createInContext:context];
+			t.chronOrderID = playcut[@"chronOrderID"];
+			t.hour = playcut[@"hour"];
+		}
+		
 		for (NSDictionary *playcut in fetchedResults[@"playcuts"]) {
-			Playcut *p = [Playcut MR_createEntity];
+			Playcut *p = [Playcut MR_createInContext:context];
 			p.Artist = playcut[@"artistName"];
 			p.chronOrderID = playcut[@"chronOrderID"];
 			p.hour = playcut[@"hour"];
-//			p.id = playcut[@"playlistEntryID"];
 			p.Label = playcut[@"labelName"];
 			p.Request = @([playcut[@"request"] boolValue]);
 			p.Rotation = @([playcut[@"rotation"] boolValue]);
 			p.Song = playcut[@"songTitle"];
 			p.Album = playcut[@"releaseTitle"];
-			
-			NSError *error;
-			[[NSManagedObjectContext MR_rootSavingContext] save:&error];
-			
-			if (error) {
-				NSLog(@"%@", error);
-			}
 		}
+
+		[context save:&error];
 		
-		NSLog(@"HI!");
+		if (error) {
+			NSLog(@"%@", error);
+		}
 	}];
 	
 	[task resume];
-//	[RKObjectManager.sharedManager getObjectsAtPath:self.path parameters:self.parameters success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult)
-//	 {
-//		 if (mappingResult.array.count == 0)
-//		 {
-//			 if (completionHandler)
-//				 completionHandler(UIBackgroundFetchResultNoData);
-//			 
-//			 return;
-//		 }
-//
-//		 NSIndexSet *indexes = [mappingResult.array indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-//			 return ![self.playlistEntries containsObject:obj];
-//		 }];
-//		 
-//		 if (indexes.count == 0)
-//		 {
-//			 if (completionHandler)
-//				 completionHandler(UIBackgroundFetchResultNoData);
-//		 }
-//		 else
-//		 {
-//			 NSArray *array = [mappingResult.array objectsAtIndexes:indexes];
-//			 
-//			 array = [mappingResult.array sortedArrayUsingComparator:^NSComparisonResult(PlaylistEntry *e1, PlaylistEntry *e2) {
-//				 return [e2.chronOrderID compare:e1.chronOrderID];
-//			 }];
-//			 
-//			 [self addPlaylistEntries:array];
-//			 
-//			 if (completionHandler)
-//				 completionHandler(UIBackgroundFetchResultNewData);
-//		 }
-//         
-//         [self performSelector:@selector(fetchPlaylist) withObject:nil afterDelay:5];
-//	 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-//		 if (completionHandler)
-//			 completionHandler(UIBackgroundFetchResultFailed);
-//
-//         [self performSelector:@selector(fetchPlaylist) withObject:nil afterDelay:30];
-//     }];
 }
 
 - (void)fetchPlaylist
