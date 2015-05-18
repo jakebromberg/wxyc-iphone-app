@@ -10,17 +10,7 @@
 #import "LivePlaylistTableViewCell.h"
 #import "NSObject+KVOBlocks.h"
 
-@interface LivePlaylistTableViewCell ()
-
-@end
-
-
 @implementation LivePlaylistTableViewCell
-
-+ (float)height
-{
-	return 44.0f;
-}
 
 - (void)awakeFromNib
 {
@@ -34,9 +24,9 @@
     
     [self.contentView.layer insertSublayer:self.shadowLayer atIndex:0];
 
-    __weak __typeof(self) welf = self;
-    [self observeKeyPath:@keypath(self.containerView.layer, frame) changeBlock:^(NSDictionary *change) {
-        welf.shadowLayer.shadowPath = CGPathCreateWithRoundedRect(welf.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
+	__weak __typeof(self) welf = self;
+	[self observeKeyPath:@keypath(self.containerView.layer, frame) changeBlock:^(NSDictionary *change) {
+		welf.shadowLayer.shadowPath = CGPathCreateWithRoundedRect(welf.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
 	}];
 }
 

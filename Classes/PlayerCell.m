@@ -21,11 +21,6 @@
 
 @implementation PlayerCell
 
-+ (float)height
-{
-	return 84.0f;
-}
-
 - (instancetype)awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
 	[[AudioStreamController wxyc] addBlockObserver:self forKeyPath:@keypath(AudioStreamController.wxyc, isPlaying) changeBlock:^(NSDictionary *change) {

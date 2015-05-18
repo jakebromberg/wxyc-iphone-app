@@ -8,6 +8,6 @@
 
 #import "LivePlaylistTableViewCell.h"
 
-@interface PlayerCell : LivePlaylistTableViewCell
+@interface PlayerCell : UITableViewHeaderFooterView
 
 @end

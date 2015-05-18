@@ -57,12 +57,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-	UIView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
-	PlayerCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PlayerCell class])];
-	header.bounds = cell.bounds;
-	[header addSubview:cell];
-	
-	return header;
+	return [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([PlayerCell class])];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,11 +67,6 @@
 	cell.entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	
 	return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return [[self classOfCellAtIndexPath:indexPath] height];
 }
 
 - (Class)classOfCellAtIndexPath:(NSIndexPath *)indexPath

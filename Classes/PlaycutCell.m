@@ -20,17 +20,10 @@
 @property (nonatomic, weak, readwrite) IBOutlet UIImageView *albumArt;
 @property (nonatomic, weak) IBOutlet UILabel *artistLabel;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property (nonatomic, weak) IBOutlet UIView *shareBar;
-
-@property (nonatomic, weak) IBOutlet PlaycutCellButton *twitterButton;
-@property (nonatomic, weak) IBOutlet PlaycutCellButton *facebookButton;
-@property (nonatomic, weak) IBOutlet PlaycutCellButton *favoriteButton;
-@property (nonatomic, weak) IBOutlet PlaycutCellButton *searchButton;
 
 #pragma mark State
 
 @property (nonatomic, strong) __block Playcut *entity;
-@property (nonatomic, getter = isShareBarVisible) BOOL shareBarVisible;
 @property (nonatomic, strong) XYCAlbumArtDownloadOperation *artDownloadOperation;
 
 @end
@@ -39,11 +32,11 @@
 
 @implementation PlaycutCell
 
+@dynamic entity;
+
 - (void)awakeFromNib
 {
 	[super awakeFromNib];
-    
-    self.shareBar.alpha = 0.f;
 	
 	__weak __typeof(self) __self = self;
 	
@@ -59,11 +52,6 @@
 {
 	[super setEntity:playcut];
 	
-	self.twitterButton.playcut = playcut;
-	self.facebookButton.playcut = playcut;
-	self.favoriteButton.playcut = playcut;
-	self.searchButton.playcut = playcut;
-	
 	self.artistLabel.text = playcut.Artist;
 	self.titleLabel.text = playcut.Song;
 	
@@ -78,9 +66,7 @@
 	}
 	
 	id keywords = @[self.artistLabel.text, self.titleLabel.text];
-	self.artDownloadOperation = [[XYCAlbumArtDownloadOperation alloc]
-								 initWithKeywords:keywords
-								 completed:self.downloadCompletion];
+	self.artDownloadOperation = [[XYCAlbumArtDownloadOperation alloc] initWithKeywords:keywords completed:self.downloadCompletion];
 	
 	return [UIImage imageNamed:@"album_cover_placeholder.PNG"];
 }
@@ -99,7 +85,7 @@
 		Playcut *playcut = (Playcut *) [[NSManagedObjectContext contextForCurrentThread] objectWithID:__objectID];
 		playcut.PrimaryImage = data;
 		
-		[[NSManagedObjectContext contextForCurrentThread] saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+		[playcut.managedObjectContext saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
             if (error) {
                 NSLog(@"the impossible happened");
             }
@@ -114,22 +100,10 @@
     _artDownloadOperation = artDownloadOperation;
 }
 
-#pragma Share stuff
-
-- (void)setShareBarVisible:(BOOL)shareBarVisible
-{
-	_shareBarVisible = shareBarVisible;
-	
-	[UIView animateWithDuration:.5 animations:^{
-		self.shareBar.alpha = (self.isShareBarVisible ? 1 : 0);
-	}];
-}
-
 #pragma Cell Lifecycle
 
 - (void)prepareForReuse
 {
-	self.shareBarVisible = NO;
 	[self.artDownloadOperation cancel];
 }
 
@@ -137,13 +111,6 @@
 {
     [_artDownloadOperation cancel];
 	[self removeBlockObservers];
-}
-
-#pragma initializer stuff
-
-+ (float)height
-{
-	return 360.f;
 }
 
 @end

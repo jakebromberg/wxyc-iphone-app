@@ -52,10 +52,10 @@
 	return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return [[self classOfCellAtIndexPath:indexPath] height];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//	return [[self classOfCellAtIndexPath:indexPath] height];
+//}
 
 - (Class)classOfCellAtIndexPath:(NSIndexPath *)indexPath
 {

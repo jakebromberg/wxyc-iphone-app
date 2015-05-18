@@ -45,11 +45,6 @@
 
 @implementation BreakpointCell
 
-+ (float)height
-{
-	return 50.0f;
-}
-
 - (void)setEntity:(Breakpoint *)entity
 {
 	super.entity = entity;

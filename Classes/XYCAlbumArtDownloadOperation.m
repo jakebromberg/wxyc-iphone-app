@@ -36,7 +36,10 @@
         sSelf.imageDownloadOperation = [[NSURLSession sharedSession] dataTaskWithURL:imageURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             completedBlock([UIImage imageWithData:data], data, error, YES);
         }];
+		
+		[sSelf.imageDownloadOperation resume];
 	}];
+	
 	
 	return self;
 }

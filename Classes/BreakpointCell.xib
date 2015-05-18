@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -18,16 +18,15 @@
                         <rect key="frame" x="10" y="0.0" width="300" height="39"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="clock-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="F7h-fx-let" userLabel="Icon Image">
-                                <rect key="frame" x="7" y="6" width="27" height="27"/>
+                                <rect key="frame" x="0.0" y="0.0" width="39" height="39"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="4PA-0Y-aWK"/>
-                                    <constraint firstAttribute="width" constant="27" id="oWK-ta-XlZ"/>
+                                    <constraint firstAttribute="width" secondItem="F7h-fx-let" secondAttribute="height" multiplier="1:1" id="6mr-Fo-jbz"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1s-ET-fxf">
-                                <rect key="frame" x="40" y="9" width="207" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="1000" text="1:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="261" translatesAutoresizingMaskIntoConstraints="NO" id="Q1s-ET-fxf">
+                                <rect key="frame" x="39" y="0.0" width="261" height="39"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="207" id="Rje-An-fg8"/>
+                                    <constraint firstAttribute="height" constant="39" id="tMu-gs-eUw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -36,11 +35,14 @@
                         </subviews>
                         <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Q1s-ET-fxf" firstAttribute="leading" secondItem="TYf-C4-xfz" secondAttribute="leading" constant="40" id="HmC-FI-Has"/>
-                            <constraint firstItem="F7h-fx-let" firstAttribute="leading" secondItem="TYf-C4-xfz" secondAttribute="leading" constant="7" id="PVj-cM-weU"/>
-                            <constraint firstAttribute="centerY" secondItem="Q1s-ET-fxf" secondAttribute="centerY" id="QyQ-0r-RRV"/>
-                            <constraint firstAttribute="width" secondItem="TYf-C4-xfz" secondAttribute="height" multiplier="100:13" id="VfS-m4-k3f"/>
-                            <constraint firstAttribute="centerY" secondItem="F7h-fx-let" secondAttribute="centerY" id="auF-Lk-Wk2"/>
+                            <constraint firstItem="Q1s-ET-fxf" firstAttribute="leading" secondItem="F7h-fx-let" secondAttribute="trailing" id="3wu-Qv-FuU"/>
+                            <constraint firstItem="Q1s-ET-fxf" firstAttribute="bottom" secondItem="F7h-fx-let" secondAttribute="bottom" id="Hgd-2E-Cgl"/>
+                            <constraint firstAttribute="bottom" secondItem="F7h-fx-let" secondAttribute="bottom" id="eza-tP-vXy"/>
+                            <constraint firstItem="F7h-fx-let" firstAttribute="leading" secondItem="TYf-C4-xfz" secondAttribute="leading" id="jWq-MU-nKU"/>
+                            <constraint firstItem="F7h-fx-let" firstAttribute="top" secondItem="TYf-C4-xfz" secondAttribute="top" id="k25-De-s5T"/>
+                            <constraint firstItem="Q1s-ET-fxf" firstAttribute="height" secondItem="F7h-fx-let" secondAttribute="height" id="p2n-8K-Pzr"/>
+                            <constraint firstItem="Q1s-ET-fxf" firstAttribute="top" secondItem="F7h-fx-let" secondAttribute="top" id="psC-mw-bja"/>
+                            <constraint firstAttribute="trailing" secondItem="Q1s-ET-fxf" secondAttribute="trailing" id="vpG-sk-ogk"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -64,4 +66,9 @@
     <resources>
         <image name="clock-1.png" width="123" height="123"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

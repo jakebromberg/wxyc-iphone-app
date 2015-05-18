@@ -10,9 +10,4 @@
 
 @implementation TalksetCell
 
-+ (float)height
-{
-	return 50.0f;
-}
-
 @end
