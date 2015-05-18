@@ -10,20 +10,41 @@
 #import "AudioStreamController.h"
 #import "UIView+Spin.h"
 #import "NSObject+KVOBlocks.h"
+#import "CALayer+ShadowLayer.h"
 
 @interface PlayerCell ()
 
+@property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic, weak) IBOutlet UIButton *playButton;
-@property (nonatomic, strong) IBOutlet UIView *leftCassetteReel;
-@property (nonatomic, strong) IBOutlet UIView *rightCassetteReel;
+@property (nonatomic, weak) IBOutlet UIView *leftCassetteReel;
+@property (nonatomic, weak) IBOutlet UIView *rightCassetteReel;
+
+@property (nonatomic, strong) CALayer *shadowLayer;
 
 @end
 
+
 @implementation PlayerCell
 
-+ (float)height
+- (void)awakeFromNib
 {
-	return 84.0f;
+	[super awakeFromNib];
+	
+	self.clipsToBounds = NO;
+	self.layer.masksToBounds = NO;
+	
+	self.containerView.layer.borderColor = [UIColor colorWithWhite:.70f alpha:1.f].CGColor;
+	self.containerView.layer.borderWidth = 1.f;
+	self.containerView.layer.cornerRadius = 5.f;
+	self.containerView.layer.masksToBounds = YES;
+	
+	self.shadowLayer = [CALayer shadowLayerWithFrame:self.bounds];
+	[self.layer insertSublayer:self.shadowLayer atIndex:0];
+	
+	__weak __typeof(self) welf = self;
+	[self observeKeyPath:@keypath(self.containerView.layer, frame) changeBlock:^(NSDictionary *change) {
+		welf.shadowLayer.shadowPath = CGPathCreateWithRoundedRect(welf.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
+	}];
 }
 
 - (instancetype)awakeAfterUsingCoder:(NSCoder *)aDecoder

@@ -19,6 +19,7 @@
 		231EC0DC180E109800D93649 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DB180E109800D93649 /* Playlist.m */; };
 		231EC0DE180E18ED00D93649 /* FavoriteShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0DD180E18ED00D93649 /* FavoriteShareButton.m */; };
 		231EC0E2180E19B600D93649 /* SearchShareAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 231EC0E1180E19B600D93649 /* SearchShareAction.m */; };
+		2323B8531B0A359800B2F805 /* CALayer+ShadowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2323B8521B0A359800B2F805 /* CALayer+ShadowLayer.m */; };
 		232B5A2119630D78000F11DE /* GoogleImageSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EE398F1527EC380006CDA5 /* GoogleImageSearch.m */; };
 		232CFDC017EFB35A003A78B6 /* PlaycutCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */; };
 		232E24DE1267A7ED007F7679 /* about_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 232E24C81267A7ED007F7679 /* about_icon.png */; };
@@ -226,6 +227,8 @@
 		231EC0DF180E191700D93649 /* FavoriteShareButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FavoriteShareButton.h; path = Views/FavoriteShareButton.h; sourceTree = "<group>"; };
 		231EC0E0180E19B600D93649 /* SearchShareAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchShareAction.h; path = Views/SearchShareAction.h; sourceTree = "<group>"; };
 		231EC0E1180E19B600D93649 /* SearchShareAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchShareAction.m; path = Views/SearchShareAction.m; sourceTree = "<group>"; };
+		2323B8511B0A359800B2F805 /* CALayer+ShadowLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CALayer+ShadowLayer.h"; path = "View Components/CALayer+ShadowLayer.h"; sourceTree = "<group>"; };
+		2323B8521B0A359800B2F805 /* CALayer+ShadowLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CALayer+ShadowLayer.m"; path = "View Components/CALayer+ShadowLayer.m"; sourceTree = "<group>"; };
 		232CFDBF17EFB35A003A78B6 /* PlaycutCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaycutCellButton.m; path = Views/PlaycutCellButton.m; sourceTree = "<group>"; };
 		232E24C81267A7ED007F7679 /* about_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_icon.png; sourceTree = "<group>"; };
 		232E24CB1267A7ED007F7679 /* Default-inv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-inv.png"; sourceTree = "<group>"; };
@@ -821,6 +824,7 @@
 		23C4A72317E422E0007DB35C /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				23C113071803823800B7B5FE /* NavigationBarTitle.xib */,
 				23CD7B9217515EDF00BD4ED5 /* WXYCTabBarControllerViewController.h */,
 				23CD7B9317515EDF00BD4ED5 /* WXYCTabBarControllerViewController.m */,
 			);
@@ -830,6 +834,9 @@
 		23C7060417E420A800908F44 /* Primary Views */ = {
 			isa = PBXGroup;
 			children = (
+				2379A2891B08E7F0005C2E49 /* Launch Screen.xib */,
+				2323B8511B0A359800B2F805 /* CALayer+ShadowLayer.h */,
+				2323B8521B0A359800B2F805 /* CALayer+ShadowLayer.m */,
 				23C4A72317E422E0007DB35C /* Tab Bar */,
 				230EDC331506875D001C173F /* Live Playlist */,
 				23B32DF5126E70BF008414F4 /* Favorites */,
@@ -844,7 +851,6 @@
 		23C7060517E420B000908F44 /* View Components */ = {
 			isa = PBXGroup;
 			children = (
-				23C113071803823800B7B5FE /* NavigationBarTitle.xib */,
 				23BF148D113C06EE00A72DE7 /* Simple Web Browser */,
 				2353A13F12810065004F9A11 /* Google Image Search */,
 				238CC1C512664111006EC552 /* Casssette Reel */,
@@ -1269,6 +1275,7 @@
 				23C4A72617E42379007DB35C /* UIView+Spin.m in Sources */,
 				231EC0CB1807C59F00D93649 /* NSObject+Singleton.m in Sources */,
 				2379A2861B07B065005C2E49 /* XYCDataStack.m in Sources */,
+				2323B8531B0A359800B2F805 /* CALayer+ShadowLayer.m in Sources */,
 				23FF96E7195B21A0000328B5 /* Talkset.m in Sources */,
 				23DB86A91858230C006B7A73 /* NSObject+LivePlaylistTableViewCellMappings.m in Sources */,
 				23EE39E81527F0790006CDA5 /* PlaylistEntry.m in Sources */,

@@ -13,7 +13,6 @@
 @property (nonatomic, strong) PlaylistEntry *entity;
 
 @property (nonatomic, weak) IBOutlet UIView *containerView;
-@property (nonatomic, strong) CALayer *shadowLayer;
 
 + (float)height;
 
