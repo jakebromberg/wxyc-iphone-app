@@ -9,11 +9,21 @@
 #import <QuartzCore/QuartzCore.h>
 #import "LivePlaylistTableViewCell.h"
 #import "NSObject+KVOBlocks.h"
+#import "CALayer+ShadowLayer.h"
+
+@interface LivePlaylistTableViewCell ()
+
+@property (nonatomic, strong) CALayer *shadowLayer;
+
+@end
+
 
 @implementation LivePlaylistTableViewCell
 
 - (void)awakeFromNib
 {
+	[super awakeFromNib];
+	
 	self.clipsToBounds = NO;
 	self.layer.masksToBounds = NO;
 
@@ -21,33 +31,14 @@
     self.containerView.layer.borderWidth = 1.f;
     self.containerView.layer.cornerRadius = 5.f;
     self.containerView.layer.masksToBounds = YES;
-    
+	
+	self.shadowLayer = [CALayer shadowLayerWithFrame:self.bounds];
     [self.contentView.layer insertSublayer:self.shadowLayer atIndex:0];
 
 	__weak __typeof(self) welf = self;
 	[self observeKeyPath:@keypath(self.containerView.layer, frame) changeBlock:^(NSDictionary *change) {
 		welf.shadowLayer.shadowPath = CGPathCreateWithRoundedRect(welf.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
 	}];
-}
-
-- (CALayer *)shadowLayer
-{
-    if (!_shadowLayer)
-    {
-        _shadowLayer = [CALayer layer];
-        _shadowLayer.frame = self.containerView.bounds;
-        _shadowLayer.backgroundColor = [UIColor clearColor].CGColor;
-        _shadowLayer.shadowColor = [UIColor colorWithWhite:.75f alpha:1.f].CGColor;
-        _shadowLayer.shadowOffset = (CGSize){-.5f, 1.f};
-        _shadowLayer.shadowRadius = 1.5f;
-        _shadowLayer.shadowOpacity = 1;
-        _shadowLayer.shadowPath = CGPathCreateWithRoundedRect(self.containerView.bounds, 5.f, 5.f, &CGAffineTransformIdentity);
-        _shadowLayer.masksToBounds = NO;
-        _shadowLayer.shouldRasterize = YES;
-        _shadowLayer.rasterizationScale = [UIScreen mainScreen].scale;
-    }
-    
-	return _shadowLayer;
 }
 
 - (id)copyWithZone:(NSZone *)zone
