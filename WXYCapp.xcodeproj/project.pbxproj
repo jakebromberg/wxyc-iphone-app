@@ -242,8 +242,7 @@
 		23456D93181B4A7B00C88621 /* NSObject+KVOBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KVOBlocks.m"; sourceTree = "<group>"; };
 		23456D95181B59ED00C88621 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WXYC/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		234946D51263A6DD00022117 /* cassette reel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cassette reel@2x.png"; sourceTree = "<group>"; };
-		234A74D3153B6D3100C30053 /* PlaylistMappingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistMappingsManager.h; path = Models/PlaylistMappingsManager.h; sourceTree = "<group>"; };
-		234A74D4153B6D3100C30053 /* PlaylistMappingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistMappingsManager.m; path = Models/PlaylistMappingsManager.m; sourceTree = "<group>"; };
+		234A76821B0AFBC1009995F9 /* XYCPlaylistMapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XYCPlaylistMapping.h; path = Models/XYCPlaylistMapping.h; sourceTree = "<group>"; };
 		234B49F512936B0A001B3EB2 /* toolbar-cassette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-cassette.png"; sourceTree = "<group>"; };
 		234B49F612936B0A001B3EB2 /* toolbar-cassette@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-cassette@2x.png"; sourceTree = "<group>"; };
 		234B4AEA12938EF1001B3EB2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -717,19 +716,18 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		238F6D711931227400EF95BA /* RK Mappings */ = {
+		238F6D711931227400EF95BA /* JSON Mappings */ = {
 			isa = PBXGroup;
 			children = (
-				234A74D3153B6D3100C30053 /* PlaylistMappingsManager.h */,
-				234A74D4153B6D3100C30053 /* PlaylistMappingsManager.m */,
 				238F6D731931516700EF95BA /* PlaycutMapping.h */,
 				238F6D741931516700EF95BA /* PlaycutMapping.m */,
 				238F6D761931517800EF95BA /* TalksetMapping.h */,
 				238F6D771931517800EF95BA /* TalksetMapping.m */,
 				238F6D791931518400EF95BA /* BreakpointMapping.h */,
 				238F6D7A1931518400EF95BA /* BreakpointMapping.m */,
+				234A76821B0AFBC1009995F9 /* XYCPlaylistMapping.h */,
 			);
-			name = "RK Mappings";
+			name = "JSON Mappings";
 			sourceTree = "<group>";
 		};
 		23AEB9E316F615D500E2EBB1 /* Clock */ = {
@@ -754,7 +752,7 @@
 		23B32D1D126E3268008414F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				238F6D711931227400EF95BA /* RK Mappings */,
+				238F6D711931227400EF95BA /* JSON Mappings */,
 				23FF96E2195B219F000328B5 /* Breakpoint.h */,
 				23FF96E8195B21A0000328B5 /* Playcut.h */,
 				23FF96E9195B21A0000328B5 /* Playcut.m */,
