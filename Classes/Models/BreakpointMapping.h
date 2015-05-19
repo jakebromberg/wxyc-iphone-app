@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PlaylistMappingsManager.h"
+#import "XYCPlaylistMapping.h"
 
 @interface BreakpointMapping : NSObject <XYCPlaylistMapping>
 
