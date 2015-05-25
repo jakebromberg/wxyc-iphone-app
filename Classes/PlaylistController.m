@@ -152,10 +152,6 @@
 	
 	_playlistEntries = [NSArray array];
 
-//	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
-//	{
-		[self fetchPlaylist];
-//	}];
 
 	return self;
 }

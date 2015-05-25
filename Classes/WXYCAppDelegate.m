@@ -15,11 +15,6 @@
 {
 	[[self class] instantiateSingletons];
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-//	[RKObjectManager.sharedManager observeKeyPath:@keypath(RKObjectManager.sharedManager, operationQueue.operationCount) changeBlock:^(NSDictionary *change)
-//	{
-//		BOOL isBusy = 0 != RKObjectManager.sharedManager.operationQueue.operationCount;
-//		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:isBusy];
-//	}];
 
 	return YES;
 }
