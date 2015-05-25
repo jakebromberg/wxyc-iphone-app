@@ -15,7 +15,6 @@
 #import "Talkset.h"
 
 @interface PlaylistController()
-@interface PlaylistController ()
 
 @property (nonatomic, strong, readwrite) NSArray *playlistEntries;
 @property (nonatomic, readonly) NSDictionary *parameters;
