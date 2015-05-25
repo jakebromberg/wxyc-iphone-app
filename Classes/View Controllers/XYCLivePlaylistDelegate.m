@@ -7,8 +7,12 @@
 //
 
 #import "XYCLivePlaylistDelegate.h"
+#import "PlayerCell.h"
+#import "PlaycutCell.h"
+#import "Playcut.h"
 #import "NSObject+LivePlaylistTableViewCellMappings.h"
 #import "PlaycutDetailsTransition.h"
+#import "PlaycutDetailsViewController.h"
 
 @interface XYCLivePlaylistDelegate ()
 
