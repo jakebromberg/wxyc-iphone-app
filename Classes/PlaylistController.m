@@ -15,6 +15,7 @@
 #import "Talkset.h"
 
 @interface PlaylistController()
+@interface PlaylistController ()
 
 @property (nonatomic, strong, readwrite) NSArray *playlistEntries;
 @property (nonatomic, readonly) NSDictionary *parameters;
@@ -64,10 +65,10 @@
 - (void)fetchPlaylistWithCompletionHandler:(id)completionHandler
 {
 	NSURLComponents *urlComponents = [[NSURLComponents alloc] init];
+	urlComponents.scheme = @"http";
 	urlComponents.host = @"wxyc.info";
 	urlComponents.path = self.path;
 	urlComponents.percentEncodedQuery = [self.queryItems join:@"&"];
-	urlComponents.scheme = @"http";
 	
 	NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:urlComponents.URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 		
