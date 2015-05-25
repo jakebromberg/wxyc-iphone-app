@@ -47,19 +47,23 @@ typedef NS_ENUM(NSUInteger, XYCTabBarItems) {
 {
 	[super viewDidLoad];
 	
+	[self setUpTabBarItems];
+	[self setUpLivePlaylistViewController];
+}
+
+- (void)setUpTabBarItems
+{
 	self.livePlaylistItem.imageInsets = insets;
-    self.livePlaylistItem.image = [[UIImage imageNamed:@"tabbar-item-playlist-unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    self.livePlaylistItem.selectedImage = [[UIImage imageNamed:@"tabbar-item-playlist-selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+	self.livePlaylistItem.image = [[UIImage imageNamed:@"tabbar-item-playlist-unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+	self.livePlaylistItem.selectedImage = [[UIImage imageNamed:@"tabbar-item-playlist-selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 	
 	self.favoritesItem.imageInsets = insets;
-    self.favoritesItem.image = [[UIImage imageNamed:@"tabbar-item-favorites-unselected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    self.favoritesItem.selectedImage = [[UIImage imageNamed:@"tabbar-item-favorites-selected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-
-    self.infoItem.imageInsets = insets;
-    self.infoItem.image = [[UIImage imageNamed:@"tabbar-item-info-unselected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    self.infoItem.selectedImage = [[UIImage imageNamed:@"tabbar-item-info-selected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+	self.favoritesItem.image = [[UIImage imageNamed:@"tabbar-item-favorites-unselected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+	self.favoritesItem.selectedImage = [[UIImage imageNamed:@"tabbar-item-favorites-selected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 	
-	[self setUpLivePlaylistViewController];
+	self.infoItem.imageInsets = insets;
+	self.infoItem.image = [[UIImage imageNamed:@"tabbar-item-info-unselected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+	self.infoItem.selectedImage = [[UIImage imageNamed:@"tabbar-item-info-selected.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
 - (void)setUpLivePlaylistViewController
