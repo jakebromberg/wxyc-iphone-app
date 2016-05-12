@@ -1,4 +1,4 @@
-**The app is dead.** I poured my blood and soul into this app. Writing the WXYC app started me on a journey to where I am today as a professional developer. I can't say that the code you see here reflects the technical decisions I'd make today, but I'm grateful for the opportunities that developing the app have brought me. Building the app was a labor of love. I'll always have a WXYC-shaped hole in my heart.
+**The app is dead.** There's a lot of blood and sweat I poured into this app. Writing the WXYC app started me on a journey to where I am today as a professional developer. I can't say that the code you see here reflects the technical decisions I'd make now, but I'm grateful for the opportunities that developing the app have brought me. Building the app was a labor of love. I'll always have a WXYC-shaped hole in my heart.
 
 wxyc-iphone-app
 ===============
