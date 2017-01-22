@@ -14,7 +14,6 @@
 
 @interface PlayerCell ()
 
-@property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic, weak) IBOutlet UIButton *playButton;
 @property (nonatomic, weak) IBOutlet UIView *leftCassetteReel;
 @property (nonatomic, weak) IBOutlet UIView *rightCassetteReel;
@@ -25,19 +24,6 @@
 
 
 @implementation PlayerCell
-
-- (void)awakeFromNib
-{
-	[super awakeFromNib];
-	
-	self.clipsToBounds = NO;
-	self.layer.masksToBounds = NO;
-	
-	self.containerView.layer.borderColor = [UIColor colorWithWhite:.70f alpha:1.f].CGColor;
-	self.containerView.layer.borderWidth = 1.f;
-	self.containerView.layer.cornerRadius = 5.f;
-	self.containerView.layer.masksToBounds = YES;
-}
 
 - (instancetype)awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
