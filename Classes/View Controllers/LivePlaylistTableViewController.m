@@ -22,8 +22,12 @@
 
 - (void)awakeFromNib
 {
-    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
+	NSAssert(self.tableView, @"where'd my tableView go?");
+
+    [super awakeFromNib];
     
+	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([PlayerCell class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([PlayerCell class])];
+	
 	const NSArray *cellClasses = @[
 		PlayerCell.class,
 		PlaycutCell.class,
