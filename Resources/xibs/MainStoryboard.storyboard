@@ -1,21 +1,25 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2SK-M0-QIy">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2SK-M0-QIy">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment version="2048" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Live Playlist Table View Controller-->
         <scene sceneID="DWe-dR-v9k">
             <objects>
                 <tableViewController id="w6z-1c-RlV" customClass="LivePlaylistTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="wf1-BN-iba">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wf1-BN-iba">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
-                            <outlet property="dataSource" destination="w6z-1c-RlV" id="0dC-Qc-YX4"/>
-                            <outlet property="delegate" destination="w6z-1c-RlV" id="Fqo-zI-zD5"/>
+                            <outlet property="dataSource" destination="w6z-1c-RlV" id="38j-wu-h6x"/>
+                            <outlet property="delegate" destination="w6z-1c-RlV" id="jI9-eu-LpB"/>
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="tabbar-item-playlist-unselected.png" selectedImage="tabbar-item-playlist-selected.png" id="gAK-6L-4ZJ">
@@ -25,16 +29,16 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1G-Nu-6Pk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="343"/>
+            <point key="canvasLocation" x="135" y="234"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="fEF-tW-mi3">
             <objects>
                 <viewController id="hbN-Xh-kZm" customClass="AboutViewController" sceneMemberID="viewController">
                     <webView key="view" contentMode="scaleToFill" id="tfY-Ti-2GI">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.15686275064945221" green="0.14901961386203766" blue="0.14901961386203766" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.11745692789554596" green="0.11170947551727295" blue="0.1118391752243042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <outlet property="delegate" destination="hbN-Xh-kZm" id="ZTE-Y5-0SL"/>
                         </connections>
@@ -50,9 +54,9 @@
             <objects>
                 <tableViewController title="Favorites" id="Xb5-pU-15i" customClass="FavoritesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="360" sectionHeaderHeight="22" sectionFooterHeight="22" id="bs8-2M-pnI">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="Xb5-pU-15i" id="Nhi-hW-IYr"/>
                             <outlet property="delegate" destination="Xb5-pU-15i" id="Ydw-yY-zHK"/>
@@ -65,7 +69,7 @@
                 <containerView contentMode="scaleToFill" id="cjM-Cj-egk">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <segue destination="ZQg-YF-lBi" kind="embed" id="WpH-G6-Tya"/>
                     </connections>
@@ -79,7 +83,7 @@
                 <navigationController definesPresentationContext="YES" id="2SK-M0-QIy" customClass="XYCRootViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Kya-WG-y1t">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.58823531866073608" green="0.75294125080108643" blue="0.90196084976196289" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="barTintColor" red="0.52171200513839722" green="0.69723498821258545" blue="0.87728965282440186" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="0er-G7-ubv" kind="relationship" relationship="rootViewController" id="4qd-2L-dZI"/>
@@ -98,8 +102,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="xoR-ES-jf1">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="w6z-1c-RlV" kind="relationship" relationship="viewControllers" id="6ta-ct-c1i"/>
@@ -120,17 +124,14 @@
                         <viewControllerLayoutGuide type="bottom" id="1ff-Rc-fcc"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nuL-Kp-sJ2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="no-favorites.png" translatesAutoresizingMaskIntoConstraints="NO" id="f7Y-Zx-cQj">
-                                <rect key="frame" x="0.0" y="140" width="600" height="320"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="ppF-qO-vv8"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="29" width="375" height="610"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="f7Y-Zx-cQj" firstAttribute="centerY" secondItem="nuL-Kp-sJ2" secondAttribute="centerY" id="5wA-jh-k08"/>
                             <constraint firstItem="f7Y-Zx-cQj" firstAttribute="leading" secondItem="nuL-Kp-sJ2" secondAttribute="leading" id="99W-m8-1EG"/>
