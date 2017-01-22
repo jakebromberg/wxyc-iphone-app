@@ -46,11 +46,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 1;
+	return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+<<<<<<< HEAD
 	return [[[self.fetchedResultsController sections] lastObject] numberOfObjects];
 }
 
@@ -62,15 +63,32 @@
 	[header addSubview:cell];
 	
 	return header;
+=======
+    switch (section) {
+        case 0:
+            return 1;
+        default:
+            return self.fetchedResultsController.sections.lastObject.numberOfObjects;
+    }
+>>>>>>> 167229c... player now displays correctly
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	LivePlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self identifierForCellAtIndexPath:indexPath] forIndexPath:indexPath];
-	
-	cell.entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	
-	return cell;
+    switch (indexPath.section) {
+        case 0: {
+            return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PlayerCell class]) forIndexPath:indexPath];
+        }
+        default: {
+            indexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:(indexPath.section - 1)];
+            
+            LivePlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self identifierForCellAtIndexPath:indexPath] forIndexPath:indexPath];
+            
+            cell.entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            
+            return cell;
+        }
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,19 +96,19 @@
 	return [[self classOfCellAtIndexPath:indexPath] height];
 }
 
-- (Class)classOfCellAtIndexPath:(NSIndexPath *)indexPath
-{
-	return [[self.fetchedResultsController objectAtIndexPath:indexPath] correspondingTableViewCellClass];
-}
-
 - (NSString *)identifierForCellAtIndexPath:(NSIndexPath *)indexPath
 {
 	return NSStringFromClass([self classOfCellAtIndexPath:indexPath]);
 }
 
+- (Class)classOfCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [[self.fetchedResultsController objectAtIndexPath:indexPath] correspondingTableViewCellClass];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	Playcut *playcut = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	PlaylistEntry *playcut = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	
 	if ([playcut class] != [Playcut class])
 		return;
@@ -111,7 +129,7 @@
 	self.transition.cellArtSnapshot = self.cellArtSnapshot;
 	
 	PlaycutDetailsViewController *vc = [[PlaycutDetailsViewController alloc] initWithNibName:nil bundle:nil];
-	vc.playcut = playcut;
+	vc.playcut = (id)playcut;
 	vc.transitioningDelegate = self.transition;
 	vc.modalPresentationStyle = UIModalPresentationFullScreen;
 	

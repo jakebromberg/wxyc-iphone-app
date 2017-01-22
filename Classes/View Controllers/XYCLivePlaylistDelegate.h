@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "LivePlaylistTableViewController.h"
+#import "PlaylistEntry.h"
 
 @interface XYCLivePlaylistDelegate : NSObject <XYCSimpleTableViewDelegate>
 
-- (instancetype)initWithFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController;
+- (instancetype)initWithFetchedResultsController:(NSFetchedResultsController<PlaylistEntry *> *)fetchedResultsController;
 
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSFetchedResultsController<PlaylistEntry *> *fetchedResultsController;
 @property (nonatomic, weak) UIViewController *presentingViewController;
 
 @end

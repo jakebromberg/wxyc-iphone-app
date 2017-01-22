@@ -8,6 +8,14 @@
 
 #import "XYCSimpleFetchedResultsDelegate.h"
 
+@implementation NSIndexPath (WXYCFetchedResults)
+
+- (instancetype)incrementSection {
+    return [NSIndexPath indexPathForRow:self.row inSection:(self.section + 1)];
+}
+
+@end
+
 @implementation XYCSimpleFetchedResultsDelegate
 
 - (instancetype)initWithTableView:(UITableView *)tableView
@@ -27,7 +35,10 @@
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
 	NSAssert([NSThread currentThread] == [NSThread mainThread], @"[NSThread currentThread] != [NSThread mainThread]");
-	
+    
+    indexPath = [indexPath incrementSection];
+    newIndexPath = [newIndexPath incrementSection];
+    
 	switch (type) {
 		case NSFetchedResultsChangeInsert:
 			[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];

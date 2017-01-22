@@ -26,8 +26,6 @@
 
     [super awakeFromNib];
     
-	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([PlayerCell class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([PlayerCell class])];
-	
 	const NSArray *cellClasses = @[
 		PlayerCell.class,
 		PlaycutCell.class,

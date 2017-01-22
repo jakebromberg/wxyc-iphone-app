@@ -13,87 +13,72 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="Tzi-iS-eUL" customClass="PlayerCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="89" id="QFX-1l-jcN" customClass="PlayerCell">
             <rect key="frame" x="0.0" y="0.0" width="435" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17c-TY-Wvl" userLabel="Container View">
-                    <rect key="frame" x="8" y="8" width="419" height="84"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDH-Az-g2d" userLabel="Play Button">
-                            <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="gDH-Az-g2d" secondAttribute="height" multiplier="1:1" id="GbE-um-RRd"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal" image="play-button.png">
-                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <state key="highlighted">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="pushPlay:" destination="Tzi-iS-eUL" eventType="touchUpInside" id="aK5-3Z-Pn7"/>
-                            </connections>
-                        </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="player-elements.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ira-2m-Lmn" userLabel="Player Background">
-                            <rect key="frame" x="84" y="0.0" width="335" height="84"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="Ira-2m-Lmn" secondAttribute="height" multiplier="335:84" id="9Cw-QX-Nw2"/>
-                            </constraints>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cassette reel.png" translatesAutoresizingMaskIntoConstraints="NO" id="ahz-PL-Tb5" userLabel="Left Reel">
-                            <rect key="frame" x="96" y="17" width="49" height="49"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="ahz-PL-Tb5" secondAttribute="height" multiplier="1:1" id="kFc-zt-dZ1"/>
-                            </constraints>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cassette reel.png" translatesAutoresizingMaskIntoConstraints="NO" id="hGl-WL-WdE">
-                            <rect key="frame" x="358" y="17" width="49" height="49"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="hGl-WL-WdE" secondAttribute="height" multiplier="1:1" id="VcY-3I-cfE"/>
-                            </constraints>
-                        </imageView>
-                    </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="ahz-PL-Tb5" firstAttribute="centerY" secondItem="17c-TY-Wvl" secondAttribute="centerY" id="4e5-rw-V97"/>
-                        <constraint firstItem="Ira-2m-Lmn" firstAttribute="leading" secondItem="gDH-Az-g2d" secondAttribute="trailing" id="Cac-OJ-P7K"/>
-                        <constraint firstItem="Ira-2m-Lmn" firstAttribute="leading" secondItem="ahz-PL-Tb5" secondAttribute="leading" constant="-12" id="Laz-gL-AG9"/>
-                        <constraint firstAttribute="bottom" secondItem="Ira-2m-Lmn" secondAttribute="bottom" id="WSm-1d-Zx1"/>
-                        <constraint firstItem="Ira-2m-Lmn" firstAttribute="top" secondItem="17c-TY-Wvl" secondAttribute="top" id="b2P-AM-8K2"/>
-                        <constraint firstItem="hGl-WL-WdE" firstAttribute="trailing" secondItem="Ira-2m-Lmn" secondAttribute="trailing" constant="-12" id="eDc-G1-yIK"/>
-                        <constraint firstAttribute="bottom" secondItem="gDH-Az-g2d" secondAttribute="bottom" id="eaa-Sn-I6w"/>
-                        <constraint firstItem="gDH-Az-g2d" firstAttribute="leading" secondItem="17c-TY-Wvl" secondAttribute="leading" id="h9u-9p-UUv"/>
-                        <constraint firstItem="hGl-WL-WdE" firstAttribute="centerY" secondItem="17c-TY-Wvl" secondAttribute="centerY" id="lAr-Jj-3sx"/>
-                        <constraint firstItem="gDH-Az-g2d" firstAttribute="top" secondItem="17c-TY-Wvl" secondAttribute="top" id="mmX-Ii-497"/>
-                        <constraint firstAttribute="trailing" secondItem="Ira-2m-Lmn" secondAttribute="trailing" id="t21-70-ptM"/>
-                    </constraints>
-                </view>
-            </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="bottomMargin" secondItem="17c-TY-Wvl" secondAttribute="bottom" id="Eta-Xt-XMN"/>
-                <constraint firstItem="17c-TY-Wvl" firstAttribute="top" secondItem="Tzi-iS-eUL" secondAttribute="topMargin" id="Hzs-2x-QU7"/>
-                <constraint firstAttribute="trailingMargin" secondItem="17c-TY-Wvl" secondAttribute="trailing" id="PCr-kM-OQU"/>
-                <constraint firstAttribute="leadingMargin" secondItem="17c-TY-Wvl" secondAttribute="leading" id="oxf-rZ-0d6"/>
-            </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QFX-1l-jcN" id="8ib-sB-jw6">
+                <rect key="frame" x="0.0" y="0.0" width="435" height="99"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17c-TY-Wvl" userLabel="Shadow View">
+                        <rect key="frame" x="8" y="8" width="419" height="83.5"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr9-3l-PHo">
+                                <rect key="frame" x="0.0" y="0.0" width="83.5" height="83.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pr9-3l-PHo" secondAttribute="height" multiplier="1:1" id="Yjs-EY-Shv"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="play-button"/>
+                                <connections>
+                                    <action selector="pushPlay:" destination="QFX-1l-jcN" eventType="touchUpInside" id="7AJ-nK-itc"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player-elements" translatesAutoresizingMaskIntoConstraints="NO" id="RAg-cg-Ndt">
+                                <rect key="frame" x="83.5" y="0.0" width="335.5" height="83.5"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cassette reel" translatesAutoresizingMaskIntoConstraints="NO" id="tVr-73-C0A">
+                                <rect key="frame" x="95.5" y="16.5" width="49" height="49"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cassette reel" translatesAutoresizingMaskIntoConstraints="NO" id="dyQ-ot-nhW">
+                                <rect key="frame" x="358" y="17" width="49" height="49"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dyQ-ot-nhW" firstAttribute="trailing" secondItem="RAg-cg-Ndt" secondAttribute="trailing" constant="-12" id="047-ya-Swq"/>
+                            <constraint firstItem="RAg-cg-Ndt" firstAttribute="leading" secondItem="tVr-73-C0A" secondAttribute="leading" constant="-12" id="1NU-BN-nL0"/>
+                            <constraint firstItem="Pr9-3l-PHo" firstAttribute="top" secondItem="17c-TY-Wvl" secondAttribute="top" id="69b-jb-dd2"/>
+                            <constraint firstAttribute="trailing" secondItem="RAg-cg-Ndt" secondAttribute="trailing" id="F6M-h6-eZj"/>
+                            <constraint firstAttribute="bottom" secondItem="RAg-cg-Ndt" secondAttribute="bottom" id="LRA-d4-8Gp"/>
+                            <constraint firstAttribute="bottom" secondItem="Pr9-3l-PHo" secondAttribute="bottom" id="QHo-Iw-Ilv"/>
+                            <constraint firstItem="RAg-cg-Ndt" firstAttribute="top" secondItem="17c-TY-Wvl" secondAttribute="top" id="XxU-Qm-IU7"/>
+                            <constraint firstItem="RAg-cg-Ndt" firstAttribute="leading" secondItem="Pr9-3l-PHo" secondAttribute="trailing" id="cGi-lU-n6u"/>
+                            <constraint firstItem="dyQ-ot-nhW" firstAttribute="centerY" secondItem="RAg-cg-Ndt" secondAttribute="centerY" id="dgT-YN-xzr"/>
+                            <constraint firstAttribute="height" constant="83.5" id="fdp-qs-RgK"/>
+                            <constraint firstItem="Pr9-3l-PHo" firstAttribute="leading" secondItem="17c-TY-Wvl" secondAttribute="leading" id="fwq-dP-V5u"/>
+                            <constraint firstItem="tVr-73-C0A" firstAttribute="centerY" secondItem="17c-TY-Wvl" secondAttribute="centerY" id="iFc-34-qQb"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="17c-TY-Wvl" firstAttribute="bottom" secondItem="8ib-sB-jw6" secondAttribute="bottomMargin" id="RMS-Ou-ybJ"/>
+                    <constraint firstItem="17c-TY-Wvl" firstAttribute="top" secondItem="8ib-sB-jw6" secondAttribute="topMargin" id="VEJ-sV-kxM"/>
+                    <constraint firstItem="17c-TY-Wvl" firstAttribute="leading" secondItem="8ib-sB-jw6" secondAttribute="leadingMargin" id="hHr-Ih-lic"/>
+                    <constraint firstItem="17c-TY-Wvl" firstAttribute="trailing" secondItem="8ib-sB-jw6" secondAttribute="trailingMargin" id="hXZ-ek-Ht2"/>
+                </constraints>
+            </tableViewCellContentView>
             <connections>
-                <outlet property="containerView" destination="17c-TY-Wvl" id="aCA-rI-Oj7"/>
-                <outlet property="leftCassetteReel" destination="ahz-PL-Tb5" id="uEq-08-kaZ"/>
-                <outlet property="playButton" destination="gDH-Az-g2d" id="lpX-44-iV6"/>
-                <outlet property="rightCassetteReel" destination="hGl-WL-WdE" id="7aM-Jx-6IM"/>
+                <outlet property="containerView" destination="17c-TY-Wvl" id="x5W-D8-SsO"/>
+                <outlet property="leftCassetteReel" destination="tVr-73-C0A" id="PcF-V7-Tzz"/>
+                <outlet property="playButton" destination="Pr9-3l-PHo" id="83j-Ad-4b0"/>
             </connections>
-            <point key="canvasLocation" x="160" y="334"/>
-        </view>
+            <point key="canvasLocation" x="159.5" y="201"/>
+        </tableViewCell>
     </objects>
     <resources>
-        <image name="cassette reel.png" width="49" height="49"/>
-        <image name="play-button.png" width="123" height="123"/>
-        <image name="player-elements.png" width="477" height="123"/>
+        <image name="cassette reel" width="49" height="49"/>
+        <image name="play-button" width="123" height="123"/>
+        <image name="player-elements" width="477" height="123"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
