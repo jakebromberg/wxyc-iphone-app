@@ -13,18 +13,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="89" id="QFX-1l-jcN" customClass="PlayerCell">
-            <rect key="frame" x="0.0" y="0.0" width="435" height="100"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="220" id="QFX-1l-jcN" customClass="PlayerCell">
+            <rect key="frame" x="0.0" y="0.0" width="435" height="231"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QFX-1l-jcN" id="8ib-sB-jw6">
-                <rect key="frame" x="0.0" y="0.0" width="435" height="99"/>
+                <rect key="frame" x="0.0" y="0.0" width="435" height="230.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17c-TY-Wvl" userLabel="Shadow View">
-                        <rect key="frame" x="8" y="8" width="419" height="83.5"/>
+                        <rect key="frame" x="8" y="8" width="419" height="83"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr9-3l-PHo">
-                                <rect key="frame" x="0.0" y="0.0" width="83.5" height="83.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="83" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Pr9-3l-PHo" secondAttribute="height" multiplier="1:1" id="Yjs-EY-Shv"/>
                                 </constraints>
@@ -34,10 +34,13 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player-elements" translatesAutoresizingMaskIntoConstraints="NO" id="RAg-cg-Ndt">
-                                <rect key="frame" x="83.5" y="0.0" width="335.5" height="83.5"/>
+                                <rect key="frame" x="83" y="0.0" width="336" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RAg-cg-Ndt" secondAttribute="height" multiplier="335:83" id="bmf-Ec-HL7"/>
+                                </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cassette reel" translatesAutoresizingMaskIntoConstraints="NO" id="tVr-73-C0A">
-                                <rect key="frame" x="95.5" y="16.5" width="49" height="49"/>
+                                <rect key="frame" x="95" y="17" width="49" height="49"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cassette reel" translatesAutoresizingMaskIntoConstraints="NO" id="dyQ-ot-nhW">
                                 <rect key="frame" x="358" y="17" width="49" height="49"/>
@@ -54,14 +57,13 @@
                             <constraint firstItem="RAg-cg-Ndt" firstAttribute="top" secondItem="17c-TY-Wvl" secondAttribute="top" id="XxU-Qm-IU7"/>
                             <constraint firstItem="RAg-cg-Ndt" firstAttribute="leading" secondItem="Pr9-3l-PHo" secondAttribute="trailing" id="cGi-lU-n6u"/>
                             <constraint firstItem="dyQ-ot-nhW" firstAttribute="centerY" secondItem="RAg-cg-Ndt" secondAttribute="centerY" id="dgT-YN-xzr"/>
-                            <constraint firstAttribute="height" constant="83.5" id="fdp-qs-RgK"/>
                             <constraint firstItem="Pr9-3l-PHo" firstAttribute="leading" secondItem="17c-TY-Wvl" secondAttribute="leading" id="fwq-dP-V5u"/>
                             <constraint firstItem="tVr-73-C0A" firstAttribute="centerY" secondItem="17c-TY-Wvl" secondAttribute="centerY" id="iFc-34-qQb"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="17c-TY-Wvl" firstAttribute="bottom" secondItem="8ib-sB-jw6" secondAttribute="bottomMargin" id="RMS-Ou-ybJ"/>
+                    <constraint firstItem="17c-TY-Wvl" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="8ib-sB-jw6" secondAttribute="bottomMargin" priority="999" id="RMS-Ou-ybJ"/>
                     <constraint firstItem="17c-TY-Wvl" firstAttribute="top" secondItem="8ib-sB-jw6" secondAttribute="topMargin" id="VEJ-sV-kxM"/>
                     <constraint firstItem="17c-TY-Wvl" firstAttribute="leading" secondItem="8ib-sB-jw6" secondAttribute="leadingMargin" id="hHr-Ih-lic"/>
                     <constraint firstItem="17c-TY-Wvl" firstAttribute="trailing" secondItem="8ib-sB-jw6" secondAttribute="trailingMargin" id="hXZ-ek-Ht2"/>
@@ -72,7 +74,7 @@
                 <outlet property="leftCassetteReel" destination="tVr-73-C0A" id="PcF-V7-Tzz"/>
                 <outlet property="playButton" destination="Pr9-3l-PHo" id="83j-Ad-4b0"/>
             </connections>
-            <point key="canvasLocation" x="159.5" y="201"/>
+            <point key="canvasLocation" x="159.5" y="266.5"/>
         </tableViewCell>
     </objects>
     <resources>
