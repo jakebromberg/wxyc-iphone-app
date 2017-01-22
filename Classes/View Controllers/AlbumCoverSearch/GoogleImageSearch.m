@@ -19,44 +19,15 @@
 
 @implementation GoogleImageSearch
 
-- (instancetype)initWithKeywords:(NSArray *)keywords completionHandler:(OperationHandler)completionHandler
-{
-	if (!(self = [super init])) return nil;
-	
-	self.completionHandler = completionHandler;
-	
-	__weak __typeof(self) wSelf = self;
-	
-	NSString *query = [self.class queryForKeywords:keywords];
-	NSURL *URL = [self.class URLForQuery:query];
-	
-	self.task = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-	{
-		__typeof(self) sSelf = wSelf;
-		
-		if (error)
-		{
-			sSelf.completionHandler(nil, error);
-			return;
-		}
-		
-		id obj = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-		
-		if (error)
-		{
-			sSelf.completionHandler(nil, error);
-			return;
-		}
-		
-		NSString *URLString = [[obj valueForKeyPath:@"responseData.results.url"] firstObject];
-		NSURL *URL = [NSURL URLWithString:URLString];
-		
-		sSelf.completionHandler(URL, nil);
-	}];
-	
-	[self.task resume];
-	
-	return self;
+- (instancetype)init {
+    return [self initWithKeywords:nil completionHandler:^(NSURL *imageURL, NSError *error) {
+        
+    }];
+}
+
+- (instancetype)initWithKeywords:(NSArray *)keywords completionHandler:(OperationHandler)completionHandler {
+    completionHandler(nil, nil);
+    return [super init];
 }
 
 - (void)cancel
