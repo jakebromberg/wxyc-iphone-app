@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03F90126D7526A7CBEE7F1F5 /* libPods-WXYC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B63C59E9B7C17E309448973 /* libPods-WXYC.a */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		22DFC4B14EEBE1BDED3939BC /* libPods-WXYC Today Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F708C1A903D209645740D5 /* libPods-WXYC Today Extension.a */; };
 		230640BE179B1EAB0054B673 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230640BD179B1EAB0054B673 /* CoreMedia.framework */; };
 		230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230EB0FC127600210065308D /* CoreAudio.framework */; };
 		2316CDAF180E1FD100DB837E /* SearchShareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2316CDAE180E1FD100DB837E /* SearchShareButton.m */; };
@@ -162,14 +164,12 @@
 		277757671631BD3000349E12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		277757691631BD4800349E12 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277757681631BD4800349E12 /* MessageUI.framework */; };
 		2777576C1631BD8700349E12 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2777576B1631BD8700349E12 /* libxml2.dylib */; };
-		3DE12A674E1B41D78273ADB6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C80948779A0C4AFDB5BE7C39 /* libPods.a */; };
 		4E9FA5760FEC446E00CD55C1 /* LivePlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */; };
 		BE0E27DE1AFBD6F80026E579 /* XYCNetworkingStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E27DD1AFBD6F80026E579 /* XYCNetworkingStack.m */; };
 		BE0E27DF1AFBD6F80026E579 /* XYCNetworkingStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E27DD1AFBD6F80026E579 /* XYCNetworkingStack.m */; };
 		BE56244B1A6AE5BA0026AF24 /* PlaycutDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5624491A6AE5BA0026AF24 /* PlaycutDetailsViewController.m */; };
 		BE56244C1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE56244A1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib */; };
 		BE5D1B491A705F7200340B4C /* LivePlaylistTransitionSnaphot.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5D1B481A705F7200340B4C /* LivePlaylistTransitionSnaphot.m */; };
-		D09655E1CE0145B9BF14F261 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C80948779A0C4AFDB5BE7C39 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +204,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E2FA2218EE92D003C643A7F /* Pods-WXYC.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXYC.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-WXYC/Pods-WXYC.distribution.xcconfig"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		230640BD179B1EAB0054B673 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -412,10 +413,12 @@
 		277757681631BD4800349E12 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		2777576B1631BD8700349E12 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Other/main.m; sourceTree = "<group>"; };
-		435C9D138642AB3CEAEA8991 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4E9FA5740FEC446E00CD55C1 /* LivePlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LivePlaylistTableViewController.h; path = "View Controllers/LivePlaylistTableViewController.h"; sourceTree = "<group>"; };
 		4E9FA5750FEC446E00CD55C1 /* LivePlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LivePlaylistTableViewController.m; path = "View Controllers/LivePlaylistTableViewController.m"; sourceTree = "<group>"; };
-		80D819792D3B4776FF7F91D5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5FE020F1A63F1E82A1FA1A47 /* Pods-WXYC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXYC.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXYC/Pods-WXYC.release.xcconfig"; sourceTree = "<group>"; };
+		6B63C59E9B7C17E309448973 /* libPods-WXYC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXYC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E6EA6E4C32F6B126EBFFE1B /* Pods-WXYC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXYC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WXYC/Pods-WXYC.debug.xcconfig"; sourceTree = "<group>"; };
+		88C7F1F727EFE72C53A0E297 /* Pods-WXYC Today Extension.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXYC Today Extension.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-WXYC Today Extension/Pods-WXYC Today Extension.distribution.xcconfig"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Other/Info.plist; sourceTree = "<group>"; };
 		BE0E27DC1AFBD6F80026E579 /* XYCNetworkingStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XYCNetworkingStack.h; path = Models/XYCNetworkingStack.h; sourceTree = "<group>"; };
 		BE0E27DD1AFBD6F80026E579 /* XYCNetworkingStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XYCNetworkingStack.m; path = Models/XYCNetworkingStack.m; sourceTree = "<group>"; };
@@ -424,8 +427,9 @@
 		BE56244A1A6AE5BA0026AF24 /* PlaycutDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaycutDetailsViewController.xib; path = Controllers/PlaycutDetailsViewController.xib; sourceTree = "<group>"; };
 		BE5D1B471A705F7200340B4C /* LivePlaylistTransitionSnaphot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePlaylistTransitionSnaphot.h; sourceTree = "<group>"; };
 		BE5D1B481A705F7200340B4C /* LivePlaylistTransitionSnaphot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePlaylistTransitionSnaphot.m; sourceTree = "<group>"; };
-		C05A52AE5EF7C1D4C9C410AF /* Pods.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.distribution.xcconfig; path = "Pods/Target Support Files/Pods/Pods.distribution.xcconfig"; sourceTree = "<group>"; };
-		C80948779A0C4AFDB5BE7C39 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E502032026A1126BFCE889C1 /* Pods-WXYC Today Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXYC Today Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WXYC Today Extension/Pods-WXYC Today Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		F1F708C1A903D209645740D5 /* libPods-WXYC Today Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXYC Today Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3795BF8630B2FC60204F686 /* Pods-WXYC Today Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXYC Today Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXYC Today Extension/Pods-WXYC Today Extension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -433,7 +437,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D09655E1CE0145B9BF14F261 /* libPods.a in Frameworks */,
 				230640BE179B1EAB0054B673 /* CoreMedia.framework in Frameworks */,
 				235DE13716ED3B38005640E9 /* ImageIO.framework in Frameworks */,
 				23B613F7164EFA64004547C2 /* Social.framework in Frameworks */,
@@ -452,6 +455,7 @@
 				23651004111211C700C192CB /* CoreGraphics.framework in Frameworks */,
 				23B32B59126D667B008414F4 /* AVFoundation.framework in Frameworks */,
 				230EB0FD127600210065308D /* CoreAudio.framework in Frameworks */,
+				03F90126D7526A7CBEE7F1F5 /* libPods-WXYC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,8 +463,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DE12A674E1B41D78273ADB6 /* libPods.a in Frameworks */,
 				2380F0A319549661001939DD /* NotificationCenter.framework in Frameworks */,
+				22DFC4B14EEBE1BDED3939BC /* libPods-WXYC Today Extension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -930,7 +934,7 @@
 			name = pdf;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+		29B97314FDCFA39411CA2CEA = {
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -939,7 +943,7 @@
 				2380F0A419549661001939DD /* WXYC Today Extension */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				CEF6840767005925C2A65B9C /* Pods */,
+				E242F89E8D1EB4EE47CA2813 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -971,7 +975,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C80948779A0C4AFDB5BE7C39 /* libPods.a */,
 				2777576B1631BD8700349E12 /* libxml2.dylib */,
 				23601927105F05C600E6A6FB /* AudioToolbox.framework */,
 				23B32B58126D667B008414F4 /* AVFoundation.framework */,
@@ -992,16 +995,21 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				23B613F8164EFA8D004547C2 /* Social.framework */,
 				2380F0A219549661001939DD /* NotificationCenter.framework */,
+				6B63C59E9B7C17E309448973 /* libPods-WXYC.a */,
+				F1F708C1A903D209645740D5 /* libPods-WXYC Today Extension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CEF6840767005925C2A65B9C /* Pods */ = {
+		E242F89E8D1EB4EE47CA2813 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				435C9D138642AB3CEAEA8991 /* Pods.debug.xcconfig */,
-				80D819792D3B4776FF7F91D5 /* Pods.release.xcconfig */,
-				C05A52AE5EF7C1D4C9C410AF /* Pods.distribution.xcconfig */,
+				7E6EA6E4C32F6B126EBFFE1B /* Pods-WXYC.debug.xcconfig */,
+				5FE020F1A63F1E82A1FA1A47 /* Pods-WXYC.release.xcconfig */,
+				0E2FA2218EE92D003C643A7F /* Pods-WXYC.distribution.xcconfig */,
+				E502032026A1126BFCE889C1 /* Pods-WXYC Today Extension.debug.xcconfig */,
+				F3795BF8630B2FC60204F686 /* Pods-WXYC Today Extension.release.xcconfig */,
+				88C7F1F727EFE72C53A0E297 /* Pods-WXYC Today Extension.distribution.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1013,12 +1021,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "WXYC" */;
 			buildPhases = (
-				12C74AF7B1F549F5AB621D1C /* Check Pods Manifest.lock */,
+				C43BF8802FB8EA68B16F612A /* [CP] Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				902F1F23146E47CD8FD64F81 /* Copy Pods Resources */,
 				2380F0B519549661001939DD /* Embed App Extensions */,
+				455082EBCCF08170EBD3D3AE /* [CP] Embed Pods Frameworks */,
+				FAA58C63F22580C491628451 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1035,11 +1044,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2380F0B419549661001939DD /* Build configuration list for PBXNativeTarget "WXYC Today Extension" */;
 			buildPhases = (
-				74BC011F398B45DCA9A77B49 /* Check Pods Manifest.lock */,
+				29B03FA2B4D9EBFF76647FDF /* [CP] Check Pods Manifest.lock */,
 				2380F09D19549661001939DD /* Sources */,
 				2380F09E19549661001939DD /* Frameworks */,
 				2380F09F19549661001939DD /* Resources */,
-				7A8BFE87425F489182DCD86C /* Copy Pods Resources */,
+				D16415CA9292B6469FD1E5D1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1070,7 +1079,7 @@
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WXYCapp" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -1081,7 +1090,8 @@
 				en,
 				de,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			mainGroup = 29B97314FDCFA39411CA2CEA;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1185,64 +1195,79 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		12C74AF7B1F549F5AB621D1C /* Check Pods Manifest.lock */ = {
+		29B03FA2B4D9EBFF76647FDF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		74BC011F398B45DCA9A77B49 /* Check Pods Manifest.lock */ = {
+		455082EBCCF08170EBD3D3AE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WXYC/Pods-WXYC-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7A8BFE87425F489182DCD86C /* Copy Pods Resources */ = {
+		C43BF8802FB8EA68B16F612A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		902F1F23146E47CD8FD64F81 /* Copy Pods Resources */ = {
+		D16415CA9292B6469FD1E5D1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WXYC Today Extension/Pods-WXYC Today Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAA58C63F22580C491628451 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WXYC/Pods-WXYC-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1345,7 +1370,7 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 435C9D138642AB3CEAEA8991 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 7E6EA6E4C32F6B126EBFFE1B /* Pods-WXYC.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1385,7 +1410,7 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80D819792D3B4776FF7F91D5 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 5FE020F1A63F1E82A1FA1A47 /* Pods-WXYC.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1426,7 +1451,7 @@
 		};
 		2380F0B119549661001939DD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 435C9D138642AB3CEAEA8991 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = E502032026A1126BFCE889C1 /* Pods-WXYC Today Extension.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1472,7 +1497,7 @@
 		};
 		2380F0B219549661001939DD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80D819792D3B4776FF7F91D5 /* Pods.release.xcconfig */;
+			baseConfigurationReference = F3795BF8630B2FC60204F686 /* Pods-WXYC Today Extension.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1517,7 +1542,7 @@
 		};
 		2380F0B319549661001939DD /* Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C05A52AE5EF7C1D4C9C410AF /* Pods.distribution.xcconfig */;
+			baseConfigurationReference = 88C7F1F727EFE72C53A0E297 /* Pods-WXYC Today Extension.distribution.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1570,7 +1595,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F988D5D6-EE10-49B2-95FC-FADBC4D279B4";
@@ -1580,7 +1605,7 @@
 		};
 		238966F91062BCFA002ED494 /* Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C05A52AE5EF7C1D4C9C410AF /* Pods.distribution.xcconfig */;
+			baseConfigurationReference = 0E2FA2218EE92D003C643A7F /* Pods-WXYC.distribution.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1629,7 +1654,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PROVISIONING_PROFILE = "";
@@ -1646,7 +1671,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = MR_SHORTHAND;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
