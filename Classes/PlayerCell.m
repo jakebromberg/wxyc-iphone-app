@@ -37,14 +37,6 @@
 	self.containerView.layer.borderWidth = 1.f;
 	self.containerView.layer.cornerRadius = 5.f;
 	self.containerView.layer.masksToBounds = YES;
-	
-	self.shadowLayer = [CALayer shadowLayerWithFrame:self.bounds];
-	[self.layer insertSublayer:self.shadowLayer atIndex:0];
-	
-	__weak __typeof(self) welf = self;
-	[self observeKeyPath:@keypath(self.containerView.layer, frame) changeBlock:^(NSDictionary *change) {
-		welf.shadowLayer.shadowPath = CGPathCreateWithRoundedRect(welf.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
-	}];
 }
 
 - (instancetype)awakeAfterUsingCoder:(NSCoder *)aDecoder

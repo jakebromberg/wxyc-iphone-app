@@ -51,7 +51,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-<<<<<<< HEAD
 	return [[[self.fetchedResultsController sections] lastObject] numberOfObjects];
 }
 
@@ -63,14 +62,6 @@
 	[header addSubview:cell];
 	
 	return header;
-=======
-    switch (section) {
-        case 0:
-            return 1;
-        default:
-            return self.fetchedResultsController.sections.lastObject.numberOfObjects;
-    }
->>>>>>> 167229c... player now displays correctly
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
