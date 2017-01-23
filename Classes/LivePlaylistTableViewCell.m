@@ -41,15 +41,18 @@
     self.containerView.layer.cornerRadius = 5.f;
     self.containerView.layer.masksToBounds = YES;
 	
-	self.shadowLayer = [CALayer shadowLayerWithFrame:self.bounds];
+	self.shadowLayer = [CALayer shadowLayerWithFrame:self.containerView.bounds];
+    self.shadowLayer.shadowPath = CGPathCreateWithRoundedRect(self.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
     [self.contentView.layer insertSublayer:self.shadowLayer atIndex:0];
+    
+    [self layoutIfNeeded];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     self.shadowLayer.shadowPath = CGPathCreateWithRoundedRect(self.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
-    self.shadowLayer.frame = self.bounds;
+//    self.shadowLayer.frame = self.bounds;
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -61,6 +64,10 @@
     copy.entity = self.entity;
     
     return copy;
+}
+
++ (BOOL)requiresConstraintBasedLayout {
+    return YES;
 }
 
 @end
