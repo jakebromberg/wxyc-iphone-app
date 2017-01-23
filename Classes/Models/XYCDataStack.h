@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+Singleton.h"
 
+// TODO: use this
 @protocol XYCDataStackDescriptor <NSObject>
 
 - (NSURL *)baseURL CA_CONST;
