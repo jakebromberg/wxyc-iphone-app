@@ -36,9 +36,6 @@
 {
 	NSAssert([NSThread currentThread] == [NSThread mainThread], @"[NSThread currentThread] != [NSThread mainThread]");
     
-    indexPath = [indexPath incrementSection];
-    newIndexPath = [newIndexPath incrementSection];
-    
 	switch (type) {
 		case NSFetchedResultsChangeInsert:
 			[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];

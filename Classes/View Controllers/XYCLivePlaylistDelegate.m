@@ -11,13 +11,10 @@
 #import "PlaycutCell.h"
 #import "Playcut.h"
 #import "NSObject+LivePlaylistTableViewCellMappings.h"
-#import "PlaycutDetailsTransition.h"
-#import "PlaycutDetailsViewController.h"
 
 @interface XYCLivePlaylistDelegate ()
 
 @property (nonatomic, strong, readwrite) UIImageView *cellArtSnapshot;
-@property (nonatomic, strong) PlaycutDetailsTransition *transition;
 
 @end
 
@@ -29,7 +26,6 @@
 	if (!(self = [super init])) return nil;
 	
 	_fetchedResultsController = fetchedResultsController;
-	_transition = [[PlaycutDetailsTransition alloc] init];
 	
 	NSError *error;
 	BOOL success = [_fetchedResultsController performFetch:&error];
@@ -46,12 +42,22 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 2;
+	return self.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [[[self.fetchedResultsController sections] lastObject] numberOfObjects];
+    return [self.fetchedResultsController.sections[section] numberOfObjects];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    PlayerCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PlayerCell class])];
+    CGSize size = [cell sizeThatFits:(CGSize) {
+        .width = tableView.frame.size.width,
+        .height = CGFLOAT_MAX
+    }];
+    
+    return size.height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -66,20 +72,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.section) {
-        case 0: {
-            return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PlayerCell class]) forIndexPath:indexPath];
-        }
-        default: {
-            indexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:(indexPath.section - 1)];
-            
-            LivePlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self identifierForCellAtIndexPath:indexPath] forIndexPath:indexPath];
-            
-            cell.entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
-            
-            return cell;
-        }
-    }
+    LivePlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self identifierForCellAtIndexPath:indexPath] forIndexPath:indexPath];
+    
+    cell.entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    return cell;
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,36 +93,6 @@
 - (Class)classOfCellAtIndexPath:(NSIndexPath *)indexPath
 {
     return [[self.fetchedResultsController objectAtIndexPath:indexPath] correspondingTableViewCellClass];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	PlaylistEntry *playcut = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	
-	if ([playcut class] != [Playcut class])
-		return;
-	
-	self.cellArtSnapshot = ({
-		PlaycutCell *cell = (id) [tableView cellForRowAtIndexPath:indexPath];
-		UIImageView *art = [[UIImageView alloc] initWithFrame:(CGRect) {
-			.origin = [cell.albumArt.superview convertPoint:cell.albumArt.frame.origin toView:cell.window],
-			.size = cell.albumArt.frame.size
-		}];
-		
-		art.contentMode = cell.albumArt.contentMode;
-		art.clipsToBounds = YES;
-		art.image = cell.albumArt.image;
-		art;
-	});
-	
-	self.transition.cellArtSnapshot = self.cellArtSnapshot;
-	
-	PlaycutDetailsViewController *vc = [[PlaycutDetailsViewController alloc] initWithNibName:nil bundle:nil];
-	vc.playcut = (id)playcut;
-	vc.transitioningDelegate = self.transition;
-	vc.modalPresentationStyle = UIModalPresentationFullScreen;
-	
-	[self.presentingViewController presentViewController:vc animated:YES completion:nil];
 }
 
 @end

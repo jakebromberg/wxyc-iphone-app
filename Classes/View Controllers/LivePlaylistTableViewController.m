@@ -8,7 +8,6 @@
 #import "BreakpointCell.h"
 #import "TalksetCell.h"
 #import "PlaycutCell.h"
-#import "PlaycutDetailsViewController.h"
 #import "PlaylistController.h"
 #import "NSObject+KVOBlocks.h"
 #import "NSIndexPath+Additions.h"
@@ -40,6 +39,8 @@
 		
 		[self.tableView registerNib:nib forCellReuseIdentifier:className];
 	}
+
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
 	
 	self.tableView.estimatedRowHeight = 360.f;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;

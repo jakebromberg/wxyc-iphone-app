@@ -52,14 +52,11 @@
 	return cell;
 }
 
-<<<<<<< HEAD
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return [[self classOfCellAtIndexPath:indexPath] height];
 }
 
-=======
->>>>>>> a9d30e6... refactored shadow layer redrawing code
 - (Class)classOfCellAtIndexPath:(NSIndexPath *)indexPath
 {
 	return [[self.fetchedResultsController objectAtIndexPath:indexPath] correspondingTableViewCellClass];

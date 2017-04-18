@@ -22,6 +22,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIView *shareBar;
 
+@property (nonatomic, strong) UIGestureRecognizer *tapGestureRecognizer;
+
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *twitterButton;
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *facebookButton;
 @property (nonatomic, weak) IBOutlet PlaycutCellButton *favoriteButton;
@@ -45,6 +47,9 @@
     
     self.shareBar.alpha = 0.f;
 	
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receivedTap:)];
+    [self addGestureRecognizer:self.tapGestureRecognizer];
+    
 	__weak __typeof(self) __self = self;
 	
 	[self observeKeyPath:@keypath(self, entity.PrimaryImage) changeBlock:^(NSDictionary *change)
@@ -115,6 +120,10 @@
 }
 
 #pragma Share stuff
+
+- (void)receivedTap:(id)sender {
+    self.shareBarVisible = !self.isShareBarVisible;
+}
 
 - (void)setShareBarVisible:(BOOL)shareBarVisible
 {
