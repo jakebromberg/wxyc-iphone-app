@@ -8,19 +8,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "LivePlaylistTableViewCell.h"
-#import "CALayer+ShadowLayer.h"
-
-@interface LivePlaylistTableViewCell ()
-
-@property (nonatomic, strong) CALayer *shadowLayer;
-
-@end
-
-
-@interface LivePlaylistTableViewCell ()
-
-@end
-
 
 @implementation LivePlaylistTableViewCell
 
@@ -41,18 +28,7 @@
     self.containerView.layer.cornerRadius = 5.f;
     self.containerView.layer.masksToBounds = YES;
 	
-	self.shadowLayer = [CALayer shadowLayerWithFrame:self.containerView.bounds];
-    self.shadowLayer.shadowPath = CGPathCreateWithRoundedRect(self.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
-    [self.contentView.layer insertSublayer:self.shadowLayer atIndex:0];
-    
     [self layoutIfNeeded];
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    self.shadowLayer.shadowPath = CGPathCreateWithRoundedRect(self.containerView.frame, 5.f, 5.f, &CGAffineTransformIdentity);
-//    self.shadowLayer.frame = self.bounds;
 }
 
 - (id)copyWithZone:(NSZone *)zone

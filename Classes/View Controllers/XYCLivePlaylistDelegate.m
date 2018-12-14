@@ -11,6 +11,7 @@
 #import "PlaycutCell.h"
 #import "Playcut.h"
 #import "NSObject+LivePlaylistTableViewCellMappings.h"
+#import "WXYC-Swift.h"
 
 @interface XYCLivePlaylistDelegate ()
 
@@ -51,27 +52,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    PlayerCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PlayerCell class])];
-    CGSize size = [cell sizeThatFits:(CGSize) {
-        .width = tableView.frame.size.width,
-        .height = CGFLOAT_MAX
-    }];
-    
-    return size.height;
+    return 80.0f;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-	UIView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
-	PlayerCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PlayerCell class])];
-	header.bounds = cell.bounds;
-	[header addSubview:cell];
-	
-	return header;
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [[PlayerHeader alloc] init];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LivePlaylistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self identifierForCellAtIndexPath:indexPath] forIndexPath:indexPath];
     
     cell.entity = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -80,18 +68,15 @@
 
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return [[self classOfCellAtIndexPath:indexPath] height];
 }
 
-- (NSString *)identifierForCellAtIndexPath:(NSIndexPath *)indexPath
-{
+- (NSString *)identifierForCellAtIndexPath:(NSIndexPath *)indexPath {
 	return NSStringFromClass([self classOfCellAtIndexPath:indexPath]);
 }
 
-- (Class)classOfCellAtIndexPath:(NSIndexPath *)indexPath
-{
+- (Class)classOfCellAtIndexPath:(NSIndexPath *)indexPath {
     return [[self.fetchedResultsController objectAtIndexPath:indexPath] correspondingTableViewCellClass];
 }
 

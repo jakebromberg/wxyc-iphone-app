@@ -26,7 +26,7 @@
     [super awakeFromNib];
     
 	const NSArray *cellClasses = @[
-		PlayerCell.class,
+//        PlayerCell.class,
 		PlaycutCell.class,
 		TalksetCell.class,
 		BreakpointCell.class,
@@ -40,10 +40,13 @@
 		[self.tableView registerNib:nib forCellReuseIdentifier:className];
 	}
 
-    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([UITableViewHeaderFooterView class])];
+    [self.tableView registerClass:[PlayerCell class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([PlayerCell class])];
 	
-	self.tableView.estimatedRowHeight = 360.f;
+//    self.tableView.estimatedRowHeight = 360.f;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+//    self.tableView.directionalLayoutMargins = NSDirectionalEdgeInsetsMake(0, 10, 0, 10);
+    
 }
 
 #pragma mark - Properties

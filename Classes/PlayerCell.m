@@ -10,28 +10,47 @@
 #import "AudioStreamController.h"
 #import "UIView+Spin.h"
 #import "NSObject+KVOBlocks.h"
-#import "CALayer+ShadowLayer.h"
 
 @interface PlayerCell ()
 
-@property (nonatomic, weak) IBOutlet UIButton *playButton;
-@property (nonatomic, weak) IBOutlet UIView *leftCassetteReel;
-@property (nonatomic, weak) IBOutlet UIView *rightCassetteReel;
+@property (nonatomic, strong) UIButton *playButton;
 
-@property (nonatomic, strong) CALayer *shadowLayer;
+@property (nonatomic, strong) UIView *cassetteContainer;
+@property (nonatomic, strong) UIImageView *leftCassetteReel;
+@property (nonatomic, strong) UIImageView *cassetteBackground;
+@property (nonatomic, strong) UIImageView *cassetteCenter;
+@property (nonatomic, strong) UIImageView *rightCassetteReel;
+@property (nonatomic, strong) UIImageView *leftCassetteArch;
+@property (nonatomic, strong) UIImageView *rightCassetteArch;
 
 @end
 
 
 @implementation PlayerCell
 
+- (instancetype)init {
+    self = [super init];
+    
+    if (self != nil) {
+        _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_playButton setImage:[UIImage imageNamed:@"play-button.png"] forState:UIControlStateNormal];
+        
+        _cassetteContainer = [[UIView alloc] init];
+        
+//        _leftCassetteArch = [UIImage imageNamed:@"]
+//
+    }
+    
+    return self;
+}
+
 - (instancetype)awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
-	[[AudioStreamController wxyc] addBlockObserver:self forKeyPath:@keypath(AudioStreamController.wxyc, isPlaying) changeBlock:^(NSDictionary *change) {
-		[self configureInterfaceForPlayingState:[change[NSKeyValueChangeNewKey] boolValue]];
-	}];
-	
-	return [super awakeAfterUsingCoder:aDecoder];
+    [[AudioStreamController wxyc] addBlockObserver:self forKeyPath:@keypath(AudioStreamController.wxyc, isPlaying) changeBlock:^(NSDictionary *change) {
+        [self configureInterfaceForPlayingState:[change[NSKeyValueChangeNewKey] boolValue]];
+    }];
+
+    return [super awakeAfterUsingCoder:aDecoder];
 }
 
 - (void)configureInterfaceForPlayingState:(BOOL)isPlaying
